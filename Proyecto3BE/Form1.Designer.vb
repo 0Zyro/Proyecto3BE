@@ -22,85 +22,88 @@ Partial Class Form1
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
-        Me.Label1 = New System.Windows.Forms.Label()
-        Me.TextBox1 = New System.Windows.Forms.TextBox()
-        Me.Label2 = New System.Windows.Forms.Label()
-        Me.TextBox2 = New System.Windows.Forms.TextBox()
-        Me.Label3 = New System.Windows.Forms.Label()
-        Me.Button1 = New System.Windows.Forms.Button()
+        Me.LabelUser = New System.Windows.Forms.Label()
+        Me.TextBoxUser = New System.Windows.Forms.TextBox()
+        Me.LabelPasswd = New System.Windows.Forms.Label()
+        Me.TextBoxPasswd = New System.Windows.Forms.TextBox()
+        Me.LabelInfo = New System.Windows.Forms.Label()
+        Me.ButtonAceptar = New System.Windows.Forms.Button()
         Me.SuspendLayout()
         '
-        'Label1
+        'LabelUser
         '
-        Me.Label1.AutoSize = True
-        Me.Label1.Location = New System.Drawing.Point(13, 13)
-        Me.Label1.Name = "Label1"
-        Me.Label1.Size = New System.Drawing.Size(46, 13)
-        Me.Label1.TabIndex = 0
-        Me.Label1.Text = "Usuario:"
+        Me.LabelUser.AutoSize = True
+        Me.LabelUser.Location = New System.Drawing.Point(13, 13)
+        Me.LabelUser.Name = "LabelUser"
+        Me.LabelUser.Size = New System.Drawing.Size(46, 13)
+        Me.LabelUser.TabIndex = 0
+        Me.LabelUser.Text = "Usuario:"
         '
-        'TextBox1
+        'TextBoxUser
         '
-        Me.TextBox1.Location = New System.Drawing.Point(12, 29)
-        Me.TextBox1.Name = "TextBox1"
-        Me.TextBox1.Size = New System.Drawing.Size(244, 20)
-        Me.TextBox1.TabIndex = 1
+        Me.TextBoxUser.Location = New System.Drawing.Point(12, 29)
+        Me.TextBoxUser.Name = "TextBoxUser"
+        Me.TextBoxUser.Size = New System.Drawing.Size(244, 20)
+        Me.TextBoxUser.TabIndex = 1
         '
-        'Label2
+        'LabelPasswd
         '
-        Me.Label2.AutoSize = True
-        Me.Label2.Location = New System.Drawing.Point(13, 57)
-        Me.Label2.Name = "Label2"
-        Me.Label2.Size = New System.Drawing.Size(64, 13)
-        Me.Label2.TabIndex = 2
-        Me.Label2.Text = "Contraseña:"
+        Me.LabelPasswd.AutoSize = True
+        Me.LabelPasswd.Location = New System.Drawing.Point(13, 57)
+        Me.LabelPasswd.Name = "LabelPasswd"
+        Me.LabelPasswd.Size = New System.Drawing.Size(64, 13)
+        Me.LabelPasswd.TabIndex = 2
+        Me.LabelPasswd.Text = "Contraseña:"
         '
-        'TextBox2
+        'TextBoxPasswd
         '
-        Me.TextBox2.Location = New System.Drawing.Point(12, 73)
-        Me.TextBox2.Name = "TextBox2"
-        Me.TextBox2.Size = New System.Drawing.Size(244, 20)
-        Me.TextBox2.TabIndex = 3
+        Me.TextBoxPasswd.Location = New System.Drawing.Point(12, 73)
+        Me.TextBoxPasswd.Name = "TextBoxPasswd"
+        Me.TextBoxPasswd.Size = New System.Drawing.Size(244, 20)
+        Me.TextBoxPasswd.TabIndex = 3
         '
-        'Label3
+        'LabelInfo
         '
-        Me.Label3.AutoSize = True
-        Me.Label3.Location = New System.Drawing.Point(13, 115)
-        Me.Label3.Name = "Label3"
-        Me.Label3.Size = New System.Drawing.Size(0, 13)
-        Me.Label3.TabIndex = 4
+        Me.LabelInfo.AutoSize = True
+        Me.LabelInfo.Location = New System.Drawing.Point(13, 115)
+        Me.LabelInfo.Name = "LabelInfo"
+        Me.LabelInfo.Size = New System.Drawing.Size(0, 13)
+        Me.LabelInfo.TabIndex = 4
         '
-        'Button1
+        'ButtonAceptar
         '
-        Me.Button1.Location = New System.Drawing.Point(181, 105)
-        Me.Button1.Name = "Button1"
-        Me.Button1.Size = New System.Drawing.Size(75, 23)
-        Me.Button1.TabIndex = 5
-        Me.Button1.Text = "Aceptar"
-        Me.Button1.UseVisualStyleBackColor = True
+        Me.ButtonAceptar.Location = New System.Drawing.Point(181, 105)
+        Me.ButtonAceptar.Name = "ButtonAceptar"
+        Me.ButtonAceptar.Size = New System.Drawing.Size(75, 23)
+        Me.ButtonAceptar.TabIndex = 5
+        Me.ButtonAceptar.Text = "Aceptar"
+        Me.ButtonAceptar.UseVisualStyleBackColor = True
         '
         'Form1
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(268, 134)
-        Me.Controls.Add(Me.Button1)
-        Me.Controls.Add(Me.Label3)
-        Me.Controls.Add(Me.TextBox2)
-        Me.Controls.Add(Me.Label2)
-        Me.Controls.Add(Me.TextBox1)
-        Me.Controls.Add(Me.Label1)
+        Me.Controls.Add(Me.ButtonAceptar)
+        Me.Controls.Add(Me.LabelInfo)
+        Me.Controls.Add(Me.TextBoxPasswd)
+        Me.Controls.Add(Me.LabelPasswd)
+        Me.Controls.Add(Me.TextBoxUser)
+        Me.Controls.Add(Me.LabelUser)
+        Me.MaximumSize = New System.Drawing.Size(284, 172)
+        Me.MinimumSize = New System.Drawing.Size(284, 172)
         Me.Name = "Form1"
+        Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "Ingresar"
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
     End Sub
-    Friend WithEvents Label1 As System.Windows.Forms.Label
-    Friend WithEvents TextBox1 As System.Windows.Forms.TextBox
-    Friend WithEvents Label2 As System.Windows.Forms.Label
-    Friend WithEvents TextBox2 As System.Windows.Forms.TextBox
-    Friend WithEvents Label3 As System.Windows.Forms.Label
-    Friend WithEvents Button1 As System.Windows.Forms.Button
+    Friend WithEvents LabelUser As System.Windows.Forms.Label
+    Friend WithEvents TextBoxUser As System.Windows.Forms.TextBox
+    Friend WithEvents LabelPasswd As System.Windows.Forms.Label
+    Friend WithEvents TextBoxPasswd As System.Windows.Forms.TextBox
+    Friend WithEvents LabelInfo As System.Windows.Forms.Label
+    Friend WithEvents ButtonAceptar As System.Windows.Forms.Button
 
 End Class
