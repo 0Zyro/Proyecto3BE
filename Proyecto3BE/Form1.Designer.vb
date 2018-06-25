@@ -94,6 +94,7 @@ Partial Class Form1
         Me.MaximumSize = New System.Drawing.Size(284, 172)
         Me.MinimumSize = New System.Drawing.Size(284, 172)
         Me.Name = "Form1"
+        Me.ShowIcon = False
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "Ingresar"
         Me.ResumeLayout(False)
