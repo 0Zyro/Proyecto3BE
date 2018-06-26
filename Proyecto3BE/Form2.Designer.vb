@@ -89,7 +89,7 @@ Partial Class Form2
         Me.TabUsuarios.Padding = New System.Windows.Forms.Padding(3)
         Me.TabUsuarios.Size = New System.Drawing.Size(677, 437)
         Me.TabUsuarios.TabIndex = 3
-        Me.TabUsuarios.Text = "Usuarios"
+        Me.TabUsuarios.Text = "Clientes"
         Me.TabUsuarios.UseVisualStyleBackColor = True
         '
         'TabPage1
@@ -99,7 +99,7 @@ Partial Class Form2
         Me.TabPage1.Padding = New System.Windows.Forms.Padding(3)
         Me.TabPage1.Size = New System.Drawing.Size(677, 437)
         Me.TabPage1.TabIndex = 4
-        Me.TabPage1.Text = "TabPage1"
+        Me.TabPage1.Text = "Usuarios"
         Me.TabPage1.UseVisualStyleBackColor = True
         '
         'Form2
