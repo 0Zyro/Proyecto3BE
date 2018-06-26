@@ -28,6 +28,7 @@ Partial Class Form2
         Me.TabVentas = New System.Windows.Forms.TabPage()
         Me.TabCompras = New System.Windows.Forms.TabPage()
         Me.TabUsuarios = New System.Windows.Forms.TabPage()
+        Me.TabPage1 = New System.Windows.Forms.TabPage()
         Me.TabbedPane.SuspendLayout()
         Me.SuspendLayout()
         '
@@ -44,6 +45,7 @@ Partial Class Form2
         Me.TabbedPane.Controls.Add(Me.TabVentas)
         Me.TabbedPane.Controls.Add(Me.TabCompras)
         Me.TabbedPane.Controls.Add(Me.TabUsuarios)
+        Me.TabbedPane.Controls.Add(Me.TabPage1)
         Me.TabbedPane.Location = New System.Drawing.Point(101, 0)
         Me.TabbedPane.Name = "TabbedPane"
         Me.TabbedPane.SelectedIndex = 0
@@ -65,7 +67,7 @@ Partial Class Form2
         Me.TabVentas.Location = New System.Drawing.Point(4, 22)
         Me.TabVentas.Name = "TabVentas"
         Me.TabVentas.Padding = New System.Windows.Forms.Padding(3)
-        Me.TabVentas.Size = New System.Drawing.Size(658, 504)
+        Me.TabVentas.Size = New System.Drawing.Size(677, 437)
         Me.TabVentas.TabIndex = 1
         Me.TabVentas.Text = "Ventas"
         Me.TabVentas.UseVisualStyleBackColor = True
@@ -75,7 +77,7 @@ Partial Class Form2
         Me.TabCompras.Location = New System.Drawing.Point(4, 22)
         Me.TabCompras.Name = "TabCompras"
         Me.TabCompras.Padding = New System.Windows.Forms.Padding(3)
-        Me.TabCompras.Size = New System.Drawing.Size(658, 504)
+        Me.TabCompras.Size = New System.Drawing.Size(677, 437)
         Me.TabCompras.TabIndex = 2
         Me.TabCompras.Text = "Compras"
         Me.TabCompras.UseVisualStyleBackColor = True
@@ -85,10 +87,20 @@ Partial Class Form2
         Me.TabUsuarios.Location = New System.Drawing.Point(4, 22)
         Me.TabUsuarios.Name = "TabUsuarios"
         Me.TabUsuarios.Padding = New System.Windows.Forms.Padding(3)
-        Me.TabUsuarios.Size = New System.Drawing.Size(658, 504)
+        Me.TabUsuarios.Size = New System.Drawing.Size(677, 437)
         Me.TabUsuarios.TabIndex = 3
         Me.TabUsuarios.Text = "Usuarios"
         Me.TabUsuarios.UseVisualStyleBackColor = True
+        '
+        'TabPage1
+        '
+        Me.TabPage1.Location = New System.Drawing.Point(4, 22)
+        Me.TabPage1.Name = "TabPage1"
+        Me.TabPage1.Padding = New System.Windows.Forms.Padding(3)
+        Me.TabPage1.Size = New System.Drawing.Size(677, 437)
+        Me.TabPage1.TabIndex = 4
+        Me.TabPage1.Text = "TabPage1"
+        Me.TabPage1.UseVisualStyleBackColor = True
         '
         'Form2
         '
@@ -112,4 +124,5 @@ Partial Class Form2
     Friend WithEvents TabVentas As System.Windows.Forms.TabPage
     Friend WithEvents TabCompras As System.Windows.Forms.TabPage
     Friend WithEvents TabUsuarios As System.Windows.Forms.TabPage
+    Friend WithEvents TabPage1 As System.Windows.Forms.TabPage
 End Class
