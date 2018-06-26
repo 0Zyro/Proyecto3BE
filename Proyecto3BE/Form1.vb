@@ -1,6 +1,6 @@
 ﻿Public Class Form1
 
-    'Cuando el usuario presiona "Aceptar" se evaluaran los datos y se hara login en caso de ser correctos
+    'Cuando el usuario presiona "Aceptar" se evaluaran los datos y se hara login en caso de ser correctosuyguyguyguyguygiujhn
     'en caso de no serlo, se informara el error
     Private Sub ButtonAceptar_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles ButtonAceptar.Click
         If TextBoxUser.Text = "user" And TextBoxPasswd.Text = "passwd" Then
