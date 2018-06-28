@@ -13,24 +13,14 @@ Public Class Form2
     Public MysqlConexion As MySqlConnection = New MySqlConnection(data)
 
     Public Sub consultar()
-
         Try
-
             Conexion = New MySqlDataAdapter(Consulta, data)
             Tabla = New DataTable
             Conexion.Fill(Tabla)
-
-
         Catch ex As Exception
-
             MsgBox(ex.Message)
-
         End Try
-
-
     End Sub
-
-    'Dim conexion As New MySqlConnection(data)
 
     Private Sub Form2_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
 
@@ -47,20 +37,8 @@ Public Class Form2
 
     End Sub
 
-    
-   
-    Private Sub Label8_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Labeldireccioncliente.Click
-
-    End Sub
-
-    Private Sub Label9_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Labeltelcliente.Click
-
-    End Sub
-
+    'Boton "Agregar" de tab "Clientes"
     Private Sub Buttonagregarcliente_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Buttonagregarcliente.Click
-
-        'BOTON Q AGREGA CLIENTES
-        '------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
         If TextBox6.Text <> "" And TextBox7.Text <> "" And TextBox8.Text <> "" And TextBox9.Text <> "" Then
 
             If IsNumeric(TextBox6.Text) Then
@@ -80,12 +58,10 @@ Public Class Form2
         Else
             MsgBox("Complete todos los campos vacios")
         End If
-
-        '-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
     End Sub
 
+    'Se cargan los datos cuando se cambia de tab
     Private Sub TabClientes_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles TabClientes.Click
-
         'CARGA DATAGRIDCLIENTES
 
         Consulta = "select * from cliente"
@@ -97,9 +73,8 @@ Public Class Form2
         DataGridViewClientes.Columns(3).HeaderText = "Teléfono"
     End Sub
 
+    'Boton "Borrar" de tab "Clientes"
     Private Sub Buttonquitarcliente_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Buttonquitarcliente.Click
-
-        'BOTON Q BORRA CLIENTES
 
         Consulta = "delete from cliente where ci='" & TextBox6.Text & "'"
         consultar()
@@ -113,9 +88,8 @@ Public Class Form2
         TextBox9.Text = ""
     End Sub
 
+    'Boton "Seleccionar" de tab "Clientes"
     Private Sub Buttonseleccionarcliente_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Buttonseleccionarcliente.Click
-
-        'BOTON Q SELECCIONA PARA LA SIGUENTE ACCION
 
         TextBox6.Text = DataGridViewClientes.Item(0, DataGridViewClientes.CurrentRow.Index).Value
         TextBox7.Text = DataGridViewClientes.Item(1, DataGridViewClientes.CurrentRow.Index).Value
