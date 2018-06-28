@@ -41,11 +41,26 @@ Partial Class Form2
         Me.DataGridView1 = New System.Windows.Forms.DataGridView()
         Me.TabVentas = New System.Windows.Forms.TabPage()
         Me.TabCompras = New System.Windows.Forms.TabPage()
-        Me.TabUsuarios = New System.Windows.Forms.TabPage()
+        Me.TabClientes = New System.Windows.Forms.TabPage()
+        Me.TextBox9 = New System.Windows.Forms.TextBox()
+        Me.TextBox8 = New System.Windows.Forms.TextBox()
+        Me.TextBox7 = New System.Windows.Forms.TextBox()
+        Me.TextBox6 = New System.Windows.Forms.TextBox()
+        Me.Labeltelcliente = New System.Windows.Forms.Label()
+        Me.Labeldireccioncliente = New System.Windows.Forms.Label()
+        Me.LabelNombreyApellidocliente = New System.Windows.Forms.Label()
+        Me.LabelCedulacliente = New System.Windows.Forms.Label()
+        Me.DataGridViewClientes = New System.Windows.Forms.DataGridView()
+        Me.Buttonmodificarcliente = New System.Windows.Forms.Button()
+        Me.Buttonseleccionarcliente = New System.Windows.Forms.Button()
+        Me.Buttonquitarcliente = New System.Windows.Forms.Button()
+        Me.Buttonagregarcliente = New System.Windows.Forms.Button()
         Me.TabPage1 = New System.Windows.Forms.TabPage()
         Me.TabbedPane.SuspendLayout()
         Me.TabGanado.SuspendLayout()
         CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.TabClientes.SuspendLayout()
+        CType(Me.DataGridViewClientes, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'PanelUsuario
@@ -60,7 +75,7 @@ Partial Class Form2
         Me.TabbedPane.Controls.Add(Me.TabGanado)
         Me.TabbedPane.Controls.Add(Me.TabVentas)
         Me.TabbedPane.Controls.Add(Me.TabCompras)
-        Me.TabbedPane.Controls.Add(Me.TabUsuarios)
+        Me.TabbedPane.Controls.Add(Me.TabClientes)
         Me.TabbedPane.Controls.Add(Me.TabPage1)
         Me.TabbedPane.Location = New System.Drawing.Point(101, 0)
         Me.TabbedPane.Name = "TabbedPane"
@@ -228,15 +243,138 @@ Partial Class Form2
         Me.TabCompras.Text = "Compras"
         Me.TabCompras.UseVisualStyleBackColor = True
         '
-        'TabUsuarios
+        'TabClientes
         '
-        Me.TabUsuarios.Location = New System.Drawing.Point(4, 22)
-        Me.TabUsuarios.Name = "TabUsuarios"
-        Me.TabUsuarios.Padding = New System.Windows.Forms.Padding(3)
-        Me.TabUsuarios.Size = New System.Drawing.Size(677, 437)
-        Me.TabUsuarios.TabIndex = 3
-        Me.TabUsuarios.Text = "Clientes"
-        Me.TabUsuarios.UseVisualStyleBackColor = True
+        Me.TabClientes.Controls.Add(Me.TextBox9)
+        Me.TabClientes.Controls.Add(Me.TextBox8)
+        Me.TabClientes.Controls.Add(Me.TextBox7)
+        Me.TabClientes.Controls.Add(Me.TextBox6)
+        Me.TabClientes.Controls.Add(Me.Labeltelcliente)
+        Me.TabClientes.Controls.Add(Me.Labeldireccioncliente)
+        Me.TabClientes.Controls.Add(Me.LabelNombreyApellidocliente)
+        Me.TabClientes.Controls.Add(Me.LabelCedulacliente)
+        Me.TabClientes.Controls.Add(Me.DataGridViewClientes)
+        Me.TabClientes.Controls.Add(Me.Buttonmodificarcliente)
+        Me.TabClientes.Controls.Add(Me.Buttonseleccionarcliente)
+        Me.TabClientes.Controls.Add(Me.Buttonquitarcliente)
+        Me.TabClientes.Controls.Add(Me.Buttonagregarcliente)
+        Me.TabClientes.Location = New System.Drawing.Point(4, 22)
+        Me.TabClientes.Name = "TabClientes"
+        Me.TabClientes.Padding = New System.Windows.Forms.Padding(3)
+        Me.TabClientes.Size = New System.Drawing.Size(677, 437)
+        Me.TabClientes.TabIndex = 3
+        Me.TabClientes.Text = "Clientes"
+        Me.TabClientes.UseVisualStyleBackColor = True
+        '
+        'TextBox9
+        '
+        Me.TextBox9.Location = New System.Drawing.Point(537, 120)
+        Me.TextBox9.Name = "TextBox9"
+        Me.TextBox9.Size = New System.Drawing.Size(100, 20)
+        Me.TextBox9.TabIndex = 12
+        '
+        'TextBox8
+        '
+        Me.TextBox8.Location = New System.Drawing.Point(537, 94)
+        Me.TextBox8.Name = "TextBox8"
+        Me.TextBox8.Size = New System.Drawing.Size(100, 20)
+        Me.TextBox8.TabIndex = 11
+        '
+        'TextBox7
+        '
+        Me.TextBox7.Location = New System.Drawing.Point(537, 69)
+        Me.TextBox7.Name = "TextBox7"
+        Me.TextBox7.Size = New System.Drawing.Size(100, 20)
+        Me.TextBox7.TabIndex = 10
+        '
+        'TextBox6
+        '
+        Me.TextBox6.Location = New System.Drawing.Point(537, 43)
+        Me.TextBox6.Name = "TextBox6"
+        Me.TextBox6.Size = New System.Drawing.Size(100, 20)
+        Me.TextBox6.TabIndex = 9
+        '
+        'Labeltelcliente
+        '
+        Me.Labeltelcliente.AutoSize = True
+        Me.Labeltelcliente.Location = New System.Drawing.Point(440, 127)
+        Me.Labeltelcliente.Name = "Labeltelcliente"
+        Me.Labeltelcliente.Size = New System.Drawing.Size(49, 13)
+        Me.Labeltelcliente.TabIndex = 8
+        Me.Labeltelcliente.Text = "Telefono"
+        '
+        'Labeldireccioncliente
+        '
+        Me.Labeldireccioncliente.AutoSize = True
+        Me.Labeldireccioncliente.Location = New System.Drawing.Point(440, 101)
+        Me.Labeldireccioncliente.Name = "Labeldireccioncliente"
+        Me.Labeldireccioncliente.Size = New System.Drawing.Size(52, 13)
+        Me.Labeldireccioncliente.TabIndex = 7
+        Me.Labeldireccioncliente.Text = "Direccion"
+        '
+        'LabelNombreyApellidocliente
+        '
+        Me.LabelNombreyApellidocliente.AutoSize = True
+        Me.LabelNombreyApellidocliente.Location = New System.Drawing.Point(439, 76)
+        Me.LabelNombreyApellidocliente.Name = "LabelNombreyApellidocliente"
+        Me.LabelNombreyApellidocliente.Size = New System.Drawing.Size(92, 13)
+        Me.LabelNombreyApellidocliente.TabIndex = 6
+        Me.LabelNombreyApellidocliente.Text = "Nombre y Apellido"
+        '
+        'LabelCedulacliente
+        '
+        Me.LabelCedulacliente.AutoSize = True
+        Me.LabelCedulacliente.Location = New System.Drawing.Point(439, 50)
+        Me.LabelCedulacliente.Name = "LabelCedulacliente"
+        Me.LabelCedulacliente.Size = New System.Drawing.Size(40, 13)
+        Me.LabelCedulacliente.TabIndex = 5
+        Me.LabelCedulacliente.Text = "Cedula"
+        '
+        'DataGridViewClientes
+        '
+        Me.DataGridViewClientes.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
+        Me.DataGridViewClientes.Location = New System.Drawing.Point(3, 43)
+        Me.DataGridViewClientes.Name = "DataGridViewClientes"
+        Me.DataGridViewClientes.Size = New System.Drawing.Size(419, 271)
+        Me.DataGridViewClientes.TabIndex = 4
+        '
+        'Buttonmodificarcliente
+        '
+        Me.Buttonmodificarcliente.Location = New System.Drawing.Point(511, 291)
+        Me.Buttonmodificarcliente.Name = "Buttonmodificarcliente"
+        Me.Buttonmodificarcliente.Size = New System.Drawing.Size(75, 23)
+        Me.Buttonmodificarcliente.TabIndex = 3
+        Me.Buttonmodificarcliente.Text = "Modificar"
+        Me.Buttonmodificarcliente.UseVisualStyleBackColor = True
+        '
+        'Buttonseleccionarcliente
+        '
+        Me.Buttonseleccionarcliente.Location = New System.Drawing.Point(592, 291)
+        Me.Buttonseleccionarcliente.Name = "Buttonseleccionarcliente"
+        Me.Buttonseleccionarcliente.Size = New System.Drawing.Size(75, 23)
+        Me.Buttonseleccionarcliente.TabIndex = 2
+        Me.Buttonseleccionarcliente.Text = "seleccionar"
+        Me.Buttonseleccionarcliente.UseVisualStyleBackColor = True
+        '
+        'Buttonquitarcliente
+        '
+        Me.Buttonquitarcliente.AccessibleRole = System.Windows.Forms.AccessibleRole.None
+        Me.Buttonquitarcliente.Location = New System.Drawing.Point(428, 320)
+        Me.Buttonquitarcliente.Name = "Buttonquitarcliente"
+        Me.Buttonquitarcliente.Size = New System.Drawing.Size(75, 23)
+        Me.Buttonquitarcliente.TabIndex = 1
+        Me.Buttonquitarcliente.Text = "Quitar"
+        Me.Buttonquitarcliente.UseVisualStyleBackColor = True
+        '
+        'Buttonagregarcliente
+        '
+        Me.Buttonagregarcliente.AccessibleRole = System.Windows.Forms.AccessibleRole.None
+        Me.Buttonagregarcliente.Location = New System.Drawing.Point(428, 291)
+        Me.Buttonagregarcliente.Name = "Buttonagregarcliente"
+        Me.Buttonagregarcliente.Size = New System.Drawing.Size(75, 23)
+        Me.Buttonagregarcliente.TabIndex = 0
+        Me.Buttonagregarcliente.Text = "Agregar"
+        Me.Buttonagregarcliente.UseVisualStyleBackColor = True
         '
         'TabPage1
         '
@@ -252,7 +390,7 @@ Partial Class Form2
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(784, 461)
+        Me.ClientSize = New System.Drawing.Size(784, 462)
         Me.Controls.Add(Me.TabbedPane)
         Me.Controls.Add(Me.PanelUsuario)
         Me.MaximumSize = New System.Drawing.Size(800, 500)
@@ -264,6 +402,9 @@ Partial Class Form2
         Me.TabGanado.ResumeLayout(False)
         Me.TabGanado.PerformLayout()
         CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.TabClientes.ResumeLayout(False)
+        Me.TabClientes.PerformLayout()
+        CType(Me.DataGridViewClientes, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
 
     End Sub
@@ -272,7 +413,7 @@ Partial Class Form2
     Friend WithEvents TabGanado As System.Windows.Forms.TabPage
     Friend WithEvents TabVentas As System.Windows.Forms.TabPage
     Friend WithEvents TabCompras As System.Windows.Forms.TabPage
-    Friend WithEvents TabUsuarios As System.Windows.Forms.TabPage
+    Friend WithEvents TabClientes As System.Windows.Forms.TabPage
     Friend WithEvents TabPage1 As System.Windows.Forms.TabPage
     Friend WithEvents DataGridView1 As System.Windows.Forms.DataGridView
     Friend WithEvents Label3 As System.Windows.Forms.Label
@@ -288,4 +429,17 @@ Partial Class Form2
     Friend WithEvents TextBox4 As System.Windows.Forms.TextBox
     Friend WithEvents Label5 As System.Windows.Forms.Label
     Friend WithEvents Label4 As System.Windows.Forms.Label
+    Friend WithEvents TextBox9 As System.Windows.Forms.TextBox
+    Friend WithEvents TextBox8 As System.Windows.Forms.TextBox
+    Friend WithEvents TextBox7 As System.Windows.Forms.TextBox
+    Friend WithEvents TextBox6 As System.Windows.Forms.TextBox
+    Friend WithEvents Labeltelcliente As System.Windows.Forms.Label
+    Friend WithEvents Labeldireccioncliente As System.Windows.Forms.Label
+    Friend WithEvents LabelNombreyApellidocliente As System.Windows.Forms.Label
+    Friend WithEvents LabelCedulacliente As System.Windows.Forms.Label
+    Friend WithEvents DataGridViewClientes As System.Windows.Forms.DataGridView
+    Friend WithEvents Buttonmodificarcliente As System.Windows.Forms.Button
+    Friend WithEvents Buttonseleccionarcliente As System.Windows.Forms.Button
+    Friend WithEvents Buttonquitarcliente As System.Windows.Forms.Button
+    Friend WithEvents Buttonagregarcliente As System.Windows.Forms.Button
 End Class

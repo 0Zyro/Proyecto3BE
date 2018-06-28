@@ -49,4 +49,77 @@ Public Class Form2
 
     
    
+    Private Sub Label8_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Labeldireccioncliente.Click
+
+    End Sub
+
+    Private Sub Label9_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Labeltelcliente.Click
+
+    End Sub
+
+    Private Sub Buttonagregarcliente_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Buttonagregarcliente.Click
+
+        'BOTON Q AGREGA CLIENTES
+        '------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+        If TextBox6.Text <> "" And TextBox7.Text <> "" And TextBox8.Text <> "" And TextBox9.Text <> "" Then
+
+            If IsNumeric(TextBox6.Text) Then
+                Consulta = "INSERT INTO cliente values('" & TextBox6.Text & "','" & TextBox7.Text & "','" & TextBox8.Text & "','" & TextBox9.Text & "' )"
+                consultar()
+                Consulta = "select * from cliente"
+                consultar()
+                DataGridViewClientes.DataSource = Tabla
+                TextBox6.Text = ""
+                TextBox7.Text = ""
+                TextBox8.Text = ""
+                TextBox9.Text = ""
+            Else
+                MsgBox("Cedula solo valores numericos")
+
+            End If
+        Else
+            MsgBox("Complete todos los campos vacios")
+        End If
+
+        '-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+    End Sub
+
+    Private Sub TabClientes_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles TabClientes.Click
+
+        'CARGA DATAGRIDCLIENTES
+
+        Consulta = "select * from cliente"
+        consultar()
+        DataGridViewClientes.DataSource = Tabla
+        DataGridViewClientes.Columns(0).HeaderText = "Cedúla"
+        DataGridViewClientes.Columns(1).HeaderText = "Nombre y apellido"
+        DataGridViewClientes.Columns(2).HeaderText = "Dirección"
+        DataGridViewClientes.Columns(3).HeaderText = "Teléfono"
+    End Sub
+
+    Private Sub Buttonquitarcliente_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Buttonquitarcliente.Click
+
+        'BOTON Q BORRA CLIENTES
+
+        Consulta = "delete from cliente where ci='" & TextBox6.Text & "'"
+        consultar()
+
+        Consulta = "select * from cliente"
+        consultar()
+        DataGridViewClientes.DataSource = Tabla
+        TextBox6.Text = ""
+        TextBox7.Text = ""
+        TextBox8.Text = ""
+        TextBox9.Text = ""
+    End Sub
+
+    Private Sub Buttonseleccionarcliente_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Buttonseleccionarcliente.Click
+
+        'BOTON Q SELECCIONA PARA LA SIGUENTE ACCION
+
+        TextBox6.Text = DataGridViewClientes.Item(0, DataGridViewClientes.CurrentRow.Index).Value
+        TextBox7.Text = DataGridViewClientes.Item(1, DataGridViewClientes.CurrentRow.Index).Value
+        TextBox8.Text = DataGridViewClientes.Item(2, DataGridViewClientes.CurrentRow.Index).Value
+        TextBox9.Text = DataGridViewClientes.Item(3, DataGridViewClientes.CurrentRow.Index).Value
+    End Sub
 End Class
