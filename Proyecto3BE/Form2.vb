@@ -77,7 +77,7 @@ Public Class Form2
 
         Consulta = "delete from cliente where ci='" & TextBox6.Text & "'"
         consultar()
-
+        'asdasdasdasd
         Consulta = "select * from cliente"
         consultar()
         DataGridViewClientes.DataSource = Tabla
@@ -141,7 +141,7 @@ Public Class Form2
     End Sub
 
     'boton borrar con opcion de poner la id para borrar
-    Private Sub Button5_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Button5.Click
+    Private Sub Button5_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Buttonborrarventas.Click
         Consulta = ("delete from ventas where IDVENTA= '" & TXTID.Text & "'")
         consultar()
         MsgBox("Borrado" + TXTID.Text)
@@ -149,5 +149,23 @@ Public Class Form2
         TextBox1.Text = ""
         TextBox2.Text = ""
         TextBox3.Text = ""
+    End Sub
+
+    Private Sub DataGridView1_CellContentClick(ByVal sender As System.Object, ByVal e As System.Windows.Forms.DataGridViewCellEventArgs) Handles DataGridView1.CellContentClick
+
+    End Sub
+
+    Private Sub Button1_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Button1.Click
+
+    End Sub
+
+    Private Sub DataGridViewClientes_CellContentClick(ByVal sender As System.Object, ByVal e As System.Windows.Forms.DataGridViewCellEventArgs) Handles DataGridViewClientes.CellContentClick
+        Consulta = "select * from cliente"
+        consultar()
+        DataGridViewClientes.DataSource = Tabla
+        DataGridViewClientes.Columns(0).HeaderText = "Cedúla"
+        DataGridViewClientes.Columns(1).HeaderText = "Nombre y apellido"
+        DataGridViewClientes.Columns(2).HeaderText = "Dirección"
+        DataGridViewClientes.Columns(3).HeaderText = "Teléfono"
     End Sub
 End Class
