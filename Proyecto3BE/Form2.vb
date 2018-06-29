@@ -168,4 +168,55 @@ Public Class Form2
         DataGridViewClientes.Columns(2).HeaderText = "Dirección"
         DataGridViewClientes.Columns(3).HeaderText = "Teléfono"
     End Sub
+
+    Dim campos() As String = {"ci", "nombre", "permisos"}
+    Dim rows(0) As String
+    Dim tipo As String
+
+    Private Sub BotonBusquedaUsuarios_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles BotonBusquedaUsuarios.Click
+
+        Dim conexion As New MySqlConnection(data)
+        Dim comando As New MySqlCommand
+        Dim reader As MySqlDataReader
+
+        If TextBoxBusquedaUsuarios.Text = "" Then
+            comando.CommandText = "select ci from usuarios"
+        Else
+            comando.CommandText = ("select nombre from usuario where " + campos(ComboBoxUsuarios.SelectedIndex) + "='" + TextBoxBusquedaUsuarios.Text + "'")
+            Select Case ComboBoxUsuarios.SelectedIndex
+                Case 0
+                    tipo = "Integer"
+                Case 1
+                    tipo = "String"
+                Case 2
+                    tipo = "String"
+            End Select
+        End If
+        comando.CommandType = CommandType.Text
+        comando.Connection = conexion
+
+        Try
+            conexion.Open()
+            reader = comando.ExecuteReader()
+            If reader.HasRows Then
+                ListBoxUsuarios.Items.Clear()
+                While (reader.Read())
+                    If tipo = "Integer" Then
+                        rows(rows.Length - 1) = reader.GetInt32(0).ToString
+                    Else
+                        rows(rows.Length - 1) = reader.GetString(0)
+                    End If
+                    ReDim Preserve rows(rows.Length)
+                End While
+                ReDim Preserve rows(rows.Length - 2)
+                ListBoxUsuarios.Items.AddRange(rows)
+            Else
+                LabelInfoUsuarios.Text = "No se encontraron resultados"
+            End If
+            conexion.Close()
+        Catch ex As Exception
+
+        End Try
+
+    End Sub
 End Class

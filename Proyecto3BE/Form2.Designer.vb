@@ -74,6 +74,22 @@ Partial Class Form2
         Me.Buttonquitarcliente = New System.Windows.Forms.Button()
         Me.Buttonagregarcliente = New System.Windows.Forms.Button()
         Me.TabPage1 = New System.Windows.Forms.TabPage()
+        Me.ComboBoxUsuarios = New System.Windows.Forms.ComboBox()
+        Me.TextBoxBusquedaUsuarios = New System.Windows.Forms.TextBox()
+        Me.BotonBusquedaUsuarios = New System.Windows.Forms.Button()
+        Me.ListBoxUsuarios = New System.Windows.Forms.ListBox()
+        Me.Label11 = New System.Windows.Forms.Label()
+        Me.Label12 = New System.Windows.Forms.Label()
+        Me.Label13 = New System.Windows.Forms.Label()
+        Me.Label14 = New System.Windows.Forms.Label()
+        Me.TextBoxCiUsuarios = New System.Windows.Forms.TextBox()
+        Me.TextBoxNombreUsuarios = New System.Windows.Forms.TextBox()
+        Me.TextBoxPasswdUsuarios = New System.Windows.Forms.TextBox()
+        Me.TextBoxRangoUsuarios = New System.Windows.Forms.TextBox()
+        Me.BotonAgregarUsuarios = New System.Windows.Forms.Button()
+        Me.BotonEliminarUsuarios = New System.Windows.Forms.Button()
+        Me.BotonModificarUsuarios = New System.Windows.Forms.Button()
+        Me.LabelInfoUsuarios = New System.Windows.Forms.Label()
         Me.TabbedPane.SuspendLayout()
         Me.TabGanado.SuspendLayout()
         CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -82,6 +98,7 @@ Partial Class Form2
         Me.GBID.SuspendLayout()
         Me.TabClientes.SuspendLayout()
         CType(Me.DataGridViewClientes, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.TabPage1.SuspendLayout()
         Me.SuspendLayout()
         '
         'PanelUsuario
@@ -573,6 +590,22 @@ Partial Class Form2
         '
         'TabPage1
         '
+        Me.TabPage1.Controls.Add(Me.LabelInfoUsuarios)
+        Me.TabPage1.Controls.Add(Me.BotonModificarUsuarios)
+        Me.TabPage1.Controls.Add(Me.BotonEliminarUsuarios)
+        Me.TabPage1.Controls.Add(Me.BotonAgregarUsuarios)
+        Me.TabPage1.Controls.Add(Me.TextBoxRangoUsuarios)
+        Me.TabPage1.Controls.Add(Me.TextBoxPasswdUsuarios)
+        Me.TabPage1.Controls.Add(Me.TextBoxNombreUsuarios)
+        Me.TabPage1.Controls.Add(Me.TextBoxCiUsuarios)
+        Me.TabPage1.Controls.Add(Me.Label14)
+        Me.TabPage1.Controls.Add(Me.Label13)
+        Me.TabPage1.Controls.Add(Me.Label12)
+        Me.TabPage1.Controls.Add(Me.Label11)
+        Me.TabPage1.Controls.Add(Me.ListBoxUsuarios)
+        Me.TabPage1.Controls.Add(Me.BotonBusquedaUsuarios)
+        Me.TabPage1.Controls.Add(Me.TextBoxBusquedaUsuarios)
+        Me.TabPage1.Controls.Add(Me.ComboBoxUsuarios)
         Me.TabPage1.Location = New System.Drawing.Point(4, 22)
         Me.TabPage1.Name = "TabPage1"
         Me.TabPage1.Padding = New System.Windows.Forms.Padding(3)
@@ -580,6 +613,138 @@ Partial Class Form2
         Me.TabPage1.TabIndex = 4
         Me.TabPage1.Text = "Usuarios"
         Me.TabPage1.UseVisualStyleBackColor = True
+        '
+        'ComboBoxUsuarios
+        '
+        Me.ComboBoxUsuarios.FormattingEnabled = True
+        Me.ComboBoxUsuarios.Items.AddRange(New Object() {"CI", "Nombre", "Rango"})
+        Me.ComboBoxUsuarios.Location = New System.Drawing.Point(6, 20)
+        Me.ComboBoxUsuarios.Name = "ComboBoxUsuarios"
+        Me.ComboBoxUsuarios.Size = New System.Drawing.Size(89, 21)
+        Me.ComboBoxUsuarios.TabIndex = 0
+        '
+        'TextBoxBusquedaUsuarios
+        '
+        Me.TextBoxBusquedaUsuarios.Location = New System.Drawing.Point(101, 20)
+        Me.TextBoxBusquedaUsuarios.Name = "TextBoxBusquedaUsuarios"
+        Me.TextBoxBusquedaUsuarios.Size = New System.Drawing.Size(128, 20)
+        Me.TextBoxBusquedaUsuarios.TabIndex = 1
+        '
+        'BotonBusquedaUsuarios
+        '
+        Me.BotonBusquedaUsuarios.Location = New System.Drawing.Point(235, 18)
+        Me.BotonBusquedaUsuarios.Name = "BotonBusquedaUsuarios"
+        Me.BotonBusquedaUsuarios.Size = New System.Drawing.Size(55, 23)
+        Me.BotonBusquedaUsuarios.TabIndex = 2
+        Me.BotonBusquedaUsuarios.Text = "Buscar"
+        Me.BotonBusquedaUsuarios.UseVisualStyleBackColor = True
+        '
+        'ListBoxUsuarios
+        '
+        Me.ListBoxUsuarios.FormattingEnabled = True
+        Me.ListBoxUsuarios.Location = New System.Drawing.Point(7, 55)
+        Me.ListBoxUsuarios.Name = "ListBoxUsuarios"
+        Me.ListBoxUsuarios.Size = New System.Drawing.Size(222, 355)
+        Me.ListBoxUsuarios.TabIndex = 3
+        '
+        'Label11
+        '
+        Me.Label11.AutoSize = True
+        Me.Label11.Location = New System.Drawing.Point(267, 122)
+        Me.Label11.Name = "Label11"
+        Me.Label11.Size = New System.Drawing.Size(23, 13)
+        Me.Label11.TabIndex = 4
+        Me.Label11.Text = "C.I."
+        '
+        'Label12
+        '
+        Me.Label12.AutoSize = True
+        Me.Label12.Location = New System.Drawing.Point(267, 186)
+        Me.Label12.Name = "Label12"
+        Me.Label12.Size = New System.Drawing.Size(44, 13)
+        Me.Label12.TabIndex = 5
+        Me.Label12.Text = "Nombre"
+        '
+        'Label13
+        '
+        Me.Label13.AutoSize = True
+        Me.Label13.Location = New System.Drawing.Point(267, 318)
+        Me.Label13.Name = "Label13"
+        Me.Label13.Size = New System.Drawing.Size(39, 13)
+        Me.Label13.TabIndex = 6
+        Me.Label13.Text = "Rango"
+        '
+        'Label14
+        '
+        Me.Label14.AutoSize = True
+        Me.Label14.Location = New System.Drawing.Point(267, 254)
+        Me.Label14.Name = "Label14"
+        Me.Label14.Size = New System.Drawing.Size(61, 13)
+        Me.Label14.TabIndex = 7
+        Me.Label14.Text = "Contraseña"
+        '
+        'TextBoxCiUsuarios
+        '
+        Me.TextBoxCiUsuarios.Location = New System.Drawing.Point(270, 138)
+        Me.TextBoxCiUsuarios.Name = "TextBoxCiUsuarios"
+        Me.TextBoxCiUsuarios.Size = New System.Drawing.Size(100, 20)
+        Me.TextBoxCiUsuarios.TabIndex = 8
+        '
+        'TextBoxNombreUsuarios
+        '
+        Me.TextBoxNombreUsuarios.Location = New System.Drawing.Point(270, 202)
+        Me.TextBoxNombreUsuarios.Name = "TextBoxNombreUsuarios"
+        Me.TextBoxNombreUsuarios.Size = New System.Drawing.Size(100, 20)
+        Me.TextBoxNombreUsuarios.TabIndex = 9
+        '
+        'TextBoxPasswdUsuarios
+        '
+        Me.TextBoxPasswdUsuarios.Location = New System.Drawing.Point(270, 270)
+        Me.TextBoxPasswdUsuarios.Name = "TextBoxPasswdUsuarios"
+        Me.TextBoxPasswdUsuarios.Size = New System.Drawing.Size(100, 20)
+        Me.TextBoxPasswdUsuarios.TabIndex = 10
+        '
+        'TextBoxRangoUsuarios
+        '
+        Me.TextBoxRangoUsuarios.Location = New System.Drawing.Point(270, 334)
+        Me.TextBoxRangoUsuarios.Name = "TextBoxRangoUsuarios"
+        Me.TextBoxRangoUsuarios.Size = New System.Drawing.Size(100, 20)
+        Me.TextBoxRangoUsuarios.TabIndex = 11
+        '
+        'BotonAgregarUsuarios
+        '
+        Me.BotonAgregarUsuarios.Location = New System.Drawing.Point(494, 120)
+        Me.BotonAgregarUsuarios.Name = "BotonAgregarUsuarios"
+        Me.BotonAgregarUsuarios.Size = New System.Drawing.Size(75, 55)
+        Me.BotonAgregarUsuarios.TabIndex = 12
+        Me.BotonAgregarUsuarios.Text = "Agregar"
+        Me.BotonAgregarUsuarios.UseVisualStyleBackColor = True
+        '
+        'BotonEliminarUsuarios
+        '
+        Me.BotonEliminarUsuarios.Location = New System.Drawing.Point(494, 296)
+        Me.BotonEliminarUsuarios.Name = "BotonEliminarUsuarios"
+        Me.BotonEliminarUsuarios.Size = New System.Drawing.Size(75, 56)
+        Me.BotonEliminarUsuarios.TabIndex = 13
+        Me.BotonEliminarUsuarios.Text = "Eliminar"
+        Me.BotonEliminarUsuarios.UseVisualStyleBackColor = True
+        '
+        'BotonModificarUsuarios
+        '
+        Me.BotonModificarUsuarios.Location = New System.Drawing.Point(494, 211)
+        Me.BotonModificarUsuarios.Name = "BotonModificarUsuarios"
+        Me.BotonModificarUsuarios.Size = New System.Drawing.Size(75, 56)
+        Me.BotonModificarUsuarios.TabIndex = 14
+        Me.BotonModificarUsuarios.Text = "Modificar"
+        Me.BotonModificarUsuarios.UseVisualStyleBackColor = True
+        '
+        'LabelInfoUsuarios
+        '
+        Me.LabelInfoUsuarios.AutoSize = True
+        Me.LabelInfoUsuarios.Location = New System.Drawing.Point(7, 415)
+        Me.LabelInfoUsuarios.Name = "LabelInfoUsuarios"
+        Me.LabelInfoUsuarios.Size = New System.Drawing.Size(0, 13)
+        Me.LabelInfoUsuarios.TabIndex = 15
         '
         'Form2
         '
@@ -605,6 +770,8 @@ Partial Class Form2
         Me.TabClientes.ResumeLayout(False)
         Me.TabClientes.PerformLayout()
         CType(Me.DataGridViewClientes, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.TabPage1.ResumeLayout(False)
+        Me.TabPage1.PerformLayout()
         Me.ResumeLayout(False)
 
     End Sub
@@ -660,4 +827,20 @@ Partial Class Form2
     Friend WithEvents GBID As System.Windows.Forms.GroupBox
     Friend WithEvents TXTID As System.Windows.Forms.TextBox
     Friend WithEvents Label10 As System.Windows.Forms.Label
+    Friend WithEvents BotonModificarUsuarios As System.Windows.Forms.Button
+    Friend WithEvents BotonEliminarUsuarios As System.Windows.Forms.Button
+    Friend WithEvents BotonAgregarUsuarios As System.Windows.Forms.Button
+    Friend WithEvents TextBoxRangoUsuarios As System.Windows.Forms.TextBox
+    Friend WithEvents TextBoxPasswdUsuarios As System.Windows.Forms.TextBox
+    Friend WithEvents TextBoxNombreUsuarios As System.Windows.Forms.TextBox
+    Friend WithEvents TextBoxCiUsuarios As System.Windows.Forms.TextBox
+    Friend WithEvents Label14 As System.Windows.Forms.Label
+    Friend WithEvents Label13 As System.Windows.Forms.Label
+    Friend WithEvents Label12 As System.Windows.Forms.Label
+    Friend WithEvents Label11 As System.Windows.Forms.Label
+    Friend WithEvents ListBoxUsuarios As System.Windows.Forms.ListBox
+    Friend WithEvents BotonBusquedaUsuarios As System.Windows.Forms.Button
+    Friend WithEvents TextBoxBusquedaUsuarios As System.Windows.Forms.TextBox
+    Friend WithEvents ComboBoxUsuarios As System.Windows.Forms.ComboBox
+    Friend WithEvents LabelInfoUsuarios As System.Windows.Forms.Label
 End Class
