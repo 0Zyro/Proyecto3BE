@@ -80,6 +80,7 @@ Public Class Form2
         'asdasdasdasd
         'asdasdasdasdasdasd
         'asdasdasdasd
+        'asdasdasd
         Consulta = "select * from cliente"
         consultar()
         DataGridViewClientes.DataSource = Tabla
