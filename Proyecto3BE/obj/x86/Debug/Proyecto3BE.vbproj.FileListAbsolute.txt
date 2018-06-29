@@ -13,3 +13,6 @@ C:\Users\Usuario\Documents\GitHub\Proyecto3BE\Proyecto3BE\bin\Debug\MySql.Data.d
 E:\Documents\Proyecto3BE\Proyecto3BE\obj\x86\Debug\Proyecto3BE.exe
 E:\Documents\Proyecto3BE\Proyecto3BE\obj\x86\Debug\Proyecto3BE.xml
 E:\Documents\Proyecto3BE\Proyecto3BE\obj\x86\Debug\Proyecto3BE.pdb
+C:\Users\juanp\Documents\GitHub\Proyecto3BE\Proyecto3BE\obj\x86\Debug\Proyecto3BE.exe
+C:\Users\juanp\Documents\GitHub\Proyecto3BE\Proyecto3BE\obj\x86\Debug\Proyecto3BE.xml
+C:\Users\juanp\Documents\GitHub\Proyecto3BE\Proyecto3BE\obj\x86\Debug\Proyecto3BE.pdb

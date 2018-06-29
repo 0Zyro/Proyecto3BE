@@ -96,4 +96,58 @@ Public Class Form2
         TextBox9.Text = DataGridViewClientes.Item(3, DataGridViewClientes.CurrentRow.Index).Value
     End Sub
     
+    '/////VENTAS/////
+    'boton agregar
+    Private Sub Button6_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Button6.Click
+
+        Consulta = ("insert into ventas (FECHA,TOTALDEVENTA,COMENTARIO)values('" & TextBox1.Text & "','" & TextBox2.Text & "','" & TextBox3.Text & "')")
+
+        consultar()
+        MessageBox.Show("Conexión exitosa")
+        TXTID.Text = ""
+        TextBox1.Text = ""
+        TextBox2.Text = ""
+        TextBox3.Text = ""
+    End Sub
+    'boton modificar con sus respectivos checkbox's con la opcion de poner la id
+
+    Private Sub Button4_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Button4.Click
+
+        If CheckBoxTODO.Checked = True Then
+            Consulta = ("update ventas set IDVENTA='" & TXTID.Text & "',FECHA='" & TextBox1.Text & "',TOTALDEVENTA='" & TextBox2.Text & "',COMENTARIO='" & TextBox3.Text & "'where IDVENTA='" & TXTID.Text & "'")
+            consultar()
+            TXTID.Text = ""
+            TextBox1.Text = ""
+            TextBox2.Text = ""
+            TextBox3.Text = ""
+
+        End If
+
+        If CheckBox1.Checked = True Then
+            Consulta = ("update ventas set IDVENTA='" & TXTID.Text & "',FECHA='" & TextBox1.Text & "'where IDVENTA='" & TXTID.Text & "'")
+            consultar()
+            TextBox1.Text = ""
+        End If
+        If CheckBox2.Checked = True Then
+            Consulta = ("update ventas set IDVENTA='" & TXTID.Text & "',TOTALDEVENTA='" & TextBox2.Text & "'where IDVENTA='" & TXTID.Text & "'")
+            consultar()
+            TextBox2.Text = ""
+        End If
+        If CheckBox3.Checked = True Then
+            Consulta = ("update ventas set IDVENTA='" & TXTID.Text & "',COMENTARIO='" & TextBox3.Text & "'where IDVENTA='" & TXTID.Text & "'")
+            consultar()
+            TextBox3.Text = ""
+        End If
+    End Sub
+
+    'boton borrar con opcion de poner la id para borrar
+    Private Sub Button5_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Button5.Click
+        Consulta = ("delete from ventas where IDVENTA= '" & TXTID.Text & "'")
+        consultar()
+        MsgBox("Borrado" + TXTID.Text)
+        TXTID.Text = ""
+        TextBox1.Text = ""
+        TextBox2.Text = ""
+        TextBox3.Text = ""
+    End Sub
 End Class

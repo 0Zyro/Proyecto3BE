@@ -56,11 +56,32 @@ Partial Class Form2
         Me.Buttonquitarcliente = New System.Windows.Forms.Button()
         Me.Buttonagregarcliente = New System.Windows.Forms.Button()
         Me.TabPage1 = New System.Windows.Forms.TabPage()
+        Me.CheckBox1 = New System.Windows.Forms.CheckBox()
+        Me.DataGridView2 = New System.Windows.Forms.DataGridView()
+        Me.Button5 = New System.Windows.Forms.Button()
+        Me.Label6 = New System.Windows.Forms.Label()
+        Me.CheckBoxTODO = New System.Windows.Forms.CheckBox()
+        Me.CheckBox3 = New System.Windows.Forms.CheckBox()
+        Me.CheckBox2 = New System.Windows.Forms.CheckBox()
+        Me.Button4 = New System.Windows.Forms.Button()
+        Me.Button6 = New System.Windows.Forms.Button()
+        Me.Label7 = New System.Windows.Forms.Label()
+        Me.Label8 = New System.Windows.Forms.Label()
+        Me.Label9 = New System.Windows.Forms.Label()
+        Me.TextBox10 = New System.Windows.Forms.TextBox()
+        Me.TextBox11 = New System.Windows.Forms.TextBox()
+        Me.TextBox12 = New System.Windows.Forms.TextBox()
+        Me.GBID = New System.Windows.Forms.GroupBox()
+        Me.TXTID = New System.Windows.Forms.TextBox()
+        Me.Label10 = New System.Windows.Forms.Label()
         Me.TabbedPane.SuspendLayout()
         Me.TabGanado.SuspendLayout()
         CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.TabVentas.SuspendLayout()
         Me.TabClientes.SuspendLayout()
         CType(Me.DataGridViewClientes, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.DataGridView2, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.GBID.SuspendLayout()
         Me.SuspendLayout()
         '
         'PanelUsuario
@@ -225,6 +246,22 @@ Partial Class Form2
         '
         'TabVentas
         '
+        Me.TabVentas.Controls.Add(Me.CheckBox1)
+        Me.TabVentas.Controls.Add(Me.DataGridView2)
+        Me.TabVentas.Controls.Add(Me.Button5)
+        Me.TabVentas.Controls.Add(Me.Label6)
+        Me.TabVentas.Controls.Add(Me.CheckBoxTODO)
+        Me.TabVentas.Controls.Add(Me.CheckBox3)
+        Me.TabVentas.Controls.Add(Me.CheckBox2)
+        Me.TabVentas.Controls.Add(Me.Button4)
+        Me.TabVentas.Controls.Add(Me.Button6)
+        Me.TabVentas.Controls.Add(Me.Label7)
+        Me.TabVentas.Controls.Add(Me.Label8)
+        Me.TabVentas.Controls.Add(Me.Label9)
+        Me.TabVentas.Controls.Add(Me.TextBox10)
+        Me.TabVentas.Controls.Add(Me.TextBox11)
+        Me.TabVentas.Controls.Add(Me.TextBox12)
+        Me.TabVentas.Controls.Add(Me.GBID)
         Me.TabVentas.Location = New System.Drawing.Point(4, 22)
         Me.TabVentas.Name = "TabVentas"
         Me.TabVentas.Padding = New System.Windows.Forms.Padding(3)
@@ -386,11 +423,169 @@ Partial Class Form2
         Me.TabPage1.Text = "Usuarios"
         Me.TabPage1.UseVisualStyleBackColor = True
         '
+        'CheckBox1
+        '
+        Me.CheckBox1.AutoSize = True
+        Me.CheckBox1.Location = New System.Drawing.Point(647, 121)
+        Me.CheckBox1.Name = "CheckBox1"
+        Me.CheckBox1.Size = New System.Drawing.Size(15, 14)
+        Me.CheckBox1.TabIndex = 87
+        Me.CheckBox1.UseVisualStyleBackColor = True
+        '
+        'DataGridView2
+        '
+        Me.DataGridView2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
+        Me.DataGridView2.Location = New System.Drawing.Point(15, 3)
+        Me.DataGridView2.Name = "DataGridView2"
+        Me.DataGridView2.RowHeadersVisible = False
+        Me.DataGridView2.ScrollBars = System.Windows.Forms.ScrollBars.Vertical
+        Me.DataGridView2.Size = New System.Drawing.Size(335, 431)
+        Me.DataGridView2.TabIndex = 86
+        '
+        'Button5
+        '
+        Me.Button5.Location = New System.Drawing.Point(524, 279)
+        Me.Button5.Name = "Button5"
+        Me.Button5.Size = New System.Drawing.Size(100, 21)
+        Me.Button5.TabIndex = 85
+        Me.Button5.Text = "BORRAR"
+        Me.Button5.UseVisualStyleBackColor = True
+        '
+        'Label6
+        '
+        Me.Label6.AutoSize = True
+        Me.Label6.Location = New System.Drawing.Point(451, 207)
+        Me.Label6.Name = "Label6"
+        Me.Label6.Size = New System.Drawing.Size(100, 13)
+        Me.Label6.TabIndex = 84
+        Me.Label6.Text = "MODIFCIAR TODO"
+        '
+        'CheckBoxTODO
+        '
+        Me.CheckBoxTODO.AutoSize = True
+        Me.CheckBoxTODO.Location = New System.Drawing.Point(574, 206)
+        Me.CheckBoxTODO.Name = "CheckBoxTODO"
+        Me.CheckBoxTODO.Size = New System.Drawing.Size(15, 14)
+        Me.CheckBoxTODO.TabIndex = 83
+        Me.CheckBoxTODO.UseVisualStyleBackColor = True
+        '
+        'CheckBox3
+        '
+        Me.CheckBox3.AutoSize = True
+        Me.CheckBox3.Location = New System.Drawing.Point(524, 174)
+        Me.CheckBox3.Name = "CheckBox3"
+        Me.CheckBox3.Size = New System.Drawing.Size(15, 14)
+        Me.CheckBox3.TabIndex = 82
+        Me.CheckBox3.UseVisualStyleBackColor = True
+        '
+        'CheckBox2
+        '
+        Me.CheckBox2.AutoSize = True
+        Me.CheckBox2.Location = New System.Drawing.Point(596, 146)
+        Me.CheckBox2.Name = "CheckBox2"
+        Me.CheckBox2.Size = New System.Drawing.Size(15, 14)
+        Me.CheckBox2.TabIndex = 81
+        Me.CheckBox2.UseVisualStyleBackColor = True
+        '
+        'Button4
+        '
+        Me.Button4.Location = New System.Drawing.Point(524, 235)
+        Me.Button4.Name = "Button4"
+        Me.Button4.Size = New System.Drawing.Size(100, 24)
+        Me.Button4.TabIndex = 80
+        Me.Button4.Text = "MODIFICAR"
+        Me.Button4.UseVisualStyleBackColor = True
+        '
+        'Button6
+        '
+        Me.Button6.Location = New System.Drawing.Point(381, 235)
+        Me.Button6.Name = "Button6"
+        Me.Button6.Size = New System.Drawing.Size(103, 24)
+        Me.Button6.TabIndex = 79
+        Me.Button6.Text = "AGREGAR"
+        Me.Button6.UseVisualStyleBackColor = True
+        '
+        'Label7
+        '
+        Me.Label7.AutoSize = True
+        Me.Label7.Location = New System.Drawing.Point(373, 175)
+        Me.Label7.Name = "Label7"
+        Me.Label7.Size = New System.Drawing.Size(79, 13)
+        Me.Label7.TabIndex = 78
+        Me.Label7.Text = "COMENTARIO"
+        '
+        'Label8
+        '
+        Me.Label8.AutoSize = True
+        Me.Label8.Location = New System.Drawing.Point(356, 146)
+        Me.Label8.Name = "Label8"
+        Me.Label8.Size = New System.Drawing.Size(93, 13)
+        Me.Label8.TabIndex = 77
+        Me.Label8.Text = "TOTALDEVENTA"
+        '
+        'Label9
+        '
+        Me.Label9.AutoSize = True
+        Me.Label9.Location = New System.Drawing.Point(398, 121)
+        Me.Label9.Name = "Label9"
+        Me.Label9.Size = New System.Drawing.Size(42, 13)
+        Me.Label9.TabIndex = 76
+        Me.Label9.Text = "FECHA"
+        '
+        'TextBox10
+        '
+        Me.TextBox10.Location = New System.Drawing.Point(462, 168)
+        Me.TextBox10.Name = "TextBox10"
+        Me.TextBox10.Size = New System.Drawing.Size(55, 20)
+        Me.TextBox10.TabIndex = 75
+        '
+        'TextBox11
+        '
+        Me.TextBox11.Location = New System.Drawing.Point(462, 139)
+        Me.TextBox11.Name = "TextBox11"
+        Me.TextBox11.Size = New System.Drawing.Size(128, 20)
+        Me.TextBox11.TabIndex = 74
+        '
+        'TextBox12
+        '
+        Me.TextBox12.Location = New System.Drawing.Point(462, 114)
+        Me.TextBox12.Name = "TextBox12"
+        Me.TextBox12.Size = New System.Drawing.Size(180, 20)
+        Me.TextBox12.TabIndex = 73
+        '
+        'GBID
+        '
+        Me.GBID.BackColor = System.Drawing.Color.Transparent
+        Me.GBID.Controls.Add(Me.TXTID)
+        Me.GBID.Controls.Add(Me.Label10)
+        Me.GBID.ForeColor = System.Drawing.SystemColors.MenuText
+        Me.GBID.Location = New System.Drawing.Point(448, 43)
+        Me.GBID.Name = "GBID"
+        Me.GBID.Size = New System.Drawing.Size(142, 42)
+        Me.GBID.TabIndex = 72
+        Me.GBID.TabStop = False
+        '
+        'TXTID
+        '
+        Me.TXTID.Location = New System.Drawing.Point(31, 14)
+        Me.TXTID.Name = "TXTID"
+        Me.TXTID.Size = New System.Drawing.Size(81, 20)
+        Me.TXTID.TabIndex = 14
+        '
+        'Label10
+        '
+        Me.Label10.AutoSize = True
+        Me.Label10.Location = New System.Drawing.Point(2, 17)
+        Me.Label10.Name = "Label10"
+        Me.Label10.Size = New System.Drawing.Size(18, 13)
+        Me.Label10.TabIndex = 13
+        Me.Label10.Text = "ID"
+        '
         'Form2
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(784, 462)
+        Me.ClientSize = New System.Drawing.Size(784, 461)
         Me.Controls.Add(Me.TabbedPane)
         Me.Controls.Add(Me.PanelUsuario)
         Me.MaximumSize = New System.Drawing.Size(800, 500)
@@ -402,9 +597,14 @@ Partial Class Form2
         Me.TabGanado.ResumeLayout(False)
         Me.TabGanado.PerformLayout()
         CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.TabVentas.ResumeLayout(False)
+        Me.TabVentas.PerformLayout()
         Me.TabClientes.ResumeLayout(False)
         Me.TabClientes.PerformLayout()
         CType(Me.DataGridViewClientes, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.DataGridView2, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.GBID.ResumeLayout(False)
+        Me.GBID.PerformLayout()
         Me.ResumeLayout(False)
 
     End Sub
@@ -442,4 +642,22 @@ Partial Class Form2
     Friend WithEvents Buttonseleccionarcliente As System.Windows.Forms.Button
     Friend WithEvents Buttonquitarcliente As System.Windows.Forms.Button
     Friend WithEvents Buttonagregarcliente As System.Windows.Forms.Button
+    Friend WithEvents CheckBox1 As System.Windows.Forms.CheckBox
+    Friend WithEvents DataGridView2 As System.Windows.Forms.DataGridView
+    Friend WithEvents Button5 As System.Windows.Forms.Button
+    Friend WithEvents Label6 As System.Windows.Forms.Label
+    Friend WithEvents CheckBoxTODO As System.Windows.Forms.CheckBox
+    Friend WithEvents CheckBox3 As System.Windows.Forms.CheckBox
+    Friend WithEvents CheckBox2 As System.Windows.Forms.CheckBox
+    Friend WithEvents Button4 As System.Windows.Forms.Button
+    Friend WithEvents Button6 As System.Windows.Forms.Button
+    Friend WithEvents Label7 As System.Windows.Forms.Label
+    Friend WithEvents Label8 As System.Windows.Forms.Label
+    Friend WithEvents Label9 As System.Windows.Forms.Label
+    Friend WithEvents TextBox10 As System.Windows.Forms.TextBox
+    Friend WithEvents TextBox11 As System.Windows.Forms.TextBox
+    Friend WithEvents TextBox12 As System.Windows.Forms.TextBox
+    Friend WithEvents GBID As System.Windows.Forms.GroupBox
+    Friend WithEvents TXTID As System.Windows.Forms.TextBox
+    Friend WithEvents Label10 As System.Windows.Forms.Label
 End Class
