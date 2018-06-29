@@ -77,11 +77,7 @@ Public Class Form2
 
         Consulta = "delete from cliente where ci='" & TextBox6.Text & "'"
         consultar()
-        'asdasdasdasd
-        'asdasdasdasdasdasd
-        'asdasdasdasd
-        'asdasdasasd
-        'asdasdasd
+
         Consulta = "select * from cliente"
         consultar()
         DataGridViewClientes.DataSource = Tabla
