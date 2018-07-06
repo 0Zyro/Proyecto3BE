@@ -27,16 +27,16 @@ Partial Class Form2
         Me.TabGanado = New System.Windows.Forms.TabPage()
         Me.Button3 = New System.Windows.Forms.Button()
         Me.Button2 = New System.Windows.Forms.Button()
-        Me.Button1 = New System.Windows.Forms.Button()
-        Me.TextBox5 = New System.Windows.Forms.TextBox()
-        Me.TextBox4 = New System.Windows.Forms.TextBox()
+        Me.Agregar_Ganado = New System.Windows.Forms.Button()
+        Me.TexEstado = New System.Windows.Forms.TextBox()
+        Me.TexPeso = New System.Windows.Forms.TextBox()
         Me.Label5 = New System.Windows.Forms.Label()
         Me.Label4 = New System.Windows.Forms.Label()
         Me.Label3 = New System.Windows.Forms.Label()
-        Me.TextBox3 = New System.Windows.Forms.TextBox()
-        Me.TextBox2 = New System.Windows.Forms.TextBox()
+        Me.TexEdad = New System.Windows.Forms.TextBox()
+        Me.TexSexo = New System.Windows.Forms.TextBox()
         Me.Label2 = New System.Windows.Forms.Label()
-        Me.TextBox1 = New System.Windows.Forms.TextBox()
+        Me.TexRaza = New System.Windows.Forms.TextBox()
         Me.Label1 = New System.Windows.Forms.Label()
         Me.DataGridView1 = New System.Windows.Forms.DataGridView()
         Me.TabVentas = New System.Windows.Forms.TabPage()
@@ -74,22 +74,22 @@ Partial Class Form2
         Me.Buttonquitarcliente = New System.Windows.Forms.Button()
         Me.Buttonagregarcliente = New System.Windows.Forms.Button()
         Me.TabPage1 = New System.Windows.Forms.TabPage()
-        Me.ComboBoxUsuarios = New System.Windows.Forms.ComboBox()
-        Me.TextBoxBusquedaUsuarios = New System.Windows.Forms.TextBox()
-        Me.BotonBusquedaUsuarios = New System.Windows.Forms.Button()
-        Me.ListBoxUsuarios = New System.Windows.Forms.ListBox()
-        Me.Label11 = New System.Windows.Forms.Label()
-        Me.Label12 = New System.Windows.Forms.Label()
-        Me.Label13 = New System.Windows.Forms.Label()
-        Me.Label14 = New System.Windows.Forms.Label()
-        Me.TextBoxCiUsuarios = New System.Windows.Forms.TextBox()
-        Me.TextBoxNombreUsuarios = New System.Windows.Forms.TextBox()
-        Me.TextBoxPasswdUsuarios = New System.Windows.Forms.TextBox()
-        Me.TextBoxRangoUsuarios = New System.Windows.Forms.TextBox()
-        Me.BotonAgregarUsuarios = New System.Windows.Forms.Button()
-        Me.BotonEliminarUsuarios = New System.Windows.Forms.Button()
-        Me.BotonModificarUsuarios = New System.Windows.Forms.Button()
         Me.LabelInfoUsuarios = New System.Windows.Forms.Label()
+        Me.BotonModificarUsuarios = New System.Windows.Forms.Button()
+        Me.BotonEliminarUsuarios = New System.Windows.Forms.Button()
+        Me.BotonAgregarUsuarios = New System.Windows.Forms.Button()
+        Me.TextBoxRangoUsuarios = New System.Windows.Forms.TextBox()
+        Me.TextBoxPasswdUsuarios = New System.Windows.Forms.TextBox()
+        Me.TextBoxNombreUsuarios = New System.Windows.Forms.TextBox()
+        Me.TextBoxCiUsuarios = New System.Windows.Forms.TextBox()
+        Me.Label14 = New System.Windows.Forms.Label()
+        Me.Label13 = New System.Windows.Forms.Label()
+        Me.Label12 = New System.Windows.Forms.Label()
+        Me.Label11 = New System.Windows.Forms.Label()
+        Me.ListBoxUsuarios = New System.Windows.Forms.ListBox()
+        Me.BotonBusquedaUsuarios = New System.Windows.Forms.Button()
+        Me.TextBoxBusquedaUsuarios = New System.Windows.Forms.TextBox()
+        Me.ComboBoxUsuarios = New System.Windows.Forms.ComboBox()
         Me.TabbedPane.SuspendLayout()
         Me.TabGanado.SuspendLayout()
         CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -115,7 +115,7 @@ Partial Class Form2
         Me.TabbedPane.Controls.Add(Me.TabCompras)
         Me.TabbedPane.Controls.Add(Me.TabClientes)
         Me.TabbedPane.Controls.Add(Me.TabPage1)
-        Me.TabbedPane.Location = New System.Drawing.Point(101, 0)
+        Me.TabbedPane.Location = New System.Drawing.Point(106, 0)
         Me.TabbedPane.Name = "TabbedPane"
         Me.TabbedPane.SelectedIndex = 0
         Me.TabbedPane.Size = New System.Drawing.Size(685, 463)
@@ -125,16 +125,16 @@ Partial Class Form2
         '
         Me.TabGanado.Controls.Add(Me.Button3)
         Me.TabGanado.Controls.Add(Me.Button2)
-        Me.TabGanado.Controls.Add(Me.Button1)
-        Me.TabGanado.Controls.Add(Me.TextBox5)
-        Me.TabGanado.Controls.Add(Me.TextBox4)
+        Me.TabGanado.Controls.Add(Me.Agregar_Ganado)
+        Me.TabGanado.Controls.Add(Me.TexEstado)
+        Me.TabGanado.Controls.Add(Me.TexPeso)
         Me.TabGanado.Controls.Add(Me.Label5)
         Me.TabGanado.Controls.Add(Me.Label4)
         Me.TabGanado.Controls.Add(Me.Label3)
-        Me.TabGanado.Controls.Add(Me.TextBox3)
-        Me.TabGanado.Controls.Add(Me.TextBox2)
+        Me.TabGanado.Controls.Add(Me.TexEdad)
+        Me.TabGanado.Controls.Add(Me.TexSexo)
         Me.TabGanado.Controls.Add(Me.Label2)
-        Me.TabGanado.Controls.Add(Me.TextBox1)
+        Me.TabGanado.Controls.Add(Me.TexRaza)
         Me.TabGanado.Controls.Add(Me.Label1)
         Me.TabGanado.Controls.Add(Me.DataGridView1)
         Me.TabGanado.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
@@ -164,28 +164,28 @@ Partial Class Form2
         Me.Button2.Text = "Modificar"
         Me.Button2.UseVisualStyleBackColor = True
         '
-        'Button1
+        'Agregar_Ganado
         '
-        Me.Button1.Location = New System.Drawing.Point(446, 215)
-        Me.Button1.Name = "Button1"
-        Me.Button1.Size = New System.Drawing.Size(75, 23)
-        Me.Button1.TabIndex = 11
-        Me.Button1.Text = "Agregar"
-        Me.Button1.UseVisualStyleBackColor = True
+        Me.Agregar_Ganado.Location = New System.Drawing.Point(446, 215)
+        Me.Agregar_Ganado.Name = "Agregar_Ganado"
+        Me.Agregar_Ganado.Size = New System.Drawing.Size(75, 23)
+        Me.Agregar_Ganado.TabIndex = 11
+        Me.Agregar_Ganado.Text = "Agregar"
+        Me.Agregar_Ganado.UseVisualStyleBackColor = True
         '
-        'TextBox5
+        'TexEstado
         '
-        Me.TextBox5.Location = New System.Drawing.Point(516, 162)
-        Me.TextBox5.Name = "TextBox5"
-        Me.TextBox5.Size = New System.Drawing.Size(156, 20)
-        Me.TextBox5.TabIndex = 10
+        Me.TexEstado.Location = New System.Drawing.Point(516, 162)
+        Me.TexEstado.Name = "TexEstado"
+        Me.TexEstado.Size = New System.Drawing.Size(156, 20)
+        Me.TexEstado.TabIndex = 10
         '
-        'TextBox4
+        'TexPeso
         '
-        Me.TextBox4.Location = New System.Drawing.Point(516, 129)
-        Me.TextBox4.Name = "TextBox4"
-        Me.TextBox4.Size = New System.Drawing.Size(47, 20)
-        Me.TextBox4.TabIndex = 9
+        Me.TexPeso.Location = New System.Drawing.Point(516, 129)
+        Me.TexPeso.Name = "TexPeso"
+        Me.TexPeso.Size = New System.Drawing.Size(47, 20)
+        Me.TexPeso.TabIndex = 9
         '
         'Label5
         '
@@ -214,19 +214,19 @@ Partial Class Form2
         Me.Label3.TabIndex = 6
         Me.Label3.Text = "Edad"
         '
-        'TextBox3
+        'TexEdad
         '
-        Me.TextBox3.Location = New System.Drawing.Point(516, 97)
-        Me.TextBox3.Name = "TextBox3"
-        Me.TextBox3.Size = New System.Drawing.Size(47, 20)
-        Me.TextBox3.TabIndex = 5
+        Me.TexEdad.Location = New System.Drawing.Point(516, 97)
+        Me.TexEdad.Name = "TexEdad"
+        Me.TexEdad.Size = New System.Drawing.Size(47, 20)
+        Me.TexEdad.TabIndex = 5
         '
-        'TextBox2
+        'TexSexo
         '
-        Me.TextBox2.Location = New System.Drawing.Point(516, 65)
-        Me.TextBox2.Name = "TextBox2"
-        Me.TextBox2.Size = New System.Drawing.Size(62, 20)
-        Me.TextBox2.TabIndex = 4
+        Me.TexSexo.Location = New System.Drawing.Point(516, 65)
+        Me.TexSexo.Name = "TexSexo"
+        Me.TexSexo.Size = New System.Drawing.Size(62, 20)
+        Me.TexSexo.TabIndex = 4
         '
         'Label2
         '
@@ -237,12 +237,12 @@ Partial Class Form2
         Me.Label2.TabIndex = 3
         Me.Label2.Text = "Sexo"
         '
-        'TextBox1
+        'TexRaza
         '
-        Me.TextBox1.Location = New System.Drawing.Point(516, 32)
-        Me.TextBox1.Name = "TextBox1"
-        Me.TextBox1.Size = New System.Drawing.Size(100, 20)
-        Me.TextBox1.TabIndex = 2
+        Me.TexRaza.Location = New System.Drawing.Point(516, 32)
+        Me.TexRaza.Name = "TexRaza"
+        Me.TexRaza.Size = New System.Drawing.Size(100, 20)
+        Me.TexRaza.TabIndex = 2
         '
         'Label1
         '
@@ -614,120 +614,13 @@ Partial Class Form2
         Me.TabPage1.Text = "Usuarios"
         Me.TabPage1.UseVisualStyleBackColor = True
         '
-        'ComboBoxUsuarios
+        'LabelInfoUsuarios
         '
-        Me.ComboBoxUsuarios.FormattingEnabled = True
-        Me.ComboBoxUsuarios.Items.AddRange(New Object() {"CI", "Nombre", "Rango"})
-        Me.ComboBoxUsuarios.Location = New System.Drawing.Point(6, 20)
-        Me.ComboBoxUsuarios.Name = "ComboBoxUsuarios"
-        Me.ComboBoxUsuarios.Size = New System.Drawing.Size(89, 21)
-        Me.ComboBoxUsuarios.TabIndex = 0
-        '
-        'TextBoxBusquedaUsuarios
-        '
-        Me.TextBoxBusquedaUsuarios.Location = New System.Drawing.Point(101, 20)
-        Me.TextBoxBusquedaUsuarios.Name = "TextBoxBusquedaUsuarios"
-        Me.TextBoxBusquedaUsuarios.Size = New System.Drawing.Size(128, 20)
-        Me.TextBoxBusquedaUsuarios.TabIndex = 1
-        '
-        'BotonBusquedaUsuarios
-        '
-        Me.BotonBusquedaUsuarios.Location = New System.Drawing.Point(235, 18)
-        Me.BotonBusquedaUsuarios.Name = "BotonBusquedaUsuarios"
-        Me.BotonBusquedaUsuarios.Size = New System.Drawing.Size(55, 23)
-        Me.BotonBusquedaUsuarios.TabIndex = 2
-        Me.BotonBusquedaUsuarios.Text = "Buscar"
-        Me.BotonBusquedaUsuarios.UseVisualStyleBackColor = True
-        '
-        'ListBoxUsuarios
-        '
-        Me.ListBoxUsuarios.FormattingEnabled = True
-        Me.ListBoxUsuarios.Location = New System.Drawing.Point(7, 55)
-        Me.ListBoxUsuarios.Name = "ListBoxUsuarios"
-        Me.ListBoxUsuarios.Size = New System.Drawing.Size(222, 355)
-        Me.ListBoxUsuarios.TabIndex = 3
-        '
-        'Label11
-        '
-        Me.Label11.AutoSize = True
-        Me.Label11.Location = New System.Drawing.Point(267, 122)
-        Me.Label11.Name = "Label11"
-        Me.Label11.Size = New System.Drawing.Size(23, 13)
-        Me.Label11.TabIndex = 4
-        Me.Label11.Text = "C.I."
-        '
-        'Label12
-        '
-        Me.Label12.AutoSize = True
-        Me.Label12.Location = New System.Drawing.Point(267, 186)
-        Me.Label12.Name = "Label12"
-        Me.Label12.Size = New System.Drawing.Size(44, 13)
-        Me.Label12.TabIndex = 5
-        Me.Label12.Text = "Nombre"
-        '
-        'Label13
-        '
-        Me.Label13.AutoSize = True
-        Me.Label13.Location = New System.Drawing.Point(267, 318)
-        Me.Label13.Name = "Label13"
-        Me.Label13.Size = New System.Drawing.Size(39, 13)
-        Me.Label13.TabIndex = 6
-        Me.Label13.Text = "Rango"
-        '
-        'Label14
-        '
-        Me.Label14.AutoSize = True
-        Me.Label14.Location = New System.Drawing.Point(267, 254)
-        Me.Label14.Name = "Label14"
-        Me.Label14.Size = New System.Drawing.Size(61, 13)
-        Me.Label14.TabIndex = 7
-        Me.Label14.Text = "Contraseña"
-        '
-        'TextBoxCiUsuarios
-        '
-        Me.TextBoxCiUsuarios.Location = New System.Drawing.Point(270, 138)
-        Me.TextBoxCiUsuarios.Name = "TextBoxCiUsuarios"
-        Me.TextBoxCiUsuarios.Size = New System.Drawing.Size(100, 20)
-        Me.TextBoxCiUsuarios.TabIndex = 8
-        '
-        'TextBoxNombreUsuarios
-        '
-        Me.TextBoxNombreUsuarios.Location = New System.Drawing.Point(270, 202)
-        Me.TextBoxNombreUsuarios.Name = "TextBoxNombreUsuarios"
-        Me.TextBoxNombreUsuarios.Size = New System.Drawing.Size(100, 20)
-        Me.TextBoxNombreUsuarios.TabIndex = 9
-        '
-        'TextBoxPasswdUsuarios
-        '
-        Me.TextBoxPasswdUsuarios.Location = New System.Drawing.Point(270, 270)
-        Me.TextBoxPasswdUsuarios.Name = "TextBoxPasswdUsuarios"
-        Me.TextBoxPasswdUsuarios.Size = New System.Drawing.Size(100, 20)
-        Me.TextBoxPasswdUsuarios.TabIndex = 10
-        '
-        'TextBoxRangoUsuarios
-        '
-        Me.TextBoxRangoUsuarios.Location = New System.Drawing.Point(270, 334)
-        Me.TextBoxRangoUsuarios.Name = "TextBoxRangoUsuarios"
-        Me.TextBoxRangoUsuarios.Size = New System.Drawing.Size(100, 20)
-        Me.TextBoxRangoUsuarios.TabIndex = 11
-        '
-        'BotonAgregarUsuarios
-        '
-        Me.BotonAgregarUsuarios.Location = New System.Drawing.Point(494, 120)
-        Me.BotonAgregarUsuarios.Name = "BotonAgregarUsuarios"
-        Me.BotonAgregarUsuarios.Size = New System.Drawing.Size(75, 55)
-        Me.BotonAgregarUsuarios.TabIndex = 12
-        Me.BotonAgregarUsuarios.Text = "Agregar"
-        Me.BotonAgregarUsuarios.UseVisualStyleBackColor = True
-        '
-        'BotonEliminarUsuarios
-        '
-        Me.BotonEliminarUsuarios.Location = New System.Drawing.Point(494, 296)
-        Me.BotonEliminarUsuarios.Name = "BotonEliminarUsuarios"
-        Me.BotonEliminarUsuarios.Size = New System.Drawing.Size(75, 56)
-        Me.BotonEliminarUsuarios.TabIndex = 13
-        Me.BotonEliminarUsuarios.Text = "Eliminar"
-        Me.BotonEliminarUsuarios.UseVisualStyleBackColor = True
+        Me.LabelInfoUsuarios.AutoSize = True
+        Me.LabelInfoUsuarios.Location = New System.Drawing.Point(7, 415)
+        Me.LabelInfoUsuarios.Name = "LabelInfoUsuarios"
+        Me.LabelInfoUsuarios.Size = New System.Drawing.Size(0, 13)
+        Me.LabelInfoUsuarios.TabIndex = 15
         '
         'BotonModificarUsuarios
         '
@@ -738,19 +631,126 @@ Partial Class Form2
         Me.BotonModificarUsuarios.Text = "Modificar"
         Me.BotonModificarUsuarios.UseVisualStyleBackColor = True
         '
-        'LabelInfoUsuarios
+        'BotonEliminarUsuarios
         '
-        Me.LabelInfoUsuarios.AutoSize = True
-        Me.LabelInfoUsuarios.Location = New System.Drawing.Point(7, 415)
-        Me.LabelInfoUsuarios.Name = "LabelInfoUsuarios"
-        Me.LabelInfoUsuarios.Size = New System.Drawing.Size(0, 13)
-        Me.LabelInfoUsuarios.TabIndex = 15
+        Me.BotonEliminarUsuarios.Location = New System.Drawing.Point(494, 296)
+        Me.BotonEliminarUsuarios.Name = "BotonEliminarUsuarios"
+        Me.BotonEliminarUsuarios.Size = New System.Drawing.Size(75, 56)
+        Me.BotonEliminarUsuarios.TabIndex = 13
+        Me.BotonEliminarUsuarios.Text = "Eliminar"
+        Me.BotonEliminarUsuarios.UseVisualStyleBackColor = True
+        '
+        'BotonAgregarUsuarios
+        '
+        Me.BotonAgregarUsuarios.Location = New System.Drawing.Point(494, 120)
+        Me.BotonAgregarUsuarios.Name = "BotonAgregarUsuarios"
+        Me.BotonAgregarUsuarios.Size = New System.Drawing.Size(75, 55)
+        Me.BotonAgregarUsuarios.TabIndex = 12
+        Me.BotonAgregarUsuarios.Text = "Agregar"
+        Me.BotonAgregarUsuarios.UseVisualStyleBackColor = True
+        '
+        'TextBoxRangoUsuarios
+        '
+        Me.TextBoxRangoUsuarios.Location = New System.Drawing.Point(270, 334)
+        Me.TextBoxRangoUsuarios.Name = "TextBoxRangoUsuarios"
+        Me.TextBoxRangoUsuarios.Size = New System.Drawing.Size(100, 20)
+        Me.TextBoxRangoUsuarios.TabIndex = 11
+        '
+        'TextBoxPasswdUsuarios
+        '
+        Me.TextBoxPasswdUsuarios.Location = New System.Drawing.Point(270, 270)
+        Me.TextBoxPasswdUsuarios.Name = "TextBoxPasswdUsuarios"
+        Me.TextBoxPasswdUsuarios.Size = New System.Drawing.Size(100, 20)
+        Me.TextBoxPasswdUsuarios.TabIndex = 10
+        '
+        'TextBoxNombreUsuarios
+        '
+        Me.TextBoxNombreUsuarios.Location = New System.Drawing.Point(270, 202)
+        Me.TextBoxNombreUsuarios.Name = "TextBoxNombreUsuarios"
+        Me.TextBoxNombreUsuarios.Size = New System.Drawing.Size(100, 20)
+        Me.TextBoxNombreUsuarios.TabIndex = 9
+        '
+        'TextBoxCiUsuarios
+        '
+        Me.TextBoxCiUsuarios.Location = New System.Drawing.Point(270, 138)
+        Me.TextBoxCiUsuarios.Name = "TextBoxCiUsuarios"
+        Me.TextBoxCiUsuarios.Size = New System.Drawing.Size(100, 20)
+        Me.TextBoxCiUsuarios.TabIndex = 8
+        '
+        'Label14
+        '
+        Me.Label14.AutoSize = True
+        Me.Label14.Location = New System.Drawing.Point(267, 254)
+        Me.Label14.Name = "Label14"
+        Me.Label14.Size = New System.Drawing.Size(61, 13)
+        Me.Label14.TabIndex = 7
+        Me.Label14.Text = "Contraseña"
+        '
+        'Label13
+        '
+        Me.Label13.AutoSize = True
+        Me.Label13.Location = New System.Drawing.Point(267, 318)
+        Me.Label13.Name = "Label13"
+        Me.Label13.Size = New System.Drawing.Size(39, 13)
+        Me.Label13.TabIndex = 6
+        Me.Label13.Text = "Rango"
+        '
+        'Label12
+        '
+        Me.Label12.AutoSize = True
+        Me.Label12.Location = New System.Drawing.Point(267, 186)
+        Me.Label12.Name = "Label12"
+        Me.Label12.Size = New System.Drawing.Size(44, 13)
+        Me.Label12.TabIndex = 5
+        Me.Label12.Text = "Nombre"
+        '
+        'Label11
+        '
+        Me.Label11.AutoSize = True
+        Me.Label11.Location = New System.Drawing.Point(267, 122)
+        Me.Label11.Name = "Label11"
+        Me.Label11.Size = New System.Drawing.Size(23, 13)
+        Me.Label11.TabIndex = 4
+        Me.Label11.Text = "C.I."
+        '
+        'ListBoxUsuarios
+        '
+        Me.ListBoxUsuarios.FormattingEnabled = True
+        Me.ListBoxUsuarios.Location = New System.Drawing.Point(7, 55)
+        Me.ListBoxUsuarios.Name = "ListBoxUsuarios"
+        Me.ListBoxUsuarios.Size = New System.Drawing.Size(222, 355)
+        Me.ListBoxUsuarios.TabIndex = 3
+        '
+        'BotonBusquedaUsuarios
+        '
+        Me.BotonBusquedaUsuarios.Location = New System.Drawing.Point(235, 18)
+        Me.BotonBusquedaUsuarios.Name = "BotonBusquedaUsuarios"
+        Me.BotonBusquedaUsuarios.Size = New System.Drawing.Size(55, 23)
+        Me.BotonBusquedaUsuarios.TabIndex = 2
+        Me.BotonBusquedaUsuarios.Text = "Buscar"
+        Me.BotonBusquedaUsuarios.UseVisualStyleBackColor = True
+        '
+        'TextBoxBusquedaUsuarios
+        '
+        Me.TextBoxBusquedaUsuarios.Location = New System.Drawing.Point(101, 20)
+        Me.TextBoxBusquedaUsuarios.Name = "TextBoxBusquedaUsuarios"
+        Me.TextBoxBusquedaUsuarios.Size = New System.Drawing.Size(128, 20)
+        Me.TextBoxBusquedaUsuarios.TabIndex = 1
+        '
+        'ComboBoxUsuarios
+        '
+        Me.ComboBoxUsuarios.FormattingEnabled = True
+        Me.ComboBoxUsuarios.Items.AddRange(New Object() {"CI", "Nombre", "Rango"})
+        Me.ComboBoxUsuarios.Location = New System.Drawing.Point(6, 20)
+        Me.ComboBoxUsuarios.Name = "ComboBoxUsuarios"
+        Me.ComboBoxUsuarios.Size = New System.Drawing.Size(89, 21)
+        Me.ComboBoxUsuarios.TabIndex = 0
         '
         'Form2
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(784, 462)
+        Me.ClientSize = New System.Drawing.Size(784, 461)
         Me.Controls.Add(Me.TabbedPane)
         Me.Controls.Add(Me.PanelUsuario)
         Me.MaximumSize = New System.Drawing.Size(800, 500)
@@ -784,16 +784,16 @@ Partial Class Form2
     Friend WithEvents TabPage1 As System.Windows.Forms.TabPage
     Friend WithEvents DataGridView1 As System.Windows.Forms.DataGridView
     Friend WithEvents Label3 As System.Windows.Forms.Label
-    Friend WithEvents TextBox3 As System.Windows.Forms.TextBox
-    Friend WithEvents TextBox2 As System.Windows.Forms.TextBox
+    Friend WithEvents TexEdad As System.Windows.Forms.TextBox
+    Friend WithEvents TexSexo As System.Windows.Forms.TextBox
     Friend WithEvents Label2 As System.Windows.Forms.Label
-    Friend WithEvents TextBox1 As System.Windows.Forms.TextBox
+    Friend WithEvents TexRaza As System.Windows.Forms.TextBox
     Friend WithEvents Label1 As System.Windows.Forms.Label
     Friend WithEvents Button3 As System.Windows.Forms.Button
     Friend WithEvents Button2 As System.Windows.Forms.Button
-    Friend WithEvents Button1 As System.Windows.Forms.Button
-    Friend WithEvents TextBox5 As System.Windows.Forms.TextBox
-    Friend WithEvents TextBox4 As System.Windows.Forms.TextBox
+    Friend WithEvents Agregar_Ganado As System.Windows.Forms.Button
+    Friend WithEvents TexEstado As System.Windows.Forms.TextBox
+    Friend WithEvents TexPeso As System.Windows.Forms.TextBox
     Friend WithEvents Label5 As System.Windows.Forms.Label
     Friend WithEvents Label4 As System.Windows.Forms.Label
     Friend WithEvents TextBox9 As System.Windows.Forms.TextBox

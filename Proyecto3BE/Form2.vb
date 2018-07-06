@@ -34,6 +34,45 @@ Public Class Form2
 
     Private Sub TabGanado_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles TabGanado.Click
 
+        Consulta = "select * from ganado"
+        consultar()
+        DataGridView1.DataSource = Tabla
+
+        'Cambiamos los headers
+        DataGridView1.Columns(0).HeaderText = "Codigo de Ganado"
+        DataGridView1.Columns(1).HeaderText = "Raza"
+        DataGridView1.Columns(2).HeaderText = "Sexo"
+        DataGridView1.Columns(3).HeaderText = "Eatado"
+        DataGridView1.Columns(4).HeaderText = "Codigo de venta"
+        DataGridView1.Columns(5).HeaderText = "Precio de Vompra"
+        DataGridView1.Columns(6).HeaderText = "Codigo de Compra"
+        DataGridView1.Columns(7).HeaderText = "Precio de Compra"
+        DataGridView1.Columns(8).HeaderText = "Peso Inicial"
+        DataGridView1.Columns(9).HeaderText = "Edad"
+
+        ' raza	sexo	estado	idventa	precioventa	idcompra	preciocompra	peso_inicial	edad
+
+
+        DataGridView1.Columns(4).Visible = False
+        DataGridView1.Columns(5).Visible = False
+        DataGridView1.Columns(6).Visible = False
+        DataGridView1.Columns(7).Visible = False
+
+    End Sub
+    Private Sub Button1_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Agregar_Ganado.Click
+
+        If TexRaza.Text <> "" And TexSexo.Text <> "" And TexEdad.Text <> "" And TexEstado.Text <> "" And TexPeso.Text <> "" Then
+            Consulta = "INSERT INTO ganado(raza,sexo,estado,peso_inicial,edad) values('" & TexRaza.Text & "','" & TexSexo.Text & "','" & TexEstado.Text & "','" & TexPeso.Text & "'','" & TexEdad.Text & "')"
+            consultar()
+            Consulta = "select * from ganado"
+            consultar()
+            DataGridViewClientes.DataSource = Tabla
+            TexRaza.Text = ""
+            TexSexo.Text = ""
+            TexEstado.Text = ""
+            TexPeso.Text = ""
+            TexEdad.Text = ""
+        End If
     End Sub
 
     'Boton "Agregar" de tab "Clientes"
@@ -100,43 +139,43 @@ Public Class Form2
     'boton agregar
     Private Sub Button6_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Button6.Click
 
-        Consulta = ("insert into ventas (FECHA,TOTALDEVENTA,COMENTARIO)values('" & TextBox1.Text & "','" & TextBox2.Text & "','" & TextBox3.Text & "')")
+        Consulta = ("insert into ventas (FECHA,TOTALDEVENTA,COMENTARIO)values('" & TexRaza.Text & "','" & TexSexo.Text & "','" & TexEdad.Text & "')")
 
         consultar()
         MessageBox.Show("Conexión exitosa")
         TXTID.Text = ""
-        TextBox1.Text = ""
-        TextBox2.Text = ""
-        TextBox3.Text = ""
+        TexRaza.Text = ""
+        TexSexo.Text = ""
+        TexEdad.Text = ""
     End Sub
     'boton modificar con sus respectivos checkbox's con la opcion de poner la id
 
     Private Sub Button4_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Button4.Click
 
         If CheckBoxTODO.Checked = True Then
-            Consulta = ("update ventas set IDVENTA='" & TXTID.Text & "',FECHA='" & TextBox1.Text & "',TOTALDEVENTA='" & TextBox2.Text & "',COMENTARIO='" & TextBox3.Text & "'where IDVENTA='" & TXTID.Text & "'")
+            Consulta = ("update ventas set IDVENTA='" & TXTID.Text & "',FECHA='" & TexRaza.Text & "',TOTALDEVENTA='" & TexSexo.Text & "',COMENTARIO='" & TexEdad.Text & "'where IDVENTA='" & TXTID.Text & "'")
             consultar()
             TXTID.Text = ""
-            TextBox1.Text = ""
-            TextBox2.Text = ""
-            TextBox3.Text = ""
+            TexRaza.Text = ""
+            TexSexo.Text = ""
+            TexEdad.Text = ""
 
         End If
 
         If CheckBox1.Checked = True Then
-            Consulta = ("update ventas set IDVENTA='" & TXTID.Text & "',FECHA='" & TextBox1.Text & "'where IDVENTA='" & TXTID.Text & "'")
+            Consulta = ("update ventas set IDVENTA='" & TXTID.Text & "',FECHA='" & TexRaza.Text & "'where IDVENTA='" & TXTID.Text & "'")
             consultar()
-            TextBox1.Text = ""
+            TexRaza.Text = ""
         End If
         If CheckBox2.Checked = True Then
-            Consulta = ("update ventas set IDVENTA='" & TXTID.Text & "',TOTALDEVENTA='" & TextBox2.Text & "'where IDVENTA='" & TXTID.Text & "'")
+            Consulta = ("update ventas set IDVENTA='" & TXTID.Text & "',TOTALDEVENTA='" & TexSexo.Text & "'where IDVENTA='" & TXTID.Text & "'")
             consultar()
-            TextBox2.Text = ""
+            TexSexo.Text = ""
         End If
         If CheckBox3.Checked = True Then
-            Consulta = ("update ventas set IDVENTA='" & TXTID.Text & "',COMENTARIO='" & TextBox3.Text & "'where IDVENTA='" & TXTID.Text & "'")
+            Consulta = ("update ventas set IDVENTA='" & TXTID.Text & "',COMENTARIO='" & TexEdad.Text & "'where IDVENTA='" & TXTID.Text & "'")
             consultar()
-            TextBox3.Text = ""
+            TexEdad.Text = ""
         End If
     End Sub
 
@@ -146,18 +185,16 @@ Public Class Form2
         consultar()
         MsgBox("Borrado" + TXTID.Text)
         TXTID.Text = ""
-        TextBox1.Text = ""
-        TextBox2.Text = ""
-        TextBox3.Text = ""
+        TexRaza.Text = ""
+        TexSexo.Text = ""
+        TexEdad.Text = ""
     End Sub
 
     Private Sub DataGridView1_CellContentClick(ByVal sender As System.Object, ByVal e As System.Windows.Forms.DataGridViewCellEventArgs) Handles DataGridView1.CellContentClick
 
     End Sub
 
-    Private Sub Button1_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Button1.Click
 
-    End Sub
 
     Private Sub DataGridViewClientes_CellContentClick(ByVal sender As System.Object, ByVal e As System.Windows.Forms.DataGridViewCellEventArgs) Handles DataGridViewClientes.CellContentClick
         Consulta = "select * from cliente"
