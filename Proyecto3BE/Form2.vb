@@ -218,8 +218,9 @@ Public Class Form2
     'Boton de busqueda de usuarios
     Private Sub BotonBusquedaUsuarios_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles BotonBusquedaUsuarios.Click
 
-        'Se borra el contenido anterior del label de informes
+        'Se borra el contenido anterior del label de informes y el listbox
         LabelInfoUsuarios.Text = ""
+        ListBoxUsuarios.Items.Clear()
 
         'Si el panel de busqueda esta vacio se buscaran todos, en caso contrario se busca lo especificado
         If TextBoxBusquedaUsuarios.Text = "" Then
@@ -257,13 +258,19 @@ Public Class Form2
 
                 'Se agregan todos los elementos de "rows" a "ListBoxUsuarios" para ser mostrados
                 ListBoxUsuarios.Items.AddRange(rows)
+
+                'Se Cierra la conexion
+                connection.Close()
+
+                'Se selecciona el primer item por defecto para evitar excepciones
+                ListBoxUsuarios.SetSelected(0, True)
             Else
+                'Se Cierra la conexion
+                connection.Close()
+
                 'Si no se encontraron resultados se informa
                 LabelInfoUsuarios.Text = "No se encontraron resultados"
             End If
-
-            'Se Cierra la conexion
-            connection.Close()
         Catch ex As Exception
             'Se reportan errores
             MsgBox(ex.Message)
@@ -306,5 +313,33 @@ Public Class Form2
             'Se reportan errores
             MsgBox(ex.Message)
         End Try
+    End Sub
+
+    'Boton de eliminacion de Usuarios
+    Private Sub BotonEliminarUsuarios_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles BotonEliminarUsuarios.Click
+
+        Try
+            'Se pide una confirmacion antes de proceder
+            If MessageBox.Show("¿Seguro que desea eliminar a este Usuario?", "titulo xD", MessageBoxButtons.YesNo, MessageBoxIcon.Question) = Windows.Forms.DialogResult.Yes Then
+
+                comando.CommandType = CommandType.Text
+                comando.Connection = connection
+                comando.CommandText = ("delete from usuario where ci='" + ListBoxUsuarios.SelectedItem + "'")
+
+                connection.Open()
+
+                comando.ExecuteNonQuery()
+
+                connection.Close()
+
+                BotonBusquedaUsuarios.PerformClick()
+                LabelInfoUsuarios.Text = "Usuario eliminado"
+
+            End If
+        Catch ex As Exception
+            'Se reportan errores
+            MsgBox(ex.Message)
+        End Try
+
     End Sub
 End Class
