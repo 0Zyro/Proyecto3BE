@@ -73,7 +73,7 @@ Partial Class Form2
         Me.Buttonseleccionarcliente = New System.Windows.Forms.Button()
         Me.Buttonquitarcliente = New System.Windows.Forms.Button()
         Me.Buttonagregarcliente = New System.Windows.Forms.Button()
-        Me.TabPage1 = New System.Windows.Forms.TabPage()
+        Me.TabUsuarios = New System.Windows.Forms.TabPage()
         Me.LabelInfoUsuarios = New System.Windows.Forms.Label()
         Me.BotonModificarUsuarios = New System.Windows.Forms.Button()
         Me.BotonEliminarUsuarios = New System.Windows.Forms.Button()
@@ -98,7 +98,7 @@ Partial Class Form2
         Me.GBID.SuspendLayout()
         Me.TabClientes.SuspendLayout()
         CType(Me.DataGridViewClientes, System.ComponentModel.ISupportInitialize).BeginInit()
-        Me.TabPage1.SuspendLayout()
+        Me.TabUsuarios.SuspendLayout()
         Me.SuspendLayout()
         '
         'PanelUsuario
@@ -114,7 +114,7 @@ Partial Class Form2
         Me.TabbedPane.Controls.Add(Me.TabVentas)
         Me.TabbedPane.Controls.Add(Me.TabCompras)
         Me.TabbedPane.Controls.Add(Me.TabClientes)
-        Me.TabbedPane.Controls.Add(Me.TabPage1)
+        Me.TabbedPane.Controls.Add(Me.TabUsuarios)
         Me.TabbedPane.Location = New System.Drawing.Point(106, 0)
         Me.TabbedPane.Name = "TabbedPane"
         Me.TabbedPane.SelectedIndex = 0
@@ -588,31 +588,31 @@ Partial Class Form2
         Me.Buttonagregarcliente.Text = "Agregar"
         Me.Buttonagregarcliente.UseVisualStyleBackColor = True
         '
-        'TabPage1
+        'TabUsuarios
         '
-        Me.TabPage1.Controls.Add(Me.LabelInfoUsuarios)
-        Me.TabPage1.Controls.Add(Me.BotonModificarUsuarios)
-        Me.TabPage1.Controls.Add(Me.BotonEliminarUsuarios)
-        Me.TabPage1.Controls.Add(Me.BotonAgregarUsuarios)
-        Me.TabPage1.Controls.Add(Me.TextBoxRangoUsuarios)
-        Me.TabPage1.Controls.Add(Me.TextBoxPasswdUsuarios)
-        Me.TabPage1.Controls.Add(Me.TextBoxNombreUsuarios)
-        Me.TabPage1.Controls.Add(Me.TextBoxCiUsuarios)
-        Me.TabPage1.Controls.Add(Me.Label14)
-        Me.TabPage1.Controls.Add(Me.Label13)
-        Me.TabPage1.Controls.Add(Me.Label12)
-        Me.TabPage1.Controls.Add(Me.Label11)
-        Me.TabPage1.Controls.Add(Me.ListBoxUsuarios)
-        Me.TabPage1.Controls.Add(Me.BotonBusquedaUsuarios)
-        Me.TabPage1.Controls.Add(Me.TextBoxBusquedaUsuarios)
-        Me.TabPage1.Controls.Add(Me.ComboBoxUsuarios)
-        Me.TabPage1.Location = New System.Drawing.Point(4, 22)
-        Me.TabPage1.Name = "TabPage1"
-        Me.TabPage1.Padding = New System.Windows.Forms.Padding(3)
-        Me.TabPage1.Size = New System.Drawing.Size(677, 437)
-        Me.TabPage1.TabIndex = 4
-        Me.TabPage1.Text = "Usuarios"
-        Me.TabPage1.UseVisualStyleBackColor = True
+        Me.TabUsuarios.Controls.Add(Me.LabelInfoUsuarios)
+        Me.TabUsuarios.Controls.Add(Me.BotonModificarUsuarios)
+        Me.TabUsuarios.Controls.Add(Me.BotonEliminarUsuarios)
+        Me.TabUsuarios.Controls.Add(Me.BotonAgregarUsuarios)
+        Me.TabUsuarios.Controls.Add(Me.TextBoxRangoUsuarios)
+        Me.TabUsuarios.Controls.Add(Me.TextBoxPasswdUsuarios)
+        Me.TabUsuarios.Controls.Add(Me.TextBoxNombreUsuarios)
+        Me.TabUsuarios.Controls.Add(Me.TextBoxCiUsuarios)
+        Me.TabUsuarios.Controls.Add(Me.Label14)
+        Me.TabUsuarios.Controls.Add(Me.Label13)
+        Me.TabUsuarios.Controls.Add(Me.Label12)
+        Me.TabUsuarios.Controls.Add(Me.Label11)
+        Me.TabUsuarios.Controls.Add(Me.ListBoxUsuarios)
+        Me.TabUsuarios.Controls.Add(Me.BotonBusquedaUsuarios)
+        Me.TabUsuarios.Controls.Add(Me.TextBoxBusquedaUsuarios)
+        Me.TabUsuarios.Controls.Add(Me.ComboBoxUsuarios)
+        Me.TabUsuarios.Location = New System.Drawing.Point(4, 22)
+        Me.TabUsuarios.Name = "TabUsuarios"
+        Me.TabUsuarios.Padding = New System.Windows.Forms.Padding(3)
+        Me.TabUsuarios.Size = New System.Drawing.Size(677, 437)
+        Me.TabUsuarios.TabIndex = 4
+        Me.TabUsuarios.Text = "Usuarios"
+        Me.TabUsuarios.UseVisualStyleBackColor = True
         '
         'LabelInfoUsuarios
         '
@@ -716,9 +716,9 @@ Partial Class Form2
         'ListBoxUsuarios
         '
         Me.ListBoxUsuarios.FormattingEnabled = True
-        Me.ListBoxUsuarios.Location = New System.Drawing.Point(7, 42)
+        Me.ListBoxUsuarios.Location = New System.Drawing.Point(7, 55)
         Me.ListBoxUsuarios.Name = "ListBoxUsuarios"
-        Me.ListBoxUsuarios.Size = New System.Drawing.Size(222, 368)
+        Me.ListBoxUsuarios.Size = New System.Drawing.Size(222, 355)
         Me.ListBoxUsuarios.TabIndex = 3
         '
         'BotonBusquedaUsuarios
@@ -770,8 +770,8 @@ Partial Class Form2
         Me.TabClientes.ResumeLayout(False)
         Me.TabClientes.PerformLayout()
         CType(Me.DataGridViewClientes, System.ComponentModel.ISupportInitialize).EndInit()
-        Me.TabPage1.ResumeLayout(False)
-        Me.TabPage1.PerformLayout()
+        Me.TabUsuarios.ResumeLayout(False)
+        Me.TabUsuarios.PerformLayout()
         Me.ResumeLayout(False)
 
     End Sub
@@ -781,7 +781,7 @@ Partial Class Form2
     Friend WithEvents TabVentas As System.Windows.Forms.TabPage
     Friend WithEvents TabCompras As System.Windows.Forms.TabPage
     Friend WithEvents TabClientes As System.Windows.Forms.TabPage
-    Friend WithEvents TabPage1 As System.Windows.Forms.TabPage
+    Friend WithEvents TabUsuarios As System.Windows.Forms.TabPage
     Friend WithEvents DataGridView1 As System.Windows.Forms.DataGridView
     Friend WithEvents Label3 As System.Windows.Forms.Label
     Friend WithEvents TexEdad As System.Windows.Forms.TextBox

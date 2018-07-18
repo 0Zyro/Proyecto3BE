@@ -269,4 +269,42 @@ Public Class Form2
             MsgBox(ex.Message)
         End Try
     End Sub
+
+    'Cuando se cambia el item seleccionado en "ListBoxUsuarios"
+    Private Sub ListBoxUsuarios_SelectedIndexChanged(ByVal sender As Object, ByVal e As System.EventArgs) Handles ListBoxUsuarios.SelectedIndexChanged
+
+        'Limpieza de busquedas anteriores
+        TextBoxCiUsuarios.Text = ""
+        TextBoxNombreUsuarios.Text = ""
+        TextBoxPasswdUsuarios.Text = ""
+        TextBoxRangoUsuarios.Text = ""
+
+        'Informacion necesaria para el comando
+        comando.CommandType = CommandType.Text
+        comando.Connection = connection
+        'Se hace la consulta segun que ah seleccionado el usuario en "ListBoxUsuarios"
+        comando.CommandText = ("select * from usuario where ci='" + ListBoxUsuarios.SelectedItem + "'")
+
+        Try
+            'Se abre la conexion, se ejecuta el comando y se guarda el resultado en "reader"
+            connection.Open()
+            reader = comando.ExecuteReader()
+
+            'Se leen los datos otenidos
+            reader.Read()
+
+            'Se mueven los datos desde "reader" a sus TextBox correspondientes
+            TextBoxCiUsuarios.Text = reader.GetInt32(0).ToString
+            TextBoxNombreUsuarios.Text = reader.GetString(1)
+            TextBoxPasswdUsuarios.Text = reader.GetString(2)
+            TextBoxRangoUsuarios.Text = reader.GetString(3)
+
+            'Se cierra la conexion
+            connection.Close()
+
+        Catch ex As Exception
+            'Se reportan errores
+            MsgBox(ex.Message)
+        End Try
+    End Sub
 End Class
