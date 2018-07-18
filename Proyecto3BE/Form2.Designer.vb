@@ -716,9 +716,9 @@ Partial Class Form2
         'ListBoxUsuarios
         '
         Me.ListBoxUsuarios.FormattingEnabled = True
-        Me.ListBoxUsuarios.Location = New System.Drawing.Point(7, 55)
+        Me.ListBoxUsuarios.Location = New System.Drawing.Point(7, 42)
         Me.ListBoxUsuarios.Name = "ListBoxUsuarios"
-        Me.ListBoxUsuarios.Size = New System.Drawing.Size(222, 355)
+        Me.ListBoxUsuarios.Size = New System.Drawing.Size(222, 368)
         Me.ListBoxUsuarios.TabIndex = 3
         '
         'BotonBusquedaUsuarios
@@ -750,7 +750,7 @@ Partial Class Form2
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(784, 461)
+        Me.ClientSize = New System.Drawing.Size(784, 462)
         Me.Controls.Add(Me.TabbedPane)
         Me.Controls.Add(Me.PanelUsuario)
         Me.MaximumSize = New System.Drawing.Size(800, 500)

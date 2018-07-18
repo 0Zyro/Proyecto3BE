@@ -206,49 +206,67 @@ Public Class Form2
         DataGridViewClientes.Columns(3).HeaderText = "Teléfono"
     End Sub
 
+    'Objetos auxiliares de busqueda
     Dim campos() As String = {"ci", "nombre", "permisos"}
     Dim rows(0) As String
-    Dim tipo As String
 
+    'Objetos necesarios para la conexion
     Dim connection As New MySqlConnection(data)
     Dim comando As New MySqlCommand
     Dim reader As MySqlDataReader
 
+    'Boton de busqueda de usuarios
     Private Sub BotonBusquedaUsuarios_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles BotonBusquedaUsuarios.Click
 
+        'Se borra el contenido anterior del label de informes
+        LabelInfoUsuarios.Text = ""
+
+        'Si el panel de busqueda esta vacio se buscaran todos, en caso contrario se busca lo especificado
         If TextBoxBusquedaUsuarios.Text = "" Then
-            comando.CommandText = "select ci from usuarios"
+            comando.CommandText = "select ci from usuario"
         Else
-            comando.CommandText = ("select nombre from usuario where " + campos(ComboBoxUsuarios.SelectedIndex) + "='" + TextBoxBusquedaUsuarios.Text + "'")
+            comando.CommandText = ("select ci from usuario where " + campos(ComboBoxUsuarios.SelectedIndex) + "='" + TextBoxBusquedaUsuarios.Text + "'")
         End If
+
+        'Info necesaria para ejecutar el comando
         comando.CommandType = CommandType.Text
         comando.Connection = connection
 
         Try
+            'Se abre la conexion, se ejecuta el comando y se guardan los resultados en "reader"
             connection.Open()
             reader = comando.ExecuteReader()
+
+            'Si hay resultados...
             If reader.HasRows Then
+
+                'Se limpian la lista de usuarios y el array auxiliar
                 ListBoxUsuarios.Items.Clear()
                 ReDim rows(0)
 
+                'Mientras "reader" tenga mas filas por leer...
                 While (reader.Read())
-                    rows(rows.Length - 1) = reader.GetString("nombre")
+                    'Se leen las filas y se guardan los resultados en el array "rows"
+                    rows(rows.Length - 1) = reader.GetInt32(0)
+                    'Se redimensiona el array "rows" en cada lectura para albergar el siguiente dato
                     ReDim Preserve rows(rows.Length)
                 End While
-                'ReDim Preserve rows(rows.Length - 2)
 
-                For Each ele As String In rows
-                    MsgBox(ele + ".")
-                Next
+                'Se redimensiona "rows" para borrar los espacios vacios
+                ReDim Preserve rows(rows.Length - 2)
 
-                'ListBoxUsuarios.Items.AddRange(rows)
+                'Se agregan todos los elementos de "rows" a "ListBoxUsuarios" para ser mostrados
+                ListBoxUsuarios.Items.AddRange(rows)
             Else
+                'Si no se encontraron resultados se informa
                 LabelInfoUsuarios.Text = "No se encontraron resultados"
             End If
+
+            'Se Cierra la conexion
             connection.Close()
         Catch ex As Exception
-
+            'Se reportan errores
+            MsgBox(ex.Message)
         End Try
-
     End Sub
 End Class
