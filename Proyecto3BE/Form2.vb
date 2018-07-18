@@ -322,17 +322,25 @@ Public Class Form2
             'Se pide una confirmacion antes de proceder
             If MessageBox.Show("¿Seguro que desea eliminar a este Usuario?", "titulo xD", MessageBoxButtons.YesNo, MessageBoxIcon.Question) = Windows.Forms.DialogResult.Yes Then
 
+                'Se ingresan los datos necesarios paras el comando
                 comando.CommandType = CommandType.Text
                 comando.Connection = connection
+                'El usuario eliminado sera el seleccionado en "ListBoxUsuarios"
                 comando.CommandText = ("delete from usuario where ci='" + ListBoxUsuarios.SelectedItem + "'")
 
+                'Se abre la conexion
                 connection.Open()
 
+                'Se ejecuta el comando
                 comando.ExecuteNonQuery()
 
+                'Se cierra la conexion
                 connection.Close()
 
+                'Se actualiza "ListBoxUsuarios"
                 BotonBusquedaUsuarios.PerformClick()
+
+                'Se informa de la correcta eliminacion del usuario
                 LabelInfoUsuarios.Text = "Usuario eliminado"
 
             End If
