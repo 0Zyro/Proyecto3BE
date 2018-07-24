@@ -442,7 +442,12 @@ Public Class Form2
     End Sub
 
     Private Sub ButtonBuscar_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles ButtonBuscar.Click
-
+        'Si el buscador esta vacio muestra todo, si no muestra lo especificado
+        If TextBoxBuscador.Text = "" Then
+            comando.CommandText = "select IDC from compras"
+        Else
+            comando.CommandText = ("select IDC from compras where " + campos(ComboBoxBuscador.SelectedIndex) + "='" + TextBoxBuscador.Text + "'")
+        End If
     End Sub
 
     Private Sub TextBox1_TextChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles TextBoxBuscador.TextChanged

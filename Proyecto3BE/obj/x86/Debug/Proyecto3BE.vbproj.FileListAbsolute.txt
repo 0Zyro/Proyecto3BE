@@ -40,3 +40,12 @@ C:\Users\MacPay\Desktop\Proyecto3BE-master\Proyecto3BE\obj\x86\Debug\Proyecto3BE
 C:\Users\MacPay\Documents\GitHub\Proyecto3BE\Proyecto3BE\obj\x86\Debug\Proyecto3BE.exe
 C:\Users\MacPay\Documents\GitHub\Proyecto3BE\Proyecto3BE\obj\x86\Debug\Proyecto3BE.xml
 C:\Users\MacPay\Documents\GitHub\Proyecto3BE\Proyecto3BE\obj\x86\Debug\Proyecto3BE.pdb
+C:\Users\MacPay\Documents\GitHub\Proyecto3BE\Proyecto3BE\bin\Debug\Proyecto3BE.exe
+C:\Users\MacPay\Documents\GitHub\Proyecto3BE\Proyecto3BE\bin\Debug\Proyecto3BE.pdb
+C:\Users\MacPay\Documents\GitHub\Proyecto3BE\Proyecto3BE\bin\Debug\Proyecto3BE.xml
+C:\Users\MacPay\Documents\GitHub\Proyecto3BE\Proyecto3BE\bin\Debug\MySql.Data.dll
+C:\Users\MacPay\Documents\GitHub\Proyecto3BE\Proyecto3BE\obj\x86\Debug\Proyecto3BE.vbprojResolveAssemblyReference.cache
+C:\Users\MacPay\Documents\GitHub\Proyecto3BE\Proyecto3BE\obj\x86\Debug\WindowsApplication1.Form1.resources
+C:\Users\MacPay\Documents\GitHub\Proyecto3BE\Proyecto3BE\obj\x86\Debug\WindowsApplication1.Form2.resources
+C:\Users\MacPay\Documents\GitHub\Proyecto3BE\Proyecto3BE\obj\x86\Debug\WindowsApplication1.Resources.resources
+C:\Users\MacPay\Documents\GitHub\Proyecto3BE\Proyecto3BE\obj\x86\Debug\Proyecto3BE.vbproj.GenerateResource.Cache

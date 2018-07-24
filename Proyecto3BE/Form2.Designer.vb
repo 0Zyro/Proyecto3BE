@@ -940,6 +940,7 @@ Partial Class Form2
         'ComboBoxBuscador
         '
         Me.ComboBoxBuscador.FormattingEnabled = True
+        Me.ComboBoxBuscador.Items.AddRange(New Object() {"ID", "Fecha de compra"})
         Me.ComboBoxBuscador.Location = New System.Drawing.Point(6, 20)
         Me.ComboBoxBuscador.Name = "ComboBoxBuscador"
         Me.ComboBoxBuscador.Size = New System.Drawing.Size(105, 21)
