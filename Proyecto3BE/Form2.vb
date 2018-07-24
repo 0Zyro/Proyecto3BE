@@ -419,11 +419,13 @@ Public Class Form2
     End Sub
     'Boton Eliminar compras
     Private Sub Button5_Click_1(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Button5.Click
+        'Elimina el id de una compra juntos con todos los datos de ese id
         Consulta = "delete from compras where ID='" & TextBoxID.Text & "'"
         consultar()
 
         Consulta = "select * from compras"
         consultar()
+        'Actualiza la BD
         DataGridViewCompras.DataSource = Tabla
         TextBoxID.Text = ""
         TextBoxFechadecompra.Text = ""
