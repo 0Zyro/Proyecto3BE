@@ -106,6 +106,8 @@ Partial Class Form2
         Me.BotonBusquedaUsuarios = New System.Windows.Forms.Button()
         Me.TextBoxBusquedaUsuarios = New System.Windows.Forms.TextBox()
         Me.ComboBoxUsuarios = New System.Windows.Forms.ComboBox()
+        Me.ButtonBuscar = New System.Windows.Forms.Button()
+        Me.TextBox1 = New System.Windows.Forms.TextBox()
         Me.TabbedPane.SuspendLayout()
         Me.TabGanado.SuspendLayout()
         CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -465,6 +467,8 @@ Partial Class Form2
         '
         'TabCompras
         '
+        Me.TabCompras.Controls.Add(Me.TextBox1)
+        Me.TabCompras.Controls.Add(Me.ButtonBuscar)
         Me.TabCompras.Controls.Add(Me.ButtonSeleccionar)
         Me.TabCompras.Controls.Add(Me.CheckBox6)
         Me.TabCompras.Controls.Add(Me.CheckBox5)
@@ -619,9 +623,9 @@ Partial Class Form2
         'DataGridViewCompras
         '
         Me.DataGridViewCompras.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.DataGridViewCompras.Location = New System.Drawing.Point(6, 6)
+        Me.DataGridViewCompras.Location = New System.Drawing.Point(6, 56)
         Me.DataGridViewCompras.Name = "DataGridViewCompras"
-        Me.DataGridViewCompras.Size = New System.Drawing.Size(341, 425)
+        Me.DataGridViewCompras.Size = New System.Drawing.Size(341, 375)
         Me.DataGridViewCompras.TabIndex = 0
         '
         'TabClientes
@@ -915,6 +919,22 @@ Partial Class Form2
         Me.ComboBoxUsuarios.Size = New System.Drawing.Size(89, 21)
         Me.ComboBoxUsuarios.TabIndex = 0
         '
+        'ButtonBuscar
+        '
+        Me.ButtonBuscar.Location = New System.Drawing.Point(272, 18)
+        Me.ButtonBuscar.Name = "ButtonBuscar"
+        Me.ButtonBuscar.Size = New System.Drawing.Size(75, 23)
+        Me.ButtonBuscar.TabIndex = 16
+        Me.ButtonBuscar.Text = "Buscar"
+        Me.ButtonBuscar.UseVisualStyleBackColor = True
+        '
+        'TextBox1
+        '
+        Me.TextBox1.Location = New System.Drawing.Point(6, 20)
+        Me.TextBox1.Name = "TextBox1"
+        Me.TextBox1.Size = New System.Drawing.Size(260, 20)
+        Me.TextBox1.TabIndex = 17
+        '
         'Form2
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -1031,4 +1051,6 @@ Partial Class Form2
     Friend WithEvents CheckBox5 As System.Windows.Forms.CheckBox
     Friend WithEvents CheckBox4 As System.Windows.Forms.CheckBox
     Friend WithEvents ButtonSeleccionar As System.Windows.Forms.Button
+    Friend WithEvents TextBox1 As System.Windows.Forms.TextBox
+    Friend WithEvents ButtonBuscar As System.Windows.Forms.Button
 End Class

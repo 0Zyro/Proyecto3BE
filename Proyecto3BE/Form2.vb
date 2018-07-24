@@ -432,4 +432,48 @@ Public Class Form2
         TextBoxTotal.Text = ""
         TextBoxComentario.Text = ""
     End Sub
+
+    Private Sub Button2_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Button2.Click
+
+    End Sub
+
+    Private Sub Button3_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Button3.Click
+
+    End Sub
+
+    Private Sub ButtonBuscar_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles ButtonBuscar.Click
+
+    End Sub
+
+    Private Sub TextBox1_TextChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles TextBox1.TextChanged
+
+    End Sub
+
+    Private Sub TexEstado_TextChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles TexEstado.TextChanged
+
+    End Sub
+
+    Private Sub TexPeso_TextChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles TexPeso.TextChanged
+
+    End Sub
+
+    Private Sub TexEdad_TextChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles TexEdad.TextChanged
+
+    End Sub
+
+    Private Sub TexSexo_TextChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles TexSexo.TextChanged
+
+    End Sub
+
+    Private Sub TexRaza_TextChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles TexRaza.TextChanged
+
+    End Sub
+
+    Private Sub BotonAgregarUsuarios_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles BotonAgregarUsuarios.Click
+
+    End Sub
+
+    Private Sub BotonModificarUsuarios_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles BotonModificarUsuarios.Click
+
+    End Sub
 End Class
