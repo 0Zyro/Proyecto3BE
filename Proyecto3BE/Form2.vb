@@ -350,4 +350,78 @@ Public Class Form2
         End Try
 
     End Sub
+
+    Private Sub TextBox12_TextChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles TextBox12.TextChanged
+
+    End Sub
+    'boton agregar compras
+    Private Sub Button1_Click_1(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Button1.Click
+        If TextBoxFechadecompra.Text <> "" And TextBoxTotal.Text <> "" And TextBoxComentario.Text <> "" Then
+            If IsNumeric(TextBoxTotal.Text) Then
+                Consulta = "insert into compras values ('" & TextBoxFechadecompra.Text & "','" & TextBoxTotal.Text & "','" & TextBoxComentario.Text & "')"
+                consultar()
+                Consulta = "select * from compras"
+                consultar()
+                DataGridViewCompras.DataSource = Tabla
+                TextBoxFechadecompra.Text = ""
+                TextBoxTotal.Text = ""
+                TextBoxComentario.Text = ""
+            Else
+                MsgBox("Igrese solo valor numerico en total")
+            End If
+        Else
+            MsgBox("Complete todos los campos vacios")
+        End If
+
+    End Sub
+
+    Private Sub Button7_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Button7.Click
+
+    End Sub
+
+    Private Sub TextBox11_TextChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles TextBox11.TextChanged
+
+    End Sub
+
+    Private Sub TextBox10_TextChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles TextBox10.TextChanged
+
+    End Sub
+
+    Private Sub DataGridView3_CellContentClick(ByVal sender As System.Object, ByVal e As System.Windows.Forms.DataGridViewCellEventArgs) Handles DataGridViewCompras.CellContentClick
+        Consulta = "select * from compras"
+        consultar()
+        DataGridViewClientes.DataSource = Tabla
+        DataGridViewClientes.Columns(0).HeaderText = "ID"
+        DataGridViewClientes.Columns(1).HeaderText = "Fecha de Compra"
+        DataGridViewClientes.Columns(2).HeaderText = "Total"
+        DataGridViewClientes.Columns(3).HeaderText = "Comentario"
+    End Sub
+
+    Private Sub TextBoxBusquedaUsuarios_TextChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles TextBoxBusquedaUsuarios.TextChanged
+
+    End Sub
+
+    Private Sub Buttonmodificarcliente_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Buttonmodificarcliente.Click
+
+    End Sub
+
+    Private Sub ButtonSeleccionar_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles ButtonSeleccionar.Click
+        TextBox1.Text = DataGridViewCompras.Item(0, DataGridViewCompras.CurrentRow.Index).Value
+        TextBoxFechadecompra.Text = DataGridViewCompras.Item(1, DataGridViewCompras.CurrentRow.Index).Value
+        TextBoxTotal.Text = DataGridViewCompras.Item(2, DataGridViewCompras.CurrentRow.Index).Value
+        TextBoxComentario.Text = DataGridViewCompras.Item(3, DataGridViewCompras.CurrentRow.Index).Value
+    End Sub
+
+    Private Sub Button5_Click_1(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Button5.Click
+        Consulta = "delete from compras where ID='" & TextBox1.Text & "'"
+        consultar()
+
+        Consulta = "select * from compras"
+        consultar()
+        DataGridViewCompras.DataSource = Tabla
+        TextBox1.Text = ""
+        TextBoxFechadecompra.Text = ""
+        TextBoxTotal.Text = ""
+        TextBoxComentario.Text = ""
+    End Sub
 End Class
