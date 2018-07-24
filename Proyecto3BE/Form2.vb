@@ -355,7 +355,7 @@ Public Class Form2
 
     End Sub
     'boton agregar compras
-    Private Sub Button1_Click_1(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Button1.Click
+    Private Sub Button1_Click_1(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles ButtonAgregarC.Click
         If TextBoxFechadecompra.Text <> "" And TextBoxTotal.Text <> "" And TextBoxComentario.Text <> "" Then
             If IsNumeric(TextBoxTotal.Text) Then
                 'Agrega los valores de los campos a cada tabla correspondiente
@@ -379,7 +379,7 @@ Public Class Form2
 
     End Sub
 
-    Private Sub Button7_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Button7.Click
+    Private Sub Button7_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles ButtonModificarC.Click
 
     End Sub
 
@@ -411,14 +411,14 @@ Public Class Form2
 
     End Sub
     'Selecciona items del datagrid
-    Private Sub ButtonSeleccionar_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles ButtonSeleccionar.Click
+    Private Sub ButtonSeleccionar_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles ButtonSeleccionarC.Click
         TextBoxID.Text = DataGridViewCompras.Item(0, DataGridViewCompras.CurrentRow.Index).Value
         TextBoxFechadecompra.Text = DataGridViewCompras.Item(1, DataGridViewCompras.CurrentRow.Index).Value
         TextBoxTotal.Text = DataGridViewCompras.Item(2, DataGridViewCompras.CurrentRow.Index).Value
         TextBoxComentario.Text = DataGridViewCompras.Item(3, DataGridViewCompras.CurrentRow.Index).Value
     End Sub
     'Boton Eliminar compras
-    Private Sub Button5_Click_1(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Button5.Click
+    Private Sub Button5_Click_1(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles ButtonEliminarC.Click
         'Elimina el id de una compra juntos con todos los datos de ese id
         Consulta = "delete from compras where ID='" & TextBoxID.Text & "'"
         consultar()
@@ -486,5 +486,36 @@ Public Class Form2
 
     Private Sub ComboBoxBuscador_SelectedIndexChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles ComboBoxBuscador.SelectedIndexChanged
 
+    End Sub
+
+    Public Sub ButtonImprimirC_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles ButtonImprimirC.Click
+
+        Dim Header As String
+        Dim mAllowAddNew As Boolean
+        mAllowAddNew = DataGridViewCompras.mAllowAddNew
+        DataGridViewCompras.mAllowAddNew = False
+        DataGridViewCompras.row = 0
+        Screen.MousePointer = vbHourglass
+        Header = " - Página n°: "
+        ' REcupera los encabezados de columna  
+        For c = 1 To DataGrid.Columns.Count
+            MyArray(c) = Len(DataGrid.Columns(c - 1).Caption) + 10
+            Titles = Titles & Space(10) & DataGrid.Columns(c - 1).Caption
+        Next
+        ' Configura la fuente de la impresión para el encabezado  
+        Printer.Font.Size = 8
+        Printer.Font.Bold = True
+        Printer.Font.Name = "Courier New"
+
+        Printer.Orientation = vbPRORPortrait
+        l = 82
+
+        ' imprime el titulo , el encabezado y el número de página  
+        Printer.Print(Space(40) & Titulo)
+    Printer.Print Header; Printer.Page  
+        Printer.Print(Titles)
+        Printer.Font.Bold = False
+
+        DataGridViewCompras.Refresh()
     End Sub
 End Class

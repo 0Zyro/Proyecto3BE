@@ -59,13 +59,16 @@ Partial Class Form2
         Me.TXTID = New System.Windows.Forms.TextBox()
         Me.Label10 = New System.Windows.Forms.Label()
         Me.TabCompras = New System.Windows.Forms.TabPage()
-        Me.ButtonSeleccionar = New System.Windows.Forms.Button()
+        Me.ComboBoxBuscador = New System.Windows.Forms.ComboBox()
+        Me.TextBoxBuscador = New System.Windows.Forms.TextBox()
+        Me.ButtonBuscar = New System.Windows.Forms.Button()
+        Me.ButtonSeleccionarC = New System.Windows.Forms.Button()
         Me.CheckBox6 = New System.Windows.Forms.CheckBox()
         Me.CheckBox5 = New System.Windows.Forms.CheckBox()
         Me.CheckBox4 = New System.Windows.Forms.CheckBox()
-        Me.Button7 = New System.Windows.Forms.Button()
-        Me.Button5 = New System.Windows.Forms.Button()
-        Me.Button1 = New System.Windows.Forms.Button()
+        Me.ButtonModificarC = New System.Windows.Forms.Button()
+        Me.ButtonEliminarC = New System.Windows.Forms.Button()
+        Me.ButtonAgregarC = New System.Windows.Forms.Button()
         Me.TextBoxComentario = New System.Windows.Forms.TextBox()
         Me.Label18 = New System.Windows.Forms.Label()
         Me.TextBoxTotal = New System.Windows.Forms.TextBox()
@@ -106,9 +109,7 @@ Partial Class Form2
         Me.BotonBusquedaUsuarios = New System.Windows.Forms.Button()
         Me.TextBoxBusquedaUsuarios = New System.Windows.Forms.TextBox()
         Me.ComboBoxUsuarios = New System.Windows.Forms.ComboBox()
-        Me.ButtonBuscar = New System.Windows.Forms.Button()
-        Me.TextBoxBuscador = New System.Windows.Forms.TextBox()
-        Me.ComboBoxBuscador = New System.Windows.Forms.ComboBox()
+        Me.ButtonImprimirC = New System.Windows.Forms.Button()
         Me.TabbedPane.SuspendLayout()
         Me.TabGanado.SuspendLayout()
         CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -468,16 +469,17 @@ Partial Class Form2
         '
         'TabCompras
         '
+        Me.TabCompras.Controls.Add(Me.ButtonImprimirC)
         Me.TabCompras.Controls.Add(Me.ComboBoxBuscador)
         Me.TabCompras.Controls.Add(Me.TextBoxBuscador)
         Me.TabCompras.Controls.Add(Me.ButtonBuscar)
-        Me.TabCompras.Controls.Add(Me.ButtonSeleccionar)
+        Me.TabCompras.Controls.Add(Me.ButtonSeleccionarC)
         Me.TabCompras.Controls.Add(Me.CheckBox6)
         Me.TabCompras.Controls.Add(Me.CheckBox5)
         Me.TabCompras.Controls.Add(Me.CheckBox4)
-        Me.TabCompras.Controls.Add(Me.Button7)
-        Me.TabCompras.Controls.Add(Me.Button5)
-        Me.TabCompras.Controls.Add(Me.Button1)
+        Me.TabCompras.Controls.Add(Me.ButtonModificarC)
+        Me.TabCompras.Controls.Add(Me.ButtonEliminarC)
+        Me.TabCompras.Controls.Add(Me.ButtonAgregarC)
         Me.TabCompras.Controls.Add(Me.TextBoxComentario)
         Me.TabCompras.Controls.Add(Me.Label18)
         Me.TabCompras.Controls.Add(Me.TextBoxTotal)
@@ -495,14 +497,39 @@ Partial Class Form2
         Me.TabCompras.Text = "Compras"
         Me.TabCompras.UseVisualStyleBackColor = True
         '
-        'ButtonSeleccionar
+        'ComboBoxBuscador
         '
-        Me.ButtonSeleccionar.Location = New System.Drawing.Point(373, 312)
-        Me.ButtonSeleccionar.Name = "ButtonSeleccionar"
-        Me.ButtonSeleccionar.Size = New System.Drawing.Size(75, 23)
-        Me.ButtonSeleccionar.TabIndex = 15
-        Me.ButtonSeleccionar.Text = "Seleccionar"
-        Me.ButtonSeleccionar.UseVisualStyleBackColor = True
+        Me.ComboBoxBuscador.FormattingEnabled = True
+        Me.ComboBoxBuscador.Items.AddRange(New Object() {"ID", "Fecha de compra"})
+        Me.ComboBoxBuscador.Location = New System.Drawing.Point(6, 20)
+        Me.ComboBoxBuscador.Name = "ComboBoxBuscador"
+        Me.ComboBoxBuscador.Size = New System.Drawing.Size(105, 21)
+        Me.ComboBoxBuscador.TabIndex = 18
+        '
+        'TextBoxBuscador
+        '
+        Me.TextBoxBuscador.Location = New System.Drawing.Point(117, 20)
+        Me.TextBoxBuscador.Name = "TextBoxBuscador"
+        Me.TextBoxBuscador.Size = New System.Drawing.Size(149, 20)
+        Me.TextBoxBuscador.TabIndex = 17
+        '
+        'ButtonBuscar
+        '
+        Me.ButtonBuscar.Location = New System.Drawing.Point(272, 18)
+        Me.ButtonBuscar.Name = "ButtonBuscar"
+        Me.ButtonBuscar.Size = New System.Drawing.Size(75, 23)
+        Me.ButtonBuscar.TabIndex = 16
+        Me.ButtonBuscar.Text = "Buscar"
+        Me.ButtonBuscar.UseVisualStyleBackColor = True
+        '
+        'ButtonSeleccionarC
+        '
+        Me.ButtonSeleccionarC.Location = New System.Drawing.Point(373, 312)
+        Me.ButtonSeleccionarC.Name = "ButtonSeleccionarC"
+        Me.ButtonSeleccionarC.Size = New System.Drawing.Size(75, 23)
+        Me.ButtonSeleccionarC.TabIndex = 15
+        Me.ButtonSeleccionarC.Text = "Seleccionar"
+        Me.ButtonSeleccionarC.UseVisualStyleBackColor = True
         '
         'CheckBox6
         '
@@ -531,32 +558,32 @@ Partial Class Form2
         Me.CheckBox4.TabIndex = 12
         Me.CheckBox4.UseVisualStyleBackColor = True
         '
-        'Button7
+        'ButtonModificarC
         '
-        Me.Button7.Location = New System.Drawing.Point(478, 265)
-        Me.Button7.Name = "Button7"
-        Me.Button7.Size = New System.Drawing.Size(75, 23)
-        Me.Button7.TabIndex = 11
-        Me.Button7.Text = "Modificar"
-        Me.Button7.UseVisualStyleBackColor = True
+        Me.ButtonModificarC.Location = New System.Drawing.Point(478, 265)
+        Me.ButtonModificarC.Name = "ButtonModificarC"
+        Me.ButtonModificarC.Size = New System.Drawing.Size(75, 23)
+        Me.ButtonModificarC.TabIndex = 11
+        Me.ButtonModificarC.Text = "Modificar"
+        Me.ButtonModificarC.UseVisualStyleBackColor = True
         '
-        'Button5
+        'ButtonEliminarC
         '
-        Me.Button5.Location = New System.Drawing.Point(575, 265)
-        Me.Button5.Name = "Button5"
-        Me.Button5.Size = New System.Drawing.Size(75, 23)
-        Me.Button5.TabIndex = 10
-        Me.Button5.Text = "Eliminar"
-        Me.Button5.UseVisualStyleBackColor = True
+        Me.ButtonEliminarC.Location = New System.Drawing.Point(575, 265)
+        Me.ButtonEliminarC.Name = "ButtonEliminarC"
+        Me.ButtonEliminarC.Size = New System.Drawing.Size(75, 23)
+        Me.ButtonEliminarC.TabIndex = 10
+        Me.ButtonEliminarC.Text = "Eliminar"
+        Me.ButtonEliminarC.UseVisualStyleBackColor = True
         '
-        'Button1
+        'ButtonAgregarC
         '
-        Me.Button1.Location = New System.Drawing.Point(373, 265)
-        Me.Button1.Name = "Button1"
-        Me.Button1.Size = New System.Drawing.Size(75, 23)
-        Me.Button1.TabIndex = 9
-        Me.Button1.Text = "Agregar"
-        Me.Button1.UseVisualStyleBackColor = True
+        Me.ButtonAgregarC.Location = New System.Drawing.Point(373, 265)
+        Me.ButtonAgregarC.Name = "ButtonAgregarC"
+        Me.ButtonAgregarC.Size = New System.Drawing.Size(75, 23)
+        Me.ButtonAgregarC.TabIndex = 9
+        Me.ButtonAgregarC.Text = "Agregar"
+        Me.ButtonAgregarC.UseVisualStyleBackColor = True
         '
         'TextBoxComentario
         '
@@ -921,30 +948,14 @@ Partial Class Form2
         Me.ComboBoxUsuarios.Size = New System.Drawing.Size(89, 21)
         Me.ComboBoxUsuarios.TabIndex = 0
         '
-        'ButtonBuscar
+        'ButtonImprimirC
         '
-        Me.ButtonBuscar.Location = New System.Drawing.Point(272, 18)
-        Me.ButtonBuscar.Name = "ButtonBuscar"
-        Me.ButtonBuscar.Size = New System.Drawing.Size(75, 23)
-        Me.ButtonBuscar.TabIndex = 16
-        Me.ButtonBuscar.Text = "Buscar"
-        Me.ButtonBuscar.UseVisualStyleBackColor = True
-        '
-        'TextBoxBuscador
-        '
-        Me.TextBoxBuscador.Location = New System.Drawing.Point(117, 20)
-        Me.TextBoxBuscador.Name = "TextBoxBuscador"
-        Me.TextBoxBuscador.Size = New System.Drawing.Size(149, 20)
-        Me.TextBoxBuscador.TabIndex = 17
-        '
-        'ComboBoxBuscador
-        '
-        Me.ComboBoxBuscador.FormattingEnabled = True
-        Me.ComboBoxBuscador.Items.AddRange(New Object() {"ID", "Fecha de compra"})
-        Me.ComboBoxBuscador.Location = New System.Drawing.Point(6, 20)
-        Me.ComboBoxBuscador.Name = "ComboBoxBuscador"
-        Me.ComboBoxBuscador.Size = New System.Drawing.Size(105, 21)
-        Me.ComboBoxBuscador.TabIndex = 18
+        Me.ButtonImprimirC.Location = New System.Drawing.Point(373, 364)
+        Me.ButtonImprimirC.Name = "ButtonImprimirC"
+        Me.ButtonImprimirC.Size = New System.Drawing.Size(75, 23)
+        Me.ButtonImprimirC.TabIndex = 19
+        Me.ButtonImprimirC.Text = "Imprimir"
+        Me.ButtonImprimirC.UseVisualStyleBackColor = True
         '
         'Form2
         '
@@ -1046,9 +1057,9 @@ Partial Class Form2
     Friend WithEvents TextBoxBusquedaUsuarios As System.Windows.Forms.TextBox
     Friend WithEvents ComboBoxUsuarios As System.Windows.Forms.ComboBox
     Friend WithEvents LabelInfoUsuarios As System.Windows.Forms.Label
-    Friend WithEvents Button7 As System.Windows.Forms.Button
-    Friend WithEvents Button5 As System.Windows.Forms.Button
-    Friend WithEvents Button1 As System.Windows.Forms.Button
+    Friend WithEvents ButtonModificarC As System.Windows.Forms.Button
+    Friend WithEvents ButtonEliminarC As System.Windows.Forms.Button
+    Friend WithEvents ButtonAgregarC As System.Windows.Forms.Button
     Friend WithEvents TextBoxComentario As System.Windows.Forms.TextBox
     Friend WithEvents Label18 As System.Windows.Forms.Label
     Friend WithEvents TextBoxTotal As System.Windows.Forms.TextBox
@@ -1061,8 +1072,9 @@ Partial Class Form2
     Friend WithEvents CheckBox6 As System.Windows.Forms.CheckBox
     Friend WithEvents CheckBox5 As System.Windows.Forms.CheckBox
     Friend WithEvents CheckBox4 As System.Windows.Forms.CheckBox
-    Friend WithEvents ButtonSeleccionar As System.Windows.Forms.Button
+    Friend WithEvents ButtonSeleccionarC As System.Windows.Forms.Button
     Friend WithEvents TextBoxBuscador As System.Windows.Forms.TextBox
     Friend WithEvents ButtonBuscar As System.Windows.Forms.Button
     Friend WithEvents ComboBoxBuscador As System.Windows.Forms.ComboBox
+    Friend WithEvents ButtonImprimirC As System.Windows.Forms.Button
 End Class
