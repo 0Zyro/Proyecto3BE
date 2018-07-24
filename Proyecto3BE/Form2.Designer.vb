@@ -107,7 +107,8 @@ Partial Class Form2
         Me.TextBoxBusquedaUsuarios = New System.Windows.Forms.TextBox()
         Me.ComboBoxUsuarios = New System.Windows.Forms.ComboBox()
         Me.ButtonBuscar = New System.Windows.Forms.Button()
-        Me.TextBox1 = New System.Windows.Forms.TextBox()
+        Me.TextBoxBuscador = New System.Windows.Forms.TextBox()
+        Me.ComboBoxBuscador = New System.Windows.Forms.ComboBox()
         Me.TabbedPane.SuspendLayout()
         Me.TabGanado.SuspendLayout()
         CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -467,7 +468,8 @@ Partial Class Form2
         '
         'TabCompras
         '
-        Me.TabCompras.Controls.Add(Me.TextBox1)
+        Me.TabCompras.Controls.Add(Me.ComboBoxBuscador)
+        Me.TabCompras.Controls.Add(Me.TextBoxBuscador)
         Me.TabCompras.Controls.Add(Me.ButtonBuscar)
         Me.TabCompras.Controls.Add(Me.ButtonSeleccionar)
         Me.TabCompras.Controls.Add(Me.CheckBox6)
@@ -928,12 +930,20 @@ Partial Class Form2
         Me.ButtonBuscar.Text = "Buscar"
         Me.ButtonBuscar.UseVisualStyleBackColor = True
         '
-        'TextBox1
+        'TextBoxBuscador
         '
-        Me.TextBox1.Location = New System.Drawing.Point(6, 20)
-        Me.TextBox1.Name = "TextBox1"
-        Me.TextBox1.Size = New System.Drawing.Size(260, 20)
-        Me.TextBox1.TabIndex = 17
+        Me.TextBoxBuscador.Location = New System.Drawing.Point(117, 20)
+        Me.TextBoxBuscador.Name = "TextBoxBuscador"
+        Me.TextBoxBuscador.Size = New System.Drawing.Size(149, 20)
+        Me.TextBoxBuscador.TabIndex = 17
+        '
+        'ComboBoxBuscador
+        '
+        Me.ComboBoxBuscador.FormattingEnabled = True
+        Me.ComboBoxBuscador.Location = New System.Drawing.Point(6, 20)
+        Me.ComboBoxBuscador.Name = "ComboBoxBuscador"
+        Me.ComboBoxBuscador.Size = New System.Drawing.Size(105, 21)
+        Me.ComboBoxBuscador.TabIndex = 18
         '
         'Form2
         '
@@ -1051,6 +1061,7 @@ Partial Class Form2
     Friend WithEvents CheckBox5 As System.Windows.Forms.CheckBox
     Friend WithEvents CheckBox4 As System.Windows.Forms.CheckBox
     Friend WithEvents ButtonSeleccionar As System.Windows.Forms.Button
-    Friend WithEvents TextBox1 As System.Windows.Forms.TextBox
+    Friend WithEvents TextBoxBuscador As System.Windows.Forms.TextBox
     Friend WithEvents ButtonBuscar As System.Windows.Forms.Button
+    Friend WithEvents ComboBoxBuscador As System.Windows.Forms.ComboBox
 End Class

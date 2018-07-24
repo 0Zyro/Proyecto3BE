@@ -445,7 +445,7 @@ Public Class Form2
 
     End Sub
 
-    Private Sub TextBox1_TextChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles TextBox1.TextChanged
+    Private Sub TextBox1_TextChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles TextBoxBuscador.TextChanged
 
     End Sub
 
@@ -474,6 +474,10 @@ Public Class Form2
     End Sub
 
     Private Sub BotonModificarUsuarios_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles BotonModificarUsuarios.Click
+
+    End Sub
+
+    Private Sub ComboBoxBuscador_SelectedIndexChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles ComboBoxBuscador.SelectedIndexChanged
 
     End Sub
 End Class
