@@ -431,6 +431,8 @@ Public Class Form2
         TextBoxFechadecompra.Text = ""
         TextBoxTotal.Text = ""
         TextBoxComentario.Text = ""
+        MsgBox("Datos eliminados correctamente")
+
     End Sub
 
     Private Sub Button2_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Button2.Click
