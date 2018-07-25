@@ -27,6 +27,7 @@ Partial Class Form1
         Me.LabelInfo = New System.Windows.Forms.Label()
         Me.BotonAceptar = New System.Windows.Forms.Button()
         Me.BotonVolver = New System.Windows.Forms.Button()
+        Me.Button1 = New System.Windows.Forms.Button()
         Me.SuspendLayout()
         '
         'LabelUser
@@ -72,11 +73,21 @@ Partial Class Form1
         Me.BotonVolver.UseVisualStyleBackColor = True
         Me.BotonVolver.Visible = False
         '
+        'Button1
+        '
+        Me.Button1.Location = New System.Drawing.Point(133, 0)
+        Me.Button1.Name = "Button1"
+        Me.Button1.Size = New System.Drawing.Size(8, 8)
+        Me.Button1.TabIndex = 7
+        Me.Button1.Text = "Button1"
+        Me.Button1.UseVisualStyleBackColor = True
+        '
         'Form1
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(268, 112)
+        Me.ClientSize = New System.Drawing.Size(268, 111)
+        Me.Controls.Add(Me.Button1)
         Me.Controls.Add(Me.BotonVolver)
         Me.Controls.Add(Me.BotonAceptar)
         Me.Controls.Add(Me.LabelInfo)
@@ -97,5 +108,6 @@ Partial Class Form1
     Friend WithEvents LabelInfo As System.Windows.Forms.Label
     Friend WithEvents BotonAceptar As System.Windows.Forms.Button
     Friend WithEvents BotonVolver As System.Windows.Forms.Button
+    Friend WithEvents Button1 As System.Windows.Forms.Button
 
 End Class
