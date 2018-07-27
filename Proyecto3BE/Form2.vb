@@ -20,7 +20,7 @@ Public Class Form2
             MsgBox(ex.Message)
         End Try
     End Sub
-
+    'jdjdjfje
     Private Sub Form2_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
 
         'Try
@@ -39,7 +39,7 @@ Public Class Form2
         DataGridView1.DataSource = Tabla
 
         'Cambiamos los headers
-        DataGridView1.Columns(0).HeaderText = "Codigo Ganado"
+        DataGridView1.Columns(0).HeaderText = "Codigo de Ganado"
         DataGridView1.Columns(1).HeaderText = "Raza"
         DataGridView1.Columns(2).HeaderText = "Sexo"
         DataGridView1.Columns(3).HeaderText = "Eatado"
@@ -206,105 +206,316 @@ Public Class Form2
         DataGridViewClientes.Columns(3).HeaderText = "Teléfono"
     End Sub
 
+    'Objetos auxiliares de busqueda
     Dim campos() As String = {"ci", "nombre", "permisos"}
     Dim rows(0) As String
-    Dim tipo As String
 
+    'Objetos necesarios para la conexion
     Dim connection As New MySqlConnection(data)
     Dim comando As New MySqlCommand
     Dim reader As MySqlDataReader
 
+    'Boton de busqueda de usuarios
     Private Sub BotonBusquedaUsuarios_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles BotonBusquedaUsuarios.Click
 
+        'Se borra el contenido anterior del label de informes y el listbox
+        LabelInfoUsuarios.Text = ""
+        ListBoxUsuarios.Items.Clear()
+
+        'Si el panel de busqueda esta vacio se buscaran todos, en caso contrario se busca lo especificado
         If TextBoxBusquedaUsuarios.Text = "" Then
-            comando.CommandText = "select ci from usuarios"
+            comando.CommandText = "select ci from usuario"
         Else
-            comando.CommandText = ("select nombre from usuario where " + campos(ComboBoxUsuarios.SelectedIndex) + "='" + TextBoxBusquedaUsuarios.Text + "'")
+            comando.CommandText = ("select ci from usuario where " + campos(ComboBoxUsuarios.SelectedIndex) + "='" + TextBoxBusquedaUsuarios.Text + "'")
         End If
+
+        'Info necesaria para ejecutar el comando
         comando.CommandType = CommandType.Text
         comando.Connection = connection
 
         Try
+            'Se abre la conexion, se ejecuta el comando y se guardan los resultados en "reader"
             connection.Open()
             reader = comando.ExecuteReader()
+
+            'Si hay resultados...
             If reader.HasRows Then
+
+                'Se limpian la lista de usuarios y el array auxiliar
                 ListBoxUsuarios.Items.Clear()
                 ReDim rows(0)
 
+                'Mientras "reader" tenga mas filas por leer...
                 While (reader.Read())
-                    rows(rows.Length - 1) = reader.GetString("nombre")
+                    'Se leen las filas y se guardan los resultados en el array "rows"
+                    rows(rows.Length - 1) = reader.GetInt32(0)
+                    'Se redimensiona el array "rows" en cada lectura para albergar el siguiente dato
                     ReDim Preserve rows(rows.Length)
                 End While
-                'ReDim Preserve rows(rows.Length - 2)
 
-                For Each ele As String In rows
-                    MsgBox(ele + ".")
-                Next
+                'Se redimensiona "rows" para borrar los espacios vacios
+                ReDim Preserve rows(rows.Length - 2)
 
-                'ListBoxUsuarios.Items.AddRange(rows)
+                'Se agregan todos los elementos de "rows" a "ListBoxUsuarios" para ser mostrados
+                ListBoxUsuarios.Items.AddRange(rows)
+
+                'Se Cierra la conexion
+                connection.Close()
+
+                'Se selecciona el primer item por defecto para evitar excepciones
+                ListBoxUsuarios.SetSelected(0, True)
             Else
+                'Se Cierra la conexion
+                connection.Close()
+
+                'Si no se encontraron resultados se informa
                 LabelInfoUsuarios.Text = "No se encontraron resultados"
             End If
-            connection.Close()
         Catch ex As Exception
+            'Se reportan errores
+            MsgBox(ex.Message)
+        End Try
+    End Sub
 
+    'Cuando se cambia el item seleccionado en "ListBoxUsuarios"
+    Private Sub ListBoxUsuarios_SelectedIndexChanged(ByVal sender As Object, ByVal e As System.EventArgs) Handles ListBoxUsuarios.SelectedIndexChanged
+
+        'Limpieza de busquedas anteriores
+        TextBoxCiUsuarios.Text = ""
+        TextBoxNombreUsuarios.Text = ""
+        TextBoxPasswdUsuarios.Text = ""
+        TextBoxRangoUsuarios.Text = ""
+
+        'Informacion necesaria para el comando
+        comando.CommandType = CommandType.Text
+        comando.Connection = connection
+        'Se hace la consulta segun que ah seleccionado el usuario en "ListBoxUsuarios"
+        comando.CommandText = ("select * from usuario where ci='" + ListBoxUsuarios.SelectedItem + "'")
+
+        Try
+            'Se abre la conexion, se ejecuta el comando y se guarda el resultado en "reader"
+            connection.Open()
+            reader = comando.ExecuteReader()
+
+            'Se leen los datos otenidos
+            reader.Read()
+
+            'Se mueven los datos desde "reader" a sus TextBox correspondientes
+            TextBoxCiUsuarios.Text = reader.GetInt32(0).ToString
+            TextBoxNombreUsuarios.Text = reader.GetString(1)
+            TextBoxPasswdUsuarios.Text = reader.GetString(2)
+            TextBoxRangoUsuarios.Text = reader.GetString(3)
+
+            'Se cierra la conexion
+            connection.Close()
+
+        Catch ex As Exception
+            'Se reportan errores
+            MsgBox(ex.Message)
+        End Try
+    End Sub
+
+    'Boton de eliminacion de Usuarios
+    Private Sub BotonEliminarUsuarios_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles BotonEliminarUsuarios.Click
+
+        Try
+            'Se pide una confirmacion antes de proceder
+            If MessageBox.Show("¿Seguro que desea eliminar a este Usuario?", "titulo xD", MessageBoxButtons.YesNo, MessageBoxIcon.Question) = Windows.Forms.DialogResult.Yes Then
+
+                'Se ingresan los datos necesarios paras el comando
+                comando.CommandType = CommandType.Text
+                comando.Connection = connection
+                'El usuario eliminado sera el seleccionado en "ListBoxUsuarios"
+                comando.CommandText = ("delete from usuario where ci='" + ListBoxUsuarios.SelectedItem + "'")
+
+                'Se abre la conexion
+                connection.Open()
+
+                'Se ejecuta el comando
+                comando.ExecuteNonQuery()
+
+                'Se cierra la conexion
+                connection.Close()
+
+                'Se actualiza "ListBoxUsuarios"
+                BotonBusquedaUsuarios.PerformClick()
+
+                'Se informa de la correcta eliminacion del usuario
+                LabelInfoUsuarios.Text = "Usuario eliminado"
+
+            End If
+        Catch ex As Exception
+            'Se reportan errores
+            MsgBox(ex.Message)
         End Try
 
     End Sub
 
-    
-    
+    Private Sub TextBox12_TextChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles TextBox12.TextChanged
 
-    Private Sub TabCompras_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles TabCompras.Click
-        Consulta = "select * from compra"
-        consultar()
-        DataCompra.DataSource = Tabla
-        DataCompra.Columns(0).HeaderText = "Codigo de compra"
-        DataCompra.Columns(1).HeaderText = "Fecha de compra"
-        DataCompra.Columns(2).HeaderText = "Comentario"
-        DataCompra.Columns(3).HeaderText = "Total precio"
+    End Sub
+    'boton agregar compras
+    Private Sub Button1_Click_1(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles ButtonAgregarC.Click
+        If TextBoxFechadecompra.Text <> "" And TextBoxTotal.Text <> "" And TextBoxComentario.Text <> "" Then
+            If IsNumeric(TextBoxTotal.Text) Then
+                'Agrega los valores de los campos a cada tabla correspondiente
+                Consulta = "insert into compras values ('" & TextBoxFechadecompra.Text & "','" & TextBoxTotal.Text & "','" & TextBoxComentario.Text & "')"
+                consultar()
+                Consulta = "select * from compras"
+                consultar()
+                'Actualiza la BD
+                DataGridViewCompras.DataSource = Tabla
+                TextBoxFechadecompra.Text = ""
+                TextBoxTotal.Text = ""
+                TextBoxComentario.Text = ""
+            Else
+                'Muestra mensaje diciendo que no se ingresaron valores numericos o que solo acepta valores numericos
+                MsgBox("Igrese solo valor numerico en total")
+            End If
+        Else
+            'Muestra mensaje que todos los campos no estan completos
+            MsgBox("Complete todos los campos vacios")
+        End If
+
     End Sub
 
-    Private Sub Button1_Click_1(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Button1.Click
-        Consulta = ("insert into ventas (fechaC,comentarioC,TotalC)values('" & TexFechaC.Text & "','" & TexComentarioC.Text & "','" & TexTotalC.Text & "')")
+    Private Sub Button7_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles ButtonModificarC.Click
 
-        consultar()
-        MessageBox.Show("Conexión exitosa")
-        Consulta = "select * from compra"
-        consultar()
-        DataCompra.DataSource = Tabla
-        TXTID.Text = ""
-        TexFechaC.Text = ""
-        TexComentarioC.Text = ""
-        TexTotalC.Text = ""
     End Sub
 
-  
-    
-    Private Sub Button7_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Button7.Click
-        If CheckBox6.Checked = True Then
-            Consulta = ("update ventas set fechaC='" & TexFechaC.Text & "',comentarioC='" & TexComentarioC.Text & "',totalC='" & TexTotalC.Text & "'where idC='" & TXTID.Text & "'")
-            consultar()
-            TexIDC.Text = ""
-            TexRaza.Text = ""
-            TexSexo.Text = ""
-            TexEdad.Text = ""
-            Consulta = "select * from compra"
-            consultar()
-            DataCompra.DataSource = Tabla
+    Private Sub TextBox11_TextChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles TextBox11.TextChanged
 
+    End Sub
 
+    Private Sub TextBox10_TextChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles TextBox10.TextChanged
+
+    End Sub
+    'Datagrid compras
+    Private Sub DataGridView3_CellContentClick(ByVal sender As System.Object, ByVal e As System.Windows.Forms.DataGridViewCellEventArgs) Handles DataGridViewCompras.CellContentClick
+        'Hace la consulta de los datos a la BD
+        Consulta = "select * from compras"
+        consultar()
+        DataGridViewClientes.DataSource = Tabla
+        'Cambia los titulos del datagrid
+        DataGridViewClientes.Columns(0).HeaderText = "ID"
+        DataGridViewClientes.Columns(1).HeaderText = "Fecha de Compra"
+        DataGridViewClientes.Columns(2).HeaderText = "Total"
+        DataGridViewClientes.Columns(3).HeaderText = "Comentario"
+    End Sub
+
+    Private Sub TextBoxBusquedaUsuarios_TextChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles TextBoxBusquedaUsuarios.TextChanged
+
+    End Sub
+
+    Private Sub Buttonmodificarcliente_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Buttonmodificarcliente.Click
+
+    End Sub
+    'Selecciona items del datagrid
+    Private Sub ButtonSeleccionar_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles ButtonSeleccionarC.Click
+        TextBoxID.Text = DataGridViewCompras.Item(0, DataGridViewCompras.CurrentRow.Index).Value
+        TextBoxFechadecompra.Text = DataGridViewCompras.Item(1, DataGridViewCompras.CurrentRow.Index).Value
+        TextBoxTotal.Text = DataGridViewCompras.Item(2, DataGridViewCompras.CurrentRow.Index).Value
+        TextBoxComentario.Text = DataGridViewCompras.Item(3, DataGridViewCompras.CurrentRow.Index).Value
+    End Sub
+    'Boton Eliminar compras
+    Private Sub Button5_Click_1(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles ButtonEliminarC.Click
+        'Elimina el id de una compra juntos con todos los datos de ese id
+        Consulta = "delete from compras where ID='" & TextBoxID.Text & "'"
+        consultar()
+
+        Consulta = "select * from compras"
+        consultar()
+        'Actualiza la BD
+        DataGridViewCompras.DataSource = Tabla
+        TextBoxID.Text = ""
+        TextBoxFechadecompra.Text = ""
+        TextBoxTotal.Text = ""
+        TextBoxComentario.Text = ""
+        MsgBox("Datos eliminados correctamente")
+
+    End Sub
+
+    Private Sub Button2_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Button2.Click
+
+    End Sub
+
+    Private Sub Button3_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Button3.Click
+
+    End Sub
+
+    Private Sub ButtonBuscar_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles ButtonBuscar.Click
+        'Si el buscador esta vacio muestra todo, si no muestra lo especificado
+        If TextBoxBuscador.Text = "" Then
+            comando.CommandText = "select IDC from compras"
+        Else
+            comando.CommandText = ("select IDC from compras where " + campos(ComboBoxBuscador.SelectedIndex) + "='" + TextBoxBuscador.Text + "'")
         End If
     End Sub
 
-    Private Sub CheckBox6_CheckedChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles CheckBox6.CheckedChanged
+    Private Sub TextBox1_TextChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles TextBoxBuscador.TextChanged
 
     End Sub
 
-    Private Sub Button8_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Button8.Click
-        TexIDC.Text = DataCompra.Item(0, DataCompra.CurrentRow.Index).Value
-        TexFechaC.Text = DataCompra.Item(1, DataCompra.CurrentRow.Index).Value
-        TexComentarioC.Text = DataCompra.Item(2, DataCompra.CurrentRow.Index).Value
-        TexTotalC.Text = DataCompra.Item(3, DataCompra.CurrentRow.Index).Value
+    Private Sub TexEstado_TextChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles TexEstado.TextChanged
+
+    End Sub
+
+    Private Sub TexPeso_TextChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles TexPeso.TextChanged
+
+    End Sub
+
+    Private Sub TexEdad_TextChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles TexEdad.TextChanged
+
+    End Sub
+
+    Private Sub TexSexo_TextChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles TexSexo.TextChanged
+
+    End Sub
+
+    Private Sub TexRaza_TextChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles TexRaza.TextChanged
+
+    End Sub
+
+    Private Sub BotonAgregarUsuarios_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles BotonAgregarUsuarios.Click
+
+    End Sub
+
+    Private Sub BotonModificarUsuarios_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles BotonModificarUsuarios.Click
+
+    End Sub
+
+    Private Sub ComboBoxBuscador_SelectedIndexChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles ComboBoxBuscador.SelectedIndexChanged
+
+    End Sub
+
+    Public Sub ButtonImprimirC_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles ButtonImprimirC.Click
+
+        Dim Header As String
+        Dim mAllowAddNew As Boolean
+        mAllowAddNew = DataGridViewCompras.mAllowAddNew
+        DataGridViewCompras.mAllowAddNew = False
+        DataGridViewCompras.row = 0
+        Screen.MousePointer = vbHourglass
+        Header = " - Página n°: "
+        ' REcupera los encabezados de columna  
+        For c = 1 To DataGrid.Columns.Count
+            MyArray(c) = Len(DataGrid.Columns(c - 1).Caption) + 10
+            Titles = Titles & Space(10) & DataGrid.Columns(c - 1).Caption
+        Next
+        ' Configura la fuente de la impresión para el encabezado  
+        Printer.Font.Size = 8
+        Printer.Font.Bold = True
+        Printer.Font.Name = "Courier New"
+
+        Printer.Orientation = vbPRORPortrait
+        l = 82
+
+        ' imprime el titulo , el encabezado y el número de página  
+        Printer.Print(Space(40) & Titulo)
+    Printer.Print Header; Printer.Page  
+        Printer.Print(Titles)
+        Printer.Font.Bold = False
+
+        DataGridViewCompras.Refresh()
     End Sub
 End Class
