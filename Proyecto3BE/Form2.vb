@@ -20,17 +20,6 @@ Public Class Form2
             MsgBox(ex.Message)
         End Try
     End Sub
-    'jdjdjfje
-    Private Sub Form2_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
-
-        'Try
-        '    conexion.Open()
-        '    MsgBox("Conectado")
-        'Catch ex As Exception
-        '    MsgBox("Error:" And ex.Message)
-        'End Try
-
-    End Sub
 
     Private Sub TabGanado_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles TabGanado.Click
 
@@ -51,14 +40,13 @@ Public Class Form2
         DataGridView1.Columns(9).HeaderText = "Edad"
 
         ' raza	sexo	estado	idventa	precioventa	idcompra	preciocompra	peso_inicial	edad
-
-
         DataGridView1.Columns(4).Visible = False
         DataGridView1.Columns(5).Visible = False
         DataGridView1.Columns(6).Visible = False
         DataGridView1.Columns(7).Visible = False
 
     End Sub
+
     Private Sub Button1_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Agregar_Ganado.Click
 
         If TexRaza.Text <> "" And TexSexo.Text <> "" And TexEdad.Text <> "" And TexEstado.Text <> "" And TexPeso.Text <> "" Then
@@ -100,8 +88,8 @@ Public Class Form2
 
     'Se cargan los datos cuando se cambia de tab
     Private Sub TabClientes_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles TabClientes.Click
-        'CARGA DATAGRIDCLIENTES
 
+        'CARGA DATAGRIDCLIENTES
         Consulta = "select * from cliente"
         consultar()
         DataGridViewClientes.DataSource = Tabla
@@ -148,8 +136,8 @@ Public Class Form2
         TexSexo.Text = ""
         TexEdad.Text = ""
     End Sub
-    'boton modificar con sus respectivos checkbox's con la opcion de poner la id
 
+    'boton modificar con sus respectivos checkbox's con la opcion de poner la id
     Private Sub Button4_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Button4.Click
 
         If CheckBoxTODO.Checked = True Then
@@ -189,12 +177,6 @@ Public Class Form2
         TexSexo.Text = ""
         TexEdad.Text = ""
     End Sub
-
-    Private Sub DataGridView1_CellContentClick(ByVal sender As System.Object, ByVal e As System.Windows.Forms.DataGridViewCellEventArgs) Handles DataGridView1.CellContentClick
-
-    End Sub
-
-
 
     Private Sub DataGridViewClientes_CellContentClick(ByVal sender As System.Object, ByVal e As System.Windows.Forms.DataGridViewCellEventArgs) Handles DataGridViewClientes.CellContentClick
         Consulta = "select * from cliente"
@@ -277,6 +259,9 @@ Public Class Form2
         End Try
     End Sub
 
+    'Ci del usuario seleccionado actualmente
+    Dim CiSeleccionado As String = ""
+
     'Cuando se cambia el item seleccionado en "ListBoxUsuarios"
     Private Sub ListBoxUsuarios_SelectedIndexChanged(ByVal sender As Object, ByVal e As System.EventArgs) Handles ListBoxUsuarios.SelectedIndexChanged
 
@@ -300,11 +285,14 @@ Public Class Form2
             'Se leen los datos otenidos
             reader.Read()
 
-            'Se mueven los datos desde "reader" a sus TextBox correspondientes
+            'Se mueven los datos desde "reader" a los textbox para ser mostrados
             TextBoxCiUsuarios.Text = reader.GetInt32(0).ToString
             TextBoxNombreUsuarios.Text = reader.GetString(1)
             TextBoxPasswdUsuarios.Text = reader.GetString(2)
             TextBoxRangoUsuarios.Text = reader.GetString(3)
+
+            'Se guarda la ci del usuario seleccionado
+            CiSeleccionado = TextBoxCiUsuarios.Text
 
             'Se cierra la conexion
             connection.Close()
@@ -348,12 +336,8 @@ Public Class Form2
             'Se reportan errores
             MsgBox(ex.Message)
         End Try
-
     End Sub
 
-    Private Sub TextBox12_TextChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles TextBox12.TextChanged
-
-    End Sub
     'boton agregar compras
     Private Sub Button1_Click_1(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles ButtonAgregarC.Click
         If TextBoxFechadecompra.Text <> "" And TextBoxTotal.Text <> "" And TextBoxComentario.Text <> "" Then
@@ -376,20 +360,8 @@ Public Class Form2
             'Muestra mensaje que todos los campos no estan completos
             MsgBox("Complete todos los campos vacios")
         End If
-
     End Sub
 
-    Private Sub Button7_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles ButtonModificarC.Click
-
-    End Sub
-
-    Private Sub TextBox11_TextChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles TextBox11.TextChanged
-
-    End Sub
-
-    Private Sub TextBox10_TextChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles TextBox10.TextChanged
-
-    End Sub
     'Datagrid compras
     Private Sub DataGridView3_CellContentClick(ByVal sender As System.Object, ByVal e As System.Windows.Forms.DataGridViewCellEventArgs) Handles DataGridViewCompras.CellContentClick
         'Hace la consulta de los datos a la BD
@@ -403,13 +375,6 @@ Public Class Form2
         DataGridViewClientes.Columns(3).HeaderText = "Comentario"
     End Sub
 
-    Private Sub TextBoxBusquedaUsuarios_TextChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles TextBoxBusquedaUsuarios.TextChanged
-
-    End Sub
-
-    Private Sub Buttonmodificarcliente_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Buttonmodificarcliente.Click
-
-    End Sub
     'Selecciona items del datagrid
     Private Sub ButtonSeleccionar_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles ButtonSeleccionarC.Click
         TextBoxID.Text = DataGridViewCompras.Item(0, DataGridViewCompras.CurrentRow.Index).Value
@@ -417,6 +382,7 @@ Public Class Form2
         TextBoxTotal.Text = DataGridViewCompras.Item(2, DataGridViewCompras.CurrentRow.Index).Value
         TextBoxComentario.Text = DataGridViewCompras.Item(3, DataGridViewCompras.CurrentRow.Index).Value
     End Sub
+
     'Boton Eliminar compras
     Private Sub Button5_Click_1(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles ButtonEliminarC.Click
         'Elimina el id de una compra juntos con todos los datos de ese id
@@ -435,14 +401,6 @@ Public Class Form2
 
     End Sub
 
-    Private Sub Button2_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Button2.Click
-
-    End Sub
-
-    Private Sub Button3_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Button3.Click
-
-    End Sub
-
     Private Sub ButtonBuscar_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles ButtonBuscar.Click
         'Si el buscador esta vacio muestra todo, si no muestra lo especificado
         If TextBoxBuscador.Text = "" Then
@@ -452,70 +410,130 @@ Public Class Form2
         End If
     End Sub
 
-    Private Sub TextBox1_TextChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles TextBoxBuscador.TextChanged
-
-    End Sub
-
-    Private Sub TexEstado_TextChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles TexEstado.TextChanged
-
-    End Sub
-
-    Private Sub TexPeso_TextChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles TexPeso.TextChanged
-
-    End Sub
-
-    Private Sub TexEdad_TextChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles TexEdad.TextChanged
-
-    End Sub
-
-    Private Sub TexSexo_TextChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles TexSexo.TextChanged
-
-    End Sub
-
-    Private Sub TexRaza_TextChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles TexRaza.TextChanged
-
-    End Sub
-
-    Private Sub BotonAgregarUsuarios_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles BotonAgregarUsuarios.Click
-
-    End Sub
-
-    Private Sub BotonModificarUsuarios_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles BotonModificarUsuarios.Click
-
-    End Sub
-
-    Private Sub ComboBoxBuscador_SelectedIndexChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles ComboBoxBuscador.SelectedIndexChanged
-
-    End Sub
-
     Public Sub ButtonImprimirC_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles ButtonImprimirC.Click
 
-        Dim Header As String
-        Dim mAllowAddNew As Boolean
-        mAllowAddNew = DataGridViewCompras.mAllowAddNew
-        DataGridViewCompras.mAllowAddNew = False
-        DataGridViewCompras.row = 0
-        Screen.MousePointer = vbHourglass
-        Header = " - Página n°: "
+        '    Dim Header As String
+        '   Dim mAllowAddNew As Boolean
+        '  mAllowAddNew = DataGridViewCompras.mAllowAddNew
+        ' DataGridViewCompras.mAllowAddNew = False
+        ' DataGridViewCompras.row = 0
+        ' Screen.MousePointer = vbHourglass
+        ' Header = " - Página n°: "
         ' REcupera los encabezados de columna  
-        For c = 1 To DataGrid.Columns.Count
-            MyArray(c) = Len(DataGrid.Columns(c - 1).Caption) + 10
-            Titles = Titles & Space(10) & DataGrid.Columns(c - 1).Caption
-        Next
+        ' For c = 1 To DataGrid.Columns.Count
+        ' MyArray(c) = Len(DataGrid.Columns(c - 1).Caption) + 10
+        ' Titles = Titles & Space(10) & DataGrid.Columns(c - 1).Caption
+        ' Next
         ' Configura la fuente de la impresión para el encabezado  
-        Printer.Font.Size = 8
-        Printer.Font.Bold = True
-        Printer.Font.Name = "Courier New"
+        ' Printer.Font.Size = 8
+        ' Printer.Font.Bold = True
+        ' Printer.Font.Name = "Courier New"
 
-        Printer.Orientation = vbPRORPortrait
-        l = 82
+        '        Printer.Orientation = vbPRORPortrait
+        '        l = 82
 
         ' imprime el titulo , el encabezado y el número de página  
-        Printer.Print(Space(40) & Titulo)
-    Printer.Print Header; Printer.Page  
-        Printer.Print(Titles)
-        Printer.Font.Bold = False
+        'Printer.Print(Space(40) & Titulo)
+        'Printer.Print Header; Printer.Page  
+        '   Printer.Print(Titles)
+        '  Printer.Font.Bold = False
 
-        DataGridViewCompras.Refresh()
+        'DataGridViewCompras.Refresh()
+    End Sub
+
+    'Boton de modificacion de datos de tab "Usuarios"
+    Private Sub BotonModificarUsuarios_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles BotonModificarUsuarios.Click
+
+        'Se ingresa al modo de edicion
+        'donde dejan de ser visibles los botones "Agregar", "Modificar" y "Eliminar"
+        BotonModificarUsuarios.Visible = False
+        BotonAceptarUsuarios.Visible = True
+        BotonCancelarUsuarios.Visible = True
+
+        'No se puede cambiar el usuario seleccionado en este modo
+        ListBoxUsuarios.Enabled = False
+
+        'pasan a ser visibles los botones "Aceptar" y "Cancelar"
+        BotonAgregarUsuarios.Visible = False
+        BotonEliminarUsuarios.Visible = False
+
+        'los textbox pasan a ser editables por el usuario
+        TextBoxCiUsuarios.ReadOnly = False
+        TextBoxNombreUsuarios.ReadOnly = False
+        TextBoxPasswdUsuarios.ReadOnly = False
+        TextBoxRangoUsuarios.ReadOnly = False
+
+    End Sub
+
+    'Boton de cancelacion de edicion de tab "Usuarios"
+    Private Sub BotonCancelarUsuarios_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles BotonCancelarUsuarios.Click
+
+        'Se actualiza "ListBoxUsuarios" para deshacer cualquier cambio realizado a los textbox
+        BotonBusquedaUsuarios.PerformClick()
+
+        'Se regresa al modo de visualizacion de datos
+        BotonModificarUsuarios.Visible = True
+        BotonAceptarUsuarios.Visible = False
+        BotonCancelarUsuarios.Visible = False
+
+        BotonAgregarUsuarios.Visible = True
+        BotonEliminarUsuarios.Visible = True
+
+        TextBoxCiUsuarios.ReadOnly = True
+        TextBoxNombreUsuarios.ReadOnly = True
+        TextBoxPasswdUsuarios.ReadOnly = True
+        TextBoxRangoUsuarios.ReadOnly = True
+
+        ListBoxUsuarios.Enabled = True
+    End Sub
+
+    'Boton 'Aceptar' de edicion de datos de tab "Usuarios"
+    Private Sub BotonAceptarUsuarios_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles BotonAceptarUsuarios.Click
+
+        'Info necesaria para el comando
+        comando.CommandType = CommandType.Text
+        comando.Connection = connection
+        'Comando a ejecutar
+        comando.CommandText = ("update usuario set ci='" + TextBoxCiUsuarios.Text +
+                               "', contrasena='" + TextBoxPasswdUsuarios.Text +
+                               "', nombre='" + TextBoxNombreUsuarios.Text +
+                               "', permisos='" + TextBoxRangoUsuarios.Text +
+                               "' where ci='" + CiSeleccionado + "'")
+
+        Try
+
+            'Se abre la conexion
+            connection.Open()
+
+            'Se ejecuta el comando
+            comando.ExecuteNonQuery()
+
+            'Se cierra la conexion
+            connection.Close()
+
+            'Se actualiza "ListBoxUsuarios"
+            BotonBusquedaUsuarios.PerformClick()
+
+            'Se informa de la correcta modificacion del usuario
+            LabelInfoUsuarios.Text = "Usuario modificado"
+        Catch ex As Exception
+            'Se informan errores
+            MsgBox(ex.Message)
+        End Try
+
+        'Se regresa el modo de visualizacion de datos
+        BotonModificarUsuarios.Visible = True
+        BotonAceptarUsuarios.Visible = False
+        BotonCancelarUsuarios.Visible = False
+
+        BotonAgregarUsuarios.Visible = True
+        BotonEliminarUsuarios.Visible = True
+
+        ListBoxUsuarios.Enabled = True
+
+        TextBoxCiUsuarios.ReadOnly = True
+        TextBoxNombreUsuarios.ReadOnly = True
+        TextBoxPasswdUsuarios.ReadOnly = True
+        TextBoxRangoUsuarios.ReadOnly = True
     End Sub
 End Class

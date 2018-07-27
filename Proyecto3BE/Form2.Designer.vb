@@ -59,6 +59,7 @@ Partial Class Form2
         Me.TXTID = New System.Windows.Forms.TextBox()
         Me.Label10 = New System.Windows.Forms.Label()
         Me.TabCompras = New System.Windows.Forms.TabPage()
+        Me.ButtonImprimirC = New System.Windows.Forms.Button()
         Me.ComboBoxBuscador = New System.Windows.Forms.ComboBox()
         Me.TextBoxBuscador = New System.Windows.Forms.TextBox()
         Me.ButtonBuscar = New System.Windows.Forms.Button()
@@ -93,6 +94,8 @@ Partial Class Form2
         Me.Buttonquitarcliente = New System.Windows.Forms.Button()
         Me.Buttonagregarcliente = New System.Windows.Forms.Button()
         Me.TabUsuarios = New System.Windows.Forms.TabPage()
+        Me.BotonAceptarUsuarios = New System.Windows.Forms.Button()
+        Me.BotonCancelarUsuarios = New System.Windows.Forms.Button()
         Me.LabelInfoUsuarios = New System.Windows.Forms.Label()
         Me.BotonModificarUsuarios = New System.Windows.Forms.Button()
         Me.BotonEliminarUsuarios = New System.Windows.Forms.Button()
@@ -109,7 +112,6 @@ Partial Class Form2
         Me.BotonBusquedaUsuarios = New System.Windows.Forms.Button()
         Me.TextBoxBusquedaUsuarios = New System.Windows.Forms.TextBox()
         Me.ComboBoxUsuarios = New System.Windows.Forms.ComboBox()
-        Me.ButtonImprimirC = New System.Windows.Forms.Button()
         Me.TabbedPane.SuspendLayout()
         Me.TabGanado.SuspendLayout()
         CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -497,6 +499,15 @@ Partial Class Form2
         Me.TabCompras.Text = "Compras"
         Me.TabCompras.UseVisualStyleBackColor = True
         '
+        'ButtonImprimirC
+        '
+        Me.ButtonImprimirC.Location = New System.Drawing.Point(373, 364)
+        Me.ButtonImprimirC.Name = "ButtonImprimirC"
+        Me.ButtonImprimirC.Size = New System.Drawing.Size(75, 23)
+        Me.ButtonImprimirC.TabIndex = 19
+        Me.ButtonImprimirC.Text = "Imprimir"
+        Me.ButtonImprimirC.UseVisualStyleBackColor = True
+        '
         'ComboBoxBuscador
         '
         Me.ComboBoxBuscador.FormattingEnabled = True
@@ -792,6 +803,8 @@ Partial Class Form2
         '
         'TabUsuarios
         '
+        Me.TabUsuarios.Controls.Add(Me.BotonAceptarUsuarios)
+        Me.TabUsuarios.Controls.Add(Me.BotonCancelarUsuarios)
         Me.TabUsuarios.Controls.Add(Me.LabelInfoUsuarios)
         Me.TabUsuarios.Controls.Add(Me.BotonModificarUsuarios)
         Me.TabUsuarios.Controls.Add(Me.BotonEliminarUsuarios)
@@ -815,6 +828,26 @@ Partial Class Form2
         Me.TabUsuarios.TabIndex = 4
         Me.TabUsuarios.Text = "Usuarios"
         Me.TabUsuarios.UseVisualStyleBackColor = True
+        '
+        'BotonAceptarUsuarios
+        '
+        Me.BotonAceptarUsuarios.Location = New System.Drawing.Point(494, 254)
+        Me.BotonAceptarUsuarios.Name = "BotonAceptarUsuarios"
+        Me.BotonAceptarUsuarios.Size = New System.Drawing.Size(75, 56)
+        Me.BotonAceptarUsuarios.TabIndex = 17
+        Me.BotonAceptarUsuarios.Text = "Aceptar"
+        Me.BotonAceptarUsuarios.UseVisualStyleBackColor = True
+        Me.BotonAceptarUsuarios.Visible = False
+        '
+        'BotonCancelarUsuarios
+        '
+        Me.BotonCancelarUsuarios.Location = New System.Drawing.Point(494, 164)
+        Me.BotonCancelarUsuarios.Name = "BotonCancelarUsuarios"
+        Me.BotonCancelarUsuarios.Size = New System.Drawing.Size(75, 56)
+        Me.BotonCancelarUsuarios.TabIndex = 16
+        Me.BotonCancelarUsuarios.Text = "Cancelar"
+        Me.BotonCancelarUsuarios.UseVisualStyleBackColor = True
+        Me.BotonCancelarUsuarios.Visible = False
         '
         'LabelInfoUsuarios
         '
@@ -855,6 +888,7 @@ Partial Class Form2
         '
         Me.TextBoxRangoUsuarios.Location = New System.Drawing.Point(270, 334)
         Me.TextBoxRangoUsuarios.Name = "TextBoxRangoUsuarios"
+        Me.TextBoxRangoUsuarios.ReadOnly = True
         Me.TextBoxRangoUsuarios.Size = New System.Drawing.Size(100, 20)
         Me.TextBoxRangoUsuarios.TabIndex = 11
         '
@@ -862,6 +896,7 @@ Partial Class Form2
         '
         Me.TextBoxPasswdUsuarios.Location = New System.Drawing.Point(270, 270)
         Me.TextBoxPasswdUsuarios.Name = "TextBoxPasswdUsuarios"
+        Me.TextBoxPasswdUsuarios.ReadOnly = True
         Me.TextBoxPasswdUsuarios.Size = New System.Drawing.Size(100, 20)
         Me.TextBoxPasswdUsuarios.TabIndex = 10
         '
@@ -869,6 +904,7 @@ Partial Class Form2
         '
         Me.TextBoxNombreUsuarios.Location = New System.Drawing.Point(270, 202)
         Me.TextBoxNombreUsuarios.Name = "TextBoxNombreUsuarios"
+        Me.TextBoxNombreUsuarios.ReadOnly = True
         Me.TextBoxNombreUsuarios.Size = New System.Drawing.Size(100, 20)
         Me.TextBoxNombreUsuarios.TabIndex = 9
         '
@@ -876,6 +912,7 @@ Partial Class Form2
         '
         Me.TextBoxCiUsuarios.Location = New System.Drawing.Point(270, 138)
         Me.TextBoxCiUsuarios.Name = "TextBoxCiUsuarios"
+        Me.TextBoxCiUsuarios.ReadOnly = True
         Me.TextBoxCiUsuarios.Size = New System.Drawing.Size(100, 20)
         Me.TextBoxCiUsuarios.TabIndex = 8
         '
@@ -947,15 +984,6 @@ Partial Class Form2
         Me.ComboBoxUsuarios.Name = "ComboBoxUsuarios"
         Me.ComboBoxUsuarios.Size = New System.Drawing.Size(89, 21)
         Me.ComboBoxUsuarios.TabIndex = 0
-        '
-        'ButtonImprimirC
-        '
-        Me.ButtonImprimirC.Location = New System.Drawing.Point(373, 364)
-        Me.ButtonImprimirC.Name = "ButtonImprimirC"
-        Me.ButtonImprimirC.Size = New System.Drawing.Size(75, 23)
-        Me.ButtonImprimirC.TabIndex = 19
-        Me.ButtonImprimirC.Text = "Imprimir"
-        Me.ButtonImprimirC.UseVisualStyleBackColor = True
         '
         'Form2
         '
@@ -1077,4 +1105,6 @@ Partial Class Form2
     Friend WithEvents ButtonBuscar As System.Windows.Forms.Button
     Friend WithEvents ComboBoxBuscador As System.Windows.Forms.ComboBox
     Friend WithEvents ButtonImprimirC As System.Windows.Forms.Button
+    Friend WithEvents BotonAceptarUsuarios As System.Windows.Forms.Button
+    Friend WithEvents BotonCancelarUsuarios As System.Windows.Forms.Button
 End Class
