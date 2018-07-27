@@ -450,8 +450,13 @@ Public Class Form2
         BotonAceptarUsuarios.Visible = True
         BotonCancelarUsuarios.Visible = True
 
-        'No se puede cambiar el usuario seleccionado en este modo
+        'Los objetos de busqueda dejan de ser utilizables
+        ComboBoxUsuarios.Enabled = False
+        TextBoxBusquedaUsuarios.ReadOnly = True
+        BotonBusquedaUsuarios.Enabled = False
         ListBoxUsuarios.Enabled = False
+
+
 
         'pasan a ser visibles los botones "Aceptar" y "Cancelar"
         BotonAgregarUsuarios.Visible = False
@@ -484,6 +489,9 @@ Public Class Form2
         TextBoxPasswdUsuarios.ReadOnly = True
         TextBoxRangoUsuarios.ReadOnly = True
 
+        ComboBoxUsuarios.Enabled = True
+        TextBoxBusquedaUsuarios.ReadOnly = False
+        BotonBusquedaUsuarios.Enabled = True
         ListBoxUsuarios.Enabled = True
     End Sub
 
@@ -529,6 +537,9 @@ Public Class Form2
         BotonAgregarUsuarios.Visible = True
         BotonEliminarUsuarios.Visible = True
 
+        ComboBoxUsuarios.Enabled = True
+        TextBoxBusquedaUsuarios.ReadOnly = False
+        BotonBusquedaUsuarios.Enabled = True
         ListBoxUsuarios.Enabled = True
 
         TextBoxCiUsuarios.ReadOnly = True
