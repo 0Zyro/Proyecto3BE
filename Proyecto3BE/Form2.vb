@@ -39,7 +39,7 @@ Public Class Form2
         DataGridView1.Columns(8).HeaderText = "Peso Inicial"
         DataGridView1.Columns(9).HeaderText = "Edad"
 
-        ' raza	sexo	estado	idventa	precioventa	idcompra	preciocompra	peso_inicial	edad
+        'raza	sexo	estado	idventa	precioventa	idcompra	preciocompra	peso_inicial	edad
         DataGridView1.Columns(4).Visible = False
         DataGridView1.Columns(5).Visible = False
         DataGridView1.Columns(6).Visible = False
@@ -215,9 +215,11 @@ Public Class Form2
         comando.CommandType = CommandType.Text
         comando.Connection = connection
 
+        connection.Open()
+
         Try
             'Se abre la conexion, se ejecuta el comando y se guardan los resultados en "reader"
-            connection.Open()
+            'connection.Open()
             reader = comando.ExecuteReader()
 
             'Si hay resultados...
@@ -456,8 +458,6 @@ Public Class Form2
         BotonBusquedaUsuarios.Enabled = False
         ListBoxUsuarios.Enabled = False
 
-
-
         'pasan a ser visibles los botones "Aceptar" y "Cancelar"
         BotonAgregarUsuarios.Visible = False
         BotonEliminarUsuarios.Visible = False
@@ -546,5 +546,11 @@ Public Class Form2
         TextBoxNombreUsuarios.ReadOnly = True
         TextBoxPasswdUsuarios.ReadOnly = True
         TextBoxRangoUsuarios.ReadOnly = True
+    End Sub
+
+    Private Sub TabUsuarios_Leave(ByVal sender As Object, ByVal e As System.EventArgs) Handles TabUsuarios.Leave
+
+        BotonCancelarUsuarios.PerformClick()
+
     End Sub
 End Class
