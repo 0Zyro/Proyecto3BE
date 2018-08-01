@@ -2,7 +2,7 @@
 
 Public Class Form1
     'Objetos necesarios para realizar la conexion a la DB
-    Dim data As String = ("Server=www.db4free.net;Database=database_vacas;User id=zero22394;Password=zero22394;Port=3306;")
+    Dim data As String = ("Server=localhost;Database=vacas;User id=root;Password=;Port=3306;")
     Dim conexion As New MySqlConnection(data)
 
     'Se crea el objeto que contiene la consulta a realizar
