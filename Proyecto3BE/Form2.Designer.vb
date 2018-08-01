@@ -22,6 +22,7 @@ Partial Class Form2
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
+        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(Form2))
         Me.PanelUsuario = New System.Windows.Forms.Panel()
         Me.TabbedPane = New System.Windows.Forms.TabControl()
         Me.TabGanado = New System.Windows.Forms.TabPage()
@@ -94,6 +95,7 @@ Partial Class Form2
         Me.Buttonquitarcliente = New System.Windows.Forms.Button()
         Me.Buttonagregarcliente = New System.Windows.Forms.Button()
         Me.TabUsuarios = New System.Windows.Forms.TabPage()
+        Me.CheckBoxPasswdUsuarios = New System.Windows.Forms.CheckBox()
         Me.CheckBoxUsuarios = New System.Windows.Forms.CheckBox()
         Me.LabelEstadoUsuarios = New System.Windows.Forms.Label()
         Me.BotonAceptarUsuarios = New System.Windows.Forms.Button()
@@ -805,6 +807,7 @@ Partial Class Form2
         '
         'TabUsuarios
         '
+        Me.TabUsuarios.Controls.Add(Me.CheckBoxPasswdUsuarios)
         Me.TabUsuarios.Controls.Add(Me.CheckBoxUsuarios)
         Me.TabUsuarios.Controls.Add(Me.LabelEstadoUsuarios)
         Me.TabUsuarios.Controls.Add(Me.BotonAceptarUsuarios)
@@ -832,6 +835,16 @@ Partial Class Form2
         Me.TabUsuarios.TabIndex = 4
         Me.TabUsuarios.Text = "Usuarios"
         Me.TabUsuarios.UseVisualStyleBackColor = True
+        '
+        'CheckBoxPasswdUsuarios
+        '
+        Me.CheckBoxPasswdUsuarios.AutoSize = True
+        Me.CheckBoxPasswdUsuarios.Image = CType(resources.GetObject("CheckBoxPasswdUsuarios.Image"), System.Drawing.Image)
+        Me.CheckBoxPasswdUsuarios.Location = New System.Drawing.Point(363, 254)
+        Me.CheckBoxPasswdUsuarios.Name = "CheckBoxPasswdUsuarios"
+        Me.CheckBoxPasswdUsuarios.Size = New System.Drawing.Size(25, 14)
+        Me.CheckBoxPasswdUsuarios.TabIndex = 21
+        Me.CheckBoxPasswdUsuarios.UseVisualStyleBackColor = True
         '
         'CheckBoxUsuarios
         '
@@ -921,6 +934,7 @@ Partial Class Form2
         '
         Me.TextBoxPasswdUsuarios.Location = New System.Drawing.Point(256, 251)
         Me.TextBoxPasswdUsuarios.Name = "TextBoxPasswdUsuarios"
+        Me.TextBoxPasswdUsuarios.PasswordChar = Global.Microsoft.VisualBasic.ChrW(43)
         Me.TextBoxPasswdUsuarios.ReadOnly = True
         Me.TextBoxPasswdUsuarios.Size = New System.Drawing.Size(100, 20)
         Me.TextBoxPasswdUsuarios.TabIndex = 10
@@ -1134,4 +1148,5 @@ Partial Class Form2
     Friend WithEvents BotonCancelarUsuarios As System.Windows.Forms.Button
     Friend WithEvents LabelEstadoUsuarios As System.Windows.Forms.Label
     Friend WithEvents CheckBoxUsuarios As System.Windows.Forms.CheckBox
+    Friend WithEvents CheckBoxPasswdUsuarios As System.Windows.Forms.CheckBox
 End Class

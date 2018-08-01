@@ -34,7 +34,7 @@ Public Class Form1
         Dim cis(0) As Integer
 
         'Se le asigna a consulta los valores necesarios, texto del comando, conexion a utilizar y tipo de comando
-        consulta.CommandText = "select ci from usuario"
+        consulta.CommandText = "select ci from usuario where estado='activo'"
         consulta.Connection = conexion
         consulta.CommandType = CommandType.Text
 
@@ -50,7 +50,7 @@ Public Class Form1
                 End While
                 ReDim Preserve cis(cis.Length - 2)
             Else
-                MsgBox("No se encontraron resultados")
+                MsgBox("Usuario no Encontrado")
             End If
             conexion.Close()
         Catch ex As Exception

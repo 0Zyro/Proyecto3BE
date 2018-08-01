@@ -637,4 +637,12 @@ Public Class Form2
             LabelEstadoUsuarios.Visible = False
         End If
     End Sub
+
+    Private Sub CheckBoxPasswdUsuarios_CheckStateChanged(ByVal sender As Object, ByVal e As System.EventArgs) Handles CheckBoxPasswdUsuarios.CheckStateChanged
+        If CheckBoxPasswdUsuarios.Checked Then
+            TextBoxPasswdUsuarios.PasswordChar = ""
+        Else
+            TextBoxPasswdUsuarios.PasswordChar = "+"
+        End If
+    End Sub
 End Class
