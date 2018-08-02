@@ -7,6 +7,8 @@ Public Class Form2
     Dim data As String = ("Server=localhost;Database=vacas;User id=root;Password=;Port=3306;")
     'Dim data As String = ("Server=www.db4free.net;Database=database_vacas;User id=zero22394;Password=zero22394;Port=3306;")
 
+
+
     Public Conexion As MySqlDataAdapter
     Public Tabla As DataTable
     Public Consulta As String
@@ -542,16 +544,78 @@ Public Class Form2
             TextBoxPasswdUsuarios.PasswordChar = "+"
         End If
     End Sub
-
+    '///////////////////////////////////////////////////////////Datagried Compras///////////////////////////////////
     Private Sub DataGridViewCompras_CellContentClick(ByVal sender As System.Object, ByVal e As System.Windows.Forms.DataGridViewCellEventArgs) Handles DataGridViewCompras.CellContentClick
         'Hace la consulta de los datos a la BD
         Consulta = "select * from compra"
         consultar()
         DataGridViewCompras.DataSource = Tabla
+        consultar()
         'Cambia los titulos del datagrid
         DataGridViewCompras.Columns(0).HeaderText = "Id"
         DataGridViewCompras.Columns(1).HeaderText = "Fecha de Compra"
-        DataGridViewCompras.Columns(2).HeaderText = "Total"
-        DataGridViewCompras.Columns(3).HeaderText = "Comentario"
+        DataGridViewCompras.Columns(2).HeaderText = "Comentario"
+        DataGridViewCompras.Columns(3).HeaderText = "Total"
     End Sub
+    '///////////////////////////////////////////Boton Agregar Compras//////////////////////////////////////////
+    Private Sub AgregarCompras_Click_1(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles AgregarCompras.Click
+        If Fechacompra.Text <> "" And Comentariocompras.Text <> "" And Totalpagadocompras.Text <> "" Then
+            If IsNumeric(Totalpagadocompras.Text) Then
+                'Agrega los valores de los campos a cada tabla correspondiente
+                Consulta = "insert into compra values (0,'" & Fechacompra.Text & "','" & Comentariocompras.Text & "','" & Totalpagadocompras.Text & "')"
+                consultar()
+                Consulta = "select * from compra"
+                consultar()
+                'Actualiza la BD
+                DataGridViewCompras.DataSource = Tabla
+                'Deja a los textbox vacios para ingresar nuevos datos
+                Fechacompra.Text = ""
+                Comentariocompras.Text = ""
+                Totalpagadocompras.Text = ""
+            Else
+                'Muestra mensaje diciendo que no se ingresaron valores numericos o que solo acepta valores numericos
+                MsgBox("Igrese solo valor numerico en total")
+            End If
+        Else
+            'Muestra mensaje que todos los campos no estan completos
+            MsgBox("Complete todos los campos vacios")
+        End If
+    End Sub
+
+    Private Sub Clearcompras_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Clearcompras.Click
+        Fechacompra.Clear()
+        Comentariocompras.Clear()
+        Totalpagadocompras.Clear()
+    End Sub
+
+    Private Sub Volveragregarcompras_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Volveragregarcompras.Click
+
+
+
+        '/////////Panel agregar compras/////////////
+        Panelagregarcompras.SendToBack()
+        Panelagregarcompras.Visible = False
+        Panelagregarcompras.Enabled = False
+
+
+        '////////Panel principal compras///////////////
+        Panelprincipalcompras.Enabled = True
+        Panelprincipalcompras.Visible = True
+        Panelprincipalcompras.BringToFront()
+
+
+
+    End Sub
+
+    Private Sub Agregarcompra1_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Agregarcompra1.Click
+        '/////////Panel agregar compras/////////////
+        Panelagregarcompras.BringToFront()
+        Panelagregarcompras.Visible = True
+        Panelagregarcompras.Enabled = True
+
+        Volveragregarcompras.Visible = True
+
+
+    End Sub
+
 End Class
