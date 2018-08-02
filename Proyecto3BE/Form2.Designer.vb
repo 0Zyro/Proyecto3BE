@@ -59,27 +59,6 @@ Partial Class Form2
         Me.GBID = New System.Windows.Forms.GroupBox()
         Me.TXTID = New System.Windows.Forms.TextBox()
         Me.Label10 = New System.Windows.Forms.Label()
-        Me.TabCompras = New System.Windows.Forms.TabPage()
-        Me.ButtonImprimirC = New System.Windows.Forms.Button()
-        Me.ComboBoxBuscador = New System.Windows.Forms.ComboBox()
-        Me.TextBoxBuscador = New System.Windows.Forms.TextBox()
-        Me.ButtonBuscar = New System.Windows.Forms.Button()
-        Me.ButtonSeleccionarC = New System.Windows.Forms.Button()
-        Me.CheckBox6 = New System.Windows.Forms.CheckBox()
-        Me.CheckBox5 = New System.Windows.Forms.CheckBox()
-        Me.CheckBox4 = New System.Windows.Forms.CheckBox()
-        Me.ButtonModificarC = New System.Windows.Forms.Button()
-        Me.ButtonEliminarC = New System.Windows.Forms.Button()
-        Me.ButtonAgregarC = New System.Windows.Forms.Button()
-        Me.TextBoxComentario = New System.Windows.Forms.TextBox()
-        Me.Label18 = New System.Windows.Forms.Label()
-        Me.TextBoxTotal = New System.Windows.Forms.TextBox()
-        Me.Label17 = New System.Windows.Forms.Label()
-        Me.TextBoxFechadecompra = New System.Windows.Forms.TextBox()
-        Me.Label16 = New System.Windows.Forms.Label()
-        Me.TextBoxID = New System.Windows.Forms.TextBox()
-        Me.Label15 = New System.Windows.Forms.Label()
-        Me.DataGridViewCompras = New System.Windows.Forms.DataGridView()
         Me.TabClientes = New System.Windows.Forms.TabPage()
         Me.TextBox9 = New System.Windows.Forms.TextBox()
         Me.TextBox8 = New System.Windows.Forms.TextBox()
@@ -116,17 +95,21 @@ Partial Class Form2
         Me.BotonBusquedaUsuarios = New System.Windows.Forms.Button()
         Me.TextBoxBusquedaUsuarios = New System.Windows.Forms.TextBox()
         Me.ComboBoxUsuarios = New System.Windows.Forms.ComboBox()
+        Me.TabCompras = New System.Windows.Forms.TabPage()
+        Me.Panel1 = New System.Windows.Forms.Panel()
+        Me.DataGridView3 = New System.Windows.Forms.DataGridView()
         Me.TabbedPane.SuspendLayout()
         Me.TabGanado.SuspendLayout()
         CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.TabVentas.SuspendLayout()
         CType(Me.DataGridView2, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.GBID.SuspendLayout()
-        Me.TabCompras.SuspendLayout()
-        CType(Me.DataGridViewCompras, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.TabClientes.SuspendLayout()
         CType(Me.DataGridViewClientes, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.TabUsuarios.SuspendLayout()
+        Me.TabCompras.SuspendLayout()
+        Me.Panel1.SuspendLayout()
+        CType(Me.DataGridView3, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'PanelUsuario
@@ -472,205 +455,6 @@ Partial Class Form2
         Me.Label10.Size = New System.Drawing.Size(18, 13)
         Me.Label10.TabIndex = 13
         Me.Label10.Text = "ID"
-        '
-        'TabCompras
-        '
-        Me.TabCompras.Controls.Add(Me.ButtonImprimirC)
-        Me.TabCompras.Controls.Add(Me.ComboBoxBuscador)
-        Me.TabCompras.Controls.Add(Me.TextBoxBuscador)
-        Me.TabCompras.Controls.Add(Me.ButtonBuscar)
-        Me.TabCompras.Controls.Add(Me.ButtonSeleccionarC)
-        Me.TabCompras.Controls.Add(Me.CheckBox6)
-        Me.TabCompras.Controls.Add(Me.CheckBox5)
-        Me.TabCompras.Controls.Add(Me.CheckBox4)
-        Me.TabCompras.Controls.Add(Me.ButtonModificarC)
-        Me.TabCompras.Controls.Add(Me.ButtonEliminarC)
-        Me.TabCompras.Controls.Add(Me.ButtonAgregarC)
-        Me.TabCompras.Controls.Add(Me.TextBoxComentario)
-        Me.TabCompras.Controls.Add(Me.Label18)
-        Me.TabCompras.Controls.Add(Me.TextBoxTotal)
-        Me.TabCompras.Controls.Add(Me.Label17)
-        Me.TabCompras.Controls.Add(Me.TextBoxFechadecompra)
-        Me.TabCompras.Controls.Add(Me.Label16)
-        Me.TabCompras.Controls.Add(Me.TextBoxID)
-        Me.TabCompras.Controls.Add(Me.Label15)
-        Me.TabCompras.Controls.Add(Me.DataGridViewCompras)
-        Me.TabCompras.Location = New System.Drawing.Point(4, 22)
-        Me.TabCompras.Name = "TabCompras"
-        Me.TabCompras.Padding = New System.Windows.Forms.Padding(3)
-        Me.TabCompras.Size = New System.Drawing.Size(677, 437)
-        Me.TabCompras.TabIndex = 2
-        Me.TabCompras.Text = "Compras"
-        Me.TabCompras.UseVisualStyleBackColor = True
-        '
-        'ButtonImprimirC
-        '
-        Me.ButtonImprimirC.Location = New System.Drawing.Point(373, 364)
-        Me.ButtonImprimirC.Name = "ButtonImprimirC"
-        Me.ButtonImprimirC.Size = New System.Drawing.Size(75, 23)
-        Me.ButtonImprimirC.TabIndex = 19
-        Me.ButtonImprimirC.Text = "Imprimir"
-        Me.ButtonImprimirC.UseVisualStyleBackColor = True
-        '
-        'ComboBoxBuscador
-        '
-        Me.ComboBoxBuscador.FormattingEnabled = True
-        Me.ComboBoxBuscador.Items.AddRange(New Object() {"ID", "Fecha de compra"})
-        Me.ComboBoxBuscador.Location = New System.Drawing.Point(6, 20)
-        Me.ComboBoxBuscador.Name = "ComboBoxBuscador"
-        Me.ComboBoxBuscador.Size = New System.Drawing.Size(105, 21)
-        Me.ComboBoxBuscador.TabIndex = 18
-        '
-        'TextBoxBuscador
-        '
-        Me.TextBoxBuscador.Location = New System.Drawing.Point(117, 20)
-        Me.TextBoxBuscador.Name = "TextBoxBuscador"
-        Me.TextBoxBuscador.Size = New System.Drawing.Size(149, 20)
-        Me.TextBoxBuscador.TabIndex = 17
-        '
-        'ButtonBuscar
-        '
-        Me.ButtonBuscar.Location = New System.Drawing.Point(272, 18)
-        Me.ButtonBuscar.Name = "ButtonBuscar"
-        Me.ButtonBuscar.Size = New System.Drawing.Size(75, 23)
-        Me.ButtonBuscar.TabIndex = 16
-        Me.ButtonBuscar.Text = "Buscar"
-        Me.ButtonBuscar.UseVisualStyleBackColor = True
-        '
-        'ButtonSeleccionarC
-        '
-        Me.ButtonSeleccionarC.Location = New System.Drawing.Point(373, 312)
-        Me.ButtonSeleccionarC.Name = "ButtonSeleccionarC"
-        Me.ButtonSeleccionarC.Size = New System.Drawing.Size(75, 23)
-        Me.ButtonSeleccionarC.TabIndex = 15
-        Me.ButtonSeleccionarC.Text = "Seleccionar"
-        Me.ButtonSeleccionarC.UseVisualStyleBackColor = True
-        '
-        'CheckBox6
-        '
-        Me.CheckBox6.AutoSize = True
-        Me.CheckBox6.Location = New System.Drawing.Point(573, 205)
-        Me.CheckBox6.Name = "CheckBox6"
-        Me.CheckBox6.Size = New System.Drawing.Size(15, 14)
-        Me.CheckBox6.TabIndex = 14
-        Me.CheckBox6.UseVisualStyleBackColor = True
-        '
-        'CheckBox5
-        '
-        Me.CheckBox5.AutoSize = True
-        Me.CheckBox5.Location = New System.Drawing.Point(573, 165)
-        Me.CheckBox5.Name = "CheckBox5"
-        Me.CheckBox5.Size = New System.Drawing.Size(15, 14)
-        Me.CheckBox5.TabIndex = 13
-        Me.CheckBox5.UseVisualStyleBackColor = True
-        '
-        'CheckBox4
-        '
-        Me.CheckBox4.AutoSize = True
-        Me.CheckBox4.Location = New System.Drawing.Point(573, 117)
-        Me.CheckBox4.Name = "CheckBox4"
-        Me.CheckBox4.Size = New System.Drawing.Size(15, 14)
-        Me.CheckBox4.TabIndex = 12
-        Me.CheckBox4.UseVisualStyleBackColor = True
-        '
-        'ButtonModificarC
-        '
-        Me.ButtonModificarC.Location = New System.Drawing.Point(478, 265)
-        Me.ButtonModificarC.Name = "ButtonModificarC"
-        Me.ButtonModificarC.Size = New System.Drawing.Size(75, 23)
-        Me.ButtonModificarC.TabIndex = 11
-        Me.ButtonModificarC.Text = "Modificar"
-        Me.ButtonModificarC.UseVisualStyleBackColor = True
-        '
-        'ButtonEliminarC
-        '
-        Me.ButtonEliminarC.Location = New System.Drawing.Point(575, 265)
-        Me.ButtonEliminarC.Name = "ButtonEliminarC"
-        Me.ButtonEliminarC.Size = New System.Drawing.Size(75, 23)
-        Me.ButtonEliminarC.TabIndex = 10
-        Me.ButtonEliminarC.Text = "Eliminar"
-        Me.ButtonEliminarC.UseVisualStyleBackColor = True
-        '
-        'ButtonAgregarC
-        '
-        Me.ButtonAgregarC.Location = New System.Drawing.Point(373, 265)
-        Me.ButtonAgregarC.Name = "ButtonAgregarC"
-        Me.ButtonAgregarC.Size = New System.Drawing.Size(75, 23)
-        Me.ButtonAgregarC.TabIndex = 9
-        Me.ButtonAgregarC.Text = "Agregar"
-        Me.ButtonAgregarC.UseVisualStyleBackColor = True
-        '
-        'TextBoxComentario
-        '
-        Me.TextBoxComentario.Location = New System.Drawing.Point(466, 203)
-        Me.TextBoxComentario.Name = "TextBoxComentario"
-        Me.TextBoxComentario.Size = New System.Drawing.Size(100, 20)
-        Me.TextBoxComentario.TabIndex = 8
-        '
-        'Label18
-        '
-        Me.Label18.AutoSize = True
-        Me.Label18.Location = New System.Drawing.Point(400, 206)
-        Me.Label18.Name = "Label18"
-        Me.Label18.Size = New System.Drawing.Size(60, 13)
-        Me.Label18.TabIndex = 7
-        Me.Label18.Text = "Comentario"
-        '
-        'TextBoxTotal
-        '
-        Me.TextBoxTotal.Location = New System.Drawing.Point(466, 163)
-        Me.TextBoxTotal.Name = "TextBoxTotal"
-        Me.TextBoxTotal.Size = New System.Drawing.Size(100, 20)
-        Me.TextBoxTotal.TabIndex = 6
-        '
-        'Label17
-        '
-        Me.Label17.AutoSize = True
-        Me.Label17.Location = New System.Drawing.Point(403, 166)
-        Me.Label17.Name = "Label17"
-        Me.Label17.Size = New System.Drawing.Size(31, 13)
-        Me.Label17.TabIndex = 5
-        Me.Label17.Text = "Total"
-        '
-        'TextBoxFechadecompra
-        '
-        Me.TextBoxFechadecompra.Location = New System.Drawing.Point(466, 115)
-        Me.TextBoxFechadecompra.Name = "TextBoxFechadecompra"
-        Me.TextBoxFechadecompra.Size = New System.Drawing.Size(100, 20)
-        Me.TextBoxFechadecompra.TabIndex = 4
-        '
-        'Label16
-        '
-        Me.Label16.AutoSize = True
-        Me.Label16.Location = New System.Drawing.Point(370, 118)
-        Me.Label16.Name = "Label16"
-        Me.Label16.Size = New System.Drawing.Size(90, 13)
-        Me.Label16.TabIndex = 3
-        Me.Label16.Text = "Fecha de compra"
-        '
-        'TextBoxID
-        '
-        Me.TextBoxID.Location = New System.Drawing.Point(466, 70)
-        Me.TextBoxID.Name = "TextBoxID"
-        Me.TextBoxID.Size = New System.Drawing.Size(100, 20)
-        Me.TextBoxID.TabIndex = 2
-        '
-        'Label15
-        '
-        Me.Label15.AutoSize = True
-        Me.Label15.Location = New System.Drawing.Point(426, 73)
-        Me.Label15.Name = "Label15"
-        Me.Label15.Size = New System.Drawing.Size(18, 13)
-        Me.Label15.TabIndex = 1
-        Me.Label15.Text = "ID"
-        '
-        'DataGridViewCompras
-        '
-        Me.DataGridViewCompras.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.DataGridViewCompras.Location = New System.Drawing.Point(6, 56)
-        Me.DataGridViewCompras.Name = "DataGridViewCompras"
-        Me.DataGridViewCompras.Size = New System.Drawing.Size(341, 375)
-        Me.DataGridViewCompras.TabIndex = 0
         '
         'TabClientes
         '
@@ -1024,6 +808,34 @@ Partial Class Form2
         Me.ComboBoxUsuarios.Size = New System.Drawing.Size(89, 21)
         Me.ComboBoxUsuarios.TabIndex = 0
         '
+        'TabCompras
+        '
+        Me.TabCompras.Controls.Add(Me.Panel1)
+        Me.TabCompras.Location = New System.Drawing.Point(4, 22)
+        Me.TabCompras.Name = "TabCompras"
+        Me.TabCompras.Padding = New System.Windows.Forms.Padding(3)
+        Me.TabCompras.Size = New System.Drawing.Size(677, 437)
+        Me.TabCompras.TabIndex = 2
+        Me.TabCompras.Text = "Compras"
+        Me.TabCompras.UseVisualStyleBackColor = True
+        '
+        'Panel1
+        '
+        Me.Panel1.BackColor = System.Drawing.Color.DimGray
+        Me.Panel1.Controls.Add(Me.DataGridView3)
+        Me.Panel1.Location = New System.Drawing.Point(0, 0)
+        Me.Panel1.Name = "Panel1"
+        Me.Panel1.Size = New System.Drawing.Size(671, 438)
+        Me.Panel1.TabIndex = 0
+        '
+        'DataGridView3
+        '
+        Me.DataGridView3.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
+        Me.DataGridView3.Location = New System.Drawing.Point(6, 59)
+        Me.DataGridView3.Name = "DataGridView3"
+        Me.DataGridView3.Size = New System.Drawing.Size(656, 311)
+        Me.DataGridView3.TabIndex = 0
+        '
         'Form2
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -1045,14 +857,14 @@ Partial Class Form2
         CType(Me.DataGridView2, System.ComponentModel.ISupportInitialize).EndInit()
         Me.GBID.ResumeLayout(False)
         Me.GBID.PerformLayout()
-        Me.TabCompras.ResumeLayout(False)
-        Me.TabCompras.PerformLayout()
-        CType(Me.DataGridViewCompras, System.ComponentModel.ISupportInitialize).EndInit()
         Me.TabClientes.ResumeLayout(False)
         Me.TabClientes.PerformLayout()
         CType(Me.DataGridViewClientes, System.ComponentModel.ISupportInitialize).EndInit()
         Me.TabUsuarios.ResumeLayout(False)
         Me.TabUsuarios.PerformLayout()
+        Me.TabCompras.ResumeLayout(False)
+        Me.Panel1.ResumeLayout(False)
+        CType(Me.DataGridView3, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
 
     End Sub
@@ -1060,7 +872,6 @@ Partial Class Form2
     Friend WithEvents TabbedPane As System.Windows.Forms.TabControl
     Friend WithEvents TabGanado As System.Windows.Forms.TabPage
     Friend WithEvents TabVentas As System.Windows.Forms.TabPage
-    Friend WithEvents TabCompras As System.Windows.Forms.TabPage
     Friend WithEvents TabClientes As System.Windows.Forms.TabPage
     Friend WithEvents TabUsuarios As System.Windows.Forms.TabPage
     Friend WithEvents DataGridView1 As System.Windows.Forms.DataGridView
@@ -1124,29 +935,12 @@ Partial Class Form2
     Friend WithEvents TextBoxBusquedaUsuarios As System.Windows.Forms.TextBox
     Friend WithEvents ComboBoxUsuarios As System.Windows.Forms.ComboBox
     Friend WithEvents LabelInfoUsuarios As System.Windows.Forms.Label
-    Friend WithEvents ButtonModificarC As System.Windows.Forms.Button
-    Friend WithEvents ButtonEliminarC As System.Windows.Forms.Button
-    Friend WithEvents ButtonAgregarC As System.Windows.Forms.Button
-    Friend WithEvents TextBoxComentario As System.Windows.Forms.TextBox
-    Friend WithEvents Label18 As System.Windows.Forms.Label
-    Friend WithEvents TextBoxTotal As System.Windows.Forms.TextBox
-    Friend WithEvents Label17 As System.Windows.Forms.Label
-    Friend WithEvents TextBoxFechadecompra As System.Windows.Forms.TextBox
-    Friend WithEvents Label16 As System.Windows.Forms.Label
-    Friend WithEvents TextBoxID As System.Windows.Forms.TextBox
-    Friend WithEvents Label15 As System.Windows.Forms.Label
-    Friend WithEvents DataGridViewCompras As System.Windows.Forms.DataGridView
-    Friend WithEvents CheckBox6 As System.Windows.Forms.CheckBox
-    Friend WithEvents CheckBox5 As System.Windows.Forms.CheckBox
-    Friend WithEvents CheckBox4 As System.Windows.Forms.CheckBox
-    Friend WithEvents ButtonSeleccionarC As System.Windows.Forms.Button
-    Friend WithEvents TextBoxBuscador As System.Windows.Forms.TextBox
-    Friend WithEvents ButtonBuscar As System.Windows.Forms.Button
-    Friend WithEvents ComboBoxBuscador As System.Windows.Forms.ComboBox
-    Friend WithEvents ButtonImprimirC As System.Windows.Forms.Button
     Friend WithEvents BotonAceptarUsuarios As System.Windows.Forms.Button
     Friend WithEvents BotonCancelarUsuarios As System.Windows.Forms.Button
     Friend WithEvents LabelEstadoUsuarios As System.Windows.Forms.Label
     Friend WithEvents CheckBoxUsuarios As System.Windows.Forms.CheckBox
     Friend WithEvents CheckBoxPasswdUsuarios As System.Windows.Forms.CheckBox
+    Friend WithEvents TabCompras As System.Windows.Forms.TabPage
+    Friend WithEvents Panel1 As System.Windows.Forms.Panel
+    Friend WithEvents DataGridView3 As System.Windows.Forms.DataGridView
 End Class
