@@ -60,8 +60,13 @@ Partial Class Form2
         Me.TXTID = New System.Windows.Forms.TextBox()
         Me.Label10 = New System.Windows.Forms.Label()
         Me.TabCompras = New System.Windows.Forms.TabPage()
-        Me.Panel1 = New System.Windows.Forms.Panel()
-        Me.DataGridView3 = New System.Windows.Forms.DataGridView()
+        Me.Panelprincipalcompras = New System.Windows.Forms.Panel()
+        Me.TextBox1 = New System.Windows.Forms.TextBox()
+        Me.ComboBox1 = New System.Windows.Forms.ComboBox()
+        Me.Buscarcompra = New System.Windows.Forms.PictureBox()
+        Me.Modificarcompra1 = New System.Windows.Forms.PictureBox()
+        Me.Agregarcompra1 = New System.Windows.Forms.PictureBox()
+        Me.DataGridViewCompras = New System.Windows.Forms.DataGridView()
         Me.TabClientes = New System.Windows.Forms.TabPage()
         Me.TextBox9 = New System.Windows.Forms.TextBox()
         Me.TextBox8 = New System.Windows.Forms.TextBox()
@@ -77,6 +82,7 @@ Partial Class Form2
         Me.Buttonquitarcliente = New System.Windows.Forms.Button()
         Me.Buttonagregarcliente = New System.Windows.Forms.Button()
         Me.TabUsuarios = New System.Windows.Forms.TabPage()
+        Me.CheckBoxPasswdUsuarios = New System.Windows.Forms.CheckBox()
         Me.CheckBoxUsuarios = New System.Windows.Forms.CheckBox()
         Me.LabelEstadoUsuarios = New System.Windows.Forms.Label()
         Me.BotonAceptarUsuarios = New System.Windows.Forms.Button()
@@ -97,12 +103,14 @@ Partial Class Form2
         Me.BotonBusquedaUsuarios = New System.Windows.Forms.Button()
         Me.TextBoxBusquedaUsuarios = New System.Windows.Forms.TextBox()
         Me.ComboBoxUsuarios = New System.Windows.Forms.ComboBox()
-        Me.PictureBox3 = New System.Windows.Forms.PictureBox()
-        Me.PictureBox2 = New System.Windows.Forms.PictureBox()
-        Me.PictureBox1 = New System.Windows.Forms.PictureBox()
-        Me.CheckBoxPasswdUsuarios = New System.Windows.Forms.CheckBox()
-        Me.ComboBox1 = New System.Windows.Forms.ComboBox()
-        Me.TextBox1 = New System.Windows.Forms.TextBox()
+        Me.Panelagregarcompras = New System.Windows.Forms.Panel()
+        Me.Fechacompra = New System.Windows.Forms.TextBox()
+        Me.Comentariocompras = New System.Windows.Forms.TextBox()
+        Me.Totalpagadocompras = New System.Windows.Forms.TextBox()
+        Me.Label11 = New System.Windows.Forms.Label()
+        Me.Label12 = New System.Windows.Forms.Label()
+        Me.Label13 = New System.Windows.Forms.Label()
+        Me.Button1 = New System.Windows.Forms.Button()
         Me.TabbedPane.SuspendLayout()
         Me.TabGanado.SuspendLayout()
         CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -110,14 +118,15 @@ Partial Class Form2
         CType(Me.DataGridView2, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.GBID.SuspendLayout()
         Me.TabCompras.SuspendLayout()
-        Me.Panel1.SuspendLayout()
-        CType(Me.DataGridView3, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.Panelprincipalcompras.SuspendLayout()
+        CType(Me.Buscarcompra, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.Modificarcompra1, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.Agregarcompra1, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.DataGridViewCompras, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.TabClientes.SuspendLayout()
         CType(Me.DataGridViewClientes, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.TabUsuarios.SuspendLayout()
-        CType(Me.PictureBox3, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.PictureBox2, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.Panelagregarcompras.SuspendLayout()
         Me.SuspendLayout()
         '
         'PanelUsuario
@@ -466,7 +475,7 @@ Partial Class Form2
         '
         'TabCompras
         '
-        Me.TabCompras.Controls.Add(Me.Panel1)
+        Me.TabCompras.Controls.Add(Me.Panelprincipalcompras)
         Me.TabCompras.Location = New System.Drawing.Point(4, 22)
         Me.TabCompras.Name = "TabCompras"
         Me.TabCompras.Padding = New System.Windows.Forms.Padding(3)
@@ -475,27 +484,70 @@ Partial Class Form2
         Me.TabCompras.Text = "Compras"
         Me.TabCompras.UseVisualStyleBackColor = True
         '
-        'Panel1
+        'Panelprincipalcompras
         '
-        Me.Panel1.BackColor = System.Drawing.Color.DimGray
-        Me.Panel1.Controls.Add(Me.TextBox1)
-        Me.Panel1.Controls.Add(Me.ComboBox1)
-        Me.Panel1.Controls.Add(Me.PictureBox3)
-        Me.Panel1.Controls.Add(Me.PictureBox2)
-        Me.Panel1.Controls.Add(Me.PictureBox1)
-        Me.Panel1.Controls.Add(Me.DataGridView3)
-        Me.Panel1.Location = New System.Drawing.Point(0, 0)
-        Me.Panel1.Name = "Panel1"
-        Me.Panel1.Size = New System.Drawing.Size(671, 438)
-        Me.Panel1.TabIndex = 0
+        Me.Panelprincipalcompras.BackColor = System.Drawing.Color.DimGray
+        Me.Panelprincipalcompras.Controls.Add(Me.Panelagregarcompras)
+        Me.Panelprincipalcompras.Controls.Add(Me.TextBox1)
+        Me.Panelprincipalcompras.Controls.Add(Me.ComboBox1)
+        Me.Panelprincipalcompras.Controls.Add(Me.Buscarcompra)
+        Me.Panelprincipalcompras.Controls.Add(Me.Modificarcompra1)
+        Me.Panelprincipalcompras.Controls.Add(Me.Agregarcompra1)
+        Me.Panelprincipalcompras.Controls.Add(Me.DataGridViewCompras)
+        Me.Panelprincipalcompras.Location = New System.Drawing.Point(0, 0)
+        Me.Panelprincipalcompras.Name = "Panelprincipalcompras"
+        Me.Panelprincipalcompras.Size = New System.Drawing.Size(671, 438)
+        Me.Panelprincipalcompras.TabIndex = 0
         '
-        'DataGridView3
+        'TextBox1
         '
-        Me.DataGridView3.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.DataGridView3.Location = New System.Drawing.Point(6, 59)
-        Me.DataGridView3.Name = "DataGridView3"
-        Me.DataGridView3.Size = New System.Drawing.Size(656, 311)
-        Me.DataGridView3.TabIndex = 0
+        Me.TextBox1.Location = New System.Drawing.Point(6, 20)
+        Me.TextBox1.Name = "TextBox1"
+        Me.TextBox1.Size = New System.Drawing.Size(486, 20)
+        Me.TextBox1.TabIndex = 5
+        '
+        'ComboBox1
+        '
+        Me.ComboBox1.FormattingEnabled = True
+        Me.ComboBox1.Location = New System.Drawing.Point(498, 19)
+        Me.ComboBox1.Name = "ComboBox1"
+        Me.ComboBox1.Size = New System.Drawing.Size(135, 21)
+        Me.ComboBox1.TabIndex = 4
+        '
+        'Buscarcompra
+        '
+        Me.Buscarcompra.Image = Global.WindowsApplication1.My.Resources.Resources.Botonbuscar
+        Me.Buscarcompra.Location = New System.Drawing.Point(639, 21)
+        Me.Buscarcompra.Name = "Buscarcompra"
+        Me.Buscarcompra.Size = New System.Drawing.Size(23, 19)
+        Me.Buscarcompra.TabIndex = 3
+        Me.Buscarcompra.TabStop = False
+        '
+        'Modificarcompra1
+        '
+        Me.Modificarcompra1.Image = Global.WindowsApplication1.My.Resources.Resources.editar
+        Me.Modificarcompra1.Location = New System.Drawing.Point(124, 390)
+        Me.Modificarcompra1.Name = "Modificarcompra1"
+        Me.Modificarcompra1.Size = New System.Drawing.Size(34, 38)
+        Me.Modificarcompra1.TabIndex = 2
+        Me.Modificarcompra1.TabStop = False
+        '
+        'Agregarcompra1
+        '
+        Me.Agregarcompra1.Image = Global.WindowsApplication1.My.Resources.Resources.botoncompra
+        Me.Agregarcompra1.Location = New System.Drawing.Point(46, 391)
+        Me.Agregarcompra1.Name = "Agregarcompra1"
+        Me.Agregarcompra1.Size = New System.Drawing.Size(35, 37)
+        Me.Agregarcompra1.TabIndex = 1
+        Me.Agregarcompra1.TabStop = False
+        '
+        'DataGridViewCompras
+        '
+        Me.DataGridViewCompras.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
+        Me.DataGridViewCompras.Location = New System.Drawing.Point(6, 59)
+        Me.DataGridViewCompras.Name = "DataGridViewCompras"
+        Me.DataGridViewCompras.Size = New System.Drawing.Size(656, 311)
+        Me.DataGridViewCompras.TabIndex = 0
         '
         'TabClientes
         '
@@ -660,6 +712,16 @@ Partial Class Form2
         Me.TabUsuarios.TabIndex = 4
         Me.TabUsuarios.Text = "Usuarios"
         Me.TabUsuarios.UseVisualStyleBackColor = True
+        '
+        'CheckBoxPasswdUsuarios
+        '
+        Me.CheckBoxPasswdUsuarios.AutoSize = True
+        Me.CheckBoxPasswdUsuarios.Image = CType(resources.GetObject("CheckBoxPasswdUsuarios.Image"), System.Drawing.Image)
+        Me.CheckBoxPasswdUsuarios.Location = New System.Drawing.Point(363, 254)
+        Me.CheckBoxPasswdUsuarios.Name = "CheckBoxPasswdUsuarios"
+        Me.CheckBoxPasswdUsuarios.Size = New System.Drawing.Size(25, 14)
+        Me.CheckBoxPasswdUsuarios.TabIndex = 21
+        Me.CheckBoxPasswdUsuarios.UseVisualStyleBackColor = True
         '
         'CheckBoxUsuarios
         '
@@ -839,57 +901,76 @@ Partial Class Form2
         Me.ComboBoxUsuarios.Size = New System.Drawing.Size(89, 21)
         Me.ComboBoxUsuarios.TabIndex = 0
         '
-        'PictureBox3
+        'Panelagregarcompras
         '
-        Me.PictureBox3.Image = Global.WindowsApplication1.My.Resources.Resources.Botonbuscar
-        Me.PictureBox3.Location = New System.Drawing.Point(639, 21)
-        Me.PictureBox3.Name = "PictureBox3"
-        Me.PictureBox3.Size = New System.Drawing.Size(23, 19)
-        Me.PictureBox3.TabIndex = 3
-        Me.PictureBox3.TabStop = False
+        Me.Panelagregarcompras.Controls.Add(Me.Button1)
+        Me.Panelagregarcompras.Controls.Add(Me.Label13)
+        Me.Panelagregarcompras.Controls.Add(Me.Label12)
+        Me.Panelagregarcompras.Controls.Add(Me.Label11)
+        Me.Panelagregarcompras.Controls.Add(Me.Totalpagadocompras)
+        Me.Panelagregarcompras.Controls.Add(Me.Comentariocompras)
+        Me.Panelagregarcompras.Controls.Add(Me.Fechacompra)
+        Me.Panelagregarcompras.Location = New System.Drawing.Point(0, 0)
+        Me.Panelagregarcompras.Name = "Panelagregarcompras"
+        Me.Panelagregarcompras.Size = New System.Drawing.Size(671, 438)
+        Me.Panelagregarcompras.TabIndex = 6
         '
-        'PictureBox2
+        'Fechacompra
         '
-        Me.PictureBox2.Image = Global.WindowsApplication1.My.Resources.Resources.editar
-        Me.PictureBox2.Location = New System.Drawing.Point(124, 390)
-        Me.PictureBox2.Name = "PictureBox2"
-        Me.PictureBox2.Size = New System.Drawing.Size(34, 38)
-        Me.PictureBox2.TabIndex = 2
-        Me.PictureBox2.TabStop = False
+        Me.Fechacompra.Location = New System.Drawing.Point(289, 92)
+        Me.Fechacompra.Name = "Fechacompra"
+        Me.Fechacompra.Size = New System.Drawing.Size(100, 20)
+        Me.Fechacompra.TabIndex = 0
         '
-        'PictureBox1
+        'Comentariocompras
         '
-        Me.PictureBox1.Image = Global.WindowsApplication1.My.Resources.Resources.botoncompra
-        Me.PictureBox1.Location = New System.Drawing.Point(46, 391)
-        Me.PictureBox1.Name = "PictureBox1"
-        Me.PictureBox1.Size = New System.Drawing.Size(35, 37)
-        Me.PictureBox1.TabIndex = 1
-        Me.PictureBox1.TabStop = False
+        Me.Comentariocompras.Location = New System.Drawing.Point(289, 176)
+        Me.Comentariocompras.Name = "Comentariocompras"
+        Me.Comentariocompras.Size = New System.Drawing.Size(100, 20)
+        Me.Comentariocompras.TabIndex = 1
         '
-        'CheckBoxPasswdUsuarios
+        'Totalpagadocompras
         '
-        Me.CheckBoxPasswdUsuarios.AutoSize = True
-        Me.CheckBoxPasswdUsuarios.Image = CType(resources.GetObject("CheckBoxPasswdUsuarios.Image"), System.Drawing.Image)
-        Me.CheckBoxPasswdUsuarios.Location = New System.Drawing.Point(363, 254)
-        Me.CheckBoxPasswdUsuarios.Name = "CheckBoxPasswdUsuarios"
-        Me.CheckBoxPasswdUsuarios.Size = New System.Drawing.Size(25, 14)
-        Me.CheckBoxPasswdUsuarios.TabIndex = 21
-        Me.CheckBoxPasswdUsuarios.UseVisualStyleBackColor = True
+        Me.Totalpagadocompras.Location = New System.Drawing.Point(289, 264)
+        Me.Totalpagadocompras.Name = "Totalpagadocompras"
+        Me.Totalpagadocompras.Size = New System.Drawing.Size(100, 20)
+        Me.Totalpagadocompras.TabIndex = 2
         '
-        'ComboBox1
+        'Label11
         '
-        Me.ComboBox1.FormattingEnabled = True
-        Me.ComboBox1.Location = New System.Drawing.Point(498, 19)
-        Me.ComboBox1.Name = "ComboBox1"
-        Me.ComboBox1.Size = New System.Drawing.Size(135, 21)
-        Me.ComboBox1.TabIndex = 4
+        Me.Label11.AutoSize = True
+        Me.Label11.Location = New System.Drawing.Point(266, 59)
+        Me.Label11.Name = "Label11"
+        Me.Label11.Size = New System.Drawing.Size(157, 13)
+        Me.Label11.TabIndex = 3
+        Me.Label11.Text = "Fecha de compra (AA/MM/DD)"
         '
-        'TextBox1
+        'Label12
         '
-        Me.TextBox1.Location = New System.Drawing.Point(6, 20)
-        Me.TextBox1.Name = "TextBox1"
-        Me.TextBox1.Size = New System.Drawing.Size(486, 20)
-        Me.TextBox1.TabIndex = 5
+        Me.Label12.AutoSize = True
+        Me.Label12.Location = New System.Drawing.Point(314, 145)
+        Me.Label12.Name = "Label12"
+        Me.Label12.Size = New System.Drawing.Size(60, 13)
+        Me.Label12.TabIndex = 4
+        Me.Label12.Text = "Comentario"
+        '
+        'Label13
+        '
+        Me.Label13.AutoSize = True
+        Me.Label13.Location = New System.Drawing.Point(303, 232)
+        Me.Label13.Name = "Label13"
+        Me.Label13.Size = New System.Drawing.Size(71, 13)
+        Me.Label13.TabIndex = 5
+        Me.Label13.Text = "Total Pagado"
+        '
+        'Button1
+        '
+        Me.Button1.Location = New System.Drawing.Point(299, 334)
+        Me.Button1.Name = "Button1"
+        Me.Button1.Size = New System.Drawing.Size(75, 23)
+        Me.Button1.TabIndex = 6
+        Me.Button1.Text = "Agregar"
+        Me.Button1.UseVisualStyleBackColor = True
         '
         'Form2
         '
@@ -913,17 +994,19 @@ Partial Class Form2
         Me.GBID.ResumeLayout(False)
         Me.GBID.PerformLayout()
         Me.TabCompras.ResumeLayout(False)
-        Me.Panel1.ResumeLayout(False)
-        Me.Panel1.PerformLayout()
-        CType(Me.DataGridView3, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.Panelprincipalcompras.ResumeLayout(False)
+        Me.Panelprincipalcompras.PerformLayout()
+        CType(Me.Buscarcompra, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.Modificarcompra1, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.Agregarcompra1, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.DataGridViewCompras, System.ComponentModel.ISupportInitialize).EndInit()
         Me.TabClientes.ResumeLayout(False)
         Me.TabClientes.PerformLayout()
         CType(Me.DataGridViewClientes, System.ComponentModel.ISupportInitialize).EndInit()
         Me.TabUsuarios.ResumeLayout(False)
         Me.TabUsuarios.PerformLayout()
-        CType(Me.PictureBox3, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.PictureBox2, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.Panelagregarcompras.ResumeLayout(False)
+        Me.Panelagregarcompras.PerformLayout()
         Me.ResumeLayout(False)
 
     End Sub
@@ -1000,11 +1083,19 @@ Partial Class Form2
     Friend WithEvents CheckBoxUsuarios As System.Windows.Forms.CheckBox
     Friend WithEvents CheckBoxPasswdUsuarios As System.Windows.Forms.CheckBox
     Friend WithEvents TabCompras As System.Windows.Forms.TabPage
-    Friend WithEvents Panel1 As System.Windows.Forms.Panel
-    Friend WithEvents DataGridView3 As System.Windows.Forms.DataGridView
-    Friend WithEvents PictureBox1 As System.Windows.Forms.PictureBox
-    Friend WithEvents PictureBox2 As System.Windows.Forms.PictureBox
-    Friend WithEvents PictureBox3 As System.Windows.Forms.PictureBox
+    Friend WithEvents Panelprincipalcompras As System.Windows.Forms.Panel
+    Friend WithEvents DataGridViewCompras As System.Windows.Forms.DataGridView
+    Friend WithEvents Agregarcompra1 As System.Windows.Forms.PictureBox
+    Friend WithEvents Modificarcompra1 As System.Windows.Forms.PictureBox
+    Friend WithEvents Buscarcompra As System.Windows.Forms.PictureBox
     Friend WithEvents TextBox1 As System.Windows.Forms.TextBox
     Friend WithEvents ComboBox1 As System.Windows.Forms.ComboBox
+    Friend WithEvents Panelagregarcompras As System.Windows.Forms.Panel
+    Friend WithEvents Label13 As System.Windows.Forms.Label
+    Friend WithEvents Label12 As System.Windows.Forms.Label
+    Friend WithEvents Label11 As System.Windows.Forms.Label
+    Friend WithEvents Totalpagadocompras As System.Windows.Forms.TextBox
+    Friend WithEvents Comentariocompras As System.Windows.Forms.TextBox
+    Friend WithEvents Fechacompra As System.Windows.Forms.TextBox
+    Friend WithEvents Button1 As System.Windows.Forms.Button
 End Class

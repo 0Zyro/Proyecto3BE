@@ -542,4 +542,16 @@ Public Class Form2
             TextBoxPasswdUsuarios.PasswordChar = "+"
         End If
     End Sub
+
+    Private Sub DataGridViewCompras_CellContentClick(ByVal sender As System.Object, ByVal e As System.Windows.Forms.DataGridViewCellEventArgs) Handles DataGridViewCompras.CellContentClick
+        'Hace la consulta de los datos a la BD
+        Consulta = "select * from compra"
+        consultar()
+        DataGridViewCompras.DataSource = Tabla
+        'Cambia los titulos del datagrid
+        DataGridViewCompras.Columns(0).HeaderText = "Id"
+        DataGridViewCompras.Columns(1).HeaderText = "Fecha de Compra"
+        DataGridViewCompras.Columns(2).HeaderText = "Total"
+        DataGridViewCompras.Columns(3).HeaderText = "Comentario"
+    End Sub
 End Class
