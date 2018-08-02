@@ -24,7 +24,6 @@ Partial Class Form2
     Private Sub InitializeComponent()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(Form2))
         Me.PanelUsuario = New System.Windows.Forms.Panel()
-        Me.PictureBox = New System.Windows.Forms.PictureBox()
         Me.TabbedPane = New System.Windows.Forms.TabControl()
         Me.TabGanado = New System.Windows.Forms.TabPage()
         Me.Button3 = New System.Windows.Forms.Button()
@@ -117,13 +116,6 @@ Partial Class Form2
         Me.BotonBusquedaUsuarios = New System.Windows.Forms.Button()
         Me.TextBoxBusquedaUsuarios = New System.Windows.Forms.TextBox()
         Me.ComboBoxUsuarios = New System.Windows.Forms.ComboBox()
-        Me.LabelNombreUsuario = New System.Windows.Forms.Label()
-        Me.LabelRangoUsuario = New System.Windows.Forms.Label()
-        Me.LabelCambioContraseña = New System.Windows.Forms.Label()
-        Me.BotonCerrarSesion = New System.Windows.Forms.Button()
-        Me.PictureBoxUsuarios = New System.Windows.Forms.PictureBox()
-        Me.PanelUsuario.SuspendLayout()
-        CType(Me.PictureBox, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.TabbedPane.SuspendLayout()
         Me.TabGanado.SuspendLayout()
         CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -135,30 +127,14 @@ Partial Class Form2
         Me.TabClientes.SuspendLayout()
         CType(Me.DataGridViewClientes, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.TabUsuarios.SuspendLayout()
-        CType(Me.PictureBoxUsuarios, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'PanelUsuario
         '
-        Me.PanelUsuario.Controls.Add(Me.BotonCerrarSesion)
-        Me.PanelUsuario.Controls.Add(Me.LabelCambioContraseña)
-        Me.PanelUsuario.Controls.Add(Me.LabelRangoUsuario)
-        Me.PanelUsuario.Controls.Add(Me.LabelNombreUsuario)
-        Me.PanelUsuario.Controls.Add(Me.PictureBox)
         Me.PanelUsuario.Location = New System.Drawing.Point(0, 0)
         Me.PanelUsuario.Name = "PanelUsuario"
         Me.PanelUsuario.Size = New System.Drawing.Size(100, 460)
         Me.PanelUsuario.TabIndex = 0
-        '
-        'PictureBox
-        '
-        Me.PictureBox.Image = CType(resources.GetObject("PictureBox.Image"), System.Drawing.Image)
-        Me.PictureBox.InitialImage = Nothing
-        Me.PictureBox.Location = New System.Drawing.Point(5, 5)
-        Me.PictureBox.Name = "PictureBox"
-        Me.PictureBox.Size = New System.Drawing.Size(90, 90)
-        Me.PictureBox.TabIndex = 0
-        Me.PictureBox.TabStop = False
         '
         'TabbedPane
         '
@@ -170,11 +146,7 @@ Partial Class Form2
         Me.TabbedPane.Location = New System.Drawing.Point(102, 0)
         Me.TabbedPane.Name = "TabbedPane"
         Me.TabbedPane.SelectedIndex = 0
-<<<<<<< HEAD
         Me.TabbedPane.Size = New System.Drawing.Size(683, 463)
-=======
-        Me.TabbedPane.Size = New System.Drawing.Size(678, 463)
->>>>>>> dc60b589367a90d3f8e83360680bd50b1118d333
         Me.TabbedPane.TabIndex = 1
         '
         'TabGanado
@@ -526,11 +498,7 @@ Partial Class Form2
         Me.TabCompras.Location = New System.Drawing.Point(4, 22)
         Me.TabCompras.Name = "TabCompras"
         Me.TabCompras.Padding = New System.Windows.Forms.Padding(3)
-<<<<<<< HEAD
         Me.TabCompras.Size = New System.Drawing.Size(675, 437)
-=======
-        Me.TabCompras.Size = New System.Drawing.Size(547, 437)
->>>>>>> dc60b589367a90d3f8e83360680bd50b1118d333
         Me.TabCompras.TabIndex = 2
         Me.TabCompras.Text = "Compras"
         Me.TabCompras.UseVisualStyleBackColor = True
@@ -722,7 +690,7 @@ Partial Class Form2
         Me.TabClientes.Location = New System.Drawing.Point(4, 22)
         Me.TabClientes.Name = "TabClientes"
         Me.TabClientes.Padding = New System.Windows.Forms.Padding(3)
-        Me.TabClientes.Size = New System.Drawing.Size(547, 437)
+        Me.TabClientes.Size = New System.Drawing.Size(677, 437)
         Me.TabClientes.TabIndex = 3
         Me.TabClientes.Text = "Clientes"
         Me.TabClientes.UseVisualStyleBackColor = True
@@ -839,7 +807,6 @@ Partial Class Form2
         '
         'TabUsuarios
         '
-        Me.TabUsuarios.Controls.Add(Me.PictureBoxUsuarios)
         Me.TabUsuarios.Controls.Add(Me.CheckBoxPasswdUsuarios)
         Me.TabUsuarios.Controls.Add(Me.CheckBoxUsuarios)
         Me.TabUsuarios.Controls.Add(Me.LabelEstadoUsuarios)
@@ -864,7 +831,7 @@ Partial Class Form2
         Me.TabUsuarios.Location = New System.Drawing.Point(4, 22)
         Me.TabUsuarios.Name = "TabUsuarios"
         Me.TabUsuarios.Padding = New System.Windows.Forms.Padding(3)
-        Me.TabUsuarios.Size = New System.Drawing.Size(670, 437)
+        Me.TabUsuarios.Size = New System.Drawing.Size(677, 437)
         Me.TabUsuarios.TabIndex = 4
         Me.TabUsuarios.Text = "Usuarios"
         Me.TabUsuarios.UseVisualStyleBackColor = True
@@ -873,7 +840,7 @@ Partial Class Form2
         '
         Me.CheckBoxPasswdUsuarios.AutoSize = True
         Me.CheckBoxPasswdUsuarios.Image = CType(resources.GetObject("CheckBoxPasswdUsuarios.Image"), System.Drawing.Image)
-        Me.CheckBoxPasswdUsuarios.Location = New System.Drawing.Point(372, 255)
+        Me.CheckBoxPasswdUsuarios.Location = New System.Drawing.Point(363, 254)
         Me.CheckBoxPasswdUsuarios.Name = "CheckBoxPasswdUsuarios"
         Me.CheckBoxPasswdUsuarios.Size = New System.Drawing.Size(25, 14)
         Me.CheckBoxPasswdUsuarios.TabIndex = 21
@@ -894,7 +861,7 @@ Partial Class Form2
         Me.LabelEstadoUsuarios.AutoSize = True
         Me.LabelEstadoUsuarios.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.LabelEstadoUsuarios.ForeColor = System.Drawing.Color.Red
-        Me.LabelEstadoUsuarios.Location = New System.Drawing.Point(266, 349)
+        Me.LabelEstadoUsuarios.Location = New System.Drawing.Point(257, 348)
         Me.LabelEstadoUsuarios.Name = "LabelEstadoUsuarios"
         Me.LabelEstadoUsuarios.Size = New System.Drawing.Size(0, 13)
         Me.LabelEstadoUsuarios.TabIndex = 18
@@ -902,7 +869,7 @@ Partial Class Form2
         '
         'BotonAceptarUsuarios
         '
-        Me.BotonAceptarUsuarios.Location = New System.Drawing.Point(461, 283)
+        Me.BotonAceptarUsuarios.Location = New System.Drawing.Point(494, 254)
         Me.BotonAceptarUsuarios.Name = "BotonAceptarUsuarios"
         Me.BotonAceptarUsuarios.Size = New System.Drawing.Size(75, 56)
         Me.BotonAceptarUsuarios.TabIndex = 17
@@ -912,7 +879,7 @@ Partial Class Form2
         '
         'BotonCancelarUsuarios
         '
-        Me.BotonCancelarUsuarios.Location = New System.Drawing.Point(461, 193)
+        Me.BotonCancelarUsuarios.Location = New System.Drawing.Point(494, 164)
         Me.BotonCancelarUsuarios.Name = "BotonCancelarUsuarios"
         Me.BotonCancelarUsuarios.Size = New System.Drawing.Size(75, 56)
         Me.BotonCancelarUsuarios.TabIndex = 16
@@ -930,7 +897,7 @@ Partial Class Form2
         '
         'BotonModificarUsuarios
         '
-        Me.BotonModificarUsuarios.Location = New System.Drawing.Point(461, 240)
+        Me.BotonModificarUsuarios.Location = New System.Drawing.Point(494, 211)
         Me.BotonModificarUsuarios.Name = "BotonModificarUsuarios"
         Me.BotonModificarUsuarios.Size = New System.Drawing.Size(75, 56)
         Me.BotonModificarUsuarios.TabIndex = 14
@@ -939,7 +906,7 @@ Partial Class Form2
         '
         'BotonEliminarUsuarios
         '
-        Me.BotonEliminarUsuarios.Location = New System.Drawing.Point(461, 325)
+        Me.BotonEliminarUsuarios.Location = New System.Drawing.Point(494, 296)
         Me.BotonEliminarUsuarios.Name = "BotonEliminarUsuarios"
         Me.BotonEliminarUsuarios.Size = New System.Drawing.Size(75, 56)
         Me.BotonEliminarUsuarios.TabIndex = 13
@@ -948,7 +915,7 @@ Partial Class Form2
         '
         'BotonAgregarUsuarios
         '
-        Me.BotonAgregarUsuarios.Location = New System.Drawing.Point(461, 149)
+        Me.BotonAgregarUsuarios.Location = New System.Drawing.Point(494, 120)
         Me.BotonAgregarUsuarios.Name = "BotonAgregarUsuarios"
         Me.BotonAgregarUsuarios.Size = New System.Drawing.Size(75, 55)
         Me.BotonAgregarUsuarios.TabIndex = 12
@@ -957,7 +924,7 @@ Partial Class Form2
         '
         'TextBoxRangoUsuarios
         '
-        Me.TextBoxRangoUsuarios.Location = New System.Drawing.Point(265, 316)
+        Me.TextBoxRangoUsuarios.Location = New System.Drawing.Point(256, 315)
         Me.TextBoxRangoUsuarios.Name = "TextBoxRangoUsuarios"
         Me.TextBoxRangoUsuarios.ReadOnly = True
         Me.TextBoxRangoUsuarios.Size = New System.Drawing.Size(100, 20)
@@ -965,7 +932,7 @@ Partial Class Form2
         '
         'TextBoxPasswdUsuarios
         '
-        Me.TextBoxPasswdUsuarios.Location = New System.Drawing.Point(265, 252)
+        Me.TextBoxPasswdUsuarios.Location = New System.Drawing.Point(256, 251)
         Me.TextBoxPasswdUsuarios.Name = "TextBoxPasswdUsuarios"
         Me.TextBoxPasswdUsuarios.PasswordChar = Global.Microsoft.VisualBasic.ChrW(43)
         Me.TextBoxPasswdUsuarios.ReadOnly = True
@@ -974,7 +941,7 @@ Partial Class Form2
         '
         'TextBoxNombreUsuarios
         '
-        Me.TextBoxNombreUsuarios.Location = New System.Drawing.Point(265, 184)
+        Me.TextBoxNombreUsuarios.Location = New System.Drawing.Point(256, 183)
         Me.TextBoxNombreUsuarios.Name = "TextBoxNombreUsuarios"
         Me.TextBoxNombreUsuarios.ReadOnly = True
         Me.TextBoxNombreUsuarios.Size = New System.Drawing.Size(100, 20)
@@ -982,7 +949,7 @@ Partial Class Form2
         '
         'TextBoxCiUsuarios
         '
-        Me.TextBoxCiUsuarios.Location = New System.Drawing.Point(265, 120)
+        Me.TextBoxCiUsuarios.Location = New System.Drawing.Point(256, 119)
         Me.TextBoxCiUsuarios.Name = "TextBoxCiUsuarios"
         Me.TextBoxCiUsuarios.ReadOnly = True
         Me.TextBoxCiUsuarios.Size = New System.Drawing.Size(100, 20)
@@ -991,7 +958,7 @@ Partial Class Form2
         'LabelPasswdUsuarios
         '
         Me.LabelPasswdUsuarios.AutoSize = True
-        Me.LabelPasswdUsuarios.Location = New System.Drawing.Point(262, 236)
+        Me.LabelPasswdUsuarios.Location = New System.Drawing.Point(253, 235)
         Me.LabelPasswdUsuarios.Name = "LabelPasswdUsuarios"
         Me.LabelPasswdUsuarios.Size = New System.Drawing.Size(61, 13)
         Me.LabelPasswdUsuarios.TabIndex = 7
@@ -1000,7 +967,7 @@ Partial Class Form2
         'LabelRangoUsuarios
         '
         Me.LabelRangoUsuarios.AutoSize = True
-        Me.LabelRangoUsuarios.Location = New System.Drawing.Point(262, 300)
+        Me.LabelRangoUsuarios.Location = New System.Drawing.Point(253, 299)
         Me.LabelRangoUsuarios.Name = "LabelRangoUsuarios"
         Me.LabelRangoUsuarios.Size = New System.Drawing.Size(39, 13)
         Me.LabelRangoUsuarios.TabIndex = 6
@@ -1009,7 +976,7 @@ Partial Class Form2
         'LabelNombreUsuarios
         '
         Me.LabelNombreUsuarios.AutoSize = True
-        Me.LabelNombreUsuarios.Location = New System.Drawing.Point(262, 168)
+        Me.LabelNombreUsuarios.Location = New System.Drawing.Point(253, 167)
         Me.LabelNombreUsuarios.Name = "LabelNombreUsuarios"
         Me.LabelNombreUsuarios.Size = New System.Drawing.Size(44, 13)
         Me.LabelNombreUsuarios.TabIndex = 5
@@ -1018,7 +985,7 @@ Partial Class Form2
         'LabelCiUsuarios
         '
         Me.LabelCiUsuarios.AutoSize = True
-        Me.LabelCiUsuarios.Location = New System.Drawing.Point(262, 104)
+        Me.LabelCiUsuarios.Location = New System.Drawing.Point(253, 103)
         Me.LabelCiUsuarios.Name = "LabelCiUsuarios"
         Me.LabelCiUsuarios.Size = New System.Drawing.Size(23, 13)
         Me.LabelCiUsuarios.TabIndex = 4
@@ -1057,52 +1024,6 @@ Partial Class Form2
         Me.ComboBoxUsuarios.Size = New System.Drawing.Size(89, 21)
         Me.ComboBoxUsuarios.TabIndex = 0
         '
-        'LabelNombreUsuario
-        '
-        Me.LabelNombreUsuario.AutoSize = True
-        Me.LabelNombreUsuario.Location = New System.Drawing.Point(3, 119)
-        Me.LabelNombreUsuario.Name = "LabelNombreUsuario"
-        Me.LabelNombreUsuario.Size = New System.Drawing.Size(43, 13)
-        Me.LabelNombreUsuario.TabIndex = 1
-        Me.LabelNombreUsuario.Text = "Usuario"
-        '
-        'LabelRangoUsuario
-        '
-        Me.LabelRangoUsuario.AutoSize = True
-        Me.LabelRangoUsuario.Location = New System.Drawing.Point(3, 168)
-        Me.LabelRangoUsuario.Name = "LabelRangoUsuario"
-        Me.LabelRangoUsuario.Size = New System.Drawing.Size(45, 13)
-        Me.LabelRangoUsuario.TabIndex = 2
-        Me.LabelRangoUsuario.Text = "Label11"
-        '
-        'LabelCambioContraseña
-        '
-        Me.LabelCambioContraseña.AutoSize = True
-        Me.LabelCambioContraseña.Location = New System.Drawing.Point(34, 389)
-        Me.LabelCambioContraseña.Name = "LabelCambioContraseña"
-        Me.LabelCambioContraseña.Size = New System.Drawing.Size(61, 26)
-        Me.LabelCambioContraseña.TabIndex = 3
-        Me.LabelCambioContraseña.Text = "Cambiar" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "Contraseña"
-        Me.LabelCambioContraseña.TextAlign = System.Drawing.ContentAlignment.MiddleRight
-        '
-        'BotonCerrarSesion
-        '
-        Me.BotonCerrarSesion.Location = New System.Drawing.Point(12, 418)
-        Me.BotonCerrarSesion.Name = "BotonCerrarSesion"
-        Me.BotonCerrarSesion.Size = New System.Drawing.Size(75, 32)
-        Me.BotonCerrarSesion.TabIndex = 4
-        Me.BotonCerrarSesion.Text = "Salir"
-        Me.BotonCerrarSesion.UseVisualStyleBackColor = True
-        '
-        'PictureBoxUsuarios
-        '
-        Me.PictureBoxUsuarios.InitialImage = Nothing
-        Me.PictureBoxUsuarios.Location = New System.Drawing.Point(446, 22)
-        Me.PictureBoxUsuarios.Name = "PictureBoxUsuarios"
-        Me.PictureBoxUsuarios.Size = New System.Drawing.Size(90, 90)
-        Me.PictureBoxUsuarios.TabIndex = 5
-        Me.PictureBoxUsuarios.TabStop = False
-        '
         'Form2
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -1115,9 +1036,6 @@ Partial Class Form2
         Me.Name = "Form2"
         Me.ShowIcon = False
         Me.Text = "Form2"
-        Me.PanelUsuario.ResumeLayout(False)
-        Me.PanelUsuario.PerformLayout()
-        CType(Me.PictureBox, System.ComponentModel.ISupportInitialize).EndInit()
         Me.TabbedPane.ResumeLayout(False)
         Me.TabGanado.ResumeLayout(False)
         Me.TabGanado.PerformLayout()
@@ -1135,7 +1053,6 @@ Partial Class Form2
         CType(Me.DataGridViewClientes, System.ComponentModel.ISupportInitialize).EndInit()
         Me.TabUsuarios.ResumeLayout(False)
         Me.TabUsuarios.PerformLayout()
-        CType(Me.PictureBoxUsuarios, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
 
     End Sub
@@ -1232,10 +1149,4 @@ Partial Class Form2
     Friend WithEvents LabelEstadoUsuarios As System.Windows.Forms.Label
     Friend WithEvents CheckBoxUsuarios As System.Windows.Forms.CheckBox
     Friend WithEvents CheckBoxPasswdUsuarios As System.Windows.Forms.CheckBox
-    Friend WithEvents PictureBox As System.Windows.Forms.PictureBox
-    Friend WithEvents BotonCerrarSesion As System.Windows.Forms.Button
-    Friend WithEvents LabelCambioContraseña As System.Windows.Forms.Label
-    Friend WithEvents LabelRangoUsuario As System.Windows.Forms.Label
-    Friend WithEvents LabelNombreUsuario As System.Windows.Forms.Label
-    Friend WithEvents PictureBoxUsuarios As System.Windows.Forms.PictureBox
 End Class

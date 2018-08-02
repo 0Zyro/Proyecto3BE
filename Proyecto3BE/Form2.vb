@@ -263,12 +263,7 @@ Public Class Form2
             End If
         Catch ex As Exception
             'Se reportan errores
-            LabelInfoUsuarios.Text = ("Error: " + ex.Message)
-
-            If connection.State = ConnectionState.Open Then
-                connection.Close()
-            End If
-
+            MsgBox("Error: " + ex.Message)
         End Try
     End Sub
 
@@ -305,12 +300,6 @@ Public Class Form2
             TextBoxRangoUsuarios.Text = reader.GetString(3)
             LabelEstadoUsuarios.Text = reader.GetString(4)
 
-            If Dir$("../../Res/profile/" + reader.GetString(5) + ".bmp") <> "" Then
-                PictureBoxUsuarios.Image = Image.FromFile("../../Res/profile/" + reader.GetString(5) + ".bmp")
-            Else
-                PictureBoxUsuarios.Image = Image.FromFile("../../Res/profile/default.bmp")
-            End If
-
             'Se guarda la ci del usuario seleccionado
             CiSeleccionado = TextBoxCiUsuarios.Text
 
@@ -319,10 +308,7 @@ Public Class Form2
 
         Catch ex As Exception
             'Se reportan errores
-            LabelInfoUsuarios.Text = ("Error: " + ex.Message)
-            If connection.State = ConnectionState.Open Then
-                connection.Close()
-            End If
+            MsgBox(ex.Message)
         End Try
     End Sub
 
