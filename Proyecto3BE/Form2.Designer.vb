@@ -143,10 +143,10 @@ Partial Class Form2
         Me.TabbedPane.Controls.Add(Me.TabCompras)
         Me.TabbedPane.Controls.Add(Me.TabClientes)
         Me.TabbedPane.Controls.Add(Me.TabUsuarios)
-        Me.TabbedPane.Location = New System.Drawing.Point(102, 0)
+        Me.TabbedPane.Location = New System.Drawing.Point(106, 0)
         Me.TabbedPane.Name = "TabbedPane"
         Me.TabbedPane.SelectedIndex = 0
-        Me.TabbedPane.Size = New System.Drawing.Size(683, 463)
+        Me.TabbedPane.Size = New System.Drawing.Size(685, 463)
         Me.TabbedPane.TabIndex = 1
         '
         'TabGanado
@@ -498,7 +498,7 @@ Partial Class Form2
         Me.TabCompras.Location = New System.Drawing.Point(4, 22)
         Me.TabCompras.Name = "TabCompras"
         Me.TabCompras.Padding = New System.Windows.Forms.Padding(3)
-        Me.TabCompras.Size = New System.Drawing.Size(675, 437)
+        Me.TabCompras.Size = New System.Drawing.Size(677, 437)
         Me.TabCompras.TabIndex = 2
         Me.TabCompras.Text = "Compras"
         Me.TabCompras.UseVisualStyleBackColor = True
