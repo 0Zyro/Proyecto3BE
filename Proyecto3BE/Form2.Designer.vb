@@ -74,7 +74,6 @@ Partial Class Form2
         Me.Buttonquitarcliente = New System.Windows.Forms.Button()
         Me.Buttonagregarcliente = New System.Windows.Forms.Button()
         Me.TabUsuarios = New System.Windows.Forms.TabPage()
-        Me.CheckBoxPasswdUsuarios = New System.Windows.Forms.CheckBox()
         Me.CheckBoxUsuarios = New System.Windows.Forms.CheckBox()
         Me.LabelEstadoUsuarios = New System.Windows.Forms.Label()
         Me.BotonAceptarUsuarios = New System.Windows.Forms.Button()
@@ -98,6 +97,9 @@ Partial Class Form2
         Me.TabCompras = New System.Windows.Forms.TabPage()
         Me.Panel1 = New System.Windows.Forms.Panel()
         Me.DataGridView3 = New System.Windows.Forms.DataGridView()
+        Me.PictureBox2 = New System.Windows.Forms.PictureBox()
+        Me.PictureBox1 = New System.Windows.Forms.PictureBox()
+        Me.CheckBoxPasswdUsuarios = New System.Windows.Forms.CheckBox()
         Me.TabbedPane.SuspendLayout()
         Me.TabGanado.SuspendLayout()
         CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -110,6 +112,8 @@ Partial Class Form2
         Me.TabCompras.SuspendLayout()
         Me.Panel1.SuspendLayout()
         CType(Me.DataGridView3, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.PictureBox2, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'PanelUsuario
@@ -620,16 +624,6 @@ Partial Class Form2
         Me.TabUsuarios.Text = "Usuarios"
         Me.TabUsuarios.UseVisualStyleBackColor = True
         '
-        'CheckBoxPasswdUsuarios
-        '
-        Me.CheckBoxPasswdUsuarios.AutoSize = True
-        Me.CheckBoxPasswdUsuarios.Image = CType(resources.GetObject("CheckBoxPasswdUsuarios.Image"), System.Drawing.Image)
-        Me.CheckBoxPasswdUsuarios.Location = New System.Drawing.Point(363, 254)
-        Me.CheckBoxPasswdUsuarios.Name = "CheckBoxPasswdUsuarios"
-        Me.CheckBoxPasswdUsuarios.Size = New System.Drawing.Size(25, 14)
-        Me.CheckBoxPasswdUsuarios.TabIndex = 21
-        Me.CheckBoxPasswdUsuarios.UseVisualStyleBackColor = True
-        '
         'CheckBoxUsuarios
         '
         Me.CheckBoxUsuarios.AutoSize = True
@@ -822,6 +816,8 @@ Partial Class Form2
         'Panel1
         '
         Me.Panel1.BackColor = System.Drawing.Color.DimGray
+        Me.Panel1.Controls.Add(Me.PictureBox2)
+        Me.Panel1.Controls.Add(Me.PictureBox1)
         Me.Panel1.Controls.Add(Me.DataGridView3)
         Me.Panel1.Location = New System.Drawing.Point(0, 0)
         Me.Panel1.Name = "Panel1"
@@ -835,6 +831,34 @@ Partial Class Form2
         Me.DataGridView3.Name = "DataGridView3"
         Me.DataGridView3.Size = New System.Drawing.Size(656, 311)
         Me.DataGridView3.TabIndex = 0
+        '
+        'PictureBox2
+        '
+        Me.PictureBox2.Image = Global.WindowsApplication1.My.Resources.Resources.editar
+        Me.PictureBox2.Location = New System.Drawing.Point(124, 390)
+        Me.PictureBox2.Name = "PictureBox2"
+        Me.PictureBox2.Size = New System.Drawing.Size(34, 38)
+        Me.PictureBox2.TabIndex = 2
+        Me.PictureBox2.TabStop = False
+        '
+        'PictureBox1
+        '
+        Me.PictureBox1.Image = Global.WindowsApplication1.My.Resources.Resources.botoncompra
+        Me.PictureBox1.Location = New System.Drawing.Point(46, 391)
+        Me.PictureBox1.Name = "PictureBox1"
+        Me.PictureBox1.Size = New System.Drawing.Size(35, 37)
+        Me.PictureBox1.TabIndex = 1
+        Me.PictureBox1.TabStop = False
+        '
+        'CheckBoxPasswdUsuarios
+        '
+        Me.CheckBoxPasswdUsuarios.AutoSize = True
+        Me.CheckBoxPasswdUsuarios.Image = CType(resources.GetObject("CheckBoxPasswdUsuarios.Image"), System.Drawing.Image)
+        Me.CheckBoxPasswdUsuarios.Location = New System.Drawing.Point(363, 254)
+        Me.CheckBoxPasswdUsuarios.Name = "CheckBoxPasswdUsuarios"
+        Me.CheckBoxPasswdUsuarios.Size = New System.Drawing.Size(25, 14)
+        Me.CheckBoxPasswdUsuarios.TabIndex = 21
+        Me.CheckBoxPasswdUsuarios.UseVisualStyleBackColor = True
         '
         'Form2
         '
@@ -865,6 +889,8 @@ Partial Class Form2
         Me.TabCompras.ResumeLayout(False)
         Me.Panel1.ResumeLayout(False)
         CType(Me.DataGridView3, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.PictureBox2, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
 
     End Sub
@@ -943,4 +969,6 @@ Partial Class Form2
     Friend WithEvents TabCompras As System.Windows.Forms.TabPage
     Friend WithEvents Panel1 As System.Windows.Forms.Panel
     Friend WithEvents DataGridView3 As System.Windows.Forms.DataGridView
+    Friend WithEvents PictureBox1 As System.Windows.Forms.PictureBox
+    Friend WithEvents PictureBox2 As System.Windows.Forms.PictureBox
 End Class
