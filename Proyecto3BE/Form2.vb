@@ -3,6 +3,7 @@ Imports System.Data.OleDb
 Imports MySql.Data.MySqlClient
 
 Public Class Form2
+
     Dim data As String = ("Server=localhost;Database=vacas;User id=root;Password=;Port=3306;")
     'Dim data As String = ("Server=www.db4free.net;Database=database_vacas;User id=zero22394;Password=zero22394;Port=3306;")
 
@@ -193,7 +194,7 @@ Public Class Form2
     Dim rows(0) As String
 
     'Objetos necesarios para la conexion
-    Dim connection As New MySqlConnection(data)
+    Dim connection As New MySqlConnection(Data)
     Dim comando As New MySqlCommand
     Dim reader As MySqlDataReader
 

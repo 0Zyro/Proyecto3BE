@@ -59,6 +59,9 @@ Partial Class Form2
         Me.GBID = New System.Windows.Forms.GroupBox()
         Me.TXTID = New System.Windows.Forms.TextBox()
         Me.Label10 = New System.Windows.Forms.Label()
+        Me.TabCompras = New System.Windows.Forms.TabPage()
+        Me.Panel1 = New System.Windows.Forms.Panel()
+        Me.DataGridView3 = New System.Windows.Forms.DataGridView()
         Me.TabClientes = New System.Windows.Forms.TabPage()
         Me.TextBox9 = New System.Windows.Forms.TextBox()
         Me.TextBox8 = New System.Windows.Forms.TextBox()
@@ -94,24 +97,25 @@ Partial Class Form2
         Me.BotonBusquedaUsuarios = New System.Windows.Forms.Button()
         Me.TextBoxBusquedaUsuarios = New System.Windows.Forms.TextBox()
         Me.ComboBoxUsuarios = New System.Windows.Forms.ComboBox()
-        Me.TabCompras = New System.Windows.Forms.TabPage()
-        Me.Panel1 = New System.Windows.Forms.Panel()
-        Me.DataGridView3 = New System.Windows.Forms.DataGridView()
+        Me.PictureBox3 = New System.Windows.Forms.PictureBox()
         Me.PictureBox2 = New System.Windows.Forms.PictureBox()
         Me.PictureBox1 = New System.Windows.Forms.PictureBox()
         Me.CheckBoxPasswdUsuarios = New System.Windows.Forms.CheckBox()
+        Me.ComboBox1 = New System.Windows.Forms.ComboBox()
+        Me.TextBox1 = New System.Windows.Forms.TextBox()
         Me.TabbedPane.SuspendLayout()
         Me.TabGanado.SuspendLayout()
         CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.TabVentas.SuspendLayout()
         CType(Me.DataGridView2, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.GBID.SuspendLayout()
-        Me.TabClientes.SuspendLayout()
-        CType(Me.DataGridViewClientes, System.ComponentModel.ISupportInitialize).BeginInit()
-        Me.TabUsuarios.SuspendLayout()
         Me.TabCompras.SuspendLayout()
         Me.Panel1.SuspendLayout()
         CType(Me.DataGridView3, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.TabClientes.SuspendLayout()
+        CType(Me.DataGridViewClientes, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.TabUsuarios.SuspendLayout()
+        CType(Me.PictureBox3, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.PictureBox2, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
@@ -460,6 +464,39 @@ Partial Class Form2
         Me.Label10.TabIndex = 13
         Me.Label10.Text = "ID"
         '
+        'TabCompras
+        '
+        Me.TabCompras.Controls.Add(Me.Panel1)
+        Me.TabCompras.Location = New System.Drawing.Point(4, 22)
+        Me.TabCompras.Name = "TabCompras"
+        Me.TabCompras.Padding = New System.Windows.Forms.Padding(3)
+        Me.TabCompras.Size = New System.Drawing.Size(677, 437)
+        Me.TabCompras.TabIndex = 2
+        Me.TabCompras.Text = "Compras"
+        Me.TabCompras.UseVisualStyleBackColor = True
+        '
+        'Panel1
+        '
+        Me.Panel1.BackColor = System.Drawing.Color.DimGray
+        Me.Panel1.Controls.Add(Me.TextBox1)
+        Me.Panel1.Controls.Add(Me.ComboBox1)
+        Me.Panel1.Controls.Add(Me.PictureBox3)
+        Me.Panel1.Controls.Add(Me.PictureBox2)
+        Me.Panel1.Controls.Add(Me.PictureBox1)
+        Me.Panel1.Controls.Add(Me.DataGridView3)
+        Me.Panel1.Location = New System.Drawing.Point(0, 0)
+        Me.Panel1.Name = "Panel1"
+        Me.Panel1.Size = New System.Drawing.Size(671, 438)
+        Me.Panel1.TabIndex = 0
+        '
+        'DataGridView3
+        '
+        Me.DataGridView3.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
+        Me.DataGridView3.Location = New System.Drawing.Point(6, 59)
+        Me.DataGridView3.Name = "DataGridView3"
+        Me.DataGridView3.Size = New System.Drawing.Size(656, 311)
+        Me.DataGridView3.TabIndex = 0
+        '
         'TabClientes
         '
         Me.TabClientes.Controls.Add(Me.TextBox9)
@@ -802,35 +839,14 @@ Partial Class Form2
         Me.ComboBoxUsuarios.Size = New System.Drawing.Size(89, 21)
         Me.ComboBoxUsuarios.TabIndex = 0
         '
-        'TabCompras
+        'PictureBox3
         '
-        Me.TabCompras.Controls.Add(Me.Panel1)
-        Me.TabCompras.Location = New System.Drawing.Point(4, 22)
-        Me.TabCompras.Name = "TabCompras"
-        Me.TabCompras.Padding = New System.Windows.Forms.Padding(3)
-        Me.TabCompras.Size = New System.Drawing.Size(677, 437)
-        Me.TabCompras.TabIndex = 2
-        Me.TabCompras.Text = "Compras"
-        Me.TabCompras.UseVisualStyleBackColor = True
-        '
-        'Panel1
-        '
-        Me.Panel1.BackColor = System.Drawing.Color.DimGray
-        Me.Panel1.Controls.Add(Me.PictureBox2)
-        Me.Panel1.Controls.Add(Me.PictureBox1)
-        Me.Panel1.Controls.Add(Me.DataGridView3)
-        Me.Panel1.Location = New System.Drawing.Point(0, 0)
-        Me.Panel1.Name = "Panel1"
-        Me.Panel1.Size = New System.Drawing.Size(671, 438)
-        Me.Panel1.TabIndex = 0
-        '
-        'DataGridView3
-        '
-        Me.DataGridView3.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.DataGridView3.Location = New System.Drawing.Point(6, 59)
-        Me.DataGridView3.Name = "DataGridView3"
-        Me.DataGridView3.Size = New System.Drawing.Size(656, 311)
-        Me.DataGridView3.TabIndex = 0
+        Me.PictureBox3.Image = Global.WindowsApplication1.My.Resources.Resources.Botonbuscar
+        Me.PictureBox3.Location = New System.Drawing.Point(639, 21)
+        Me.PictureBox3.Name = "PictureBox3"
+        Me.PictureBox3.Size = New System.Drawing.Size(23, 19)
+        Me.PictureBox3.TabIndex = 3
+        Me.PictureBox3.TabStop = False
         '
         'PictureBox2
         '
@@ -860,6 +876,21 @@ Partial Class Form2
         Me.CheckBoxPasswdUsuarios.TabIndex = 21
         Me.CheckBoxPasswdUsuarios.UseVisualStyleBackColor = True
         '
+        'ComboBox1
+        '
+        Me.ComboBox1.FormattingEnabled = True
+        Me.ComboBox1.Location = New System.Drawing.Point(498, 19)
+        Me.ComboBox1.Name = "ComboBox1"
+        Me.ComboBox1.Size = New System.Drawing.Size(135, 21)
+        Me.ComboBox1.TabIndex = 4
+        '
+        'TextBox1
+        '
+        Me.TextBox1.Location = New System.Drawing.Point(6, 20)
+        Me.TextBox1.Name = "TextBox1"
+        Me.TextBox1.Size = New System.Drawing.Size(486, 20)
+        Me.TextBox1.TabIndex = 5
+        '
         'Form2
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -881,14 +912,16 @@ Partial Class Form2
         CType(Me.DataGridView2, System.ComponentModel.ISupportInitialize).EndInit()
         Me.GBID.ResumeLayout(False)
         Me.GBID.PerformLayout()
+        Me.TabCompras.ResumeLayout(False)
+        Me.Panel1.ResumeLayout(False)
+        Me.Panel1.PerformLayout()
+        CType(Me.DataGridView3, System.ComponentModel.ISupportInitialize).EndInit()
         Me.TabClientes.ResumeLayout(False)
         Me.TabClientes.PerformLayout()
         CType(Me.DataGridViewClientes, System.ComponentModel.ISupportInitialize).EndInit()
         Me.TabUsuarios.ResumeLayout(False)
         Me.TabUsuarios.PerformLayout()
-        Me.TabCompras.ResumeLayout(False)
-        Me.Panel1.ResumeLayout(False)
-        CType(Me.DataGridView3, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.PictureBox3, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.PictureBox2, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
@@ -971,4 +1004,7 @@ Partial Class Form2
     Friend WithEvents DataGridView3 As System.Windows.Forms.DataGridView
     Friend WithEvents PictureBox1 As System.Windows.Forms.PictureBox
     Friend WithEvents PictureBox2 As System.Windows.Forms.PictureBox
+    Friend WithEvents PictureBox3 As System.Windows.Forms.PictureBox
+    Friend WithEvents TextBox1 As System.Windows.Forms.TextBox
+    Friend WithEvents ComboBox1 As System.Windows.Forms.ComboBox
 End Class
