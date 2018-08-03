@@ -12,8 +12,8 @@ Public Class Form2
     Public Conexion As MySqlDataAdapter
     Public Tabla As DataTable
     Public Consulta As String
-    Public MysqlConexion As MySqlConnection = New MySqlConnection(Data)
-
+    Public MysqlConexion As MySqlConnection = New MySqlConnection(data)
+    
     Public Sub consultar()
         Try
             Conexion = New MySqlDataAdapter(Consulta, data)
@@ -23,7 +23,6 @@ Public Class Form2
             MsgBox(ex.Message)
         End Try
     End Sub
-
     Private Sub TabGanado_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles TabGanado.Click
 
         Consulta = "select * from ganado"
@@ -522,8 +521,13 @@ Public Class Form2
     End Sub
 
     Private Sub Form2_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
-
+        Consulta = "select * from compra"
+        consultar()
+        DataGridViewCompras.DataSource = Tabla
         ComboBoxUsuarios.SelectedIndex = 0
+        Panelprincipalcompras.BringToFront()
+        Panelagregarcompras.SendToBack()
+        Panelmodificarcompras.SendToBack()
 
     End Sub
 
@@ -580,6 +584,7 @@ Public Class Form2
             'Muestra mensaje que todos los campos no estan completos
             MsgBox("Complete todos los campos vacios")
         End If
+
     End Sub
 
     Private Sub Clearcompras_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Clearcompras.Click
@@ -618,4 +623,49 @@ Public Class Form2
 
     End Sub
 
+    Private Sub Volvermodificarcompra_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Volvermodificarcompra.Click
+        Panelmodificarcompras.Enabled = False
+        Panelmodificarcompras.Visible = False
+        Panelmodificarcompras.SendToBack()
+
+
+
+
+        Panelprincipalcompras.Enabled = True
+        Panelprincipalcompras.Visible = True
+        Panelprincipalcompras.BringToFront()
+    End Sub
+
+    Private Sub Limpiarmodificarcompras_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Limpiarmodificarcompras.Click
+        Modificarcomentariocompra.Clear()
+        Modificarfechacompra.Clear()
+        Modificartotalapagarcompra.Clear()
+
+
+
+    End Sub
+
+    Private Sub Agregarmodificacioncompras_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Agregarmodificacioncompras.Click
+        If Modificarfechacompra.Text <> "" And Modificarcomentariocompra.Text <> "" And Modificartotalapagarcompra.Text <> "" Then
+            If IsNumeric(Modificartotalapagarcompra.Text) Then
+                'Agrega los valores de los campos a cada tabla correspondiente
+                Consulta = "upgrade compra set (0,'" & Modificarfechacompra.Text & "','" & Modificarcomentariocompra.Text & "','" & Modificartotalapagarcompra.Text & "')"
+                consultar()
+                Consulta = "select * from compra"
+                consultar()
+                'Actualiza la BD
+                DataGridViewCompras.DataSource = Tabla
+                'Deja a los textbox vacios para ingresar nuevos datos
+                Modificarfechacompra.Text = ""
+                Modificarcomentariocompra.Text = ""
+                Modificartotalapagarcompra.Text = ""
+            Else
+                'Muestra mensaje diciendo que no se ingresaron valores numericos o que solo acepta valores numericos
+                MsgBox("Igrese solo valor numerico en total")
+            End If
+        Else
+            'Muestra mensaje que todos los campos no estan completos
+            MsgBox("Complete todos los campos vacios")
+        End If
+    End Sub
 End Class

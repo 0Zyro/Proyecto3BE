@@ -15,6 +15,10 @@ Proyecto3BE
   Overrides the current thread's CurrentUICulture property for all
   resource lookups using this strongly typed resource class.
 </summary>
+</member><member name="P:WindowsApplication1.My.Resources.Resources.anadir">
+	<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
 </member><member name="P:WindowsApplication1.My.Resources.Resources.boton_volver">
 	<summary>
   Looks up a localized resource of type System.Drawing.Bitmap.
@@ -28,6 +32,14 @@ Proyecto3BE
   Looks up a localized resource of type System.Drawing.Bitmap.
 </summary>
 </member><member name="P:WindowsApplication1.My.Resources.Resources.editar">
+	<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member><member name="P:WindowsApplication1.My.Resources.Resources.flecha_hacia_la_izquierda">
+	<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member><member name="P:WindowsApplication1.My.Resources.Resources.goma_de_borrar">
 	<summary>
   Looks up a localized resource of type System.Drawing.Bitmap.
 </summary>
