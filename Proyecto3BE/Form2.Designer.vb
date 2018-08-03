@@ -124,28 +124,35 @@ Partial Class Form2
         Me.BOTONquitarcliente = New System.Windows.Forms.Button()
         Me.BOTONnagregarcliente = New System.Windows.Forms.Button()
         Me.TabUsuarios = New System.Windows.Forms.TabPage()
-        Me.CheckBoxPasswdUsuarios = New System.Windows.Forms.CheckBox()
-        Me.CheckBoxUsuarios = New System.Windows.Forms.CheckBox()
-        Me.LabelEstadoUsuarios = New System.Windows.Forms.Label()
-        Me.BotonAceptarUsuarios = New System.Windows.Forms.Button()
-        Me.BotonCancelarUsuarios = New System.Windows.Forms.Button()
         Me.LabelInfoUsuarios = New System.Windows.Forms.Label()
-        Me.BotonModificarUsuarios = New System.Windows.Forms.Button()
-        Me.BotonEliminarUsuarios = New System.Windows.Forms.Button()
-        Me.BotonAgregarUsuarios = New System.Windows.Forms.Button()
-        Me.TextBoxRangoUsuarios = New System.Windows.Forms.TextBox()
-        Me.TextBoxPasswdUsuarios = New System.Windows.Forms.TextBox()
-        Me.TextBoxNombreUsuarios = New System.Windows.Forms.TextBox()
-        Me.TextBoxCiUsuarios = New System.Windows.Forms.TextBox()
-        Me.LabelPasswdUsuarios = New System.Windows.Forms.Label()
-        Me.LabelRangoUsuarios = New System.Windows.Forms.Label()
-        Me.LabelNombreUsuarios = New System.Windows.Forms.Label()
-        Me.LabelCiUsuarios = New System.Windows.Forms.Label()
-        Me.ListBoxUsuarios = New System.Windows.Forms.ListBox()
-        Me.BotonBusquedaUsuarios = New System.Windows.Forms.Button()
-        Me.TextBoxBusquedaUsuarios = New System.Windows.Forms.TextBox()
-        Me.ComboBoxUsuarios = New System.Windows.Forms.ComboBox()
         Me.ToolTip1 = New System.Windows.Forms.ToolTip(Me.components)
+        Me.BotonCerrarSesion = New System.Windows.Forms.Button()
+        Me.LabelCambioContraseña = New System.Windows.Forms.Label()
+        Me.LabelRangoUsuario = New System.Windows.Forms.Label()
+        Me.LabelNombreUsuario = New System.Windows.Forms.Label()
+        Me.PictureBox = New System.Windows.Forms.PictureBox()
+        Me.ComboBoxUsuarios = New System.Windows.Forms.ComboBox()
+        Me.TextBoxBusquedaUsuarios = New System.Windows.Forms.TextBox()
+        Me.BotonBusquedaUsuarios = New System.Windows.Forms.Button()
+        Me.ListBoxUsuarios = New System.Windows.Forms.ListBox()
+        Me.LabelCiUsuarios = New System.Windows.Forms.Label()
+        Me.LabelNombreUsuarios = New System.Windows.Forms.Label()
+        Me.LabelRangoUsuarios = New System.Windows.Forms.Label()
+        Me.LabelPasswdUsuarios = New System.Windows.Forms.Label()
+        Me.TextBoxCiUsuarios = New System.Windows.Forms.TextBox()
+        Me.TextBoxNombreUsuarios = New System.Windows.Forms.TextBox()
+        Me.TextBoxPasswdUsuarios = New System.Windows.Forms.TextBox()
+        Me.TextBoxRangoUsuarios = New System.Windows.Forms.TextBox()
+        Me.BotonAgregarUsuarios = New System.Windows.Forms.Button()
+        Me.BotonEliminarUsuarios = New System.Windows.Forms.Button()
+        Me.BotonModificarUsuarios = New System.Windows.Forms.Button()
+        Me.BotonCancelarUsuarios = New System.Windows.Forms.Button()
+        Me.BotonAceptarUsuarios = New System.Windows.Forms.Button()
+        Me.LabelEstadoUsuarios = New System.Windows.Forms.Label()
+        Me.CheckBoxUsuarios = New System.Windows.Forms.CheckBox()
+        Me.CheckBoxPasswdUsuarios = New System.Windows.Forms.CheckBox()
+        Me.PictureBoxUsuarios = New System.Windows.Forms.PictureBox()
+        Me.PanelUsuario.SuspendLayout()
         Me.TabbedPane.SuspendLayout()
         Me.TabGanado.SuspendLayout()
         CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -171,10 +178,17 @@ Partial Class Form2
         Me.PanelAgragarcliente.SuspendLayout()
         CType(Me.DataGridViewClientes, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.TabUsuarios.SuspendLayout()
+        CType(Me.PictureBox, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.PictureBoxUsuarios, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'PanelUsuario
         '
+        Me.PanelUsuario.Controls.Add(Me.BotonCerrarSesion)
+        Me.PanelUsuario.Controls.Add(Me.PictureBox)
+        Me.PanelUsuario.Controls.Add(Me.LabelCambioContraseña)
+        Me.PanelUsuario.Controls.Add(Me.LabelNombreUsuario)
+        Me.PanelUsuario.Controls.Add(Me.LabelRangoUsuario)
         Me.PanelUsuario.Location = New System.Drawing.Point(0, 0)
         Me.PanelUsuario.Name = "PanelUsuario"
         Me.PanelUsuario.Size = New System.Drawing.Size(100, 460)
@@ -834,7 +848,7 @@ Partial Class Form2
         '
         Me.Button8.AccessibleRole = System.Windows.Forms.AccessibleRole.None
         Me.Button8.BackColor = System.Drawing.Color.HotPink
-        Me.Button8.Font = New System.Drawing.Font("Arial Narrow", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Button8.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Button8.Location = New System.Drawing.Point(349, 42)
         Me.Button8.Name = "Button8"
         Me.Button8.Size = New System.Drawing.Size(84, 33)
@@ -1119,7 +1133,7 @@ Partial Class Form2
         '
         Me.BOTONseleccionarcliente.AccessibleRole = System.Windows.Forms.AccessibleRole.None
         Me.BOTONseleccionarcliente.BackColor = System.Drawing.Color.HotPink
-        Me.BOTONseleccionarcliente.Font = New System.Drawing.Font("Arial Narrow", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.BOTONseleccionarcliente.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.BOTONseleccionarcliente.Location = New System.Drawing.Point(498, 147)
         Me.BOTONseleccionarcliente.Name = "BOTONseleccionarcliente"
         Me.BOTONseleccionarcliente.Size = New System.Drawing.Size(116, 78)
@@ -1131,7 +1145,7 @@ Partial Class Form2
         '
         Me.BOTONquitarcliente.AccessibleRole = System.Windows.Forms.AccessibleRole.None
         Me.BOTONquitarcliente.BackColor = System.Drawing.Color.HotPink
-        Me.BOTONquitarcliente.Font = New System.Drawing.Font("Arial Narrow", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.BOTONquitarcliente.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.BOTONquitarcliente.Location = New System.Drawing.Point(498, 256)
         Me.BOTONquitarcliente.Name = "BOTONquitarcliente"
         Me.BOTONquitarcliente.Size = New System.Drawing.Size(116, 67)
@@ -1143,7 +1157,7 @@ Partial Class Form2
         '
         Me.BOTONnagregarcliente.AccessibleRole = System.Windows.Forms.AccessibleRole.None
         Me.BOTONnagregarcliente.BackColor = System.Drawing.Color.HotPink
-        Me.BOTONnagregarcliente.Font = New System.Drawing.Font("Arial Narrow", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.BOTONnagregarcliente.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.BOTONnagregarcliente.Location = New System.Drawing.Point(498, 43)
         Me.BOTONnagregarcliente.Name = "BOTONnagregarcliente"
         Me.BOTONnagregarcliente.Size = New System.Drawing.Size(116, 78)
@@ -1153,6 +1167,7 @@ Partial Class Form2
         '
         'TabUsuarios
         '
+        Me.TabUsuarios.Controls.Add(Me.PictureBoxUsuarios)
         Me.TabUsuarios.Controls.Add(Me.CheckBoxPasswdUsuarios)
         Me.TabUsuarios.Controls.Add(Me.CheckBoxUsuarios)
         Me.TabUsuarios.Controls.Add(Me.LabelEstadoUsuarios)
@@ -1182,15 +1197,220 @@ Partial Class Form2
         Me.TabUsuarios.Text = "Usuarios"
         Me.TabUsuarios.UseVisualStyleBackColor = True
         '
-        'CheckBoxPasswdUsuarios
+        'LabelInfoUsuarios
         '
-        Me.CheckBoxPasswdUsuarios.AutoSize = True
-        Me.CheckBoxPasswdUsuarios.Image = CType(resources.GetObject("CheckBoxPasswdUsuarios.Image"), System.Drawing.Image)
-        Me.CheckBoxPasswdUsuarios.Location = New System.Drawing.Point(363, 254)
-        Me.CheckBoxPasswdUsuarios.Name = "CheckBoxPasswdUsuarios"
-        Me.CheckBoxPasswdUsuarios.Size = New System.Drawing.Size(25, 14)
-        Me.CheckBoxPasswdUsuarios.TabIndex = 21
-        Me.CheckBoxPasswdUsuarios.UseVisualStyleBackColor = True
+        Me.LabelInfoUsuarios.AutoSize = True
+        Me.LabelInfoUsuarios.Location = New System.Drawing.Point(7, 415)
+        Me.LabelInfoUsuarios.Name = "LabelInfoUsuarios"
+        Me.LabelInfoUsuarios.Size = New System.Drawing.Size(0, 13)
+        Me.LabelInfoUsuarios.TabIndex = 15
+        '
+        'BotonCerrarSesion
+        '
+        Me.BotonCerrarSesion.Location = New System.Drawing.Point(12, 418)
+        Me.BotonCerrarSesion.Name = "BotonCerrarSesion"
+        Me.BotonCerrarSesion.Size = New System.Drawing.Size(75, 32)
+        Me.BotonCerrarSesion.TabIndex = 18
+        Me.BotonCerrarSesion.Text = "Salir"
+        Me.BotonCerrarSesion.UseVisualStyleBackColor = True
+        '
+        'LabelCambioContraseña
+        '
+        Me.LabelCambioContraseña.AutoSize = True
+        Me.LabelCambioContraseña.Location = New System.Drawing.Point(34, 389)
+        Me.LabelCambioContraseña.Name = "LabelCambioContraseña"
+        Me.LabelCambioContraseña.Size = New System.Drawing.Size(61, 26)
+        Me.LabelCambioContraseña.TabIndex = 17
+        Me.LabelCambioContraseña.Text = "Cambiar" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "Contraseña"
+        Me.LabelCambioContraseña.TextAlign = System.Drawing.ContentAlignment.MiddleRight
+        '
+        'LabelRangoUsuario
+        '
+        Me.LabelRangoUsuario.AutoSize = True
+        Me.LabelRangoUsuario.Location = New System.Drawing.Point(1, 166)
+        Me.LabelRangoUsuario.Name = "LabelRangoUsuario"
+        Me.LabelRangoUsuario.Size = New System.Drawing.Size(45, 13)
+        Me.LabelRangoUsuario.TabIndex = 16
+        Me.LabelRangoUsuario.Text = "Label11"
+        '
+        'LabelNombreUsuario
+        '
+        Me.LabelNombreUsuario.AutoSize = True
+        Me.LabelNombreUsuario.Location = New System.Drawing.Point(1, 117)
+        Me.LabelNombreUsuario.Name = "LabelNombreUsuario"
+        Me.LabelNombreUsuario.Size = New System.Drawing.Size(43, 13)
+        Me.LabelNombreUsuario.TabIndex = 15
+        Me.LabelNombreUsuario.Text = "Usuario"
+        '
+        'PictureBox
+        '
+        Me.PictureBox.Image = CType(resources.GetObject("PictureBox.Image"), System.Drawing.Image)
+        Me.PictureBox.InitialImage = Nothing
+        Me.PictureBox.Location = New System.Drawing.Point(5, 5)
+        Me.PictureBox.Name = "PictureBox"
+        Me.PictureBox.Size = New System.Drawing.Size(90, 90)
+        Me.PictureBox.TabIndex = 14
+        Me.PictureBox.TabStop = False
+        '
+        'ComboBoxUsuarios
+        '
+        Me.ComboBoxUsuarios.FormattingEnabled = True
+        Me.ComboBoxUsuarios.Items.AddRange(New Object() {"CI", "Nombre", "Contrasena", "Rango"})
+        Me.ComboBoxUsuarios.Location = New System.Drawing.Point(6, 20)
+        Me.ComboBoxUsuarios.Name = "ComboBoxUsuarios"
+        Me.ComboBoxUsuarios.Size = New System.Drawing.Size(89, 21)
+        Me.ComboBoxUsuarios.TabIndex = 0
+        '
+        'TextBoxBusquedaUsuarios
+        '
+        Me.TextBoxBusquedaUsuarios.Location = New System.Drawing.Point(101, 20)
+        Me.TextBoxBusquedaUsuarios.Name = "TextBoxBusquedaUsuarios"
+        Me.TextBoxBusquedaUsuarios.Size = New System.Drawing.Size(128, 20)
+        Me.TextBoxBusquedaUsuarios.TabIndex = 1
+        '
+        'BotonBusquedaUsuarios
+        '
+        Me.BotonBusquedaUsuarios.Location = New System.Drawing.Point(235, 18)
+        Me.BotonBusquedaUsuarios.Name = "BotonBusquedaUsuarios"
+        Me.BotonBusquedaUsuarios.Size = New System.Drawing.Size(55, 23)
+        Me.BotonBusquedaUsuarios.TabIndex = 2
+        Me.BotonBusquedaUsuarios.Text = "Buscar"
+        Me.BotonBusquedaUsuarios.UseVisualStyleBackColor = True
+        '
+        'ListBoxUsuarios
+        '
+        Me.ListBoxUsuarios.FormattingEnabled = True
+        Me.ListBoxUsuarios.Location = New System.Drawing.Point(7, 55)
+        Me.ListBoxUsuarios.Name = "ListBoxUsuarios"
+        Me.ListBoxUsuarios.Size = New System.Drawing.Size(222, 355)
+        Me.ListBoxUsuarios.TabIndex = 3
+        '
+        'LabelCiUsuarios
+        '
+        Me.LabelCiUsuarios.AutoSize = True
+        Me.LabelCiUsuarios.Location = New System.Drawing.Point(262, 121)
+        Me.LabelCiUsuarios.Name = "LabelCiUsuarios"
+        Me.LabelCiUsuarios.Size = New System.Drawing.Size(23, 13)
+        Me.LabelCiUsuarios.TabIndex = 4
+        Me.LabelCiUsuarios.Text = "C.I."
+        '
+        'LabelNombreUsuarios
+        '
+        Me.LabelNombreUsuarios.AutoSize = True
+        Me.LabelNombreUsuarios.Location = New System.Drawing.Point(262, 185)
+        Me.LabelNombreUsuarios.Name = "LabelNombreUsuarios"
+        Me.LabelNombreUsuarios.Size = New System.Drawing.Size(44, 13)
+        Me.LabelNombreUsuarios.TabIndex = 5
+        Me.LabelNombreUsuarios.Text = "Nombre"
+        '
+        'LabelRangoUsuarios
+        '
+        Me.LabelRangoUsuarios.AutoSize = True
+        Me.LabelRangoUsuarios.Location = New System.Drawing.Point(262, 317)
+        Me.LabelRangoUsuarios.Name = "LabelRangoUsuarios"
+        Me.LabelRangoUsuarios.Size = New System.Drawing.Size(39, 13)
+        Me.LabelRangoUsuarios.TabIndex = 6
+        Me.LabelRangoUsuarios.Text = "Rango"
+        '
+        'LabelPasswdUsuarios
+        '
+        Me.LabelPasswdUsuarios.AutoSize = True
+        Me.LabelPasswdUsuarios.Location = New System.Drawing.Point(262, 253)
+        Me.LabelPasswdUsuarios.Name = "LabelPasswdUsuarios"
+        Me.LabelPasswdUsuarios.Size = New System.Drawing.Size(61, 13)
+        Me.LabelPasswdUsuarios.TabIndex = 7
+        Me.LabelPasswdUsuarios.Text = "Contraseña"
+        '
+        'TextBoxCiUsuarios
+        '
+        Me.TextBoxCiUsuarios.Location = New System.Drawing.Point(265, 137)
+        Me.TextBoxCiUsuarios.Name = "TextBoxCiUsuarios"
+        Me.TextBoxCiUsuarios.ReadOnly = True
+        Me.TextBoxCiUsuarios.Size = New System.Drawing.Size(100, 20)
+        Me.TextBoxCiUsuarios.TabIndex = 8
+        '
+        'TextBoxNombreUsuarios
+        '
+        Me.TextBoxNombreUsuarios.Location = New System.Drawing.Point(265, 201)
+        Me.TextBoxNombreUsuarios.Name = "TextBoxNombreUsuarios"
+        Me.TextBoxNombreUsuarios.ReadOnly = True
+        Me.TextBoxNombreUsuarios.Size = New System.Drawing.Size(100, 20)
+        Me.TextBoxNombreUsuarios.TabIndex = 9
+        '
+        'TextBoxPasswdUsuarios
+        '
+        Me.TextBoxPasswdUsuarios.Location = New System.Drawing.Point(265, 269)
+        Me.TextBoxPasswdUsuarios.Name = "TextBoxPasswdUsuarios"
+        Me.TextBoxPasswdUsuarios.PasswordChar = Global.Microsoft.VisualBasic.ChrW(43)
+        Me.TextBoxPasswdUsuarios.ReadOnly = True
+        Me.TextBoxPasswdUsuarios.Size = New System.Drawing.Size(100, 20)
+        Me.TextBoxPasswdUsuarios.TabIndex = 10
+        '
+        'TextBoxRangoUsuarios
+        '
+        Me.TextBoxRangoUsuarios.Location = New System.Drawing.Point(265, 333)
+        Me.TextBoxRangoUsuarios.Name = "TextBoxRangoUsuarios"
+        Me.TextBoxRangoUsuarios.ReadOnly = True
+        Me.TextBoxRangoUsuarios.Size = New System.Drawing.Size(100, 20)
+        Me.TextBoxRangoUsuarios.TabIndex = 11
+        '
+        'BotonAgregarUsuarios
+        '
+        Me.BotonAgregarUsuarios.Location = New System.Drawing.Point(494, 144)
+        Me.BotonAgregarUsuarios.Name = "BotonAgregarUsuarios"
+        Me.BotonAgregarUsuarios.Size = New System.Drawing.Size(75, 55)
+        Me.BotonAgregarUsuarios.TabIndex = 12
+        Me.BotonAgregarUsuarios.Text = "Agregar"
+        Me.BotonAgregarUsuarios.UseVisualStyleBackColor = True
+        '
+        'BotonEliminarUsuarios
+        '
+        Me.BotonEliminarUsuarios.Location = New System.Drawing.Point(494, 320)
+        Me.BotonEliminarUsuarios.Name = "BotonEliminarUsuarios"
+        Me.BotonEliminarUsuarios.Size = New System.Drawing.Size(75, 56)
+        Me.BotonEliminarUsuarios.TabIndex = 13
+        Me.BotonEliminarUsuarios.Text = "Eliminar"
+        Me.BotonEliminarUsuarios.UseVisualStyleBackColor = True
+        '
+        'BotonModificarUsuarios
+        '
+        Me.BotonModificarUsuarios.Location = New System.Drawing.Point(494, 235)
+        Me.BotonModificarUsuarios.Name = "BotonModificarUsuarios"
+        Me.BotonModificarUsuarios.Size = New System.Drawing.Size(75, 56)
+        Me.BotonModificarUsuarios.TabIndex = 14
+        Me.BotonModificarUsuarios.Text = "Modificar"
+        Me.BotonModificarUsuarios.UseVisualStyleBackColor = True
+        '
+        'BotonCancelarUsuarios
+        '
+        Me.BotonCancelarUsuarios.Location = New System.Drawing.Point(494, 188)
+        Me.BotonCancelarUsuarios.Name = "BotonCancelarUsuarios"
+        Me.BotonCancelarUsuarios.Size = New System.Drawing.Size(75, 56)
+        Me.BotonCancelarUsuarios.TabIndex = 16
+        Me.BotonCancelarUsuarios.Text = "Cancelar"
+        Me.BotonCancelarUsuarios.UseVisualStyleBackColor = True
+        Me.BotonCancelarUsuarios.Visible = False
+        '
+        'BotonAceptarUsuarios
+        '
+        Me.BotonAceptarUsuarios.Location = New System.Drawing.Point(494, 278)
+        Me.BotonAceptarUsuarios.Name = "BotonAceptarUsuarios"
+        Me.BotonAceptarUsuarios.Size = New System.Drawing.Size(75, 56)
+        Me.BotonAceptarUsuarios.TabIndex = 17
+        Me.BotonAceptarUsuarios.Text = "Aceptar"
+        Me.BotonAceptarUsuarios.UseVisualStyleBackColor = True
+        Me.BotonAceptarUsuarios.Visible = False
+        '
+        'LabelEstadoUsuarios
+        '
+        Me.LabelEstadoUsuarios.AutoSize = True
+        Me.LabelEstadoUsuarios.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.LabelEstadoUsuarios.ForeColor = System.Drawing.Color.Red
+        Me.LabelEstadoUsuarios.Location = New System.Drawing.Point(266, 366)
+        Me.LabelEstadoUsuarios.Name = "LabelEstadoUsuarios"
+        Me.LabelEstadoUsuarios.Size = New System.Drawing.Size(0, 13)
+        Me.LabelEstadoUsuarios.TabIndex = 18
+        Me.LabelEstadoUsuarios.Visible = False
         '
         'CheckBoxUsuarios
         '
@@ -1202,179 +1422,30 @@ Partial Class Form2
         Me.CheckBoxUsuarios.Text = "Inactivos"
         Me.CheckBoxUsuarios.UseVisualStyleBackColor = True
         '
-        'LabelEstadoUsuarios
+        'CheckBoxPasswdUsuarios
         '
-        Me.LabelEstadoUsuarios.AutoSize = True
-        Me.LabelEstadoUsuarios.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.LabelEstadoUsuarios.ForeColor = System.Drawing.Color.Red
-        Me.LabelEstadoUsuarios.Location = New System.Drawing.Point(257, 348)
-        Me.LabelEstadoUsuarios.Name = "LabelEstadoUsuarios"
-        Me.LabelEstadoUsuarios.Size = New System.Drawing.Size(0, 13)
-        Me.LabelEstadoUsuarios.TabIndex = 18
-        Me.LabelEstadoUsuarios.Visible = False
+        Me.CheckBoxPasswdUsuarios.AutoSize = True
+        Me.CheckBoxPasswdUsuarios.Image = CType(resources.GetObject("CheckBoxPasswdUsuarios.Image"), System.Drawing.Image)
+        Me.CheckBoxPasswdUsuarios.Location = New System.Drawing.Point(372, 272)
+        Me.CheckBoxPasswdUsuarios.Name = "CheckBoxPasswdUsuarios"
+        Me.CheckBoxPasswdUsuarios.Size = New System.Drawing.Size(25, 14)
+        Me.CheckBoxPasswdUsuarios.TabIndex = 21
+        Me.CheckBoxPasswdUsuarios.UseVisualStyleBackColor = True
         '
-        'BotonAceptarUsuarios
+        'PictureBoxUsuarios
         '
-        Me.BotonAceptarUsuarios.Location = New System.Drawing.Point(494, 254)
-        Me.BotonAceptarUsuarios.Name = "BotonAceptarUsuarios"
-        Me.BotonAceptarUsuarios.Size = New System.Drawing.Size(75, 56)
-        Me.BotonAceptarUsuarios.TabIndex = 17
-        Me.BotonAceptarUsuarios.Text = "Aceptar"
-        Me.BotonAceptarUsuarios.UseVisualStyleBackColor = True
-        Me.BotonAceptarUsuarios.Visible = False
-        '
-        'BotonCancelarUsuarios
-        '
-        Me.BotonCancelarUsuarios.Location = New System.Drawing.Point(494, 164)
-        Me.BotonCancelarUsuarios.Name = "BotonCancelarUsuarios"
-        Me.BotonCancelarUsuarios.Size = New System.Drawing.Size(75, 56)
-        Me.BotonCancelarUsuarios.TabIndex = 16
-        Me.BotonCancelarUsuarios.Text = "Cancelar"
-        Me.BotonCancelarUsuarios.UseVisualStyleBackColor = True
-        Me.BotonCancelarUsuarios.Visible = False
-        '
-        'LabelInfoUsuarios
-        '
-        Me.LabelInfoUsuarios.AutoSize = True
-        Me.LabelInfoUsuarios.Location = New System.Drawing.Point(7, 415)
-        Me.LabelInfoUsuarios.Name = "LabelInfoUsuarios"
-        Me.LabelInfoUsuarios.Size = New System.Drawing.Size(0, 13)
-        Me.LabelInfoUsuarios.TabIndex = 15
-        '
-        'BotonModificarUsuarios
-        '
-        Me.BotonModificarUsuarios.Location = New System.Drawing.Point(494, 211)
-        Me.BotonModificarUsuarios.Name = "BotonModificarUsuarios"
-        Me.BotonModificarUsuarios.Size = New System.Drawing.Size(75, 56)
-        Me.BotonModificarUsuarios.TabIndex = 14
-        Me.BotonModificarUsuarios.Text = "Modificar"
-        Me.BotonModificarUsuarios.UseVisualStyleBackColor = True
-        '
-        'BotonEliminarUsuarios
-        '
-        Me.BotonEliminarUsuarios.Location = New System.Drawing.Point(494, 296)
-        Me.BotonEliminarUsuarios.Name = "BotonEliminarUsuarios"
-        Me.BotonEliminarUsuarios.Size = New System.Drawing.Size(75, 56)
-        Me.BotonEliminarUsuarios.TabIndex = 13
-        Me.BotonEliminarUsuarios.Text = "Eliminar"
-        Me.BotonEliminarUsuarios.UseVisualStyleBackColor = True
-        '
-        'BotonAgregarUsuarios
-        '
-        Me.BotonAgregarUsuarios.Location = New System.Drawing.Point(494, 120)
-        Me.BotonAgregarUsuarios.Name = "BotonAgregarUsuarios"
-        Me.BotonAgregarUsuarios.Size = New System.Drawing.Size(75, 55)
-        Me.BotonAgregarUsuarios.TabIndex = 12
-        Me.BotonAgregarUsuarios.Text = "Agregar"
-        Me.BotonAgregarUsuarios.UseVisualStyleBackColor = True
-        '
-        'TextBoxRangoUsuarios
-        '
-        Me.TextBoxRangoUsuarios.Location = New System.Drawing.Point(256, 315)
-        Me.TextBoxRangoUsuarios.Name = "TextBoxRangoUsuarios"
-        Me.TextBoxRangoUsuarios.ReadOnly = True
-        Me.TextBoxRangoUsuarios.Size = New System.Drawing.Size(100, 20)
-        Me.TextBoxRangoUsuarios.TabIndex = 11
-        '
-        'TextBoxPasswdUsuarios
-        '
-        Me.TextBoxPasswdUsuarios.Location = New System.Drawing.Point(256, 251)
-        Me.TextBoxPasswdUsuarios.Name = "TextBoxPasswdUsuarios"
-        Me.TextBoxPasswdUsuarios.PasswordChar = Global.Microsoft.VisualBasic.ChrW(43)
-        Me.TextBoxPasswdUsuarios.ReadOnly = True
-        Me.TextBoxPasswdUsuarios.Size = New System.Drawing.Size(100, 20)
-        Me.TextBoxPasswdUsuarios.TabIndex = 10
-        '
-        'TextBoxNombreUsuarios
-        '
-        Me.TextBoxNombreUsuarios.Location = New System.Drawing.Point(256, 183)
-        Me.TextBoxNombreUsuarios.Name = "TextBoxNombreUsuarios"
-        Me.TextBoxNombreUsuarios.ReadOnly = True
-        Me.TextBoxNombreUsuarios.Size = New System.Drawing.Size(100, 20)
-        Me.TextBoxNombreUsuarios.TabIndex = 9
-        '
-        'TextBoxCiUsuarios
-        '
-        Me.TextBoxCiUsuarios.Location = New System.Drawing.Point(256, 119)
-        Me.TextBoxCiUsuarios.Name = "TextBoxCiUsuarios"
-        Me.TextBoxCiUsuarios.ReadOnly = True
-        Me.TextBoxCiUsuarios.Size = New System.Drawing.Size(100, 20)
-        Me.TextBoxCiUsuarios.TabIndex = 8
-        '
-        'LabelPasswdUsuarios
-        '
-        Me.LabelPasswdUsuarios.AutoSize = True
-        Me.LabelPasswdUsuarios.Location = New System.Drawing.Point(253, 235)
-        Me.LabelPasswdUsuarios.Name = "LabelPasswdUsuarios"
-        Me.LabelPasswdUsuarios.Size = New System.Drawing.Size(61, 13)
-        Me.LabelPasswdUsuarios.TabIndex = 7
-        Me.LabelPasswdUsuarios.Text = "Contraseña"
-        '
-        'LabelRangoUsuarios
-        '
-        Me.LabelRangoUsuarios.AutoSize = True
-        Me.LabelRangoUsuarios.Location = New System.Drawing.Point(253, 299)
-        Me.LabelRangoUsuarios.Name = "LabelRangoUsuarios"
-        Me.LabelRangoUsuarios.Size = New System.Drawing.Size(39, 13)
-        Me.LabelRangoUsuarios.TabIndex = 6
-        Me.LabelRangoUsuarios.Text = "Rango"
-        '
-        'LabelNombreUsuarios
-        '
-        Me.LabelNombreUsuarios.AutoSize = True
-        Me.LabelNombreUsuarios.Location = New System.Drawing.Point(253, 167)
-        Me.LabelNombreUsuarios.Name = "LabelNombreUsuarios"
-        Me.LabelNombreUsuarios.Size = New System.Drawing.Size(44, 13)
-        Me.LabelNombreUsuarios.TabIndex = 5
-        Me.LabelNombreUsuarios.Text = "Nombre"
-        '
-        'LabelCiUsuarios
-        '
-        Me.LabelCiUsuarios.AutoSize = True
-        Me.LabelCiUsuarios.Location = New System.Drawing.Point(253, 103)
-        Me.LabelCiUsuarios.Name = "LabelCiUsuarios"
-        Me.LabelCiUsuarios.Size = New System.Drawing.Size(23, 13)
-        Me.LabelCiUsuarios.TabIndex = 4
-        Me.LabelCiUsuarios.Text = "C.I."
-        '
-        'ListBoxUsuarios
-        '
-        Me.ListBoxUsuarios.FormattingEnabled = True
-        Me.ListBoxUsuarios.Location = New System.Drawing.Point(7, 55)
-        Me.ListBoxUsuarios.Name = "ListBoxUsuarios"
-        Me.ListBoxUsuarios.Size = New System.Drawing.Size(222, 355)
-        Me.ListBoxUsuarios.TabIndex = 3
-        '
-        'BotonBusquedaUsuarios
-        '
-        Me.BotonBusquedaUsuarios.Location = New System.Drawing.Point(235, 18)
-        Me.BotonBusquedaUsuarios.Name = "BotonBusquedaUsuarios"
-        Me.BotonBusquedaUsuarios.Size = New System.Drawing.Size(55, 23)
-        Me.BotonBusquedaUsuarios.TabIndex = 2
-        Me.BotonBusquedaUsuarios.Text = "Buscar"
-        Me.BotonBusquedaUsuarios.UseVisualStyleBackColor = True
-        '
-        'TextBoxBusquedaUsuarios
-        '
-        Me.TextBoxBusquedaUsuarios.Location = New System.Drawing.Point(101, 20)
-        Me.TextBoxBusquedaUsuarios.Name = "TextBoxBusquedaUsuarios"
-        Me.TextBoxBusquedaUsuarios.Size = New System.Drawing.Size(128, 20)
-        Me.TextBoxBusquedaUsuarios.TabIndex = 1
-        '
-        'ComboBoxUsuarios
-        '
-        Me.ComboBoxUsuarios.FormattingEnabled = True
-        Me.ComboBoxUsuarios.Items.AddRange(New Object() {"CI", "Nombre", "Contrasena", "Rango"})
-        Me.ComboBoxUsuarios.Location = New System.Drawing.Point(6, 20)
-        Me.ComboBoxUsuarios.Name = "ComboBoxUsuarios"
-        Me.ComboBoxUsuarios.Size = New System.Drawing.Size(89, 21)
-        Me.ComboBoxUsuarios.TabIndex = 0
+        Me.PictureBoxUsuarios.InitialImage = Nothing
+        Me.PictureBoxUsuarios.Location = New System.Drawing.Point(479, 18)
+        Me.PictureBoxUsuarios.Name = "PictureBoxUsuarios"
+        Me.PictureBoxUsuarios.Size = New System.Drawing.Size(90, 90)
+        Me.PictureBoxUsuarios.TabIndex = 22
+        Me.PictureBoxUsuarios.TabStop = False
         '
         'Form2
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(784, 461)
+        Me.ClientSize = New System.Drawing.Size(784, 462)
         Me.Controls.Add(Me.TabbedPane)
         Me.Controls.Add(Me.PanelUsuario)
         Me.MaximumSize = New System.Drawing.Size(800, 500)
@@ -1383,6 +1454,8 @@ Partial Class Form2
         Me.ShowIcon = False
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent
         Me.Text = "Form2"
+        Me.PanelUsuario.ResumeLayout(False)
+        Me.PanelUsuario.PerformLayout()
         Me.TabbedPane.ResumeLayout(False)
         Me.TabGanado.ResumeLayout(False)
         Me.TabGanado.PerformLayout()
@@ -1417,6 +1490,8 @@ Partial Class Form2
         CType(Me.DataGridViewClientes, System.ComponentModel.ISupportInitialize).EndInit()
         Me.TabUsuarios.ResumeLayout(False)
         Me.TabUsuarios.PerformLayout()
+        CType(Me.PictureBox, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.PictureBoxUsuarios, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
 
     End Sub
@@ -1470,27 +1545,7 @@ Partial Class Form2
     Friend WithEvents GBID As System.Windows.Forms.GroupBox
     Friend WithEvents TXTID As System.Windows.Forms.TextBox
     Friend WithEvents Label10 As System.Windows.Forms.Label
-    Friend WithEvents BotonModificarUsuarios As System.Windows.Forms.Button
-    Friend WithEvents BotonEliminarUsuarios As System.Windows.Forms.Button
-    Friend WithEvents BotonAgregarUsuarios As System.Windows.Forms.Button
-    Friend WithEvents TextBoxRangoUsuarios As System.Windows.Forms.TextBox
-    Friend WithEvents TextBoxPasswdUsuarios As System.Windows.Forms.TextBox
-    Friend WithEvents TextBoxNombreUsuarios As System.Windows.Forms.TextBox
-    Friend WithEvents TextBoxCiUsuarios As System.Windows.Forms.TextBox
-    Friend WithEvents LabelPasswdUsuarios As System.Windows.Forms.Label
-    Friend WithEvents LabelRangoUsuarios As System.Windows.Forms.Label
-    Friend WithEvents LabelNombreUsuarios As System.Windows.Forms.Label
-    Friend WithEvents LabelCiUsuarios As System.Windows.Forms.Label
-    Friend WithEvents ListBoxUsuarios As System.Windows.Forms.ListBox
-    Friend WithEvents BotonBusquedaUsuarios As System.Windows.Forms.Button
-    Friend WithEvents TextBoxBusquedaUsuarios As System.Windows.Forms.TextBox
-    Friend WithEvents ComboBoxUsuarios As System.Windows.Forms.ComboBox
     Friend WithEvents LabelInfoUsuarios As System.Windows.Forms.Label
-    Friend WithEvents BotonAceptarUsuarios As System.Windows.Forms.Button
-    Friend WithEvents BotonCancelarUsuarios As System.Windows.Forms.Button
-    Friend WithEvents LabelEstadoUsuarios As System.Windows.Forms.Label
-    Friend WithEvents CheckBoxUsuarios As System.Windows.Forms.CheckBox
-    Friend WithEvents CheckBoxPasswdUsuarios As System.Windows.Forms.CheckBox
     Friend WithEvents TabCompras As System.Windows.Forms.TabPage
     Friend WithEvents Panelprincipalcompras As System.Windows.Forms.Panel
     Friend WithEvents DataGridViewCompras As System.Windows.Forms.DataGridView
@@ -1542,4 +1597,30 @@ Partial Class Form2
     Friend WithEvents Label23 As System.Windows.Forms.Label
     Friend WithEvents Texbuscacedula As System.Windows.Forms.TextBox
     Friend WithEvents Button7 As System.Windows.Forms.Button
+    Friend WithEvents BotonCerrarSesion As System.Windows.Forms.Button
+    Friend WithEvents PictureBox As System.Windows.Forms.PictureBox
+    Friend WithEvents LabelCambioContraseña As System.Windows.Forms.Label
+    Friend WithEvents LabelNombreUsuario As System.Windows.Forms.Label
+    Friend WithEvents LabelRangoUsuario As System.Windows.Forms.Label
+    Friend WithEvents CheckBoxPasswdUsuarios As System.Windows.Forms.CheckBox
+    Friend WithEvents CheckBoxUsuarios As System.Windows.Forms.CheckBox
+    Friend WithEvents LabelEstadoUsuarios As System.Windows.Forms.Label
+    Friend WithEvents BotonAceptarUsuarios As System.Windows.Forms.Button
+    Friend WithEvents BotonCancelarUsuarios As System.Windows.Forms.Button
+    Friend WithEvents BotonModificarUsuarios As System.Windows.Forms.Button
+    Friend WithEvents BotonEliminarUsuarios As System.Windows.Forms.Button
+    Friend WithEvents BotonAgregarUsuarios As System.Windows.Forms.Button
+    Friend WithEvents TextBoxRangoUsuarios As System.Windows.Forms.TextBox
+    Friend WithEvents TextBoxPasswdUsuarios As System.Windows.Forms.TextBox
+    Friend WithEvents TextBoxNombreUsuarios As System.Windows.Forms.TextBox
+    Friend WithEvents TextBoxCiUsuarios As System.Windows.Forms.TextBox
+    Friend WithEvents LabelPasswdUsuarios As System.Windows.Forms.Label
+    Friend WithEvents LabelRangoUsuarios As System.Windows.Forms.Label
+    Friend WithEvents LabelNombreUsuarios As System.Windows.Forms.Label
+    Friend WithEvents LabelCiUsuarios As System.Windows.Forms.Label
+    Friend WithEvents ListBoxUsuarios As System.Windows.Forms.ListBox
+    Friend WithEvents BotonBusquedaUsuarios As System.Windows.Forms.Button
+    Friend WithEvents TextBoxBusquedaUsuarios As System.Windows.Forms.TextBox
+    Friend WithEvents ComboBoxUsuarios As System.Windows.Forms.ComboBox
+    Friend WithEvents PictureBoxUsuarios As System.Windows.Forms.PictureBox
 End Class

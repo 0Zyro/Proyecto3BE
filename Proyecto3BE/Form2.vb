@@ -3,11 +3,8 @@ Imports System.Data.OleDb
 Imports MySql.Data.MySqlClient
 
 Public Class Form2
-
     Dim data As String = ("Server=localhost;Database=vacas;User id=root;Password=;Port=3306;")
     'Dim data As String = ("Server=www.db4free.net;Database=database_vacas;User id=zero22394;Password=zero22394;Port=3306;")
-
-
 
     Public Conexion As MySqlDataAdapter
     Public Tabla As DataTable
@@ -23,136 +20,14 @@ Public Class Form2
             MsgBox(ex.Message)
         End Try
     End Sub
-    Private Sub TabGanado_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles TabGanado.Click
 
-
-       
-
-    End Sub
-
-    Private Sub Button1_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Agregar_Ganado.Click
-
-        If TexRaza.Text <> "" And TexSexo.Text <> "" And TexEdad.Text <> "" And TexEstado.Text <> "" And TexPeso.Text <> "" Then
-            Consulta = "INSERT INTO ganado(raza,sexo,estado,peso_inicial,edad) values('" & TexRaza.Text & "','" & TexSexo.Text & "','" & TexEstado.Text & "','" & TexPeso.Text & "'','" & TexEdad.Text & "')"
-            consultar()
-            Consulta = "select * from ganado"
-            consultar()
-            DataGridViewClientes.DataSource = Tabla
-            TexRaza.Text = ""
-            TexSexo.Text = ""
-            TexEstado.Text = ""
-            TexPeso.Text = ""
-            TexEdad.Text = ""
-        End If
-    End Sub
-
-    'Boton "Agregar" de tab "Clientes"
-    Private Sub Buttonagregarcliente_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles BOTONnagregarcliente.Click
-        PanelAgragarcliente.Show()
-
-    End Sub
-
-    'Se cargan los datos cuando se cambia de tab
-    Private Sub TabClientes_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles TabClientes.Click
-
-        
-    End Sub
-
-    'Boton "Borrar" de tab "Clientes"
-    Private Sub Buttonquitarcliente_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles BOTONquitarcliente.Click
-
-        Consulta = "delete from cliente where id='" & Texcedula.Text & "'"
-        consultar()
-
-        Consulta = "select * from cliente"
-        consultar()
-        DataGridViewClientes.DataSource = Tabla
-        Texcedula.Text = ""
-        Texnombreapellido.Text = ""
-        Texdireccion.Text = ""
-        Texttelefono.Text = ""
-    End Sub
-
-    'Boton "Seleccionar" de tab "Clientes"
-    Private Sub Buttonseleccionarcliente_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles BOTONseleccionarcliente.Click
-
-        Texcedula.Text = DataGridViewClientes.Item(0, DataGridViewClientes.CurrentRow.Index).Value
-        Texnombreapellido.Text = DataGridViewClientes.Item(1, DataGridViewClientes.CurrentRow.Index).Value
-        Texdireccion.Text = DataGridViewClientes.Item(2, DataGridViewClientes.CurrentRow.Index).Value
-        Texttelefono.Text = DataGridViewClientes.Item(3, DataGridViewClientes.CurrentRow.Index).Value
-    End Sub
-
-    '/////VENTAS/////
-    'boton agregar
-    Private Sub Button6_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Button6.Click
-
-        Consulta = ("insert into ventas (FECHA,TOTALDEVENTA,COMENTARIO)values('" & TexRaza.Text & "','" & TexSexo.Text & "','" & TexEdad.Text & "')")
-
-        consultar()
-        MessageBox.Show("Conexión exitosa")
-        TXTID.Text = ""
-        TexRaza.Text = ""
-        TexSexo.Text = ""
-        TexEdad.Text = ""
-    End Sub
-
-    'boton modificar con sus respectivos checkbox's con la opcion de poner la id
-    Private Sub Button4_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Button4.Click
-
-        If CheckBoxTODO.Checked = True Then
-            Consulta = ("update ventas set IDVENTA='" & TXTID.Text & "',FECHA='" & TexRaza.Text & "',TOTALDEVENTA='" & TexSexo.Text & "',COMENTARIO='" & TexEdad.Text & "'where IDVENTA='" & TXTID.Text & "'")
-            consultar()
-            TXTID.Text = ""
-            TexRaza.Text = ""
-            TexSexo.Text = ""
-            TexEdad.Text = ""
-
-        End If
-
-        If CheckBox1.Checked = True Then
-            Consulta = ("update ventas set IDVENTA='" & TXTID.Text & "',FECHA='" & TexRaza.Text & "'where IDVENTA='" & TXTID.Text & "'")
-            consultar()
-            TexRaza.Text = ""
-        End If
-        If CheckBox2.Checked = True Then
-            Consulta = ("update ventas set IDVENTA='" & TXTID.Text & "',TOTALDEVENTA='" & TexSexo.Text & "'where IDVENTA='" & TXTID.Text & "'")
-            consultar()
-            TexSexo.Text = ""
-        End If
-        If CheckBox3.Checked = True Then
-            Consulta = ("update ventas set IDVENTA='" & TXTID.Text & "',COMENTARIO='" & TexEdad.Text & "'where IDVENTA='" & TXTID.Text & "'")
-            consultar()
-            TexEdad.Text = ""
-        End If
-    End Sub
-
-    'boton borrar con opcion de poner la id para borrar
-    Private Sub Button5_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Buttonborrarventas.Click
-        Consulta = ("delete from ventas where IDVENTA= '" & TXTID.Text & "'")
-        consultar()
-        MsgBox("Borrado" + TXTID.Text)
-        TXTID.Text = ""
-        TexRaza.Text = ""
-        TexSexo.Text = ""
-        TexEdad.Text = ""
-    End Sub
-
-    Private Sub DataGridViewClientes_CellContentClick(ByVal sender As System.Object, ByVal e As System.Windows.Forms.DataGridViewCellEventArgs) Handles DataGridViewClientes.CellContentClick
-        Consulta = "select * from cliente"
-        consultar()
-        DataGridViewClientes.DataSource = Tabla
-        DataGridViewClientes.Columns(0).HeaderText = "Cedúla"
-        DataGridViewClientes.Columns(1).HeaderText = "Nombre y apellido"
-        DataGridViewClientes.Columns(2).HeaderText = "Dirección"
-        DataGridViewClientes.Columns(3).HeaderText = "Teléfono"
-    End Sub
+    '///SECCION USUARIOS
 
     'Objetos auxiliares de busqueda
-    'Dim campos() As String = {"ci", "nombre", "rango"}
     Dim rows(0) As String
 
     'Objetos necesarios para la conexion
-    Dim connection As New MySqlConnection(Data)
+    Dim connection As New MySqlConnection(data)
     Dim comando As New MySqlCommand
     Dim reader As MySqlDataReader
 
@@ -222,7 +97,12 @@ Public Class Form2
             End If
         Catch ex As Exception
             'Se reportan errores
-            MsgBox("Error: " + ex.Message)
+            LabelInfoUsuarios.Text = ("Error: " + ex.Message)
+
+            If connection.State = ConnectionState.Open Then
+                connection.Close()
+            End If
+
         End Try
     End Sub
 
@@ -259,6 +139,12 @@ Public Class Form2
             TextBoxRangoUsuarios.Text = reader.GetString(3)
             LabelEstadoUsuarios.Text = reader.GetString(4)
 
+            If Dir$("../../Res/profile/" + reader.GetString(5) + ".bmp") <> "" Then
+                PictureBoxUsuarios.Image = Image.FromFile("../../Res/profile/" + reader.GetString(5) + ".bmp")
+            Else
+                PictureBoxUsuarios.Image = Image.FromFile("../../Res/profile/default.bmp")
+            End If
+
             'Se guarda la ci del usuario seleccionado
             CiSeleccionado = TextBoxCiUsuarios.Text
 
@@ -267,7 +153,10 @@ Public Class Form2
 
         Catch ex As Exception
             'Se reportan errores
-            MsgBox(ex.Message)
+            LabelInfoUsuarios.Text = ("Error: " + ex.Message)
+            If connection.State = ConnectionState.Open Then
+                connection.Close()
+            End If
         End Try
     End Sub
 
@@ -305,6 +194,7 @@ Public Class Form2
             MsgBox(ex.Message)
         End Try
     End Sub
+
     'Boton de modificacion de datos de tab "Usuarios"
     Private Sub BotonModificarUsuarios_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles BotonModificarUsuarios.Click
 
@@ -477,7 +367,143 @@ Public Class Form2
 
     End Sub
 
+    Private Sub CheckBoxUsuarios_CheckStateChanged(ByVal sender As Object, ByVal e As System.EventArgs) Handles CheckBoxUsuarios.CheckStateChanged
+        BotonBusquedaUsuarios.PerformClick()
+
+        If CheckBoxUsuarios.Checked Then
+            LabelEstadoUsuarios.Visible = True
+        Else
+            LabelEstadoUsuarios.Visible = False
+        End If
+    End Sub
+
+    Private Sub CheckBoxPasswdUsuarios_CheckStateChanged(ByVal sender As Object, ByVal e As System.EventArgs) Handles CheckBoxPasswdUsuarios.CheckStateChanged
+        If CheckBoxPasswdUsuarios.Checked Then
+            TextBoxPasswdUsuarios.PasswordChar = ""
+        Else
+            TextBoxPasswdUsuarios.PasswordChar = "+"
+        End If
+    End Sub
+
+    '///FIN SECCION USUARIOS
+
+    Private Sub Button1_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Agregar_Ganado.Click
+
+        If TexRaza.Text <> "" And TexSexo.Text <> "" And TexEdad.Text <> "" And TexEstado.Text <> "" And TexPeso.Text <> "" Then
+            Consulta = "INSERT INTO ganado(raza,sexo,estado,peso_inicial,edad) values('" & TexRaza.Text & "','" & TexSexo.Text & "','" & TexEstado.Text & "','" & TexPeso.Text & "'','" & TexEdad.Text & "')"
+            consultar()
+            Consulta = "select * from ganado"
+            consultar()
+            DataGridViewClientes.DataSource = Tabla
+            TexRaza.Text = ""
+            TexSexo.Text = ""
+            TexEstado.Text = ""
+            TexPeso.Text = ""
+            TexEdad.Text = ""
+        End If
+    End Sub
+
+    'Boton "Agregar" de tab "Clientes"
+    Private Sub Buttonagregarcliente_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles BOTONnagregarcliente.Click
+        PanelAgragarcliente.Show()
+    End Sub
+
+    'Se cargan los datos cuando se cambia de tab
+    Private Sub TabClientes_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles TabClientes.Click
+
+    End Sub
+
+    'Boton "Borrar" de tab "Clientes"
+    Private Sub Buttonquitarcliente_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles BOTONquitarcliente.Click
+        Consulta = "delete from cliente where id='" & Texcedula.Text & "'"
+        consultar()
+
+        Consulta = "select * from cliente"
+        consultar()
+        DataGridViewClientes.DataSource = Tabla
+        Texcedula.Text = ""
+        Texnombreapellido.Text = ""
+        Texdireccion.Text = ""
+        Texttelefono.Text = ""
+    End Sub
+
+    'Boton "Seleccionar" de tab "Clientes"
+    Private Sub Buttonseleccionarcliente_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles BOTONseleccionarcliente.Click
+
+        Texcedula.Text = DataGridViewClientes.Item(0, DataGridViewClientes.CurrentRow.Index).Value
+        Texnombreapellido.Text = DataGridViewClientes.Item(1, DataGridViewClientes.CurrentRow.Index).Value
+        Texdireccion.Text = DataGridViewClientes.Item(2, DataGridViewClientes.CurrentRow.Index).Value
+        Texttelefono.Text = DataGridViewClientes.Item(3, DataGridViewClientes.CurrentRow.Index).Value
+    End Sub
+
+    '/////VENTAS/////
+    'boton agregar
+    Private Sub Button6_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Button6.Click
+        Consulta = ("insert into ventas (FECHA,TOTALDEVENTA,COMENTARIO)values('" & TexRaza.Text & "','" & TexSexo.Text & "','" & TexEdad.Text & "')")
+
+        consultar()
+        MessageBox.Show("Conexión exitosa")
+        TXTID.Text = ""
+        TexRaza.Text = ""
+        TexSexo.Text = ""
+        TexEdad.Text = ""
+    End Sub
+
+    'boton modificar con sus respectivos checkbox's con la opcion de poner la id
+    Private Sub Button4_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Button4.Click
+        If CheckBoxTODO.Checked = True Then
+            Consulta = ("update ventas set IDVENTA='" & TXTID.Text & "',FECHA='" & TexRaza.Text & "',TOTALDEVENTA='" & TexSexo.Text & "',COMENTARIO='" & TexEdad.Text & "'where IDVENTA='" & TXTID.Text & "'")
+            consultar()
+            TXTID.Text = ""
+            TexRaza.Text = ""
+            TexSexo.Text = ""
+            TexEdad.Text = ""
+
+        End If
+
+        If CheckBox1.Checked = True Then
+            Consulta = ("update ventas set IDVENTA='" & TXTID.Text & "',FECHA='" & TexRaza.Text & "'where IDVENTA='" & TXTID.Text & "'")
+            consultar()
+            TexRaza.Text = ""
+        End If
+        If CheckBox2.Checked = True Then
+            Consulta = ("update ventas set IDVENTA='" & TXTID.Text & "',TOTALDEVENTA='" & TexSexo.Text & "'where IDVENTA='" & TXTID.Text & "'")
+            consultar()
+            TexSexo.Text = ""
+        End If
+        If CheckBox3.Checked = True Then
+            Consulta = ("update ventas set IDVENTA='" & TXTID.Text & "',COMENTARIO='" & TexEdad.Text & "'where IDVENTA='" & TXTID.Text & "'")
+            consultar()
+            TexEdad.Text = ""
+        End If
+    End Sub
+
+    'boton borrar con opcion de poner la id para borrar
+    Private Sub Button5_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Buttonborrarventas.Click
+        Consulta = ("delete from ventas where IDVENTA= '" & TXTID.Text & "'")
+        consultar()
+        MsgBox("Borrado" + TXTID.Text)
+        TXTID.Text = ""
+        TexRaza.Text = ""
+        TexSexo.Text = ""
+        TexEdad.Text = ""
+    End Sub
+
+    Private Sub DataGridViewClientes_CellContentClick(ByVal sender As System.Object, ByVal e As System.Windows.Forms.DataGridViewCellEventArgs) Handles DataGridViewClientes.CellContentClick
+        Consulta = "select * from cliente"
+        consultar()
+        DataGridViewClientes.DataSource = Tabla
+        DataGridViewClientes.Columns(0).HeaderText = "Cedúla"
+        DataGridViewClientes.Columns(1).HeaderText = "Nombre y apellido"
+        DataGridViewClientes.Columns(2).HeaderText = "Dirección"
+        DataGridViewClientes.Columns(3).HeaderText = "Teléfono"
+    End Sub
+
     Private Sub Form2_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
+        '////////////USUARIOS
+        ComboBoxUsuarios.SelectedIndex = 0
+
+        '////////////CLIENTES
         PanelAgragarcliente.Hide()
 
         'CARGA DATAGRIDCLIENTES
@@ -519,34 +545,13 @@ Public Class Form2
         DataGridView1.Columns(7).HeaderText = "Codigo de vompra"
         DataGridView1.Columns(8).HeaderText = "Codigo de venta"
 
-
         ' raza	sexo	estado	idventa	precioventa	idcompra	preciocompra	peso_inicial	edad
         DataGridView1.Columns(5).Visible = False
         DataGridView1.Columns(6).Visible = False
         DataGridView1.Columns(7).Visible = False
         DataGridView1.Columns(8).Visible = False
-
-
-
     End Sub
 
-    Private Sub CheckBoxUsuarios_CheckStateChanged(ByVal sender As Object, ByVal e As System.EventArgs) Handles CheckBoxUsuarios.CheckStateChanged
-        BotonBusquedaUsuarios.PerformClick()
-
-        If CheckBoxUsuarios.Checked Then
-            LabelEstadoUsuarios.Visible = True
-        Else
-            LabelEstadoUsuarios.Visible = False
-        End If
-    End Sub
-
-    Private Sub CheckBoxPasswdUsuarios_CheckStateChanged(ByVal sender As Object, ByVal e As System.EventArgs) Handles CheckBoxPasswdUsuarios.CheckStateChanged
-        If CheckBoxPasswdUsuarios.Checked Then
-            TextBoxPasswdUsuarios.PasswordChar = ""
-        Else
-            TextBoxPasswdUsuarios.PasswordChar = "+"
-        End If
-    End Sub
     '///////////////////////////////////////////////////////////Datagried Compras///////////////////////////////////
     Private Sub DataGridViewCompras_CellContentClick(ByVal sender As System.Object, ByVal e As System.Windows.Forms.DataGridViewCellEventArgs) Handles DataGridViewCompras.CellContentClick
         'Hace la consulta de los datos a la BD
@@ -560,10 +565,8 @@ Public Class Form2
         'DataGridViewCompras.Columns(2).HeaderText = "Comentario"
         'DataGridViewCompras.Columns(3).HeaderText = "Total"
     End Sub
+
     Private Sub Volveragregarcompras_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Volveragregarcompras.Click
-
-
-
         '/////////Panel agregar compras/////////////
         Panelagregarcompras.SendToBack()
         Panelagregarcompras.Visible = False
@@ -574,13 +577,9 @@ Public Class Form2
         Panelprincipalcompras.Enabled = True
         Panelprincipalcompras.Visible = True
         Panelprincipalcompras.BringToFront()
-
-
-
     End Sub
 
     Private Sub Agregarcompra1_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Agregarcompra1.Click
-
         '/////////Panel agregar compras/////////////
         Panelagregarcompras.BringToFront()
         Panelagregarcompras.Visible = True
@@ -591,17 +590,12 @@ Public Class Form2
         Volveragregarcompras.Visible = True
         Agregarcompra.Visible = True
         Agregarcompra.Enabled = True
-
-
     End Sub
 
     Private Sub Volvermodificarcompra_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Volvermodificarcompra.Click
         Panelmodificarcompras.Enabled = False
         Panelmodificarcompras.Visible = False
         Panelmodificarcompras.SendToBack()
-
-
-
 
         Panelprincipalcompras.Enabled = True
         Panelprincipalcompras.Visible = True
@@ -612,9 +606,6 @@ Public Class Form2
         Modificarcomentariocompra.Clear()
         Modificarfechacompra.Clear()
         Modificartotalapagarcompra.Clear()
-
-
-
     End Sub
 
     Private Sub Agregarmodificacioncompras_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Agregarmodificacioncompras.Click
@@ -665,6 +656,7 @@ Public Class Form2
         End If
 
     End Sub
+
     Private Sub Clearagregarcompras_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Clearagregarcompras.Click
         Fechacompra.Clear()
         Comentariocompras.Clear()
@@ -672,13 +664,9 @@ Public Class Form2
     End Sub
 
     Private Sub Modificarcompra1_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Modificarcompra1.Click
-
-
         Panelmodificarcompras.BringToFront()
         Panelmodificarcompras.Visible = True
         Panelmodificarcompras.Enabled = True
-
-
     End Sub
 
     'CONSULTA PARA AGREGAR CLIENTE
@@ -703,14 +691,9 @@ Public Class Form2
             MsgBox("Complete todos los campos vacios")
         End If
     End Sub
+
     'CIERRA EL PANEL DE AGREGAR CLIENTE
     Private Sub BOTONcancelarcliente_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles BOTONcancelarcliente.Click
         PanelAgragarcliente.Hide()
-
     End Sub
-
-
-
-
-
 End Class
