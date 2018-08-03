@@ -522,6 +522,7 @@ Partial Class Form2
         '
         'Panelagregarcompras
         '
+        Me.Panelagregarcompras.Controls.Add(Me.Panelmodificarcompras)
         Me.Panelagregarcompras.Controls.Add(Me.Clearagregarcompras)
         Me.Panelagregarcompras.Controls.Add(Me.Agregarcompra)
         Me.Panelagregarcompras.Controls.Add(Me.Volveragregarcompras)
@@ -531,7 +532,6 @@ Partial Class Form2
         Me.Panelagregarcompras.Controls.Add(Me.Totalpagadocompras)
         Me.Panelagregarcompras.Controls.Add(Me.Comentariocompras)
         Me.Panelagregarcompras.Controls.Add(Me.Fechacompra)
-        Me.Panelagregarcompras.Controls.Add(Me.Panelmodificarcompras)
         Me.Panelagregarcompras.Location = New System.Drawing.Point(0, 0)
         Me.Panelagregarcompras.Name = "Panelagregarcompras"
         Me.Panelagregarcompras.Size = New System.Drawing.Size(671, 447)
