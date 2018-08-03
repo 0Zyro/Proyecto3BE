@@ -71,6 +71,7 @@ Partial Class Form2
         Me.Comentariocompras = New System.Windows.Forms.TextBox()
         Me.Fechacompra = New System.Windows.Forms.TextBox()
         Me.Panelmodificarcompras = New System.Windows.Forms.Panel()
+        Me.Clearagregarcompras = New System.Windows.Forms.PictureBox()
         Me.Agregarcompra = New System.Windows.Forms.PictureBox()
         Me.Limpiarmodificarcompras = New System.Windows.Forms.PictureBox()
         Me.Volvermodificarcompra = New System.Windows.Forms.PictureBox()
@@ -124,7 +125,6 @@ Partial Class Form2
         Me.TextBoxBusquedaUsuarios = New System.Windows.Forms.TextBox()
         Me.ComboBoxUsuarios = New System.Windows.Forms.ComboBox()
         Me.ToolTip1 = New System.Windows.Forms.ToolTip(Me.components)
-        Me.Clearagregarcompras = New System.Windows.Forms.PictureBox()
         Me.TabbedPane.SuspendLayout()
         Me.TabGanado.SuspendLayout()
         CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -136,6 +136,7 @@ Partial Class Form2
         Me.Panelagregarcompras.SuspendLayout()
         CType(Me.Volveragregarcompras, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.Panelmodificarcompras.SuspendLayout()
+        CType(Me.Clearagregarcompras, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.Agregarcompra, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.Limpiarmodificarcompras, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.Volvermodificarcompra, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -147,7 +148,6 @@ Partial Class Form2
         Me.TabClientes.SuspendLayout()
         CType(Me.DataGridViewClientes, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.TabUsuarios.SuspendLayout()
-        CType(Me.Clearagregarcompras, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'PanelUsuario
@@ -522,6 +522,8 @@ Partial Class Form2
         '
         'Panelagregarcompras
         '
+        Me.Panelagregarcompras.Controls.Add(Me.Clearagregarcompras)
+        Me.Panelagregarcompras.Controls.Add(Me.Agregarcompra)
         Me.Panelagregarcompras.Controls.Add(Me.Volveragregarcompras)
         Me.Panelagregarcompras.Controls.Add(Me.Label13)
         Me.Panelagregarcompras.Controls.Add(Me.Label12)
@@ -532,7 +534,7 @@ Partial Class Form2
         Me.Panelagregarcompras.Controls.Add(Me.Panelmodificarcompras)
         Me.Panelagregarcompras.Location = New System.Drawing.Point(0, 0)
         Me.Panelagregarcompras.Name = "Panelagregarcompras"
-        Me.Panelagregarcompras.Size = New System.Drawing.Size(671, 438)
+        Me.Panelagregarcompras.Size = New System.Drawing.Size(671, 447)
         Me.Panelagregarcompras.TabIndex = 6
         '
         'Volveragregarcompras
@@ -601,9 +603,7 @@ Partial Class Form2
         '
         'Panelmodificarcompras
         '
-        Me.Panelmodificarcompras.BackColor = System.Drawing.Color.Transparent
-        Me.Panelmodificarcompras.Controls.Add(Me.Clearagregarcompras)
-        Me.Panelmodificarcompras.Controls.Add(Me.Agregarcompra)
+        Me.Panelmodificarcompras.BackColor = System.Drawing.Color.DimGray
         Me.Panelmodificarcompras.Controls.Add(Me.Limpiarmodificarcompras)
         Me.Panelmodificarcompras.Controls.Add(Me.Volvermodificarcompra)
         Me.Panelmodificarcompras.Controls.Add(Me.Agregarmodificacioncompras)
@@ -618,10 +618,20 @@ Partial Class Form2
         Me.Panelmodificarcompras.Size = New System.Drawing.Size(671, 437)
         Me.Panelmodificarcompras.TabIndex = 9
         '
+        'Clearagregarcompras
+        '
+        Me.Clearagregarcompras.Image = Global.WindowsApplication1.My.Resources.Resources.goma_de_borrar
+        Me.Clearagregarcompras.Location = New System.Drawing.Point(348, 314)
+        Me.Clearagregarcompras.Name = "Clearagregarcompras"
+        Me.Clearagregarcompras.Size = New System.Drawing.Size(41, 35)
+        Me.Clearagregarcompras.TabIndex = 10
+        Me.Clearagregarcompras.TabStop = False
+        Me.ToolTip1.SetToolTip(Me.Clearagregarcompras, "Limpiar")
+        '
         'Agregarcompra
         '
         Me.Agregarcompra.Image = Global.WindowsApplication1.My.Resources.Resources.anadir
-        Me.Agregarcompra.Location = New System.Drawing.Point(289, 315)
+        Me.Agregarcompra.Location = New System.Drawing.Point(289, 314)
         Me.Agregarcompra.Name = "Agregarcompra"
         Me.Agregarcompra.Size = New System.Drawing.Size(41, 35)
         Me.Agregarcompra.TabIndex = 9
@@ -668,9 +678,9 @@ Partial Class Form2
         Me.Label16.AutoSize = True
         Me.Label16.Location = New System.Drawing.Point(304, 232)
         Me.Label16.Name = "Label16"
-        Me.Label16.Size = New System.Drawing.Size(70, 13)
+        Me.Label16.Size = New System.Drawing.Size(71, 13)
         Me.Label16.TabIndex = 4
-        Me.Label16.Text = "Total a pagar"
+        Me.Label16.Text = "Total Pagado"
         '
         'Modificarcomentariocompra
         '
@@ -748,8 +758,9 @@ Partial Class Form2
         '
         'DataGridViewCompras
         '
+        Me.DataGridViewCompras.BackgroundColor = System.Drawing.Color.DimGray
         Me.DataGridViewCompras.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.DataGridViewCompras.Location = New System.Drawing.Point(6, 59)
+        Me.DataGridViewCompras.Location = New System.Drawing.Point(6, 55)
         Me.DataGridViewCompras.Name = "DataGridViewCompras"
         Me.DataGridViewCompras.Size = New System.Drawing.Size(656, 311)
         Me.DataGridViewCompras.TabIndex = 0
@@ -1106,16 +1117,6 @@ Partial Class Form2
         Me.ComboBoxUsuarios.Size = New System.Drawing.Size(89, 21)
         Me.ComboBoxUsuarios.TabIndex = 0
         '
-        'Clearagregarcompras
-        '
-        Me.Clearagregarcompras.Image = Global.WindowsApplication1.My.Resources.Resources.goma_de_borrar
-        Me.Clearagregarcompras.Location = New System.Drawing.Point(348, 315)
-        Me.Clearagregarcompras.Name = "Clearagregarcompras"
-        Me.Clearagregarcompras.Size = New System.Drawing.Size(41, 35)
-        Me.Clearagregarcompras.TabIndex = 10
-        Me.Clearagregarcompras.TabStop = False
-        Me.ToolTip1.SetToolTip(Me.Clearagregarcompras, "Limpiar")
-        '
         'Form2
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -1145,6 +1146,7 @@ Partial Class Form2
         CType(Me.Volveragregarcompras, System.ComponentModel.ISupportInitialize).EndInit()
         Me.Panelmodificarcompras.ResumeLayout(False)
         Me.Panelmodificarcompras.PerformLayout()
+        CType(Me.Clearagregarcompras, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.Agregarcompra, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.Limpiarmodificarcompras, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.Volvermodificarcompra, System.ComponentModel.ISupportInitialize).EndInit()
@@ -1158,7 +1160,6 @@ Partial Class Form2
         CType(Me.DataGridViewClientes, System.ComponentModel.ISupportInitialize).EndInit()
         Me.TabUsuarios.ResumeLayout(False)
         Me.TabUsuarios.PerformLayout()
-        CType(Me.Clearagregarcompras, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
 
     End Sub

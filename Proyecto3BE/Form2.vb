@@ -524,18 +524,15 @@ Public Class Form2
         Consulta = "select * from compra"
         consultar()
         DataGridViewCompras.DataSource = Tabla
-        ComboBoxUsuarios.SelectedIndex = 0
-        Panelprincipalcompras.BringToFront()
-        Panelagregarcompras.SendToBack()
-        Panelmodificarcompras.SendToBack()
-        Panelmodificarcompras.Visible = False
-        Panelmodificarcompras.Enabled = False
-        Panelagregarcompras.Visible = False
-        Panelagregarcompras.Enabled = False
         DataGridViewCompras.Columns(0).HeaderText = "Id"
         DataGridViewCompras.Columns(1).HeaderText = "Fecha de Compra"
         DataGridViewCompras.Columns(2).HeaderText = "Comentario"
         DataGridViewCompras.Columns(3).HeaderText = "Total"
+        ComboBoxUsuarios.SelectedIndex = 0
+        Panelprincipalcompras.BringToFront()
+        Panelagregarcompras.SendToBack()
+        Panelmodificarcompras.Visible = False
+        Panelagregarcompras.Visible = False
 
     End Sub
 
@@ -589,6 +586,7 @@ Public Class Form2
     End Sub
 
     Private Sub Agregarcompra1_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Agregarcompra1.Click
+
         '/////////Panel agregar compras/////////////
         Panelagregarcompras.BringToFront()
         Panelagregarcompras.Visible = True
@@ -597,6 +595,8 @@ Public Class Form2
         Panelmodificarcompras.Enabled = False
 
         Volveragregarcompras.Visible = True
+        Agregarcompra.Visible = True
+        Agregarcompra.Enabled = True
 
 
     End Sub
@@ -675,5 +675,15 @@ Public Class Form2
         Fechacompra.Clear()
         Comentariocompras.Clear()
         Totalpagadocompras.Clear()
+    End Sub
+
+    Private Sub Modificarcompra1_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Modificarcompra1.Click
+
+
+        Panelmodificarcompras.BringToFront()
+        Panelmodificarcompras.Visible = True
+        Panelmodificarcompras.Enabled = True
+
+
     End Sub
 End Class
