@@ -197,18 +197,14 @@ Public Class Form2
 
     'Boton de modificacion de datos de tab "Usuarios"
     Private Sub BotonModificarUsuarios_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles BotonModificarUsuarios.Click
-
         LabelInfoUsuarios.Text = ""
         estadoModificar()
-
     End Sub
 
     'Boton de cancelacion de edicion de tab "Usuarios"
     Private Sub BotonCancelarUsuarios_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles BotonCancelarUsuarios.Click
-
         LabelInfoUsuarios.Text = ""
         estadoVisualizar()
-
     End Sub
 
     'Boton 'Aceptar' de edicion de datos de tab "Usuarios"
@@ -310,6 +306,7 @@ Public Class Form2
         BotonCancelarUsuarios.Visible = True
 
         BotonBusquedaUsuarios.Enabled = False
+        CheckBoxUsuarios.Enabled = False
 
         ListBoxUsuarios.Enabled = False
 
@@ -323,6 +320,7 @@ Public Class Form2
         TextBoxNombreUsuarios.ReadOnly = False
         TextBoxPasswdUsuarios.ReadOnly = False
         TextBoxRangoUsuarios.ReadOnly = False
+        PictureBoxUsuarios.Enabled = True
 
         TextBoxBusquedaUsuarios.ReadOnly = True
 
@@ -332,6 +330,8 @@ Public Class Form2
         estadoModificar()
 
         estadoUsuario = "agregar"
+
+        PictureBoxUsuarios.Image = Image.FromFile("../../Res/profile/nueva.bmp")
 
         TextBoxCiUsuarios.Text = ""
         TextBoxNombreUsuarios.Text = ""
@@ -347,6 +347,7 @@ Public Class Form2
         BotonCancelarUsuarios.Visible = False
 
         BotonBusquedaUsuarios.Enabled = True
+        CheckBoxUsuarios.Enabled = True
 
         ListBoxUsuarios.Enabled = True
 
@@ -360,6 +361,7 @@ Public Class Form2
         TextBoxNombreUsuarios.ReadOnly = True
         TextBoxPasswdUsuarios.ReadOnly = True
         TextBoxRangoUsuarios.ReadOnly = True
+        PictureBoxUsuarios.Enabled = False
 
         TextBoxBusquedaUsuarios.ReadOnly = False
 
@@ -383,6 +385,12 @@ Public Class Form2
         Else
             TextBoxPasswdUsuarios.PasswordChar = "+"
         End If
+    End Sub
+
+    Private Sub PictureBoxUsuarios_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles PictureBoxUsuarios.Click
+
+        MsgBox("click")
+
     End Sub
 
     '///FIN SECCION USUARIOS

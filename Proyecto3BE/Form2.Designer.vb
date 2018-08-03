@@ -1246,6 +1246,7 @@ Partial Class Form2
         '
         'PictureBoxUsuarios
         '
+        Me.PictureBoxUsuarios.Enabled = False
         Me.PictureBoxUsuarios.InitialImage = Nothing
         Me.PictureBoxUsuarios.Location = New System.Drawing.Point(479, 18)
         Me.PictureBoxUsuarios.Name = "PictureBoxUsuarios"
