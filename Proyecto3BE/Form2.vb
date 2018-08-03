@@ -25,27 +25,8 @@ Public Class Form2
     End Sub
     Private Sub TabGanado_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles TabGanado.Click
 
-        Consulta = "select * from ganado"
-        consultar()
-        DataGridView1.DataSource = Tabla
 
-        'Cambiamos los headers
-        DataGridView1.Columns(0).HeaderText = "Codigo de Ganado"
-        DataGridView1.Columns(1).HeaderText = "Raza"
-        DataGridView1.Columns(2).HeaderText = "Sexo"
-        DataGridView1.Columns(3).HeaderText = "Eatado"
-        DataGridView1.Columns(4).HeaderText = "Codigo de venta"
-        DataGridView1.Columns(5).HeaderText = "Precio de Vompra"
-        DataGridView1.Columns(6).HeaderText = "Codigo de Compra"
-        DataGridView1.Columns(7).HeaderText = "Precio de Compra"
-        DataGridView1.Columns(8).HeaderText = "Peso Inicial"
-        DataGridView1.Columns(9).HeaderText = "Edad"
-
-        ' raza	sexo	estado	idventa	precioventa	idcompra	preciocompra	peso_inicial	edad
-        DataGridView1.Columns(4).Visible = False
-        DataGridView1.Columns(5).Visible = False
-        DataGridView1.Columns(6).Visible = False
-        DataGridView1.Columns(7).Visible = False
+       
 
     End Sub
 
@@ -66,63 +47,39 @@ Public Class Form2
     End Sub
 
     'Boton "Agregar" de tab "Clientes"
-    Private Sub Buttonagregarcliente_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Buttonagregarcliente.Click
-        If TextBox6.Text <> "" And TextBox7.Text <> "" And TextBox8.Text <> "" And TextBox9.Text <> "" Then
+    Private Sub Buttonagregarcliente_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles BOTONnagregarcliente.Click
+        PanelAgragarcliente.Show()
 
-            If IsNumeric(TextBox6.Text) Then
-                Consulta = "INSERT INTO cliente values('" & TextBox6.Text & "','" & TextBox7.Text & "','" & TextBox8.Text & "','" & TextBox9.Text & "' )"
-                consultar()
-                Consulta = "select * from cliente"
-                consultar()
-                DataGridViewClientes.DataSource = Tabla
-                TextBox6.Text = ""
-                TextBox7.Text = ""
-                TextBox8.Text = ""
-                TextBox9.Text = ""
-            Else
-                MsgBox("Cedula solo valores numericos")
-
-            End If
-        Else
-            MsgBox("Complete todos los campos vacios")
-        End If
     End Sub
 
     'Se cargan los datos cuando se cambia de tab
     Private Sub TabClientes_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles TabClientes.Click
 
-        'CARGA DATAGRIDCLIENTES
-        Consulta = "select * from cliente"
-        consultar()
-        DataGridViewClientes.DataSource = Tabla
-        DataGridViewClientes.Columns(0).HeaderText = "Cedúla"
-        DataGridViewClientes.Columns(1).HeaderText = "Nombre y apellido"
-        DataGridViewClientes.Columns(2).HeaderText = "Dirección"
-        DataGridViewClientes.Columns(3).HeaderText = "Teléfono"
+        
     End Sub
 
     'Boton "Borrar" de tab "Clientes"
-    Private Sub Buttonquitarcliente_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Buttonquitarcliente.Click
+    Private Sub Buttonquitarcliente_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles BOTONquitarcliente.Click
 
-        Consulta = "delete from cliente where ci='" & TextBox6.Text & "'"
+        Consulta = "delete from cliente where id='" & Texcedula.Text & "'"
         consultar()
 
         Consulta = "select * from cliente"
         consultar()
         DataGridViewClientes.DataSource = Tabla
-        TextBox6.Text = ""
-        TextBox7.Text = ""
-        TextBox8.Text = ""
-        TextBox9.Text = ""
+        Texcedula.Text = ""
+        Texnombreapellido.Text = ""
+        Texdireccion.Text = ""
+        Texttelefono.Text = ""
     End Sub
 
     'Boton "Seleccionar" de tab "Clientes"
-    Private Sub Buttonseleccionarcliente_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Buttonseleccionarcliente.Click
+    Private Sub Buttonseleccionarcliente_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles BOTONseleccionarcliente.Click
 
-        TextBox6.Text = DataGridViewClientes.Item(0, DataGridViewClientes.CurrentRow.Index).Value
-        TextBox7.Text = DataGridViewClientes.Item(1, DataGridViewClientes.CurrentRow.Index).Value
-        TextBox8.Text = DataGridViewClientes.Item(2, DataGridViewClientes.CurrentRow.Index).Value
-        TextBox9.Text = DataGridViewClientes.Item(3, DataGridViewClientes.CurrentRow.Index).Value
+        Texcedula.Text = DataGridViewClientes.Item(0, DataGridViewClientes.CurrentRow.Index).Value
+        Texnombreapellido.Text = DataGridViewClientes.Item(1, DataGridViewClientes.CurrentRow.Index).Value
+        Texdireccion.Text = DataGridViewClientes.Item(2, DataGridViewClientes.CurrentRow.Index).Value
+        Texttelefono.Text = DataGridViewClientes.Item(3, DataGridViewClientes.CurrentRow.Index).Value
     End Sub
 
     '/////VENTAS/////
@@ -521,6 +478,18 @@ Public Class Form2
     End Sub
 
     Private Sub Form2_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
+        PanelAgragarcliente.Hide()
+
+        'CARGA DATAGRIDCLIENTES
+        Consulta = "select * from cliente"
+        consultar()
+        DataGridViewClientes.DataSource = Tabla
+        DataGridViewClientes.Columns(0).HeaderText = "Cedúla"
+        DataGridViewClientes.Columns(1).HeaderText = "Nombre y apellido"
+        DataGridViewClientes.Columns(2).HeaderText = "Dirección"
+        DataGridViewClientes.Columns(3).HeaderText = "Teléfono"
+
+        'CONSULTA DE TABLA(CARGA COMPRA)
         Consulta = "select * from compra"
         consultar()
         DataGridViewCompras.DataSource = Tabla
@@ -533,6 +502,31 @@ Public Class Form2
         Panelagregarcompras.SendToBack()
         Panelmodificarcompras.Visible = False
         Panelagregarcompras.Visible = False
+
+        'CONSULTA DE TABLA GANADO
+        Consulta = "select * from ganado"
+        consultar()
+        DataGridView1.DataSource = Tabla
+
+        'Cambiamos los headers
+        DataGridView1.Columns(0).HeaderText = "Codigo de ganado"
+        DataGridView1.Columns(1).HeaderText = "Raza"
+        DataGridView1.Columns(2).HeaderText = "Sexo"
+        DataGridView1.Columns(3).HeaderText = "Fecha nacimiento"
+        DataGridView1.Columns(4).HeaderText = "Estado"
+        DataGridView1.Columns(5).HeaderText = "Precio de venta"
+        DataGridView1.Columns(6).HeaderText = "Precio de compra"
+        DataGridView1.Columns(7).HeaderText = "Codigo de vompra"
+        DataGridView1.Columns(8).HeaderText = "Codigo de venta"
+
+
+        ' raza	sexo	estado	idventa	precioventa	idcompra	preciocompra	peso_inicial	edad
+        DataGridView1.Columns(5).Visible = False
+        DataGridView1.Columns(6).Visible = False
+        DataGridView1.Columns(7).Visible = False
+        DataGridView1.Columns(8).Visible = False
+
+
 
     End Sub
 
@@ -556,15 +550,15 @@ Public Class Form2
     '///////////////////////////////////////////////////////////Datagried Compras///////////////////////////////////
     Private Sub DataGridViewCompras_CellContentClick(ByVal sender As System.Object, ByVal e As System.Windows.Forms.DataGridViewCellEventArgs) Handles DataGridViewCompras.CellContentClick
         'Hace la consulta de los datos a la BD
-        Consulta = "select * from compra"
-        consultar()
-        DataGridViewCompras.DataSource = Tabla
-        consultar()
-        'Cambia los titulos del datagrid
-        DataGridViewCompras.Columns(0).HeaderText = "Id"
-        DataGridViewCompras.Columns(1).HeaderText = "Fecha de Compra"
-        DataGridViewCompras.Columns(2).HeaderText = "Comentario"
-        DataGridViewCompras.Columns(3).HeaderText = "Total"
+        'Consulta = "select * from compra"
+        'consultar()
+        'DataGridViewCompras.DataSource = Tabla
+        'consultar()
+        ''Cambia los titulos del datagrid
+        'DataGridViewCompras.Columns(0).HeaderText = "Id"
+        'DataGridViewCompras.Columns(1).HeaderText = "Fecha de Compra"
+        'DataGridViewCompras.Columns(2).HeaderText = "Comentario"
+        'DataGridViewCompras.Columns(3).HeaderText = "Total"
     End Sub
     Private Sub Volveragregarcompras_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Volveragregarcompras.Click
 
@@ -686,4 +680,37 @@ Public Class Form2
 
 
     End Sub
+
+    'CONSULTA PARA AGREGAR CLIENTE
+    Private Sub BOTONguardarcliente_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles BOTONguardarcliente.Click
+        If Texcedula.Text <> "" And Texnombreapellido.Text <> "" And Texdireccion.Text <> "" And Texttelefono.Text <> "" Then
+
+            If IsNumeric(Texcedula.Text) Then
+                Consulta = "INSERT INTO cliente values('" & Texcedula.Text & "','" & Texnombreapellido.Text & "','" & Texdireccion.Text & "','" & Texttelefono.Text & "' )"
+                consultar()
+                Consulta = "select * from cliente"
+                consultar()
+                DataGridViewClientes.DataSource = Tabla
+                Texcedula.Text = ""
+                Texnombreapellido.Text = ""
+                Texdireccion.Text = ""
+                Texttelefono.Text = ""
+            Else
+                MsgBox("Cedula solo valores numericos")
+
+            End If
+        Else
+            MsgBox("Complete todos los campos vacios")
+        End If
+    End Sub
+    'CIERRA EL PANEL DE AGREGAR CLIENTE
+    Private Sub BOTONcancelarcliente_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles BOTONcancelarcliente.Click
+        PanelAgragarcliente.Hide()
+
+    End Sub
+
+
+
+
+
 End Class
