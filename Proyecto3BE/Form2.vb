@@ -528,6 +528,14 @@ Public Class Form2
         Panelprincipalcompras.BringToFront()
         Panelagregarcompras.SendToBack()
         Panelmodificarcompras.SendToBack()
+        Panelmodificarcompras.Visible = False
+        Panelmodificarcompras.Enabled = False
+        Panelagregarcompras.Visible = False
+        Panelagregarcompras.Enabled = False
+        DataGridViewCompras.Columns(0).HeaderText = "Id"
+        DataGridViewCompras.Columns(1).HeaderText = "Fecha de Compra"
+        DataGridViewCompras.Columns(2).HeaderText = "Comentario"
+        DataGridViewCompras.Columns(3).HeaderText = "Total"
 
     End Sub
 
@@ -561,38 +569,6 @@ Public Class Form2
         DataGridViewCompras.Columns(2).HeaderText = "Comentario"
         DataGridViewCompras.Columns(3).HeaderText = "Total"
     End Sub
-    '///////////////////////////////////////////Boton Agregar Compras//////////////////////////////////////////
-    Private Sub AgregarCompras_Click_1(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles AgregarCompras.Click
-        If Fechacompra.Text <> "" And Comentariocompras.Text <> "" And Totalpagadocompras.Text <> "" Then
-            If IsNumeric(Totalpagadocompras.Text) Then
-                'Agrega los valores de los campos a cada tabla correspondiente
-                Consulta = "insert into compra values (0,'" & Fechacompra.Text & "','" & Comentariocompras.Text & "','" & Totalpagadocompras.Text & "')"
-                consultar()
-                Consulta = "select * from compra"
-                consultar()
-                'Actualiza la BD
-                DataGridViewCompras.DataSource = Tabla
-                'Deja a los textbox vacios para ingresar nuevos datos
-                Fechacompra.Text = ""
-                Comentariocompras.Text = ""
-                Totalpagadocompras.Text = ""
-            Else
-                'Muestra mensaje diciendo que no se ingresaron valores numericos o que solo acepta valores numericos
-                MsgBox("Igrese solo valor numerico en total")
-            End If
-        Else
-            'Muestra mensaje que todos los campos no estan completos
-            MsgBox("Complete todos los campos vacios")
-        End If
-
-    End Sub
-
-    Private Sub Clearcompras_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Clearcompras.Click
-        Fechacompra.Clear()
-        Comentariocompras.Clear()
-        Totalpagadocompras.Clear()
-    End Sub
-
     Private Sub Volveragregarcompras_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Volveragregarcompras.Click
 
 
@@ -617,6 +593,8 @@ Public Class Form2
         Panelagregarcompras.BringToFront()
         Panelagregarcompras.Visible = True
         Panelagregarcompras.Enabled = True
+        Panelmodificarcompras.Visible = False
+        Panelmodificarcompras.Enabled = False
 
         Volveragregarcompras.Visible = True
 
@@ -667,5 +645,35 @@ Public Class Form2
             'Muestra mensaje que todos los campos no estan completos
             MsgBox("Complete todos los campos vacios")
         End If
+    End Sub
+
+    Private Sub Agregarcompra_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Agregarcompra.Click
+        If Fechacompra.Text <> "" And Comentariocompras.Text <> "" And Totalpagadocompras.Text <> "" Then
+            If IsNumeric(Totalpagadocompras.Text) Then
+                'Agrega los valores de los campos a cada tabla correspondiente
+                Consulta = "insert into compra values (0,'" & Fechacompra.Text & "','" & Comentariocompras.Text & "','" & Totalpagadocompras.Text & "')"
+                consultar()
+                Consulta = "select * from compra"
+                consultar()
+                'Actualiza la BD
+                DataGridViewCompras.DataSource = Tabla
+                'Deja a los textbox vacios para ingresar nuevos datos
+                Fechacompra.Text = ""
+                Comentariocompras.Text = ""
+                Totalpagadocompras.Text = ""
+            Else
+                'Muestra mensaje diciendo que no se ingresaron valores numericos o que solo acepta valores numericos
+                MsgBox("Igrese solo valor numerico en total")
+            End If
+        Else
+            'Muestra mensaje que todos los campos no estan completos
+            MsgBox("Complete todos los campos vacios")
+        End If
+
+    End Sub
+    Private Sub Clearagregarcompras_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Clearagregarcompras.Click
+        Fechacompra.Clear()
+        Comentariocompras.Clear()
+        Totalpagadocompras.Clear()
     End Sub
 End Class
