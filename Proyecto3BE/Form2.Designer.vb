@@ -152,6 +152,9 @@ Partial Class Form2
         Me.TextBoxBusquedaUsuarios = New System.Windows.Forms.TextBox()
         Me.ComboBoxUsuarios = New System.Windows.Forms.ComboBox()
         Me.ToolTip1 = New System.Windows.Forms.ToolTip(Me.components)
+        Me.DataGridViewModificarCompras = New System.Windows.Forms.DataGridView()
+        Me.Label25 = New System.Windows.Forms.Label()
+        Me.Label26 = New System.Windows.Forms.Label()
         Me.PanelUsuario.SuspendLayout()
         CType(Me.PictureBox, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.TabbedPane.SuspendLayout()
@@ -180,6 +183,7 @@ Partial Class Form2
         CType(Me.DataGridViewClientes, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.TabUsuarios.SuspendLayout()
         CType(Me.PictureBoxUsuarios, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.DataGridViewModificarCompras, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'PanelUsuario
@@ -580,6 +584,8 @@ Partial Class Form2
         '
         'TabCompras
         '
+        Me.TabCompras.Controls.Add(Me.Panelagregarcompras)
+        Me.TabCompras.Controls.Add(Me.Panelmodificarcompras)
         Me.TabCompras.Controls.Add(Me.Panelprincipalcompras)
         Me.TabCompras.Location = New System.Drawing.Point(4, 22)
         Me.TabCompras.Name = "TabCompras"
@@ -592,7 +598,6 @@ Partial Class Form2
         'Panelprincipalcompras
         '
         Me.Panelprincipalcompras.BackColor = System.Drawing.Color.DimGray
-        Me.Panelprincipalcompras.Controls.Add(Me.Panelagregarcompras)
         Me.Panelprincipalcompras.Controls.Add(Me.TextBox1)
         Me.Panelprincipalcompras.Controls.Add(Me.ComboBox1)
         Me.Panelprincipalcompras.Controls.Add(Me.Buscarcompra)
@@ -606,7 +611,8 @@ Partial Class Form2
         '
         'Panelagregarcompras
         '
-        Me.Panelagregarcompras.Controls.Add(Me.Panelmodificarcompras)
+        Me.Panelagregarcompras.BackColor = System.Drawing.Color.DimGray
+        Me.Panelagregarcompras.Controls.Add(Me.Label26)
         Me.Panelagregarcompras.Controls.Add(Me.Clearagregarcompras)
         Me.Panelagregarcompras.Controls.Add(Me.Agregarcompra)
         Me.Panelagregarcompras.Controls.Add(Me.Volveragregarcompras)
@@ -616,7 +622,7 @@ Partial Class Form2
         Me.Panelagregarcompras.Controls.Add(Me.Totalpagadocompras)
         Me.Panelagregarcompras.Controls.Add(Me.Comentariocompras)
         Me.Panelagregarcompras.Controls.Add(Me.Fechacompra)
-        Me.Panelagregarcompras.Location = New System.Drawing.Point(0, 0)
+        Me.Panelagregarcompras.Location = New System.Drawing.Point(1, 0)
         Me.Panelagregarcompras.Name = "Panelagregarcompras"
         Me.Panelagregarcompras.Size = New System.Drawing.Size(671, 447)
         Me.Panelagregarcompras.TabIndex = 6
@@ -624,6 +630,8 @@ Partial Class Form2
         'Panelmodificarcompras
         '
         Me.Panelmodificarcompras.BackColor = System.Drawing.Color.DimGray
+        Me.Panelmodificarcompras.Controls.Add(Me.Label25)
+        Me.Panelmodificarcompras.Controls.Add(Me.DataGridViewModificarCompras)
         Me.Panelmodificarcompras.Controls.Add(Me.Limpiarmodificarcompras)
         Me.Panelmodificarcompras.Controls.Add(Me.Volvermodificarcompra)
         Me.Panelmodificarcompras.Controls.Add(Me.Agregarmodificacioncompras)
@@ -633,7 +641,7 @@ Partial Class Form2
         Me.Panelmodificarcompras.Controls.Add(Me.Label15)
         Me.Panelmodificarcompras.Controls.Add(Me.Modificarfechacompra)
         Me.Panelmodificarcompras.Controls.Add(Me.Label14)
-        Me.Panelmodificarcompras.Location = New System.Drawing.Point(0, 0)
+        Me.Panelmodificarcompras.Location = New System.Drawing.Point(1, 0)
         Me.Panelmodificarcompras.Name = "Panelmodificarcompras"
         Me.Panelmodificarcompras.Size = New System.Drawing.Size(671, 437)
         Me.Panelmodificarcompras.TabIndex = 9
@@ -641,34 +649,37 @@ Partial Class Form2
         'Limpiarmodificarcompras
         '
         Me.Limpiarmodificarcompras.Image = Global.WindowsApplication1.My.Resources.Resources.goma_de_borrar
-        Me.Limpiarmodificarcompras.Location = New System.Drawing.Point(348, 315)
+        Me.Limpiarmodificarcompras.Location = New System.Drawing.Point(583, 315)
         Me.Limpiarmodificarcompras.Name = "Limpiarmodificarcompras"
-        Me.Limpiarmodificarcompras.Size = New System.Drawing.Size(41, 35)
+        Me.Limpiarmodificarcompras.Size = New System.Drawing.Size(32, 32)
         Me.Limpiarmodificarcompras.TabIndex = 8
         Me.Limpiarmodificarcompras.TabStop = False
+        Me.ToolTip1.SetToolTip(Me.Limpiarmodificarcompras, "Limpiar")
         '
         'Volvermodificarcompra
         '
         Me.Volvermodificarcompra.Image = Global.WindowsApplication1.My.Resources.Resources.flecha_hacia_la_izquierda
         Me.Volvermodificarcompra.Location = New System.Drawing.Point(317, 376)
         Me.Volvermodificarcompra.Name = "Volvermodificarcompra"
-        Me.Volvermodificarcompra.Size = New System.Drawing.Size(41, 35)
+        Me.Volvermodificarcompra.Size = New System.Drawing.Size(32, 32)
         Me.Volvermodificarcompra.TabIndex = 7
         Me.Volvermodificarcompra.TabStop = False
+        Me.ToolTip1.SetToolTip(Me.Volvermodificarcompra, "Volver")
         '
         'Agregarmodificacioncompras
         '
         Me.Agregarmodificacioncompras.Image = Global.WindowsApplication1.My.Resources.Resources.anadir
-        Me.Agregarmodificacioncompras.Location = New System.Drawing.Point(289, 315)
+        Me.Agregarmodificacioncompras.Location = New System.Drawing.Point(515, 315)
         Me.Agregarmodificacioncompras.Name = "Agregarmodificacioncompras"
-        Me.Agregarmodificacioncompras.Size = New System.Drawing.Size(41, 35)
+        Me.Agregarmodificacioncompras.Size = New System.Drawing.Size(32, 32)
         Me.Agregarmodificacioncompras.TabIndex = 6
         Me.Agregarmodificacioncompras.TabStop = False
-        Me.Agregarmodificacioncompras.Tag = "Agregar"
+        Me.Agregarmodificacioncompras.Tag = ""
+        Me.ToolTip1.SetToolTip(Me.Agregarmodificacioncompras, "Agregar")
         '
         'Modificartotalapagarcompra
         '
-        Me.Modificartotalapagarcompra.Location = New System.Drawing.Point(289, 264)
+        Me.Modificartotalapagarcompra.Location = New System.Drawing.Point(515, 264)
         Me.Modificartotalapagarcompra.Name = "Modificartotalapagarcompra"
         Me.Modificartotalapagarcompra.Size = New System.Drawing.Size(100, 20)
         Me.Modificartotalapagarcompra.TabIndex = 5
@@ -676,15 +687,16 @@ Partial Class Form2
         'Label16
         '
         Me.Label16.AutoSize = True
-        Me.Label16.Location = New System.Drawing.Point(304, 232)
+        Me.Label16.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label16.Location = New System.Drawing.Point(522, 248)
         Me.Label16.Name = "Label16"
-        Me.Label16.Size = New System.Drawing.Size(71, 13)
+        Me.Label16.Size = New System.Drawing.Size(81, 13)
         Me.Label16.TabIndex = 4
         Me.Label16.Text = "Total Pagado"
         '
         'Modificarcomentariocompra
         '
-        Me.Modificarcomentariocompra.Location = New System.Drawing.Point(289, 176)
+        Me.Modificarcomentariocompra.Location = New System.Drawing.Point(515, 176)
         Me.Modificarcomentariocompra.Name = "Modificarcomentariocompra"
         Me.Modificarcomentariocompra.Size = New System.Drawing.Size(100, 20)
         Me.Modificarcomentariocompra.TabIndex = 3
@@ -692,15 +704,16 @@ Partial Class Form2
         'Label15
         '
         Me.Label15.AutoSize = True
-        Me.Label15.Location = New System.Drawing.Point(314, 145)
+        Me.Label15.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label15.Location = New System.Drawing.Point(529, 160)
         Me.Label15.Name = "Label15"
-        Me.Label15.Size = New System.Drawing.Size(60, 13)
+        Me.Label15.Size = New System.Drawing.Size(74, 13)
         Me.Label15.TabIndex = 2
         Me.Label15.Text = "Comentario"
         '
         'Modificarfechacompra
         '
-        Me.Modificarfechacompra.Location = New System.Drawing.Point(289, 92)
+        Me.Modificarfechacompra.Location = New System.Drawing.Point(515, 95)
         Me.Modificarfechacompra.Name = "Modificarfechacompra"
         Me.Modificarfechacompra.Size = New System.Drawing.Size(100, 20)
         Me.Modificarfechacompra.TabIndex = 1
@@ -708,9 +721,10 @@ Partial Class Form2
         'Label14
         '
         Me.Label14.AutoSize = True
-        Me.Label14.Location = New System.Drawing.Point(264, 59)
+        Me.Label14.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label14.Location = New System.Drawing.Point(481, 79)
         Me.Label14.Name = "Label14"
-        Me.Label14.Size = New System.Drawing.Size(157, 13)
+        Me.Label14.Size = New System.Drawing.Size(181, 13)
         Me.Label14.TabIndex = 0
         Me.Label14.Text = "Fecha de compra (AA/MM/DD)"
         '
@@ -719,7 +733,7 @@ Partial Class Form2
         Me.Clearagregarcompras.Image = Global.WindowsApplication1.My.Resources.Resources.goma_de_borrar
         Me.Clearagregarcompras.Location = New System.Drawing.Point(348, 314)
         Me.Clearagregarcompras.Name = "Clearagregarcompras"
-        Me.Clearagregarcompras.Size = New System.Drawing.Size(41, 35)
+        Me.Clearagregarcompras.Size = New System.Drawing.Size(32, 32)
         Me.Clearagregarcompras.TabIndex = 10
         Me.Clearagregarcompras.TabStop = False
         Me.ToolTip1.SetToolTip(Me.Clearagregarcompras, "Limpiar")
@@ -729,7 +743,7 @@ Partial Class Form2
         Me.Agregarcompra.Image = Global.WindowsApplication1.My.Resources.Resources.anadir
         Me.Agregarcompra.Location = New System.Drawing.Point(289, 314)
         Me.Agregarcompra.Name = "Agregarcompra"
-        Me.Agregarcompra.Size = New System.Drawing.Size(41, 35)
+        Me.Agregarcompra.Size = New System.Drawing.Size(32, 32)
         Me.Agregarcompra.TabIndex = 9
         Me.Agregarcompra.TabStop = False
         Me.ToolTip1.SetToolTip(Me.Agregarcompra, "Agregar")
@@ -740,37 +754,39 @@ Partial Class Form2
         Me.Volveragregarcompras.Image = Global.WindowsApplication1.My.Resources.Resources.flecha_hacia_la_izquierda
         Me.Volveragregarcompras.Location = New System.Drawing.Point(317, 376)
         Me.Volveragregarcompras.Name = "Volveragregarcompras"
-        Me.Volveragregarcompras.Size = New System.Drawing.Size(41, 38)
+        Me.Volveragregarcompras.Size = New System.Drawing.Size(32, 32)
         Me.Volveragregarcompras.TabIndex = 8
         Me.Volveragregarcompras.TabStop = False
         Me.Volveragregarcompras.Tag = ""
         Me.ToolTip1.SetToolTip(Me.Volveragregarcompras, "Volver")
-        Me.Volveragregarcompras.Visible = False
         '
         'Label13
         '
         Me.Label13.AutoSize = True
-        Me.Label13.Location = New System.Drawing.Point(303, 232)
+        Me.Label13.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label13.Location = New System.Drawing.Point(303, 248)
         Me.Label13.Name = "Label13"
-        Me.Label13.Size = New System.Drawing.Size(71, 13)
+        Me.Label13.Size = New System.Drawing.Size(81, 13)
         Me.Label13.TabIndex = 5
         Me.Label13.Text = "Total Pagado"
         '
         'Label12
         '
         Me.Label12.AutoSize = True
-        Me.Label12.Location = New System.Drawing.Point(314, 145)
+        Me.Label12.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label12.Location = New System.Drawing.Point(303, 160)
         Me.Label12.Name = "Label12"
-        Me.Label12.Size = New System.Drawing.Size(60, 13)
+        Me.Label12.Size = New System.Drawing.Size(74, 13)
         Me.Label12.TabIndex = 4
         Me.Label12.Text = "Comentario"
         '
         'Label11
         '
         Me.Label11.AutoSize = True
-        Me.Label11.Location = New System.Drawing.Point(264, 59)
+        Me.Label11.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label11.Location = New System.Drawing.Point(248, 76)
         Me.Label11.Name = "Label11"
-        Me.Label11.Size = New System.Drawing.Size(157, 13)
+        Me.Label11.Size = New System.Drawing.Size(181, 13)
         Me.Label11.TabIndex = 3
         Me.Label11.Text = "Fecha de compra (AA/MM/DD)"
         '
@@ -808,6 +824,7 @@ Partial Class Form2
         'ComboBox1
         '
         Me.ComboBox1.FormattingEnabled = True
+        Me.ComboBox1.Items.AddRange(New Object() {"Id", "Fecha de Compra", "Comentario", "Total Pagado"})
         Me.ComboBox1.Location = New System.Drawing.Point(498, 19)
         Me.ComboBox1.Name = "ComboBox1"
         Me.ComboBox1.Size = New System.Drawing.Size(135, 21)
@@ -821,24 +838,27 @@ Partial Class Form2
         Me.Buscarcompra.Size = New System.Drawing.Size(23, 19)
         Me.Buscarcompra.TabIndex = 3
         Me.Buscarcompra.TabStop = False
+        Me.ToolTip1.SetToolTip(Me.Buscarcompra, "Buscar")
         '
         'Modificarcompra1
         '
         Me.Modificarcompra1.Image = Global.WindowsApplication1.My.Resources.Resources.editar
         Me.Modificarcompra1.Location = New System.Drawing.Point(124, 390)
         Me.Modificarcompra1.Name = "Modificarcompra1"
-        Me.Modificarcompra1.Size = New System.Drawing.Size(34, 38)
+        Me.Modificarcompra1.Size = New System.Drawing.Size(32, 32)
         Me.Modificarcompra1.TabIndex = 2
         Me.Modificarcompra1.TabStop = False
+        Me.ToolTip1.SetToolTip(Me.Modificarcompra1, "Modificar Compra")
         '
         'Agregarcompra1
         '
         Me.Agregarcompra1.Image = Global.WindowsApplication1.My.Resources.Resources.botoncompra
         Me.Agregarcompra1.Location = New System.Drawing.Point(46, 391)
         Me.Agregarcompra1.Name = "Agregarcompra1"
-        Me.Agregarcompra1.Size = New System.Drawing.Size(35, 37)
+        Me.Agregarcompra1.Size = New System.Drawing.Size(32, 32)
         Me.Agregarcompra1.TabIndex = 1
         Me.Agregarcompra1.TabStop = False
+        Me.ToolTip1.SetToolTip(Me.Agregarcompra1, "Agregar Compra")
         '
         'DataGridViewCompras
         '
@@ -1442,6 +1462,34 @@ Partial Class Form2
         Me.ComboBoxUsuarios.Size = New System.Drawing.Size(89, 21)
         Me.ComboBoxUsuarios.TabIndex = 0
         '
+        'DataGridViewModificarCompras
+        '
+        Me.DataGridViewModificarCompras.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
+        Me.DataGridViewModificarCompras.Location = New System.Drawing.Point(6, 79)
+        Me.DataGridViewModificarCompras.Name = "DataGridViewModificarCompras"
+        Me.DataGridViewModificarCompras.Size = New System.Drawing.Size(459, 268)
+        Me.DataGridViewModificarCompras.TabIndex = 9
+        '
+        'Label25
+        '
+        Me.Label25.AutoSize = True
+        Me.Label25.Font = New System.Drawing.Font("Comic Sans MS", 22.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label25.Location = New System.Drawing.Point(190, 11)
+        Me.Label25.Name = "Label25"
+        Me.Label25.Size = New System.Drawing.Size(275, 41)
+        Me.Label25.TabIndex = 10
+        Me.Label25.Text = "ModificarCompras"
+        '
+        'Label26
+        '
+        Me.Label26.AutoSize = True
+        Me.Label26.Font = New System.Drawing.Font("Comic Sans MS", 22.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label26.Location = New System.Drawing.Point(202, 19)
+        Me.Label26.Name = "Label26"
+        Me.Label26.Size = New System.Drawing.Size(267, 41)
+        Me.Label26.TabIndex = 11
+        Me.Label26.Text = "Agregar Compras"
+        '
         'Form2
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -1493,6 +1541,7 @@ Partial Class Form2
         Me.TabUsuarios.ResumeLayout(False)
         Me.TabUsuarios.PerformLayout()
         CType(Me.PictureBoxUsuarios, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.DataGridViewModificarCompras, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
 
     End Sub
@@ -1624,4 +1673,7 @@ Partial Class Form2
     Friend WithEvents TextBoxBusquedaUsuarios As System.Windows.Forms.TextBox
     Friend WithEvents ComboBoxUsuarios As System.Windows.Forms.ComboBox
     Friend WithEvents PictureBoxUsuarios As System.Windows.Forms.PictureBox
+    Friend WithEvents Label25 As System.Windows.Forms.Label
+    Friend WithEvents DataGridViewModificarCompras As System.Windows.Forms.DataGridView
+    Friend WithEvents Label26 As System.Windows.Forms.Label
 End Class

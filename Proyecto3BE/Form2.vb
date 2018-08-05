@@ -531,9 +531,12 @@ Public Class Form2
         DataGridViewCompras.Columns(1).HeaderText = "Fecha de Compra"
         DataGridViewCompras.Columns(2).HeaderText = "Comentario"
         DataGridViewCompras.Columns(3).HeaderText = "Total"
+
+        'Nose que es esto
         ComboBoxUsuarios.SelectedIndex = 0
+
+        'Muestra el panel principal de Compras y oculta los otros
         Panelprincipalcompras.BringToFront()
-        Panelagregarcompras.SendToBack()
         Panelmodificarcompras.Visible = False
         Panelagregarcompras.Visible = False
 
@@ -573,49 +576,62 @@ Public Class Form2
         'DataGridViewCompras.Columns(2).HeaderText = "Comentario"
         'DataGridViewCompras.Columns(3).HeaderText = "Total"
     End Sub
-
+    '//////////////Boton volver de agregar compras////////////
     Private Sub Volveragregarcompras_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Volveragregarcompras.Click
-        '/////////Panel agregar compras/////////////
+        'Muestra panel pricipal de compras
+        Panelprincipalcompras.Enabled = True
+        Panelprincipalcompras.Visible = True
+        Panelprincipalcompras.BringToFront()
+
+
+        'Oculta panel de agregar compras
         Panelagregarcompras.SendToBack()
         Panelagregarcompras.Visible = False
         Panelagregarcompras.Enabled = False
 
-
-        '////////Panel principal compras///////////////
-        Panelprincipalcompras.Enabled = True
-        Panelprincipalcompras.Visible = True
-        Panelprincipalcompras.BringToFront()
     End Sub
-
+    '/////////////////////////Boton de agregar compras////////////
     Private Sub Agregarcompra1_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Agregarcompra1.Click
-        '/////////Panel agregar compras/////////////
+        'Muestra el panel de agregar compras
         Panelagregarcompras.BringToFront()
         Panelagregarcompras.Visible = True
         Panelagregarcompras.Enabled = True
-        Panelmodificarcompras.Visible = False
-        Panelmodificarcompras.Enabled = False
 
-        Volveragregarcompras.Visible = True
-        Agregarcompra.Visible = True
-        Agregarcompra.Enabled = True
+        'Oculta el panel principal de compras
+        Panelprincipalcompras.SendToBack()
+        Panelprincipalcompras.Enabled = False
+        Panelprincipalcompras.Visible = False
     End Sub
-
+    '////////////Boton volver modificar compras///////////////
     Private Sub Volvermodificarcompra_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Volvermodificarcompra.Click
+        'Oculta el panel de modificar compra
         Panelmodificarcompras.Enabled = False
         Panelmodificarcompras.Visible = False
         Panelmodificarcompras.SendToBack()
 
+        'Muestra el panel principal de compra
         Panelprincipalcompras.Enabled = True
         Panelprincipalcompras.Visible = True
         Panelprincipalcompras.BringToFront()
-    End Sub
 
+        'Actualiza el datagrid del panel principal de compras
+        Consulta = "select * from compra"
+        consultar()
+        DataGridViewCompras.DataSource = Tabla
+        'Cambia los headers de las tablas
+        DataGridViewCompras.Columns(0).HeaderText = "Id"
+        DataGridViewCompras.Columns(1).HeaderText = "Fecha de Compra"
+        DataGridViewCompras.Columns(2).HeaderText = "Comentario"
+        DataGridViewCompras.Columns(3).HeaderText = "Total Pagado"
+    End Sub
+    '/////////////////////Boton clear de modificar compras//////////////////
     Private Sub Limpiarmodificarcompras_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Limpiarmodificarcompras.Click
+        'Deja los textbox vacios
         Modificarcomentariocompra.Clear()
         Modificarfechacompra.Clear()
         Modificartotalapagarcompra.Clear()
     End Sub
-
+    '///////////////Boton que agrega la modificacion compras////////////////////////////
     Private Sub Agregarmodificacioncompras_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Agregarmodificacioncompras.Click
         If Modificarfechacompra.Text <> "" And Modificarcomentariocompra.Text <> "" And Modificartotalapagarcompra.Text <> "" Then
             If IsNumeric(Modificartotalapagarcompra.Text) Then
@@ -639,7 +655,7 @@ Public Class Form2
             MsgBox("Complete todos los campos vacios")
         End If
     End Sub
-
+    '//////////////boton que agrega la compra/////////////////////////
     Private Sub Agregarcompra_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Agregarcompra.Click
         If Fechacompra.Text <> "" And Comentariocompras.Text <> "" And Totalpagadocompras.Text <> "" Then
             If IsNumeric(Totalpagadocompras.Text) Then
@@ -664,17 +680,34 @@ Public Class Form2
         End If
 
     End Sub
-
+    '////////////////Boton clear de agregar compra//////////////
     Private Sub Clearagregarcompras_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Clearagregarcompras.Click
+        'Deja los textbox vacios
         Fechacompra.Clear()
         Comentariocompras.Clear()
         Totalpagadocompras.Clear()
     End Sub
-
+    '////////////////////Boton muestra panel de modificar compras///////////////////
     Private Sub Modificarcompra1_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Modificarcompra1.Click
+        'Muestra el panel de modificar compras
         Panelmodificarcompras.BringToFront()
         Panelmodificarcompras.Visible = True
         Panelmodificarcompras.Enabled = True
+
+        'Actualiza datagrid de panel modificar compras
+        Consulta = "select * from compra"
+        consultar()
+        DataGridViewModificarCompras.DataSource = Tabla
+        'Cambia los headers
+        DataGridViewModificarCompras.Columns(0).HeaderText = "Id"
+        DataGridViewModificarCompras.Columns(1).HeaderText = "Fecha de Compra"
+        DataGridViewModificarCompras.Columns(2).HeaderText = "Comentario"
+        DataGridViewModificarCompras.Columns(3).HeaderText = "Total Pagado"
+
+        'Oculta panel principal compras
+        Panelprincipalcompras.SendToBack()
+        Panelprincipalcompras.Visible = False
+        Panelprincipalcompras.Enabled = False
     End Sub
 
     'CONSULTA PARA AGREGAR CLIENTE
