@@ -524,6 +524,9 @@ Public Class Form2
         DataGridViewClientes.Columns(3).HeaderText = "Teléfono"
 
         'CONSULTA DE TABLA(CARGA COMPRA)
+        Panelprincipalcompras.BringToFront()
+        Panelprincipalcompras.Enabled = True
+        Panelprincipalcompras.Visible = True
         Consulta = "select * from compra"
         consultar()
         DataGridViewCompras.DataSource = Tabla
@@ -531,9 +534,13 @@ Public Class Form2
         DataGridViewCompras.Columns(1).HeaderText = "Fecha de Compra"
         DataGridViewCompras.Columns(2).HeaderText = "Comentario"
         DataGridViewCompras.Columns(3).HeaderText = "Total"
+
+
         ComboBoxUsuarios.SelectedIndex = 0
+
+
         Panelprincipalcompras.BringToFront()
-        Panelagregarcompras.SendToBack()
+
         Panelmodificarcompras.Visible = False
         Panelagregarcompras.Visible = False
 
@@ -585,19 +592,23 @@ Public Class Form2
         Panelprincipalcompras.Enabled = True
         Panelprincipalcompras.Visible = True
         Panelprincipalcompras.BringToFront()
+
+        Consulta = "select * from compra"
+        consultar()
+        DataGridViewCompras.DataSource = Tabla
     End Sub
 
     Private Sub Agregarcompra1_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Agregarcompra1.Click
+        Panelprincipalcompras.Visible = False
+        Panelprincipalcompras.Enabled = False
+        Panelprincipalcompras.SendToBack()
+
+
+
         '/////////Panel agregar compras/////////////
         Panelagregarcompras.BringToFront()
         Panelagregarcompras.Visible = True
         Panelagregarcompras.Enabled = True
-        Panelmodificarcompras.Visible = False
-        Panelmodificarcompras.Enabled = False
-
-        Volveragregarcompras.Visible = True
-        Agregarcompra.Visible = True
-        Agregarcompra.Enabled = True
     End Sub
 
     Private Sub Volvermodificarcompra_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Volvermodificarcompra.Click
@@ -672,9 +683,23 @@ Public Class Form2
     End Sub
 
     Private Sub Modificarcompra1_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Modificarcompra1.Click
+        Panelprincipalcompras.SendToBack()
+        Panelprincipalcompras.Visible = False
+        Panelprincipalcompras.Enabled = False
+
+
         Panelmodificarcompras.BringToFront()
         Panelmodificarcompras.Visible = True
         Panelmodificarcompras.Enabled = True
+
+        Consulta = "select * from compra"
+        consultar()
+        DataGridViewModificarCompra.DataSource = Tabla
+        DataGridViewModificarCompra.Columns(0).HeaderText = "Id"
+        DataGridViewModificarCompra.Columns(1).HeaderText = "Fecha de Compra"
+        DataGridViewModificarCompra.Columns(2).HeaderText = "Comentario"
+        DataGridViewModificarCompra.Columns(3).HeaderText = "Total Pagado"
+
     End Sub
 
     'CONSULTA PARA AGREGAR CLIENTE
