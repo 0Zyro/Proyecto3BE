@@ -30,19 +30,6 @@ Partial Class Form2
         Me.LabelCambioContraseña = New System.Windows.Forms.Label()
         Me.LabelNombreUsuario = New System.Windows.Forms.Label()
         Me.LabelRangoUsuario = New System.Windows.Forms.Label()
-        Me.PanelEditarEliminarcliente = New System.Windows.Forms.Panel()
-        Me.Button7 = New System.Windows.Forms.Button()
-        Me.Botoneliminarcliente = New System.Windows.Forms.Button()
-        Me.Button5 = New System.Windows.Forms.Button()
-        Me.labelAgregarcliente = New System.Windows.Forms.Label()
-        Me.Label19 = New System.Windows.Forms.Label()
-        Me.Texmostrartel = New System.Windows.Forms.TextBox()
-        Me.Label20 = New System.Windows.Forms.Label()
-        Me.Texmostrardir = New System.Windows.Forms.TextBox()
-        Me.Label21 = New System.Windows.Forms.Label()
-        Me.Texmostrarnombre = New System.Windows.Forms.TextBox()
-        Me.Label22 = New System.Windows.Forms.Label()
-        Me.Texmostrarcedula = New System.Windows.Forms.TextBox()
         Me.TabbedPane = New System.Windows.Forms.TabControl()
         Me.TabGanado = New System.Windows.Forms.TabPage()
         Me.Button3 = New System.Windows.Forms.Button()
@@ -107,9 +94,24 @@ Partial Class Form2
         Me.Agregarcompra1 = New System.Windows.Forms.PictureBox()
         Me.DataGridViewCompras = New System.Windows.Forms.DataGridView()
         Me.TabClientes = New System.Windows.Forms.TabPage()
-        Me.Buscarcliente = New System.Windows.Forms.Button()
+        Me.Panel1 = New System.Windows.Forms.Panel()
+        Me.Button8 = New System.Windows.Forms.Button()
+        Me.Texbuscarnombreapellido = New System.Windows.Forms.TextBox()
+        Me.Label24 = New System.Windows.Forms.Label()
+        Me.Label23 = New System.Windows.Forms.Label()
         Me.Texbuscacedula = New System.Windows.Forms.TextBox()
+        Me.Button7 = New System.Windows.Forms.Button()
+        Me.Button1 = New System.Windows.Forms.Button()
+        Me.Button5 = New System.Windows.Forms.Button()
         Me.Label18 = New System.Windows.Forms.Label()
+        Me.Label19 = New System.Windows.Forms.Label()
+        Me.TextBox2 = New System.Windows.Forms.TextBox()
+        Me.Label20 = New System.Windows.Forms.Label()
+        Me.TextBox3 = New System.Windows.Forms.TextBox()
+        Me.Label21 = New System.Windows.Forms.Label()
+        Me.TextBox4 = New System.Windows.Forms.TextBox()
+        Me.Label22 = New System.Windows.Forms.Label()
+        Me.TextBox5 = New System.Windows.Forms.TextBox()
         Me.PanelAgragarcliente = New System.Windows.Forms.Panel()
         Me.BOTONcancelarcliente = New System.Windows.Forms.Button()
         Me.BOTONguardarcliente = New System.Windows.Forms.Button()
@@ -124,6 +126,7 @@ Partial Class Form2
         Me.Texcedula = New System.Windows.Forms.TextBox()
         Me.DataGridViewClientes = New System.Windows.Forms.DataGridView()
         Me.BOTONseleccionarcliente = New System.Windows.Forms.Button()
+        Me.BOTONquitarcliente = New System.Windows.Forms.Button()
         Me.BOTONnagregarcliente = New System.Windows.Forms.Button()
         Me.TabUsuarios = New System.Windows.Forms.TabPage()
         Me.PictureBoxUsuarios = New System.Windows.Forms.PictureBox()
@@ -151,7 +154,6 @@ Partial Class Form2
         Me.ToolTip1 = New System.Windows.Forms.ToolTip(Me.components)
         Me.PanelUsuario.SuspendLayout()
         CType(Me.PictureBox, System.ComponentModel.ISupportInitialize).BeginInit()
-        Me.PanelEditarEliminarcliente.SuspendLayout()
         Me.TabbedPane.SuspendLayout()
         Me.TabGanado.SuspendLayout()
         CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -173,6 +175,7 @@ Partial Class Form2
         CType(Me.Agregarcompra1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.DataGridViewCompras, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.TabClientes.SuspendLayout()
+        Me.Panel1.SuspendLayout()
         Me.PanelAgragarcliente.SuspendLayout()
         CType(Me.DataGridViewClientes, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.TabUsuarios.SuspendLayout()
@@ -238,153 +241,6 @@ Partial Class Form2
         Me.LabelRangoUsuario.TabIndex = 16
         Me.LabelRangoUsuario.Text = "Label11"
         '
-        'PanelEditarEliminarcliente
-        '
-        Me.PanelEditarEliminarcliente.BackColor = System.Drawing.Color.Lime
-        Me.PanelEditarEliminarcliente.Controls.Add(Me.Button7)
-        Me.PanelEditarEliminarcliente.Controls.Add(Me.Botoneliminarcliente)
-        Me.PanelEditarEliminarcliente.Controls.Add(Me.Button5)
-        Me.PanelEditarEliminarcliente.Controls.Add(Me.labelAgregarcliente)
-        Me.PanelEditarEliminarcliente.Controls.Add(Me.Label19)
-        Me.PanelEditarEliminarcliente.Controls.Add(Me.Texmostrartel)
-        Me.PanelEditarEliminarcliente.Controls.Add(Me.Label20)
-        Me.PanelEditarEliminarcliente.Controls.Add(Me.Texmostrardir)
-        Me.PanelEditarEliminarcliente.Controls.Add(Me.Label21)
-        Me.PanelEditarEliminarcliente.Controls.Add(Me.Texmostrarnombre)
-        Me.PanelEditarEliminarcliente.Controls.Add(Me.Label22)
-        Me.PanelEditarEliminarcliente.Controls.Add(Me.Texmostrarcedula)
-        Me.PanelEditarEliminarcliente.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.PanelEditarEliminarcliente.ImeMode = System.Windows.Forms.ImeMode.[On]
-        Me.PanelEditarEliminarcliente.Location = New System.Drawing.Point(3, 56)
-        Me.PanelEditarEliminarcliente.Name = "PanelEditarEliminarcliente"
-        Me.PanelEditarEliminarcliente.Size = New System.Drawing.Size(463, 248)
-        Me.PanelEditarEliminarcliente.TabIndex = 14
-        Me.PanelEditarEliminarcliente.UseWaitCursor = True
-        Me.PanelEditarEliminarcliente.Visible = False
-        '
-        'Button7
-        '
-        Me.Button7.BackColor = System.Drawing.Color.LightGreen
-        Me.Button7.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Button7.Location = New System.Drawing.Point(230, 201)
-        Me.Button7.Name = "Button7"
-        Me.Button7.Size = New System.Drawing.Size(104, 23)
-        Me.Button7.TabIndex = 17
-        Me.Button7.Text = "ELIMINAR"
-        Me.Button7.UseVisualStyleBackColor = False
-        Me.Button7.UseWaitCursor = True
-        '
-        'Botoneliminarcliente
-        '
-        Me.Botoneliminarcliente.BackColor = System.Drawing.Color.LightGreen
-        Me.Botoneliminarcliente.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Botoneliminarcliente.Location = New System.Drawing.Point(353, 201)
-        Me.Botoneliminarcliente.Name = "Botoneliminarcliente"
-        Me.Botoneliminarcliente.Size = New System.Drawing.Size(104, 23)
-        Me.Botoneliminarcliente.TabIndex = 16
-        Me.Botoneliminarcliente.Text = "CANCELAR"
-        Me.Botoneliminarcliente.UseVisualStyleBackColor = False
-        Me.Botoneliminarcliente.UseWaitCursor = True
-        '
-        'Button5
-        '
-        Me.Button5.BackColor = System.Drawing.Color.LightGreen
-        Me.Button5.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Button5.Location = New System.Drawing.Point(105, 201)
-        Me.Button5.Name = "Button5"
-        Me.Button5.Size = New System.Drawing.Size(104, 23)
-        Me.Button5.TabIndex = 15
-        Me.Button5.Text = "EDITAR"
-        Me.Button5.UseVisualStyleBackColor = False
-        Me.Button5.UseWaitCursor = True
-        '
-        'labelAgregarcliente
-        '
-        Me.labelAgregarcliente.AutoSize = True
-        Me.labelAgregarcliente.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, CType((System.Drawing.FontStyle.Bold Or System.Drawing.FontStyle.Underline), System.Drawing.FontStyle), System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.labelAgregarcliente.Location = New System.Drawing.Point(127, 18)
-        Me.labelAgregarcliente.Name = "labelAgregarcliente"
-        Me.labelAgregarcliente.Size = New System.Drawing.Size(177, 20)
-        Me.labelAgregarcliente.TabIndex = 14
-        Me.labelAgregarcliente.Text = "ESDITAR/ELIMINAR"
-        Me.labelAgregarcliente.UseWaitCursor = True
-        '
-        'Label19
-        '
-        Me.Label19.AutoSize = True
-        Me.Label19.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label19.Location = New System.Drawing.Point(24, 105)
-        Me.Label19.Name = "Label19"
-        Me.Label19.Size = New System.Drawing.Size(137, 16)
-        Me.Label19.TabIndex = 6
-        Me.Label19.Text = "Nombre y Apellido"
-        Me.Label19.UseWaitCursor = True
-        '
-        'Texmostrartel
-        '
-        Me.Texmostrartel.Location = New System.Drawing.Point(167, 150)
-        Me.Texmostrartel.Name = "Texmostrartel"
-        Me.Texmostrartel.Size = New System.Drawing.Size(100, 22)
-        Me.Texmostrartel.TabIndex = 12
-        Me.Texmostrartel.UseWaitCursor = True
-        '
-        'Label20
-        '
-        Me.Label20.AutoSize = True
-        Me.Label20.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label20.Location = New System.Drawing.Point(25, 79)
-        Me.Label20.Name = "Label20"
-        Me.Label20.Size = New System.Drawing.Size(57, 16)
-        Me.Label20.TabIndex = 5
-        Me.Label20.Text = "Cedula"
-        Me.Label20.UseWaitCursor = True
-        '
-        'Texmostrardir
-        '
-        Me.Texmostrardir.Location = New System.Drawing.Point(167, 124)
-        Me.Texmostrardir.Name = "Texmostrardir"
-        Me.Texmostrardir.Size = New System.Drawing.Size(272, 22)
-        Me.Texmostrardir.TabIndex = 11
-        Me.Texmostrardir.UseWaitCursor = True
-        '
-        'Label21
-        '
-        Me.Label21.AutoSize = True
-        Me.Label21.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label21.Location = New System.Drawing.Point(25, 131)
-        Me.Label21.Name = "Label21"
-        Me.Label21.Size = New System.Drawing.Size(74, 16)
-        Me.Label21.TabIndex = 7
-        Me.Label21.Text = "Dirección"
-        Me.Label21.UseWaitCursor = True
-        '
-        'Texmostrarnombre
-        '
-        Me.Texmostrarnombre.Location = New System.Drawing.Point(167, 98)
-        Me.Texmostrarnombre.Name = "Texmostrarnombre"
-        Me.Texmostrarnombre.Size = New System.Drawing.Size(272, 22)
-        Me.Texmostrarnombre.TabIndex = 10
-        Me.Texmostrarnombre.UseWaitCursor = True
-        '
-        'Label22
-        '
-        Me.Label22.AutoSize = True
-        Me.Label22.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label22.Location = New System.Drawing.Point(25, 157)
-        Me.Label22.Name = "Label22"
-        Me.Label22.Size = New System.Drawing.Size(70, 16)
-        Me.Label22.TabIndex = 8
-        Me.Label22.Text = "Teléfono"
-        Me.Label22.UseWaitCursor = True
-        '
-        'Texmostrarcedula
-        '
-        Me.Texmostrarcedula.Location = New System.Drawing.Point(167, 71)
-        Me.Texmostrarcedula.Name = "Texmostrarcedula"
-        Me.Texmostrarcedula.Size = New System.Drawing.Size(100, 22)
-        Me.Texmostrarcedula.TabIndex = 9
-        Me.Texmostrarcedula.UseWaitCursor = True
-        '
         'TabbedPane
         '
         Me.TabbedPane.Controls.Add(Me.TabGanado)
@@ -395,7 +251,7 @@ Partial Class Form2
         Me.TabbedPane.Location = New System.Drawing.Point(106, 0)
         Me.TabbedPane.Name = "TabbedPane"
         Me.TabbedPane.SelectedIndex = 0
-        Me.TabbedPane.Size = New System.Drawing.Size(685, 460)
+        Me.TabbedPane.Size = New System.Drawing.Size(685, 463)
         Me.TabbedPane.TabIndex = 1
         '
         'TabGanado
@@ -996,57 +852,205 @@ Partial Class Form2
         'TabClientes
         '
         Me.TabClientes.BackColor = System.Drawing.Color.LightSkyBlue
-        Me.TabClientes.Controls.Add(Me.Buscarcliente)
-        Me.TabClientes.Controls.Add(Me.Texbuscacedula)
-        Me.TabClientes.Controls.Add(Me.Label18)
+        Me.TabClientes.Controls.Add(Me.Panel1)
         Me.TabClientes.Controls.Add(Me.PanelAgragarcliente)
         Me.TabClientes.Controls.Add(Me.DataGridViewClientes)
-        Me.TabClientes.Controls.Add(Me.PanelEditarEliminarcliente)
         Me.TabClientes.Controls.Add(Me.BOTONseleccionarcliente)
+        Me.TabClientes.Controls.Add(Me.BOTONquitarcliente)
         Me.TabClientes.Controls.Add(Me.BOTONnagregarcliente)
         Me.TabClientes.Location = New System.Drawing.Point(4, 22)
         Me.TabClientes.Name = "TabClientes"
         Me.TabClientes.Padding = New System.Windows.Forms.Padding(3)
-        Me.TabClientes.Size = New System.Drawing.Size(677, 434)
+        Me.TabClientes.Size = New System.Drawing.Size(677, 437)
         Me.TabClientes.TabIndex = 3
         Me.TabClientes.Text = "Clientes"
-        Me.TabClientes.UseWaitCursor = True
         '
-        'Buscarcliente
+        'Panel1
         '
-        Me.Buscarcliente.AccessibleRole = System.Windows.Forms.AccessibleRole.None
-        Me.Buscarcliente.BackColor = System.Drawing.Color.HotPink
-        Me.Buscarcliente.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Buscarcliente.Location = New System.Drawing.Point(491, 66)
-        Me.Buscarcliente.Name = "Buscarcliente"
-        Me.Buscarcliente.Size = New System.Drawing.Size(118, 70)
-        Me.Buscarcliente.TabIndex = 23
-        Me.Buscarcliente.Text = "Seleccionar cliente"
-        Me.Buscarcliente.UseVisualStyleBackColor = False
-        Me.Buscarcliente.UseWaitCursor = True
+        Me.Panel1.BackColor = System.Drawing.Color.Lime
+        Me.Panel1.Controls.Add(Me.Button8)
+        Me.Panel1.Controls.Add(Me.Texbuscarnombreapellido)
+        Me.Panel1.Controls.Add(Me.Label24)
+        Me.Panel1.Controls.Add(Me.Label23)
+        Me.Panel1.Controls.Add(Me.Texbuscacedula)
+        Me.Panel1.Controls.Add(Me.Button7)
+        Me.Panel1.Controls.Add(Me.Button1)
+        Me.Panel1.Controls.Add(Me.Button5)
+        Me.Panel1.Controls.Add(Me.Label18)
+        Me.Panel1.Controls.Add(Me.Label19)
+        Me.Panel1.Controls.Add(Me.TextBox2)
+        Me.Panel1.Controls.Add(Me.Label20)
+        Me.Panel1.Controls.Add(Me.TextBox3)
+        Me.Panel1.Controls.Add(Me.Label21)
+        Me.Panel1.Controls.Add(Me.TextBox4)
+        Me.Panel1.Controls.Add(Me.Label22)
+        Me.Panel1.Controls.Add(Me.TextBox5)
+        Me.Panel1.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Panel1.Location = New System.Drawing.Point(116, 6)
+        Me.Panel1.Name = "Panel1"
+        Me.Panel1.Size = New System.Drawing.Size(456, 10)
+        Me.Panel1.TabIndex = 14
+        '
+        'Button8
+        '
+        Me.Button8.AccessibleRole = System.Windows.Forms.AccessibleRole.None
+        Me.Button8.BackColor = System.Drawing.Color.HotPink
+        Me.Button8.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Button8.Location = New System.Drawing.Point(349, 42)
+        Me.Button8.Name = "Button8"
+        Me.Button8.Size = New System.Drawing.Size(84, 33)
+        Me.Button8.TabIndex = 22
+        Me.Button8.Text = "BUSCAR"
+        Me.Button8.UseVisualStyleBackColor = False
+        '
+        'Texbuscarnombreapellido
+        '
+        Me.Texbuscarnombreapellido.Location = New System.Drawing.Point(161, 86)
+        Me.Texbuscarnombreapellido.Name = "Texbuscarnombreapellido"
+        Me.Texbuscarnombreapellido.Size = New System.Drawing.Size(272, 22)
+        Me.Texbuscarnombreapellido.TabIndex = 21
+        '
+        'Label24
+        '
+        Me.Label24.AutoSize = True
+        Me.Label24.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, CType((System.Drawing.FontStyle.Bold Or System.Drawing.FontStyle.Underline), System.Drawing.FontStyle), System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label24.Location = New System.Drawing.Point(23, 89)
+        Me.Label24.Name = "Label24"
+        Me.Label24.Size = New System.Drawing.Size(137, 16)
+        Me.Label24.TabIndex = 20
+        Me.Label24.Text = "Nombre y Apellido"
+        '
+        'Label23
+        '
+        Me.Label23.AutoSize = True
+        Me.Label23.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, CType((System.Drawing.FontStyle.Bold Or System.Drawing.FontStyle.Underline), System.Drawing.FontStyle), System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label23.Location = New System.Drawing.Point(25, 59)
+        Me.Label23.Name = "Label23"
+        Me.Label23.Size = New System.Drawing.Size(57, 16)
+        Me.Label23.TabIndex = 19
+        Me.Label23.Text = "Cedula"
         '
         'Texbuscacedula
         '
-        Me.Texbuscacedula.Location = New System.Drawing.Point(134, 15)
+        Me.Texbuscacedula.Location = New System.Drawing.Point(161, 53)
         Me.Texbuscacedula.Name = "Texbuscacedula"
-        Me.Texbuscacedula.Size = New System.Drawing.Size(142, 20)
-        Me.Texbuscacedula.TabIndex = 16
-        Me.Texbuscacedula.UseWaitCursor = True
+        Me.Texbuscacedula.Size = New System.Drawing.Size(114, 22)
+        Me.Texbuscacedula.TabIndex = 18
+        '
+        'Button7
+        '
+        Me.Button7.BackColor = System.Drawing.Color.LightGreen
+        Me.Button7.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Button7.Location = New System.Drawing.Point(215, 278)
+        Me.Button7.Name = "Button7"
+        Me.Button7.Size = New System.Drawing.Size(104, 23)
+        Me.Button7.TabIndex = 17
+        Me.Button7.Text = "ELIMINAR"
+        Me.Button7.UseVisualStyleBackColor = False
+        '
+        'Button1
+        '
+        Me.Button1.BackColor = System.Drawing.Color.LightGreen
+        Me.Button1.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Button1.Location = New System.Drawing.Point(338, 278)
+        Me.Button1.Name = "Button1"
+        Me.Button1.Size = New System.Drawing.Size(104, 23)
+        Me.Button1.TabIndex = 16
+        Me.Button1.Text = "CANCELAR"
+        Me.Button1.UseVisualStyleBackColor = False
+        '
+        'Button5
+        '
+        Me.Button5.BackColor = System.Drawing.Color.LightGreen
+        Me.Button5.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Button5.Location = New System.Drawing.Point(90, 278)
+        Me.Button5.Name = "Button5"
+        Me.Button5.Size = New System.Drawing.Size(104, 23)
+        Me.Button5.TabIndex = 15
+        Me.Button5.Text = "EDITAR"
+        Me.Button5.UseVisualStyleBackColor = False
         '
         'Label18
         '
         Me.Label18.AutoSize = True
-        Me.Label18.Font = New System.Drawing.Font("Arial Narrow", 14.25!, CType((System.Drawing.FontStyle.Bold Or System.Drawing.FontStyle.Underline), System.Drawing.FontStyle), System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label18.Location = New System.Drawing.Point(6, 12)
+        Me.Label18.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, CType((System.Drawing.FontStyle.Bold Or System.Drawing.FontStyle.Underline), System.Drawing.FontStyle), System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label18.Location = New System.Drawing.Point(157, 14)
         Me.Label18.Name = "Label18"
-        Me.Label18.Size = New System.Drawing.Size(122, 23)
-        Me.Label18.TabIndex = 15
-        Me.Label18.Text = "Ingrese cedula"
-        Me.Label18.UseWaitCursor = True
+        Me.Label18.Size = New System.Drawing.Size(178, 20)
+        Me.Label18.TabIndex = 14
+        Me.Label18.Text = "AGREGAR CLIENTE"
+        '
+        'Label19
+        '
+        Me.Label19.AutoSize = True
+        Me.Label19.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label19.Location = New System.Drawing.Point(11, 181)
+        Me.Label19.Name = "Label19"
+        Me.Label19.Size = New System.Drawing.Size(137, 16)
+        Me.Label19.TabIndex = 6
+        Me.Label19.Text = "Nombre y Apellido"
+        '
+        'TextBox2
+        '
+        Me.TextBox2.Location = New System.Drawing.Point(154, 226)
+        Me.TextBox2.Name = "TextBox2"
+        Me.TextBox2.Size = New System.Drawing.Size(100, 22)
+        Me.TextBox2.TabIndex = 12
+        '
+        'Label20
+        '
+        Me.Label20.AutoSize = True
+        Me.Label20.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label20.Location = New System.Drawing.Point(12, 155)
+        Me.Label20.Name = "Label20"
+        Me.Label20.Size = New System.Drawing.Size(57, 16)
+        Me.Label20.TabIndex = 5
+        Me.Label20.Text = "Cedula"
+        '
+        'TextBox3
+        '
+        Me.TextBox3.Location = New System.Drawing.Point(154, 200)
+        Me.TextBox3.Name = "TextBox3"
+        Me.TextBox3.Size = New System.Drawing.Size(272, 22)
+        Me.TextBox3.TabIndex = 11
+        '
+        'Label21
+        '
+        Me.Label21.AutoSize = True
+        Me.Label21.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label21.Location = New System.Drawing.Point(12, 207)
+        Me.Label21.Name = "Label21"
+        Me.Label21.Size = New System.Drawing.Size(74, 16)
+        Me.Label21.TabIndex = 7
+        Me.Label21.Text = "Dirección"
+        '
+        'TextBox4
+        '
+        Me.TextBox4.Location = New System.Drawing.Point(154, 174)
+        Me.TextBox4.Name = "TextBox4"
+        Me.TextBox4.Size = New System.Drawing.Size(272, 22)
+        Me.TextBox4.TabIndex = 10
+        '
+        'Label22
+        '
+        Me.Label22.AutoSize = True
+        Me.Label22.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label22.Location = New System.Drawing.Point(12, 233)
+        Me.Label22.Name = "Label22"
+        Me.Label22.Size = New System.Drawing.Size(70, 16)
+        Me.Label22.TabIndex = 8
+        Me.Label22.Text = "Teléfono"
+        '
+        'TextBox5
+        '
+        Me.TextBox5.Location = New System.Drawing.Point(154, 147)
+        Me.TextBox5.Name = "TextBox5"
+        Me.TextBox5.Size = New System.Drawing.Size(100, 22)
+        Me.TextBox5.TabIndex = 9
         '
         'PanelAgragarcliente
         '
-        Me.PanelAgragarcliente.BackColor = System.Drawing.Color.DarkOrange
+        Me.PanelAgragarcliente.BackColor = System.Drawing.Color.Lime
         Me.PanelAgragarcliente.Controls.Add(Me.BOTONcancelarcliente)
         Me.PanelAgragarcliente.Controls.Add(Me.BOTONguardarcliente)
         Me.PanelAgragarcliente.Controls.Add(Me.Label17)
@@ -1059,12 +1063,10 @@ Partial Class Form2
         Me.PanelAgragarcliente.Controls.Add(Me.Labeltelcliente)
         Me.PanelAgragarcliente.Controls.Add(Me.Texcedula)
         Me.PanelAgragarcliente.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.PanelAgragarcliente.Location = New System.Drawing.Point(10, 107)
+        Me.PanelAgragarcliente.Location = New System.Drawing.Point(3, 161)
         Me.PanelAgragarcliente.Name = "PanelAgragarcliente"
-        Me.PanelAgragarcliente.Size = New System.Drawing.Size(461, 230)
+        Me.PanelAgragarcliente.Size = New System.Drawing.Size(456, 237)
         Me.PanelAgragarcliente.TabIndex = 13
-        Me.PanelAgragarcliente.UseWaitCursor = True
-        Me.PanelAgragarcliente.Visible = False
         '
         'BOTONcancelarcliente
         '
@@ -1076,7 +1078,6 @@ Partial Class Form2
         Me.BOTONcancelarcliente.TabIndex = 16
         Me.BOTONcancelarcliente.Text = "CANCELAR"
         Me.BOTONcancelarcliente.UseVisualStyleBackColor = False
-        Me.BOTONcancelarcliente.UseWaitCursor = True
         '
         'BOTONguardarcliente
         '
@@ -1088,7 +1089,6 @@ Partial Class Form2
         Me.BOTONguardarcliente.TabIndex = 15
         Me.BOTONguardarcliente.Text = "GUARDAR"
         Me.BOTONguardarcliente.UseVisualStyleBackColor = False
-        Me.BOTONguardarcliente.UseWaitCursor = True
         '
         'Label17
         '
@@ -1099,7 +1099,6 @@ Partial Class Form2
         Me.Label17.Size = New System.Drawing.Size(178, 20)
         Me.Label17.TabIndex = 14
         Me.Label17.Text = "AGREGAR CLIENTE"
-        Me.Label17.UseWaitCursor = True
         '
         'LabelNombreyApellidocliente
         '
@@ -1110,7 +1109,6 @@ Partial Class Form2
         Me.LabelNombreyApellidocliente.Size = New System.Drawing.Size(137, 16)
         Me.LabelNombreyApellidocliente.TabIndex = 6
         Me.LabelNombreyApellidocliente.Text = "Nombre y Apellido"
-        Me.LabelNombreyApellidocliente.UseWaitCursor = True
         '
         'Texttelefono
         '
@@ -1118,7 +1116,6 @@ Partial Class Form2
         Me.Texttelefono.Name = "Texttelefono"
         Me.Texttelefono.Size = New System.Drawing.Size(100, 22)
         Me.Texttelefono.TabIndex = 12
-        Me.Texttelefono.UseWaitCursor = True
         '
         'LabelCedulacliente
         '
@@ -1129,7 +1126,6 @@ Partial Class Form2
         Me.LabelCedulacliente.Size = New System.Drawing.Size(57, 16)
         Me.LabelCedulacliente.TabIndex = 5
         Me.LabelCedulacliente.Text = "Cedula"
-        Me.LabelCedulacliente.UseWaitCursor = True
         '
         'Texdireccion
         '
@@ -1137,7 +1133,6 @@ Partial Class Form2
         Me.Texdireccion.Name = "Texdireccion"
         Me.Texdireccion.Size = New System.Drawing.Size(272, 22)
         Me.Texdireccion.TabIndex = 11
-        Me.Texdireccion.UseWaitCursor = True
         '
         'Labeldireccioncliente
         '
@@ -1148,7 +1143,6 @@ Partial Class Form2
         Me.Labeldireccioncliente.Size = New System.Drawing.Size(74, 16)
         Me.Labeldireccioncliente.TabIndex = 7
         Me.Labeldireccioncliente.Text = "Dirección"
-        Me.Labeldireccioncliente.UseWaitCursor = True
         '
         'Texnombreapellido
         '
@@ -1156,7 +1150,6 @@ Partial Class Form2
         Me.Texnombreapellido.Name = "Texnombreapellido"
         Me.Texnombreapellido.Size = New System.Drawing.Size(272, 22)
         Me.Texnombreapellido.TabIndex = 10
-        Me.Texnombreapellido.UseWaitCursor = True
         '
         'Labeltelcliente
         '
@@ -1167,7 +1160,6 @@ Partial Class Form2
         Me.Labeltelcliente.Size = New System.Drawing.Size(70, 16)
         Me.Labeltelcliente.TabIndex = 8
         Me.Labeltelcliente.Text = "Teléfono"
-        Me.Labeltelcliente.UseWaitCursor = True
         '
         'Texcedula
         '
@@ -1175,42 +1167,50 @@ Partial Class Form2
         Me.Texcedula.Name = "Texcedula"
         Me.Texcedula.Size = New System.Drawing.Size(100, 22)
         Me.Texcedula.TabIndex = 9
-        Me.Texcedula.UseWaitCursor = True
         '
         'DataGridViewClientes
         '
         Me.DataGridViewClientes.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.DataGridViewClientes.Location = New System.Drawing.Point(6, 56)
+        Me.DataGridViewClientes.Location = New System.Drawing.Point(3, 43)
         Me.DataGridViewClientes.Name = "DataGridViewClientes"
-        Me.DataGridViewClientes.Size = New System.Drawing.Size(450, 309)
+        Me.DataGridViewClientes.Size = New System.Drawing.Size(450, 237)
         Me.DataGridViewClientes.TabIndex = 4
-        Me.DataGridViewClientes.UseWaitCursor = True
         '
         'BOTONseleccionarcliente
         '
         Me.BOTONseleccionarcliente.AccessibleRole = System.Windows.Forms.AccessibleRole.None
         Me.BOTONseleccionarcliente.BackColor = System.Drawing.Color.HotPink
         Me.BOTONseleccionarcliente.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.BOTONseleccionarcliente.Location = New System.Drawing.Point(282, 6)
+        Me.BOTONseleccionarcliente.Location = New System.Drawing.Point(498, 147)
         Me.BOTONseleccionarcliente.Name = "BOTONseleccionarcliente"
-        Me.BOTONseleccionarcliente.Size = New System.Drawing.Size(147, 42)
+        Me.BOTONseleccionarcliente.Size = New System.Drawing.Size(116, 78)
         Me.BOTONseleccionarcliente.TabIndex = 2
-        Me.BOTONseleccionarcliente.Text = "Editar/Eliminar cliente"
+        Me.BOTONseleccionarcliente.Text = "SELECCIONAR"
         Me.BOTONseleccionarcliente.UseVisualStyleBackColor = False
-        Me.BOTONseleccionarcliente.UseWaitCursor = True
+        '
+        'BOTONquitarcliente
+        '
+        Me.BOTONquitarcliente.AccessibleRole = System.Windows.Forms.AccessibleRole.None
+        Me.BOTONquitarcliente.BackColor = System.Drawing.Color.HotPink
+        Me.BOTONquitarcliente.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.BOTONquitarcliente.Location = New System.Drawing.Point(498, 256)
+        Me.BOTONquitarcliente.Name = "BOTONquitarcliente"
+        Me.BOTONquitarcliente.Size = New System.Drawing.Size(116, 67)
+        Me.BOTONquitarcliente.TabIndex = 1
+        Me.BOTONquitarcliente.Text = "ELIMINAR"
+        Me.BOTONquitarcliente.UseVisualStyleBackColor = False
         '
         'BOTONnagregarcliente
         '
         Me.BOTONnagregarcliente.AccessibleRole = System.Windows.Forms.AccessibleRole.None
         Me.BOTONnagregarcliente.BackColor = System.Drawing.Color.HotPink
         Me.BOTONnagregarcliente.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.BOTONnagregarcliente.Location = New System.Drawing.Point(491, 152)
+        Me.BOTONnagregarcliente.Location = New System.Drawing.Point(498, 43)
         Me.BOTONnagregarcliente.Name = "BOTONnagregarcliente"
-        Me.BOTONnagregarcliente.Size = New System.Drawing.Size(118, 70)
+        Me.BOTONnagregarcliente.Size = New System.Drawing.Size(116, 78)
         Me.BOTONnagregarcliente.TabIndex = 0
-        Me.BOTONnagregarcliente.Text = "Agregar cliente"
+        Me.BOTONnagregarcliente.Text = "AGREGAR"
         Me.BOTONnagregarcliente.UseVisualStyleBackColor = False
-        Me.BOTONnagregarcliente.UseWaitCursor = True
         '
         'TabUsuarios
         '
@@ -1446,7 +1446,7 @@ Partial Class Form2
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(784, 461)
+        Me.ClientSize = New System.Drawing.Size(784, 462)
         Me.Controls.Add(Me.TabbedPane)
         Me.Controls.Add(Me.PanelUsuario)
         Me.MaximumSize = New System.Drawing.Size(800, 500)
@@ -1458,8 +1458,6 @@ Partial Class Form2
         Me.PanelUsuario.ResumeLayout(False)
         Me.PanelUsuario.PerformLayout()
         CType(Me.PictureBox, System.ComponentModel.ISupportInitialize).EndInit()
-        Me.PanelEditarEliminarcliente.ResumeLayout(False)
-        Me.PanelEditarEliminarcliente.PerformLayout()
         Me.TabbedPane.ResumeLayout(False)
         Me.TabGanado.ResumeLayout(False)
         Me.TabGanado.PerformLayout()
@@ -1487,7 +1485,8 @@ Partial Class Form2
         CType(Me.Agregarcompra1, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.DataGridViewCompras, System.ComponentModel.ISupportInitialize).EndInit()
         Me.TabClientes.ResumeLayout(False)
-        Me.TabClientes.PerformLayout()
+        Me.Panel1.ResumeLayout(False)
+        Me.Panel1.PerformLayout()
         Me.PanelAgragarcliente.ResumeLayout(False)
         Me.PanelAgragarcliente.PerformLayout()
         CType(Me.DataGridViewClientes, System.ComponentModel.ISupportInitialize).EndInit()
@@ -1527,6 +1526,7 @@ Partial Class Form2
     Friend WithEvents LabelCedulacliente As System.Windows.Forms.Label
     Friend WithEvents DataGridViewClientes As System.Windows.Forms.DataGridView
     Friend WithEvents BOTONseleccionarcliente As System.Windows.Forms.Button
+    Friend WithEvents BOTONquitarcliente As System.Windows.Forms.Button
     Friend WithEvents BOTONnagregarcliente As System.Windows.Forms.Button
     Friend WithEvents CheckBox1 As System.Windows.Forms.CheckBox
     Friend WithEvents DataGridView2 As System.Windows.Forms.DataGridView
@@ -1580,17 +1580,23 @@ Partial Class Form2
     Friend WithEvents Label17 As System.Windows.Forms.Label
     Friend WithEvents BOTONcancelarcliente As System.Windows.Forms.Button
     Friend WithEvents BOTONguardarcliente As System.Windows.Forms.Button
-    Friend WithEvents Botoneliminarcliente As System.Windows.Forms.Button
+    Friend WithEvents Panel1 As System.Windows.Forms.Panel
+    Friend WithEvents Button1 As System.Windows.Forms.Button
     Friend WithEvents Button5 As System.Windows.Forms.Button
-    Friend WithEvents labelAgregarcliente As System.Windows.Forms.Label
+    Friend WithEvents Label18 As System.Windows.Forms.Label
     Friend WithEvents Label19 As System.Windows.Forms.Label
-    Friend WithEvents Texmostrartel As System.Windows.Forms.TextBox
+    Friend WithEvents TextBox2 As System.Windows.Forms.TextBox
     Friend WithEvents Label20 As System.Windows.Forms.Label
-    Friend WithEvents Texmostrardir As System.Windows.Forms.TextBox
+    Friend WithEvents TextBox3 As System.Windows.Forms.TextBox
     Friend WithEvents Label21 As System.Windows.Forms.Label
-    Friend WithEvents Texmostrarnombre As System.Windows.Forms.TextBox
+    Friend WithEvents TextBox4 As System.Windows.Forms.TextBox
     Friend WithEvents Label22 As System.Windows.Forms.Label
-    Friend WithEvents Texmostrarcedula As System.Windows.Forms.TextBox
+    Friend WithEvents TextBox5 As System.Windows.Forms.TextBox
+    Friend WithEvents Button8 As System.Windows.Forms.Button
+    Friend WithEvents Texbuscarnombreapellido As System.Windows.Forms.TextBox
+    Friend WithEvents Label24 As System.Windows.Forms.Label
+    Friend WithEvents Label23 As System.Windows.Forms.Label
+    Friend WithEvents Texbuscacedula As System.Windows.Forms.TextBox
     Friend WithEvents Button7 As System.Windows.Forms.Button
     Friend WithEvents BotonCerrarSesion As System.Windows.Forms.Button
     Friend WithEvents PictureBox As System.Windows.Forms.PictureBox
@@ -1618,8 +1624,4 @@ Partial Class Form2
     Friend WithEvents TextBoxBusquedaUsuarios As System.Windows.Forms.TextBox
     Friend WithEvents ComboBoxUsuarios As System.Windows.Forms.ComboBox
     Friend WithEvents PictureBoxUsuarios As System.Windows.Forms.PictureBox
-    Friend WithEvents Buscarcliente As System.Windows.Forms.Button
-    Friend WithEvents Texbuscacedula As System.Windows.Forms.TextBox
-    Friend WithEvents Label18 As System.Windows.Forms.Label
-    Friend WithEvents PanelEditarEliminarcliente As System.Windows.Forms.Panel
 End Class

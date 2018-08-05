@@ -3,19 +3,17 @@ Imports System.Data.OleDb
 Imports MySql.Data.MySqlClient
 
 Public Class Form2
-    Dim datos As DataSet
-
-    Dim ubicacion As String = ("Server=localhost;Database=vacas;User id=root;Password=;Port=3306;")
+    Dim data As String = ("Server=localhost;Database=vacas;User id=root;Password=;Port=3306;")
     'Dim data As String = ("Server=www.db4free.net;Database=database_vacas;User id=zero22394;Password=zero22394;Port=3306;")
 
     Public Conexion As MySqlDataAdapter
     Public Tabla As DataTable
     Public Consulta As String
-    Public MysqlConexion As MySqlConnection = New MySqlConnection(ubicacion)
-
+    Public MysqlConexion As MySqlConnection = New MySqlConnection(data)
+    
     Public Sub consultar()
         Try
-            Conexion = New MySqlDataAdapter(Consulta, ubicacion)
+            Conexion = New MySqlDataAdapter(Consulta, data)
             Tabla = New DataTable
             Conexion.Fill(Tabla)
         Catch ex As Exception
@@ -29,7 +27,7 @@ Public Class Form2
     Dim rows(0) As String
 
     'Objetos necesarios para la conexion
-    Dim connection As New MySqlConnection(ubicacion)
+    Dim connection As New MySqlConnection(data)
     Dim comando As New MySqlCommand
     Dim reader As MySqlDataReader
 
@@ -415,17 +413,36 @@ Public Class Form2
 
     'Boton "Agregar" de tab "Clientes"
     Private Sub Buttonagregarcliente_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles BOTONnagregarcliente.Click
-        PanelAgragarcliente.Visible = True
+        PanelAgragarcliente.Show()
     End Sub
 
     'Se cargan los datos cuando se cambia de tab
     Private Sub TabClientes_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles TabClientes.Click
 
-
     End Sub
 
-    
-   
+    'Boton "Borrar" de tab "Clientes"
+    Private Sub Buttonquitarcliente_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles BOTONquitarcliente.Click
+        Consulta = "delete from cliente where id='" & Texcedula.Text & "'"
+        consultar()
+
+        Consulta = "select * from cliente"
+        consultar()
+        DataGridViewClientes.DataSource = Tabla
+        Texcedula.Text = ""
+        Texnombreapellido.Text = ""
+        Texdireccion.Text = ""
+        Texttelefono.Text = ""
+    End Sub
+
+    'Boton "Seleccionar" de tab "Clientes"
+    Private Sub Buttonseleccionarcliente_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles BOTONseleccionarcliente.Click
+
+        Texcedula.Text = DataGridViewClientes.Item(0, DataGridViewClientes.CurrentRow.Index).Value
+        Texnombreapellido.Text = DataGridViewClientes.Item(1, DataGridViewClientes.CurrentRow.Index).Value
+        Texdireccion.Text = DataGridViewClientes.Item(2, DataGridViewClientes.CurrentRow.Index).Value
+        Texttelefono.Text = DataGridViewClientes.Item(3, DataGridViewClientes.CurrentRow.Index).Value
+    End Sub
 
     '/////VENTAS/////
     'boton agregar
@@ -481,7 +498,13 @@ Public Class Form2
     End Sub
 
     Private Sub DataGridViewClientes_CellContentClick(ByVal sender As System.Object, ByVal e As System.Windows.Forms.DataGridViewCellEventArgs) Handles DataGridViewClientes.CellContentClick
-      
+        Consulta = "select * from cliente"
+        consultar()
+        DataGridViewClientes.DataSource = Tabla
+        DataGridViewClientes.Columns(0).HeaderText = "Cedúla"
+        DataGridViewClientes.Columns(1).HeaderText = "Nombre y apellido"
+        DataGridViewClientes.Columns(2).HeaderText = "Dirección"
+        DataGridViewClientes.Columns(3).HeaderText = "Teléfono"
     End Sub
 
     Private Sub Form2_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
@@ -490,10 +513,6 @@ Public Class Form2
 
         '////////////CLIENTES
         PanelAgragarcliente.Hide()
-
-
-
-
 
         'CARGA DATAGRIDCLIENTES
         Consulta = "select * from cliente"
@@ -504,7 +523,7 @@ Public Class Form2
         DataGridViewClientes.Columns(2).HeaderText = "Dirección"
         DataGridViewClientes.Columns(3).HeaderText = "Teléfono"
 
-        '///////////CONSULTA DE TABLA(CARGA COMPRA)
+        'CONSULTA DE TABLA(CARGA COMPRA)
         Consulta = "select * from compra"
         consultar()
         DataGridViewCompras.DataSource = Tabla
@@ -672,7 +691,6 @@ Public Class Form2
                 Texnombreapellido.Text = ""
                 Texdireccion.Text = ""
                 Texttelefono.Text = ""
-                MsgBox("Registro exitoso")
             Else
                 MsgBox("Cedula solo valores numericos")
 
@@ -685,81 +703,5 @@ Public Class Form2
     'CIERRA EL PANEL DE AGREGAR CLIENTE
     Private Sub BOTONcancelarcliente_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles BOTONcancelarcliente.Click
         PanelAgragarcliente.Hide()
-
-    End Sub
-
-
-
-
-
-
-    Private Sub Button5_Click_1(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Button5.Click
-        Consulta = "update cliente set id='" + Texmostrarcedula.Text +
-                               "', nombre='" + Texmostrarnombre.Text +
-                               "', direccion='" + Texmostrardir.Text +
-                               "', telefono='" + Texmostrartel.Text +
-                               "' where id='" + Texbuscacedula.Text + "'"
-        consultar()
-        Consulta = "select * from cliente"
-        consultar()
-        DataGridViewClientes.DataSource = Tabla
-        MsgBox("Editado con exito")
-    End Sub
-
-    Private Sub Button1_Click_1(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Botoneliminarcliente.Click
-        PanelEditarEliminarcliente.Visible = False
-        DataGridViewClientes.Visible = True
-    End Sub
-
-    Private Sub Button7_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Button7.Click
-        Consulta = "delete from cliente where id='" & Texbuscacedula.Text & "'"
-        consultar()
-
-        Consulta = "select * from cliente"
-        consultar()
-        DataGridViewClientes.DataSource = Tabla
-        Texbuscacedula.Text = ""
-        Texmostrarcedula.Text = ""
-        Texmostrarnombre.Text = ""
-        Texmostrardir.Text = ""
-        Texmostrartel.Text = ""
-        MsgBox("El cliente fue eliminado del registro ")
-    End Sub
-
-  
-    Private Sub Buscarcliente_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Buscarcliente.Click
-        Texbuscacedula.Text = DataGridViewClientes.Item(0, DataGridViewClientes.CurrentRow.Index).Value
-    End Sub
-    'Boton "EDITAR O ELIMINAR CLIENTES " de tab "Clientes"
-    Private Sub Buttonseleccionarcliente_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles BOTONseleccionarcliente.Click
-
-        If Texbuscacedula.Text <> "" Then
-            DataGridViewClientes.Visible = False
-            PanelEditarEliminarcliente.Visible = True
-            Dim Consulta As String
-            Dim lista As Byte
-            Consulta = "select * from cliente where id = '" & Texbuscacedula.Text & "'"
-            Conexion = New MySqlDataAdapter(Consulta, ubicacion)
-            datos = New DataSet
-            Conexion.Fill(datos, "cliente")
-            lista = datos.Tables("cliente").Rows.Count
-
-            If lista <> 0 Then
-
-                Texmostrarcedula.Text = datos.Tables("cliente").Rows(0).Item("id")
-                Texmostrarnombre.Text = datos.Tables("cliente").Rows(0).Item("nombre")
-                Texmostrardir.Text = datos.Tables("cliente").Rows(0).Item("direccion")
-                Texmostrartel.Text = datos.Tables("cliente").Rows(0).Item("telefono")
-
-
-            End If
-
-        End If
-
-
-        'Texcedula.Text = DataGridViewClientes.Item(0, DataGridViewClientes.CurrentRow.Index).Value
-        'Texnombreapellido.Text = DataGridViewClientes.Item(1, DataGridViewClientes.CurrentRow.Index).Value
-        'Texdireccion.Text = DataGridViewClientes.Item(2, DataGridViewClientes.CurrentRow.Index).Value
-        'Texttelefono.Text = DataGridViewClientes.Item(3, DataGridViewClientes.CurrentRow.Index).Value
     End Sub
 End Class
