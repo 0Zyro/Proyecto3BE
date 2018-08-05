@@ -410,12 +410,6 @@ Public Class Form2
             TexEdad.Text = ""
         End If
     End Sub
-
-    'Boton "Agregar" de tab "Clientes"
-    Private Sub Buttonagregarcliente_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles BOTONnagregarcliente.Click
-        PanelAgragarcliente.Show()
-    End Sub
-
     'Se cargan los datos cuando se cambia de tab
     Private Sub TabClientes_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles TabClientes.Click
 
@@ -512,7 +506,12 @@ Public Class Form2
         ComboBoxUsuarios.SelectedIndex = 0
 
         '////////////CLIENTES
-        PanelAgragarcliente.Hide()
+        PanelPrincipalclientes.Enabled = True
+        PanelPrincipalclientes.Visible = True
+        PanelPrincipalclientes.BringToFront()
+
+        PanelAgregarcliente.Enabled = False
+        PanelAgregarcliente.Visible = False
 
         'CARGA DATAGRIDCLIENTES
         Consulta = "select * from cliente"
@@ -565,6 +564,7 @@ Public Class Form2
 
     '///////////////////////////////////////////////////////////Datagried Compras///////////////////////////////////
     Private Sub DataGridViewCompras_CellContentClick(ByVal sender As System.Object, ByVal e As System.Windows.Forms.DataGridViewCellEventArgs) Handles DataGridViewCompras.CellContentClick
+        DataGridViewCompras.Rows(e.RowIndex).Selected = True
         'Hace la consulta de los datos a la BD
         'Consulta = "select * from compra"
         'consultar()
@@ -710,8 +710,41 @@ Public Class Form2
         Panelprincipalcompras.Enabled = False
     End Sub
 
-    'CONSULTA PARA AGREGAR CLIENTE
-    Private Sub BOTONguardarcliente_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles BOTONguardarcliente.Click
+    Private Sub Clearagregarclientes_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Clearagregarclientes.Click
+        Texcedula.Clear()
+        Texdireccion.Clear()
+        Texnombreapellido.Clear()
+        Texttelefono.Clear()
+
+    End Sub
+
+    Private Sub Volveragregarclientes_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Volveragregarclientes.Click
+        PanelPrincipalclientes.BringToFront()
+        PanelPrincipalclientes.Visible = True
+        PanelPrincipalclientes.Enabled = True
+
+        Consulta = "select * from cliente"
+        consultar()
+        DataGridViewClientes.DataSource = Tabla
+
+
+        PanelAgregarcliente.Enabled = False
+        PanelAgregarcliente.Visible = False
+        PanelAgregarcliente.SendToBack()
+
+    End Sub
+
+    Private Sub Agregarclientes1_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Agregarclientes1.Click
+        PanelAgregarcliente.BringToFront()
+        PanelAgregarcliente.Visible = True
+        PanelAgregarcliente.Enabled = True
+
+        PanelPrincipalclientes.SendToBack()
+        PanelPrincipalclientes.Visible = False
+        PanelPrincipalclientes.Enabled = False
+    End Sub
+
+    Private Sub Agregarcliente_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Agregarcliente.Click
         If Texcedula.Text <> "" And Texnombreapellido.Text <> "" And Texdireccion.Text <> "" And Texttelefono.Text <> "" Then
 
             If IsNumeric(Texcedula.Text) Then
@@ -724,6 +757,7 @@ Public Class Form2
                 Texnombreapellido.Text = ""
                 Texdireccion.Text = ""
                 Texttelefono.Text = ""
+                MsgBox("Registro exitoso")
             Else
                 MsgBox("Cedula solo valores numericos")
 
@@ -733,8 +767,86 @@ Public Class Form2
         End If
     End Sub
 
-    'CIERRA EL PANEL DE AGREGAR CLIENTE
-    Private Sub BOTONcancelarcliente_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles BOTONcancelarcliente.Click
-        PanelAgragarcliente.Hide()
+    Private Sub Volvermodificarcliente_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Volvermodificarcliente.Click
+        PanelPrincipalclientes.BringToFront()
+        PanelPrincipalclientes.Visible = True
+        PanelPrincipalclientes.Enabled = True
+
+        Consulta = "select * from cliente"
+        consultar()
+        DataGridViewClientes.DataSource = Tabla
+        DataGridViewClientes.Columns(0).HeaderText = "Cédula"
+        DataGridViewClientes.Columns(1).HeaderText = "Nombre y apellido"
+        DataGridViewClientes.Columns(2).HeaderText = "Dirección"
+        DataGridViewClientes.Columns(3).HeaderText = "Teléfono"
+
+        PanelModificarclientes.SendToBack()
+        PanelModificarclientes.Visible = False
+        PanelModificarclientes.Enabled = False
+    End Sub
+
+    Private Sub DataGridViewModificarCompras_CellContentClick(ByVal sender As System.Object, ByVal e As System.Windows.Forms.DataGridViewCellEventArgs) Handles DataGridViewModificarCompras.CellContentClick
+        'Selecciona la fila completa de la celda en la que seleccionamos
+        DataGridViewModificarCompras.Rows(e.RowIndex).Selected = True
+    End Sub
+
+    Private Sub DataGridViewModificarclientes_CellContentClick(ByVal sender As System.Object, ByVal e As System.Windows.Forms.DataGridViewCellEventArgs) Handles DataGridViewModificarclientes.CellContentClick
+        DataGridViewModificarclientes.Rows(e.RowIndex).Selected = True
+    End Sub
+
+    Private Sub Clearmodificarclientes_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Clearmodificarclientes.Click
+        Nombreyapellidomodificarcliente.Clear()
+        Cedulamodificarcliente.Clear()
+        Direccionmodificarcliente.Clear()
+        Telefonomodificarcliente.Clear()
+
+    End Sub
+
+    Private Sub Eliminarmodificacioncliente_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Eliminarmodificacioncliente.Click
+        Dim iFila As Integer = DataGridViewModificarclientes.CurrentCell.RowIndex
+
+        Me.DataGridViewModificarclientes.CurrentCell.RowIndex
+
+        Consulta = "select * from cliente"
+        consultar()
+        DataGridViewModificarclientes.DataSource = Tabla
+        DataGridViewModificarclientes.Columns(0).HeaderText = "Cédula"
+        DataGridViewModificarclientes.Columns(1).HeaderText = "Nombre y apellido"
+        DataGridViewModificarclientes.Columns(2).HeaderText = "Dirección"
+        DataGridViewModificarclientes.Columns(3).HeaderText = "Teléfono"
+    End Sub
+
+    Private Sub ModificarClientes1_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles ModificarClientes1.Click
+        PanelModificarclientes.BringToFront()
+        PanelModificarclientes.Visible = True
+        PanelModificarclientes.Enabled = True
+
+        Consulta = "select * from cliente"
+        consultar()
+        DataGridViewModificarclientes.DataSource = Tabla
+        DataGridViewModificarclientes.Columns(0).HeaderText = "Cédula"
+        DataGridViewModificarclientes.Columns(1).HeaderText = "Nombre y apellido"
+        DataGridViewModificarclientes.Columns(2).HeaderText = "Dirección"
+        DataGridViewModificarclientes.Columns(3).HeaderText = "Teléfono"
+
+        PanelPrincipalclientes.SendToBack()
+        PanelPrincipalclientes.Visible = False
+        PanelPrincipalclientes.Enabled = False
+    End Sub
+
+    Private Sub Agregarmodificacioncliente_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Agregarmodificacioncliente.Click
+        Consulta = "update cliente set id='" + Cedulamodificarcliente.Text + "', nombre='" + Nombreyapellidomodificarcliente.Text +"', direccion='" + Direccionmodificarcliente.Text +"', telefono='" + Telefonomodificarcliente.Text +"' where id='" + Cedulamodificarcliente.Text + "'"
+        consultar()
+        Consulta = "select * from cliente"
+        consultar()
+        DataGridViewClientes.DataSource = Tabla
+        Consulta = "select * from cliente"
+        consultar()
+        DataGridViewModificarclientes.DataSource = Tabla
+        DataGridViewModificarclientes.Columns(0).HeaderText = "Cédula"
+        DataGridViewModificarclientes.Columns(1).HeaderText = "Nombre y apellido"
+        DataGridViewModificarclientes.Columns(2).HeaderText = "Dirección"
+        DataGridViewModificarclientes.Columns(3).HeaderText = "Teléfono"
+        MsgBox("Editado con exito")
     End Sub
 End Class
