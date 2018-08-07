@@ -121,7 +121,7 @@ Public Class Form2
         'Informacion necesaria para el comando
         comando.CommandType = CommandType.Text
         comando.Connection = connection
-        'Se hace la consulta segun que ah seleccionado el usuario en "ListBoxUsuarios"
+        'Se hace la consulta segun que ha seleccionado el usuario en "ListBoxUsuarios"
         comando.CommandText = ("select * from usuario where ci='" + ListBoxUsuarios.SelectedItem + "'")
 
         Try
@@ -852,4 +852,11 @@ Public Class Form2
     '    Texdireccion.Text = ""
     '    Texttelefono.Text = ""
     'End Sub
+
+    Private Sub Panelagregarcompras_Paint(ByVal sender As System.Object, ByVal e As System.Windows.Forms.PaintEventArgs) Handles Panelagregarcompras.Paint
+
+    End Sub
+
+   
+    
 End Class
