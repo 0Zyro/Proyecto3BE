@@ -154,6 +154,7 @@ Partial Class Form2
         Me.TextBoxBusquedaUsuarios = New System.Windows.Forms.TextBox()
         Me.ComboBoxUsuarios = New System.Windows.Forms.ComboBox()
         Me.ToolTip1 = New System.Windows.Forms.ToolTip(Me.components)
+        Me.BOTONselecCliente = New System.Windows.Forms.Button()
         Me.PanelUsuario.SuspendLayout()
         CType(Me.PictureBox, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.TabbedPane.SuspendLayout()
@@ -429,7 +430,7 @@ Partial Class Form2
         Me.TabVentas.Location = New System.Drawing.Point(4, 22)
         Me.TabVentas.Name = "TabVentas"
         Me.TabVentas.Padding = New System.Windows.Forms.Padding(3)
-        Me.TabVentas.Size = New System.Drawing.Size(677, 437)
+        Me.TabVentas.Size = New System.Drawing.Size(676, 437)
         Me.TabVentas.TabIndex = 1
         Me.TabVentas.Text = "Ventas"
         Me.TabVentas.UseVisualStyleBackColor = True
@@ -600,7 +601,7 @@ Partial Class Form2
         Me.TabCompras.Location = New System.Drawing.Point(4, 22)
         Me.TabCompras.Name = "TabCompras"
         Me.TabCompras.Padding = New System.Windows.Forms.Padding(3)
-        Me.TabCompras.Size = New System.Drawing.Size(677, 437)
+        Me.TabCompras.Size = New System.Drawing.Size(676, 437)
         Me.TabCompras.TabIndex = 2
         Me.TabCompras.Text = "Compras"
         Me.TabCompras.UseVisualStyleBackColor = True
@@ -686,7 +687,7 @@ Partial Class Form2
         Me.Label16.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label16.Location = New System.Drawing.Point(522, 248)
         Me.Label16.Name = "Label16"
-        Me.Label16.Size = New System.Drawing.Size(81, 13)
+        Me.Label16.Size = New System.Drawing.Size(80, 13)
         Me.Label16.TabIndex = 4
         Me.Label16.Text = "Total Pagado"
         '
@@ -859,7 +860,7 @@ Partial Class Form2
         Me.Label13.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label13.Location = New System.Drawing.Point(303, 248)
         Me.Label13.Name = "Label13"
-        Me.Label13.Size = New System.Drawing.Size(81, 13)
+        Me.Label13.Size = New System.Drawing.Size(80, 13)
         Me.Label13.TabIndex = 5
         Me.Label13.Text = "Total Pagado"
         '
@@ -923,6 +924,7 @@ Partial Class Form2
         'PanelModificarclientes
         '
         Me.PanelModificarclientes.BackColor = System.Drawing.Color.DimGray
+        Me.PanelModificarclientes.Controls.Add(Me.BOTONselecCliente)
         Me.PanelModificarclientes.Controls.Add(Me.Clearmodificarclientes)
         Me.PanelModificarclientes.Controls.Add(Me.Eliminarmodificacioncliente)
         Me.PanelModificarclientes.Controls.Add(Me.Agregarmodificacioncliente)
@@ -936,9 +938,9 @@ Partial Class Form2
         Me.PanelModificarclientes.Controls.Add(Me.Label18)
         Me.PanelModificarclientes.Controls.Add(Me.DataGridViewModificarclientes)
         Me.PanelModificarclientes.Controls.Add(Me.Volvermodificarcliente)
-        Me.PanelModificarclientes.Location = New System.Drawing.Point(1, 0)
+        Me.PanelModificarclientes.Location = New System.Drawing.Point(1, 6)
         Me.PanelModificarclientes.Name = "PanelModificarclientes"
-        Me.PanelModificarclientes.Size = New System.Drawing.Size(671, 447)
+        Me.PanelModificarclientes.Size = New System.Drawing.Size(680, 441)
         Me.PanelModificarclientes.TabIndex = 7
         '
         'Clearmodificarclientes
@@ -1060,9 +1062,9 @@ Partial Class Form2
         Me.PanelPrincipalclientes.Controls.Add(Me.DataGridViewClientes)
         Me.PanelPrincipalclientes.Controls.Add(Me.BOTONquitarcliente)
         Me.PanelPrincipalclientes.Controls.Add(Me.BOTONseleccionarcliente)
-        Me.PanelPrincipalclientes.Location = New System.Drawing.Point(0, 0)
+        Me.PanelPrincipalclientes.Location = New System.Drawing.Point(0, 3)
         Me.PanelPrincipalclientes.Name = "PanelPrincipalclientes"
-        Me.PanelPrincipalclientes.Size = New System.Drawing.Size(671, 447)
+        Me.PanelPrincipalclientes.Size = New System.Drawing.Size(674, 441)
         Me.PanelPrincipalclientes.TabIndex = 14
         '
         'ModificarClientes1
@@ -1132,9 +1134,9 @@ Partial Class Form2
         Me.PanelAgregarcliente.Controls.Add(Me.Labeltelcliente)
         Me.PanelAgregarcliente.Controls.Add(Me.Texcedula)
         Me.PanelAgregarcliente.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.PanelAgregarcliente.Location = New System.Drawing.Point(0, -1)
+        Me.PanelAgregarcliente.Location = New System.Drawing.Point(0, 0)
         Me.PanelAgregarcliente.Name = "PanelAgregarcliente"
-        Me.PanelAgregarcliente.Size = New System.Drawing.Size(671, 447)
+        Me.PanelAgregarcliente.Size = New System.Drawing.Size(674, 446)
         Me.PanelAgregarcliente.TabIndex = 13
         '
         'Volveragregarclientes
@@ -1272,7 +1274,7 @@ Partial Class Form2
         Me.TabUsuarios.Location = New System.Drawing.Point(4, 22)
         Me.TabUsuarios.Name = "TabUsuarios"
         Me.TabUsuarios.Padding = New System.Windows.Forms.Padding(3)
-        Me.TabUsuarios.Size = New System.Drawing.Size(677, 437)
+        Me.TabUsuarios.Size = New System.Drawing.Size(676, 437)
         Me.TabUsuarios.TabIndex = 4
         Me.TabUsuarios.Text = "Usuarios"
         Me.TabUsuarios.UseVisualStyleBackColor = True
@@ -1475,11 +1477,22 @@ Partial Class Form2
         Me.ComboBoxUsuarios.Size = New System.Drawing.Size(89, 21)
         Me.ComboBoxUsuarios.TabIndex = 0
         '
+        'BOTONselecCliente
+        '
+        Me.BOTONselecCliente.BackColor = System.Drawing.Color.Tomato
+        Me.BOTONselecCliente.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.BOTONselecCliente.Location = New System.Drawing.Point(26, 361)
+        Me.BOTONselecCliente.Name = "BOTONselecCliente"
+        Me.BOTONselecCliente.Size = New System.Drawing.Size(85, 35)
+        Me.BOTONselecCliente.TabIndex = 13
+        Me.BOTONselecCliente.Text = "Seleccionar cliente"
+        Me.BOTONselecCliente.UseVisualStyleBackColor = False
+        '
         'Form2
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(784, 462)
+        Me.ClientSize = New System.Drawing.Size(784, 461)
         Me.Controls.Add(Me.TabbedPane)
         Me.Controls.Add(Me.PanelUsuario)
         Me.MaximumSize = New System.Drawing.Size(800, 500)
@@ -1671,4 +1684,5 @@ Partial Class Form2
     Friend WithEvents Eliminarmodificacioncliente As System.Windows.Forms.PictureBox
     Friend WithEvents Agregarmodificacioncliente As System.Windows.Forms.PictureBox
     Friend WithEvents Clearmodificarclientes As System.Windows.Forms.PictureBox
+    Friend WithEvents BOTONselecCliente As System.Windows.Forms.Button
 End Class

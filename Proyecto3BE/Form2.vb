@@ -432,10 +432,10 @@ Public Class Form2
     'Boton "Seleccionar" de tab "Clientes"
     Private Sub Buttonseleccionarcliente_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles BOTONseleccionarcliente.Click
 
-        Texcedula.Text = DataGridViewClientes.Item(0, DataGridViewClientes.CurrentRow.Index).Value
-        Texnombreapellido.Text = DataGridViewClientes.Item(1, DataGridViewClientes.CurrentRow.Index).Value
-        Texdireccion.Text = DataGridViewClientes.Item(2, DataGridViewClientes.CurrentRow.Index).Value
-        Texttelefono.Text = DataGridViewClientes.Item(3, DataGridViewClientes.CurrentRow.Index).Value
+        'Texcedula.Text = DataGridViewClientes.Item(0, DataGridViewClientes.CurrentRow.Index).Value
+        'Texnombreapellido.Text = DataGridViewClientes.Item(1, DataGridViewClientes.CurrentRow.Index).Value
+        'Texdireccion.Text = DataGridViewClientes.Item(2, DataGridViewClientes.CurrentRow.Index).Value
+        'Texttelefono.Text = DataGridViewClientes.Item(3, DataGridViewClientes.CurrentRow.Index).Value
     End Sub
 
     '/////VENTAS/////
@@ -805,7 +805,7 @@ Public Class Form2
     Private Sub Eliminarmodificacioncliente_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Eliminarmodificacioncliente.Click
         Dim iFila As Integer = DataGridViewModificarclientes.CurrentCell.RowIndex
 
-        Me.DataGridViewModificarclientes.CurrentCell.RowIndex
+        'Me.DataGridViewModificarclientes.CurrentCell.RowIndex
 
         Consulta = "select * from cliente"
         consultar()
@@ -848,5 +848,12 @@ Public Class Form2
         DataGridViewModificarclientes.Columns(2).HeaderText = "Dirección"
         DataGridViewModificarclientes.Columns(3).HeaderText = "Teléfono"
         MsgBox("Editado con exito")
+    End Sub
+
+    Private Sub BOTONselecCliente_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles BOTONselecCliente.Click
+        Nombreyapellidomodificarcliente.Text = DataGridViewClientes.Item(0, DataGridViewClientes.CurrentRow.Index).Value
+        Cedulamodificarcliente.Text = DataGridViewClientes.Item(1, DataGridViewClientes.CurrentRow.Index).Value
+        Direccionmodificarcliente.Text = DataGridViewClientes.Item(2, DataGridViewClientes.CurrentRow.Index).Value
+        Telefonomodificarcliente.Text = DataGridViewClientes.Item(3, DataGridViewClientes.CurrentRow.Index).Value
     End Sub
 End Class
