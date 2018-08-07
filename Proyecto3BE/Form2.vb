@@ -612,10 +612,6 @@ Public Class Form2
         Modificarfechacompra.Clear()
         Modificartotalapagarcompra.Clear()
     End Sub
-    '///////////////Boton que agrega la modificacion compras////////////////////////////
-    Private Sub Agregarmodificacioncompras_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Agregarmodificacioncompras.Click
-       
-    End Sub
     '//////////////boton que agrega la compra/////////////////////////
     Private Sub Agregarcompra_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Agregarcompra.Click
         If Fechacompra.Text <> "" And Comentariocompras.Text <> "" And Totalpagadocompras.Text <> "" Then
@@ -747,12 +743,20 @@ Public Class Form2
     End Sub
 
     Private Sub DataGridViewModificarCompras_CellContentClick(ByVal sender As System.Object, ByVal e As System.Windows.Forms.DataGridViewCellEventArgs) Handles DataGridViewModificarCompras.CellContentClick
-        'Selecciona la fila completa de la celda en la que seleccionamos
-        DataGridViewModificarCompras.Rows(e.RowIndex).Selected = True
+        Modificarfechacompra.Clear()
+        Modificarcomentariocompra.Clear()
+        Modificartotalapagarcompra.Clear()
+        idocultomodificarcompras.Clear()
+
+
+
+        idocultomodificarcompras.Text = DataGridViewModificarCompras.Item(0, DataGridViewModificarCompras.CurrentRow.Index).Value
+        Modificarfechacompra.Text = DataGridViewModificarCompras.Item(1, DataGridViewModificarCompras.CurrentRow.Index).Value
+        Modificarcomentariocompra.Text = DataGridViewModificarCompras.Item(2, DataGridViewModificarCompras.CurrentRow.Index).Value
+        Modificartotalapagarcompra.Text = DataGridViewModificarCompras.Item(3, DataGridViewModificarCompras.CurrentRow.Index).Value
     End Sub
 
     Private Sub DataGridViewModificarclientes_CellContentClick(ByVal sender As System.Object, ByVal e As System.Windows.Forms.DataGridViewCellEventArgs) Handles DataGridViewModificarclientes.CellContentClick
-        DataGridViewModificarclientes.Rows(e.RowIndex).Selected = True
 
 
 
@@ -776,7 +780,19 @@ Public Class Form2
     End Sub
 
     Private Sub Eliminarmodificacioncliente_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Eliminarmodificacioncliente.Click
-        Dim iFila As Integer = DataGridViewModificarclientes.CurrentCell.RowIndex
+        'Elimina el id de una compra juntos con todos los datos de ese id
+        Consulta = "delete from cliente where ID='" & Cedulamodificarcliente.Text & "'"
+        consultar()
+
+        Consulta = "select * from cliente"
+        consultar()
+        'Actualiza la BD
+        DataGridViewCompras.DataSource = Tabla
+        Cedulamodificarcliente.Text = ""
+        Nombreyapellidomodificarcliente.Text = ""
+        Direccionmodificarcliente.Text = ""
+        Telefonomodificarcliente.Text = ""
+        MsgBox("Datos eliminados correctamente")
 
         'Me.DataGridViewModificarclientes.CurrentCell.RowIndex
 
@@ -821,14 +837,6 @@ Public Class Form2
         DataGridViewModificarclientes.Columns(3).HeaderText = "Teléfono"
         MsgBox("Editado con exito")
     End Sub
-
-    Private Sub BOTONselecCliente_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles BOTONselecCliente.Click
-        Nombreyapellidomodificarcliente.Text = DataGridViewModificarclientes.Item(1, DataGridViewModificarclientes.CurrentRow.Index).Value
-        Cedulamodificarcliente.Text = DataGridViewModificarclientes.Item(0, DataGridViewModificarclientes.CurrentRow.Index).Value
-        Direccionmodificarcliente.Text = DataGridViewModificarclientes.Item(2, DataGridViewModificarclientes.CurrentRow.Index).Value
-        Telefonomodificarcliente.Text = DataGridViewModificarclientes.Item(3, DataGridViewModificarclientes.CurrentRow.Index).Value
-        '¿cedulaoculta.Text = DataGridViewClientes.Item(0, DataGridViewClientes.CurrentRow.Index).Value
-    End Sub
     '/////NO BORRARasdkjbasdbashjsshjssddsdssdkejejerkjer
 
     'Private Sub BOTONquitarcliente_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles BOTONquitarcliente.Click
@@ -848,4 +856,17 @@ Public Class Form2
 
     End Sub
 
+    Private Sub Agregarmodificarcompra_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Agregarmodificarcompra.Click
+        Consulta = "update compra set idc ='" + idocultomodificarcompras.Text + "', fechacompra='" + Modificarfechacompra.Text + "', comentarioc='" + Modificarcomentariocompra.Text + "', totalc='" + Modificartotalapagarcompra.Text + "'' where idc='" + idocultomodificarcompras.Text + "'"
+        consultar()
+        Consulta = "select * from compra"
+        consultar()
+
+        DataGridViewModificarCompras.DataSource = Tabla
+        DataGridViewModificarCompras.Columns(0).HeaderText = "Id"
+        DataGridViewModificarCompras.Columns(1).HeaderText = "Fecha de compra"
+        DataGridViewModificarCompras.Columns(2).HeaderText = "Comentario"
+        DataGridViewModificarCompras.Columns(3).HeaderText = "Total a pagado"
+        MsgBox("La compra se modifico con exito")
+    End Sub
 End Class

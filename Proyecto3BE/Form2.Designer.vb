@@ -67,11 +67,12 @@ Partial Class Form2
         Me.Label10 = New System.Windows.Forms.Label()
         Me.TabCompras = New System.Windows.Forms.TabPage()
         Me.Panelmodificarcompras = New System.Windows.Forms.Panel()
+        Me.Agregarmodificarcompra = New System.Windows.Forms.Button()
+        Me.idocultomodificarcompras = New System.Windows.Forms.TextBox()
         Me.Label25 = New System.Windows.Forms.Label()
         Me.DataGridViewModificarCompras = New System.Windows.Forms.DataGridView()
         Me.Limpiarmodificarcompras = New System.Windows.Forms.PictureBox()
         Me.Volvermodificarcompra = New System.Windows.Forms.PictureBox()
-        Me.Agregarmodificacioncompras = New System.Windows.Forms.PictureBox()
         Me.Modificartotalapagarcompra = New System.Windows.Forms.TextBox()
         Me.Label16 = New System.Windows.Forms.Label()
         Me.Modificarcomentariocompra = New System.Windows.Forms.TextBox()
@@ -81,7 +82,6 @@ Partial Class Form2
         Me.Panelprincipalcompras = New System.Windows.Forms.Panel()
         Me.TextBox1 = New System.Windows.Forms.TextBox()
         Me.ComboBox1 = New System.Windows.Forms.ComboBox()
-        Me.Buscarcompra = New System.Windows.Forms.PictureBox()
         Me.Modificarcompra1 = New System.Windows.Forms.PictureBox()
         Me.Agregarcompra1 = New System.Windows.Forms.PictureBox()
         Me.DataGridViewCompras = New System.Windows.Forms.DataGridView()
@@ -98,7 +98,9 @@ Partial Class Form2
         Me.Fechacompra = New System.Windows.Forms.TextBox()
         Me.TabClientes = New System.Windows.Forms.TabPage()
         Me.PanelModificarclientes = New System.Windows.Forms.Panel()
-        Me.BOTONselecCliente = New System.Windows.Forms.Button()
+        Me.Button1 = New System.Windows.Forms.Button()
+        Me.ComboBox2 = New System.Windows.Forms.ComboBox()
+        Me.TextBox2 = New System.Windows.Forms.TextBox()
         Me.Clearmodificarclientes = New System.Windows.Forms.PictureBox()
         Me.Eliminarmodificacioncliente = New System.Windows.Forms.PictureBox()
         Me.Agregarmodificacioncliente = New System.Windows.Forms.PictureBox()
@@ -167,9 +169,7 @@ Partial Class Form2
         CType(Me.DataGridViewModificarCompras, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.Limpiarmodificarcompras, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.Volvermodificarcompra, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.Agregarmodificacioncompras, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.Panelprincipalcompras.SuspendLayout()
-        CType(Me.Buscarcompra, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.Modificarcompra1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.Agregarcompra1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.DataGridViewCompras, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -594,9 +594,9 @@ Partial Class Form2
         '
         'TabCompras
         '
+        Me.TabCompras.Controls.Add(Me.Panelagregarcompras)
         Me.TabCompras.Controls.Add(Me.Panelmodificarcompras)
         Me.TabCompras.Controls.Add(Me.Panelprincipalcompras)
-        Me.TabCompras.Controls.Add(Me.Panelagregarcompras)
         Me.TabCompras.Location = New System.Drawing.Point(4, 22)
         Me.TabCompras.Name = "TabCompras"
         Me.TabCompras.Padding = New System.Windows.Forms.Padding(3)
@@ -608,11 +608,12 @@ Partial Class Form2
         'Panelmodificarcompras
         '
         Me.Panelmodificarcompras.BackColor = System.Drawing.Color.DimGray
+        Me.Panelmodificarcompras.Controls.Add(Me.Agregarmodificarcompra)
+        Me.Panelmodificarcompras.Controls.Add(Me.idocultomodificarcompras)
         Me.Panelmodificarcompras.Controls.Add(Me.Label25)
         Me.Panelmodificarcompras.Controls.Add(Me.DataGridViewModificarCompras)
         Me.Panelmodificarcompras.Controls.Add(Me.Limpiarmodificarcompras)
         Me.Panelmodificarcompras.Controls.Add(Me.Volvermodificarcompra)
-        Me.Panelmodificarcompras.Controls.Add(Me.Agregarmodificacioncompras)
         Me.Panelmodificarcompras.Controls.Add(Me.Modificartotalapagarcompra)
         Me.Panelmodificarcompras.Controls.Add(Me.Label16)
         Me.Panelmodificarcompras.Controls.Add(Me.Modificarcomentariocompra)
@@ -621,8 +622,25 @@ Partial Class Form2
         Me.Panelmodificarcompras.Controls.Add(Me.Label14)
         Me.Panelmodificarcompras.Location = New System.Drawing.Point(1, 0)
         Me.Panelmodificarcompras.Name = "Panelmodificarcompras"
-        Me.Panelmodificarcompras.Size = New System.Drawing.Size(667, 437)
+        Me.Panelmodificarcompras.Size = New System.Drawing.Size(678, 437)
         Me.Panelmodificarcompras.TabIndex = 9
+        '
+        'Agregarmodificarcompra
+        '
+        Me.Agregarmodificarcompra.FlatStyle = System.Windows.Forms.FlatStyle.Popup
+        Me.Agregarmodificarcompra.Image = Global.WindowsApplication1.My.Resources.Resources.anadir
+        Me.Agregarmodificarcompra.Location = New System.Drawing.Point(515, 354)
+        Me.Agregarmodificarcompra.Name = "Agregarmodificarcompra"
+        Me.Agregarmodificarcompra.Size = New System.Drawing.Size(32, 32)
+        Me.Agregarmodificarcompra.TabIndex = 12
+        Me.Agregarmodificarcompra.UseVisualStyleBackColor = True
+        '
+        'idocultomodificarcompras
+        '
+        Me.idocultomodificarcompras.Location = New System.Drawing.Point(45, 402)
+        Me.idocultomodificarcompras.Name = "idocultomodificarcompras"
+        Me.idocultomodificarcompras.Size = New System.Drawing.Size(100, 20)
+        Me.idocultomodificarcompras.TabIndex = 11
         '
         'Label25
         '
@@ -636,16 +654,21 @@ Partial Class Form2
         '
         'DataGridViewModificarCompras
         '
+        Me.DataGridViewModificarCompras.AllowUserToAddRows = False
+        Me.DataGridViewModificarCompras.AllowUserToDeleteRows = False
+        Me.DataGridViewModificarCompras.AllowUserToResizeColumns = False
+        Me.DataGridViewModificarCompras.AllowUserToResizeRows = False
         Me.DataGridViewModificarCompras.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.DataGridViewModificarCompras.Location = New System.Drawing.Point(6, 79)
+        Me.DataGridViewModificarCompras.Location = New System.Drawing.Point(6, 118)
         Me.DataGridViewModificarCompras.Name = "DataGridViewModificarCompras"
+        Me.DataGridViewModificarCompras.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
         Me.DataGridViewModificarCompras.Size = New System.Drawing.Size(459, 268)
         Me.DataGridViewModificarCompras.TabIndex = 9
         '
         'Limpiarmodificarcompras
         '
         Me.Limpiarmodificarcompras.Image = Global.WindowsApplication1.My.Resources.Resources.goma_de_borrar
-        Me.Limpiarmodificarcompras.Location = New System.Drawing.Point(583, 315)
+        Me.Limpiarmodificarcompras.Location = New System.Drawing.Point(583, 354)
         Me.Limpiarmodificarcompras.Name = "Limpiarmodificarcompras"
         Me.Limpiarmodificarcompras.Size = New System.Drawing.Size(32, 32)
         Me.Limpiarmodificarcompras.TabIndex = 8
@@ -655,27 +678,16 @@ Partial Class Form2
         'Volvermodificarcompra
         '
         Me.Volvermodificarcompra.Image = Global.WindowsApplication1.My.Resources.Resources.flecha_hacia_la_izquierda
-        Me.Volvermodificarcompra.Location = New System.Drawing.Point(317, 376)
+        Me.Volvermodificarcompra.Location = New System.Drawing.Point(317, 398)
         Me.Volvermodificarcompra.Name = "Volvermodificarcompra"
         Me.Volvermodificarcompra.Size = New System.Drawing.Size(32, 32)
         Me.Volvermodificarcompra.TabIndex = 7
         Me.Volvermodificarcompra.TabStop = False
         Me.ToolTip1.SetToolTip(Me.Volvermodificarcompra, "Volver")
         '
-        'Agregarmodificacioncompras
-        '
-        Me.Agregarmodificacioncompras.Image = Global.WindowsApplication1.My.Resources.Resources.anadir
-        Me.Agregarmodificacioncompras.Location = New System.Drawing.Point(515, 315)
-        Me.Agregarmodificacioncompras.Name = "Agregarmodificacioncompras"
-        Me.Agregarmodificacioncompras.Size = New System.Drawing.Size(32, 32)
-        Me.Agregarmodificacioncompras.TabIndex = 6
-        Me.Agregarmodificacioncompras.TabStop = False
-        Me.Agregarmodificacioncompras.Tag = ""
-        Me.ToolTip1.SetToolTip(Me.Agregarmodificacioncompras, "Agregar")
-        '
         'Modificartotalapagarcompra
         '
-        Me.Modificartotalapagarcompra.Location = New System.Drawing.Point(515, 264)
+        Me.Modificartotalapagarcompra.Location = New System.Drawing.Point(515, 303)
         Me.Modificartotalapagarcompra.Name = "Modificartotalapagarcompra"
         Me.Modificartotalapagarcompra.Size = New System.Drawing.Size(100, 20)
         Me.Modificartotalapagarcompra.TabIndex = 5
@@ -684,15 +696,15 @@ Partial Class Form2
         '
         Me.Label16.AutoSize = True
         Me.Label16.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label16.Location = New System.Drawing.Point(522, 248)
+        Me.Label16.Location = New System.Drawing.Point(522, 287)
         Me.Label16.Name = "Label16"
-        Me.Label16.Size = New System.Drawing.Size(80, 13)
+        Me.Label16.Size = New System.Drawing.Size(81, 13)
         Me.Label16.TabIndex = 4
         Me.Label16.Text = "Total Pagado"
         '
         'Modificarcomentariocompra
         '
-        Me.Modificarcomentariocompra.Location = New System.Drawing.Point(515, 176)
+        Me.Modificarcomentariocompra.Location = New System.Drawing.Point(515, 214)
         Me.Modificarcomentariocompra.Name = "Modificarcomentariocompra"
         Me.Modificarcomentariocompra.Size = New System.Drawing.Size(100, 20)
         Me.Modificarcomentariocompra.TabIndex = 3
@@ -701,7 +713,7 @@ Partial Class Form2
         '
         Me.Label15.AutoSize = True
         Me.Label15.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label15.Location = New System.Drawing.Point(529, 160)
+        Me.Label15.Location = New System.Drawing.Point(529, 198)
         Me.Label15.Name = "Label15"
         Me.Label15.Size = New System.Drawing.Size(74, 13)
         Me.Label15.TabIndex = 2
@@ -709,7 +721,7 @@ Partial Class Form2
         '
         'Modificarfechacompra
         '
-        Me.Modificarfechacompra.Location = New System.Drawing.Point(515, 95)
+        Me.Modificarfechacompra.Location = New System.Drawing.Point(515, 137)
         Me.Modificarfechacompra.Name = "Modificarfechacompra"
         Me.Modificarfechacompra.Size = New System.Drawing.Size(100, 20)
         Me.Modificarfechacompra.TabIndex = 1
@@ -718,7 +730,7 @@ Partial Class Form2
         '
         Me.Label14.AutoSize = True
         Me.Label14.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label14.Location = New System.Drawing.Point(481, 79)
+        Me.Label14.Location = New System.Drawing.Point(480, 118)
         Me.Label14.Name = "Label14"
         Me.Label14.Size = New System.Drawing.Size(181, 13)
         Me.Label14.TabIndex = 0
@@ -729,13 +741,12 @@ Partial Class Form2
         Me.Panelprincipalcompras.BackColor = System.Drawing.Color.DimGray
         Me.Panelprincipalcompras.Controls.Add(Me.TextBox1)
         Me.Panelprincipalcompras.Controls.Add(Me.ComboBox1)
-        Me.Panelprincipalcompras.Controls.Add(Me.Buscarcompra)
         Me.Panelprincipalcompras.Controls.Add(Me.Modificarcompra1)
         Me.Panelprincipalcompras.Controls.Add(Me.Agregarcompra1)
         Me.Panelprincipalcompras.Controls.Add(Me.DataGridViewCompras)
         Me.Panelprincipalcompras.Location = New System.Drawing.Point(0, 0)
         Me.Panelprincipalcompras.Name = "Panelprincipalcompras"
-        Me.Panelprincipalcompras.Size = New System.Drawing.Size(671, 438)
+        Me.Panelprincipalcompras.Size = New System.Drawing.Size(679, 438)
         Me.Panelprincipalcompras.TabIndex = 0
         '
         'TextBox1
@@ -753,16 +764,6 @@ Partial Class Form2
         Me.ComboBox1.Name = "ComboBox1"
         Me.ComboBox1.Size = New System.Drawing.Size(135, 21)
         Me.ComboBox1.TabIndex = 4
-        '
-        'Buscarcompra
-        '
-        Me.Buscarcompra.Image = Global.WindowsApplication1.My.Resources.Resources.Botonbuscar
-        Me.Buscarcompra.Location = New System.Drawing.Point(639, 21)
-        Me.Buscarcompra.Name = "Buscarcompra"
-        Me.Buscarcompra.Size = New System.Drawing.Size(23, 19)
-        Me.Buscarcompra.TabIndex = 3
-        Me.Buscarcompra.TabStop = False
-        Me.ToolTip1.SetToolTip(Me.Buscarcompra, "Buscar")
         '
         'Modificarcompra1
         '
@@ -808,7 +809,7 @@ Partial Class Form2
         Me.Panelagregarcompras.Controls.Add(Me.Fechacompra)
         Me.Panelagregarcompras.Location = New System.Drawing.Point(1, 0)
         Me.Panelagregarcompras.Name = "Panelagregarcompras"
-        Me.Panelagregarcompras.Size = New System.Drawing.Size(671, 447)
+        Me.Panelagregarcompras.Size = New System.Drawing.Size(678, 447)
         Me.Panelagregarcompras.TabIndex = 6
         '
         'Label26
@@ -859,7 +860,7 @@ Partial Class Form2
         Me.Label13.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label13.Location = New System.Drawing.Point(303, 248)
         Me.Label13.Name = "Label13"
-        Me.Label13.Size = New System.Drawing.Size(80, 13)
+        Me.Label13.Size = New System.Drawing.Size(81, 13)
         Me.Label13.TabIndex = 5
         Me.Label13.Text = "Total Pagado"
         '
@@ -923,7 +924,9 @@ Partial Class Form2
         'PanelModificarclientes
         '
         Me.PanelModificarclientes.BackColor = System.Drawing.Color.DimGray
-        Me.PanelModificarclientes.Controls.Add(Me.BOTONselecCliente)
+        Me.PanelModificarclientes.Controls.Add(Me.Button1)
+        Me.PanelModificarclientes.Controls.Add(Me.ComboBox2)
+        Me.PanelModificarclientes.Controls.Add(Me.TextBox2)
         Me.PanelModificarclientes.Controls.Add(Me.Clearmodificarclientes)
         Me.PanelModificarclientes.Controls.Add(Me.Eliminarmodificacioncliente)
         Me.PanelModificarclientes.Controls.Add(Me.Agregarmodificacioncliente)
@@ -939,24 +942,38 @@ Partial Class Form2
         Me.PanelModificarclientes.Controls.Add(Me.Volvermodificarcliente)
         Me.PanelModificarclientes.Location = New System.Drawing.Point(1, 0)
         Me.PanelModificarclientes.Name = "PanelModificarclientes"
-        Me.PanelModificarclientes.Size = New System.Drawing.Size(670, 430)
+        Me.PanelModificarclientes.Size = New System.Drawing.Size(678, 437)
         Me.PanelModificarclientes.TabIndex = 7
         '
-        'BOTONselecCliente
+        'Button1
         '
-        Me.BOTONselecCliente.BackColor = System.Drawing.Color.Tomato
-        Me.BOTONselecCliente.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.BOTONselecCliente.Location = New System.Drawing.Point(26, 361)
-        Me.BOTONselecCliente.Name = "BOTONselecCliente"
-        Me.BOTONselecCliente.Size = New System.Drawing.Size(85, 35)
-        Me.BOTONselecCliente.TabIndex = 13
-        Me.BOTONselecCliente.Text = "Seleccionar cliente"
-        Me.BOTONselecCliente.UseVisualStyleBackColor = False
+        Me.Button1.FlatStyle = System.Windows.Forms.FlatStyle.Popup
+        Me.Button1.Image = Global.WindowsApplication1.My.Resources.Resources.busqueda__1_
+        Me.Button1.Location = New System.Drawing.Point(553, 69)
+        Me.Button1.Name = "Button1"
+        Me.Button1.Size = New System.Drawing.Size(32, 32)
+        Me.Button1.TabIndex = 15
+        Me.Button1.UseVisualStyleBackColor = True
+        '
+        'ComboBox2
+        '
+        Me.ComboBox2.FormattingEnabled = True
+        Me.ComboBox2.Location = New System.Drawing.Point(426, 77)
+        Me.ComboBox2.Name = "ComboBox2"
+        Me.ComboBox2.Size = New System.Drawing.Size(121, 21)
+        Me.ComboBox2.TabIndex = 14
+        '
+        'TextBox2
+        '
+        Me.TextBox2.Location = New System.Drawing.Point(8, 78)
+        Me.TextBox2.Name = "TextBox2"
+        Me.TextBox2.Size = New System.Drawing.Size(382, 20)
+        Me.TextBox2.TabIndex = 13
         '
         'Clearmodificarclientes
         '
         Me.Clearmodificarclientes.Image = Global.WindowsApplication1.My.Resources.Resources.goma_de_borrar
-        Me.Clearmodificarclientes.Location = New System.Drawing.Point(586, 286)
+        Me.Clearmodificarclientes.Location = New System.Drawing.Point(575, 351)
         Me.Clearmodificarclientes.Name = "Clearmodificarclientes"
         Me.Clearmodificarclientes.Size = New System.Drawing.Size(32, 32)
         Me.Clearmodificarclientes.TabIndex = 12
@@ -966,7 +983,7 @@ Partial Class Form2
         'Eliminarmodificacioncliente
         '
         Me.Eliminarmodificacioncliente.Image = Global.WindowsApplication1.My.Resources.Resources.borrar
-        Me.Eliminarmodificacioncliente.Location = New System.Drawing.Point(524, 286)
+        Me.Eliminarmodificacioncliente.Location = New System.Drawing.Point(524, 351)
         Me.Eliminarmodificacioncliente.Name = "Eliminarmodificacioncliente"
         Me.Eliminarmodificacioncliente.Size = New System.Drawing.Size(32, 32)
         Me.Eliminarmodificacioncliente.TabIndex = 11
@@ -976,7 +993,7 @@ Partial Class Form2
         'Agregarmodificacioncliente
         '
         Me.Agregarmodificacioncliente.Image = Global.WindowsApplication1.My.Resources.Resources.anadir
-        Me.Agregarmodificacioncliente.Location = New System.Drawing.Point(461, 286)
+        Me.Agregarmodificacioncliente.Location = New System.Drawing.Point(475, 351)
         Me.Agregarmodificacioncliente.Name = "Agregarmodificacioncliente"
         Me.Agregarmodificacioncliente.Size = New System.Drawing.Size(32, 32)
         Me.Agregarmodificacioncliente.TabIndex = 10
@@ -985,28 +1002,28 @@ Partial Class Form2
         '
         'Nombreyapellidomodificarcliente
         '
-        Me.Nombreyapellidomodificarcliente.Location = New System.Drawing.Point(488, 59)
+        Me.Nombreyapellidomodificarcliente.Location = New System.Drawing.Point(488, 137)
         Me.Nombreyapellidomodificarcliente.Name = "Nombreyapellidomodificarcliente"
         Me.Nombreyapellidomodificarcliente.Size = New System.Drawing.Size(100, 20)
         Me.Nombreyapellidomodificarcliente.TabIndex = 9
         '
         'Direccionmodificarcliente
         '
-        Me.Direccionmodificarcliente.Location = New System.Drawing.Point(488, 166)
+        Me.Direccionmodificarcliente.Location = New System.Drawing.Point(488, 251)
         Me.Direccionmodificarcliente.Name = "Direccionmodificarcliente"
         Me.Direccionmodificarcliente.Size = New System.Drawing.Size(100, 20)
         Me.Direccionmodificarcliente.TabIndex = 8
         '
         'Telefonomodificarcliente
         '
-        Me.Telefonomodificarcliente.Location = New System.Drawing.Point(488, 221)
+        Me.Telefonomodificarcliente.Location = New System.Drawing.Point(488, 305)
         Me.Telefonomodificarcliente.Name = "Telefonomodificarcliente"
         Me.Telefonomodificarcliente.Size = New System.Drawing.Size(100, 20)
         Me.Telefonomodificarcliente.TabIndex = 7
         '
         'Cedulamodificarcliente
         '
-        Me.Cedulamodificarcliente.Location = New System.Drawing.Point(488, 111)
+        Me.Cedulamodificarcliente.Location = New System.Drawing.Point(488, 196)
         Me.Cedulamodificarcliente.Name = "Cedulamodificarcliente"
         Me.Cedulamodificarcliente.Size = New System.Drawing.Size(100, 20)
         Me.Cedulamodificarcliente.TabIndex = 6
@@ -1014,7 +1031,7 @@ Partial Class Form2
         'Label21
         '
         Me.Label21.AutoSize = True
-        Me.Label21.Location = New System.Drawing.Point(516, 205)
+        Me.Label21.Location = New System.Drawing.Point(516, 289)
         Me.Label21.Name = "Label21"
         Me.Label21.Size = New System.Drawing.Size(49, 13)
         Me.Label21.TabIndex = 5
@@ -1023,7 +1040,7 @@ Partial Class Form2
         'Label20
         '
         Me.Label20.AutoSize = True
-        Me.Label20.Location = New System.Drawing.Point(516, 150)
+        Me.Label20.Location = New System.Drawing.Point(516, 235)
         Me.Label20.Name = "Label20"
         Me.Label20.Size = New System.Drawing.Size(52, 13)
         Me.Label20.TabIndex = 4
@@ -1032,7 +1049,7 @@ Partial Class Form2
         'Label19
         '
         Me.Label19.AutoSize = True
-        Me.Label19.Location = New System.Drawing.Point(516, 95)
+        Me.Label19.Location = New System.Drawing.Point(521, 177)
         Me.Label19.Name = "Label19"
         Me.Label19.Size = New System.Drawing.Size(40, 13)
         Me.Label19.TabIndex = 3
@@ -1041,7 +1058,7 @@ Partial Class Form2
         'Label18
         '
         Me.Label18.AutoSize = True
-        Me.Label18.Location = New System.Drawing.Point(496, 43)
+        Me.Label18.Location = New System.Drawing.Point(485, 121)
         Me.Label18.Name = "Label18"
         Me.Label18.Size = New System.Drawing.Size(92, 13)
         Me.Label18.TabIndex = 2
@@ -1054,17 +1071,17 @@ Partial Class Form2
         Me.DataGridViewModificarclientes.AllowUserToResizeColumns = False
         Me.DataGridViewModificarclientes.AllowUserToResizeRows = False
         Me.DataGridViewModificarclientes.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.DataGridViewModificarclientes.Location = New System.Drawing.Point(8, 43)
+        Me.DataGridViewModificarclientes.Location = New System.Drawing.Point(8, 121)
         Me.DataGridViewModificarclientes.MultiSelect = False
         Me.DataGridViewModificarclientes.Name = "DataGridViewModificarclientes"
         Me.DataGridViewModificarclientes.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
-        Me.DataGridViewModificarclientes.Size = New System.Drawing.Size(417, 306)
+        Me.DataGridViewModificarclientes.Size = New System.Drawing.Size(417, 262)
         Me.DataGridViewModificarclientes.TabIndex = 1
         '
         'Volvermodificarcliente
         '
         Me.Volvermodificarcliente.Image = Global.WindowsApplication1.My.Resources.Resources.flecha_hacia_la_izquierda
-        Me.Volvermodificarcliente.Location = New System.Drawing.Point(332, 367)
+        Me.Volvermodificarcliente.Location = New System.Drawing.Point(335, 399)
         Me.Volvermodificarcliente.Name = "Volvermodificarcliente"
         Me.Volvermodificarcliente.Size = New System.Drawing.Size(32, 32)
         Me.Volvermodificarcliente.TabIndex = 0
@@ -1079,7 +1096,7 @@ Partial Class Form2
         Me.PanelPrincipalclientes.Controls.Add(Me.BOTONquitarcliente)
         Me.PanelPrincipalclientes.Location = New System.Drawing.Point(0, 3)
         Me.PanelPrincipalclientes.Name = "PanelPrincipalclientes"
-        Me.PanelPrincipalclientes.Size = New System.Drawing.Size(674, 441)
+        Me.PanelPrincipalclientes.Size = New System.Drawing.Size(679, 434)
         Me.PanelPrincipalclientes.TabIndex = 14
         '
         'ModificarClientes1
@@ -1139,7 +1156,7 @@ Partial Class Form2
         Me.PanelAgregarcliente.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.PanelAgregarcliente.Location = New System.Drawing.Point(0, 0)
         Me.PanelAgregarcliente.Name = "PanelAgregarcliente"
-        Me.PanelAgregarcliente.Size = New System.Drawing.Size(674, 446)
+        Me.PanelAgregarcliente.Size = New System.Drawing.Size(679, 438)
         Me.PanelAgregarcliente.TabIndex = 13
         '
         'Volveragregarclientes
@@ -1353,6 +1370,7 @@ Partial Class Form2
         '
         'BotonModificarUsuarios
         '
+        Me.BotonModificarUsuarios.DialogResult = System.Windows.Forms.DialogResult.Cancel
         Me.BotonModificarUsuarios.Location = New System.Drawing.Point(494, 235)
         Me.BotonModificarUsuarios.Name = "BotonModificarUsuarios"
         Me.BotonModificarUsuarios.Size = New System.Drawing.Size(75, 56)
@@ -1484,10 +1502,10 @@ Partial Class Form2
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(794, 471)
+        Me.ClientSize = New System.Drawing.Size(794, 472)
         Me.Controls.Add(Me.TabbedPane)
         Me.Controls.Add(Me.PanelUsuario)
-        Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow
+        Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle
         Me.MaximumSize = New System.Drawing.Size(800, 500)
         Me.MinimumSize = New System.Drawing.Size(800, 500)
         Me.Name = "Form2"
@@ -1512,10 +1530,8 @@ Partial Class Form2
         CType(Me.DataGridViewModificarCompras, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.Limpiarmodificarcompras, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.Volvermodificarcompra, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.Agregarmodificacioncompras, System.ComponentModel.ISupportInitialize).EndInit()
         Me.Panelprincipalcompras.ResumeLayout(False)
         Me.Panelprincipalcompras.PerformLayout()
-        CType(Me.Buscarcompra, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.Modificarcompra1, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.Agregarcompra1, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.DataGridViewCompras, System.ComponentModel.ISupportInitialize).EndInit()
@@ -1600,7 +1616,6 @@ Partial Class Form2
     Friend WithEvents DataGridViewCompras As System.Windows.Forms.DataGridView
     Friend WithEvents Agregarcompra1 As System.Windows.Forms.PictureBox
     Friend WithEvents Modificarcompra1 As System.Windows.Forms.PictureBox
-    Friend WithEvents Buscarcompra As System.Windows.Forms.PictureBox
     Friend WithEvents TextBox1 As System.Windows.Forms.TextBox
     Friend WithEvents ComboBox1 As System.Windows.Forms.ComboBox
     Friend WithEvents Panelagregarcompras As System.Windows.Forms.Panel
@@ -1618,7 +1633,6 @@ Partial Class Form2
     Friend WithEvents Label15 As System.Windows.Forms.Label
     Friend WithEvents Modificarfechacompra As System.Windows.Forms.TextBox
     Friend WithEvents Label14 As System.Windows.Forms.Label
-    Friend WithEvents Agregarmodificacioncompras As System.Windows.Forms.PictureBox
     Friend WithEvents Volvermodificarcompra As System.Windows.Forms.PictureBox
     Friend WithEvents Limpiarmodificarcompras As System.Windows.Forms.PictureBox
     Friend WithEvents ToolTip1 As System.Windows.Forms.ToolTip
@@ -1675,6 +1689,10 @@ Partial Class Form2
     Friend WithEvents Eliminarmodificacioncliente As System.Windows.Forms.PictureBox
     Friend WithEvents Agregarmodificacioncliente As System.Windows.Forms.PictureBox
     Friend WithEvents Clearmodificarclientes As System.Windows.Forms.PictureBox
-    Friend WithEvents BOTONselecCliente As System.Windows.Forms.Button
     Friend WithEvents BOTONquitarcliente As System.Windows.Forms.Button
+    Friend WithEvents Button1 As System.Windows.Forms.Button
+    Friend WithEvents ComboBox2 As System.Windows.Forms.ComboBox
+    Friend WithEvents TextBox2 As System.Windows.Forms.TextBox
+    Friend WithEvents idocultomodificarcompras As System.Windows.Forms.TextBox
+    Friend WithEvents Agregarmodificarcompra As System.Windows.Forms.Button
 End Class
