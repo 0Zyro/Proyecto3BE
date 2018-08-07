@@ -98,6 +98,7 @@ Partial Class Form2
         Me.Fechacompra = New System.Windows.Forms.TextBox()
         Me.TabClientes = New System.Windows.Forms.TabPage()
         Me.PanelModificarclientes = New System.Windows.Forms.Panel()
+        Me.BOTONselecCliente = New System.Windows.Forms.Button()
         Me.Clearmodificarclientes = New System.Windows.Forms.PictureBox()
         Me.Eliminarmodificacioncliente = New System.Windows.Forms.PictureBox()
         Me.Agregarmodificacioncliente = New System.Windows.Forms.PictureBox()
@@ -116,7 +117,6 @@ Partial Class Form2
         Me.Agregarclientes1 = New System.Windows.Forms.PictureBox()
         Me.DataGridViewClientes = New System.Windows.Forms.DataGridView()
         Me.BOTONquitarcliente = New System.Windows.Forms.Button()
-        Me.BOTONseleccionarcliente = New System.Windows.Forms.Button()
         Me.PanelAgregarcliente = New System.Windows.Forms.Panel()
         Me.Volveragregarclientes = New System.Windows.Forms.PictureBox()
         Me.Agregarcliente = New System.Windows.Forms.PictureBox()
@@ -154,7 +154,6 @@ Partial Class Form2
         Me.TextBoxBusquedaUsuarios = New System.Windows.Forms.TextBox()
         Me.ComboBoxUsuarios = New System.Windows.Forms.ComboBox()
         Me.ToolTip1 = New System.Windows.Forms.ToolTip(Me.components)
-        Me.BOTONselecCliente = New System.Windows.Forms.Button()
         Me.PanelUsuario.SuspendLayout()
         CType(Me.PictureBox, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.TabbedPane.SuspendLayout()
@@ -430,7 +429,7 @@ Partial Class Form2
         Me.TabVentas.Location = New System.Drawing.Point(4, 22)
         Me.TabVentas.Name = "TabVentas"
         Me.TabVentas.Padding = New System.Windows.Forms.Padding(3)
-        Me.TabVentas.Size = New System.Drawing.Size(676, 437)
+        Me.TabVentas.Size = New System.Drawing.Size(677, 437)
         Me.TabVentas.TabIndex = 1
         Me.TabVentas.Text = "Ventas"
         Me.TabVentas.UseVisualStyleBackColor = True
@@ -601,7 +600,7 @@ Partial Class Form2
         Me.TabCompras.Location = New System.Drawing.Point(4, 22)
         Me.TabCompras.Name = "TabCompras"
         Me.TabCompras.Padding = New System.Windows.Forms.Padding(3)
-        Me.TabCompras.Size = New System.Drawing.Size(676, 437)
+        Me.TabCompras.Size = New System.Drawing.Size(677, 437)
         Me.TabCompras.TabIndex = 2
         Me.TabCompras.Text = "Compras"
         Me.TabCompras.UseVisualStyleBackColor = True
@@ -620,9 +619,9 @@ Partial Class Form2
         Me.Panelmodificarcompras.Controls.Add(Me.Label15)
         Me.Panelmodificarcompras.Controls.Add(Me.Modificarfechacompra)
         Me.Panelmodificarcompras.Controls.Add(Me.Label14)
-        Me.Panelmodificarcompras.Location = New System.Drawing.Point(1, 0)
+        Me.Panelmodificarcompras.Location = New System.Drawing.Point(1, 6)
         Me.Panelmodificarcompras.Name = "Panelmodificarcompras"
-        Me.Panelmodificarcompras.Size = New System.Drawing.Size(671, 437)
+        Me.Panelmodificarcompras.Size = New System.Drawing.Size(667, 431)
         Me.Panelmodificarcompras.TabIndex = 9
         '
         'Label25
@@ -938,10 +937,21 @@ Partial Class Form2
         Me.PanelModificarclientes.Controls.Add(Me.Label18)
         Me.PanelModificarclientes.Controls.Add(Me.DataGridViewModificarclientes)
         Me.PanelModificarclientes.Controls.Add(Me.Volvermodificarcliente)
-        Me.PanelModificarclientes.Location = New System.Drawing.Point(1, 6)
+        Me.PanelModificarclientes.Location = New System.Drawing.Point(1, 0)
         Me.PanelModificarclientes.Name = "PanelModificarclientes"
-        Me.PanelModificarclientes.Size = New System.Drawing.Size(680, 441)
+        Me.PanelModificarclientes.Size = New System.Drawing.Size(670, 437)
         Me.PanelModificarclientes.TabIndex = 7
+        '
+        'BOTONselecCliente
+        '
+        Me.BOTONselecCliente.BackColor = System.Drawing.Color.Tomato
+        Me.BOTONselecCliente.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.BOTONselecCliente.Location = New System.Drawing.Point(26, 361)
+        Me.BOTONselecCliente.Name = "BOTONselecCliente"
+        Me.BOTONselecCliente.Size = New System.Drawing.Size(85, 35)
+        Me.BOTONselecCliente.TabIndex = 13
+        Me.BOTONselecCliente.Text = "Seleccionar cliente"
+        Me.BOTONselecCliente.UseVisualStyleBackColor = False
         '
         'Clearmodificarclientes
         '
@@ -1061,7 +1071,6 @@ Partial Class Form2
         Me.PanelPrincipalclientes.Controls.Add(Me.Agregarclientes1)
         Me.PanelPrincipalclientes.Controls.Add(Me.DataGridViewClientes)
         Me.PanelPrincipalclientes.Controls.Add(Me.BOTONquitarcliente)
-        Me.PanelPrincipalclientes.Controls.Add(Me.BOTONseleccionarcliente)
         Me.PanelPrincipalclientes.Location = New System.Drawing.Point(0, 3)
         Me.PanelPrincipalclientes.Name = "PanelPrincipalclientes"
         Me.PanelPrincipalclientes.Size = New System.Drawing.Size(674, 441)
@@ -1105,18 +1114,6 @@ Partial Class Form2
         Me.BOTONquitarcliente.TabIndex = 1
         Me.BOTONquitarcliente.Text = "ELIMINAR"
         Me.BOTONquitarcliente.UseVisualStyleBackColor = False
-        '
-        'BOTONseleccionarcliente
-        '
-        Me.BOTONseleccionarcliente.AccessibleRole = System.Windows.Forms.AccessibleRole.None
-        Me.BOTONseleccionarcliente.BackColor = System.Drawing.Color.HotPink
-        Me.BOTONseleccionarcliente.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.BOTONseleccionarcliente.Location = New System.Drawing.Point(520, 117)
-        Me.BOTONseleccionarcliente.Name = "BOTONseleccionarcliente"
-        Me.BOTONseleccionarcliente.Size = New System.Drawing.Size(116, 78)
-        Me.BOTONseleccionarcliente.TabIndex = 2
-        Me.BOTONseleccionarcliente.Text = "SELECCIONAR"
-        Me.BOTONseleccionarcliente.UseVisualStyleBackColor = False
         '
         'PanelAgregarcliente
         '
@@ -1274,7 +1271,7 @@ Partial Class Form2
         Me.TabUsuarios.Location = New System.Drawing.Point(4, 22)
         Me.TabUsuarios.Name = "TabUsuarios"
         Me.TabUsuarios.Padding = New System.Windows.Forms.Padding(3)
-        Me.TabUsuarios.Size = New System.Drawing.Size(676, 437)
+        Me.TabUsuarios.Size = New System.Drawing.Size(677, 437)
         Me.TabUsuarios.TabIndex = 4
         Me.TabUsuarios.Text = "Usuarios"
         Me.TabUsuarios.UseVisualStyleBackColor = True
@@ -1477,17 +1474,6 @@ Partial Class Form2
         Me.ComboBoxUsuarios.Size = New System.Drawing.Size(89, 21)
         Me.ComboBoxUsuarios.TabIndex = 0
         '
-        'BOTONselecCliente
-        '
-        Me.BOTONselecCliente.BackColor = System.Drawing.Color.Tomato
-        Me.BOTONselecCliente.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.BOTONselecCliente.Location = New System.Drawing.Point(26, 361)
-        Me.BOTONselecCliente.Name = "BOTONselecCliente"
-        Me.BOTONselecCliente.Size = New System.Drawing.Size(85, 35)
-        Me.BOTONselecCliente.TabIndex = 13
-        Me.BOTONselecCliente.Text = "Seleccionar cliente"
-        Me.BOTONselecCliente.UseVisualStyleBackColor = False
-        '
         'Form2
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -1583,8 +1569,6 @@ Partial Class Form2
     Friend WithEvents LabelNombreyApellidocliente As System.Windows.Forms.Label
     Friend WithEvents LabelCedulacliente As System.Windows.Forms.Label
     Friend WithEvents DataGridViewClientes As System.Windows.Forms.DataGridView
-    Friend WithEvents BOTONseleccionarcliente As System.Windows.Forms.Button
-    Friend WithEvents BOTONquitarcliente As System.Windows.Forms.Button
     Friend WithEvents CheckBox1 As System.Windows.Forms.CheckBox
     Friend WithEvents DataGridView2 As System.Windows.Forms.DataGridView
     Friend WithEvents Buttonborrarventas As System.Windows.Forms.Button
@@ -1685,4 +1669,5 @@ Partial Class Form2
     Friend WithEvents Agregarmodificacioncliente As System.Windows.Forms.PictureBox
     Friend WithEvents Clearmodificarclientes As System.Windows.Forms.PictureBox
     Friend WithEvents BOTONselecCliente As System.Windows.Forms.Button
+    Friend WithEvents BOTONquitarcliente As System.Windows.Forms.Button
 End Class

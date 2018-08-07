@@ -415,28 +415,9 @@ Public Class Form2
 
     End Sub
 
-    'Boton "Borrar" de tab "Clientes"
-    Private Sub Buttonquitarcliente_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles BOTONquitarcliente.Click
-        Consulta = "delete from cliente where id='" & Texcedula.Text & "'"
-        consultar()
+  
 
-        Consulta = "select * from cliente"
-        consultar()
-        DataGridViewClientes.DataSource = Tabla
-        Texcedula.Text = ""
-        Texnombreapellido.Text = ""
-        Texdireccion.Text = ""
-        Texttelefono.Text = ""
-    End Sub
-
-    'Boton "Seleccionar" de tab "Clientes"
-    Private Sub Buttonseleccionarcliente_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles BOTONseleccionarcliente.Click
-
-        'Texcedula.Text = DataGridViewClientes.Item(0, DataGridViewClientes.CurrentRow.Index).Value
-        'Texnombreapellido.Text = DataGridViewClientes.Item(1, DataGridViewClientes.CurrentRow.Index).Value
-        'Texdireccion.Text = DataGridViewClientes.Item(2, DataGridViewClientes.CurrentRow.Index).Value
-        'Texttelefono.Text = DataGridViewClientes.Item(3, DataGridViewClientes.CurrentRow.Index).Value
-    End Sub
+   
 
     '/////VENTAS/////
     'boton agregar
@@ -835,7 +816,8 @@ Public Class Form2
     End Sub
 
     Private Sub Agregarmodificacioncliente_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Agregarmodificacioncliente.Click
-        Consulta = "update cliente set id='" + Cedulamodificarcliente.Text + "', nombre='" + Nombreyapellidomodificarcliente.Text +"', direccion='" + Direccionmodificarcliente.Text +"', telefono='" + Telefonomodificarcliente.Text +"' where id='" + Cedulamodificarcliente.Text + "'"
+        'dsfvsddd
+        Consulta = "update cliente set id='" + Cedulamodificarcliente.Text + "', nombre='" + Nombreyapellidomodificarcliente.Text + "', direccion='" + Direccionmodificarcliente.Text + "', telefono='" + Telefonomodificarcliente.Text + "' where id='" + Cedulamodificarcliente.Text + "'"
         consultar()
         Consulta = "select * from cliente"
         consultar()
@@ -856,4 +838,18 @@ Public Class Form2
         Direccionmodificarcliente.Text = DataGridViewClientes.Item(2, DataGridViewClientes.CurrentRow.Index).Value
         Telefonomodificarcliente.Text = DataGridViewClientes.Item(3, DataGridViewClientes.CurrentRow.Index).Value
     End Sub
+    '/////NO BORRAR
+
+    'Private Sub BOTONquitarcliente_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles BOTONquitarcliente.Click
+    '    Consulta = "delete from cliente where id='" & Texcedula.Text & "'"
+    '    consultar()
+
+    '    Consulta = "select * from cliente"
+    '    consultar()
+    '    DataGridViewClientes.DataSource = Tabla
+    '    Texcedula.Text = ""
+    '    Texnombreapellido.Text = ""
+    '    Texdireccion.Text = ""
+    '    Texttelefono.Text = ""
+    'End Sub
 End Class
