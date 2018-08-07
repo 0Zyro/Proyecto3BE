@@ -838,7 +838,7 @@ Public Class Form2
         Direccionmodificarcliente.Text = DataGridViewClientes.Item(2, DataGridViewClientes.CurrentRow.Index).Value
         Telefonomodificarcliente.Text = DataGridViewClientes.Item(3, DataGridViewClientes.CurrentRow.Index).Value
     End Sub
-    '/////NO BORRARasdkjbasdbas
+    '/////NO BORRARasdkjbasdbashjsshjs
 
     'Private Sub BOTONquitarcliente_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles BOTONquitarcliente.Click
     '    Consulta = "delete from cliente where id='" & Texcedula.Text & "'"
