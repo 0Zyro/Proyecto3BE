@@ -614,27 +614,7 @@ Public Class Form2
     End Sub
     '///////////////Boton que agrega la modificacion compras////////////////////////////
     Private Sub Agregarmodificacioncompras_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Agregarmodificacioncompras.Click
-        If Modificarfechacompra.Text <> "" And Modificarcomentariocompra.Text <> "" And Modificartotalapagarcompra.Text <> "" Then
-            If IsNumeric(Modificartotalapagarcompra.Text) Then
-                'Agrega los valores de los campos a cada tabla correspondiente
-                Consulta = "upgrade compra set (0,'" & Modificarfechacompra.Text & "','" & Modificarcomentariocompra.Text & "','" & Modificartotalapagarcompra.Text & "')"
-                consultar()
-                Consulta = "select * from compra"
-                consultar()
-                'Actualiza la BD
-                DataGridViewCompras.DataSource = Tabla
-                'Deja a los textbox vacios para ingresar nuevos datos
-                Modificarfechacompra.Text = ""
-                Modificarcomentariocompra.Text = ""
-                Modificartotalapagarcompra.Text = ""
-            Else
-                'Muestra mensaje diciendo que no se ingresaron valores numericos o que solo acepta valores numericos
-                MsgBox("Igrese solo valor numerico en total")
-            End If
-        Else
-            'Muestra mensaje que todos los campos no estan completos
-            MsgBox("Complete todos los campos vacios")
-        End If
+       
     End Sub
     '//////////////boton que agrega la compra/////////////////////////
     Private Sub Agregarcompra_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Agregarcompra.Click
@@ -773,6 +753,18 @@ Public Class Form2
 
     Private Sub DataGridViewModificarclientes_CellContentClick(ByVal sender As System.Object, ByVal e As System.Windows.Forms.DataGridViewCellEventArgs) Handles DataGridViewModificarclientes.CellContentClick
         DataGridViewModificarclientes.Rows(e.RowIndex).Selected = True
+
+
+
+
+        Nombreyapellidomodificarcliente.Clear()
+        Cedulamodificarcliente.Clear()
+        Direccionmodificarcliente.Clear()
+        Telefonomodificarcliente.Clear()
+        Nombreyapellidomodificarcliente.Text = DataGridViewModificarclientes.Item(1, DataGridViewModificarclientes.CurrentRow.Index).Value
+        Cedulamodificarcliente.Text = DataGridViewModificarclientes.Item(0, DataGridViewModificarclientes.CurrentRow.Index).Value
+        Direccionmodificarcliente.Text = DataGridViewModificarclientes.Item(2, DataGridViewModificarclientes.CurrentRow.Index).Value
+        Telefonomodificarcliente.Text = DataGridViewModificarclientes.Item(3, DataGridViewModificarclientes.CurrentRow.Index).Value
     End Sub
 
     Private Sub Clearmodificarclientes_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Clearmodificarclientes.Click
@@ -821,9 +813,7 @@ Public Class Form2
         consultar()
         Consulta = "select * from cliente"
         consultar()
-        DataGridViewClientes.DataSource = Tabla
-        Consulta = "select * from cliente"
-        consultar()
+
         DataGridViewModificarclientes.DataSource = Tabla
         DataGridViewModificarclientes.Columns(0).HeaderText = "Cédula"
         DataGridViewModificarclientes.Columns(1).HeaderText = "Nombre y apellido"
@@ -833,10 +823,11 @@ Public Class Form2
     End Sub
 
     Private Sub BOTONselecCliente_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles BOTONselecCliente.Click
-        Nombreyapellidomodificarcliente.Text = DataGridViewClientes.Item(0, DataGridViewClientes.CurrentRow.Index).Value
-        Cedulamodificarcliente.Text = DataGridViewClientes.Item(1, DataGridViewClientes.CurrentRow.Index).Value
-        Direccionmodificarcliente.Text = DataGridViewClientes.Item(2, DataGridViewClientes.CurrentRow.Index).Value
-        Telefonomodificarcliente.Text = DataGridViewClientes.Item(3, DataGridViewClientes.CurrentRow.Index).Value
+        Nombreyapellidomodificarcliente.Text = DataGridViewModificarclientes.Item(1, DataGridViewModificarclientes.CurrentRow.Index).Value
+        Cedulamodificarcliente.Text = DataGridViewModificarclientes.Item(0, DataGridViewModificarclientes.CurrentRow.Index).Value
+        Direccionmodificarcliente.Text = DataGridViewModificarclientes.Item(2, DataGridViewModificarclientes.CurrentRow.Index).Value
+        Telefonomodificarcliente.Text = DataGridViewModificarclientes.Item(3, DataGridViewModificarclientes.CurrentRow.Index).Value
+        '¿cedulaoculta.Text = DataGridViewClientes.Item(0, DataGridViewClientes.CurrentRow.Index).Value
     End Sub
     '/////NO BORRARasdkjbasdbashjsshjssddsdssdkejejerkjer
 
@@ -857,6 +848,4 @@ Public Class Form2
 
     End Sub
 
-   
-    
 End Class
