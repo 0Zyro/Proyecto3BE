@@ -64,3 +64,11 @@ C:\Users\Usuario\Downloads\Proyecto3BE-dfc8320baddd20532ec7d78daf460ec7837c179d\
 C:\Users\Usuario\Downloads\Proyecto3BE-dfc8320baddd20532ec7d78daf460ec7837c179d\Proyecto3BE\obj\x86\Debug\WindowsApplication1.Form2.resources
 C:\Users\Usuario\Downloads\Proyecto3BE-dfc8320baddd20532ec7d78daf460ec7837c179d\Proyecto3BE\obj\x86\Debug\WindowsApplication1.Resources.resources
 C:\Users\Usuario\Downloads\Proyecto3BE-dfc8320baddd20532ec7d78daf460ec7837c179d\Proyecto3BE\obj\x86\Debug\Proyecto3BE.vbproj.GenerateResource.Cache
+C:\Users\juanp\Documents\GitHub\Proyecto3BE\Proyecto3BE\obj\x86\Debug\Proyecto3BE.vbprojResolveAssemblyReference.cache
+C:\Users\juanp\Documents\GitHub\Proyecto3BE\Proyecto3BE\obj\x86\Debug\WindowsApplication1.Form1.resources
+C:\Users\juanp\Documents\GitHub\Proyecto3BE\Proyecto3BE\obj\x86\Debug\WindowsApplication1.Form2.resources
+C:\Users\juanp\Documents\GitHub\Proyecto3BE\Proyecto3BE\obj\x86\Debug\WindowsApplication1.Resources.resources
+C:\Users\juanp\Documents\GitHub\Proyecto3BE\Proyecto3BE\obj\x86\Debug\Proyecto3BE.vbproj.GenerateResource.Cache
+C:\Users\juanp\Documents\GitHub\Proyecto3BE\Proyecto3BE\bin\Debug\Proyecto3BE.exe
+C:\Users\juanp\Documents\GitHub\Proyecto3BE\Proyecto3BE\bin\Debug\Proyecto3BE.pdb
+C:\Users\juanp\Documents\GitHub\Proyecto3BE\Proyecto3BE\bin\Debug\Proyecto3BE.xml

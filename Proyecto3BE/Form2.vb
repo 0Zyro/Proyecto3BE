@@ -421,66 +421,12 @@ Public Class Form2
 
     '/////VENTAS/////
     'boton agregar
-    Private Sub Button6_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Button6.Click
-        Consulta = ("insert into ventas (FECHA,TOTALDEVENTA,COMENTARIO)values('" & TexRaza.Text & "','" & TexSexo.Text & "','" & TexEdad.Text & "')")
+    
 
-        consultar()
-        MessageBox.Show("Conexión exitosa")
-        TXTID.Text = ""
-        TexRaza.Text = ""
-        TexSexo.Text = ""
-        TexEdad.Text = ""
-    End Sub
+    
 
-    'boton modificar con sus respectivos checkbox's con la opcion de poner la id
-    Private Sub Button4_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Button4.Click
-        If CheckBoxTODO.Checked = True Then
-            Consulta = ("update ventas set IDVENTA='" & TXTID.Text & "',FECHA='" & TexRaza.Text & "',TOTALDEVENTA='" & TexSexo.Text & "',COMENTARIO='" & TexEdad.Text & "'where IDVENTA='" & TXTID.Text & "'")
-            consultar()
-            TXTID.Text = ""
-            TexRaza.Text = ""
-            TexSexo.Text = ""
-            TexEdad.Text = ""
+  
 
-        End If
-
-        If CheckBox1.Checked = True Then
-            Consulta = ("update ventas set IDVENTA='" & TXTID.Text & "',FECHA='" & TexRaza.Text & "'where IDVENTA='" & TXTID.Text & "'")
-            consultar()
-            TexRaza.Text = ""
-        End If
-        If CheckBox2.Checked = True Then
-            Consulta = ("update ventas set IDVENTA='" & TXTID.Text & "',TOTALDEVENTA='" & TexSexo.Text & "'where IDVENTA='" & TXTID.Text & "'")
-            consultar()
-            TexSexo.Text = ""
-        End If
-        If CheckBox3.Checked = True Then
-            Consulta = ("update ventas set IDVENTA='" & TXTID.Text & "',COMENTARIO='" & TexEdad.Text & "'where IDVENTA='" & TXTID.Text & "'")
-            consultar()
-            TexEdad.Text = ""
-        End If
-    End Sub
-
-    'boton borrar con opcion de poner la id para borrar
-    Private Sub Button5_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Buttonborrarventas.Click
-        Consulta = ("delete from ventas where IDVENTA= '" & TXTID.Text & "'")
-        consultar()
-        MsgBox("Borrado" + TXTID.Text)
-        TXTID.Text = ""
-        TexRaza.Text = ""
-        TexSexo.Text = ""
-        TexEdad.Text = ""
-    End Sub
-
-    Private Sub DataGridViewClientes_CellContentClick(ByVal sender As System.Object, ByVal e As System.Windows.Forms.DataGridViewCellEventArgs) Handles DataGridViewClientes.CellContentClick
-        Consulta = "select * from cliente"
-        consultar()
-        DataGridViewClientes.DataSource = Tabla
-        DataGridViewClientes.Columns(0).HeaderText = "Cedúla"
-        DataGridViewClientes.Columns(1).HeaderText = "Nombre y apellido"
-        DataGridViewClientes.Columns(2).HeaderText = "Dirección"
-        DataGridViewClientes.Columns(3).HeaderText = "Teléfono"
-    End Sub
 
     Private Sub Form2_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
         '////////////USUARIOS
@@ -541,6 +487,7 @@ Public Class Form2
         DataGridView1.Columns(6).Visible = False
         DataGridView1.Columns(7).Visible = False
         DataGridView1.Columns(8).Visible = False
+
     End Sub
 
     '///////////////////////////////////////////////////////////Datagried Compras///////////////////////////////////
@@ -903,5 +850,20 @@ Public Class Form2
 
     End Sub
 
-    
+    'agregar en  ventas
+
+    Private Sub agregarventa_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles agregarventa.Click
+        'consulta
+        Consulta = ("insert into venta (fechaventa,comentariov,totalv,id) values('" & txbfechaventa.Text & "','" & txbcomentarioventa.Text & "','" & txbtotalventa.Text & "','" & txbcedulaclienteventa.Text & "')")
+        consultar()
+        'select hacia venta
+        Consulta = "select * from venta"
+        consultar()
+        'actualiza la dgvw
+        DataGridViewventas.DataSource = Tabla
+
+
+
+
+    End Sub
 End Class

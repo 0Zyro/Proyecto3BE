@@ -46,25 +46,19 @@ Partial Class Form2
         Me.TexRaza = New System.Windows.Forms.TextBox()
         Me.Label1 = New System.Windows.Forms.Label()
         Me.DataGridView1 = New System.Windows.Forms.DataGridView()
-        Me.TabVentas = New System.Windows.Forms.TabPage()
-        Me.CheckBox1 = New System.Windows.Forms.CheckBox()
-        Me.DataGridView2 = New System.Windows.Forms.DataGridView()
-        Me.Buttonborrarventas = New System.Windows.Forms.Button()
+        Me.ventasasdsadsa = New System.Windows.Forms.TabPage()
+        Me.DataGridViewventas = New System.Windows.Forms.DataGridView()
         Me.Label6 = New System.Windows.Forms.Label()
-        Me.CheckBoxTODO = New System.Windows.Forms.CheckBox()
-        Me.CheckBox3 = New System.Windows.Forms.CheckBox()
-        Me.CheckBox2 = New System.Windows.Forms.CheckBox()
+        Me.txbcedulaclienteventa = New System.Windows.Forms.TextBox()
+        Me.Buttonborrarventas = New System.Windows.Forms.Button()
         Me.Button4 = New System.Windows.Forms.Button()
-        Me.Button6 = New System.Windows.Forms.Button()
+        Me.agregarventa = New System.Windows.Forms.Button()
         Me.Label7 = New System.Windows.Forms.Label()
         Me.Label8 = New System.Windows.Forms.Label()
         Me.Label9 = New System.Windows.Forms.Label()
-        Me.TextBox10 = New System.Windows.Forms.TextBox()
-        Me.TextBox11 = New System.Windows.Forms.TextBox()
-        Me.TextBox12 = New System.Windows.Forms.TextBox()
-        Me.GBID = New System.Windows.Forms.GroupBox()
-        Me.TXTID = New System.Windows.Forms.TextBox()
-        Me.Label10 = New System.Windows.Forms.Label()
+        Me.txbtotalventa = New System.Windows.Forms.TextBox()
+        Me.txbcomentarioventa = New System.Windows.Forms.TextBox()
+        Me.txbfechaventa = New System.Windows.Forms.TextBox()
         Me.TabCompras = New System.Windows.Forms.TabPage()
         Me.Panelagregarcompras = New System.Windows.Forms.Panel()
         Me.Label26 = New System.Windows.Forms.Label()
@@ -98,6 +92,7 @@ Partial Class Form2
         Me.DataGridViewCompras = New System.Windows.Forms.DataGridView()
         Me.TabClientes = New System.Windows.Forms.TabPage()
         Me.PanelModificarclientes = New System.Windows.Forms.Panel()
+        Me.Label22 = New System.Windows.Forms.Label()
         Me.Button1 = New System.Windows.Forms.Button()
         Me.Texbuscarcliente = New System.Windows.Forms.TextBox()
         Me.Clearmodificarclientes = New System.Windows.Forms.PictureBox()
@@ -155,15 +150,13 @@ Partial Class Form2
         Me.TextBoxBusquedaUsuarios = New System.Windows.Forms.TextBox()
         Me.ComboBoxUsuarios = New System.Windows.Forms.ComboBox()
         Me.ToolTip1 = New System.Windows.Forms.ToolTip(Me.components)
-        Me.Label22 = New System.Windows.Forms.Label()
         Me.PanelUsuario.SuspendLayout()
         CType(Me.PictureBox, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.TabbedPane.SuspendLayout()
         Me.TabGanado.SuspendLayout()
         CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).BeginInit()
-        Me.TabVentas.SuspendLayout()
-        CType(Me.DataGridView2, System.ComponentModel.ISupportInitialize).BeginInit()
-        Me.GBID.SuspendLayout()
+        Me.ventasasdsadsa.SuspendLayout()
+        CType(Me.DataGridViewventas, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.TabCompras.SuspendLayout()
         Me.Panelagregarcompras.SuspendLayout()
         CType(Me.Clearagregarcompras, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -258,7 +251,7 @@ Partial Class Form2
         'TabbedPane
         '
         Me.TabbedPane.Controls.Add(Me.TabGanado)
-        Me.TabbedPane.Controls.Add(Me.TabVentas)
+        Me.TabbedPane.Controls.Add(Me.ventasasdsadsa)
         Me.TabbedPane.Controls.Add(Me.TabCompras)
         Me.TabbedPane.Controls.Add(Me.TabClientes)
         Me.TabbedPane.Controls.Add(Me.TabUsuarios)
@@ -408,118 +401,84 @@ Partial Class Form2
         Me.DataGridView1.Size = New System.Drawing.Size(372, 412)
         Me.DataGridView1.TabIndex = 0
         '
-        'TabVentas
+        'ventasasdsadsa
         '
-        Me.TabVentas.Controls.Add(Me.CheckBox1)
-        Me.TabVentas.Controls.Add(Me.DataGridView2)
-        Me.TabVentas.Controls.Add(Me.Buttonborrarventas)
-        Me.TabVentas.Controls.Add(Me.Label6)
-        Me.TabVentas.Controls.Add(Me.CheckBoxTODO)
-        Me.TabVentas.Controls.Add(Me.CheckBox3)
-        Me.TabVentas.Controls.Add(Me.CheckBox2)
-        Me.TabVentas.Controls.Add(Me.Button4)
-        Me.TabVentas.Controls.Add(Me.Button6)
-        Me.TabVentas.Controls.Add(Me.Label7)
-        Me.TabVentas.Controls.Add(Me.Label8)
-        Me.TabVentas.Controls.Add(Me.Label9)
-        Me.TabVentas.Controls.Add(Me.TextBox10)
-        Me.TabVentas.Controls.Add(Me.TextBox11)
-        Me.TabVentas.Controls.Add(Me.TextBox12)
-        Me.TabVentas.Controls.Add(Me.GBID)
-        Me.TabVentas.Location = New System.Drawing.Point(4, 22)
-        Me.TabVentas.Name = "TabVentas"
-        Me.TabVentas.Padding = New System.Windows.Forms.Padding(3)
-        Me.TabVentas.Size = New System.Drawing.Size(679, 437)
-        Me.TabVentas.TabIndex = 1
-        Me.TabVentas.Text = "Ventas"
-        Me.TabVentas.UseVisualStyleBackColor = True
+        Me.ventasasdsadsa.Controls.Add(Me.DataGridViewventas)
+        Me.ventasasdsadsa.Controls.Add(Me.Label6)
+        Me.ventasasdsadsa.Controls.Add(Me.txbcedulaclienteventa)
+        Me.ventasasdsadsa.Controls.Add(Me.Buttonborrarventas)
+        Me.ventasasdsadsa.Controls.Add(Me.Button4)
+        Me.ventasasdsadsa.Controls.Add(Me.agregarventa)
+        Me.ventasasdsadsa.Controls.Add(Me.Label7)
+        Me.ventasasdsadsa.Controls.Add(Me.Label8)
+        Me.ventasasdsadsa.Controls.Add(Me.Label9)
+        Me.ventasasdsadsa.Controls.Add(Me.txbtotalventa)
+        Me.ventasasdsadsa.Controls.Add(Me.txbcomentarioventa)
+        Me.ventasasdsadsa.Controls.Add(Me.txbfechaventa)
+        Me.ventasasdsadsa.Location = New System.Drawing.Point(4, 22)
+        Me.ventasasdsadsa.Name = "ventasasdsadsa"
+        Me.ventasasdsadsa.Padding = New System.Windows.Forms.Padding(3)
+        Me.ventasasdsadsa.Size = New System.Drawing.Size(679, 437)
+        Me.ventasasdsadsa.TabIndex = 1
+        Me.ventasasdsadsa.Text = "Ventas"
+        Me.ventasasdsadsa.UseVisualStyleBackColor = True
         '
-        'CheckBox1
+        'DataGridViewventas
         '
-        Me.CheckBox1.AutoSize = True
-        Me.CheckBox1.Location = New System.Drawing.Point(647, 121)
-        Me.CheckBox1.Name = "CheckBox1"
-        Me.CheckBox1.Size = New System.Drawing.Size(15, 14)
-        Me.CheckBox1.TabIndex = 87
-        Me.CheckBox1.UseVisualStyleBackColor = True
+        Me.DataGridViewventas.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
+        Me.DataGridViewventas.Location = New System.Drawing.Point(6, 7)
+        Me.DataGridViewventas.Name = "DataGridViewventas"
+        Me.DataGridViewventas.Size = New System.Drawing.Size(666, 150)
+        Me.DataGridViewventas.TabIndex = 88
         '
-        'DataGridView2
+        'Label6
         '
-        Me.DataGridView2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.DataGridView2.Location = New System.Drawing.Point(15, 3)
-        Me.DataGridView2.Name = "DataGridView2"
-        Me.DataGridView2.RowHeadersVisible = False
-        Me.DataGridView2.ScrollBars = System.Windows.Forms.ScrollBars.Vertical
-        Me.DataGridView2.Size = New System.Drawing.Size(335, 431)
-        Me.DataGridView2.TabIndex = 86
+        Me.Label6.AllowDrop = True
+        Me.Label6.AutoSize = True
+        Me.Label6.Location = New System.Drawing.Point(198, 190)
+        Me.Label6.Name = "Label6"
+        Me.Label6.Size = New System.Drawing.Size(92, 13)
+        Me.Label6.TabIndex = 87
+        Me.Label6.Text = "Cédula de cliente "
+        '
+        'txbcedulaclienteventa
+        '
+        Me.txbcedulaclienteventa.Location = New System.Drawing.Point(316, 187)
+        Me.txbcedulaclienteventa.Name = "txbcedulaclienteventa"
+        Me.txbcedulaclienteventa.Size = New System.Drawing.Size(128, 20)
+        Me.txbcedulaclienteventa.TabIndex = 86
         '
         'Buttonborrarventas
         '
-        Me.Buttonborrarventas.Location = New System.Drawing.Point(524, 279)
+        Me.Buttonborrarventas.Location = New System.Drawing.Point(462, 373)
         Me.Buttonborrarventas.Name = "Buttonborrarventas"
         Me.Buttonborrarventas.Size = New System.Drawing.Size(100, 21)
         Me.Buttonborrarventas.TabIndex = 85
         Me.Buttonborrarventas.Text = "BORRAR"
         Me.Buttonborrarventas.UseVisualStyleBackColor = True
         '
-        'Label6
-        '
-        Me.Label6.AutoSize = True
-        Me.Label6.Location = New System.Drawing.Point(451, 207)
-        Me.Label6.Name = "Label6"
-        Me.Label6.Size = New System.Drawing.Size(100, 13)
-        Me.Label6.TabIndex = 84
-        Me.Label6.Text = "MODIFCIAR TODO"
-        '
-        'CheckBoxTODO
-        '
-        Me.CheckBoxTODO.AutoSize = True
-        Me.CheckBoxTODO.Location = New System.Drawing.Point(574, 206)
-        Me.CheckBoxTODO.Name = "CheckBoxTODO"
-        Me.CheckBoxTODO.Size = New System.Drawing.Size(15, 14)
-        Me.CheckBoxTODO.TabIndex = 83
-        Me.CheckBoxTODO.UseVisualStyleBackColor = True
-        '
-        'CheckBox3
-        '
-        Me.CheckBox3.AutoSize = True
-        Me.CheckBox3.Location = New System.Drawing.Point(524, 174)
-        Me.CheckBox3.Name = "CheckBox3"
-        Me.CheckBox3.Size = New System.Drawing.Size(15, 14)
-        Me.CheckBox3.TabIndex = 82
-        Me.CheckBox3.UseVisualStyleBackColor = True
-        '
-        'CheckBox2
-        '
-        Me.CheckBox2.AutoSize = True
-        Me.CheckBox2.Location = New System.Drawing.Point(596, 146)
-        Me.CheckBox2.Name = "CheckBox2"
-        Me.CheckBox2.Size = New System.Drawing.Size(15, 14)
-        Me.CheckBox2.TabIndex = 81
-        Me.CheckBox2.UseVisualStyleBackColor = True
-        '
         'Button4
         '
-        Me.Button4.Location = New System.Drawing.Point(524, 235)
+        Me.Button4.Location = New System.Drawing.Point(331, 370)
         Me.Button4.Name = "Button4"
         Me.Button4.Size = New System.Drawing.Size(100, 24)
         Me.Button4.TabIndex = 80
         Me.Button4.Text = "MODIFICAR"
         Me.Button4.UseVisualStyleBackColor = True
         '
-        'Button6
+        'agregarventa
         '
-        Me.Button6.Location = New System.Drawing.Point(381, 235)
-        Me.Button6.Name = "Button6"
-        Me.Button6.Size = New System.Drawing.Size(103, 24)
-        Me.Button6.TabIndex = 79
-        Me.Button6.Text = "AGREGAR"
-        Me.Button6.UseVisualStyleBackColor = True
+        Me.agregarventa.Location = New System.Drawing.Point(187, 370)
+        Me.agregarventa.Name = "agregarventa"
+        Me.agregarventa.Size = New System.Drawing.Size(103, 24)
+        Me.agregarventa.TabIndex = 79
+        Me.agregarventa.Text = "AGREGAR"
+        Me.agregarventa.UseVisualStyleBackColor = True
         '
         'Label7
         '
         Me.Label7.AutoSize = True
-        Me.Label7.Location = New System.Drawing.Point(373, 175)
+        Me.Label7.Location = New System.Drawing.Point(198, 264)
         Me.Label7.Name = "Label7"
         Me.Label7.Size = New System.Drawing.Size(79, 13)
         Me.Label7.TabIndex = 78
@@ -528,7 +487,7 @@ Partial Class Form2
         'Label8
         '
         Me.Label8.AutoSize = True
-        Me.Label8.Location = New System.Drawing.Point(356, 146)
+        Me.Label8.Location = New System.Drawing.Point(184, 304)
         Me.Label8.Name = "Label8"
         Me.Label8.Size = New System.Drawing.Size(93, 13)
         Me.Label8.TabIndex = 77
@@ -537,60 +496,32 @@ Partial Class Form2
         'Label9
         '
         Me.Label9.AutoSize = True
-        Me.Label9.Location = New System.Drawing.Point(398, 121)
+        Me.Label9.Location = New System.Drawing.Point(235, 224)
         Me.Label9.Name = "Label9"
         Me.Label9.Size = New System.Drawing.Size(42, 13)
         Me.Label9.TabIndex = 76
         Me.Label9.Text = "FECHA"
         '
-        'TextBox10
+        'txbtotalventa
         '
-        Me.TextBox10.Location = New System.Drawing.Point(462, 168)
-        Me.TextBox10.Name = "TextBox10"
-        Me.TextBox10.Size = New System.Drawing.Size(55, 20)
-        Me.TextBox10.TabIndex = 75
+        Me.txbtotalventa.Location = New System.Drawing.Point(316, 297)
+        Me.txbtotalventa.Name = "txbtotalventa"
+        Me.txbtotalventa.Size = New System.Drawing.Size(128, 20)
+        Me.txbtotalventa.TabIndex = 75
         '
-        'TextBox11
+        'txbcomentarioventa
         '
-        Me.TextBox11.Location = New System.Drawing.Point(462, 139)
-        Me.TextBox11.Name = "TextBox11"
-        Me.TextBox11.Size = New System.Drawing.Size(128, 20)
-        Me.TextBox11.TabIndex = 74
+        Me.txbcomentarioventa.Location = New System.Drawing.Point(316, 262)
+        Me.txbcomentarioventa.Name = "txbcomentarioventa"
+        Me.txbcomentarioventa.Size = New System.Drawing.Size(128, 20)
+        Me.txbcomentarioventa.TabIndex = 74
         '
-        'TextBox12
+        'txbfechaventa
         '
-        Me.TextBox12.Location = New System.Drawing.Point(462, 114)
-        Me.TextBox12.Name = "TextBox12"
-        Me.TextBox12.Size = New System.Drawing.Size(180, 20)
-        Me.TextBox12.TabIndex = 73
-        '
-        'GBID
-        '
-        Me.GBID.BackColor = System.Drawing.Color.Transparent
-        Me.GBID.Controls.Add(Me.TXTID)
-        Me.GBID.Controls.Add(Me.Label10)
-        Me.GBID.ForeColor = System.Drawing.SystemColors.MenuText
-        Me.GBID.Location = New System.Drawing.Point(448, 43)
-        Me.GBID.Name = "GBID"
-        Me.GBID.Size = New System.Drawing.Size(142, 42)
-        Me.GBID.TabIndex = 72
-        Me.GBID.TabStop = False
-        '
-        'TXTID
-        '
-        Me.TXTID.Location = New System.Drawing.Point(31, 14)
-        Me.TXTID.Name = "TXTID"
-        Me.TXTID.Size = New System.Drawing.Size(81, 20)
-        Me.TXTID.TabIndex = 14
-        '
-        'Label10
-        '
-        Me.Label10.AutoSize = True
-        Me.Label10.Location = New System.Drawing.Point(2, 17)
-        Me.Label10.Name = "Label10"
-        Me.Label10.Size = New System.Drawing.Size(18, 13)
-        Me.Label10.TabIndex = 13
-        Me.Label10.Text = "ID"
+        Me.txbfechaventa.Location = New System.Drawing.Point(316, 224)
+        Me.txbfechaventa.Name = "txbfechaventa"
+        Me.txbfechaventa.Size = New System.Drawing.Size(128, 20)
+        Me.txbfechaventa.TabIndex = 73
         '
         'TabCompras
         '
@@ -944,6 +875,16 @@ Partial Class Form2
         Me.PanelModificarclientes.Name = "PanelModificarclientes"
         Me.PanelModificarclientes.Size = New System.Drawing.Size(678, 437)
         Me.PanelModificarclientes.TabIndex = 7
+        '
+        'Label22
+        '
+        Me.Label22.AutoSize = True
+        Me.Label22.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label22.Location = New System.Drawing.Point(14, 75)
+        Me.Label22.Name = "Label22"
+        Me.Label22.Size = New System.Drawing.Size(111, 16)
+        Me.Label22.TabIndex = 16
+        Me.Label22.Text = "Ingrese cédula"
         '
         'Button1
         '
@@ -1490,16 +1431,6 @@ Partial Class Form2
         Me.ComboBoxUsuarios.Size = New System.Drawing.Size(89, 21)
         Me.ComboBoxUsuarios.TabIndex = 0
         '
-        'Label22
-        '
-        Me.Label22.AutoSize = True
-        Me.Label22.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label22.Location = New System.Drawing.Point(14, 75)
-        Me.Label22.Name = "Label22"
-        Me.Label22.Size = New System.Drawing.Size(111, 16)
-        Me.Label22.TabIndex = 16
-        Me.Label22.Text = "Ingrese cédula"
-        '
         'Form2
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -1521,11 +1452,9 @@ Partial Class Form2
         Me.TabGanado.ResumeLayout(False)
         Me.TabGanado.PerformLayout()
         CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).EndInit()
-        Me.TabVentas.ResumeLayout(False)
-        Me.TabVentas.PerformLayout()
-        CType(Me.DataGridView2, System.ComponentModel.ISupportInitialize).EndInit()
-        Me.GBID.ResumeLayout(False)
-        Me.GBID.PerformLayout()
+        Me.ventasasdsadsa.ResumeLayout(False)
+        Me.ventasasdsadsa.PerformLayout()
+        CType(Me.DataGridViewventas, System.ComponentModel.ISupportInitialize).EndInit()
         Me.TabCompras.ResumeLayout(False)
         Me.Panelagregarcompras.ResumeLayout(False)
         Me.Panelagregarcompras.PerformLayout()
@@ -1568,7 +1497,7 @@ Partial Class Form2
     Friend WithEvents PanelUsuario As System.Windows.Forms.Panel
     Friend WithEvents TabbedPane As System.Windows.Forms.TabControl
     Friend WithEvents TabGanado As System.Windows.Forms.TabPage
-    Friend WithEvents TabVentas As System.Windows.Forms.TabPage
+    Friend WithEvents ventasasdsadsa As System.Windows.Forms.TabPage
     Friend WithEvents TabClientes As System.Windows.Forms.TabPage
     Friend WithEvents TabUsuarios As System.Windows.Forms.TabPage
     Friend WithEvents DataGridView1 As System.Windows.Forms.DataGridView
@@ -1594,24 +1523,15 @@ Partial Class Form2
     Friend WithEvents LabelNombreyApellidocliente As System.Windows.Forms.Label
     Friend WithEvents LabelCedulacliente As System.Windows.Forms.Label
     Friend WithEvents DataGridViewClientes As System.Windows.Forms.DataGridView
-    Friend WithEvents CheckBox1 As System.Windows.Forms.CheckBox
-    Friend WithEvents DataGridView2 As System.Windows.Forms.DataGridView
     Friend WithEvents Buttonborrarventas As System.Windows.Forms.Button
-    Friend WithEvents Label6 As System.Windows.Forms.Label
-    Friend WithEvents CheckBoxTODO As System.Windows.Forms.CheckBox
-    Friend WithEvents CheckBox3 As System.Windows.Forms.CheckBox
-    Friend WithEvents CheckBox2 As System.Windows.Forms.CheckBox
     Friend WithEvents Button4 As System.Windows.Forms.Button
-    Friend WithEvents Button6 As System.Windows.Forms.Button
+    Friend WithEvents agregarventa As System.Windows.Forms.Button
     Friend WithEvents Label7 As System.Windows.Forms.Label
     Friend WithEvents Label8 As System.Windows.Forms.Label
     Friend WithEvents Label9 As System.Windows.Forms.Label
-    Friend WithEvents TextBox10 As System.Windows.Forms.TextBox
-    Friend WithEvents TextBox11 As System.Windows.Forms.TextBox
-    Friend WithEvents TextBox12 As System.Windows.Forms.TextBox
-    Friend WithEvents GBID As System.Windows.Forms.GroupBox
-    Friend WithEvents TXTID As System.Windows.Forms.TextBox
-    Friend WithEvents Label10 As System.Windows.Forms.Label
+    Friend WithEvents txbtotalventa As System.Windows.Forms.TextBox
+    Friend WithEvents txbcomentarioventa As System.Windows.Forms.TextBox
+    Friend WithEvents txbfechaventa As System.Windows.Forms.TextBox
     Friend WithEvents LabelInfoUsuarios As System.Windows.Forms.Label
     Friend WithEvents TabCompras As System.Windows.Forms.TabPage
     Friend WithEvents Panelprincipalcompras As System.Windows.Forms.Panel
@@ -1697,4 +1617,7 @@ Partial Class Form2
     Friend WithEvents idocultomodificarcompras As System.Windows.Forms.TextBox
     Friend WithEvents Agregarmodificarcompra As System.Windows.Forms.Button
     Friend WithEvents Label22 As System.Windows.Forms.Label
+    Friend WithEvents Label6 As System.Windows.Forms.Label
+    Friend WithEvents txbcedulaclienteventa As System.Windows.Forms.TextBox
+    Friend WithEvents DataGridViewventas As System.Windows.Forms.DataGridView
 End Class
