@@ -1,6 +1,7 @@
 ﻿Imports System.Data
 Imports System.Data.OleDb
 Imports MySql.Data.MySqlClient
+Imports System.IO
 
 Public Class Form2
     Dim data As String = ("Server=localhost;Database=vacas;User id=root;Password=;Port=3306;")
@@ -10,7 +11,7 @@ Public Class Form2
     Public Tabla As DataTable
     Public Consulta As String
     Public MysqlConexion As MySqlConnection = New MySqlConnection(data)
-    
+
     Public Sub consultar()
         Try
             Conexion = New MySqlDataAdapter(Consulta, data)
@@ -220,6 +221,7 @@ Public Class Form2
                                "', contrasena='" + TextBoxPasswdUsuarios.Text +
                                "', nombre='" + TextBoxNombreUsuarios.Text +
                                "', rango='" + TextBoxRangoUsuarios.Text +
+                               "', perfil='" + StringImagenUsuarios +
                                "' where ci='" + CiSeleccionado + "'")
                 Try
                     'Se abre la conexion
@@ -241,7 +243,7 @@ Public Class Form2
                     If TextBoxCiUsuarios.Text.Length > 6 Then
                         If TextBoxPasswdUsuarios.Text.Length > 7 Then
                             If TextBoxRangoUsuarios.Text.Length > 3 Then
-                                comando.CommandText = ("insert into usuario values ('" + TextBoxCiUsuarios.Text + "','" + TextBoxNombreUsuarios.Text + "','" + TextBoxPasswdUsuarios.Text + "','" + TextBoxRangoUsuarios.Text + "','activo')")
+                                comando.CommandText = ("insert into usuario values ('" + TextBoxCiUsuarios.Text + "','" + TextBoxNombreUsuarios.Text + "','" + TextBoxPasswdUsuarios.Text + "','" + TextBoxRangoUsuarios.Text + "','activo','" + StringImagenUsuarios + "')")
                                 Try
                                     connection.Open()
                                     comando.ExecuteNonQuery()
@@ -262,6 +264,7 @@ Public Class Form2
                     LabelInfoUsuarios.Text = "Cedula erronea"
                 End If
         End Select
+        estadoVisualizar()
     End Sub
 
     Private Function verificarCedula(ByVal cedula As String)
@@ -338,6 +341,8 @@ Public Class Form2
         TextBoxPasswdUsuarios.Text = ""
         TextBoxRangoUsuarios.Text = ""
 
+        CheckBoxUsuarios.Checked = False
+
     End Sub
     Private Sub estadoVisualizar()
 
@@ -367,6 +372,8 @@ Public Class Form2
 
         BotonBusquedaUsuarios.PerformClick()
 
+        StringImagenUsuarios = "default"
+
     End Sub
 
     Private Sub CheckBoxUsuarios_CheckStateChanged(ByVal sender As Object, ByVal e As System.EventArgs) Handles CheckBoxUsuarios.CheckStateChanged
@@ -387,10 +394,47 @@ Public Class Form2
         End If
     End Sub
 
+    Dim openFileDialog As New OpenFileDialog()
+
+    Dim StringImagenUsuarios As String = "default"
+
     Private Sub PictureBoxUsuarios_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles PictureBoxUsuarios.Click
+        BuscarImagen()
+    End Sub
 
-        MsgBox("click")
+    Private Sub BuscarImagen()
 
+        openFileDialog.InitialDirectory = "c:\"
+        openFileDialog.Filter = "Image Files (*.bmp)|*.bmp"
+        openFileDialog.FilterIndex = 1
+        openFileDialog.RestoreDirectory = True
+
+        Dim aux() As String
+
+        Dim ImagenUsuarios As Image
+
+        If openFileDialog.ShowDialog() = System.Windows.Forms.DialogResult.OK Then
+            If openFileDialog.FileName.Split(".")(1) = "bmp" Then
+                Try
+                    ImagenUsuarios = Image.FromFile(openFileDialog.FileName)
+                    If ImagenUsuarios.Height <= 90 And ImagenUsuarios.Width <= 90 Then
+                        aux = openFileDialog.FileName.Split("\")
+                        aux = aux(aux.Length - 1).Split(".")
+                        StringImagenUsuarios = aux(0)
+                    Else
+                        openFileDialog.FileName = ""
+                        MsgBox("La imagen seleccionda no debe superar 90 x 90")
+                    End If
+                Catch Ex As Exception
+                    openFileDialog.FileName = ""
+                    LabelInfoUsuarios.Text = ("Error: " + Ex.Message)
+                End Try
+            Else
+                openFileDialog.FileName = ""
+                MsgBox("Imagenes .BMP unicamente")
+                BuscarImagen()
+            End If
+        End If
     End Sub
 
     '///FIN SECCION USUARIOS
@@ -415,17 +459,17 @@ Public Class Form2
 
     End Sub
 
-  
 
-   
+
+
 
     '/////VENTAS/////
     'boton agregar
-    
 
-    
 
-  
+
+
+
 
 
     Private Sub Form2_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
@@ -668,9 +712,9 @@ Public Class Form2
             Else
                 MsgBox("Datos no encontrados")
             End If
-       
+
         End If
-       
+
     End Sub
     Private Sub Agregarcliente_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Agregarcliente.Click
         If Texcedula.Text <> "" And Texnombreapellido.Text <> "" And Texdireccion.Text <> "" And Texttelefono.Text <> "" Then
@@ -844,7 +888,7 @@ Public Class Form2
         MsgBox("La compra se modifico con exito")
     End Sub
 
-    
+
 
     Private Sub TextBox2_TextChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Texbuscarcliente.TextChanged
 
