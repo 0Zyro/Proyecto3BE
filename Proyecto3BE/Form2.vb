@@ -701,6 +701,30 @@ Public Class Form2
         PanelPrincipalclientes.Enabled = False
     End Sub
 
+    Private Sub Button1_Click_1(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Button1.Click
+        Dim consulta As String
+        Dim lista As Byte
+        Dim datos As DataSet
+        If Texbuscarcliente.Text <> "" Then
+            consulta = " select * from cliente where id = '" & Texbuscarcliente.Text & "'"
+            Conexion = New MySqlDataAdapter(consulta, data)
+            datos = New DataSet
+            Conexion.Fill(datos, "cliente")
+            lista = datos.Tables("cliente").Rows.Count
+
+            If lista <> 0 Then
+                Nombreyapellidomodificarcliente.Text = datos.Tables("cliente").Rows(0).Item(1)
+                Cedulamodificarcliente.Text = datos.Tables("cliente").Rows(0).Item(0)
+                Direccionmodificarcliente.Text = datos.Tables("cliente").Rows(0).Item(2)
+                Telefonomodificarcliente.Text = datos.Tables("cliente").Rows(0).Item(3)
+
+            Else
+                MsgBox("Datos no encontrados")
+            End If
+       
+        End If
+       
+    End Sub
     Private Sub Agregarcliente_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Agregarcliente.Click
         If Texcedula.Text <> "" And Texnombreapellido.Text <> "" And Texdireccion.Text <> "" And Texttelefono.Text <> "" Then
 
@@ -732,10 +756,10 @@ Public Class Form2
         Consulta = "select * from cliente"
         consultar()
         DataGridViewClientes.DataSource = Tabla
-        DataGridViewClientes.Columns(0).HeaderText = "Cédula"
-        DataGridViewClientes.Columns(1).HeaderText = "Nombre y apellido"
-        DataGridViewClientes.Columns(2).HeaderText = "Dirección"
-        DataGridViewClientes.Columns(3).HeaderText = "Teléfono"
+        'DataGridViewClientes.Columns(0).HeaderText = "Cédula"
+        'DataGridViewClientes.Columns(1).HeaderText = "Nombre y apellido"
+        'DataGridViewClientes.Columns(2).HeaderText = "Dirección"
+        'DataGridViewClientes.Columns(3).HeaderText = "Teléfono"
 
         PanelModificarclientes.SendToBack()
         PanelModificarclientes.Visible = False
@@ -758,17 +782,16 @@ Public Class Form2
 
     Private Sub DataGridViewModificarclientes_CellContentClick(ByVal sender As System.Object, ByVal e As System.Windows.Forms.DataGridViewCellEventArgs) Handles DataGridViewModificarclientes.CellContentClick
 
-
-
-
         Nombreyapellidomodificarcliente.Clear()
         Cedulamodificarcliente.Clear()
         Direccionmodificarcliente.Clear()
         Telefonomodificarcliente.Clear()
+
         Nombreyapellidomodificarcliente.Text = DataGridViewModificarclientes.Item(1, DataGridViewModificarclientes.CurrentRow.Index).Value
         Cedulamodificarcliente.Text = DataGridViewModificarclientes.Item(0, DataGridViewModificarclientes.CurrentRow.Index).Value
         Direccionmodificarcliente.Text = DataGridViewModificarclientes.Item(2, DataGridViewModificarclientes.CurrentRow.Index).Value
         Telefonomodificarcliente.Text = DataGridViewModificarclientes.Item(3, DataGridViewModificarclientes.CurrentRow.Index).Value
+
     End Sub
 
     Private Sub Clearmodificarclientes_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Clearmodificarclientes.Click
@@ -781,13 +804,13 @@ Public Class Form2
 
     Private Sub Eliminarmodificacioncliente_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Eliminarmodificacioncliente.Click
         'Elimina el id de una compra juntos con todos los datos de ese id
-        Consulta = "delete from cliente where ID='" & Cedulamodificarcliente.Text & "'"
+        Consulta = "delete from cliente where id='" & Cedulamodificarcliente.Text & "'"
         consultar()
 
         Consulta = "select * from cliente"
         consultar()
         'Actualiza la BD
-        DataGridViewCompras.DataSource = Tabla
+        DataGridViewModificarclientes.DataSource = Tabla
         Cedulamodificarcliente.Text = ""
         Nombreyapellidomodificarcliente.Text = ""
         Direccionmodificarcliente.Text = ""
@@ -796,13 +819,13 @@ Public Class Form2
 
         'Me.DataGridViewModificarclientes.CurrentCell.RowIndex
 
-        Consulta = "select * from cliente"
-        consultar()
-        DataGridViewModificarclientes.DataSource = Tabla
-        DataGridViewModificarclientes.Columns(0).HeaderText = "Cédula"
-        DataGridViewModificarclientes.Columns(1).HeaderText = "Nombre y apellido"
-        DataGridViewModificarclientes.Columns(2).HeaderText = "Dirección"
-        DataGridViewModificarclientes.Columns(3).HeaderText = "Teléfono"
+        'Consulta = "select * from cliente"
+        'consultar()
+        'DataGridViewModificarclientes.DataSource = Tabla
+        'DataGridViewModificarclientes.Columns(0).HeaderText = "Cédula"
+        'DataGridViewModificarclientes.Columns(1).HeaderText = "Nombre y apellido"
+        'DataGridViewModificarclientes.Columns(2).HeaderText = "Dirección"
+        'DataGridViewModificarclientes.Columns(3).HeaderText = "Teléfono"
     End Sub
 
     Private Sub ModificarClientes1_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles ModificarClientes1.Click
@@ -813,10 +836,10 @@ Public Class Form2
         Consulta = "select * from cliente"
         consultar()
         DataGridViewModificarclientes.DataSource = Tabla
-        DataGridViewModificarclientes.Columns(0).HeaderText = "Cédula"
-        DataGridViewModificarclientes.Columns(1).HeaderText = "Nombre y apellido"
-        DataGridViewModificarclientes.Columns(2).HeaderText = "Dirección"
-        DataGridViewModificarclientes.Columns(3).HeaderText = "Teléfono"
+        'DataGridViewModificarclientes.Columns(0).HeaderText = "Cédula"
+        'DataGridViewModificarclientes.Columns(1).HeaderText = "Nombre y apellido"
+        'DataGridViewModificarclientes.Columns(2).HeaderText = "Dirección"
+        'DataGridViewModificarclientes.Columns(3).HeaderText = "Teléfono"
 
         PanelPrincipalclientes.SendToBack()
         PanelPrincipalclientes.Visible = False
@@ -829,12 +852,16 @@ Public Class Form2
         consultar()
         Consulta = "select * from cliente"
         consultar()
+        Cedulamodificarcliente.Text = ""
+        Nombreyapellidomodificarcliente.Text = ""
+        Direccionmodificarcliente.Text = ""
+        Cedulamodificarcliente.Text = ""
+        'DataGridViewModificarclientes.DataSource = Tabla
+        'DataGridViewModificarclientes.Columns(0).HeaderText = "Cédula"
+        'DataGridViewModificarclientes.Columns(1).HeaderText = "Nombre y apellido"
+        'DataGridViewModificarclientes.Columns(2).HeaderText = "Dirección"
+        'DataGridViewModificarclientes.Columns(3).HeaderText = "Teléfono"
 
-        DataGridViewModificarclientes.DataSource = Tabla
-        DataGridViewModificarclientes.Columns(0).HeaderText = "Cédula"
-        DataGridViewModificarclientes.Columns(1).HeaderText = "Nombre y apellido"
-        DataGridViewModificarclientes.Columns(2).HeaderText = "Dirección"
-        DataGridViewModificarclientes.Columns(3).HeaderText = "Teléfono"
         MsgBox("Editado con exito")
     End Sub
     '/////NO BORRARasdkjbasdbashjsshjssddsdssdkejejerkjer
@@ -869,4 +896,12 @@ Public Class Form2
         DataGridViewModificarCompras.Columns(3).HeaderText = "Total a pagado"
         MsgBox("La compra se modifico con exito")
     End Sub
+
+    
+
+    Private Sub TextBox2_TextChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Texbuscarcliente.TextChanged
+
+    End Sub
+
+    
 End Class
