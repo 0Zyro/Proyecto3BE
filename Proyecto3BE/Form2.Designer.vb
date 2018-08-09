@@ -58,7 +58,6 @@ Partial Class Form2
         Me.Label9 = New System.Windows.Forms.Label()
         Me.txbtotalventa = New System.Windows.Forms.TextBox()
         Me.txbcomentarioventa = New System.Windows.Forms.TextBox()
-        Me.txbfechaventa = New System.Windows.Forms.TextBox()
         Me.TabCompras = New System.Windows.Forms.TabPage()
         Me.Panelagregarcompras = New System.Windows.Forms.Panel()
         Me.Label26 = New System.Windows.Forms.Label()
@@ -150,6 +149,7 @@ Partial Class Form2
         Me.TextBoxBusquedaUsuarios = New System.Windows.Forms.TextBox()
         Me.ComboBoxUsuarios = New System.Windows.Forms.ComboBox()
         Me.ToolTip1 = New System.Windows.Forms.ToolTip(Me.components)
+        Me.DateTimePicker1 = New System.Windows.Forms.DateTimePicker()
         Me.PanelUsuario.SuspendLayout()
         CType(Me.PictureBox, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.TabbedPane.SuspendLayout()
@@ -403,6 +403,7 @@ Partial Class Form2
         '
         'ventasasdsadsa
         '
+        Me.ventasasdsadsa.Controls.Add(Me.DateTimePicker1)
         Me.ventasasdsadsa.Controls.Add(Me.DataGridViewventas)
         Me.ventasasdsadsa.Controls.Add(Me.Label6)
         Me.ventasasdsadsa.Controls.Add(Me.txbcedulaclienteventa)
@@ -414,7 +415,6 @@ Partial Class Form2
         Me.ventasasdsadsa.Controls.Add(Me.Label9)
         Me.ventasasdsadsa.Controls.Add(Me.txbtotalventa)
         Me.ventasasdsadsa.Controls.Add(Me.txbcomentarioventa)
-        Me.ventasasdsadsa.Controls.Add(Me.txbfechaventa)
         Me.ventasasdsadsa.Location = New System.Drawing.Point(4, 22)
         Me.ventasasdsadsa.Name = "ventasasdsadsa"
         Me.ventasasdsadsa.Padding = New System.Windows.Forms.Padding(3)
@@ -425,9 +425,14 @@ Partial Class Form2
         '
         'DataGridViewventas
         '
+        Me.DataGridViewventas.AllowUserToAddRows = False
+        Me.DataGridViewventas.AllowUserToDeleteRows = False
+        Me.DataGridViewventas.AllowUserToResizeColumns = False
+        Me.DataGridViewventas.AllowUserToResizeRows = False
         Me.DataGridViewventas.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         Me.DataGridViewventas.Location = New System.Drawing.Point(6, 7)
         Me.DataGridViewventas.Name = "DataGridViewventas"
+        Me.DataGridViewventas.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
         Me.DataGridViewventas.Size = New System.Drawing.Size(666, 150)
         Me.DataGridViewventas.TabIndex = 88
         '
@@ -515,13 +520,6 @@ Partial Class Form2
         Me.txbcomentarioventa.Name = "txbcomentarioventa"
         Me.txbcomentarioventa.Size = New System.Drawing.Size(128, 20)
         Me.txbcomentarioventa.TabIndex = 74
-        '
-        'txbfechaventa
-        '
-        Me.txbfechaventa.Location = New System.Drawing.Point(316, 224)
-        Me.txbfechaventa.Name = "txbfechaventa"
-        Me.txbfechaventa.Size = New System.Drawing.Size(128, 20)
-        Me.txbfechaventa.TabIndex = 73
         '
         'TabCompras
         '
@@ -1431,6 +1429,13 @@ Partial Class Form2
         Me.ComboBoxUsuarios.Size = New System.Drawing.Size(89, 21)
         Me.ComboBoxUsuarios.TabIndex = 0
         '
+        'DateTimePicker1
+        '
+        Me.DateTimePicker1.Location = New System.Drawing.Point(316, 224)
+        Me.DateTimePicker1.Name = "DateTimePicker1"
+        Me.DateTimePicker1.Size = New System.Drawing.Size(200, 20)
+        Me.DateTimePicker1.TabIndex = 89
+        '
         'Form2
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -1531,7 +1536,6 @@ Partial Class Form2
     Friend WithEvents Label9 As System.Windows.Forms.Label
     Friend WithEvents txbtotalventa As System.Windows.Forms.TextBox
     Friend WithEvents txbcomentarioventa As System.Windows.Forms.TextBox
-    Friend WithEvents txbfechaventa As System.Windows.Forms.TextBox
     Friend WithEvents LabelInfoUsuarios As System.Windows.Forms.Label
     Friend WithEvents TabCompras As System.Windows.Forms.TabPage
     Friend WithEvents Panelprincipalcompras As System.Windows.Forms.Panel
@@ -1620,4 +1624,5 @@ Partial Class Form2
     Friend WithEvents Label6 As System.Windows.Forms.Label
     Friend WithEvents txbcedulaclienteventa As System.Windows.Forms.TextBox
     Friend WithEvents DataGridViewventas As System.Windows.Forms.DataGridView
+    Friend WithEvents DateTimePicker1 As System.Windows.Forms.DateTimePicker
 End Class

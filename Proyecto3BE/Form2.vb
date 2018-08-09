@@ -473,6 +473,13 @@ Public Class Form2
 
 
     Private Sub Form2_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
+
+        '/////// CONSULTA VENTA
+        Consulta = "select * from venta"
+        consultar()
+        'actualiza la dgvw
+        DataGridViewventas.DataSource = Tabla
+
         '////////////USUARIOS
         ComboBoxUsuarios.SelectedIndex = 0
 
@@ -897,8 +904,12 @@ Public Class Form2
     'agregar en  ventas
 
     Private Sub agregarventa_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles agregarventa.Click
+        Dim fecha As String = DateTimePicker1.Value.ToString("yyyy-MM-dd")
+        Dim comentario As String = txbcomentarioventa.Text
+        Dim totalv As Integer = txbtotalventa.Text
+        Dim id As Integer = txbcedulaclienteventa.Text
         'consulta
-        Consulta = ("insert into venta (fechaventa,comentariov,totalv,id) values('" & txbfechaventa.Text & "','" & txbcomentarioventa.Text & "','" & txbtotalventa.Text & "','" & txbcedulaclienteventa.Text & "')")
+        Consulta = "insert into venta (fechaventa,comentariov,totalv,id) values('" & fecha & "','" & comentario & "','" & totalv & "','" & id & "');"
         consultar()
         'select hacia venta
         Consulta = "select * from venta"
@@ -907,7 +918,7 @@ Public Class Form2
         DataGridViewventas.DataSource = Tabla
 
 
-
-
     End Sub
+
+
 End Class
