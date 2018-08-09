@@ -479,6 +479,13 @@ Public Class Form2
         consultar()
         'actualiza la dgvw
         DataGridViewVENTAS.DataSource = Tabla
+        labeldeventa.Visible = False
+        'label's hide
+        txbcedulaclienteventa.Visible = False
+        labelidv.Visible = False
+
+
+
 
         '////////////USUARIOS
         ComboBoxUsuarios.SelectedIndex = 0
@@ -908,10 +915,6 @@ Public Class Form2
         Try
 
 
-
-
-
-
             Dim fecha As String = DateTimePicker1.Value.ToString("yyyy-MM-dd")
             Dim comentario As String = txbcomentarioventa.Text
             Dim totalv As Integer = txbtotalventa.Text
@@ -924,11 +927,57 @@ Public Class Form2
             consultar()
             'actualiza la dgvw
             DataGridViewVENTAS.DataSource = Tabla
-
+            MsgBox("se agregó con exito")
         Catch ex As Exception
             MsgBox(ex)
         End Try
 
     End Sub
+    'BORRAR EN VENTA//////////////////////////////////////////
+
+
+
+    Private Sub Buttonborrarventas_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Buttonborrarventas.Click
+
+        Try
+            Consulta = "delete from venta where idv='" & txbcedulaclienteventa.Text & "'"
+            consultar()
+
+            Consulta = "select * from venta"
+            consultar()
+
+            DataGridViewVENTAS.DataSource = Tabla
+            MsgBox("Se borro con exito")
+            'cambia de nombre el label
+            labeldeventa.Text = "Cédula cliente"
+        Catch ex As Exception
+            MsgBox(ex)
+        End Try
+
+
+    End Sub
+    '////////////////////////////////////////////////////////////////////////////////////////////////
+    'esto hace que el label cambie al pasar el boton por el boton de borrar
+    Private Sub Buttonborrarventas_MouseMove(ByVal sender As Object, ByVal e As System.Windows.Forms.MouseEventArgs) Handles Buttonborrarventas.MouseMove
+        labeldeventa.Visible = False
+        labelidv.Visible = True
+        txbcedulaclienteventa.Visible = True
+    End Sub
+
+    
+
+    
+    Private Sub agregarventa_MouseMove(ByVal sender As Object, ByVal e As System.Windows.Forms.MouseEventArgs) Handles agregarventa.MouseMove
+        labeldeventa.Visible = True
+        txbcedulaclienteventa.Visible = True
+        labelidv.Visible = False
+    End Sub
+
+    Private Sub btnclearventa_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnclearventa.Click
+        txbcedulaclienteventa.Text = ""
+        txbcomentarioventa.Text = ""
+        txbtotalventa.Text = ""
+    End Sub
+
 
 End Class

@@ -47,8 +47,11 @@ Partial Class Form2
         Me.Label1 = New System.Windows.Forms.Label()
         Me.DataGridView1 = New System.Windows.Forms.DataGridView()
         Me.ventasasdsadsa = New System.Windows.Forms.TabPage()
+        Me.labelidv = New System.Windows.Forms.Label()
+        Me.btnclearventa = New System.Windows.Forms.Button()
+        Me.DataGridViewVENTAS = New System.Windows.Forms.DataGridView()
         Me.DateTimePicker1 = New System.Windows.Forms.DateTimePicker()
-        Me.Label6 = New System.Windows.Forms.Label()
+        Me.labeldeventa = New System.Windows.Forms.Label()
         Me.txbcedulaclienteventa = New System.Windows.Forms.TextBox()
         Me.Buttonborrarventas = New System.Windows.Forms.Button()
         Me.Button4 = New System.Windows.Forms.Button()
@@ -149,13 +152,13 @@ Partial Class Form2
         Me.TextBoxBusquedaUsuarios = New System.Windows.Forms.TextBox()
         Me.ComboBoxUsuarios = New System.Windows.Forms.ComboBox()
         Me.ToolTip1 = New System.Windows.Forms.ToolTip(Me.components)
-        Me.DataGridViewVENTAS = New System.Windows.Forms.DataGridView()
         Me.PanelUsuario.SuspendLayout()
         CType(Me.PictureBox, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.TabbedPane.SuspendLayout()
         Me.TabGanado.SuspendLayout()
         CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.ventasasdsadsa.SuspendLayout()
+        CType(Me.DataGridViewVENTAS, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.TabCompras.SuspendLayout()
         Me.Panelmodificarcompras.SuspendLayout()
         CType(Me.DataGridViewModificarCompras, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -186,7 +189,6 @@ Partial Class Form2
         CType(Me.Clearagregarclientes, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.TabUsuarios.SuspendLayout()
         CType(Me.PictureBoxUsuarios, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.DataGridViewVENTAS, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'PanelUsuario
@@ -403,9 +405,11 @@ Partial Class Form2
         '
         'ventasasdsadsa
         '
+        Me.ventasasdsadsa.Controls.Add(Me.labelidv)
+        Me.ventasasdsadsa.Controls.Add(Me.btnclearventa)
         Me.ventasasdsadsa.Controls.Add(Me.DataGridViewVENTAS)
         Me.ventasasdsadsa.Controls.Add(Me.DateTimePicker1)
-        Me.ventasasdsadsa.Controls.Add(Me.Label6)
+        Me.ventasasdsadsa.Controls.Add(Me.labeldeventa)
         Me.ventasasdsadsa.Controls.Add(Me.txbcedulaclienteventa)
         Me.ventasasdsadsa.Controls.Add(Me.Buttonborrarventas)
         Me.ventasasdsadsa.Controls.Add(Me.Button4)
@@ -423,6 +427,36 @@ Partial Class Form2
         Me.ventasasdsadsa.Text = "Ventas"
         Me.ventasasdsadsa.UseVisualStyleBackColor = True
         '
+        'labelidv
+        '
+        Me.labelidv.AllowDrop = True
+        Me.labelidv.AutoSize = True
+        Me.labelidv.Location = New System.Drawing.Point(459, 190)
+        Me.labelidv.Name = "labelidv"
+        Me.labelidv.Size = New System.Drawing.Size(25, 13)
+        Me.labelidv.TabIndex = 92
+        Me.labelidv.Text = "IDV"
+        '
+        'btnclearventa
+        '
+        Me.btnclearventa.Location = New System.Drawing.Point(462, 293)
+        Me.btnclearventa.Name = "btnclearventa"
+        Me.btnclearventa.Size = New System.Drawing.Size(54, 24)
+        Me.btnclearventa.TabIndex = 91
+        Me.btnclearventa.Text = "Clear "
+        Me.btnclearventa.UseVisualStyleBackColor = True
+        '
+        'DataGridViewVENTAS
+        '
+        Me.DataGridViewVENTAS.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
+        Me.DataGridViewVENTAS.Location = New System.Drawing.Point(6, 7)
+        Me.DataGridViewVENTAS.Name = "DataGridViewVENTAS"
+        Me.DataGridViewVENTAS.ReadOnly = True
+        Me.DataGridViewVENTAS.RowHeadersVisible = False
+        Me.DataGridViewVENTAS.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
+        Me.DataGridViewVENTAS.Size = New System.Drawing.Size(652, 150)
+        Me.DataGridViewVENTAS.TabIndex = 90
+        '
         'DateTimePicker1
         '
         Me.DateTimePicker1.Location = New System.Drawing.Point(316, 224)
@@ -430,15 +464,15 @@ Partial Class Form2
         Me.DateTimePicker1.Size = New System.Drawing.Size(200, 20)
         Me.DateTimePicker1.TabIndex = 89
         '
-        'Label6
+        'labeldeventa
         '
-        Me.Label6.AllowDrop = True
-        Me.Label6.AutoSize = True
-        Me.Label6.Location = New System.Drawing.Point(198, 190)
-        Me.Label6.Name = "Label6"
-        Me.Label6.Size = New System.Drawing.Size(92, 13)
-        Me.Label6.TabIndex = 87
-        Me.Label6.Text = "Cédula de cliente "
+        Me.labeldeventa.AllowDrop = True
+        Me.labeldeventa.AutoSize = True
+        Me.labeldeventa.Location = New System.Drawing.Point(198, 190)
+        Me.labeldeventa.Name = "labeldeventa"
+        Me.labeldeventa.Size = New System.Drawing.Size(92, 13)
+        Me.labeldeventa.TabIndex = 87
+        Me.labeldeventa.Text = "Cédula de cliente "
         '
         'txbcedulaclienteventa
         '
@@ -1423,14 +1457,6 @@ Partial Class Form2
         Me.ComboBoxUsuarios.Size = New System.Drawing.Size(89, 21)
         Me.ComboBoxUsuarios.TabIndex = 0
         '
-        'DataGridViewVENTAS
-        '
-        Me.DataGridViewVENTAS.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.DataGridViewVENTAS.Location = New System.Drawing.Point(6, 7)
-        Me.DataGridViewVENTAS.Name = "DataGridViewVENTAS"
-        Me.DataGridViewVENTAS.Size = New System.Drawing.Size(652, 150)
-        Me.DataGridViewVENTAS.TabIndex = 90
-        '
         'Form2
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -1454,6 +1480,7 @@ Partial Class Form2
         CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ventasasdsadsa.ResumeLayout(False)
         Me.ventasasdsadsa.PerformLayout()
+        CType(Me.DataGridViewVENTAS, System.ComponentModel.ISupportInitialize).EndInit()
         Me.TabCompras.ResumeLayout(False)
         Me.Panelmodificarcompras.ResumeLayout(False)
         Me.Panelmodificarcompras.PerformLayout()
@@ -1490,7 +1517,6 @@ Partial Class Form2
         Me.TabUsuarios.ResumeLayout(False)
         Me.TabUsuarios.PerformLayout()
         CType(Me.PictureBoxUsuarios, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.DataGridViewVENTAS, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
 
     End Sub
@@ -1616,8 +1642,10 @@ Partial Class Form2
     Friend WithEvents idocultomodificarcompras As System.Windows.Forms.TextBox
     Friend WithEvents Agregarmodificarcompra As System.Windows.Forms.Button
     Friend WithEvents Label22 As System.Windows.Forms.Label
-    Friend WithEvents Label6 As System.Windows.Forms.Label
+    Friend WithEvents labeldeventa As System.Windows.Forms.Label
     Friend WithEvents txbcedulaclienteventa As System.Windows.Forms.TextBox
     Friend WithEvents DateTimePicker1 As System.Windows.Forms.DateTimePicker
     Friend WithEvents DataGridViewVENTAS As System.Windows.Forms.DataGridView
+    Friend WithEvents btnclearventa As System.Windows.Forms.Button
+    Friend WithEvents labelidv As System.Windows.Forms.Label
 End Class
