@@ -405,6 +405,7 @@ Partial Class Form2
         '
         'ventasasdsadsa
         '
+        Me.ventasasdsadsa.BackColor = System.Drawing.Color.DarkGreen
         Me.ventasasdsadsa.Controls.Add(Me.labelidv)
         Me.ventasasdsadsa.Controls.Add(Me.btnclearventa)
         Me.ventasasdsadsa.Controls.Add(Me.DataGridViewVENTAS)
@@ -425,26 +426,29 @@ Partial Class Form2
         Me.ventasasdsadsa.Size = New System.Drawing.Size(679, 437)
         Me.ventasasdsadsa.TabIndex = 1
         Me.ventasasdsadsa.Text = "Ventas"
-        Me.ventasasdsadsa.UseVisualStyleBackColor = True
         '
         'labelidv
         '
         Me.labelidv.AllowDrop = True
         Me.labelidv.AutoSize = True
-        Me.labelidv.Location = New System.Drawing.Point(459, 190)
+        Me.labelidv.Font = New System.Drawing.Font("Microsoft Sans Serif", 15.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.labelidv.Location = New System.Drawing.Point(452, 182)
         Me.labelidv.Name = "labelidv"
-        Me.labelidv.Size = New System.Drawing.Size(25, 13)
+        Me.labelidv.Size = New System.Drawing.Size(49, 25)
         Me.labelidv.TabIndex = 92
         Me.labelidv.Text = "IDV"
         '
         'btnclearventa
         '
-        Me.btnclearventa.Location = New System.Drawing.Point(462, 293)
+        Me.btnclearventa.Anchor = System.Windows.Forms.AnchorStyles.None
+        Me.btnclearventa.BackColor = System.Drawing.Color.ForestGreen
+        Me.btnclearventa.Cursor = System.Windows.Forms.Cursors.Hand
+        Me.btnclearventa.Image = CType(resources.GetObject("btnclearventa.Image"), System.Drawing.Image)
+        Me.btnclearventa.Location = New System.Drawing.Point(477, 294)
         Me.btnclearventa.Name = "btnclearventa"
-        Me.btnclearventa.Size = New System.Drawing.Size(54, 24)
+        Me.btnclearventa.Size = New System.Drawing.Size(39, 37)
         Me.btnclearventa.TabIndex = 91
-        Me.btnclearventa.Text = "Clear "
-        Me.btnclearventa.UseVisualStyleBackColor = True
+        Me.btnclearventa.UseVisualStyleBackColor = False
         '
         'DataGridViewVENTAS
         '
@@ -453,8 +457,9 @@ Partial Class Form2
         Me.DataGridViewVENTAS.Name = "DataGridViewVENTAS"
         Me.DataGridViewVENTAS.ReadOnly = True
         Me.DataGridViewVENTAS.RowHeadersVisible = False
+        Me.DataGridViewVENTAS.ScrollBars = System.Windows.Forms.ScrollBars.Vertical
         Me.DataGridViewVENTAS.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
-        Me.DataGridViewVENTAS.Size = New System.Drawing.Size(652, 150)
+        Me.DataGridViewVENTAS.Size = New System.Drawing.Size(495, 150)
         Me.DataGridViewVENTAS.TabIndex = 90
         '
         'DateTimePicker1
@@ -468,9 +473,11 @@ Partial Class Form2
         '
         Me.labeldeventa.AllowDrop = True
         Me.labeldeventa.AutoSize = True
-        Me.labeldeventa.Location = New System.Drawing.Point(198, 190)
+        Me.labeldeventa.Font = New System.Drawing.Font("Microsoft Sans Serif", 15.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.labeldeventa.ForeColor = System.Drawing.SystemColors.ControlText
+        Me.labeldeventa.Location = New System.Drawing.Point(107, 182)
         Me.labeldeventa.Name = "labeldeventa"
-        Me.labeldeventa.Size = New System.Drawing.Size(92, 13)
+        Me.labeldeventa.Size = New System.Drawing.Size(203, 25)
         Me.labeldeventa.TabIndex = 87
         Me.labeldeventa.Text = "Cédula de cliente "
         '
@@ -483,55 +490,67 @@ Partial Class Form2
         '
         'Buttonborrarventas
         '
-        Me.Buttonborrarventas.Location = New System.Drawing.Point(462, 373)
+        Me.Buttonborrarventas.Anchor = System.Windows.Forms.AnchorStyles.None
+        Me.Buttonborrarventas.BackColor = System.Drawing.Color.ForestGreen
+        Me.Buttonborrarventas.Cursor = System.Windows.Forms.Cursors.Hand
+        Me.Buttonborrarventas.Image = CType(resources.GetObject("Buttonborrarventas.Image"), System.Drawing.Image)
+        Me.Buttonborrarventas.Location = New System.Drawing.Point(368, 361)
         Me.Buttonborrarventas.Name = "Buttonborrarventas"
-        Me.Buttonborrarventas.Size = New System.Drawing.Size(100, 21)
+        Me.Buttonborrarventas.Size = New System.Drawing.Size(44, 42)
         Me.Buttonborrarventas.TabIndex = 85
-        Me.Buttonborrarventas.Text = "BORRAR"
-        Me.Buttonborrarventas.UseVisualStyleBackColor = True
+        Me.Buttonborrarventas.UseVisualStyleBackColor = False
         '
         'Button4
         '
-        Me.Button4.Location = New System.Drawing.Point(331, 370)
+        Me.Button4.Anchor = System.Windows.Forms.AnchorStyles.None
+        Me.Button4.BackColor = System.Drawing.Color.ForestGreen
+        Me.Button4.Cursor = System.Windows.Forms.Cursors.Hand
+        Me.Button4.Image = CType(resources.GetObject("Button4.Image"), System.Drawing.Image)
+        Me.Button4.Location = New System.Drawing.Point(416, 361)
         Me.Button4.Name = "Button4"
-        Me.Button4.Size = New System.Drawing.Size(100, 24)
+        Me.Button4.Size = New System.Drawing.Size(45, 42)
         Me.Button4.TabIndex = 80
-        Me.Button4.Text = "MODIFICAR"
-        Me.Button4.UseVisualStyleBackColor = True
+        Me.Button4.UseVisualStyleBackColor = False
         '
         'agregarventa
         '
-        Me.agregarventa.Location = New System.Drawing.Point(187, 370)
+        Me.agregarventa.Anchor = System.Windows.Forms.AnchorStyles.None
+        Me.agregarventa.BackColor = System.Drawing.Color.ForestGreen
+        Me.agregarventa.Cursor = System.Windows.Forms.Cursors.Hand
+        Me.agregarventa.Image = CType(resources.GetObject("agregarventa.Image"), System.Drawing.Image)
+        Me.agregarventa.Location = New System.Drawing.Point(316, 361)
         Me.agregarventa.Name = "agregarventa"
-        Me.agregarventa.Size = New System.Drawing.Size(103, 24)
+        Me.agregarventa.Size = New System.Drawing.Size(46, 42)
         Me.agregarventa.TabIndex = 79
-        Me.agregarventa.Text = "AGREGAR"
-        Me.agregarventa.UseVisualStyleBackColor = True
+        Me.agregarventa.UseVisualStyleBackColor = False
         '
         'Label7
         '
         Me.Label7.AutoSize = True
-        Me.Label7.Location = New System.Drawing.Point(198, 264)
+        Me.Label7.Font = New System.Drawing.Font("Microsoft Sans Serif", 15.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label7.Location = New System.Drawing.Point(147, 262)
         Me.Label7.Name = "Label7"
-        Me.Label7.Size = New System.Drawing.Size(79, 13)
+        Me.Label7.Size = New System.Drawing.Size(163, 25)
         Me.Label7.TabIndex = 78
         Me.Label7.Text = "COMENTARIO"
         '
         'Label8
         '
         Me.Label8.AutoSize = True
-        Me.Label8.Location = New System.Drawing.Point(184, 304)
+        Me.Label8.Font = New System.Drawing.Font("Microsoft Sans Serif", 15.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label8.Location = New System.Drawing.Point(119, 297)
         Me.Label8.Name = "Label8"
-        Me.Label8.Size = New System.Drawing.Size(93, 13)
+        Me.Label8.Size = New System.Drawing.Size(191, 25)
         Me.Label8.TabIndex = 77
         Me.Label8.Text = "TOTALDEVENTA"
         '
         'Label9
         '
         Me.Label9.AutoSize = True
-        Me.Label9.Location = New System.Drawing.Point(235, 224)
+        Me.Label9.Font = New System.Drawing.Font("Microsoft Sans Serif", 15.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label9.Location = New System.Drawing.Point(222, 224)
         Me.Label9.Name = "Label9"
-        Me.Label9.Size = New System.Drawing.Size(42, 13)
+        Me.Label9.Size = New System.Drawing.Size(88, 25)
         Me.Label9.TabIndex = 76
         Me.Label9.Text = "FECHA"
         '
@@ -546,7 +565,7 @@ Partial Class Form2
         '
         Me.txbcomentarioventa.Location = New System.Drawing.Point(316, 262)
         Me.txbcomentarioventa.Name = "txbcomentarioventa"
-        Me.txbcomentarioventa.Size = New System.Drawing.Size(128, 20)
+        Me.txbcomentarioventa.Size = New System.Drawing.Size(200, 20)
         Me.txbcomentarioventa.TabIndex = 74
         '
         'TabCompras
