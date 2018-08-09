@@ -47,7 +47,7 @@ Partial Class Form2
         Me.Label1 = New System.Windows.Forms.Label()
         Me.DataGridView1 = New System.Windows.Forms.DataGridView()
         Me.ventasasdsadsa = New System.Windows.Forms.TabPage()
-        Me.DataGridViewventas = New System.Windows.Forms.DataGridView()
+        Me.DateTimePicker1 = New System.Windows.Forms.DateTimePicker()
         Me.Label6 = New System.Windows.Forms.Label()
         Me.txbcedulaclienteventa = New System.Windows.Forms.TextBox()
         Me.Buttonborrarventas = New System.Windows.Forms.Button()
@@ -59,17 +59,6 @@ Partial Class Form2
         Me.txbtotalventa = New System.Windows.Forms.TextBox()
         Me.txbcomentarioventa = New System.Windows.Forms.TextBox()
         Me.TabCompras = New System.Windows.Forms.TabPage()
-        Me.Panelagregarcompras = New System.Windows.Forms.Panel()
-        Me.Label26 = New System.Windows.Forms.Label()
-        Me.Clearagregarcompras = New System.Windows.Forms.PictureBox()
-        Me.Agregarcompra = New System.Windows.Forms.PictureBox()
-        Me.Volveragregarcompras = New System.Windows.Forms.PictureBox()
-        Me.Label13 = New System.Windows.Forms.Label()
-        Me.Label12 = New System.Windows.Forms.Label()
-        Me.Label11 = New System.Windows.Forms.Label()
-        Me.Totalpagadocompras = New System.Windows.Forms.TextBox()
-        Me.Comentariocompras = New System.Windows.Forms.TextBox()
-        Me.Fechacompra = New System.Windows.Forms.TextBox()
         Me.Panelmodificarcompras = New System.Windows.Forms.Panel()
         Me.Agregarmodificarcompra = New System.Windows.Forms.Button()
         Me.idocultomodificarcompras = New System.Windows.Forms.TextBox()
@@ -89,6 +78,17 @@ Partial Class Form2
         Me.Modificarcompra1 = New System.Windows.Forms.PictureBox()
         Me.Agregarcompra1 = New System.Windows.Forms.PictureBox()
         Me.DataGridViewCompras = New System.Windows.Forms.DataGridView()
+        Me.Panelagregarcompras = New System.Windows.Forms.Panel()
+        Me.Label26 = New System.Windows.Forms.Label()
+        Me.Clearagregarcompras = New System.Windows.Forms.PictureBox()
+        Me.Agregarcompra = New System.Windows.Forms.PictureBox()
+        Me.Volveragregarcompras = New System.Windows.Forms.PictureBox()
+        Me.Label13 = New System.Windows.Forms.Label()
+        Me.Label12 = New System.Windows.Forms.Label()
+        Me.Label11 = New System.Windows.Forms.Label()
+        Me.Totalpagadocompras = New System.Windows.Forms.TextBox()
+        Me.Comentariocompras = New System.Windows.Forms.TextBox()
+        Me.Fechacompra = New System.Windows.Forms.TextBox()
         Me.TabClientes = New System.Windows.Forms.TabPage()
         Me.PanelModificarclientes = New System.Windows.Forms.Panel()
         Me.Label22 = New System.Windows.Forms.Label()
@@ -149,19 +149,14 @@ Partial Class Form2
         Me.TextBoxBusquedaUsuarios = New System.Windows.Forms.TextBox()
         Me.ComboBoxUsuarios = New System.Windows.Forms.ComboBox()
         Me.ToolTip1 = New System.Windows.Forms.ToolTip(Me.components)
-        Me.DateTimePicker1 = New System.Windows.Forms.DateTimePicker()
+        Me.DataGridViewVENTAS = New System.Windows.Forms.DataGridView()
         Me.PanelUsuario.SuspendLayout()
         CType(Me.PictureBox, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.TabbedPane.SuspendLayout()
         Me.TabGanado.SuspendLayout()
         CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.ventasasdsadsa.SuspendLayout()
-        CType(Me.DataGridViewventas, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.TabCompras.SuspendLayout()
-        Me.Panelagregarcompras.SuspendLayout()
-        CType(Me.Clearagregarcompras, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.Agregarcompra, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.Volveragregarcompras, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.Panelmodificarcompras.SuspendLayout()
         CType(Me.DataGridViewModificarCompras, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.Limpiarmodificarcompras, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -170,6 +165,10 @@ Partial Class Form2
         CType(Me.Modificarcompra1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.Agregarcompra1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.DataGridViewCompras, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.Panelagregarcompras.SuspendLayout()
+        CType(Me.Clearagregarcompras, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.Agregarcompra, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.Volveragregarcompras, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.TabClientes.SuspendLayout()
         Me.PanelModificarclientes.SuspendLayout()
         CType(Me.Clearmodificarclientes, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -187,6 +186,7 @@ Partial Class Form2
         CType(Me.Clearagregarclientes, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.TabUsuarios.SuspendLayout()
         CType(Me.PictureBoxUsuarios, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.DataGridViewVENTAS, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'PanelUsuario
@@ -403,8 +403,8 @@ Partial Class Form2
         '
         'ventasasdsadsa
         '
+        Me.ventasasdsadsa.Controls.Add(Me.DataGridViewVENTAS)
         Me.ventasasdsadsa.Controls.Add(Me.DateTimePicker1)
-        Me.ventasasdsadsa.Controls.Add(Me.DataGridViewventas)
         Me.ventasasdsadsa.Controls.Add(Me.Label6)
         Me.ventasasdsadsa.Controls.Add(Me.txbcedulaclienteventa)
         Me.ventasasdsadsa.Controls.Add(Me.Buttonborrarventas)
@@ -423,18 +423,12 @@ Partial Class Form2
         Me.ventasasdsadsa.Text = "Ventas"
         Me.ventasasdsadsa.UseVisualStyleBackColor = True
         '
-        'DataGridViewventas
+        'DateTimePicker1
         '
-        Me.DataGridViewventas.AllowUserToAddRows = False
-        Me.DataGridViewventas.AllowUserToDeleteRows = False
-        Me.DataGridViewventas.AllowUserToResizeColumns = False
-        Me.DataGridViewventas.AllowUserToResizeRows = False
-        Me.DataGridViewventas.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.DataGridViewventas.Location = New System.Drawing.Point(6, 7)
-        Me.DataGridViewventas.Name = "DataGridViewventas"
-        Me.DataGridViewventas.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
-        Me.DataGridViewventas.Size = New System.Drawing.Size(666, 150)
-        Me.DataGridViewventas.TabIndex = 88
+        Me.DateTimePicker1.Location = New System.Drawing.Point(316, 224)
+        Me.DateTimePicker1.Name = "DateTimePicker1"
+        Me.DateTimePicker1.Size = New System.Drawing.Size(200, 20)
+        Me.DateTimePicker1.TabIndex = 89
         '
         'Label6
         '
@@ -523,9 +517,9 @@ Partial Class Form2
         '
         'TabCompras
         '
-        Me.TabCompras.Controls.Add(Me.Panelagregarcompras)
         Me.TabCompras.Controls.Add(Me.Panelmodificarcompras)
         Me.TabCompras.Controls.Add(Me.Panelprincipalcompras)
+        Me.TabCompras.Controls.Add(Me.Panelagregarcompras)
         Me.TabCompras.Location = New System.Drawing.Point(4, 22)
         Me.TabCompras.Name = "TabCompras"
         Me.TabCompras.Padding = New System.Windows.Forms.Padding(3)
@@ -533,120 +527,6 @@ Partial Class Form2
         Me.TabCompras.TabIndex = 2
         Me.TabCompras.Text = "Compras"
         Me.TabCompras.UseVisualStyleBackColor = True
-        '
-        'Panelagregarcompras
-        '
-        Me.Panelagregarcompras.BackColor = System.Drawing.Color.DimGray
-        Me.Panelagregarcompras.Controls.Add(Me.Label26)
-        Me.Panelagregarcompras.Controls.Add(Me.Clearagregarcompras)
-        Me.Panelagregarcompras.Controls.Add(Me.Agregarcompra)
-        Me.Panelagregarcompras.Controls.Add(Me.Volveragregarcompras)
-        Me.Panelagregarcompras.Controls.Add(Me.Label13)
-        Me.Panelagregarcompras.Controls.Add(Me.Label12)
-        Me.Panelagregarcompras.Controls.Add(Me.Label11)
-        Me.Panelagregarcompras.Controls.Add(Me.Totalpagadocompras)
-        Me.Panelagregarcompras.Controls.Add(Me.Comentariocompras)
-        Me.Panelagregarcompras.Controls.Add(Me.Fechacompra)
-        Me.Panelagregarcompras.Location = New System.Drawing.Point(1, 0)
-        Me.Panelagregarcompras.Name = "Panelagregarcompras"
-        Me.Panelagregarcompras.Size = New System.Drawing.Size(678, 447)
-        Me.Panelagregarcompras.TabIndex = 6
-        '
-        'Label26
-        '
-        Me.Label26.AutoSize = True
-        Me.Label26.Font = New System.Drawing.Font("Comic Sans MS", 22.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label26.Location = New System.Drawing.Point(202, 19)
-        Me.Label26.Name = "Label26"
-        Me.Label26.Size = New System.Drawing.Size(267, 41)
-        Me.Label26.TabIndex = 11
-        Me.Label26.Text = "Agregar Compras"
-        '
-        'Clearagregarcompras
-        '
-        Me.Clearagregarcompras.Image = Global.WindowsApplication1.My.Resources.Resources.goma_de_borrar
-        Me.Clearagregarcompras.Location = New System.Drawing.Point(348, 314)
-        Me.Clearagregarcompras.Name = "Clearagregarcompras"
-        Me.Clearagregarcompras.Size = New System.Drawing.Size(32, 32)
-        Me.Clearagregarcompras.TabIndex = 10
-        Me.Clearagregarcompras.TabStop = False
-        Me.ToolTip1.SetToolTip(Me.Clearagregarcompras, "Limpiar")
-        '
-        'Agregarcompra
-        '
-        Me.Agregarcompra.Image = Global.WindowsApplication1.My.Resources.Resources.anadir
-        Me.Agregarcompra.Location = New System.Drawing.Point(289, 314)
-        Me.Agregarcompra.Name = "Agregarcompra"
-        Me.Agregarcompra.Size = New System.Drawing.Size(32, 32)
-        Me.Agregarcompra.TabIndex = 9
-        Me.Agregarcompra.TabStop = False
-        Me.ToolTip1.SetToolTip(Me.Agregarcompra, "Agregar")
-        '
-        'Volveragregarcompras
-        '
-        Me.Volveragregarcompras.AccessibleDescription = ""
-        Me.Volveragregarcompras.Image = Global.WindowsApplication1.My.Resources.Resources.flecha_hacia_la_izquierda
-        Me.Volveragregarcompras.Location = New System.Drawing.Point(317, 376)
-        Me.Volveragregarcompras.Name = "Volveragregarcompras"
-        Me.Volveragregarcompras.Size = New System.Drawing.Size(32, 32)
-        Me.Volveragregarcompras.TabIndex = 8
-        Me.Volveragregarcompras.TabStop = False
-        Me.Volveragregarcompras.Tag = ""
-        Me.ToolTip1.SetToolTip(Me.Volveragregarcompras, "Volver")
-        '
-        'Label13
-        '
-        Me.Label13.AutoSize = True
-        Me.Label13.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label13.Location = New System.Drawing.Point(303, 248)
-        Me.Label13.Name = "Label13"
-        Me.Label13.Size = New System.Drawing.Size(80, 13)
-        Me.Label13.TabIndex = 5
-        Me.Label13.Text = "Total Pagado"
-        '
-        'Label12
-        '
-        Me.Label12.AutoSize = True
-        Me.Label12.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label12.Location = New System.Drawing.Point(303, 160)
-        Me.Label12.Name = "Label12"
-        Me.Label12.Size = New System.Drawing.Size(74, 13)
-        Me.Label12.TabIndex = 4
-        Me.Label12.Text = "Comentario"
-        '
-        'Label11
-        '
-        Me.Label11.AutoSize = True
-        Me.Label11.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label11.Location = New System.Drawing.Point(248, 76)
-        Me.Label11.Name = "Label11"
-        Me.Label11.Size = New System.Drawing.Size(181, 13)
-        Me.Label11.TabIndex = 3
-        Me.Label11.Text = "Fecha de compra (AA/MM/DD)"
-        '
-        'Totalpagadocompras
-        '
-        Me.Totalpagadocompras.Location = New System.Drawing.Point(289, 264)
-        Me.Totalpagadocompras.Name = "Totalpagadocompras"
-        Me.Totalpagadocompras.Size = New System.Drawing.Size(100, 20)
-        Me.Totalpagadocompras.TabIndex = 2
-        '
-        'Comentariocompras
-        '
-        Me.Comentariocompras.Location = New System.Drawing.Point(289, 176)
-        Me.Comentariocompras.Name = "Comentariocompras"
-        Me.Comentariocompras.Size = New System.Drawing.Size(100, 20)
-        Me.Comentariocompras.TabIndex = 1
-        Me.ToolTip1.SetToolTip(Me.Comentariocompras, "Ej: Se compraron 24 vacas ""raza"" a 90 dólares el kilo")
-        '
-        'Fechacompra
-        '
-        Me.Fechacompra.Location = New System.Drawing.Point(289, 92)
-        Me.Fechacompra.Name = "Fechacompra"
-        Me.Fechacompra.Size = New System.Drawing.Size(100, 20)
-        Me.Fechacompra.TabIndex = 0
-        Me.Fechacompra.Tag = ""
-        Me.ToolTip1.SetToolTip(Me.Fechacompra, "Ej: 2000/12/01")
         '
         'Panelmodificarcompras
         '
@@ -836,6 +716,120 @@ Partial Class Form2
         Me.DataGridViewCompras.Name = "DataGridViewCompras"
         Me.DataGridViewCompras.Size = New System.Drawing.Size(656, 311)
         Me.DataGridViewCompras.TabIndex = 0
+        '
+        'Panelagregarcompras
+        '
+        Me.Panelagregarcompras.BackColor = System.Drawing.Color.DimGray
+        Me.Panelagregarcompras.Controls.Add(Me.Label26)
+        Me.Panelagregarcompras.Controls.Add(Me.Clearagregarcompras)
+        Me.Panelagregarcompras.Controls.Add(Me.Agregarcompra)
+        Me.Panelagregarcompras.Controls.Add(Me.Volveragregarcompras)
+        Me.Panelagregarcompras.Controls.Add(Me.Label13)
+        Me.Panelagregarcompras.Controls.Add(Me.Label12)
+        Me.Panelagregarcompras.Controls.Add(Me.Label11)
+        Me.Panelagregarcompras.Controls.Add(Me.Totalpagadocompras)
+        Me.Panelagregarcompras.Controls.Add(Me.Comentariocompras)
+        Me.Panelagregarcompras.Controls.Add(Me.Fechacompra)
+        Me.Panelagregarcompras.Location = New System.Drawing.Point(1, 0)
+        Me.Panelagregarcompras.Name = "Panelagregarcompras"
+        Me.Panelagregarcompras.Size = New System.Drawing.Size(678, 447)
+        Me.Panelagregarcompras.TabIndex = 6
+        '
+        'Label26
+        '
+        Me.Label26.AutoSize = True
+        Me.Label26.Font = New System.Drawing.Font("Comic Sans MS", 22.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label26.Location = New System.Drawing.Point(202, 19)
+        Me.Label26.Name = "Label26"
+        Me.Label26.Size = New System.Drawing.Size(267, 41)
+        Me.Label26.TabIndex = 11
+        Me.Label26.Text = "Agregar Compras"
+        '
+        'Clearagregarcompras
+        '
+        Me.Clearagregarcompras.Image = Global.WindowsApplication1.My.Resources.Resources.goma_de_borrar
+        Me.Clearagregarcompras.Location = New System.Drawing.Point(348, 314)
+        Me.Clearagregarcompras.Name = "Clearagregarcompras"
+        Me.Clearagregarcompras.Size = New System.Drawing.Size(32, 32)
+        Me.Clearagregarcompras.TabIndex = 10
+        Me.Clearagregarcompras.TabStop = False
+        Me.ToolTip1.SetToolTip(Me.Clearagregarcompras, "Limpiar")
+        '
+        'Agregarcompra
+        '
+        Me.Agregarcompra.Image = Global.WindowsApplication1.My.Resources.Resources.anadir
+        Me.Agregarcompra.Location = New System.Drawing.Point(289, 314)
+        Me.Agregarcompra.Name = "Agregarcompra"
+        Me.Agregarcompra.Size = New System.Drawing.Size(32, 32)
+        Me.Agregarcompra.TabIndex = 9
+        Me.Agregarcompra.TabStop = False
+        Me.ToolTip1.SetToolTip(Me.Agregarcompra, "Agregar")
+        '
+        'Volveragregarcompras
+        '
+        Me.Volveragregarcompras.AccessibleDescription = ""
+        Me.Volveragregarcompras.Image = Global.WindowsApplication1.My.Resources.Resources.flecha_hacia_la_izquierda
+        Me.Volveragregarcompras.Location = New System.Drawing.Point(317, 376)
+        Me.Volveragregarcompras.Name = "Volveragregarcompras"
+        Me.Volveragregarcompras.Size = New System.Drawing.Size(32, 32)
+        Me.Volveragregarcompras.TabIndex = 8
+        Me.Volveragregarcompras.TabStop = False
+        Me.Volveragregarcompras.Tag = ""
+        Me.ToolTip1.SetToolTip(Me.Volveragregarcompras, "Volver")
+        '
+        'Label13
+        '
+        Me.Label13.AutoSize = True
+        Me.Label13.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label13.Location = New System.Drawing.Point(303, 248)
+        Me.Label13.Name = "Label13"
+        Me.Label13.Size = New System.Drawing.Size(80, 13)
+        Me.Label13.TabIndex = 5
+        Me.Label13.Text = "Total Pagado"
+        '
+        'Label12
+        '
+        Me.Label12.AutoSize = True
+        Me.Label12.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label12.Location = New System.Drawing.Point(303, 160)
+        Me.Label12.Name = "Label12"
+        Me.Label12.Size = New System.Drawing.Size(74, 13)
+        Me.Label12.TabIndex = 4
+        Me.Label12.Text = "Comentario"
+        '
+        'Label11
+        '
+        Me.Label11.AutoSize = True
+        Me.Label11.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label11.Location = New System.Drawing.Point(248, 76)
+        Me.Label11.Name = "Label11"
+        Me.Label11.Size = New System.Drawing.Size(181, 13)
+        Me.Label11.TabIndex = 3
+        Me.Label11.Text = "Fecha de compra (AA/MM/DD)"
+        '
+        'Totalpagadocompras
+        '
+        Me.Totalpagadocompras.Location = New System.Drawing.Point(289, 264)
+        Me.Totalpagadocompras.Name = "Totalpagadocompras"
+        Me.Totalpagadocompras.Size = New System.Drawing.Size(100, 20)
+        Me.Totalpagadocompras.TabIndex = 2
+        '
+        'Comentariocompras
+        '
+        Me.Comentariocompras.Location = New System.Drawing.Point(289, 176)
+        Me.Comentariocompras.Name = "Comentariocompras"
+        Me.Comentariocompras.Size = New System.Drawing.Size(100, 20)
+        Me.Comentariocompras.TabIndex = 1
+        Me.ToolTip1.SetToolTip(Me.Comentariocompras, "Ej: Se compraron 24 vacas ""raza"" a 90 dólares el kilo")
+        '
+        'Fechacompra
+        '
+        Me.Fechacompra.Location = New System.Drawing.Point(289, 92)
+        Me.Fechacompra.Name = "Fechacompra"
+        Me.Fechacompra.Size = New System.Drawing.Size(100, 20)
+        Me.Fechacompra.TabIndex = 0
+        Me.Fechacompra.Tag = ""
+        Me.ToolTip1.SetToolTip(Me.Fechacompra, "Ej: 2000/12/01")
         '
         'TabClientes
         '
@@ -1429,12 +1423,13 @@ Partial Class Form2
         Me.ComboBoxUsuarios.Size = New System.Drawing.Size(89, 21)
         Me.ComboBoxUsuarios.TabIndex = 0
         '
-        'DateTimePicker1
+        'DataGridViewVENTAS
         '
-        Me.DateTimePicker1.Location = New System.Drawing.Point(316, 224)
-        Me.DateTimePicker1.Name = "DateTimePicker1"
-        Me.DateTimePicker1.Size = New System.Drawing.Size(200, 20)
-        Me.DateTimePicker1.TabIndex = 89
+        Me.DataGridViewVENTAS.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
+        Me.DataGridViewVENTAS.Location = New System.Drawing.Point(6, 7)
+        Me.DataGridViewVENTAS.Name = "DataGridViewVENTAS"
+        Me.DataGridViewVENTAS.Size = New System.Drawing.Size(652, 150)
+        Me.DataGridViewVENTAS.TabIndex = 90
         '
         'Form2
         '
@@ -1459,13 +1454,7 @@ Partial Class Form2
         CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ventasasdsadsa.ResumeLayout(False)
         Me.ventasasdsadsa.PerformLayout()
-        CType(Me.DataGridViewventas, System.ComponentModel.ISupportInitialize).EndInit()
         Me.TabCompras.ResumeLayout(False)
-        Me.Panelagregarcompras.ResumeLayout(False)
-        Me.Panelagregarcompras.PerformLayout()
-        CType(Me.Clearagregarcompras, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.Agregarcompra, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.Volveragregarcompras, System.ComponentModel.ISupportInitialize).EndInit()
         Me.Panelmodificarcompras.ResumeLayout(False)
         Me.Panelmodificarcompras.PerformLayout()
         CType(Me.DataGridViewModificarCompras, System.ComponentModel.ISupportInitialize).EndInit()
@@ -1476,6 +1465,11 @@ Partial Class Form2
         CType(Me.Modificarcompra1, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.Agregarcompra1, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.DataGridViewCompras, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.Panelagregarcompras.ResumeLayout(False)
+        Me.Panelagregarcompras.PerformLayout()
+        CType(Me.Clearagregarcompras, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.Agregarcompra, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.Volveragregarcompras, System.ComponentModel.ISupportInitialize).EndInit()
         Me.TabClientes.ResumeLayout(False)
         Me.PanelModificarclientes.ResumeLayout(False)
         Me.PanelModificarclientes.PerformLayout()
@@ -1496,6 +1490,7 @@ Partial Class Form2
         Me.TabUsuarios.ResumeLayout(False)
         Me.TabUsuarios.PerformLayout()
         CType(Me.PictureBoxUsuarios, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.DataGridViewVENTAS, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
 
     End Sub
@@ -1623,6 +1618,6 @@ Partial Class Form2
     Friend WithEvents Label22 As System.Windows.Forms.Label
     Friend WithEvents Label6 As System.Windows.Forms.Label
     Friend WithEvents txbcedulaclienteventa As System.Windows.Forms.TextBox
-    Friend WithEvents DataGridViewventas As System.Windows.Forms.DataGridView
     Friend WithEvents DateTimePicker1 As System.Windows.Forms.DateTimePicker
+    Friend WithEvents DataGridViewVENTAS As System.Windows.Forms.DataGridView
 End Class

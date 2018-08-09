@@ -478,7 +478,7 @@ Public Class Form2
         Consulta = "select * from venta"
         consultar()
         'actualiza la dgvw
-        DataGridViewventas.DataSource = Tabla
+        DataGridViewVENTAS.DataSource = Tabla
 
         '////////////USUARIOS
         ComboBoxUsuarios.SelectedIndex = 0
@@ -877,9 +877,7 @@ Public Class Form2
     '    Texttelefono.Text = ""
     'End Sub
 
-    Private Sub Panelagregarcompras_Paint(ByVal sender As System.Object, ByVal e As System.Windows.Forms.PaintEventArgs) Handles Panelagregarcompras.Paint
-
-    End Sub
+   
 
     Private Sub Agregarmodificarcompra_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Agregarmodificarcompra.Click
         Consulta = "update compra set idc ='" + idocultomodificarcompras.Text + "', fechacompra='" + Modificarfechacompra.Text + "', comentarioc='" + Modificarcomentariocompra.Text + "', totalc='" + Modificartotalapagarcompra.Text + "'' where idc='" + idocultomodificarcompras.Text + "'"
@@ -901,24 +899,36 @@ Public Class Form2
 
     End Sub
 
-    'agregar en  ventas
+    '////////////////////agregar en  ventas///////////////////
 
     Private Sub agregarventa_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles agregarventa.Click
-        Dim fecha As String = DateTimePicker1.Value.ToString("yyyy-MM-dd")
-        Dim comentario As String = txbcomentarioventa.Text
-        Dim totalv As Integer = txbtotalventa.Text
-        Dim id As Integer = txbcedulaclienteventa.Text
-        'consulta
-        Consulta = "insert into venta (fechaventa,comentariov,totalv,id) values('" & fecha & "','" & comentario & "','" & totalv & "','" & id & "');"
-        consultar()
-        'select hacia venta
-        Consulta = "select * from venta"
-        consultar()
-        'actualiza la dgvw
-        DataGridViewventas.DataSource = Tabla
 
+
+      
+        Try
+
+
+
+
+
+
+            Dim fecha As String = DateTimePicker1.Value.ToString("yyyy-MM-dd")
+            Dim comentario As String = txbcomentarioventa.Text
+            Dim totalv As Integer = txbtotalventa.Text
+            Dim id As Integer = txbcedulaclienteventa.Text
+            'consulta
+            Consulta = "insert into venta (fechaventa,comentariov,totalv,id) values('" & fecha & "','" & comentario & "','" & totalv & "','" & id & "');"
+            consultar()
+            'select hacia venta
+            Consulta = "select * from venta"
+            consultar()
+            'actualiza la dgvw
+            DataGridViewVENTAS.DataSource = Tabla
+
+        Catch ex As Exception
+            MsgBox(ex)
+        End Try
 
     End Sub
-
 
 End Class
