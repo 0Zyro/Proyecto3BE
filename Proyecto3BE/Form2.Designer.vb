@@ -47,15 +47,15 @@ Partial Class Form2
         Me.Label1 = New System.Windows.Forms.Label()
         Me.DataGridView1 = New System.Windows.Forms.DataGridView()
         Me.ventasasdsadsa = New System.Windows.Forms.TabPage()
+        Me.Button4 = New System.Windows.Forms.Button()
+        Me.Buttonborrarventas = New System.Windows.Forms.Button()
+        Me.agregarventa = New System.Windows.Forms.Button()
         Me.labelidv = New System.Windows.Forms.Label()
         Me.btnclearventa = New System.Windows.Forms.Button()
         Me.DataGridViewVENTAS = New System.Windows.Forms.DataGridView()
         Me.DateTimePicker1 = New System.Windows.Forms.DateTimePicker()
         Me.labeldeventa = New System.Windows.Forms.Label()
         Me.txbcedulaclienteventa = New System.Windows.Forms.TextBox()
-        Me.Buttonborrarventas = New System.Windows.Forms.Button()
-        Me.Button4 = New System.Windows.Forms.Button()
-        Me.agregarventa = New System.Windows.Forms.Button()
         Me.Label7 = New System.Windows.Forms.Label()
         Me.Label8 = New System.Windows.Forms.Label()
         Me.Label9 = New System.Windows.Forms.Label()
@@ -152,6 +152,7 @@ Partial Class Form2
         Me.TextBoxBusquedaUsuarios = New System.Windows.Forms.TextBox()
         Me.ComboBoxUsuarios = New System.Windows.Forms.ComboBox()
         Me.ToolTip1 = New System.Windows.Forms.ToolTip(Me.components)
+        Me.PictureBox1 = New System.Windows.Forms.PictureBox()
         Me.PanelUsuario.SuspendLayout()
         CType(Me.PictureBox, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.TabbedPane.SuspendLayout()
@@ -189,6 +190,7 @@ Partial Class Form2
         CType(Me.Clearagregarclientes, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.TabUsuarios.SuspendLayout()
         CType(Me.PictureBoxUsuarios, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'PanelUsuario
@@ -198,9 +200,10 @@ Partial Class Form2
         Me.PanelUsuario.Controls.Add(Me.LabelCambioContraseña)
         Me.PanelUsuario.Controls.Add(Me.LabelNombreUsuario)
         Me.PanelUsuario.Controls.Add(Me.LabelRangoUsuario)
+        Me.PanelUsuario.Dock = System.Windows.Forms.DockStyle.Left
         Me.PanelUsuario.Location = New System.Drawing.Point(0, 0)
         Me.PanelUsuario.Name = "PanelUsuario"
-        Me.PanelUsuario.Size = New System.Drawing.Size(100, 460)
+        Me.PanelUsuario.Size = New System.Drawing.Size(100, 471)
         Me.PanelUsuario.TabIndex = 0
         '
         'BotonCerrarSesion
@@ -406,15 +409,16 @@ Partial Class Form2
         'ventasasdsadsa
         '
         Me.ventasasdsadsa.BackColor = System.Drawing.Color.DarkGreen
+        Me.ventasasdsadsa.Controls.Add(Me.PictureBox1)
+        Me.ventasasdsadsa.Controls.Add(Me.Button4)
+        Me.ventasasdsadsa.Controls.Add(Me.Buttonborrarventas)
+        Me.ventasasdsadsa.Controls.Add(Me.agregarventa)
         Me.ventasasdsadsa.Controls.Add(Me.labelidv)
         Me.ventasasdsadsa.Controls.Add(Me.btnclearventa)
         Me.ventasasdsadsa.Controls.Add(Me.DataGridViewVENTAS)
         Me.ventasasdsadsa.Controls.Add(Me.DateTimePicker1)
         Me.ventasasdsadsa.Controls.Add(Me.labeldeventa)
         Me.ventasasdsadsa.Controls.Add(Me.txbcedulaclienteventa)
-        Me.ventasasdsadsa.Controls.Add(Me.Buttonborrarventas)
-        Me.ventasasdsadsa.Controls.Add(Me.Button4)
-        Me.ventasasdsadsa.Controls.Add(Me.agregarventa)
         Me.ventasasdsadsa.Controls.Add(Me.Label7)
         Me.ventasasdsadsa.Controls.Add(Me.Label8)
         Me.ventasasdsadsa.Controls.Add(Me.Label9)
@@ -426,6 +430,42 @@ Partial Class Form2
         Me.ventasasdsadsa.Size = New System.Drawing.Size(679, 437)
         Me.ventasasdsadsa.TabIndex = 1
         Me.ventasasdsadsa.Text = "Ventas"
+        '
+        'Button4
+        '
+        Me.Button4.Anchor = System.Windows.Forms.AnchorStyles.None
+        Me.Button4.BackColor = System.Drawing.Color.ForestGreen
+        Me.Button4.Cursor = System.Windows.Forms.Cursors.Hand
+        Me.Button4.Image = CType(resources.GetObject("Button4.Image"), System.Drawing.Image)
+        Me.Button4.Location = New System.Drawing.Point(372, 392)
+        Me.Button4.Name = "Button4"
+        Me.Button4.Size = New System.Drawing.Size(45, 42)
+        Me.Button4.TabIndex = 80
+        Me.Button4.UseVisualStyleBackColor = False
+        '
+        'Buttonborrarventas
+        '
+        Me.Buttonborrarventas.Anchor = System.Windows.Forms.AnchorStyles.None
+        Me.Buttonborrarventas.BackColor = System.Drawing.Color.ForestGreen
+        Me.Buttonborrarventas.Cursor = System.Windows.Forms.Cursors.Hand
+        Me.Buttonborrarventas.Image = CType(resources.GetObject("Buttonborrarventas.Image"), System.Drawing.Image)
+        Me.Buttonborrarventas.Location = New System.Drawing.Point(307, 392)
+        Me.Buttonborrarventas.Name = "Buttonborrarventas"
+        Me.Buttonborrarventas.Size = New System.Drawing.Size(44, 42)
+        Me.Buttonborrarventas.TabIndex = 85
+        Me.Buttonborrarventas.UseVisualStyleBackColor = False
+        '
+        'agregarventa
+        '
+        Me.agregarventa.Anchor = System.Windows.Forms.AnchorStyles.None
+        Me.agregarventa.BackColor = System.Drawing.Color.ForestGreen
+        Me.agregarventa.Cursor = System.Windows.Forms.Cursors.Hand
+        Me.agregarventa.Image = CType(resources.GetObject("agregarventa.Image"), System.Drawing.Image)
+        Me.agregarventa.Location = New System.Drawing.Point(238, 392)
+        Me.agregarventa.Name = "agregarventa"
+        Me.agregarventa.Size = New System.Drawing.Size(46, 42)
+        Me.agregarventa.TabIndex = 79
+        Me.agregarventa.UseVisualStyleBackColor = False
         '
         'labelidv
         '
@@ -475,7 +515,7 @@ Partial Class Form2
         Me.labeldeventa.AutoSize = True
         Me.labeldeventa.Font = New System.Drawing.Font("Microsoft Sans Serif", 15.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.labeldeventa.ForeColor = System.Drawing.SystemColors.ControlText
-        Me.labeldeventa.Location = New System.Drawing.Point(107, 182)
+        Me.labeldeventa.Location = New System.Drawing.Point(107, 187)
         Me.labeldeventa.Name = "labeldeventa"
         Me.labeldeventa.Size = New System.Drawing.Size(203, 25)
         Me.labeldeventa.TabIndex = 87
@@ -487,42 +527,6 @@ Partial Class Form2
         Me.txbcedulaclienteventa.Name = "txbcedulaclienteventa"
         Me.txbcedulaclienteventa.Size = New System.Drawing.Size(128, 20)
         Me.txbcedulaclienteventa.TabIndex = 86
-        '
-        'Buttonborrarventas
-        '
-        Me.Buttonborrarventas.Anchor = System.Windows.Forms.AnchorStyles.None
-        Me.Buttonborrarventas.BackColor = System.Drawing.Color.ForestGreen
-        Me.Buttonborrarventas.Cursor = System.Windows.Forms.Cursors.Hand
-        Me.Buttonborrarventas.Image = CType(resources.GetObject("Buttonborrarventas.Image"), System.Drawing.Image)
-        Me.Buttonborrarventas.Location = New System.Drawing.Point(368, 361)
-        Me.Buttonborrarventas.Name = "Buttonborrarventas"
-        Me.Buttonborrarventas.Size = New System.Drawing.Size(44, 42)
-        Me.Buttonborrarventas.TabIndex = 85
-        Me.Buttonborrarventas.UseVisualStyleBackColor = False
-        '
-        'Button4
-        '
-        Me.Button4.Anchor = System.Windows.Forms.AnchorStyles.None
-        Me.Button4.BackColor = System.Drawing.Color.ForestGreen
-        Me.Button4.Cursor = System.Windows.Forms.Cursors.Hand
-        Me.Button4.Image = CType(resources.GetObject("Button4.Image"), System.Drawing.Image)
-        Me.Button4.Location = New System.Drawing.Point(416, 361)
-        Me.Button4.Name = "Button4"
-        Me.Button4.Size = New System.Drawing.Size(45, 42)
-        Me.Button4.TabIndex = 80
-        Me.Button4.UseVisualStyleBackColor = False
-        '
-        'agregarventa
-        '
-        Me.agregarventa.Anchor = System.Windows.Forms.AnchorStyles.None
-        Me.agregarventa.BackColor = System.Drawing.Color.ForestGreen
-        Me.agregarventa.Cursor = System.Windows.Forms.Cursors.Hand
-        Me.agregarventa.Image = CType(resources.GetObject("agregarventa.Image"), System.Drawing.Image)
-        Me.agregarventa.Location = New System.Drawing.Point(316, 361)
-        Me.agregarventa.Name = "agregarventa"
-        Me.agregarventa.Size = New System.Drawing.Size(46, 42)
-        Me.agregarventa.TabIndex = 79
-        Me.agregarventa.UseVisualStyleBackColor = False
         '
         'Label7
         '
@@ -1476,6 +1480,16 @@ Partial Class Form2
         Me.ComboBoxUsuarios.Size = New System.Drawing.Size(89, 21)
         Me.ComboBoxUsuarios.TabIndex = 0
         '
+        'PictureBox1
+        '
+        Me.PictureBox1.Image = CType(resources.GetObject("PictureBox1.Image"), System.Drawing.Image)
+        Me.PictureBox1.Location = New System.Drawing.Point(77, 325)
+        Me.PictureBox1.Name = "PictureBox1"
+        Me.PictureBox1.Size = New System.Drawing.Size(45, 47)
+        Me.PictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom
+        Me.PictureBox1.TabIndex = 93
+        Me.PictureBox1.TabStop = False
+        '
         'Form2
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -1489,7 +1503,6 @@ Partial Class Form2
         Me.Name = "Form2"
         Me.ShowIcon = False
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent
-        Me.Text = "Form2"
         Me.PanelUsuario.ResumeLayout(False)
         Me.PanelUsuario.PerformLayout()
         CType(Me.PictureBox, System.ComponentModel.ISupportInitialize).EndInit()
@@ -1536,6 +1549,7 @@ Partial Class Form2
         Me.TabUsuarios.ResumeLayout(False)
         Me.TabUsuarios.PerformLayout()
         CType(Me.PictureBoxUsuarios, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
 
     End Sub
@@ -1667,4 +1681,5 @@ Partial Class Form2
     Friend WithEvents DataGridViewVENTAS As System.Windows.Forms.DataGridView
     Friend WithEvents btnclearventa As System.Windows.Forms.Button
     Friend WithEvents labelidv As System.Windows.Forms.Label
+    Friend WithEvents PictureBox1 As System.Windows.Forms.PictureBox
 End Class

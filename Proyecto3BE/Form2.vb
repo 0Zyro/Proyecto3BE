@@ -884,7 +884,7 @@ Public Class Form2
     '    Texttelefono.Text = ""
     'End Sub
 
-   
+
 
     Private Sub Agregarmodificarcompra_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Agregarmodificarcompra.Click
         Consulta = "update compra set idc ='" + idocultomodificarcompras.Text + "', fechacompra='" + Modificarfechacompra.Text + "', comentarioc='" + Modificarcomentariocompra.Text + "', totalc='" + Modificartotalapagarcompra.Text + "'' where idc='" + idocultomodificarcompras.Text + "'"
@@ -911,7 +911,7 @@ Public Class Form2
     Private Sub agregarventa_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles agregarventa.Click
 
 
-      
+
         Try
 
 
@@ -964,9 +964,9 @@ Public Class Form2
         txbcedulaclienteventa.Visible = True
     End Sub
 
-    
 
-    
+
+
     Private Sub agregarventa_MouseMove(ByVal sender As Object, ByVal e As System.Windows.Forms.MouseEventArgs) Handles agregarventa.MouseMove
         labeldeventa.Visible = True
         txbcedulaclienteventa.Visible = True
@@ -980,4 +980,23 @@ Public Class Form2
     End Sub
 
 
+
+
+
+
+    Private Sub Timer1_Tick(ByVal sender As System.Object, ByVal e As System.EventArgs)
+
+    End Sub
+
+    Private Sub paneldebotones_MouseUp(ByVal sender As Object, ByVal e As System.Windows.Forms.MouseEventArgs)
+        If paneldebotones.Top = 10 Then
+            paneldebotones.Top = 67
+        End If
+    End Sub
+
+    Private Sub paneldebotones_Paint(ByVal sender As System.Object, ByVal e As System.Windows.Forms.PaintEventArgs)
+        If paneldebotones.Height = 10 Then
+            paneldebotones.Height = 83
+        End If
+    End Sub
 End Class
