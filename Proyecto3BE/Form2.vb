@@ -245,6 +245,9 @@ Public Class Form2
                             If TextBoxRangoUsuarios.Text.Length > 3 Then
                                 comando.CommandText = ("insert into usuario values ('" + TextBoxCiUsuarios.Text + "','" + TextBoxNombreUsuarios.Text + "','" + TextBoxPasswdUsuarios.Text + "','" + TextBoxRangoUsuarios.Text + "','activo','" + StringImagenUsuarios + "')")
                                 Try
+                                    If connection.State Then
+                                        MsgBox("asds")
+                                    End If
                                     connection.Open()
                                     comando.ExecuteNonQuery()
                                     connection.Close()
@@ -527,8 +530,8 @@ Public Class Form2
         DataGridViewganado.Columns(8).HeaderText = "Codigo de venta"
 
         ' raza	sexo	estado	idventa	precioventa	idcompra	preciocompra	peso_inicial	edad
-        'DataGridView1.Columns(5).Visible = False
-        'DataGridView1.Columns(6).Visible = False
+        DataGridViewganado.Columns(5).Visible = False
+        DataGridViewganado.Columns(6).Visible = False
         DataGridViewganado.Columns(7).Visible = False
         DataGridViewganado.Columns(8).Visible = False
 
@@ -873,10 +876,13 @@ Public Class Form2
 
 
     Private Sub Agregarmodificarcompra_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Agregarmodificarcompra.Click
-        Consulta = "update compra set idc ='" + idocultomodificarcompras.Text + "', fechacompra='" + Modificarfechacompra.Text + "', comentarioc='" + Modificarcomentariocompra.Text + "', totalc='" + Modificartotalapagarcompra.Text + "'' where idc='" + idocultomodificarcompras.Text + "'"
+
+
+        Consulta = "update compra set idc ='" + idocultomodificarcompras.Text + "', fechacompra='" + Modificarfechacompra.Text + "', comentarioc='" + Modificarcomentariocompra.Text + "', totalc='" + Modificartotalapagarcompra.Text + "' where idc='" + idocultomodificarcompras.Text + "'"
         consultar()
         Consulta = "select * from compra"
         consultar()
+
 
         DataGridViewModificarCompras.DataSource = Tabla
         DataGridViewModificarCompras.Columns(0).HeaderText = "Id"
@@ -1011,12 +1017,9 @@ Public Class Form2
         Dim raza As String = Texrazaganado.Text
         Dim fechaN As String = DateTimePickerGanado.Value.ToString("yyyy-MM-dd")
         Dim estadoG As String = Texestadoganado.Text
-        Dim precioV As Integer = TexprecioVganado.Text
-        Dim precioC As Integer = TexprecioCganado.Text
-        Dim CodigoC As Integer = TexcodigoCganado.Text
-        Dim CodigoV As Integer = TexcodigoVganado.Text
 
-        Consulta = "INSERT INTO ganado values('" & CodG & "','" & sexo & "','" & raza & "','" & fechaN & "','" & estadoG & "','" & precioV & "','" & precioV & "','" & CodigoC & "','" & CodigoV & "' )"
+
+        Consulta = "INSERT INTO ganado values('" & CodG & "','" & sexo & "','" & raza & "','" & fechaN & "','" & estadoG & "' )"
         consultar()
 
         Consulta = " select * from ganado"
@@ -1051,5 +1054,13 @@ Public Class Form2
 
     Private Sub Butagregarganado_Click_1(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Butagregarganado.Click
         Panelagregarganando.Visible = True
+    End Sub
+
+    Private Sub Button4_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Button4.Click
+
+    End Sub
+
+    Private Sub Modificarfechacompra_TextChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Modificarfechacompra.TextChanged
+
     End Sub
 End Class
