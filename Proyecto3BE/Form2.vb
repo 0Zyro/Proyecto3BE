@@ -439,21 +439,7 @@ Public Class Form2
 
     '///FIN SECCION USUARIOS
 
-    Private Sub Button1_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Agregar_Ganado.Click
-
-        If TexRaza.Text <> "" And TexSexo.Text <> "" And TexEdad.Text <> "" And TexEstado.Text <> "" And TexPeso.Text <> "" Then
-            Consulta = "INSERT INTO ganado(raza,sexo,estado,peso_inicial,edad) values('" & TexRaza.Text & "','" & TexSexo.Text & "','" & TexEstado.Text & "','" & TexPeso.Text & "'','" & TexEdad.Text & "')"
-            consultar()
-            Consulta = "select * from ganado"
-            consultar()
-            DataGridViewClientes.DataSource = Tabla
-            TexRaza.Text = ""
-            TexSexo.Text = ""
-            TexEstado.Text = ""
-            TexPeso.Text = ""
-            TexEdad.Text = ""
-        End If
-    End Sub
+    
     'Se cargan los datos cuando se cambia de tab
     Private Sub TabClientes_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles TabClientes.Click
 
@@ -527,24 +513,24 @@ Public Class Form2
         'CONSULTA DE TABLA GANADO
         Consulta = "select * from ganado"
         consultar()
-        DataGridView1.DataSource = Tabla
+        DataGridViewganado.DataSource = Tabla
 
         'Cambiamos los headers
-        DataGridView1.Columns(0).HeaderText = "Codigo de ganado"
-        DataGridView1.Columns(1).HeaderText = "Raza"
-        DataGridView1.Columns(2).HeaderText = "Sexo"
-        DataGridView1.Columns(3).HeaderText = "Fecha nacimiento"
-        DataGridView1.Columns(4).HeaderText = "Estado"
-        DataGridView1.Columns(5).HeaderText = "Precio de venta"
-        DataGridView1.Columns(6).HeaderText = "Precio de compra"
-        DataGridView1.Columns(7).HeaderText = "Codigo de vompra"
-        DataGridView1.Columns(8).HeaderText = "Codigo de venta"
+        DataGridViewganado.Columns(0).HeaderText = "Codigo de ganado"
+        DataGridViewganado.Columns(1).HeaderText = "Raza"
+        DataGridViewganado.Columns(2).HeaderText = "Sexo"
+        DataGridViewganado.Columns(3).HeaderText = "Fecha nacimiento"
+        DataGridViewganado.Columns(4).HeaderText = "Estado"
+        DataGridViewganado.Columns(5).HeaderText = "Precio de venta"
+        DataGridViewganado.Columns(6).HeaderText = "Precio de compra"
+        DataGridViewganado.Columns(7).HeaderText = "Codigo de vompra"
+        DataGridViewganado.Columns(8).HeaderText = "Codigo de venta"
 
         ' raza	sexo	estado	idventa	precioventa	idcompra	preciocompra	peso_inicial	edad
-        DataGridView1.Columns(5).Visible = False
-        DataGridView1.Columns(6).Visible = False
-        DataGridView1.Columns(7).Visible = False
-        DataGridView1.Columns(8).Visible = False
+        'DataGridView1.Columns(5).Visible = False
+        'DataGridView1.Columns(6).Visible = False
+        DataGridViewganado.Columns(7).Visible = False
+        DataGridViewganado.Columns(8).Visible = False
 
     End Sub
 
@@ -989,14 +975,81 @@ Public Class Form2
     End Sub
 
     Private Sub paneldebotones_MouseUp(ByVal sender As Object, ByVal e As System.Windows.Forms.MouseEventArgs)
-        If paneldebotones.Top = 10 Then
-            paneldebotones.Top = 67
-        End If
+        'If paneldebotones.Top = 10 Then
+        '    paneldebotones.Top = 67
+        'End If
     End Sub
 
     Private Sub paneldebotones_Paint(ByVal sender As System.Object, ByVal e As System.Windows.Forms.PaintEventArgs)
-        If paneldebotones.Height = 10 Then
-            paneldebotones.Height = 83
-        End If
+        'If paneldebotones.Height = 10 Then
+        '    paneldebotones.Height = 83
+        'End If
+    End Sub
+
+    Private Sub DataGridViewVENTAS_CellContentClick(ByVal sender As System.Object, ByVal e As System.Windows.Forms.DataGridViewCellEventArgs) Handles DataGridViewVENTAS.CellContentClick
+
+        'txbcedulaclienteventa.Clear()
+        'txbcomentarioventa.Clear()
+        'txbtotalventa.Clear()
+
+
+        txbcedulaclienteventa.Text = DataGridViewVENTAS.Item(4, DataGridViewVENTAS.CurrentRow.Index).Value
+
+        txbcomentarioventa.Text = DataGridViewVENTAS.Item(2, DataGridViewVENTAS.CurrentRow.Index).Value
+        txbtotalventa.Text = DataGridViewVENTAS.Item(3, DataGridViewVENTAS.CurrentRow.Index).Value
+    End Sub
+
+    Private Sub PictureBox1_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles PictureBox1.Click
+
+    End Sub
+
+    '''//////////////TABLA GANADO(CODIGO PARA INGRESAR DATOS)
+    Private Sub Button2_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Button2.Click
+
+        Dim CodG As Integer = Texcodigoganado.Text
+        Dim sexo As String = Texsexoganado.Text
+        Dim raza As String = Texrazaganado.Text
+        Dim fechaN As String = DateTimePickerGanado.Value.ToString("yyyy-MM-dd")
+        Dim estadoG As String = Texestadoganado.Text
+        Dim precioV As Integer = TexprecioVganado.Text
+        Dim precioC As Integer = TexprecioCganado.Text
+        Dim CodigoC As Integer = TexcodigoCganado.Text
+        Dim CodigoV As Integer = TexcodigoVganado.Text
+
+        Consulta = "INSERT INTO ganado values('" & CodG & "','" & sexo & "','" & raza & "','" & fechaN & "','" & estadoG & "','" & precioV & "','" & precioV & "','" & CodigoC & "','" & CodigoV & "' )"
+        consultar()
+
+        Consulta = " select * from ganado"
+        consultar()
+
+        DataGridViewganado.DataSource = Tabla
+    End Sub
+
+  
+
+    Private Sub Button3_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Button3.Click
+        Panelagregarganando.Visible = False
+    End Sub
+
+    Private Sub DataGridViewganado_CellContentClick(ByVal sender As System.Object, ByVal e As System.Windows.Forms.DataGridViewCellEventArgs) Handles DataGridViewganado.CellContentClick
+        TexSelecCodigoG.Clear()
+
+        TexSelecCodigoG.Text = DataGridViewganado.Item(0, DataGridViewganado.CurrentRow.Index).Value
+    End Sub
+
+    Private Sub Button5_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Button5.Click
+
+        Consulta = " delete from ganado where idg='" & TexSelecCodigoG.Text & "'"
+        consultar()
+
+        Consulta = " select * from ganado"
+        consultar()
+        DataGridViewganado.DataSource = Tabla
+        TexSelecCodigoG.Text = ""
+
+    End Sub
+
+    Private Sub Butagregarganado_Click_1(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Butagregarganado.Click
+        Panelagregarganando.Visible = True
     End Sub
 End Class

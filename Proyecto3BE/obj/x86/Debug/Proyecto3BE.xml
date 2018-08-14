@@ -67,6 +67,9 @@ Proyecto3BE
 	<summary>
   A strongly-typed resource class, for looking up localized strings, etc.
 </summary>
+</member><member name="M:WindowsApplication1.Form2.Button2_Click(System.Object,System.EventArgs)">
+//////////////TABLA GANADO(CODIGO PARA INGRESAR DATOS)
+
 </member>
 </members>
 </doc>

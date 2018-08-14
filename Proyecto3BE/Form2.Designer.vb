@@ -32,21 +32,31 @@ Partial Class Form2
         Me.LabelRangoUsuario = New System.Windows.Forms.Label()
         Me.TabbedPane = New System.Windows.Forms.TabControl()
         Me.TabGanado = New System.Windows.Forms.TabPage()
+        Me.DataGridViewganado = New System.Windows.Forms.DataGridView()
+        Me.Panelagregarganando = New System.Windows.Forms.Panel()
         Me.Button3 = New System.Windows.Forms.Button()
         Me.Button2 = New System.Windows.Forms.Button()
-        Me.Agregar_Ganado = New System.Windows.Forms.Button()
-        Me.TexEstado = New System.Windows.Forms.TextBox()
-        Me.TexPeso = New System.Windows.Forms.TextBox()
+        Me.Label27 = New System.Windows.Forms.Label()
+        Me.DateTimePickerGanado = New System.Windows.Forms.DateTimePicker()
+        Me.TexcodigoVganado = New System.Windows.Forms.TextBox()
+        Me.TexcodigoCganado = New System.Windows.Forms.TextBox()
+        Me.TexprecioCganado = New System.Windows.Forms.TextBox()
+        Me.TexprecioVganado = New System.Windows.Forms.TextBox()
+        Me.Texestadoganado = New System.Windows.Forms.TextBox()
+        Me.Texrazaganado = New System.Windows.Forms.TextBox()
+        Me.Texsexoganado = New System.Windows.Forms.TextBox()
+        Me.Texcodigoganado = New System.Windows.Forms.TextBox()
+        Me.Label24 = New System.Windows.Forms.Label()
+        Me.Label23 = New System.Windows.Forms.Label()
+        Me.Label10 = New System.Windows.Forms.Label()
+        Me.Label6 = New System.Windows.Forms.Label()
         Me.Label5 = New System.Windows.Forms.Label()
         Me.Label4 = New System.Windows.Forms.Label()
         Me.Label3 = New System.Windows.Forms.Label()
-        Me.TexEdad = New System.Windows.Forms.TextBox()
-        Me.TexSexo = New System.Windows.Forms.TextBox()
         Me.Label2 = New System.Windows.Forms.Label()
-        Me.TexRaza = New System.Windows.Forms.TextBox()
         Me.Label1 = New System.Windows.Forms.Label()
-        Me.DataGridView1 = New System.Windows.Forms.DataGridView()
         Me.ventasasdsadsa = New System.Windows.Forms.TabPage()
+        Me.PictureBox1 = New System.Windows.Forms.PictureBox()
         Me.Button4 = New System.Windows.Forms.Button()
         Me.Buttonborrarventas = New System.Windows.Forms.Button()
         Me.agregarventa = New System.Windows.Forms.Button()
@@ -152,13 +162,17 @@ Partial Class Form2
         Me.TextBoxBusquedaUsuarios = New System.Windows.Forms.TextBox()
         Me.ComboBoxUsuarios = New System.Windows.Forms.ComboBox()
         Me.ToolTip1 = New System.Windows.Forms.ToolTip(Me.components)
-        Me.PictureBox1 = New System.Windows.Forms.PictureBox()
+        Me.TexSelecCodigoG = New System.Windows.Forms.TextBox()
+        Me.Button5 = New System.Windows.Forms.Button()
+        Me.Butagregarganado = New System.Windows.Forms.Button()
         Me.PanelUsuario.SuspendLayout()
         CType(Me.PictureBox, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.TabbedPane.SuspendLayout()
         Me.TabGanado.SuspendLayout()
-        CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.DataGridViewganado, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.Panelagregarganando.SuspendLayout()
         Me.ventasasdsadsa.SuspendLayout()
+        CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.DataGridViewVENTAS, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.TabCompras.SuspendLayout()
         Me.Panelmodificarcompras.SuspendLayout()
@@ -190,7 +204,6 @@ Partial Class Form2
         CType(Me.Clearagregarclientes, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.TabUsuarios.SuspendLayout()
         CType(Me.PictureBoxUsuarios, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'PanelUsuario
@@ -268,20 +281,11 @@ Partial Class Form2
         '
         'TabGanado
         '
-        Me.TabGanado.Controls.Add(Me.Button3)
-        Me.TabGanado.Controls.Add(Me.Button2)
-        Me.TabGanado.Controls.Add(Me.Agregar_Ganado)
-        Me.TabGanado.Controls.Add(Me.TexEstado)
-        Me.TabGanado.Controls.Add(Me.TexPeso)
-        Me.TabGanado.Controls.Add(Me.Label5)
-        Me.TabGanado.Controls.Add(Me.Label4)
-        Me.TabGanado.Controls.Add(Me.Label3)
-        Me.TabGanado.Controls.Add(Me.TexEdad)
-        Me.TabGanado.Controls.Add(Me.TexSexo)
-        Me.TabGanado.Controls.Add(Me.Label2)
-        Me.TabGanado.Controls.Add(Me.TexRaza)
-        Me.TabGanado.Controls.Add(Me.Label1)
-        Me.TabGanado.Controls.Add(Me.DataGridView1)
+        Me.TabGanado.Controls.Add(Me.Panelagregarganando)
+        Me.TabGanado.Controls.Add(Me.TexSelecCodigoG)
+        Me.TabGanado.Controls.Add(Me.Button5)
+        Me.TabGanado.Controls.Add(Me.Butagregarganado)
+        Me.TabGanado.Controls.Add(Me.DataGridViewganado)
         Me.TabGanado.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.TabGanado.Location = New System.Drawing.Point(4, 22)
         Me.TabGanado.Name = "TabGanado"
@@ -291,120 +295,218 @@ Partial Class Form2
         Me.TabGanado.Text = "Ganado"
         Me.TabGanado.UseVisualStyleBackColor = True
         '
+        'DataGridViewganado
+        '
+        Me.DataGridViewganado.AllowUserToAddRows = False
+        Me.DataGridViewganado.AllowUserToDeleteRows = False
+        Me.DataGridViewganado.AllowUserToResizeColumns = False
+        Me.DataGridViewganado.AllowUserToResizeRows = False
+        Me.DataGridViewganado.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
+        Me.DataGridViewganado.Location = New System.Drawing.Point(6, 6)
+        Me.DataGridViewganado.Name = "DataGridViewganado"
+        Me.DataGridViewganado.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
+        Me.DataGridViewganado.Size = New System.Drawing.Size(673, 248)
+        Me.DataGridViewganado.TabIndex = 0
+        '
+        'Panelagregarganando
+        '
+        Me.Panelagregarganando.Controls.Add(Me.Button3)
+        Me.Panelagregarganando.Controls.Add(Me.Button2)
+        Me.Panelagregarganando.Controls.Add(Me.Label27)
+        Me.Panelagregarganando.Controls.Add(Me.DateTimePickerGanado)
+        Me.Panelagregarganando.Controls.Add(Me.TexcodigoVganado)
+        Me.Panelagregarganando.Controls.Add(Me.TexcodigoCganado)
+        Me.Panelagregarganando.Controls.Add(Me.TexprecioCganado)
+        Me.Panelagregarganando.Controls.Add(Me.TexprecioVganado)
+        Me.Panelagregarganando.Controls.Add(Me.Texestadoganado)
+        Me.Panelagregarganando.Controls.Add(Me.Texrazaganado)
+        Me.Panelagregarganando.Controls.Add(Me.Texsexoganado)
+        Me.Panelagregarganando.Controls.Add(Me.Texcodigoganado)
+        Me.Panelagregarganando.Controls.Add(Me.Label24)
+        Me.Panelagregarganando.Controls.Add(Me.Label23)
+        Me.Panelagregarganando.Controls.Add(Me.Label10)
+        Me.Panelagregarganando.Controls.Add(Me.Label6)
+        Me.Panelagregarganando.Controls.Add(Me.Label5)
+        Me.Panelagregarganando.Controls.Add(Me.Label4)
+        Me.Panelagregarganando.Controls.Add(Me.Label3)
+        Me.Panelagregarganando.Controls.Add(Me.Label2)
+        Me.Panelagregarganando.Controls.Add(Me.Label1)
+        Me.Panelagregarganando.Location = New System.Drawing.Point(0, 6)
+        Me.Panelagregarganando.Name = "Panelagregarganando"
+        Me.Panelagregarganando.Size = New System.Drawing.Size(679, 431)
+        Me.Panelagregarganando.TabIndex = 2
+        Me.Panelagregarganando.Visible = False
+        '
         'Button3
         '
-        Me.Button3.Location = New System.Drawing.Point(594, 155)
+        Me.Button3.Location = New System.Drawing.Point(503, 376)
         Me.Button3.Name = "Button3"
         Me.Button3.Size = New System.Drawing.Size(75, 23)
-        Me.Button3.TabIndex = 13
-        Me.Button3.Text = "Eliminar"
+        Me.Button3.TabIndex = 21
+        Me.Button3.Text = "Cancelar"
         Me.Button3.UseVisualStyleBackColor = True
         '
         'Button2
         '
-        Me.Button2.Location = New System.Drawing.Point(594, 100)
+        Me.Button2.Location = New System.Drawing.Point(391, 376)
         Me.Button2.Name = "Button2"
         Me.Button2.Size = New System.Drawing.Size(75, 23)
-        Me.Button2.TabIndex = 12
-        Me.Button2.Text = "Modificar"
+        Me.Button2.TabIndex = 20
+        Me.Button2.Text = "Guardar"
         Me.Button2.UseVisualStyleBackColor = True
         '
-        'Agregar_Ganado
+        'Label27
         '
-        Me.Agregar_Ganado.Location = New System.Drawing.Point(592, 47)
-        Me.Agregar_Ganado.Name = "Agregar_Ganado"
-        Me.Agregar_Ganado.Size = New System.Drawing.Size(75, 23)
-        Me.Agregar_Ganado.TabIndex = 11
-        Me.Agregar_Ganado.Text = "Agregar"
-        Me.Agregar_Ganado.UseVisualStyleBackColor = True
+        Me.Label27.AutoSize = True
+        Me.Label27.Location = New System.Drawing.Point(212, 20)
+        Me.Label27.Name = "Label27"
+        Me.Label27.Size = New System.Drawing.Size(197, 13)
+        Me.Label27.TabIndex = 19
+        Me.Label27.Text = "AGREGAR DATOS DEL GANADO"
         '
-        'TexEstado
+        'DateTimePickerGanado
         '
-        Me.TexEstado.Location = New System.Drawing.Point(487, 167)
-        Me.TexEstado.Name = "TexEstado"
-        Me.TexEstado.Size = New System.Drawing.Size(100, 20)
-        Me.TexEstado.TabIndex = 10
+        Me.DateTimePickerGanado.Location = New System.Drawing.Point(162, 190)
+        Me.DateTimePickerGanado.Name = "DateTimePickerGanado"
+        Me.DateTimePickerGanado.Size = New System.Drawing.Size(226, 20)
+        Me.DateTimePickerGanado.TabIndex = 18
         '
-        'TexPeso
+        'TexcodigoVganado
         '
-        Me.TexPeso.Location = New System.Drawing.Point(487, 134)
-        Me.TexPeso.Name = "TexPeso"
-        Me.TexPeso.Size = New System.Drawing.Size(47, 20)
-        Me.TexPeso.TabIndex = 9
+        Me.TexcodigoVganado.Location = New System.Drawing.Point(162, 381)
+        Me.TexcodigoVganado.Name = "TexcodigoVganado"
+        Me.TexcodigoVganado.Size = New System.Drawing.Size(100, 20)
+        Me.TexcodigoVganado.TabIndex = 17
+        '
+        'TexcodigoCganado
+        '
+        Me.TexcodigoCganado.Location = New System.Drawing.Point(162, 343)
+        Me.TexcodigoCganado.Name = "TexcodigoCganado"
+        Me.TexcodigoCganado.Size = New System.Drawing.Size(100, 20)
+        Me.TexcodigoCganado.TabIndex = 16
+        '
+        'TexprecioCganado
+        '
+        Me.TexprecioCganado.Location = New System.Drawing.Point(162, 301)
+        Me.TexprecioCganado.Name = "TexprecioCganado"
+        Me.TexprecioCganado.Size = New System.Drawing.Size(100, 20)
+        Me.TexprecioCganado.TabIndex = 15
+        '
+        'TexprecioVganado
+        '
+        Me.TexprecioVganado.Location = New System.Drawing.Point(162, 262)
+        Me.TexprecioVganado.Name = "TexprecioVganado"
+        Me.TexprecioVganado.Size = New System.Drawing.Size(100, 20)
+        Me.TexprecioVganado.TabIndex = 14
+        '
+        'Texestadoganado
+        '
+        Me.Texestadoganado.Location = New System.Drawing.Point(162, 228)
+        Me.Texestadoganado.Name = "Texestadoganado"
+        Me.Texestadoganado.Size = New System.Drawing.Size(226, 20)
+        Me.Texestadoganado.TabIndex = 13
+        '
+        'Texrazaganado
+        '
+        Me.Texrazaganado.Location = New System.Drawing.Point(162, 153)
+        Me.Texrazaganado.Name = "Texrazaganado"
+        Me.Texrazaganado.Size = New System.Drawing.Size(100, 20)
+        Me.Texrazaganado.TabIndex = 11
+        '
+        'Texsexoganado
+        '
+        Me.Texsexoganado.Location = New System.Drawing.Point(162, 116)
+        Me.Texsexoganado.Name = "Texsexoganado"
+        Me.Texsexoganado.Size = New System.Drawing.Size(100, 20)
+        Me.Texsexoganado.TabIndex = 10
+        '
+        'Texcodigoganado
+        '
+        Me.Texcodigoganado.Location = New System.Drawing.Point(162, 75)
+        Me.Texcodigoganado.Name = "Texcodigoganado"
+        Me.Texcodigoganado.Size = New System.Drawing.Size(100, 20)
+        Me.Texcodigoganado.TabIndex = 9
+        '
+        'Label24
+        '
+        Me.Label24.AutoSize = True
+        Me.Label24.Location = New System.Drawing.Point(34, 381)
+        Me.Label24.Name = "Label24"
+        Me.Label24.Size = New System.Drawing.Size(100, 13)
+        Me.Label24.TabIndex = 8
+        Me.Label24.Text = "Codigo de venta"
+        '
+        'Label23
+        '
+        Me.Label23.AutoSize = True
+        Me.Label23.Location = New System.Drawing.Point(34, 343)
+        Me.Label23.Name = "Label23"
+        Me.Label23.Size = New System.Drawing.Size(109, 13)
+        Me.Label23.TabIndex = 7
+        Me.Label23.Text = "Codigo de compra"
+        '
+        'Label10
+        '
+        Me.Label10.AutoSize = True
+        Me.Label10.Location = New System.Drawing.Point(34, 301)
+        Me.Label10.Name = "Label10"
+        Me.Label10.Size = New System.Drawing.Size(106, 13)
+        Me.Label10.TabIndex = 6
+        Me.Label10.Text = "Precio de compra"
+        '
+        'Label6
+        '
+        Me.Label6.AutoSize = True
+        Me.Label6.Location = New System.Drawing.Point(34, 262)
+        Me.Label6.Name = "Label6"
+        Me.Label6.Size = New System.Drawing.Size(97, 13)
+        Me.Label6.TabIndex = 5
+        Me.Label6.Text = "Precio de venta"
         '
         'Label5
         '
         Me.Label5.AutoSize = True
-        Me.Label5.Location = New System.Drawing.Point(409, 167)
+        Me.Label5.Location = New System.Drawing.Point(34, 228)
         Me.Label5.Name = "Label5"
         Me.Label5.Size = New System.Drawing.Size(46, 13)
-        Me.Label5.TabIndex = 8
+        Me.Label5.TabIndex = 4
         Me.Label5.Text = "Estado"
         '
         'Label4
         '
         Me.Label4.AutoSize = True
-        Me.Label4.Location = New System.Drawing.Point(409, 134)
+        Me.Label4.Location = New System.Drawing.Point(34, 190)
         Me.Label4.Name = "Label4"
-        Me.Label4.Size = New System.Drawing.Size(72, 13)
-        Me.Label4.TabIndex = 7
-        Me.Label4.Text = "Peso inicial"
+        Me.Label4.Size = New System.Drawing.Size(109, 13)
+        Me.Label4.TabIndex = 3
+        Me.Label4.Text = "Fecha Nacimiento"
         '
         'Label3
         '
         Me.Label3.AutoSize = True
-        Me.Label3.Location = New System.Drawing.Point(408, 102)
+        Me.Label3.Location = New System.Drawing.Point(34, 153)
         Me.Label3.Name = "Label3"
         Me.Label3.Size = New System.Drawing.Size(36, 13)
-        Me.Label3.TabIndex = 6
-        Me.Label3.Text = "Edad"
-        '
-        'TexEdad
-        '
-        Me.TexEdad.Location = New System.Drawing.Point(487, 102)
-        Me.TexEdad.Name = "TexEdad"
-        Me.TexEdad.Size = New System.Drawing.Size(47, 20)
-        Me.TexEdad.TabIndex = 5
-        '
-        'TexSexo
-        '
-        Me.TexSexo.Location = New System.Drawing.Point(487, 70)
-        Me.TexSexo.Name = "TexSexo"
-        Me.TexSexo.Size = New System.Drawing.Size(62, 20)
-        Me.TexSexo.TabIndex = 4
+        Me.Label3.TabIndex = 2
+        Me.Label3.Text = "Raza"
         '
         'Label2
         '
         Me.Label2.AutoSize = True
-        Me.Label2.Location = New System.Drawing.Point(408, 70)
+        Me.Label2.Location = New System.Drawing.Point(34, 116)
         Me.Label2.Name = "Label2"
         Me.Label2.Size = New System.Drawing.Size(35, 13)
-        Me.Label2.TabIndex = 3
+        Me.Label2.TabIndex = 1
         Me.Label2.Text = "Sexo"
-        '
-        'TexRaza
-        '
-        Me.TexRaza.Location = New System.Drawing.Point(487, 37)
-        Me.TexRaza.Name = "TexRaza"
-        Me.TexRaza.Size = New System.Drawing.Size(100, 20)
-        Me.TexRaza.TabIndex = 2
         '
         'Label1
         '
         Me.Label1.AutoSize = True
-        Me.Label1.Location = New System.Drawing.Point(407, 40)
+        Me.Label1.Location = New System.Drawing.Point(34, 82)
         Me.Label1.Name = "Label1"
-        Me.Label1.Size = New System.Drawing.Size(36, 13)
-        Me.Label1.TabIndex = 1
-        Me.Label1.Text = "Raza"
-        '
-        'DataGridView1
-        '
-        Me.DataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.DataGridView1.Location = New System.Drawing.Point(6, 6)
-        Me.DataGridView1.Name = "DataGridView1"
-        Me.DataGridView1.Size = New System.Drawing.Size(372, 412)
-        Me.DataGridView1.TabIndex = 0
+        Me.Label1.Size = New System.Drawing.Size(110, 13)
+        Me.Label1.TabIndex = 0
+        Me.Label1.Text = "Codigo de ganado"
         '
         'ventasasdsadsa
         '
@@ -430,6 +532,16 @@ Partial Class Form2
         Me.ventasasdsadsa.Size = New System.Drawing.Size(679, 437)
         Me.ventasasdsadsa.TabIndex = 1
         Me.ventasasdsadsa.Text = "Ventas"
+        '
+        'PictureBox1
+        '
+        Me.PictureBox1.Image = CType(resources.GetObject("PictureBox1.Image"), System.Drawing.Image)
+        Me.PictureBox1.Location = New System.Drawing.Point(77, 325)
+        Me.PictureBox1.Name = "PictureBox1"
+        Me.PictureBox1.Size = New System.Drawing.Size(45, 47)
+        Me.PictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom
+        Me.PictureBox1.TabIndex = 93
+        Me.PictureBox1.TabStop = False
         '
         'Button4
         '
@@ -1480,15 +1592,30 @@ Partial Class Form2
         Me.ComboBoxUsuarios.Size = New System.Drawing.Size(89, 21)
         Me.ComboBoxUsuarios.TabIndex = 0
         '
-        'PictureBox1
+        'TexSelecCodigoG
         '
-        Me.PictureBox1.Image = CType(resources.GetObject("PictureBox1.Image"), System.Drawing.Image)
-        Me.PictureBox1.Location = New System.Drawing.Point(77, 325)
-        Me.PictureBox1.Name = "PictureBox1"
-        Me.PictureBox1.Size = New System.Drawing.Size(45, 47)
-        Me.PictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom
-        Me.PictureBox1.TabIndex = 93
-        Me.PictureBox1.TabStop = False
+        Me.TexSelecCodigoG.Location = New System.Drawing.Point(150, 310)
+        Me.TexSelecCodigoG.Name = "TexSelecCodigoG"
+        Me.TexSelecCodigoG.Size = New System.Drawing.Size(100, 20)
+        Me.TexSelecCodigoG.TabIndex = 26
+        '
+        'Button5
+        '
+        Me.Button5.Location = New System.Drawing.Point(150, 281)
+        Me.Button5.Name = "Button5"
+        Me.Button5.Size = New System.Drawing.Size(98, 23)
+        Me.Button5.TabIndex = 25
+        Me.Button5.Text = "Eliminar"
+        Me.Button5.UseVisualStyleBackColor = True
+        '
+        'Butagregarganado
+        '
+        Me.Butagregarganado.Location = New System.Drawing.Point(16, 281)
+        Me.Butagregarganado.Name = "Butagregarganado"
+        Me.Butagregarganado.Size = New System.Drawing.Size(97, 23)
+        Me.Butagregarganado.TabIndex = 24
+        Me.Butagregarganado.Text = "Agregar datos"
+        Me.Butagregarganado.UseVisualStyleBackColor = True
         '
         'Form2
         '
@@ -1509,9 +1636,12 @@ Partial Class Form2
         Me.TabbedPane.ResumeLayout(False)
         Me.TabGanado.ResumeLayout(False)
         Me.TabGanado.PerformLayout()
-        CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.DataGridViewganado, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.Panelagregarganando.ResumeLayout(False)
+        Me.Panelagregarganando.PerformLayout()
         Me.ventasasdsadsa.ResumeLayout(False)
         Me.ventasasdsadsa.PerformLayout()
+        CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.DataGridViewVENTAS, System.ComponentModel.ISupportInitialize).EndInit()
         Me.TabCompras.ResumeLayout(False)
         Me.Panelmodificarcompras.ResumeLayout(False)
@@ -1549,7 +1679,6 @@ Partial Class Form2
         Me.TabUsuarios.ResumeLayout(False)
         Me.TabUsuarios.PerformLayout()
         CType(Me.PictureBoxUsuarios, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
 
     End Sub
@@ -1559,20 +1688,7 @@ Partial Class Form2
     Friend WithEvents ventasasdsadsa As System.Windows.Forms.TabPage
     Friend WithEvents TabClientes As System.Windows.Forms.TabPage
     Friend WithEvents TabUsuarios As System.Windows.Forms.TabPage
-    Friend WithEvents DataGridView1 As System.Windows.Forms.DataGridView
-    Friend WithEvents Label3 As System.Windows.Forms.Label
-    Friend WithEvents TexEdad As System.Windows.Forms.TextBox
-    Friend WithEvents TexSexo As System.Windows.Forms.TextBox
-    Friend WithEvents Label2 As System.Windows.Forms.Label
-    Friend WithEvents TexRaza As System.Windows.Forms.TextBox
-    Friend WithEvents Label1 As System.Windows.Forms.Label
-    Friend WithEvents Button3 As System.Windows.Forms.Button
-    Friend WithEvents Button2 As System.Windows.Forms.Button
-    Friend WithEvents Agregar_Ganado As System.Windows.Forms.Button
-    Friend WithEvents TexEstado As System.Windows.Forms.TextBox
-    Friend WithEvents TexPeso As System.Windows.Forms.TextBox
-    Friend WithEvents Label5 As System.Windows.Forms.Label
-    Friend WithEvents Label4 As System.Windows.Forms.Label
+    Friend WithEvents DataGridViewganado As System.Windows.Forms.DataGridView
     Friend WithEvents Texttelefono As System.Windows.Forms.TextBox
     Friend WithEvents Texdireccion As System.Windows.Forms.TextBox
     Friend WithEvents Texnombreapellido As System.Windows.Forms.TextBox
@@ -1682,4 +1798,29 @@ Partial Class Form2
     Friend WithEvents btnclearventa As System.Windows.Forms.Button
     Friend WithEvents labelidv As System.Windows.Forms.Label
     Friend WithEvents PictureBox1 As System.Windows.Forms.PictureBox
+    Friend WithEvents Panelagregarganando As System.Windows.Forms.Panel
+    Friend WithEvents Button3 As System.Windows.Forms.Button
+    Friend WithEvents Button2 As System.Windows.Forms.Button
+    Friend WithEvents Label27 As System.Windows.Forms.Label
+    Friend WithEvents DateTimePickerGanado As System.Windows.Forms.DateTimePicker
+    Friend WithEvents TexcodigoVganado As System.Windows.Forms.TextBox
+    Friend WithEvents TexcodigoCganado As System.Windows.Forms.TextBox
+    Friend WithEvents TexprecioCganado As System.Windows.Forms.TextBox
+    Friend WithEvents TexprecioVganado As System.Windows.Forms.TextBox
+    Friend WithEvents Texestadoganado As System.Windows.Forms.TextBox
+    Friend WithEvents Texrazaganado As System.Windows.Forms.TextBox
+    Friend WithEvents Texsexoganado As System.Windows.Forms.TextBox
+    Friend WithEvents Texcodigoganado As System.Windows.Forms.TextBox
+    Friend WithEvents Label24 As System.Windows.Forms.Label
+    Friend WithEvents Label23 As System.Windows.Forms.Label
+    Friend WithEvents Label10 As System.Windows.Forms.Label
+    Friend WithEvents Label6 As System.Windows.Forms.Label
+    Friend WithEvents Label5 As System.Windows.Forms.Label
+    Friend WithEvents Label4 As System.Windows.Forms.Label
+    Friend WithEvents Label3 As System.Windows.Forms.Label
+    Friend WithEvents Label2 As System.Windows.Forms.Label
+    Friend WithEvents Label1 As System.Windows.Forms.Label
+    Friend WithEvents TexSelecCodigoG As System.Windows.Forms.TextBox
+    Friend WithEvents Button5 As System.Windows.Forms.Button
+    Friend WithEvents Butagregarganado As System.Windows.Forms.Button
 End Class
