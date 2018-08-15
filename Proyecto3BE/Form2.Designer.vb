@@ -51,7 +51,6 @@ Partial Class Form2
         Me.Butagregarganado = New System.Windows.Forms.Button()
         Me.DataGridViewganado = New System.Windows.Forms.DataGridView()
         Me.ventasasdsadsa = New System.Windows.Forms.TabPage()
-        Me.PictureBox1 = New System.Windows.Forms.PictureBox()
         Me.Button4 = New System.Windows.Forms.Button()
         Me.Buttonborrarventas = New System.Windows.Forms.Button()
         Me.agregarventa = New System.Windows.Forms.Button()
@@ -164,7 +163,6 @@ Partial Class Form2
         Me.Panelagregarganando.SuspendLayout()
         CType(Me.DataGridViewganado, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.ventasasdsadsa.SuspendLayout()
-        CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.DataGridViewVENTAS, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.TabCompras.SuspendLayout()
         Me.Panelmodificarcompras.SuspendLayout()
@@ -208,7 +206,7 @@ Partial Class Form2
         Me.PanelUsuario.Dock = System.Windows.Forms.DockStyle.Left
         Me.PanelUsuario.Location = New System.Drawing.Point(0, 0)
         Me.PanelUsuario.Name = "PanelUsuario"
-        Me.PanelUsuario.Size = New System.Drawing.Size(100, 471)
+        Me.PanelUsuario.Size = New System.Drawing.Size(100, 472)
         Me.PanelUsuario.TabIndex = 0
         '
         'BotonCerrarSesion
@@ -456,7 +454,6 @@ Partial Class Form2
         'ventasasdsadsa
         '
         Me.ventasasdsadsa.BackColor = System.Drawing.Color.Transparent
-        Me.ventasasdsadsa.Controls.Add(Me.PictureBox1)
         Me.ventasasdsadsa.Controls.Add(Me.Button4)
         Me.ventasasdsadsa.Controls.Add(Me.Buttonborrarventas)
         Me.ventasasdsadsa.Controls.Add(Me.agregarventa)
@@ -477,16 +474,6 @@ Partial Class Form2
         Me.ventasasdsadsa.Size = New System.Drawing.Size(679, 437)
         Me.ventasasdsadsa.TabIndex = 1
         Me.ventasasdsadsa.Text = "Ventas"
-        '
-        'PictureBox1
-        '
-        Me.PictureBox1.Image = CType(resources.GetObject("PictureBox1.Image"), System.Drawing.Image)
-        Me.PictureBox1.Location = New System.Drawing.Point(77, 325)
-        Me.PictureBox1.Name = "PictureBox1"
-        Me.PictureBox1.Size = New System.Drawing.Size(45, 47)
-        Me.PictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom
-        Me.PictureBox1.TabIndex = 93
-        Me.PictureBox1.TabStop = False
         '
         'Button4
         '
@@ -735,7 +722,7 @@ Partial Class Form2
         Me.Label16.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label16.Location = New System.Drawing.Point(522, 287)
         Me.Label16.Name = "Label16"
-        Me.Label16.Size = New System.Drawing.Size(80, 13)
+        Me.Label16.Size = New System.Drawing.Size(81, 13)
         Me.Label16.TabIndex = 4
         Me.Label16.Text = "Total Pagado"
         '
@@ -897,7 +884,7 @@ Partial Class Form2
         Me.Label13.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label13.Location = New System.Drawing.Point(303, 248)
         Me.Label13.Name = "Label13"
-        Me.Label13.Size = New System.Drawing.Size(80, 13)
+        Me.Label13.Size = New System.Drawing.Size(81, 13)
         Me.Label13.TabIndex = 5
         Me.Label13.Text = "Total Pagado"
         '
@@ -1541,7 +1528,7 @@ Partial Class Form2
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(794, 471)
+        Me.ClientSize = New System.Drawing.Size(794, 472)
         Me.Controls.Add(Me.TabbedPane)
         Me.Controls.Add(Me.PanelUsuario)
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle
@@ -1561,7 +1548,6 @@ Partial Class Form2
         CType(Me.DataGridViewganado, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ventasasdsadsa.ResumeLayout(False)
         Me.ventasasdsadsa.PerformLayout()
-        CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.DataGridViewVENTAS, System.ComponentModel.ISupportInitialize).EndInit()
         Me.TabCompras.ResumeLayout(False)
         Me.Panelmodificarcompras.ResumeLayout(False)
@@ -1717,7 +1703,6 @@ Partial Class Form2
     Friend WithEvents DataGridViewVENTAS As System.Windows.Forms.DataGridView
     Friend WithEvents btnclearventa As System.Windows.Forms.Button
     Friend WithEvents labelidv As System.Windows.Forms.Label
-    Friend WithEvents PictureBox1 As System.Windows.Forms.PictureBox
     Friend WithEvents Panelagregarganando As System.Windows.Forms.Panel
     Friend WithEvents Button3 As System.Windows.Forms.Button
     Friend WithEvents Button2 As System.Windows.Forms.Button

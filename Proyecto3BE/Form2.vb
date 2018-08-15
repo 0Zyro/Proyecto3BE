@@ -1005,7 +1005,7 @@ Public Class Form2
         txbtotalventa.Text = DataGridViewVENTAS.Item(3, DataGridViewVENTAS.CurrentRow.Index).Value
     End Sub
 
-    Private Sub PictureBox1_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles PictureBox1.Click
+    Private Sub PictureBox1_Click(ByVal sender As System.Object, ByVal e As System.EventArgs)
 
     End Sub
 
@@ -1055,12 +1055,34 @@ Public Class Form2
     Private Sub Butagregarganado_Click_1(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Butagregarganado.Click
         Panelagregarganando.Visible = True
     End Sub
-
+    'MODIFICAR VENTAS 
     Private Sub Button4_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Button4.Click
+        Dim fecha As String = DateTimePicker1.Value.ToString("yyyy-MM-dd")
+        Dim comentario As String = txbcomentarioventa.Text
+        Dim totalv As Integer = txbtotalventa.Text
+        Dim id As Integer = txbcedulaclienteventa.Text
+        Try
+            Consulta = "update venta set idv ='" + txbcedulaclienteventa.Text + "', fechaventa='" + fecha + "', comentariov='" + txbcomentarioventa.Text + "', totalv='" + txbtotalventa.Text + "' where idv='" + txbcedulaclienteventa.Text + "'"
+            consultar()
+            Consulta = "select * from venta"
+            consultar()
+            DataGridViewVENTAS.DataSource = Tabla
+            MsgBox("Se ha modificado con exito")
+        Catch ex As Exception
+            MsgBox(ex)
+
+        End Try
+
 
     End Sub
 
     Private Sub Modificarfechacompra_TextChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Modificarfechacompra.TextChanged
 
+    End Sub
+
+    Private Sub Button4_MouseMove(ByVal sender As Object, ByVal e As System.Windows.Forms.MouseEventArgs) Handles Button4.MouseMove
+        labeldeventa.Visible = False
+        labelidv.Visible = True
+        txbcedulaclienteventa.Visible = True
     End Sub
 End Class
