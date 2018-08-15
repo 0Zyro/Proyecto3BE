@@ -841,7 +841,7 @@ Public Class Form2
     End Sub
 
     Private Sub Agregarmodificacioncliente_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Agregarmodificacioncliente.Click
-        'dsfvsddd
+        'dsfvsdddsadasdsad
         Consulta = "update cliente set id='" + Cedulamodificarcliente.Text + "', nombre='" + Nombreyapellidomodificarcliente.Text + "', direccion='" + Direccionmodificarcliente.Text + "', telefono='" + Telefonomodificarcliente.Text + "' where id='" + Cedulamodificarcliente.Text + "'"
         consultar()
         Consulta = "select * from cliente"
@@ -1061,17 +1061,21 @@ Public Class Form2
         Dim comentario As String = txbcomentarioventa.Text
         Dim totalv As Integer = txbtotalventa.Text
         Dim id As Integer = txbcedulaclienteventa.Text
-        Try
-            Consulta = "update venta set idv ='" + txbcedulaclienteventa.Text + "', fechaventa='" + fecha + "', comentariov='" + txbcomentarioventa.Text + "', totalv='" + txbtotalventa.Text + "' where idv='" + txbcedulaclienteventa.Text + "'"
-            consultar()
-            Consulta = "select * from venta"
-            consultar()
-            DataGridViewVENTAS.DataSource = Tabla
-            MsgBox("Se ha modificado con exito")
-        Catch ex As Exception
-            MsgBox(ex)
+ 
 
-        End Try
+
+
+            Try
+                Consulta = "update venta set idv ='" + txbcedulaclienteventa.Text + "', fechaventa='" + fecha + "', comentariov='" + txbcomentarioventa.Text + "', totalv='" + txbtotalventa.Text + "' where idv='" + txbcedulaclienteventa.Text + "'"
+                consultar()
+                Consulta = "select * from venta"
+                consultar()
+                DataGridViewVENTAS.DataSource = Tabla
+                MsgBox("Se ha modificado con exito")
+            Catch ex As Exception
+                MsgBox(ex)
+
+            End Try
 
 
     End Sub
