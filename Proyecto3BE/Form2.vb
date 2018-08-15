@@ -33,23 +33,23 @@ Public Class Form2
     Dim reader As MySqlDataReader
 
     'Boton de busqueda de usuarios
-    Private Sub BotonBusquedaUsuarios_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles BotonBusquedaUsuarios.Click
+    Private Sub BotonBusquedaUsuarios_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles BTNBusquedaUsuarios.Click
 
         'Se borra el contenido anterior del listbox
-        ListBoxUsuarios.Items.Clear()
+        LSBUsuarios.Items.Clear()
 
         'Si el panel de busqueda esta vacio se buscaran todos, en caso contrario se busca lo especificado
-        If TextBoxBusquedaUsuarios.Text = "" Then
-            If CheckBoxUsuarios.Checked Then
+        If TXTBusquedaUsuarios.Text = "" Then
+            If CHBUsuariosInactivos.Checked Then
                 comando.CommandText = ("select ci, nombre from usuario")
             Else
                 comando.CommandText = ("select ci, nombre from usuario where estado='activo'")
             End If
         Else
-            If CheckBoxUsuarios.Checked Then
-                comando.CommandText = ("select ci, nombre from usuario where " + ComboBoxUsuarios.SelectedItem + "='" + TextBoxBusquedaUsuarios.Text + "'")
+            If CHBUsuariosInactivos.Checked Then
+                comando.CommandText = ("select ci, nombre from usuario where " + CBXBusquedaUsuarios.SelectedItem + "='" + TXTBusquedaUsuarios.Text + "'")
             Else
-                comando.CommandText = ("select ci, nombre from usuario where estado='activo' and " + ComboBoxUsuarios.SelectedItem + "='" + TextBoxBusquedaUsuarios.Text + "'")
+                comando.CommandText = ("select ci, nombre from usuario where estado='activo' and " + CBXBusquedaUsuarios.SelectedItem + "='" + TXTBusquedaUsuarios.Text + "'")
             End If
         End If
 
@@ -66,7 +66,7 @@ Public Class Form2
             If reader.HasRows Then
 
                 'Se limpian la lista de usuarios y el array auxiliar
-                ListBoxUsuarios.Items.Clear()
+                LSBUsuarios.Items.Clear()
                 ReDim rows(0)
 
                 'Mientras "reader" tenga mas filas por leer...
@@ -81,24 +81,24 @@ Public Class Form2
                 ReDim Preserve rows(rows.Length - 2)
 
                 'Se agregan todos los elementos de "rows" a "ListBoxUsuarios" para ser mostrados
-                ListBoxUsuarios.Items.AddRange(rows)
+                LSBUsuarios.Items.AddRange(rows)
 
                 'Se Cierra la conexion
                 connection.Close()
 
                 'Se selecciona el primer item por defecto para evitar excepciones
-                ListBoxUsuarios.SetSelected(0, True)
+                LSBUsuarios.SetSelected(0, True)
 
             Else
                 'Se Cierra la conexion
                 connection.Close()
 
                 'Si no se encontraron resultados se informa
-                LabelInfoUsuarios.Text = "No se encontraron resultados"
+                LBLInfoUsuarios.Text = "No se encontraron resultados"
             End If
         Catch ex As Exception
             'Se reportan errores
-            LabelInfoUsuarios.Text = ("Error: " + ex.Message)
+            LBLInfoUsuarios.Text = ("Error: " + ex.Message)
 
             If connection.State = ConnectionState.Open Then
                 connection.Close()
@@ -111,19 +111,19 @@ Public Class Form2
     Dim CiSeleccionado As String = ""
 
     'Cuando se cambia el item seleccionado en "ListBoxUsuarios"
-    Private Sub ListBoxUsuarios_SelectedIndexChanged(ByVal sender As Object, ByVal e As System.EventArgs) Handles ListBoxUsuarios.SelectedIndexChanged
+    Private Sub ListBoxUsuarios_SelectedIndexChanged(ByVal sender As Object, ByVal e As System.EventArgs) Handles LSBUsuarios.SelectedIndexChanged
 
         'Limpieza de busquedas anteriores
-        TextBoxCiUsuarios.Text = ""
-        TextBoxNombreUsuarios.Text = ""
-        TextBoxPasswdUsuarios.Text = ""
-        TextBoxRangoUsuarios.Text = ""
+        TXTCiUsuarios.Text = ""
+        TXTNombreUsuarios.Text = ""
+        TXTPasswdUsuarios.Text = ""
+        TXTRangoUsuarios.Text = ""
 
         'Informacion necesaria para el comando
         comando.CommandType = CommandType.Text
         comando.Connection = connection
         'Se hace la consulta segun que ha seleccionado el usuario en "ListBoxUsuarios"
-        comando.CommandText = ("select * from usuario where ci='" + ListBoxUsuarios.SelectedItem + "'")
+        comando.CommandText = ("select * from usuario where ci='" + LSBUsuarios.SelectedItem + "'")
 
         Try
             'Se abre la conexion, se ejecuta el comando y se guarda el resultado en "reader"
@@ -134,27 +134,27 @@ Public Class Form2
             reader.Read()
 
             'Se mueven los datos desde "reader" a los textbox para ser mostrados
-            TextBoxCiUsuarios.Text = reader.GetInt32(0).ToString
-            TextBoxNombreUsuarios.Text = reader.GetString(1)
-            TextBoxPasswdUsuarios.Text = reader.GetString(2)
-            TextBoxRangoUsuarios.Text = reader.GetString(3)
+            TXTCiUsuarios.Text = reader.GetInt32(0).ToString
+            TXTNombreUsuarios.Text = reader.GetString(1)
+            TXTPasswdUsuarios.Text = reader.GetString(2)
+            TXTRangoUsuarios.Text = reader.GetString(3)
             LabelEstadoUsuarios.Text = reader.GetString(4)
 
             If Dir$("../../Res/profile/" + reader.GetString(5) + ".bmp") <> "" Then
-                PictureBoxUsuarios.Image = Image.FromFile("../../Res/profile/" + reader.GetString(5) + ".bmp")
+                PICUsuarios.Image = Image.FromFile("../../Res/profile/" + reader.GetString(5) + ".bmp")
             Else
-                PictureBoxUsuarios.Image = Image.FromFile("../../Res/profile/default.bmp")
+                PICUsuarios.Image = Image.FromFile("../../Res/profile/default.bmp")
             End If
 
             'Se guarda la ci del usuario seleccionado
-            CiSeleccionado = TextBoxCiUsuarios.Text
+            CiSeleccionado = TXTCiUsuarios.Text
 
             'Se cierra la conexion
             connection.Close()
 
         Catch ex As Exception
             'Se reportan errores
-            LabelInfoUsuarios.Text = ("Error: " + ex.Message)
+            LBLInfoUsuarios.Text = ("Error: " + ex.Message)
             If connection.State = ConnectionState.Open Then
                 connection.Close()
             End If
@@ -162,7 +162,7 @@ Public Class Form2
     End Sub
 
     'Boton de eliminacion de Usuarios
-    Private Sub BotonEliminarUsuarios_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles BotonEliminarUsuarios.Click
+    Private Sub BotonEliminarUsuarios_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles BTNEliminarUsuarios.Click
 
         Try
             'Se pide una confirmacion antes de proceder
@@ -172,7 +172,7 @@ Public Class Form2
                 comando.CommandType = CommandType.Text
                 comando.Connection = connection
                 'El usuario eliminado sera el seleccionado en "ListBoxUsuarios"
-                comando.CommandText = ("update usuario set estado='inactivo' where ci='" + (ListBoxUsuarios.SelectedItem).ToString.Split(" ")(0) + "'")
+                comando.CommandText = ("update usuario set estado='inactivo' where ci='" + (LSBUsuarios.SelectedItem).ToString.Split(" ")(0) + "'")
 
                 'Se abre la conexion
                 connection.Open()
@@ -184,10 +184,10 @@ Public Class Form2
                 connection.Close()
 
                 'Se actualiza "ListBoxUsuarios"
-                BotonBusquedaUsuarios.PerformClick()
+                BTNBusquedaUsuarios.PerformClick()
 
                 'Se informa de la correcta eliminacion del usuario
-                LabelInfoUsuarios.Text = "Usuario eliminado"
+                LBLInfoUsuarios.Text = "Usuario eliminado"
 
             End If
         Catch ex As Exception
@@ -197,19 +197,19 @@ Public Class Form2
     End Sub
 
     'Boton de modificacion de datos de tab "Usuarios"
-    Private Sub BotonModificarUsuarios_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles BotonModificarUsuarios.Click
-        LabelInfoUsuarios.Text = ""
+    Private Sub BotonModificarUsuarios_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles BTNModificarUsuarios.Click
+        LBLInfoUsuarios.Text = ""
         estadoModificar()
     End Sub
 
     'Boton de cancelacion de edicion de tab "Usuarios"
-    Private Sub BotonCancelarUsuarios_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles BotonCancelarUsuarios.Click
-        LabelInfoUsuarios.Text = ""
+    Private Sub BotonCancelarUsuarios_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles BTNCancelarUsuarios.Click
+        LBLInfoUsuarios.Text = ""
         estadoVisualizar()
     End Sub
 
     'Boton 'Aceptar' de edicion de datos de tab "Usuarios"
-    Private Sub BotonAceptarUsuarios_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles BotonAceptarUsuarios.Click
+    Private Sub BotonAceptarUsuarios_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles BTNAceptarUsuarios.Click
 
         'Info necesaria para el comando
         comando.CommandType = CommandType.Text
@@ -217,10 +217,10 @@ Public Class Form2
 
         Select Case estadoUsuario
             Case "modificar"
-                comando.CommandText = ("update usuario set ci='" + TextBoxCiUsuarios.Text +
-                               "', contrasena='" + TextBoxPasswdUsuarios.Text +
-                               "', nombre='" + TextBoxNombreUsuarios.Text +
-                               "', rango='" + TextBoxRangoUsuarios.Text +
+                comando.CommandText = ("update usuario set ci='" + TXTCiUsuarios.Text +
+                               "', contrasena='" + TXTPasswdUsuarios.Text +
+                               "', nombre='" + TXTNombreUsuarios.Text +
+                               "', rango='" + TXTRangoUsuarios.Text +
                                "', perfil='" + StringImagenUsuarios +
                                "' where ci='" + CiSeleccionado + "'")
                 Try
@@ -231,7 +231,7 @@ Public Class Form2
                     'Se cierra la conexion
                     connection.Close()
                     'Se informa de la correcta modificacion del usuario
-                    LabelInfoUsuarios.Text = "Usuario modificado"
+                    LBLInfoUsuarios.Text = "Usuario modificado"
                 Catch ex As Exception
                     'Se informan errores
                     MsgBox("Error: " + ex.Message)
@@ -239,11 +239,11 @@ Public Class Form2
                 estadoVisualizar()
                 Exit Select
             Case "agregar"
-                If verificarCedula(TextBoxCiUsuarios.Text) Then
-                    If TextBoxCiUsuarios.Text.Length > 6 Then
-                        If TextBoxPasswdUsuarios.Text.Length > 7 Then
-                            If TextBoxRangoUsuarios.Text.Length > 3 Then
-                                comando.CommandText = ("insert into usuario values ('" + TextBoxCiUsuarios.Text + "','" + TextBoxNombreUsuarios.Text + "','" + TextBoxPasswdUsuarios.Text + "','" + TextBoxRangoUsuarios.Text + "','activo','" + StringImagenUsuarios + "')")
+                If verificarCedula(TXTCiUsuarios.Text) Then
+                    If TXTCiUsuarios.Text.Length > 6 Then
+                        If TXTPasswdUsuarios.Text.Length > 7 Then
+                            If TXTRangoUsuarios.Text.Length > 3 Then
+                                comando.CommandText = ("insert into usuario values ('" + TXTCiUsuarios.Text + "','" + TXTNombreUsuarios.Text + "','" + TXTPasswdUsuarios.Text + "','" + TXTRangoUsuarios.Text + "','activo','" + StringImagenUsuarios + "')")
                                 Try
                                     If connection.State Then
                                         MsgBox("asds")
@@ -252,19 +252,19 @@ Public Class Form2
                                     comando.ExecuteNonQuery()
                                     connection.Close()
                                 Catch ex As Exception
-                                    LabelInfoUsuarios.Text = ("Error:" + ex.Message)
+                                    LBLInfoUsuarios.Text = ("Error:" + ex.Message)
                                 End Try
                             Else
-                                LabelInfoUsuarios.Text = "Rango erroneo"
+                                LBLInfoUsuarios.Text = "Rango erroneo"
                             End If
                         Else
-                            LabelInfoUsuarios.Text = "Contraseña erronea"
+                            LBLInfoUsuarios.Text = "Contraseña erronea"
                         End If
                     Else
-                        LabelInfoUsuarios.Text = "Nombre erroneo"
+                        LBLInfoUsuarios.Text = "Nombre erroneo"
                     End If
                 Else
-                    LabelInfoUsuarios.Text = "Cedula erronea"
+                    LBLInfoUsuarios.Text = "Cedula erronea"
                 End If
         End Select
         estadoVisualizar()
@@ -299,8 +299,8 @@ Public Class Form2
 
     Dim estadoUsuario As String = "visualizar"
 
-    Private Sub BotonAgregarUsuarios_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles BotonAgregarUsuarios.Click
-        LabelInfoUsuarios.Text = ""
+    Private Sub BotonAgregarUsuarios_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles BTNAgregarUsuarios.Click
+        LBLInfoUsuarios.Text = ""
         estadoAgregar()
     End Sub
 
@@ -308,27 +308,27 @@ Public Class Form2
 
         estadoUsuario = "modificar"
 
-        BotonAceptarUsuarios.Visible = True
-        BotonCancelarUsuarios.Visible = True
+        BTNAceptarUsuarios.Visible = True
+        BTNCancelarUsuarios.Visible = True
 
-        BotonBusquedaUsuarios.Enabled = False
-        CheckBoxUsuarios.Enabled = False
+        BTNBusquedaUsuarios.Enabled = False
+        CHBUsuariosInactivos.Enabled = False
 
-        ListBoxUsuarios.Enabled = False
+        LSBUsuarios.Enabled = False
 
-        ComboBoxUsuarios.Enabled = False
+        CBXBusquedaUsuarios.Enabled = False
 
-        BotonAgregarUsuarios.Visible = False
-        BotonEliminarUsuarios.Visible = False
-        BotonModificarUsuarios.Visible = False
+        BTNAgregarUsuarios.Visible = False
+        BTNEliminarUsuarios.Visible = False
+        BTNModificarUsuarios.Visible = False
 
-        TextBoxCiUsuarios.ReadOnly = False
-        TextBoxNombreUsuarios.ReadOnly = False
-        TextBoxPasswdUsuarios.ReadOnly = False
-        TextBoxRangoUsuarios.ReadOnly = False
-        PictureBoxUsuarios.Enabled = True
+        TXTCiUsuarios.ReadOnly = False
+        TXTNombreUsuarios.ReadOnly = False
+        TXTPasswdUsuarios.ReadOnly = False
+        TXTRangoUsuarios.ReadOnly = False
+        PICUsuarios.Enabled = True
 
-        TextBoxBusquedaUsuarios.ReadOnly = True
+        TXTBusquedaUsuarios.ReadOnly = True
 
     End Sub
     Private Sub estadoAgregar()
@@ -337,63 +337,63 @@ Public Class Form2
 
         estadoUsuario = "agregar"
 
-        PictureBoxUsuarios.Image = Image.FromFile("../../Res/profile/nueva.bmp")
+        PICUsuarios.Image = Image.FromFile("../../Res/profile/nueva.bmp")
 
-        TextBoxCiUsuarios.Text = ""
-        TextBoxNombreUsuarios.Text = ""
-        TextBoxPasswdUsuarios.Text = ""
-        TextBoxRangoUsuarios.Text = ""
+        TXTCiUsuarios.Text = ""
+        TXTNombreUsuarios.Text = ""
+        TXTPasswdUsuarios.Text = ""
+        TXTRangoUsuarios.Text = ""
 
-        CheckBoxUsuarios.Checked = False
+        CHBUsuariosInactivos.Checked = False
 
     End Sub
     Private Sub estadoVisualizar()
 
         estadoUsuario = "visualizar"
 
-        BotonAceptarUsuarios.Visible = False
-        BotonCancelarUsuarios.Visible = False
+        BTNAceptarUsuarios.Visible = False
+        BTNCancelarUsuarios.Visible = False
 
-        BotonBusquedaUsuarios.Enabled = True
-        CheckBoxUsuarios.Enabled = True
+        BTNBusquedaUsuarios.Enabled = True
+        CHBUsuariosInactivos.Enabled = True
 
-        ListBoxUsuarios.Enabled = True
+        LSBUsuarios.Enabled = True
 
-        ComboBoxUsuarios.Enabled = True
+        CBXBusquedaUsuarios.Enabled = True
 
-        BotonModificarUsuarios.Visible = True
-        BotonAgregarUsuarios.Visible = True
-        BotonEliminarUsuarios.Visible = True
+        BTNModificarUsuarios.Visible = True
+        BTNAgregarUsuarios.Visible = True
+        BTNEliminarUsuarios.Visible = True
 
-        TextBoxCiUsuarios.ReadOnly = True
-        TextBoxNombreUsuarios.ReadOnly = True
-        TextBoxPasswdUsuarios.ReadOnly = True
-        TextBoxRangoUsuarios.ReadOnly = True
-        PictureBoxUsuarios.Enabled = False
+        TXTCiUsuarios.ReadOnly = True
+        TXTNombreUsuarios.ReadOnly = True
+        TXTPasswdUsuarios.ReadOnly = True
+        TXTRangoUsuarios.ReadOnly = True
+        PICUsuarios.Enabled = False
 
-        TextBoxBusquedaUsuarios.ReadOnly = False
+        TXTBusquedaUsuarios.ReadOnly = False
 
-        BotonBusquedaUsuarios.PerformClick()
+        BTNBusquedaUsuarios.PerformClick()
 
         StringImagenUsuarios = "default"
 
     End Sub
 
-    Private Sub CheckBoxUsuarios_CheckStateChanged(ByVal sender As Object, ByVal e As System.EventArgs) Handles CheckBoxUsuarios.CheckStateChanged
-        BotonBusquedaUsuarios.PerformClick()
+    Private Sub CheckBoxUsuarios_CheckStateChanged(ByVal sender As Object, ByVal e As System.EventArgs) Handles CHBUsuariosInactivos.CheckStateChanged
+        BTNBusquedaUsuarios.PerformClick()
 
-        If CheckBoxUsuarios.Checked Then
+        If CHBUsuariosInactivos.Checked Then
             LabelEstadoUsuarios.Visible = True
         Else
             LabelEstadoUsuarios.Visible = False
         End If
     End Sub
 
-    Private Sub CheckBoxPasswdUsuarios_CheckStateChanged(ByVal sender As Object, ByVal e As System.EventArgs) Handles CheckBoxPasswdUsuarios.CheckStateChanged
-        If CheckBoxPasswdUsuarios.Checked Then
-            TextBoxPasswdUsuarios.PasswordChar = ""
+    Private Sub CheckBoxPasswdUsuarios_CheckStateChanged(ByVal sender As Object, ByVal e As System.EventArgs) Handles CHBPasswdUsuarios.CheckStateChanged
+        If CHBPasswdUsuarios.Checked Then
+            TXTPasswdUsuarios.PasswordChar = ""
         Else
-            TextBoxPasswdUsuarios.PasswordChar = "+"
+            TXTPasswdUsuarios.PasswordChar = "+"
         End If
     End Sub
 
@@ -401,7 +401,7 @@ Public Class Form2
 
     Dim StringImagenUsuarios As String = "default"
 
-    Private Sub PictureBoxUsuarios_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles PictureBoxUsuarios.Click
+    Private Sub PictureBoxUsuarios_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles PICUsuarios.Click
         BuscarImagen()
     End Sub
 
@@ -430,7 +430,7 @@ Public Class Form2
                     End If
                 Catch Ex As Exception
                     openFileDialog.FileName = ""
-                    LabelInfoUsuarios.Text = ("Error: " + Ex.Message)
+                    LBLInfoUsuarios.Text = ("Error: " + Ex.Message)
                 End Try
             Else
                 openFileDialog.FileName = ""
@@ -442,7 +442,7 @@ Public Class Form2
 
     '///FIN SECCION USUARIOS
 
-    
+
     'Se cargan los datos cuando se cambia de tab
     Private Sub TabClientes_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles TabClientes.Click
 
@@ -477,7 +477,7 @@ Public Class Form2
 
 
         '////////////USUARIOS
-        ComboBoxUsuarios.SelectedIndex = 0
+        CBXBusquedaUsuarios.SelectedIndex = 0
 
         '////////////CLIENTES
         PanelPrincipalclientes.Enabled = True
@@ -506,7 +506,7 @@ Public Class Form2
         DataGridViewCompras.Columns(3).HeaderText = "Total"
 
         'Nose que es esto
-        ComboBoxUsuarios.SelectedIndex = 0
+        CBXBusquedaUsuarios.SelectedIndex = 0
 
         'Muestra el panel principal de Compras y oculta los otros
         Panelprincipalcompras.BringToFront()
