@@ -36,82 +36,34 @@ Public Class Form2
     Private Sub BotonBusquedaUsuarios_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles BTNBusquedaUsuarios.Click
 
         'Se borra el contenido anterior del listbox
-        LSBUsuarios.Items.Clear()
+        DGVUsuarios.DataSource = Nothing
 
         'Si el panel de busqueda esta vacio se buscaran todos, en caso contrario se busca lo especificado
         If TXTBusquedaUsuarios.Text = "" Then
             If CHBUsuariosInactivos.Checked Then
-                comando.CommandText = ("select ci, nombre from usuario")
+                Consulta = ("select ci, nombre from usuario")
             Else
-                comando.CommandText = ("select ci, nombre from usuario where estado='activo'")
+                Consulta = ("select ci, nombre from usuario where estado='activo'")
             End If
         Else
             If CHBUsuariosInactivos.Checked Then
-                comando.CommandText = ("select ci, nombre from usuario where " + CBXBusquedaUsuarios.SelectedItem + "='" + TXTBusquedaUsuarios.Text + "'")
+                Consulta = ("select ci, nombre from usuario where " + CBXBusquedaUsuarios.SelectedItem + "='" + TXTBusquedaUsuarios.Text + "'")
             Else
-                comando.CommandText = ("select ci, nombre from usuario where estado='activo' and " + CBXBusquedaUsuarios.SelectedItem + "='" + TXTBusquedaUsuarios.Text + "'")
+                Consulta = ("select ci, nombre from usuario where estado='activo' and " + CBXBusquedaUsuarios.SelectedItem + "='" + TXTBusquedaUsuarios.Text + "'")
             End If
         End If
 
-        'Info necesaria para ejecutar el comando
-        comando.CommandType = CommandType.Text
-        comando.Connection = connection
+        consultar()
 
-        Try
-            'Se abre la conexion, se ejecuta el comando y se guardan los resultados en "reader"
-            connection.Open()
-            reader = comando.ExecuteReader()
-
-            'Si hay resultados...
-            If reader.HasRows Then
-
-                'Se limpian la lista de usuarios y el array auxiliar
-                LSBUsuarios.Items.Clear()
-                ReDim rows(0)
-
-                'Mientras "reader" tenga mas filas por leer...
-                While (reader.Read())
-                    'Se leen las filas y se guardan los resultados en el array "rows"
-                    rows(rows.Length - 1) = (Convert.ToString(reader.GetInt32(0)) + " " + reader.GetString(1))
-                    'Se redimensiona el array "rows" en cada lectura para albergar el siguiente dato
-                    ReDim Preserve rows(rows.Length)
-                End While
-
-                'Se redimensiona "rows" para borrar los espacios vacios
-                ReDim Preserve rows(rows.Length - 2)
-
-                'Se agregan todos los elementos de "rows" a "ListBoxUsuarios" para ser mostrados
-                LSBUsuarios.Items.AddRange(rows)
-
-                'Se Cierra la conexion
-                connection.Close()
-
-                'Se selecciona el primer item por defecto para evitar excepciones
-                LSBUsuarios.SetSelected(0, True)
-
-            Else
-                'Se Cierra la conexion
-                connection.Close()
-
-                'Si no se encontraron resultados se informa
-                LBLInfoUsuarios.Text = "No se encontraron resultados"
-            End If
-        Catch ex As Exception
-            'Se reportan errores
-            LBLInfoUsuarios.Text = ("Error: " + ex.Message)
-
-            If connection.State = ConnectionState.Open Then
-                connection.Close()
-            End If
-
-        End Try
+        DGVUsuarios.DataSource = Tabla
     End Sub
 
     'Ci del usuario seleccionado actualmente
     Dim CiSeleccionado As String = ""
 
-    'Cuando se cambia el item seleccionado en "ListBoxUsuarios"
-    Private Sub ListBoxUsuarios_SelectedIndexChanged(ByVal sender As Object, ByVal e As System.EventArgs) Handles LSBUsuarios.SelectedIndexChanged
+
+    'Cuando se cambia el item seleccionado en "DGVUsuarios"
+    Private Sub DGVUsuarios_SelectionChanged(ByVal sender As Object, ByVal e As System.EventArgs) Handles DGVUsuarios.SelectionChanged
 
         'Limpieza de busquedas anteriores
         TXTCiUsuarios.Text = ""
@@ -123,7 +75,11 @@ Public Class Form2
         comando.CommandType = CommandType.Text
         comando.Connection = connection
         'Se hace la consulta segun que ha seleccionado el usuario en "ListBoxUsuarios"
-        comando.CommandText = ("select * from usuario where ci='" + LSBUsuarios.SelectedItem + "'")
+
+        CiSeleccionado = DGVUsuarios.Item(0, DGVUsuarios.CurrentRow.Index).Value
+        comando.CommandText = ("select * from usuario where ci='" + CiSeleccionado + "'")
+
+        'MsgBox(CiSeleccionado)
 
         Try
             'Se abre la conexion, se ejecuta el comando y se guarda el resultado en "reader"
@@ -172,7 +128,7 @@ Public Class Form2
                 comando.CommandType = CommandType.Text
                 comando.Connection = connection
                 'El usuario eliminado sera el seleccionado en "ListBoxUsuarios"
-                comando.CommandText = ("update usuario set estado='inactivo' where ci='" + (LSBUsuarios.SelectedItem).ToString.Split(" ")(0) + "'")
+                comando.CommandText = ("update usuario set estado='inactivo' where ci='" + "50362820" + "'")
 
                 'Se abre la conexion
                 connection.Open()
@@ -240,23 +196,19 @@ Public Class Form2
                 Exit Select
             Case "agregar"
                 If verificarCedula(TXTCiUsuarios.Text) Then
-                    If TXTCiUsuarios.Text.Length > 6 Then
-                        If TXTPasswdUsuarios.Text.Length > 7 Then
-                            If TXTRangoUsuarios.Text.Length > 3 Then
-                                comando.CommandText = ("insert into usuario values ('" + TXTCiUsuarios.Text + "','" + TXTNombreUsuarios.Text + "','" + TXTPasswdUsuarios.Text + "','" + TXTRangoUsuarios.Text + "','activo','" + StringImagenUsuarios + "')")
-                                Try
-                                    If connection.State Then
-                                        MsgBox("asds")
-                                    End If
-                                    connection.Open()
-                                    comando.ExecuteNonQuery()
-                                    connection.Close()
-                                Catch ex As Exception
-                                    LBLInfoUsuarios.Text = ("Error:" + ex.Message)
-                                End Try
-                            Else
-                                LBLInfoUsuarios.Text = "Rango erroneo"
-                            End If
+                    If verificarNombre() Then
+                        If verificarPasswd() Then
+                            comando.CommandText = ("insert into usuario values ('" + TXTCiUsuarios.Text + "','" + TXTNombreUsuarios.Text + "','" + TXTPasswdUsuarios.Text + "','" + TXTRangoUsuarios.Text + "','activo','" + StringImagenUsuarios + "')")
+                            Try
+                                If connection.State Then
+                                    MsgBox("asds")
+                                End If
+                                connection.Open()
+                                comando.ExecuteNonQuery()
+                                connection.Close()
+                            Catch ex As Exception
+                                LBLInfoUsuarios.Text = ("Error:" + ex.Message)
+                            End Try
                         Else
                             LBLInfoUsuarios.Text = "Contraseña erronea"
                         End If
@@ -269,6 +221,28 @@ Public Class Form2
         End Select
         estadoVisualizar()
     End Sub
+
+    Private Function verificarPasswd()
+        If TXTPasswdUsuarios.Text < 7 Then
+            Return False
+        End If
+        Return True
+    End Function
+
+    Private Function verificarNombre()
+        Dim aux As String = TXTNombreUsuarios.Text
+
+        If TXTNombreUsuarios.Text.Length < 7 Then
+            Return False
+        End If
+
+        For Each e As Char In aux
+            If IsNumeric(e) Then
+                Return False
+            End If
+        Next
+        Return True
+    End Function
 
     Private Function verificarCedula(ByVal cedula As String)
 
@@ -314,7 +288,7 @@ Public Class Form2
         BTNBusquedaUsuarios.Enabled = False
         CHBUsuariosInactivos.Enabled = False
 
-        LSBUsuarios.Enabled = False
+        DGVUsuarios.Enabled = False
 
         CBXBusquedaUsuarios.Enabled = False
 
@@ -357,7 +331,7 @@ Public Class Form2
         BTNBusquedaUsuarios.Enabled = True
         CHBUsuariosInactivos.Enabled = True
 
-        LSBUsuarios.Enabled = True
+        DGVUsuarios.Enabled = True
 
         CBXBusquedaUsuarios.Enabled = True
 
@@ -1028,7 +1002,7 @@ Public Class Form2
         DataGridViewganado.DataSource = Tabla
     End Sub
 
-  
+
 
     Private Sub Button3_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Button3.Click
         Panelagregarganando.Visible = False
@@ -1061,21 +1035,21 @@ Public Class Form2
         Dim comentario As String = txbcomentarioventa.Text
         Dim totalv As Integer = txbtotalventa.Text
         Dim id As Integer = txbcedulaclienteventa.Text
- 
 
 
 
-            Try
-                Consulta = "update venta set idv ='" + txbcedulaclienteventa.Text + "', fechaventa='" + fecha + "', comentariov='" + txbcomentarioventa.Text + "', totalv='" + txbtotalventa.Text + "' where idv='" + txbcedulaclienteventa.Text + "'"
-                consultar()
-                Consulta = "select * from venta"
-                consultar()
-                DataGridViewVENTAS.DataSource = Tabla
-                MsgBox("Se ha modificado con exito")
-            Catch ex As Exception
-                MsgBox(ex)
 
-            End Try
+        Try
+            Consulta = "update venta set idv ='" + txbcedulaclienteventa.Text + "', fechaventa='" + fecha + "', comentariov='" + txbcomentarioventa.Text + "', totalv='" + txbtotalventa.Text + "' where idv='" + txbcedulaclienteventa.Text + "'"
+            consultar()
+            Consulta = "select * from venta"
+            consultar()
+            DataGridViewVENTAS.DataSource = Tabla
+            MsgBox("Se ha modificado con exito")
+        Catch ex As Exception
+            MsgBox(ex)
+
+        End Try
 
 
     End Sub
