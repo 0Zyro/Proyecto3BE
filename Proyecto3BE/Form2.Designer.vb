@@ -134,6 +134,7 @@ Partial Class Form2
         Me.Labeltelcliente = New System.Windows.Forms.Label()
         Me.Texcedula = New System.Windows.Forms.TextBox()
         Me.TabUsuarios = New System.Windows.Forms.TabPage()
+        Me.CBXRangoUsuarios = New System.Windows.Forms.ComboBox()
         Me.DGVUsuarios = New System.Windows.Forms.DataGridView()
         Me.PICUsuarios = New System.Windows.Forms.PictureBox()
         Me.CHBPasswdUsuarios = New System.Windows.Forms.CheckBox()
@@ -157,7 +158,6 @@ Partial Class Form2
         Me.TXTBusquedaUsuarios = New System.Windows.Forms.TextBox()
         Me.CBXBusquedaUsuarios = New System.Windows.Forms.ComboBox()
         Me.ToolTip1 = New System.Windows.Forms.ToolTip(Me.components)
-        Me.CBXRangoUsuarios = New System.Windows.Forms.ComboBox()
         Me.PanelUsuario.SuspendLayout()
         CType(Me.PICUsuarioLogueado, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.TabbedPane.SuspendLayout()
@@ -209,7 +209,7 @@ Partial Class Form2
         Me.PanelUsuario.Dock = System.Windows.Forms.DockStyle.Left
         Me.PanelUsuario.Location = New System.Drawing.Point(0, 0)
         Me.PanelUsuario.Name = "PanelUsuario"
-        Me.PanelUsuario.Size = New System.Drawing.Size(100, 472)
+        Me.PanelUsuario.Size = New System.Drawing.Size(100, 471)
         Me.PanelUsuario.TabIndex = 0
         '
         'BTNCerrarSesion
@@ -562,7 +562,7 @@ Partial Class Form2
         Me.labeldeventa.AutoSize = True
         Me.labeldeventa.Font = New System.Drawing.Font("Microsoft Sans Serif", 15.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.labeldeventa.ForeColor = System.Drawing.SystemColors.ControlText
-        Me.labeldeventa.Location = New System.Drawing.Point(107, 187)
+        Me.labeldeventa.Location = New System.Drawing.Point(107, 182)
         Me.labeldeventa.Name = "labeldeventa"
         Me.labeldeventa.Size = New System.Drawing.Size(203, 25)
         Me.labeldeventa.TabIndex = 87
@@ -725,7 +725,7 @@ Partial Class Form2
         Me.Label16.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label16.Location = New System.Drawing.Point(522, 287)
         Me.Label16.Name = "Label16"
-        Me.Label16.Size = New System.Drawing.Size(81, 13)
+        Me.Label16.Size = New System.Drawing.Size(80, 13)
         Me.Label16.TabIndex = 4
         Me.Label16.Text = "Total Pagado"
         '
@@ -887,7 +887,7 @@ Partial Class Form2
         Me.Label13.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label13.Location = New System.Drawing.Point(303, 248)
         Me.Label13.Name = "Label13"
-        Me.Label13.Size = New System.Drawing.Size(81, 13)
+        Me.Label13.Size = New System.Drawing.Size(80, 13)
         Me.Label13.TabIndex = 5
         Me.Label13.Text = "Total Pagado"
         '
@@ -1329,6 +1329,15 @@ Partial Class Form2
         Me.TabUsuarios.Text = "Usuarios"
         Me.TabUsuarios.UseVisualStyleBackColor = True
         '
+        'CBXRangoUsuarios
+        '
+        Me.CBXRangoUsuarios.FormattingEnabled = True
+        Me.CBXRangoUsuarios.Items.AddRange(New Object() {"User", "Admin", "Viewer"})
+        Me.CBXRangoUsuarios.Location = New System.Drawing.Point(265, 367)
+        Me.CBXRangoUsuarios.Name = "CBXRangoUsuarios"
+        Me.CBXRangoUsuarios.Size = New System.Drawing.Size(100, 21)
+        Me.CBXRangoUsuarios.TabIndex = 24
+        '
         'DGVUsuarios
         '
         Me.DGVUsuarios.AllowUserToAddRows = False
@@ -1550,20 +1559,11 @@ Partial Class Form2
         Me.CBXBusquedaUsuarios.Size = New System.Drawing.Size(89, 21)
         Me.CBXBusquedaUsuarios.TabIndex = 0
         '
-        'CBXRangoUsuarios
-        '
-        Me.CBXRangoUsuarios.FormattingEnabled = True
-        Me.CBXRangoUsuarios.Items.AddRange(New Object() {"User", "Admin", "Viewer"})
-        Me.CBXRangoUsuarios.Location = New System.Drawing.Point(265, 367)
-        Me.CBXRangoUsuarios.Name = "CBXRangoUsuarios"
-        Me.CBXRangoUsuarios.Size = New System.Drawing.Size(100, 21)
-        Me.CBXRangoUsuarios.TabIndex = 24
-        '
         'Form2
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(794, 472)
+        Me.ClientSize = New System.Drawing.Size(794, 471)
         Me.Controls.Add(Me.TabbedPane)
         Me.Controls.Add(Me.PanelUsuario)
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle

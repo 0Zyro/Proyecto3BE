@@ -877,26 +877,29 @@ Public Class Form2
     Private Sub agregarventa_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles agregarventa.Click
 
 
+        Dim fecha As String = DateTimePicker1.Value.ToString("yyyy-MM-dd")
+        Dim comentario As String = txbcomentarioventa.Text
+        Dim totalv As String = txbtotalventa.Text
+        Dim id As String = txbcedulaclienteventa.Text
 
-        Try
 
 
-            Dim fecha As String = DateTimePicker1.Value.ToString("yyyy-MM-dd")
-            Dim comentario As String = txbcomentarioventa.Text
-            Dim totalv As Integer = txbtotalventa.Text
-            Dim id As Integer = txbcedulaclienteventa.Text
-            'consulta
-            Consulta = "insert into venta (fechaventa,comentariov,totalv,id) values('" & fecha & "','" & comentario & "','" & totalv & "','" & id & "');"
-            consultar()
-            'select hacia venta
-            Consulta = "select * from venta"
-            consultar()
-            'actualiza la dgvw
-            DataGridViewVENTAS.DataSource = Tabla
-            MsgBox("se agregó con exito")
-        Catch ex As Exception
-            MsgBox(ex)
-        End Try
+            Try
+
+                'consulta
+                Consulta = "insert into venta (fechaventa,comentariov,totalv,id) values('" & fecha & "','" & comentario & "','" & totalv & "','" & id & "');"
+                consultar()
+                'select hacia venta
+                Consulta = "select * from venta"
+                consultar()
+                'actualiza la dgvw
+                DataGridViewVENTAS.DataSource = Tabla
+                MsgBox("se agregó con exito")
+            Catch ex As Exception
+                MsgBox("Verifique la cédula del cliente")
+
+
+            End Try
 
     End Sub
     'BORRAR EN VENTA//////////////////////////////////////////
@@ -1033,30 +1036,32 @@ Public Class Form2
     Private Sub Button4_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Button4.Click
         Dim fecha As String = DateTimePicker1.Value.ToString("yyyy-MM-dd")
         Dim comentario As String = txbcomentarioventa.Text
-        Dim totalv As Integer = txbtotalventa.Text
-        Dim id As Integer = txbcedulaclienteventa.Text
+        Dim totalv As String = txbtotalventa.Text
+        Dim id As String = txbcedulaclienteventa.Text
 
 
+        If txbcedulaclienteventa.Text = "" Then
+            MsgBox("Complete el campo ID ")
+        ElseIf txbcomentarioventa.Text = "" And txbtotalventa.Text = "" Then
+            MsgBox("Complete los campos restantes ")
+        Else
 
 
-        Try
-            Consulta = "update venta set idv ='" + txbcedulaclienteventa.Text + "', fechaventa='" + fecha + "', comentariov='" + txbcomentarioventa.Text + "', totalv='" + txbtotalventa.Text + "' where idv='" + txbcedulaclienteventa.Text + "'"
-            consultar()
-            Consulta = "select * from venta"
-            consultar()
-            DataGridViewVENTAS.DataSource = Tabla
-            MsgBox("Se ha modificado con exito")
-        Catch ex As Exception
-            MsgBox(ex)
+            Try
+                Consulta = "update venta set idv ='" + txbcedulaclienteventa.Text + "', fechaventa='" + fecha + "', comentariov='" + txbcomentarioventa.Text + "', totalv='" + txbtotalventa.Text + "' where idv='" + txbcedulaclienteventa.Text + "'"
+                consultar()
+                Consulta = "select * from venta"
+                consultar()
+                DataGridViewVENTAS.DataSource = Tabla
+                MsgBox("Se ha modificado con exito")
+            Catch ex As Exception
+                MsgBox(ex)
 
-        End Try
+            End Try
 
-
+        End If
     End Sub
 
-    Private Sub Modificarfechacompra_TextChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Modificarfechacompra.TextChanged
-
-    End Sub
 
     Private Sub Button4_MouseMove(ByVal sender As Object, ByVal e As System.Windows.Forms.MouseEventArgs) Handles Button4.MouseMove
         labeldeventa.Visible = False
