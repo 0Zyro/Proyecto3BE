@@ -61,7 +61,6 @@ Public Class Form2
     'Ci del usuario seleccionado actualmente
     Dim CiSeleccionado As String = ""
 
-
     'Cuando se cambia el item seleccionado en "DGVUsuarios"
     Private Sub DGVUsuarios_SelectionChanged(ByVal sender As Object, ByVal e As System.EventArgs) Handles DGVUsuarios.SelectionChanged
 
@@ -97,9 +96,11 @@ Public Class Form2
             LabelEstadoUsuarios.Text = reader.GetString(4)
 
             If Dir$("../../Res/profile/" + reader.GetString(5) + ".bmp") <> "" Then
-                PICUsuarios.Image = Image.FromFile("../../Res/profile/" + reader.GetString(5) + ".bmp")
+                'PICUsuarios.Image = Image.FromFile("../../Res/profile/" + reader.GetString(5) + ".bmp")
+                PICUsuarios.ImageLocation = ("../../Res/profile/" + reader.GetString(5) + ".bmp")
             Else
-                PICUsuarios.Image = Image.FromFile("../../Res/profile/default.bmp")
+                'PICUsuarios.Image = Image.FromFile("../../Res/profile/default.bmp")
+                PICUsuarios.ImageLocation = ("../../Res/profile/default.bmp")
             End If
 
             'Se guarda la ci del usuario seleccionado
@@ -128,7 +129,7 @@ Public Class Form2
                 comando.CommandType = CommandType.Text
                 comando.Connection = connection
                 'El usuario eliminado sera el seleccionado en "ListBoxUsuarios"
-                comando.CommandText = ("update usuario set estado='inactivo' where ci='" + "50362820" + "'")
+                comando.CommandText = ("update usuario set estado='inactivo' where ci='" + CiSeleccionado + "'")
 
                 'Se abre la conexion
                 connection.Open()
@@ -167,6 +168,13 @@ Public Class Form2
     'Boton 'Aceptar' de edicion de datos de tab "Usuarios"
     Private Sub BotonAceptarUsuarios_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles BTNAceptarUsuarios.Click
 
+        '/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+        Dim stringaux() As String
+        stringaux = PICUsuarios.ImageLocation.Split("/")
+        stringaux = stringaux(stringaux.Length - 1).Split(".")
+        '/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
         'Info necesaria para el comando
         comando.CommandType = CommandType.Text
         comando.Connection = connection
@@ -177,7 +185,7 @@ Public Class Form2
                                "', contrasena='" + TXTPasswdUsuarios.Text +
                                "', nombre='" + TXTNombreUsuarios.Text +
                                "', rango='" + TXTRangoUsuarios.Text +
-                               "', perfil='" + StringImagenUsuarios +
+                               "', perfil='" + stringaux(0) +
                                "' where ci='" + CiSeleccionado + "'")
                 Try
                     'Se abre la conexion
@@ -305,6 +313,7 @@ Public Class Form2
         TXTBusquedaUsuarios.ReadOnly = True
 
     End Sub
+
     Private Sub estadoAgregar()
 
         estadoModificar()
@@ -321,6 +330,7 @@ Public Class Form2
         CHBUsuariosInactivos.Checked = False
 
     End Sub
+
     Private Sub estadoVisualizar()
 
         estadoUsuario = "visualizar"
@@ -397,7 +407,8 @@ Public Class Form2
                     If ImagenUsuarios.Height <= 90 And ImagenUsuarios.Width <= 90 Then
                         aux = openFileDialog.FileName.Split("\")
                         aux = aux(aux.Length - 1).Split(".")
-                        StringImagenUsuarios = aux(0)
+                        PICUsuarios.ImageLocation = ("../../Res/profile/" + aux(0) + ".bmp")
+                        'StringImagenUsuarios = aux(0)
                     Else
                         openFileDialog.FileName = ""
                         MsgBox("La imagen seleccionda no debe superar 90 x 90")
