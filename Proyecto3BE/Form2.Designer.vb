@@ -24,8 +24,9 @@ Partial Class Form2
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(Form2))
-        Dim DataGridViewCellStyle2 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Me.PanelUsuario = New System.Windows.Forms.Panel()
+        Me.LBLCiUsuario = New System.Windows.Forms.Label()
         Me.BTNCerrarSesion = New System.Windows.Forms.Button()
         Me.PICUsuarioLogueado = New System.Windows.Forms.PictureBox()
         Me.LBLCambioContraseña = New System.Windows.Forms.Label()
@@ -201,6 +202,7 @@ Partial Class Form2
         '
         'PanelUsuario
         '
+        Me.PanelUsuario.Controls.Add(Me.LBLCiUsuario)
         Me.PanelUsuario.Controls.Add(Me.BTNCerrarSesion)
         Me.PanelUsuario.Controls.Add(Me.PICUsuarioLogueado)
         Me.PanelUsuario.Controls.Add(Me.LBLCambioContraseña)
@@ -212,9 +214,18 @@ Partial Class Form2
         Me.PanelUsuario.Size = New System.Drawing.Size(100, 472)
         Me.PanelUsuario.TabIndex = 0
         '
+        'LBLCiUsuario
+        '
+        Me.LBLCiUsuario.AutoSize = True
+        Me.LBLCiUsuario.Location = New System.Drawing.Point(1, 143)
+        Me.LBLCiUsuario.Name = "LBLCiUsuario"
+        Me.LBLCiUsuario.Size = New System.Drawing.Size(52, 13)
+        Me.LBLCiUsuario.TabIndex = 19
+        Me.LBLCiUsuario.Text = "CiUsuario"
+        '
         'BTNCerrarSesion
         '
-        Me.BTNCerrarSesion.Location = New System.Drawing.Point(12, 420)
+        Me.BTNCerrarSesion.Location = New System.Drawing.Point(12, 428)
         Me.BTNCerrarSesion.Name = "BTNCerrarSesion"
         Me.BTNCerrarSesion.Size = New System.Drawing.Size(75, 32)
         Me.BTNCerrarSesion.TabIndex = 18
@@ -223,9 +234,10 @@ Partial Class Form2
         '
         'PICUsuarioLogueado
         '
+        Me.PICUsuarioLogueado.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
         Me.PICUsuarioLogueado.Image = CType(resources.GetObject("PICUsuarioLogueado.Image"), System.Drawing.Image)
         Me.PICUsuarioLogueado.InitialImage = Nothing
-        Me.PICUsuarioLogueado.Location = New System.Drawing.Point(5, 5)
+        Me.PICUsuarioLogueado.Location = New System.Drawing.Point(7, 8)
         Me.PICUsuarioLogueado.Name = "PICUsuarioLogueado"
         Me.PICUsuarioLogueado.Size = New System.Drawing.Size(90, 90)
         Me.PICUsuarioLogueado.TabIndex = 14
@@ -246,18 +258,18 @@ Partial Class Form2
         Me.LBLNombreUsuario.AutoSize = True
         Me.LBLNombreUsuario.Location = New System.Drawing.Point(1, 117)
         Me.LBLNombreUsuario.Name = "LBLNombreUsuario"
-        Me.LBLNombreUsuario.Size = New System.Drawing.Size(43, 13)
+        Me.LBLNombreUsuario.Size = New System.Drawing.Size(80, 13)
         Me.LBLNombreUsuario.TabIndex = 15
-        Me.LBLNombreUsuario.Text = "Usuario"
+        Me.LBLNombreUsuario.Text = "NombreUsuario"
         '
         'LBLRangoUsuario
         '
         Me.LBLRangoUsuario.AutoSize = True
         Me.LBLRangoUsuario.Location = New System.Drawing.Point(1, 166)
         Me.LBLRangoUsuario.Name = "LBLRangoUsuario"
-        Me.LBLRangoUsuario.Size = New System.Drawing.Size(45, 13)
+        Me.LBLRangoUsuario.Size = New System.Drawing.Size(75, 13)
         Me.LBLRangoUsuario.TabIndex = 16
-        Me.LBLRangoUsuario.Text = "Label11"
+        Me.LBLRangoUsuario.Text = "RangoUsuario"
         '
         'TabbedPane
         '
@@ -1349,14 +1361,14 @@ Partial Class Form2
         Me.DGVUsuarios.ClipboardCopyMode = System.Windows.Forms.DataGridViewClipboardCopyMode.Disable
         Me.DGVUsuarios.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         Me.DGVUsuarios.ColumnHeadersVisible = False
-        DataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window
-        DataGridViewCellStyle2.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText
-        DataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.ButtonHighlight
-        DataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(192, Byte), Integer))
-        DataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
-        Me.DGVUsuarios.DefaultCellStyle = DataGridViewCellStyle2
+        DataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Window
+        DataGridViewCellStyle1.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.ControlText
+        DataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.ButtonHighlight
+        DataGridViewCellStyle1.SelectionForeColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(192, Byte), Integer))
+        DataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
+        Me.DGVUsuarios.DefaultCellStyle = DataGridViewCellStyle1
         Me.DGVUsuarios.GridColor = System.Drawing.SystemColors.ButtonHighlight
         Me.DGVUsuarios.Location = New System.Drawing.Point(6, 47)
         Me.DGVUsuarios.MultiSelect = False
@@ -1757,4 +1769,5 @@ Partial Class Form2
     Friend WithEvents Butagregarganado As System.Windows.Forms.Button
     Friend WithEvents DGVUsuarios As System.Windows.Forms.DataGridView
     Friend WithEvents CBXRangoUsuarios As System.Windows.Forms.ComboBox
+    Friend WithEvents LBLCiUsuario As System.Windows.Forms.Label
 End Class

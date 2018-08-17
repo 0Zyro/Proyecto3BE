@@ -12,8 +12,13 @@ Public Class Form1
 
     'Usuario que actualmente intenta loguearse
     Dim usuario As Integer = 0
-    'Contraseña del usuario que intenta loguearse actualmente
+
+    'Datos del usuario que intenta loguearse actualmente
+    Dim ci As String = ""
     Dim passwd As String = ""
+    Dim nombre As String = ""
+    Dim rango As String = ""
+    Dim imagen As String = ""
 
     'Control de estado del logueo
     Dim estado As Integer = 1
@@ -79,7 +84,7 @@ Public Class Form1
     Private Sub estado2()
 
         'Se le asigna a consulta los valores necesarios, texto del comando, conexion a utilizar y tipo de comando
-        consulta.CommandText = ("select contrasena from usuario where ci='" + Str(usuario) + "'")
+        consulta.CommandText = ("select ci, nombre, contrasena, perfil, rango from usuario where ci='" + Str(usuario) + "'")
         consulta.Connection = conexion
         consulta.CommandType = CommandType.Text
 
@@ -90,7 +95,11 @@ Public Class Form1
 
             'Se pasa la contraseña obtenida al la variable "passwd"
             reader.Read()
-            passwd = reader.GetString(0)
+            ci = reader.GetInt32(0).ToString
+            nombre = reader.GetString(1)
+            passwd = reader.GetString(2)
+            imagen = reader.GetString(3)
+            rango = reader.GetString(4)
 
             'Se cierra la conexion
             conexion.Close()
@@ -101,6 +110,7 @@ Public Class Form1
         'Si coincide la contraseña ingresada con la obtenida de la DB, se ingresa
         'sino se informa del error
         If TextBoxUser.Text = passwd Then
+            Form2.setUser(ci, nombre, passwd, rango, imagen)
             Form2.Show()
             Me.Close()
         Else

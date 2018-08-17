@@ -12,6 +12,9 @@ Public Class Form2
     Public Consulta As String
     Public MysqlConexion As MySqlConnection = New MySqlConnection(data)
 
+    Private PasswdUsuario As String
+    Private ImagenUsuario As String
+
     Public Sub consultar()
         Try
             Conexion = New MySqlDataAdapter(Consulta, data)
@@ -31,6 +34,16 @@ Public Class Form2
     Dim connection As New MySqlConnection(data)
     Dim comando As New MySqlCommand
     Dim reader As MySqlDataReader
+
+    Public Sub setUser(ByVal ci As String, ByVal nombre As String, ByVal passwd As String, ByVal rango As String, ByVal imagen As String)
+        LBLCiUsuario.Text = ci
+        LBLNombreUsuario.Text = nombre
+        LBLRangoUsuario.Text = rango
+        'ImagenUsuario = imagen
+        PasswdUsuario = passwd
+
+        PICUsuarioLogueado.ImageLocation = ("../../Res/profile/" + imagen + ".bmp")
+    End Sub
 
     'Boton de busqueda de usuarios
     Private Sub BotonBusquedaUsuarios_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles BTNBusquedaUsuarios.Click
@@ -895,22 +908,22 @@ Public Class Form2
 
 
 
-            Try
+        Try
 
-                'consulta
-                Consulta = "insert into venta (fechaventa,comentariov,totalv,id) values('" & fecha & "','" & comentario & "','" & totalv & "','" & id & "');"
-                consultar()
-                'select hacia venta
-                Consulta = "select * from venta"
-                consultar()
-                'actualiza la dgvw
-                DataGridViewVENTAS.DataSource = Tabla
-                MsgBox("se agregó con exito")
-            Catch ex As Exception
-                MsgBox("Verifique la cédula del cliente")
+            'consulta
+            Consulta = "insert into venta (fechaventa,comentariov,totalv,id) values('" & fecha & "','" & comentario & "','" & totalv & "','" & id & "');"
+            consultar()
+            'select hacia venta
+            Consulta = "select * from venta"
+            consultar()
+            'actualiza la dgvw
+            DataGridViewVENTAS.DataSource = Tabla
+            MsgBox("se agregó con exito")
+        Catch ex As Exception
+            MsgBox("Verifique la cédula del cliente")
 
 
-            End Try
+        End Try
 
     End Sub
     'BORRAR EN VENTA//////////////////////////////////////////
