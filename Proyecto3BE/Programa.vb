@@ -3,7 +3,7 @@ Imports System.Data.OleDb
 Imports MySql.Data.MySqlClient
 Imports System.IO
 
-Public Class Form2
+Public Class Programa
     Dim data As String = ("Server=localhost;Database=vacas;User id=root;Password=;Port=3306;")
     'Dim data As String = ("Server=www.db4free.net;Database=database_vacas;User id=zero22394;Password=zero22394;Port=3306;")
 

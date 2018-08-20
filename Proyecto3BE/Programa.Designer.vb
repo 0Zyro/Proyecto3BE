@@ -1,5 +1,5 @@
 ﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()> _
-Partial Class Form2
+Partial Class Programa
     Inherits System.Windows.Forms.Form
 
     'Form overrides dispose to clean up the component list.
@@ -23,7 +23,7 @@ Partial Class Form2
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
-        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(Form2))
+        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(Programa))
         Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Me.PanelUsuario = New System.Windows.Forms.Panel()
         Me.LBLCiUsuario = New System.Windows.Forms.Label()
@@ -211,7 +211,7 @@ Partial Class Form2
         Me.PanelUsuario.Dock = System.Windows.Forms.DockStyle.Left
         Me.PanelUsuario.Location = New System.Drawing.Point(0, 0)
         Me.PanelUsuario.Name = "PanelUsuario"
-        Me.PanelUsuario.Size = New System.Drawing.Size(100, 472)
+        Me.PanelUsuario.Size = New System.Drawing.Size(100, 471)
         Me.PanelUsuario.TabIndex = 0
         '
         'LBLCiUsuario
@@ -468,7 +468,7 @@ Partial Class Form2
         '
         'ventasasdsadsa
         '
-        Me.ventasasdsadsa.BackColor = System.Drawing.Color.Transparent
+        Me.ventasasdsadsa.BackColor = System.Drawing.Color.SeaGreen
         Me.ventasasdsadsa.Controls.Add(Me.Button4)
         Me.ventasasdsadsa.Controls.Add(Me.Buttonborrarventas)
         Me.ventasasdsadsa.Controls.Add(Me.agregarventa)
@@ -496,7 +496,7 @@ Partial Class Form2
         Me.Button4.BackColor = System.Drawing.Color.ForestGreen
         Me.Button4.Cursor = System.Windows.Forms.Cursors.Hand
         Me.Button4.Image = CType(resources.GetObject("Button4.Image"), System.Drawing.Image)
-        Me.Button4.Location = New System.Drawing.Point(372, 392)
+        Me.Button4.Location = New System.Drawing.Point(403, 318)
         Me.Button4.Name = "Button4"
         Me.Button4.Size = New System.Drawing.Size(45, 42)
         Me.Button4.TabIndex = 80
@@ -508,7 +508,7 @@ Partial Class Form2
         Me.Buttonborrarventas.BackColor = System.Drawing.Color.ForestGreen
         Me.Buttonborrarventas.Cursor = System.Windows.Forms.Cursors.Hand
         Me.Buttonborrarventas.Image = CType(resources.GetObject("Buttonborrarventas.Image"), System.Drawing.Image)
-        Me.Buttonborrarventas.Location = New System.Drawing.Point(307, 392)
+        Me.Buttonborrarventas.Location = New System.Drawing.Point(338, 318)
         Me.Buttonborrarventas.Name = "Buttonborrarventas"
         Me.Buttonborrarventas.Size = New System.Drawing.Size(44, 42)
         Me.Buttonborrarventas.TabIndex = 85
@@ -520,7 +520,7 @@ Partial Class Form2
         Me.agregarventa.BackColor = System.Drawing.Color.ForestGreen
         Me.agregarventa.Cursor = System.Windows.Forms.Cursors.Hand
         Me.agregarventa.Image = CType(resources.GetObject("agregarventa.Image"), System.Drawing.Image)
-        Me.agregarventa.Location = New System.Drawing.Point(238, 392)
+        Me.agregarventa.Location = New System.Drawing.Point(269, 318)
         Me.agregarventa.Name = "agregarventa"
         Me.agregarventa.Size = New System.Drawing.Size(46, 42)
         Me.agregarventa.TabIndex = 79
@@ -531,7 +531,7 @@ Partial Class Form2
         Me.labelidv.AllowDrop = True
         Me.labelidv.AutoSize = True
         Me.labelidv.Font = New System.Drawing.Font("Microsoft Sans Serif", 15.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.labelidv.Location = New System.Drawing.Point(452, 182)
+        Me.labelidv.Location = New System.Drawing.Point(464, 158)
         Me.labelidv.Name = "labelidv"
         Me.labelidv.Size = New System.Drawing.Size(49, 25)
         Me.labelidv.TabIndex = 92
@@ -543,7 +543,7 @@ Partial Class Form2
         Me.btnclearventa.BackColor = System.Drawing.Color.ForestGreen
         Me.btnclearventa.Cursor = System.Windows.Forms.Cursors.Hand
         Me.btnclearventa.Image = CType(resources.GetObject("btnclearventa.Image"), System.Drawing.Image)
-        Me.btnclearventa.Location = New System.Drawing.Point(477, 294)
+        Me.btnclearventa.Location = New System.Drawing.Point(489, 270)
         Me.btnclearventa.Name = "btnclearventa"
         Me.btnclearventa.Size = New System.Drawing.Size(39, 37)
         Me.btnclearventa.TabIndex = 91
@@ -552,7 +552,7 @@ Partial Class Form2
         'DataGridViewVENTAS
         '
         Me.DataGridViewVENTAS.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.DataGridViewVENTAS.Location = New System.Drawing.Point(6, 7)
+        Me.DataGridViewVENTAS.Location = New System.Drawing.Point(93, 7)
         Me.DataGridViewVENTAS.Name = "DataGridViewVENTAS"
         Me.DataGridViewVENTAS.ReadOnly = True
         Me.DataGridViewVENTAS.RowHeadersVisible = False
@@ -563,7 +563,7 @@ Partial Class Form2
         '
         'DateTimePicker1
         '
-        Me.DateTimePicker1.Location = New System.Drawing.Point(316, 224)
+        Me.DateTimePicker1.Location = New System.Drawing.Point(328, 200)
         Me.DateTimePicker1.Name = "DateTimePicker1"
         Me.DateTimePicker1.Size = New System.Drawing.Size(200, 20)
         Me.DateTimePicker1.TabIndex = 89
@@ -574,15 +574,15 @@ Partial Class Form2
         Me.labeldeventa.AutoSize = True
         Me.labeldeventa.Font = New System.Drawing.Font("Microsoft Sans Serif", 15.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.labeldeventa.ForeColor = System.Drawing.SystemColors.ControlText
-        Me.labeldeventa.Location = New System.Drawing.Point(107, 182)
+        Me.labeldeventa.Location = New System.Drawing.Point(79, 160)
         Me.labeldeventa.Name = "labeldeventa"
-        Me.labeldeventa.Size = New System.Drawing.Size(203, 25)
+        Me.labeldeventa.Size = New System.Drawing.Size(243, 25)
         Me.labeldeventa.TabIndex = 87
-        Me.labeldeventa.Text = "Cédula de cliente "
+        Me.labeldeventa.Text = "CÉDULA DE CLIENTE"
         '
         'txbcedulaclienteventa
         '
-        Me.txbcedulaclienteventa.Location = New System.Drawing.Point(316, 187)
+        Me.txbcedulaclienteventa.Location = New System.Drawing.Point(328, 163)
         Me.txbcedulaclienteventa.Name = "txbcedulaclienteventa"
         Me.txbcedulaclienteventa.Size = New System.Drawing.Size(128, 20)
         Me.txbcedulaclienteventa.TabIndex = 86
@@ -591,7 +591,7 @@ Partial Class Form2
         '
         Me.Label7.AutoSize = True
         Me.Label7.Font = New System.Drawing.Font("Microsoft Sans Serif", 15.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label7.Location = New System.Drawing.Point(147, 262)
+        Me.Label7.Location = New System.Drawing.Point(159, 238)
         Me.Label7.Name = "Label7"
         Me.Label7.Size = New System.Drawing.Size(163, 25)
         Me.Label7.TabIndex = 78
@@ -601,7 +601,7 @@ Partial Class Form2
         '
         Me.Label8.AutoSize = True
         Me.Label8.Font = New System.Drawing.Font("Microsoft Sans Serif", 15.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label8.Location = New System.Drawing.Point(119, 297)
+        Me.Label8.Location = New System.Drawing.Point(131, 273)
         Me.Label8.Name = "Label8"
         Me.Label8.Size = New System.Drawing.Size(191, 25)
         Me.Label8.TabIndex = 77
@@ -611,7 +611,7 @@ Partial Class Form2
         '
         Me.Label9.AutoSize = True
         Me.Label9.Font = New System.Drawing.Font("Microsoft Sans Serif", 15.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label9.Location = New System.Drawing.Point(222, 224)
+        Me.Label9.Location = New System.Drawing.Point(234, 200)
         Me.Label9.Name = "Label9"
         Me.Label9.Size = New System.Drawing.Size(88, 25)
         Me.Label9.TabIndex = 76
@@ -619,14 +619,14 @@ Partial Class Form2
         '
         'txbtotalventa
         '
-        Me.txbtotalventa.Location = New System.Drawing.Point(316, 297)
+        Me.txbtotalventa.Location = New System.Drawing.Point(328, 273)
         Me.txbtotalventa.Name = "txbtotalventa"
         Me.txbtotalventa.Size = New System.Drawing.Size(128, 20)
         Me.txbtotalventa.TabIndex = 75
         '
         'txbcomentarioventa
         '
-        Me.txbcomentarioventa.Location = New System.Drawing.Point(316, 262)
+        Me.txbcomentarioventa.Location = New System.Drawing.Point(328, 238)
         Me.txbcomentarioventa.Name = "txbcomentarioventa"
         Me.txbcomentarioventa.Size = New System.Drawing.Size(200, 20)
         Me.txbcomentarioventa.TabIndex = 74
@@ -737,7 +737,7 @@ Partial Class Form2
         Me.Label16.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label16.Location = New System.Drawing.Point(522, 287)
         Me.Label16.Name = "Label16"
-        Me.Label16.Size = New System.Drawing.Size(81, 13)
+        Me.Label16.Size = New System.Drawing.Size(80, 13)
         Me.Label16.TabIndex = 4
         Me.Label16.Text = "Total Pagado"
         '
@@ -899,7 +899,7 @@ Partial Class Form2
         Me.Label13.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label13.Location = New System.Drawing.Point(303, 248)
         Me.Label13.Name = "Label13"
-        Me.Label13.Size = New System.Drawing.Size(81, 13)
+        Me.Label13.Size = New System.Drawing.Size(80, 13)
         Me.Label13.TabIndex = 5
         Me.Label13.Text = "Total Pagado"
         '
@@ -1571,17 +1571,17 @@ Partial Class Form2
         Me.CBXBusquedaUsuarios.Size = New System.Drawing.Size(89, 21)
         Me.CBXBusquedaUsuarios.TabIndex = 0
         '
-        'Form2
+        'Programa
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(794, 472)
+        Me.ClientSize = New System.Drawing.Size(794, 471)
         Me.Controls.Add(Me.TabbedPane)
         Me.Controls.Add(Me.PanelUsuario)
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle
         Me.MaximumSize = New System.Drawing.Size(800, 500)
         Me.MinimumSize = New System.Drawing.Size(800, 500)
-        Me.Name = "Form2"
+        Me.Name = "Programa"
         Me.ShowIcon = False
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent
         Me.PanelUsuario.ResumeLayout(False)

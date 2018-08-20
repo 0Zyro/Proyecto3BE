@@ -1,6 +1,6 @@
 ﻿Imports MySql.Data.MySqlClient
 
-Public Class Form1
+Public Class Login
     'Objetos necesarios para realizar la conexion a la DB
     Dim data As String = ("Server=localhost;Database=vacas;User id=root;Password=;Port=3306;")
     Dim conexion As New MySqlConnection(data)
@@ -110,8 +110,8 @@ Public Class Form1
         'Si coincide la contraseña ingresada con la obtenida de la DB, se ingresa
         'sino se informa del error
         If TextBoxUser.Text = passwd Then
-            Form2.setUser(ci, nombre, passwd, rango, imagen)
-            Form2.Show()
+            Programa.setUser(ci, nombre, passwd, rango, imagen)
+            Programa.Show()
             Me.Close()
         Else
             TextBoxUser.Text = ""
