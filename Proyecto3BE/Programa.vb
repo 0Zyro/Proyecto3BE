@@ -225,9 +225,6 @@ Public Class Programa
                         If verificarPasswd() Then
                             comando.CommandText = ("insert into usuario values ('" + TXTCiUsuarios.Text + "','" + TXTNombreUsuarios.Text + "','" + TXTPasswdUsuarios.Text + "','" + TXTRangoUsuarios.Text + "','activo','" + StringImagenUsuarios + "')")
                             Try
-                                If connection.State Then
-                                    MsgBox("asds")
-                                End If
                                 connection.Open()
                                 comando.ExecuteNonQuery()
                                 connection.Close()
@@ -291,9 +288,8 @@ Public Class Programa
 
         If Char.GetNumericValue(arrayCedula(7)) = auxFin Then
             Return True
-        Else
-            Return False
         End If
+        Return False
     End Function
 
     Dim estadoUsuario As String = "visualizar"
@@ -730,8 +726,8 @@ Public Class Programa
     End Sub
     Private Sub Agregarcliente_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Agregarcliente.Click
         If Texcedula.Text <> "" And Texnombreapellido.Text <> "" And Texdireccion.Text <> "" And Texttelefono.Text <> "" Then
+            If verificarCedula(Texcedula.Text) Then
 
-            If IsNumeric(Texcedula.Text) Then
                 Consulta = "INSERT INTO cliente values('" & Texcedula.Text & "','" & Texnombreapellido.Text & "','" & Texdireccion.Text & "','" & Texttelefono.Text & "' )"
                 consultar()
                 Consulta = "select * from cliente"
@@ -743,8 +739,7 @@ Public Class Programa
                 Texttelefono.Text = ""
                 MsgBox("Registro exitoso")
             Else
-                MsgBox("Cedula solo valores numericos")
-
+                MsgBox("Cedula erronea")
             End If
         Else
             MsgBox("Complete todos los campos vacios")
@@ -851,21 +846,24 @@ Public Class Programa
 
     Private Sub Agregarmodificacioncliente_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Agregarmodificacioncliente.Click
         'dsfvsdddsadasdsad
-        Consulta = "update cliente set id='" + Cedulamodificarcliente.Text + "', nombre='" + Nombreyapellidomodificarcliente.Text + "', direccion='" + Direccionmodificarcliente.Text + "', telefono='" + Telefonomodificarcliente.Text + "' where id='" + Cedulamodificarcliente.Text + "'"
-        consultar()
-        Consulta = "select * from cliente"
-        consultar()
-        Cedulamodificarcliente.Text = ""
-        Nombreyapellidomodificarcliente.Text = ""
-        Direccionmodificarcliente.Text = ""
-        Cedulamodificarcliente.Text = ""
-        'DataGridViewModificarclientes.DataSource = Tabla
-        'DataGridViewModificarclientes.Columns(0).HeaderText = "Cédula"
-        'DataGridViewModificarclientes.Columns(1).HeaderText = "Nombre y apellido"
-        'DataGridViewModificarclientes.Columns(2).HeaderText = "Dirección"
-        'DataGridViewModificarclientes.Columns(3).HeaderText = "Teléfono"
-
-        MsgBox("Editado con exito")
+        If verificarCedula(Cedulamodificarcliente.Text) Then
+            Consulta = "update cliente set id='" + Cedulamodificarcliente.Text + "', nombre='" + Nombreyapellidomodificarcliente.Text + "', direccion='" + Direccionmodificarcliente.Text + "', telefono='" + Telefonomodificarcliente.Text + "' where id='" + Cedulamodificarcliente.Text + "'"
+            consultar()
+            Consulta = "select * from cliente"
+            consultar()
+            Cedulamodificarcliente.Text = ""
+            Nombreyapellidomodificarcliente.Text = ""
+            Direccionmodificarcliente.Text = ""
+            Cedulamodificarcliente.Text = ""
+            DataGridViewModificarclientes.DataSource = Tabla
+            'DataGridViewModificarclientes.Columns(0).HeaderText = "Cédula"
+            'DataGridViewModificarclientes.Columns(1).HeaderText = "Nombre y apellido"
+            'DataGridViewModificarclientes.Columns(2).HeaderText = "Dirección"
+            'DataGridViewModificarclientes.Columns(3).HeaderText = "Teléfono"
+            MsgBox("Editado con exito")
+        Else
+            MsgBox("Cédula errónea")
+        End If
     End Sub
     '/////NO BORRARasdkjbasdbashjsshjssddsdssdkejejerkjer
 
@@ -1005,19 +1003,18 @@ Public Class Programa
         '    paneldebotones.Height = 83
         'End If
     End Sub
+    Private Sub DataGridViewVENTAS_SelectionChanged(ByVal sender As Object, ByVal e As System.EventArgs) Handles DataGridViewVENTAS.SelectionChanged
 
-    Private Sub DataGridViewVENTAS_CellContentClick(ByVal sender As System.Object, ByVal e As System.Windows.Forms.DataGridViewCellEventArgs) Handles DataGridViewVENTAS.CellContentClick
+        txbcedulaclienteventa.Clear()
+        txbcomentarioventa.Clear()
+        txbtotalventa.Clear()
 
-        'txbcedulaclienteventa.Clear()
-        'txbcomentarioventa.Clear()
-        'txbtotalventa.Clear()
-
-
-        txbcedulaclienteventa.Text = DataGridViewVENTAS.Item(4, DataGridViewVENTAS.CurrentRow.Index).Value
 
         txbcomentarioventa.Text = DataGridViewVENTAS.Item(2, DataGridViewVENTAS.CurrentRow.Index).Value
         txbtotalventa.Text = DataGridViewVENTAS.Item(3, DataGridViewVENTAS.CurrentRow.Index).Value
+
     End Sub
+
 
     Private Sub PictureBox1_Click(ByVal sender As System.Object, ByVal e As System.EventArgs)
 
@@ -1035,16 +1032,13 @@ Public Class Programa
         Try
 
 
-            Try
 
 
 
-                Consulta = "INSERT INTO ganado (idg,sexo,raza,nacimiento,estado) values('" & CodG & "','" & sexo & "','" & raza & "','" & fechaN & "','" & estadoG & "' )"
-                consultar()
 
-            Catch ex As Exception
-                MsgBox(ex)
-            End Try
+            Consulta = "INSERT INTO ganado (idg,sexo,raza,nacimiento,estado) values('" & CodG & "','" & sexo & "','" & raza & "','" & fechaN & "','" & estadoG & "' )"
+            consultar()
+           
 
             Consulta = " select * from ganado"
             consultar()
@@ -1062,14 +1056,17 @@ Public Class Programa
         Panelagregarganando.Visible = False
     End Sub
 
-    Private Sub DataGridViewganado_CellContentClick(ByVal sender As System.Object, ByVal e As System.Windows.Forms.DataGridViewCellEventArgs) Handles DataGridViewganado.CellContentClick
+    Private Sub DataGridViewganado_CellContentClick(ByVal sender As System.Object, ByVal e As System.Windows.Forms.DataGridViewCellEventArgs)
         TexSelecCodigoG.Clear()
 
         TexSelecCodigoG.Text = DataGridViewganado.Item(0, DataGridViewganado.CurrentRow.Index).Value
+
+        'Label6.Text = DataGridViewganado.Item(3, DataGridViewganado.CurrentRow.Index).Value
     End Sub
 
 
- 
+
+   
 
     'MODIFICAR VENTAS 
     Private Sub Button4_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Button4.Click
@@ -1087,7 +1084,7 @@ Public Class Programa
 
 
             Try
-                Consulta = "update venta set idv ='" + txbcedulaclienteventa.Text + "', fechaventa='" + fecha + "', comentariov='" + txbcomentarioventa.Text + "', totalv='" + txbtotalventa.Text + "' where idv='" + txbcedulaclienteventa.Text + "'"
+                Consulta = ("update venta set idv='" + txbcedulaclienteventa.Text + "', fechaventa='" + fecha + "', comentariov='" + txbcomentarioventa.Text + "', totalv='" + txbtotalventa.Text + "' where idv='" + txbcedulaclienteventa.Text + "'")
                 consultar()
                 Consulta = "select * from venta"
                 consultar()
@@ -1148,4 +1145,5 @@ Public Class Programa
         labeldeventa.Visible = False
         txbcedulaclienteventa.Visible = False
     End Sub
+
 End Class
