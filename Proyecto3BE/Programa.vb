@@ -4,6 +4,10 @@ Imports MySql.Data.MySqlClient
 Imports System.IO
 
 Public Class Programa
+
+
+
+
     Dim data As String = ("Server=localhost;Database=vacas;User id=root;Password=;Port=3306;")
     'Dim data As String = ("Server=www.db4free.net;Database=database_vacas;User id=zero22394;Password=zero22394;Port=3306;")
 
@@ -460,6 +464,13 @@ Public Class Programa
 
 
     Private Sub Form2_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
+
+
+        'timer en ganado
+        TexSelecCodigoG.Visible = False
+        Label6deborrarganado.Visible = False
+
+
 
         '/////// CONSULTA VENTA
         Consulta = "select * from venta"
@@ -964,6 +975,8 @@ Public Class Programa
         labeldeventa.Visible = True
         txbcedulaclienteventa.Visible = True
         labelidv.Visible = False
+        Timerventaseliminaryagregar.Enabled = True
+        Timerventaseliminaryagregar.Interval = 10000
     End Sub
 
     Private Sub btnclearventa_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnclearventa.Click
@@ -1019,14 +1032,28 @@ Public Class Programa
         Dim fechaN As String = DateTimePickerGanado.Value.ToString("yyyy-MM-dd")
         Dim estadoG As String = Texestadoganado.Text
 
+        Try
 
-        Consulta = "INSERT INTO ganado values('" & CodG & "','" & sexo & "','" & raza & "','" & fechaN & "','" & estadoG & "' )"
-        consultar()
 
-        Consulta = " select * from ganado"
-        consultar()
+            Try
 
-        DataGridViewganado.DataSource = Tabla
+
+
+                Consulta = "INSERT INTO ganado (idg,sexo,raza,nacimiento,estado) values('" & CodG & "','" & sexo & "','" & raza & "','" & fechaN & "','" & estadoG & "' )"
+                consultar()
+
+            Catch ex As Exception
+                MsgBox(ex)
+            End Try
+
+            Consulta = " select * from ganado"
+            consultar()
+
+            DataGridViewganado.DataSource = Tabla
+
+        Catch ex As Exception
+            MsgBox(ex)
+        End Try
     End Sub
 
 
@@ -1041,21 +1068,9 @@ Public Class Programa
         TexSelecCodigoG.Text = DataGridViewganado.Item(0, DataGridViewganado.CurrentRow.Index).Value
     End Sub
 
-    Private Sub Button5_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Button5.Click
 
-        Consulta = " delete from ganado where idg='" & TexSelecCodigoG.Text & "'"
-        consultar()
+ 
 
-        Consulta = " select * from ganado"
-        consultar()
-        DataGridViewganado.DataSource = Tabla
-        TexSelecCodigoG.Text = ""
-
-    End Sub
-
-    Private Sub Butagregarganado_Click_1(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Butagregarganado.Click
-        Panelagregarganando.Visible = True
-    End Sub
     'MODIFICAR VENTAS 
     Private Sub Button4_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Button4.Click
         Dim fecha As String = DateTimePicker1.Value.ToString("yyyy-MM-dd")
@@ -1091,5 +1106,46 @@ Public Class Programa
         labeldeventa.Visible = False
         labelidv.Visible = True
         txbcedulaclienteventa.Visible = True
+    End Sub
+
+    Private Sub btnagregarganado_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnagregarganado.Click
+        Panelagregarganando.Visible = True
+    End Sub
+
+    Private Sub Button6_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btneliminarganado.Click
+
+        Consulta = " delete from ganado where idg='" & TexSelecCodigoG.Text & "'"
+        consultar()
+
+        Consulta = " select * from ganado"
+        consultar()
+        DataGridViewganado.DataSource = Tabla
+        TexSelecCodigoG.Text = ""
+
+    End Sub
+
+    Private Sub btneliminarganado_MouseMove(ByVal sender As Object, ByVal e As System.Windows.Forms.MouseEventArgs) Handles btneliminarganado.MouseMove
+        Dim timer As Integer
+        Label6deborrarganado.Visible = True
+        TexSelecCodigoG.Visible = True
+        timer = 0
+        Timerganadoeliminar.Enabled = True
+        Timerganadoeliminar.Interval = 10000
+    End Sub
+
+
+
+
+
+
+    Private Sub Timer1_Tick_1(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Timerganadoeliminar.Tick
+        Label6deborrarganado.Visible = False
+        TexSelecCodigoG.Visible = False
+    End Sub
+
+    Private Sub Timerventaseliminaryagregar_Tick(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Timerventaseliminaryagregar.Tick
+        labelidv.Visible = False
+        labeldeventa.Visible = False
+        txbcedulaclienteventa.Visible = False
     End Sub
 End Class

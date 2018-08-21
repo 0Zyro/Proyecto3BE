@@ -65,8 +65,6 @@ C:\Users\Usuario\Downloads\Proyecto3BE-dfc8320baddd20532ec7d78daf460ec7837c179d\
 C:\Users\Usuario\Downloads\Proyecto3BE-dfc8320baddd20532ec7d78daf460ec7837c179d\Proyecto3BE\obj\x86\Debug\WindowsApplication1.Resources.resources
 C:\Users\Usuario\Downloads\Proyecto3BE-dfc8320baddd20532ec7d78daf460ec7837c179d\Proyecto3BE\obj\x86\Debug\Proyecto3BE.vbproj.GenerateResource.Cache
 C:\Users\juanp\Documents\GitHub\Proyecto3BE\Proyecto3BE\obj\x86\Debug\Proyecto3BE.vbprojResolveAssemblyReference.cache
-C:\Users\juanp\Documents\GitHub\Proyecto3BE\Proyecto3BE\obj\x86\Debug\WindowsApplication1.Form1.resources
-C:\Users\juanp\Documents\GitHub\Proyecto3BE\Proyecto3BE\obj\x86\Debug\WindowsApplication1.Form2.resources
 C:\Users\juanp\Documents\GitHub\Proyecto3BE\Proyecto3BE\obj\x86\Debug\WindowsApplication1.Resources.resources
 C:\Users\juanp\Documents\GitHub\Proyecto3BE\Proyecto3BE\obj\x86\Debug\Proyecto3BE.vbproj.GenerateResource.Cache
 C:\Users\juanp\Documents\GitHub\Proyecto3BE\Proyecto3BE\bin\Debug\Proyecto3BE.exe
@@ -84,3 +82,5 @@ C:\Users\Alumno-09\Downloads\Proyecto3BE-master\Proyecto3BE-master\Proyecto3BE\o
 C:\Users\Alumno-09\Downloads\Proyecto3BE-master\Proyecto3BE-master\Proyecto3BE\obj\x86\Debug\WindowsApplication1.Form2.resources
 C:\Users\Alumno-09\Downloads\Proyecto3BE-master\Proyecto3BE-master\Proyecto3BE\obj\x86\Debug\WindowsApplication1.Resources.resources
 C:\Users\Alumno-09\Downloads\Proyecto3BE-master\Proyecto3BE-master\Proyecto3BE\obj\x86\Debug\Proyecto3BE.vbproj.GenerateResource.Cache
+C:\Users\juanp\Documents\GitHub\Proyecto3BE\Proyecto3BE\obj\x86\Debug\WindowsApplication1.Login.resources
+C:\Users\juanp\Documents\GitHub\Proyecto3BE\Proyecto3BE\obj\x86\Debug\WindowsApplication1.Programa.resources

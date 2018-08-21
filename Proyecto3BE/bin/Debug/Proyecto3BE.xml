@@ -6,7 +6,7 @@ Proyecto3BE
 </name>
 </assembly>
 <members>
-<member name="M:WindowsApplication1.Form2.Button2_Click(System.Object,System.EventArgs)">
+<member name="M:WindowsApplication1.Programa.Button2_Click(System.Object,System.EventArgs)">
 //////////////TABLA GANADO(CODIGO PARA INGRESAR DATOS)
 
 </member><member name="P:WindowsApplication1.My.Resources.Resources.ResourceManager">
