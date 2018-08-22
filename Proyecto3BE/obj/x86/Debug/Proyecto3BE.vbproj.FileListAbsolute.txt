@@ -45,8 +45,6 @@ C:\Users\MacPay\Documents\GitHub\Proyecto3BE\Proyecto3BE\bin\Debug\Proyecto3BE.p
 C:\Users\MacPay\Documents\GitHub\Proyecto3BE\Proyecto3BE\bin\Debug\Proyecto3BE.xml
 C:\Users\MacPay\Documents\GitHub\Proyecto3BE\Proyecto3BE\bin\Debug\MySql.Data.dll
 C:\Users\MacPay\Documents\GitHub\Proyecto3BE\Proyecto3BE\obj\x86\Debug\Proyecto3BE.vbprojResolveAssemblyReference.cache
-C:\Users\MacPay\Documents\GitHub\Proyecto3BE\Proyecto3BE\obj\x86\Debug\WindowsApplication1.Form1.resources
-C:\Users\MacPay\Documents\GitHub\Proyecto3BE\Proyecto3BE\obj\x86\Debug\WindowsApplication1.Form2.resources
 C:\Users\MacPay\Documents\GitHub\Proyecto3BE\Proyecto3BE\obj\x86\Debug\WindowsApplication1.Resources.resources
 C:\Users\MacPay\Documents\GitHub\Proyecto3BE\Proyecto3BE\obj\x86\Debug\Proyecto3BE.vbproj.GenerateResource.Cache
 C:\Users\Usuario\Downloads\Proyecto3BE-4b94f924e32da92a306aabf96eb49794cb5e0594\Proyecto3BE\obj\x86\Debug\Proyecto3BE.exe
@@ -96,3 +94,5 @@ E:\Documents\Proyecto3BE\Proyecto3BE\Proyecto3BE\obj\x86\Debug\WindowsApplicatio
 E:\Documents\Proyecto3BE\Proyecto3BE\Proyecto3BE\obj\x86\Debug\WindowsApplication1.Programa.resources
 E:\Documents\Proyecto3BE\Proyecto3BE\Proyecto3BE\obj\x86\Debug\WindowsApplication1.Resources.resources
 E:\Documents\Proyecto3BE\Proyecto3BE\Proyecto3BE\obj\x86\Debug\Proyecto3BE.vbproj.GenerateResource.Cache
+C:\Users\MacPay\Documents\GitHub\Proyecto3BE\Proyecto3BE\obj\x86\Debug\WindowsApplication1.Login.resources
+C:\Users\MacPay\Documents\GitHub\Proyecto3BE\Proyecto3BE\obj\x86\Debug\WindowsApplication1.Programa.resources

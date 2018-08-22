@@ -445,20 +445,6 @@ Public Class Programa
     Private Sub TabClientes_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles TabClientes.Click
 
     End Sub
-
-
-
-
-
-    '/////VENTAS/////
-    'boton agregar
-
-
-
-
-
-
-
     Private Sub Form2_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
 
 
@@ -504,11 +490,11 @@ Public Class Programa
         'CONSULTA DE TABLA(CARGA COMPRA)
         Consulta = "select * from compra"
         consultar()
-        DataGridViewCompras.DataSource = Tabla
-        DataGridViewCompras.Columns(0).HeaderText = "Id"
-        DataGridViewCompras.Columns(1).HeaderText = "Fecha de Compra"
-        DataGridViewCompras.Columns(2).HeaderText = "Comentario"
-        DataGridViewCompras.Columns(3).HeaderText = "Total"
+        DTGCompras.DataSource = Tabla
+        DTGCompras.Columns(0).HeaderText = "Id"
+        DTGCompras.Columns(1).HeaderText = "Fecha de Compra"
+        DTGCompras.Columns(2).HeaderText = "Comentario"
+        DTGCompras.Columns(3).HeaderText = "Total"
 
         'Nose que es esto
         CBXBusquedaUsuarios.SelectedIndex = 0
@@ -541,23 +527,7 @@ Public Class Programa
         DataGridViewganado.Columns(8).Visible = False
 
     End Sub
-
-    '///////////////////////////////////////////////////////////Datagried Compras///////////////////////////////////
-    Private Sub DataGridViewCompras_CellContentClick(ByVal sender As System.Object, ByVal e As System.Windows.Forms.DataGridViewCellEventArgs) Handles DataGridViewCompras.CellContentClick
-        DataGridViewCompras.Rows(e.RowIndex).Selected = True
-        'Hace la consulta de los datos a la BD
-        'Consulta = "select * from compra"
-        'consultar()
-        'DataGridViewCompras.DataSource = Tabla
-        'consultar()
-        ''Cambia los titulos del datagrid
-        'DataGridViewCompras.Columns(0).HeaderText = "Id"
-        'DataGridViewCompras.Columns(1).HeaderText = "Fecha de Compra"
-        'DataGridViewCompras.Columns(2).HeaderText = "Comentario"
-        'DataGridViewCompras.Columns(3).HeaderText = "Total"
-    End Sub
-    '//////////////Boton volver de agregar compras////////////
-    Private Sub Volveragregarcompras_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Volveragregarcompras.Click
+    Private Sub BTNVolverdeagregarcompra_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles BTNVolverdeagregarcompra.Click
         'Muestra panel pricipal de compras
         Panelprincipalcompras.Enabled = True
         Panelprincipalcompras.Visible = True
@@ -568,10 +538,9 @@ Public Class Programa
         Panelagregarcompras.SendToBack()
         Panelagregarcompras.Visible = False
         Panelagregarcompras.Enabled = False
-
     End Sub
     '/////////////////////////Boton de agregar compras////////////
-    Private Sub Agregarcompra1_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Agregarcompra1.Click
+    Private Sub BTNpanelmodicompras_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles BTNpanelagregarcompras.Click
         'Muestra el panel de agregar compras
         Panelagregarcompras.BringToFront()
         Panelagregarcompras.Visible = True
@@ -582,50 +551,20 @@ Public Class Programa
         Panelprincipalcompras.Enabled = False
         Panelprincipalcompras.Visible = False
     End Sub
-    '////////////Boton volver modificar compras///////////////
-    Private Sub Volvermodificarcompra_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Volvermodificarcompra.Click
-        'Oculta el panel de modificar compra
-        Panelmodificarcompras.Enabled = False
-        Panelmodificarcompras.Visible = False
-        Panelmodificarcompras.SendToBack()
-
-        'Muestra el panel principal de compra
-        Panelprincipalcompras.Enabled = True
-        Panelprincipalcompras.Visible = True
-        Panelprincipalcompras.BringToFront()
-
-        'Actualiza el datagrid del panel principal de compras
-        Consulta = "select * from compra"
-        consultar()
-        DataGridViewCompras.DataSource = Tabla
-        'Cambia los headers de las tablas
-        DataGridViewCompras.Columns(0).HeaderText = "Id"
-        DataGridViewCompras.Columns(1).HeaderText = "Fecha de Compra"
-        DataGridViewCompras.Columns(2).HeaderText = "Comentario"
-        DataGridViewCompras.Columns(3).HeaderText = "Total Pagado"
-    End Sub
-    '/////////////////////Boton clear de modificar compras//////////////////
-    Private Sub Limpiarmodificarcompras_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Limpiarmodificarcompras.Click
-        'Deja los textbox vacios
-        Modificarcomentariocompra.Clear()
-        Modificarfechacompra.Clear()
-        Modificartotalapagarcompra.Clear()
-    End Sub
-    '//////////////boton que agrega la compra/////////////////////////
-    Private Sub Agregarcompra_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Agregarcompra.Click
-        If Fechacompra.Text <> "" And Comentariocompras.Text <> "" And Totalpagadocompras.Text <> "" Then
-            If IsNumeric(Totalpagadocompras.Text) Then
+    Private Sub BTNAgregarcompra_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles BTNAgregarcompra.Click
+        Dim fechacompra As String = DTPFechacompra.Value.ToString("yyyy-MM-dd")
+        If fechacompra <> "" And RTXComentariocompra.Text <> "" And TXTTotalpagadocompras.Text <> "" Then
+            If IsNumeric(TXTTotalpagadocompras.Text) Then
                 'Agrega los valores de los campos a cada tabla correspondiente
-                Consulta = "insert into compra values (0,'" & Fechacompra.Text & "','" & Comentariocompras.Text & "','" & Totalpagadocompras.Text & "')"
+                Consulta = "insert into compra values (0,'" & fechacompra & "','" & RTXComentariocompra.Text & "','" & TXTTotalpagadocompras.Text & "')"
                 consultar()
                 Consulta = "select * from compra"
                 consultar()
                 'Actualiza la BD
-                DataGridViewCompras.DataSource = Tabla
+                DTGCompras.DataSource = Tabla
                 'Deja a los textbox vacios para ingresar nuevos datos
-                Fechacompra.Text = ""
-                Comentariocompras.Text = ""
-                Totalpagadocompras.Text = ""
+                RTXComentariocompra.Text = ""
+                TXTTotalpagadocompras.Text = ""
             Else
                 'Muestra mensaje diciendo que no se ingresaron valores numericos o que solo acepta valores numericos
                 MsgBox("Igrese solo valor numerico en total")
@@ -634,17 +573,15 @@ Public Class Programa
             'Muestra mensaje que todos los campos no estan completos
             MsgBox("Complete todos los campos vacios")
         End If
-
     End Sub
     '////////////////Boton clear de agregar compra//////////////
-    Private Sub Clearagregarcompras_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Clearagregarcompras.Click
+    Private Sub BTNclearagregarcompra_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles BTNclearagregarcompra.Click
         'Deja los textbox vacios
-        Fechacompra.Clear()
-        Comentariocompras.Clear()
-        Totalpagadocompras.Clear()
+        RTXComentariocompra.Clear()
+        TXTTotalpagadocompras.Clear()
     End Sub
     '////////////////////Boton muestra panel de modificar compras///////////////////
-    Private Sub Modificarcompra1_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Modificarcompra1.Click
+    Private Sub BTNPanelmodicompra_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles BTNPanelmodicompra.Click
         'Muestra el panel de modificar compras
         Panelmodificarcompras.BringToFront()
         Panelmodificarcompras.Visible = True
@@ -653,19 +590,33 @@ Public Class Programa
         'Actualiza datagrid de panel modificar compras
         Consulta = "select * from compra"
         consultar()
-        DataGridViewModificarCompras.DataSource = Tabla
+        DTGModificarcompra.DataSource = Tabla
         'Cambia los headers
-        DataGridViewModificarCompras.Columns(0).HeaderText = "Id"
-        DataGridViewModificarCompras.Columns(1).HeaderText = "Fecha de Compra"
-        DataGridViewModificarCompras.Columns(2).HeaderText = "Comentario"
-        DataGridViewModificarCompras.Columns(3).HeaderText = "Total Pagado"
+        DTGModificarcompra.Columns(0).HeaderText = "Id"
+        DTGModificarcompra.Columns(1).HeaderText = "Fecha de Compra"
+        DTGModificarcompra.Columns(2).HeaderText = "Comentario"
+        DTGModificarcompra.Columns(3).HeaderText = "Total Pagado"
 
         'Oculta panel principal compras
         Panelprincipalcompras.SendToBack()
         Panelprincipalcompras.Visible = False
         Panelprincipalcompras.Enabled = False
     End Sub
+    Private Sub BTNEliminarmodicompra_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles BTNEliminarmodicompra.Click
+        'Elimina el id de una compra juntos con todos los datos de ese id
+        Consulta = "delete from compra where idc='" & TXTIdmodicompra.Text & "'"
+        consultar()
 
+        Consulta = "select * from compra"
+        consultar()
+        'Actualiza la BD
+        DTGModificarcompra.DataSource = Tabla
+        'Deja vacios los campos
+        RTXModicomentariocompra.Clear()
+        TXTModitotalapagarcompra.Clear()
+        TXTIdmodicompra.Clear()
+        MsgBox("Datos eliminados correctamente")
+    End Sub
     Private Sub Clearagregarclientes_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Clearagregarclientes.Click
         Texcedula.Clear()
         Texdireccion.Clear()
@@ -762,20 +713,6 @@ Public Class Programa
         PanelModificarclientes.SendToBack()
         PanelModificarclientes.Visible = False
         PanelModificarclientes.Enabled = False
-    End Sub
-
-    Private Sub DataGridViewModificarCompras_CellContentClick(ByVal sender As System.Object, ByVal e As System.Windows.Forms.DataGridViewCellEventArgs) Handles DataGridViewModificarCompras.CellContentClick
-        Modificarfechacompra.Clear()
-        Modificarcomentariocompra.Clear()
-        Modificartotalapagarcompra.Clear()
-        idocultomodificarcompras.Clear()
-
-
-
-        idocultomodificarcompras.Text = DataGridViewModificarCompras.Item(0, DataGridViewModificarCompras.CurrentRow.Index).Value
-        Modificarfechacompra.Text = DataGridViewModificarCompras.Item(1, DataGridViewModificarCompras.CurrentRow.Index).Value
-        Modificarcomentariocompra.Text = DataGridViewModificarCompras.Item(2, DataGridViewModificarCompras.CurrentRow.Index).Value
-        Modificartotalapagarcompra.Text = DataGridViewModificarCompras.Item(3, DataGridViewModificarCompras.CurrentRow.Index).Value
     End Sub
 
     Private Sub DataGridViewModificarclientes_CellContentClick(ByVal sender As System.Object, ByVal e As System.Windows.Forms.DataGridViewCellEventArgs) Handles DataGridViewModificarclientes.CellContentClick
@@ -883,19 +820,19 @@ Public Class Programa
 
 
     Private Sub Agregarmodificarcompra_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Agregarmodificarcompra.Click
+        Dim fechacompra As String = DTPModifechacompra.Value.ToString("yyyy-MM-dd")
 
-
-        Consulta = "update compra set idc ='" + idocultomodificarcompras.Text + "', fechacompra='" + Modificarfechacompra.Text + "', comentarioc='" + Modificarcomentariocompra.Text + "', totalc='" + Modificartotalapagarcompra.Text + "' where idc='" + idocultomodificarcompras.Text + "'"
+        Consulta = "update compra set idc ='" + TXTIdmodicompra.Text + "', fechacompra='" + fechacompra + "', comentarioc='" + RTXModicomentariocompra.Text + "', totalc='" + TXTModitotalapagarcompra.Text + "' where idc='" + TXTIdmodicompra.Text + "'"
         consultar()
         Consulta = "select * from compra"
         consultar()
 
 
-        DataGridViewModificarCompras.DataSource = Tabla
-        DataGridViewModificarCompras.Columns(0).HeaderText = "Id"
-        DataGridViewModificarCompras.Columns(1).HeaderText = "Fecha de compra"
-        DataGridViewModificarCompras.Columns(2).HeaderText = "Comentario"
-        DataGridViewModificarCompras.Columns(3).HeaderText = "Total a pagado"
+        DTGModificarcompra.DataSource = Tabla
+        DTGModificarcompra.Columns(0).HeaderText = "Id"
+        DTGModificarcompra.Columns(1).HeaderText = "Fecha de compra"
+        DTGModificarcompra.Columns(2).HeaderText = "Comentario"
+        DTGModificarcompra.Columns(3).HeaderText = "Total a pagado"
         MsgBox("La compra se modifico con exito")
     End Sub
 
@@ -1038,7 +975,7 @@ Public Class Programa
 
             Consulta = "INSERT INTO ganado (idg,sexo,raza,nacimiento,estado) values('" & CodG & "','" & sexo & "','" & raza & "','" & fechaN & "','" & estadoG & "' )"
             consultar()
-           
+
 
             Consulta = " select * from ganado"
             consultar()
@@ -1066,7 +1003,7 @@ Public Class Programa
 
 
 
-   
+
 
     'MODIFICAR VENTAS 
     Private Sub Button4_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Button4.Click
@@ -1146,4 +1083,45 @@ Public Class Programa
         txbcedulaclienteventa.Visible = False
     End Sub
 
+    Private Sub BTNsalirmodicompra_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles BTNsalirmodicompra.Click
+        'Oculta el panel de modificar compra
+        Panelmodificarcompras.Enabled = False
+        Panelmodificarcompras.Visible = False
+        Panelmodificarcompras.SendToBack()
+
+        'Muestra el panel principal de compra
+        Panelprincipalcompras.Enabled = True
+        Panelprincipalcompras.Visible = True
+        Panelprincipalcompras.BringToFront()
+
+        'Actualiza el datagrid del panel principal de compras
+        Consulta = "select * from compra"
+        consultar()
+        DTGCompras.DataSource = Tabla
+        'Cambia los headers de las tablas
+        DTGCompras.Columns(0).HeaderText = "Id"
+        DTGCompras.Columns(1).HeaderText = "Fecha de Compra"
+        DTGCompras.Columns(2).HeaderText = "Comentario"
+        DTGCompras.Columns(3).HeaderText = "Total Pagado"
+    End Sub
+    Private Sub DTGmodificarcompra_SelectionChanged(ByVal sender As Object, ByVal e As System.EventArgs) Handles DTGModificarcompra.SelectionChanged
+        'Cuando se selecciona otra fila del data grid deja los textbox, richtextbox vacios para mostrar los nuevos datos
+        RTXModicomentariocompra.Clear()
+        TXTModitotalapagarcompra.Clear()
+        TXTIdmodicompra.Clear()
+
+
+        'Cada vez que se selecciona un item del datagrid, muestra los datos en los textbox,datatimerpick,richtextbox
+        TXTIdmodicompra.Text = DTGModificarcompra.Item(0, DTGModificarcompra.CurrentRow.Index).Value
+        DTPModifechacompra.Value = DTGModificarcompra.Item(1, DTGModificarcompra.CurrentRow.Index).Value
+        RTXModicomentariocompra.Text = DTGModificarcompra.Item(2, DTGModificarcompra.CurrentRow.Index).Value
+        TXTModitotalapagarcompra.Text = DTGModificarcompra.Item(3, DTGModificarcompra.CurrentRow.Index).Value
+    End Sub
+
+    Private Sub BTNlimpiarmodicompra_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles BTNlimpiarmodicompra.Click
+        'Deja vacio el campo de comentario
+        RTXModicomentariocompra.Clear()
+        'Deja vacio el campo de Total a pagar
+        TXTModitotalapagarcompra.Clear()
+    End Sub
 End Class
