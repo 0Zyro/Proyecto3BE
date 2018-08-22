@@ -75,22 +75,6 @@ Public Class Programa
         DGVUsuarios.DataSource = Tabla
     End Sub
 
-    Private Sub CBXBusquedaUsuarios_SelectedIndexChanged(ByVal sender As Object, ByVal e As System.EventArgs) Handles CBXBusquedaUsuarios.SelectedIndexChanged
-        If CBXBusquedaUsuarios.SelectedItem.ToString = "Rango" Then
-            TXTBusquedaUsuarios.Visible = False
-            CBXBusquedaRangoUsuarios.Visible = True
-            CBXBusquedaRangoUsuarios.SelectedIndex = 0
-        Else
-            TXTBusquedaUsuarios.Visible = True
-            CBXBusquedaRangoUsuarios.Visible = False
-            TXTBusquedaUsuarios.Text = ""
-        End If
-    End Sub
-
-    Private Sub CBXBusquedaRangoUsuarios_SelectedIndexChanged(ByVal sender As Object, ByVal e As System.EventArgs) Handles CBXBusquedaRangoUsuarios.SelectedIndexChanged
-        TXTBusquedaUsuarios.Text = CBXBusquedaRangoUsuarios.SelectedItem.ToString
-    End Sub
-
     'Ci del usuario seleccionado actualmente
     Dim CiSeleccionado As String = ""
 
@@ -101,7 +85,7 @@ Public Class Programa
         TXTCiUsuarios.Text = ""
         TXTNombreUsuarios.Text = ""
         TXTPasswdUsuarios.Text = ""
-        CBXRangoUsuarios.SelectedIndex = 0
+        TXTRangoUsuarios.Text = ""
 
         'Informacion necesaria para el comando
         comando.CommandType = CommandType.Text
@@ -125,19 +109,7 @@ Public Class Programa
             TXTCiUsuarios.Text = reader.GetInt32(0).ToString
             TXTNombreUsuarios.Text = reader.GetString(1)
             TXTPasswdUsuarios.Text = reader.GetString(2)
-            'TXTRangoUsuarios.Text = reader.GetString(3)
-
-            Select Case reader.GetString(3)
-                Case "Admin"
-                    CBXRangoUsuarios.SelectedIndex = 1
-                    Exit Select
-                Case "User"
-                    CBXRangoUsuarios.SelectedIndex = 0
-                    Exit Select
-                Case Else
-                    CBXRangoUsuarios.SelectedIndex = 2
-            End Select
-
+            TXTRangoUsuarios.Text = reader.GetString(3)
             LabelEstadoUsuarios.Text = reader.GetString(4)
 
             If Dir$("../../Res/profile/" + reader.GetString(5) + ".bmp") <> "" Then
@@ -229,7 +201,7 @@ Public Class Programa
                 comando.CommandText = ("update usuario set ci='" + TXTCiUsuarios.Text +
                                "', contrasena='" + TXTPasswdUsuarios.Text +
                                "', nombre='" + TXTNombreUsuarios.Text +
-                               "', rango='" + CBXRangoUsuarios.SelectedItem.ToString +
+                               "', rango='" + TXTRangoUsuarios.Text +
                                "', perfil='" + stringaux(0) +
                                "' where ci='" + CiSeleccionado + "'")
                 Try
@@ -251,7 +223,7 @@ Public Class Programa
                 If verificarCedula(TXTCiUsuarios.Text) Then
                     If verificarNombre() Then
                         If verificarPasswd() Then
-                            comando.CommandText = ("insert into usuario values ('" + TXTCiUsuarios.Text + "','" + TXTNombreUsuarios.Text + "','" + TXTPasswdUsuarios.Text + "','" + CBXRangoUsuarios.SelectedItem.ToString + "','activo','" + StringImagenUsuarios + "')")
+                            comando.CommandText = ("insert into usuario values ('" + TXTCiUsuarios.Text + "','" + TXTNombreUsuarios.Text + "','" + TXTPasswdUsuarios.Text + "','" + TXTRangoUsuarios.Text + "','activo','" + StringImagenUsuarios + "')")
                             Try
                                 connection.Open()
                                 comando.ExecuteNonQuery()
@@ -348,8 +320,7 @@ Public Class Programa
         TXTCiUsuarios.ReadOnly = False
         TXTNombreUsuarios.ReadOnly = False
         TXTPasswdUsuarios.ReadOnly = False
-        'TXTRangoUsuarios.ReadOnly = False
-        CBXRangoUsuarios.Enabled = True
+        TXTRangoUsuarios.ReadOnly = False
         PICUsuarios.Enabled = True
 
         TXTBusquedaUsuarios.ReadOnly = True
@@ -367,8 +338,7 @@ Public Class Programa
         TXTCiUsuarios.Text = ""
         TXTNombreUsuarios.Text = ""
         TXTPasswdUsuarios.Text = ""
-        CBXRangoUsuarios.SelectedIndex = 0
-
+        TXTRangoUsuarios.Text = ""
 
         CHBUsuariosInactivos.Checked = False
 
@@ -395,8 +365,7 @@ Public Class Programa
         TXTCiUsuarios.ReadOnly = True
         TXTNombreUsuarios.ReadOnly = True
         TXTPasswdUsuarios.ReadOnly = True
-        'TXTRangoUsuarios.ReadOnly = True
-        CBXRangoUsuarios.Enabled = False
+        TXTRangoUsuarios.ReadOnly = True
         PICUsuarios.Enabled = False
 
         TXTBusquedaUsuarios.ReadOnly = False
@@ -478,6 +447,16 @@ Public Class Programa
     End Sub
     Private Sub Form2_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
 
+        '///////////////Paneles de agregar compras////////////////
+        PNLAgregarcompraganado.Enabled = False
+        PNLAgregarcompraganado.Visible = False
+        PNLAgregarcompraganado.SendToBack()
+
+        PNLAgregarcompraproducto.Enabled = False
+        PNLAgregarcompraproducto.Visible = False
+        PNLAgregarcompraproducto.SendToBack()
+
+
         'timer en ganado
         TexSelecCodigoG.Visible = False
         Label6deborrarganado.Visible = False
@@ -499,7 +478,6 @@ Public Class Programa
 
         '////////////USUARIOS
         CBXBusquedaUsuarios.SelectedIndex = 0
-        CBXRangoUsuarios.SelectedIndex = 0
 
         '////////////CLIENTES
         PanelPrincipalclientes.Enabled = True
@@ -526,6 +504,9 @@ Public Class Programa
         DTGCompras.Columns(1).HeaderText = "Fecha de Compra"
         DTGCompras.Columns(2).HeaderText = "Comentario"
         DTGCompras.Columns(3).HeaderText = "Total"
+
+        'Nose que es esto
+        CBXBusquedaUsuarios.SelectedIndex = 0
 
         'Muestra el panel principal de Compras y oculta los otros
         Panelprincipalcompras.BringToFront()
@@ -566,6 +547,16 @@ Public Class Programa
         Panelagregarcompras.SendToBack()
         Panelagregarcompras.Visible = False
         Panelagregarcompras.Enabled = False
+
+        CBXAgregarcompra.Text = ""
+
+        PNLAgregarcompraproducto.Visible = False
+        PNLAgregarcompraproducto.Enabled = False
+        PNLAgregarcompraproducto.SendToBack()
+
+        PNLAgregarcompraganado.Visible = False
+        PNLAgregarcompraganado.Enabled = False
+        PNLAgregarcompraganado.SendToBack()
     End Sub
     '/////////////////////////Boton de agregar compras////////////
     Private Sub BTNpanelmodicompras_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles BTNpanelagregarcompras.Click
@@ -579,20 +570,20 @@ Public Class Programa
         Panelprincipalcompras.Enabled = False
         Panelprincipalcompras.Visible = False
     End Sub
-    Private Sub BTNAgregarcompra_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles BTNAgregarcompra.Click
-        Dim fechacompra As String = DTPFechacompra.Value.ToString("yyyy-MM-dd")
-        If fechacompra <> "" And RTXComentariocompra.Text <> "" And TXTTotalpagadocompras.Text <> "" Then
-            If IsNumeric(TXTTotalpagadocompras.Text) Then
+    Private Sub BTNAgregarcompra_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles BTNAgregarcompraproducto.Click
+        Dim fechacompra As String = DTPFechacompraproducto.Value.ToString("yyyy-MM-dd")
+        If fechacompra <> "" And RTXComentariocompraproducto.Text <> "" And TXTTotalpagadocomprasproducto.Text <> "" Then
+            If IsNumeric(TXTTotalpagadocomprasproducto.Text) Then
                 'Agrega los valores de los campos a cada tabla correspondiente
-                Consulta = "insert into compra values (0,'" & fechacompra & "','" & RTXComentariocompra.Text & "','" & TXTTotalpagadocompras.Text & "')"
+                Consulta = "insert into compra values (0,'" & fechacompra & "','" & RTXComentariocompraproducto.Text & "','" & TXTTotalpagadocomprasproducto.Text & "')"
                 consultar()
                 Consulta = "select * from compra"
                 consultar()
                 'Actualiza la BD
                 DTGCompras.DataSource = Tabla
                 'Deja a los textbox vacios para ingresar nuevos datos
-                RTXComentariocompra.Text = ""
-                TXTTotalpagadocompras.Text = ""
+                RTXComentariocompraproducto.Text = ""
+                TXTTotalpagadocomprasproducto.Text = ""
             Else
                 'Muestra mensaje diciendo que no se ingresaron valores numericos o que solo acepta valores numericos
                 MsgBox("Igrese solo valor numerico en total")
@@ -603,10 +594,11 @@ Public Class Programa
         End If
     End Sub
     '////////////////Boton clear de agregar compra//////////////
-    Private Sub BTNclearagregarcompra_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles BTNclearagregarcompra.Click
+    Private Sub BTNclearagregarcompra_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles BTNclearagregarcompraproducto.Click
         'Deja los textbox vacios
-        RTXComentariocompra.Clear()
-        TXTTotalpagadocompras.Clear()
+        RTXComentariocompraproducto.Clear()
+        TXTTotalpagadocomprasproducto.Clear()
+        DTPFechacompraproducto.Value = Today
     End Sub
     '////////////////////Boton muestra panel de modificar compras///////////////////
     Private Sub BTNPanelmodicompra_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles BTNPanelmodicompra.Click
@@ -652,7 +644,48 @@ Public Class Programa
         Texttelefono.Clear()
 
     End Sub
+    Private Sub BTNAgregarcomraganado_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles BTNAgregarcomraganado.Click
+        Dim fechacompra As String = DTPFechacompraganado.Value.ToString("yyyy-MM-dd")
+        Dim fechanac As String = DTPFechanacimientocompra.Value.ToString("yyyy-MM-dd")
+        If fechacompra <> "" And RTXComentariocompraganado.Text <> "" And TXTTotalapagarcompraganado.Text Then
+            If IsNumeric(TXTTotalapagarcompraganado.Text) Then
+                'Agrega los valores de los campos a cada tabla correspondiente
+                Consulta = "insert into compra values (0,'" & fechacompra & "','" & RTXComentariocompraganado.Text & "','" & TXTTotalapagarcompraganado.Text & "')"
+                consultar()
+                Consulta = "select * from compra"
+                consultar()
+                'Actualiza la BD
+                DTGCompras.DataSource = Tabla
+                'Deja a los textbox vacios para ingresar nuevos datos
+                DTPFechacompraganado.Value = Today
+                RTXComentariocompraganado.Text = ""
+                TXTTotalapagarcompraganado.Text = ""
 
+                TXTCodigoganadocompra.Text = ""
+                TXTRazacompra.Text = ""
+                TXTSexocompra.Text = ""
+                DTPFechanacimientocompra.Value = Today
+                TXTEstadocompra.Text = ""
+            Else
+                'Muestra mensaje diciendo que no se ingresaron valores numericos o que solo acepta valores numericos
+                MsgBox("Ingrese solo valor numerico en total")
+            End If
+        Else
+            'Muestra mensaje que todos los campos no estan completos
+            MsgBox("Complete todos los campos vacios")
+        End If
+    End Sub
+    Private Sub BTNLimpiarcompraganado_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles BTNLimpiarcompraganado.Click
+        RTXComentariocompraganado.Clear()
+        TXTTotalapagarcompraganado.Clear()
+        DTPFechacompraganado.Value = Today
+
+        TXTCodigoganadocompra.Clear()
+        TXTRazacompra.Clear()
+        TXTSexocompra.Clear()
+        DTPFechanacimientocompra.Value = Today
+        TXTEstadocompra.Clear()
+    End Sub
     Private Sub Volveragregarclientes_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Volveragregarclientes.Click
         PanelPrincipalclientes.BringToFront()
         PanelPrincipalclientes.Visible = True
@@ -1153,9 +1186,31 @@ Public Class Programa
         TXTModitotalapagarcompra.Clear()
     End Sub
 
-    Private Sub Timer1_Tick_2(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Timer1.Tick
+    Private Sub CBXAgregarcompra_SelectedIndexChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles CBXAgregarcompra.SelectedIndexChanged
+        If CBXAgregarcompra.Text = "Ganado" Then
+            PNLAgregarcompraganado.Visible = True
+            PNLAgregarcompraganado.Enabled = True
+            PNLAgregarcompraganado.BringToFront()
 
-        Me.Text = (DateTime.Now.ToString("dd/MM/yy") + "   " + DateTime.Now.Hour.ToString + ":" + DateTime.Now.Minute.ToString + ":" + DateTime.Now.Second.ToString)
+            PNLAgregarcompraproducto.Visible = False
+            PNLAgregarcompraproducto.Enabled = False
+            PNLAgregarcompraproducto.SendToBack()
+        ElseIf CBXAgregarcompra.Text = "Productos" Then
+            PNLAgregarcompraproducto.Visible = True
+            PNLAgregarcompraproducto.Enabled = True
+            PNLAgregarcompraproducto.BringToFront()
 
+            PNLAgregarcompraganado.Visible = False
+            PNLAgregarcompraganado.Enabled = False
+            PNLAgregarcompraganado.SendToBack()
+        Else
+            PNLAgregarcompraproducto.Visible = False
+            PNLAgregarcompraproducto.Enabled = False
+            PNLAgregarcompraproducto.SendToBack()
+
+            PNLAgregarcompraganado.Visible = False
+            PNLAgregarcompraganado.Enabled = False
+            PNLAgregarcompraganado.SendToBack()
+        End If
     End Sub
 End Class
