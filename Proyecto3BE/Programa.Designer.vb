@@ -24,7 +24,7 @@ Partial Class Programa
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(Programa))
-        Dim DataGridViewCellStyle2 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Me.PanelUsuario = New System.Windows.Forms.Panel()
         Me.LBLCiUsuario = New System.Windows.Forms.Label()
         Me.BTNCerrarSesion = New System.Windows.Forms.Button()
@@ -183,6 +183,7 @@ Partial Class Programa
         Me.ToolTip1 = New System.Windows.Forms.ToolTip(Me.components)
         Me.Timerganadoeliminar = New System.Windows.Forms.Timer(Me.components)
         Me.Timerventaseliminaryagregar = New System.Windows.Forms.Timer(Me.components)
+        Me.Button5 = New System.Windows.Forms.Button()
         Me.PanelUsuario.SuspendLayout()
         CType(Me.PICUsuarioLogueado, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.TabbedPane.SuspendLayout()
@@ -739,6 +740,7 @@ Partial Class Programa
         'PNLAgregarcompraganado
         '
         Me.PNLAgregarcompraganado.BackColor = System.Drawing.Color.LightSalmon
+        Me.PNLAgregarcompraganado.Controls.Add(Me.Button5)
         Me.PNLAgregarcompraganado.Controls.Add(Me.BTNLimpiarcompraganado)
         Me.PNLAgregarcompraganado.Controls.Add(Me.BTNAgregarcomraganado)
         Me.PNLAgregarcompraganado.Controls.Add(Me.LBLAgregartotalpagarcompraganado)
@@ -810,7 +812,7 @@ Partial Class Programa
         'LBLEstadocompra
         '
         Me.LBLEstadocompra.AutoSize = True
-        Me.LBLEstadocompra.Location = New System.Drawing.Point(75, 210)
+        Me.LBLEstadocompra.Location = New System.Drawing.Point(75, 168)
         Me.LBLEstadocompra.Name = "LBLEstadocompra"
         Me.LBLEstadocompra.Size = New System.Drawing.Size(40, 13)
         Me.LBLEstadocompra.TabIndex = 13
@@ -819,7 +821,7 @@ Partial Class Programa
         'LBLFechanacimientocompra
         '
         Me.LBLFechanacimientocompra.AutoSize = True
-        Me.LBLFechanacimientocompra.Location = New System.Drawing.Point(7, 166)
+        Me.LBLFechanacimientocompra.Location = New System.Drawing.Point(6, 138)
         Me.LBLFechanacimientocompra.Name = "LBLFechanacimientocompra"
         Me.LBLFechanacimientocompra.Size = New System.Drawing.Size(108, 13)
         Me.LBLFechanacimientocompra.TabIndex = 12
@@ -828,7 +830,7 @@ Partial Class Programa
         'LBLSexocompra
         '
         Me.LBLSexocompra.AutoSize = True
-        Me.LBLSexocompra.Location = New System.Drawing.Point(84, 116)
+        Me.LBLSexocompra.Location = New System.Drawing.Point(84, 103)
         Me.LBLSexocompra.Name = "LBLSexocompra"
         Me.LBLSexocompra.Size = New System.Drawing.Size(31, 13)
         Me.LBLSexocompra.TabIndex = 11
@@ -837,7 +839,7 @@ Partial Class Programa
         'LBLRazacompra
         '
         Me.LBLRazacompra.AutoSize = True
-        Me.LBLRazacompra.Location = New System.Drawing.Point(83, 76)
+        Me.LBLRazacompra.Location = New System.Drawing.Point(83, 70)
         Me.LBLRazacompra.Name = "LBLRazacompra"
         Me.LBLRazacompra.Size = New System.Drawing.Size(32, 13)
         Me.LBLRazacompra.TabIndex = 10
@@ -854,7 +856,7 @@ Partial Class Programa
         '
         'DTPFechanacimientocompra
         '
-        Me.DTPFechanacimientocompra.Location = New System.Drawing.Point(121, 160)
+        Me.DTPFechanacimientocompra.Location = New System.Drawing.Point(121, 132)
         Me.DTPFechanacimientocompra.Name = "DTPFechanacimientocompra"
         Me.DTPFechanacimientocompra.Size = New System.Drawing.Size(200, 20)
         Me.DTPFechanacimientocompra.TabIndex = 8
@@ -883,30 +885,30 @@ Partial Class Programa
         '
         'TXTEstadocompra
         '
-        Me.TXTEstadocompra.Location = New System.Drawing.Point(121, 207)
+        Me.TXTEstadocompra.Location = New System.Drawing.Point(121, 165)
         Me.TXTEstadocompra.Name = "TXTEstadocompra"
-        Me.TXTEstadocompra.Size = New System.Drawing.Size(100, 20)
+        Me.TXTEstadocompra.Size = New System.Drawing.Size(200, 20)
         Me.TXTEstadocompra.TabIndex = 4
         '
         'TXTSexocompra
         '
-        Me.TXTSexocompra.Location = New System.Drawing.Point(121, 116)
+        Me.TXTSexocompra.Location = New System.Drawing.Point(121, 100)
         Me.TXTSexocompra.Name = "TXTSexocompra"
-        Me.TXTSexocompra.Size = New System.Drawing.Size(100, 20)
+        Me.TXTSexocompra.Size = New System.Drawing.Size(200, 20)
         Me.TXTSexocompra.TabIndex = 2
         '
         'TXTRazacompra
         '
-        Me.TXTRazacompra.Location = New System.Drawing.Point(121, 73)
+        Me.TXTRazacompra.Location = New System.Drawing.Point(121, 65)
         Me.TXTRazacompra.Name = "TXTRazacompra"
-        Me.TXTRazacompra.Size = New System.Drawing.Size(100, 20)
+        Me.TXTRazacompra.Size = New System.Drawing.Size(200, 20)
         Me.TXTRazacompra.TabIndex = 1
         '
         'TXTCodigoganadocompra
         '
         Me.TXTCodigoganadocompra.Location = New System.Drawing.Point(121, 35)
         Me.TXTCodigoganadocompra.Name = "TXTCodigoganadocompra"
-        Me.TXTCodigoganadocompra.Size = New System.Drawing.Size(100, 20)
+        Me.TXTCodigoganadocompra.Size = New System.Drawing.Size(200, 20)
         Me.TXTCodigoganadocompra.TabIndex = 0
         '
         'PNLAgregarcompraproducto
@@ -1607,14 +1609,14 @@ Partial Class Programa
         Me.DGVUsuarios.ClipboardCopyMode = System.Windows.Forms.DataGridViewClipboardCopyMode.Disable
         Me.DGVUsuarios.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         Me.DGVUsuarios.ColumnHeadersVisible = False
-        DataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window
-        DataGridViewCellStyle2.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText
-        DataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.ButtonHighlight
-        DataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(192, Byte), Integer))
-        DataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
-        Me.DGVUsuarios.DefaultCellStyle = DataGridViewCellStyle2
+        DataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Window
+        DataGridViewCellStyle1.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.ControlText
+        DataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.ButtonHighlight
+        DataGridViewCellStyle1.SelectionForeColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(192, Byte), Integer))
+        DataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
+        Me.DGVUsuarios.DefaultCellStyle = DataGridViewCellStyle1
         Me.DGVUsuarios.GridColor = System.Drawing.SystemColors.ButtonHighlight
         Me.DGVUsuarios.Location = New System.Drawing.Point(6, 47)
         Me.DGVUsuarios.MultiSelect = False
@@ -1822,6 +1824,15 @@ Partial Class Programa
         '
         'Timerventaseliminaryagregar
         '
+        '
+        'Button5
+        '
+        Me.Button5.Location = New System.Drawing.Point(121, 207)
+        Me.Button5.Name = "Button5"
+        Me.Button5.Size = New System.Drawing.Size(100, 23)
+        Me.Button5.TabIndex = 19
+        Me.Button5.Text = "OK"
+        Me.Button5.UseVisualStyleBackColor = True
         '
         'Programa
         '
@@ -2043,4 +2054,5 @@ Partial Class Programa
     Friend WithEvents TXTSexocompra As System.Windows.Forms.TextBox
     Friend WithEvents TXTRazacompra As System.Windows.Forms.TextBox
     Friend WithEvents TXTCodigoganadocompra As System.Windows.Forms.TextBox
+    Friend WithEvents Button5 As System.Windows.Forms.Button
 End Class
