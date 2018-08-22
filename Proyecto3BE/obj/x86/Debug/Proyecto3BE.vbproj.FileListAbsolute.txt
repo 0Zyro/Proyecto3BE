@@ -1,8 +1,6 @@
 C:\Users\Usuario\Documents\GitHub\Proyecto3BE\Proyecto3BE\bin\Debug\Proyecto3BE.exe
 C:\Users\Usuario\Documents\GitHub\Proyecto3BE\Proyecto3BE\bin\Debug\Proyecto3BE.pdb
 C:\Users\Usuario\Documents\GitHub\Proyecto3BE\Proyecto3BE\bin\Debug\Proyecto3BE.xml
-C:\Users\Usuario\Documents\GitHub\Proyecto3BE\Proyecto3BE\obj\x86\Debug\WindowsApplication1.Form1.resources
-C:\Users\Usuario\Documents\GitHub\Proyecto3BE\Proyecto3BE\obj\x86\Debug\WindowsApplication1.Form2.resources
 C:\Users\Usuario\Documents\GitHub\Proyecto3BE\Proyecto3BE\obj\x86\Debug\WindowsApplication1.Resources.resources
 C:\Users\Usuario\Documents\GitHub\Proyecto3BE\Proyecto3BE\obj\x86\Debug\Proyecto3BE.vbproj.GenerateResource.Cache
 C:\Users\Usuario\Documents\GitHub\Proyecto3BE\Proyecto3BE\obj\x86\Debug\Proyecto3BE.exe
@@ -96,3 +94,5 @@ E:\Documents\Proyecto3BE\Proyecto3BE\Proyecto3BE\obj\x86\Debug\WindowsApplicatio
 E:\Documents\Proyecto3BE\Proyecto3BE\Proyecto3BE\obj\x86\Debug\Proyecto3BE.vbproj.GenerateResource.Cache
 C:\Users\MacPay\Documents\GitHub\Proyecto3BE\Proyecto3BE\obj\x86\Debug\WindowsApplication1.Login.resources
 C:\Users\MacPay\Documents\GitHub\Proyecto3BE\Proyecto3BE\obj\x86\Debug\WindowsApplication1.Programa.resources
+C:\Users\Usuario\Documents\GitHub\Proyecto3BE\Proyecto3BE\obj\x86\Debug\WindowsApplication1.Login.resources
+C:\Users\Usuario\Documents\GitHub\Proyecto3BE\Proyecto3BE\obj\x86\Debug\WindowsApplication1.Programa.resources

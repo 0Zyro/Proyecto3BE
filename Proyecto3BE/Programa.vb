@@ -75,6 +75,22 @@ Public Class Programa
         DGVUsuarios.DataSource = Tabla
     End Sub
 
+    Private Sub CBXBusquedaUsuarios_SelectedIndexChanged(ByVal sender As Object, ByVal e As System.EventArgs) Handles CBXBusquedaUsuarios.SelectedIndexChanged
+        If CBXBusquedaUsuarios.SelectedItem.ToString = "Rango" Then
+            TXTBusquedaUsuarios.Visible = False
+            CBXBusquedaRangoUsuarios.Visible = True
+            CBXBusquedaRangoUsuarios.SelectedIndex = 0
+        Else
+            TXTBusquedaUsuarios.Visible = True
+            CBXBusquedaRangoUsuarios.Visible = False
+            TXTBusquedaUsuarios.Text = ""
+        End If
+    End Sub
+
+    Private Sub CBXBusquedaRangoUsuarios_SelectedIndexChanged(ByVal sender As Object, ByVal e As System.EventArgs) Handles CBXBusquedaRangoUsuarios.SelectedIndexChanged
+        TXTBusquedaUsuarios.Text = CBXBusquedaRangoUsuarios.SelectedItem.ToString
+    End Sub
+
     'Ci del usuario seleccionado actualmente
     Dim CiSeleccionado As String = ""
 
@@ -85,7 +101,7 @@ Public Class Programa
         TXTCiUsuarios.Text = ""
         TXTNombreUsuarios.Text = ""
         TXTPasswdUsuarios.Text = ""
-        TXTRangoUsuarios.Text = ""
+        CBXRangoUsuarios.SelectedIndex = 0
 
         'Informacion necesaria para el comando
         comando.CommandType = CommandType.Text
@@ -109,7 +125,19 @@ Public Class Programa
             TXTCiUsuarios.Text = reader.GetInt32(0).ToString
             TXTNombreUsuarios.Text = reader.GetString(1)
             TXTPasswdUsuarios.Text = reader.GetString(2)
-            TXTRangoUsuarios.Text = reader.GetString(3)
+            'TXTRangoUsuarios.Text = reader.GetString(3)
+
+            Select Case reader.GetString(3)
+                Case "Admin"
+                    CBXRangoUsuarios.SelectedIndex = 1
+                    Exit Select
+                Case "User"
+                    CBXRangoUsuarios.SelectedIndex = 0
+                    Exit Select
+                Case Else
+                    CBXRangoUsuarios.SelectedIndex = 2
+            End Select
+
             LabelEstadoUsuarios.Text = reader.GetString(4)
 
             If Dir$("../../Res/profile/" + reader.GetString(5) + ".bmp") <> "" Then
@@ -201,7 +229,7 @@ Public Class Programa
                 comando.CommandText = ("update usuario set ci='" + TXTCiUsuarios.Text +
                                "', contrasena='" + TXTPasswdUsuarios.Text +
                                "', nombre='" + TXTNombreUsuarios.Text +
-                               "', rango='" + TXTRangoUsuarios.Text +
+                               "', rango='" + CBXRangoUsuarios.SelectedItem.ToString +
                                "', perfil='" + stringaux(0) +
                                "' where ci='" + CiSeleccionado + "'")
                 Try
@@ -223,7 +251,7 @@ Public Class Programa
                 If verificarCedula(TXTCiUsuarios.Text) Then
                     If verificarNombre() Then
                         If verificarPasswd() Then
-                            comando.CommandText = ("insert into usuario values ('" + TXTCiUsuarios.Text + "','" + TXTNombreUsuarios.Text + "','" + TXTPasswdUsuarios.Text + "','" + TXTRangoUsuarios.Text + "','activo','" + StringImagenUsuarios + "')")
+                            comando.CommandText = ("insert into usuario values ('" + TXTCiUsuarios.Text + "','" + TXTNombreUsuarios.Text + "','" + TXTPasswdUsuarios.Text + "','" + CBXRangoUsuarios.SelectedItem.ToString + "','activo','" + StringImagenUsuarios + "')")
                             Try
                                 connection.Open()
                                 comando.ExecuteNonQuery()
@@ -320,7 +348,8 @@ Public Class Programa
         TXTCiUsuarios.ReadOnly = False
         TXTNombreUsuarios.ReadOnly = False
         TXTPasswdUsuarios.ReadOnly = False
-        TXTRangoUsuarios.ReadOnly = False
+        'TXTRangoUsuarios.ReadOnly = False
+        CBXRangoUsuarios.Enabled = True
         PICUsuarios.Enabled = True
 
         TXTBusquedaUsuarios.ReadOnly = True
@@ -338,7 +367,8 @@ Public Class Programa
         TXTCiUsuarios.Text = ""
         TXTNombreUsuarios.Text = ""
         TXTPasswdUsuarios.Text = ""
-        TXTRangoUsuarios.Text = ""
+        CBXRangoUsuarios.SelectedIndex = 0
+
 
         CHBUsuariosInactivos.Checked = False
 
@@ -365,7 +395,8 @@ Public Class Programa
         TXTCiUsuarios.ReadOnly = True
         TXTNombreUsuarios.ReadOnly = True
         TXTPasswdUsuarios.ReadOnly = True
-        TXTRangoUsuarios.ReadOnly = True
+        'TXTRangoUsuarios.ReadOnly = True
+        CBXRangoUsuarios.Enabled = False
         PICUsuarios.Enabled = False
 
         TXTBusquedaUsuarios.ReadOnly = False
@@ -447,7 +478,6 @@ Public Class Programa
     End Sub
     Private Sub Form2_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
 
-
         'timer en ganado
         TexSelecCodigoG.Visible = False
         Label6deborrarganado.Visible = False
@@ -469,6 +499,7 @@ Public Class Programa
 
         '////////////USUARIOS
         CBXBusquedaUsuarios.SelectedIndex = 0
+        CBXRangoUsuarios.SelectedIndex = 0
 
         '////////////CLIENTES
         PanelPrincipalclientes.Enabled = True
@@ -495,9 +526,6 @@ Public Class Programa
         DTGCompras.Columns(1).HeaderText = "Fecha de Compra"
         DTGCompras.Columns(2).HeaderText = "Comentario"
         DTGCompras.Columns(3).HeaderText = "Total"
-
-        'Nose que es esto
-        CBXBusquedaUsuarios.SelectedIndex = 0
 
         'Muestra el panel principal de Compras y oculta los otros
         Panelprincipalcompras.BringToFront()
@@ -1123,5 +1151,11 @@ Public Class Programa
         RTXModicomentariocompra.Clear()
         'Deja vacio el campo de Total a pagar
         TXTModitotalapagarcompra.Clear()
+    End Sub
+
+    Private Sub Timer1_Tick_2(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Timer1.Tick
+
+        Me.Text = (DateTime.Now.ToString("dd/MM/yy") + "   " + DateTime.Now.Hour.ToString + ":" + DateTime.Now.Minute.ToString + ":" + DateTime.Now.Second.ToString)
+
     End Sub
 End Class

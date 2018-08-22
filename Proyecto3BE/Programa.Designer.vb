@@ -24,7 +24,7 @@ Partial Class Programa
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(Programa))
-        Dim DataGridViewCellStyle2 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle4 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Me.PanelUsuario = New System.Windows.Forms.Panel()
         Me.LBLCiUsuario = New System.Windows.Forms.Label()
         Me.BTNCerrarSesion = New System.Windows.Forms.Button()
@@ -138,6 +138,7 @@ Partial Class Programa
         Me.Labeltelcliente = New System.Windows.Forms.Label()
         Me.Texcedula = New System.Windows.Forms.TextBox()
         Me.TabUsuarios = New System.Windows.Forms.TabPage()
+        Me.CBXBusquedaRangoUsuarios = New System.Windows.Forms.ComboBox()
         Me.CBXRangoUsuarios = New System.Windows.Forms.ComboBox()
         Me.DGVUsuarios = New System.Windows.Forms.DataGridView()
         Me.PICUsuarios = New System.Windows.Forms.PictureBox()
@@ -150,7 +151,6 @@ Partial Class Programa
         Me.BTNModificarUsuarios = New System.Windows.Forms.Button()
         Me.BTNEliminarUsuarios = New System.Windows.Forms.Button()
         Me.BTNAgregarUsuarios = New System.Windows.Forms.Button()
-        Me.TXTRangoUsuarios = New System.Windows.Forms.TextBox()
         Me.TXTPasswdUsuarios = New System.Windows.Forms.TextBox()
         Me.TXTNombreUsuarios = New System.Windows.Forms.TextBox()
         Me.TXTCiUsuarios = New System.Windows.Forms.TextBox()
@@ -164,6 +164,7 @@ Partial Class Programa
         Me.ToolTip1 = New System.Windows.Forms.ToolTip(Me.components)
         Me.Timerganadoeliminar = New System.Windows.Forms.Timer(Me.components)
         Me.Timerventaseliminaryagregar = New System.Windows.Forms.Timer(Me.components)
+        Me.Timer1 = New System.Windows.Forms.Timer(Me.components)
         Me.PanelUsuario.SuspendLayout()
         CType(Me.PICUsuarioLogueado, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.TabbedPane.SuspendLayout()
@@ -1360,6 +1361,7 @@ Partial Class Programa
         '
         'TabUsuarios
         '
+        Me.TabUsuarios.Controls.Add(Me.CBXBusquedaRangoUsuarios)
         Me.TabUsuarios.Controls.Add(Me.CBXRangoUsuarios)
         Me.TabUsuarios.Controls.Add(Me.DGVUsuarios)
         Me.TabUsuarios.Controls.Add(Me.PICUsuarios)
@@ -1372,7 +1374,6 @@ Partial Class Programa
         Me.TabUsuarios.Controls.Add(Me.BTNModificarUsuarios)
         Me.TabUsuarios.Controls.Add(Me.BTNEliminarUsuarios)
         Me.TabUsuarios.Controls.Add(Me.BTNAgregarUsuarios)
-        Me.TabUsuarios.Controls.Add(Me.TXTRangoUsuarios)
         Me.TabUsuarios.Controls.Add(Me.TXTPasswdUsuarios)
         Me.TabUsuarios.Controls.Add(Me.TXTNombreUsuarios)
         Me.TabUsuarios.Controls.Add(Me.TXTCiUsuarios)
@@ -1391,11 +1392,22 @@ Partial Class Programa
         Me.TabUsuarios.Text = "Usuarios"
         Me.TabUsuarios.UseVisualStyleBackColor = True
         '
+        'CBXBusquedaRangoUsuarios
+        '
+        Me.CBXBusquedaRangoUsuarios.FormattingEnabled = True
+        Me.CBXBusquedaRangoUsuarios.Items.AddRange(New Object() {"User", "Admin", "Viewer"})
+        Me.CBXBusquedaRangoUsuarios.Location = New System.Drawing.Point(101, 20)
+        Me.CBXBusquedaRangoUsuarios.Name = "CBXBusquedaRangoUsuarios"
+        Me.CBXBusquedaRangoUsuarios.Size = New System.Drawing.Size(127, 21)
+        Me.CBXBusquedaRangoUsuarios.TabIndex = 25
+        Me.CBXBusquedaRangoUsuarios.Visible = False
+        '
         'CBXRangoUsuarios
         '
+        Me.CBXRangoUsuarios.Enabled = False
         Me.CBXRangoUsuarios.FormattingEnabled = True
         Me.CBXRangoUsuarios.Items.AddRange(New Object() {"User", "Admin", "Viewer"})
-        Me.CBXRangoUsuarios.Location = New System.Drawing.Point(265, 367)
+        Me.CBXRangoUsuarios.Location = New System.Drawing.Point(265, 333)
         Me.CBXRangoUsuarios.Name = "CBXRangoUsuarios"
         Me.CBXRangoUsuarios.Size = New System.Drawing.Size(100, 21)
         Me.CBXRangoUsuarios.TabIndex = 24
@@ -1411,14 +1423,14 @@ Partial Class Programa
         Me.DGVUsuarios.ClipboardCopyMode = System.Windows.Forms.DataGridViewClipboardCopyMode.Disable
         Me.DGVUsuarios.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         Me.DGVUsuarios.ColumnHeadersVisible = False
-        DataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window
-        DataGridViewCellStyle2.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText
-        DataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.ButtonHighlight
-        DataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(192, Byte), Integer))
-        DataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
-        Me.DGVUsuarios.DefaultCellStyle = DataGridViewCellStyle2
+        DataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Window
+        DataGridViewCellStyle4.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.ControlText
+        DataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.ButtonHighlight
+        DataGridViewCellStyle4.SelectionForeColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(192, Byte), Integer))
+        DataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
+        Me.DGVUsuarios.DefaultCellStyle = DataGridViewCellStyle4
         Me.DGVUsuarios.GridColor = System.Drawing.SystemColors.ButtonHighlight
         Me.DGVUsuarios.Location = New System.Drawing.Point(6, 47)
         Me.DGVUsuarios.MultiSelect = False
@@ -1527,14 +1539,6 @@ Partial Class Programa
         Me.BTNAgregarUsuarios.Text = "Agregar"
         Me.BTNAgregarUsuarios.UseVisualStyleBackColor = True
         '
-        'TXTRangoUsuarios
-        '
-        Me.TXTRangoUsuarios.Location = New System.Drawing.Point(265, 333)
-        Me.TXTRangoUsuarios.Name = "TXTRangoUsuarios"
-        Me.TXTRangoUsuarios.ReadOnly = True
-        Me.TXTRangoUsuarios.Size = New System.Drawing.Size(100, 20)
-        Me.TXTRangoUsuarios.TabIndex = 11
-        '
         'TXTPasswdUsuarios
         '
         Me.TXTPasswdUsuarios.Location = New System.Drawing.Point(265, 269)
@@ -1626,6 +1630,11 @@ Partial Class Programa
         '
         'Timerventaseliminaryagregar
         '
+        '
+        'Timer1
+        '
+        Me.Timer1.Enabled = True
+        Me.Timer1.Interval = 1
         '
         'Programa
         '
@@ -1740,7 +1749,6 @@ Partial Class Programa
     Friend WithEvents BTNModificarUsuarios As System.Windows.Forms.Button
     Friend WithEvents BTNEliminarUsuarios As System.Windows.Forms.Button
     Friend WithEvents BTNAgregarUsuarios As System.Windows.Forms.Button
-    Friend WithEvents TXTRangoUsuarios As System.Windows.Forms.TextBox
     Friend WithEvents TXTPasswdUsuarios As System.Windows.Forms.TextBox
     Friend WithEvents TXTNombreUsuarios As System.Windows.Forms.TextBox
     Friend WithEvents TXTCiUsuarios As System.Windows.Forms.TextBox
@@ -1824,4 +1832,6 @@ Partial Class Programa
     Friend WithEvents BTNPanelmodicompra As System.Windows.Forms.Button
     Friend WithEvents RTXModicomentariocompra As System.Windows.Forms.RichTextBox
     Friend WithEvents DTPModifechacompra As System.Windows.Forms.DateTimePicker
+    Friend WithEvents CBXBusquedaRangoUsuarios As System.Windows.Forms.ComboBox
+    Friend WithEvents Timer1 As System.Windows.Forms.Timer
 End Class
