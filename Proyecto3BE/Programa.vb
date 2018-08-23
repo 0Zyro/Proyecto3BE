@@ -441,11 +441,22 @@ Public Class Programa
     '///FIN SECCION USUARIOS
 
 
-    'Se cargan los datos cuando se cambia de tab
-    Private Sub TabClientes_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles TabClientes.Click
 
+    Private Sub TabClientes_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles TabClientes.Click
+        If paneldetextosenventas.Visible = True Then
+            btnagregarpanel.Image = Image.FromFile("Resources\flecha-hacia-la-izquierda.png")
+        Else
+            btnagregarpanel.Image = Image.FromFile("Resources\anadir.png")
+        End If
     End Sub
     Private Sub Form2_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
+
+        'panel ventas
+        paneldetextosenventas.Visible = False
+        'If paneldetextosenventas.Visible = True Then
+        '    btnagregarpanel.BackgroundImage = Image.FromFile("C:\Users\Alumno-09\Desktop\Proyecto3BE-master\Proyecto3BE\Resources\flecha-hacia-la-izquierda.png")
+
+        'End If
 
     
         '///////////////Paneles de agregar compras////////////////
@@ -571,6 +582,9 @@ Public Class Programa
         Panelprincipalcompras.Enabled = False
         Panelprincipalcompras.Visible = False
     End Sub
+    Private Sub Button5_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles BTNAgregarganadocompra.Click
+
+    End Sub
     Private Sub BTNAgregarcompra_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles BTNAgregarcompraproducto.Click
         Dim fechacompra As String = DTPFechacompraproducto.Value.ToString("yyyy-MM-dd")
         If fechacompra <> "" And RTXComentariocompraproducto.Text <> "" And TXTTotalpagadocomprasproducto.Text <> "" Then
@@ -623,6 +637,7 @@ Public Class Programa
         Panelprincipalcompras.Visible = False
         Panelprincipalcompras.Enabled = False
     End Sub
+    
     Private Sub BTNEliminarmodicompra_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles BTNEliminarmodicompra.Click
         'Elimina el id de una compra juntos con todos los datos de ese id
         Consulta = "delete from compra where idc='" & TXTIdmodicompra.Text & "'"
@@ -960,7 +975,7 @@ Public Class Programa
         Else
 
             Try
-                Consulta = "delete from venta where idv='" & txbcedulaclienteventa.Text & "'"
+                Consulta = "delete from venta where idv= '" & txbcedulaclienteventa.Text & "'"
                 consultar()
 
                 Consulta = "select * from venta"
@@ -1220,6 +1235,7 @@ Public Class Programa
         RTXModicomentariocompra.Clear()
         'Deja vacio el campo de Total a pagar
         TXTModitotalapagarcompra.Clear()
+        DTPModifechacompra.Value = Today
     End Sub
 
     Private Sub CBXAgregarcompra_SelectedIndexChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles CBXAgregarcompra.SelectedIndexChanged
@@ -1252,46 +1268,24 @@ Public Class Programa
     ' cosas de paneles
 
     Private Sub btnagregarpanel_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnagregarpanel.Click
-        If lblmostrarqueseborro.Visible = True Then
-            lblmostrarqueseborro.Visible = False
-        End If
-        If lblparamostrarsisemodifico.Visible = True Then
-            lblparamostrarsisemodifico.Visible = False
-        End If
-        If Labelparamostraragregado.Visible = True Then
-            Labelparamostraragregado.Visible = False
-        End If
-        If paneldeventasagregar.Width = 10 Then
-            paneldeventasagregar.Width = 131
+        paneldetextosenventas.Visible = True
+        If paneldetextosenventas.Height = 71 Then
+            paneldetextosenventas.Height = 376
         Else
-            paneldeventasagregar.Width = 10
+            paneldetextosenventas.Height = 71
+        End If
+        If paneldetextosenventas.Visible = True Then
+            btnagregarpanel.Image = Image.FromFile("..\..\Resources\flecha-hacia-la-izquierda.png")
+
+
+        End If
+        If paneldetextosenventas.Height = 71 Then
+            btnagregarpanel.Image = Image.FromFile("..\..\Resources\anadir.png")
         End If
 
-        If paneldetextosenventas.Height = 10 Then
-            paneldetextosenventas.Height = 165
-        Else
-            paneldetextosenventas.Height = 10
-        End If
 
-       
 
     End Sub
 
-    'Private Sub paneldeventasagregar_MouseMove(ByVal sender As Object, ByVal e As System.Windows.Forms.MouseEventArgs) Handles paneldeventasagregar.MouseMove
-    '    If paneldeventasagregar.Width = 83 Then
-    '        paneldeventasagregar.Width = 137
-    '    Else
-    '        paneldeventasagregar.Width = 83
-    '    End If
-    'End Sub
-
-
-
-
-  
-   
-
     
-
- 
 End Class
