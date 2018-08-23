@@ -5,9 +5,6 @@ Imports System.IO
 
 Public Class Programa
 
-
-
-
     Dim data As String = ("Server=localhost;Database=vacas;User id=root;Password=;Port=3306;")
     'Dim data As String = ("Server=www.db4free.net;Database=database_vacas;User id=zero22394;Password=zero22394;Port=3306;")
 
@@ -75,6 +72,22 @@ Public Class Programa
         DGVUsuarios.DataSource = Tabla
     End Sub
 
+    Private Sub CBXBusquedaUsuarios_SelectedIndexChanged(ByVal sender As Object, ByVal e As System.EventArgs) Handles CBXBusquedaUsuarios.SelectedIndexChanged
+        If CBXBusquedaUsuarios.SelectedItem.ToString = "Rango" Then
+            TXTBusquedaUsuarios.Visible = False
+            CBXBusquedaRangoUsuarios.Visible = True
+            CBXBusquedaRangoUsuarios.SelectedIndex = 0
+        Else
+            TXTBusquedaUsuarios.Visible = True
+            CBXBusquedaRangoUsuarios.Visible = False
+            TXTBusquedaUsuarios.Text = ""
+        End If
+    End Sub
+
+    Private Sub CBXBusquedaRangoUsuarios_SelectedIndexChanged(ByVal sender As Object, ByVal e As System.EventArgs) Handles CBXBusquedaRangoUsuarios.SelectedIndexChanged
+        TXTBusquedaUsuarios.Text = CBXBusquedaRangoUsuarios.SelectedItem.ToString
+    End Sub
+
     'Ci del usuario seleccionado actualmente
     Dim CiSeleccionado As String = ""
 
@@ -85,7 +98,7 @@ Public Class Programa
         TXTCiUsuarios.Text = ""
         TXTNombreUsuarios.Text = ""
         TXTPasswdUsuarios.Text = ""
-        TXTRangoUsuarios.Text = ""
+        CBXRangoUsuarios.SelectedIndex = 0
 
         'Informacion necesaria para el comando
         comando.CommandType = CommandType.Text
@@ -109,7 +122,19 @@ Public Class Programa
             TXTCiUsuarios.Text = reader.GetInt32(0).ToString
             TXTNombreUsuarios.Text = reader.GetString(1)
             TXTPasswdUsuarios.Text = reader.GetString(2)
-            TXTRangoUsuarios.Text = reader.GetString(3)
+            'TXTRangoUsuarios.Text = reader.GetString(3)
+
+            Select Case reader.GetString(3)
+                Case "Admin"
+                    CBXRangoUsuarios.SelectedIndex = 1
+                    Exit Select
+                Case "User"
+                    CBXRangoUsuarios.SelectedIndex = 0
+                    Exit Select
+                Case Else
+                    CBXRangoUsuarios.SelectedIndex = 2
+            End Select
+
             LabelEstadoUsuarios.Text = reader.GetString(4)
 
             If Dir$("../../Res/profile/" + reader.GetString(5) + ".bmp") <> "" Then
@@ -201,7 +226,7 @@ Public Class Programa
                 comando.CommandText = ("update usuario set ci='" + TXTCiUsuarios.Text +
                                "', contrasena='" + TXTPasswdUsuarios.Text +
                                "', nombre='" + TXTNombreUsuarios.Text +
-                               "', rango='" + TXTRangoUsuarios.Text +
+                               "', rango='" + CBXRangoUsuarios.SelectedItem.ToString +
                                "', perfil='" + stringaux(0) +
                                "' where ci='" + CiSeleccionado + "'")
                 Try
@@ -223,7 +248,7 @@ Public Class Programa
                 If verificarCedula(TXTCiUsuarios.Text) Then
                     If verificarNombre() Then
                         If verificarPasswd() Then
-                            comando.CommandText = ("insert into usuario values ('" + TXTCiUsuarios.Text + "','" + TXTNombreUsuarios.Text + "','" + TXTPasswdUsuarios.Text + "','" + TXTRangoUsuarios.Text + "','activo','" + StringImagenUsuarios + "')")
+                            comando.CommandText = ("insert into usuario values ('" + TXTCiUsuarios.Text + "','" + TXTNombreUsuarios.Text + "','" + TXTPasswdUsuarios.Text + "','" + CBXRangoUsuarios.SelectedItem.ToString + "','activo','" + StringImagenUsuarios + "')")
                             Try
                                 connection.Open()
                                 comando.ExecuteNonQuery()
@@ -320,7 +345,8 @@ Public Class Programa
         TXTCiUsuarios.ReadOnly = False
         TXTNombreUsuarios.ReadOnly = False
         TXTPasswdUsuarios.ReadOnly = False
-        TXTRangoUsuarios.ReadOnly = False
+        'TXTRangoUsuarios.ReadOnly = False
+        CBXRangoUsuarios.Enabled = True
         PICUsuarios.Enabled = True
 
         TXTBusquedaUsuarios.ReadOnly = True
@@ -338,7 +364,8 @@ Public Class Programa
         TXTCiUsuarios.Text = ""
         TXTNombreUsuarios.Text = ""
         TXTPasswdUsuarios.Text = ""
-        TXTRangoUsuarios.Text = ""
+        CBXRangoUsuarios.SelectedIndex = 0
+
 
         CHBUsuariosInactivos.Checked = False
 
@@ -365,7 +392,8 @@ Public Class Programa
         TXTCiUsuarios.ReadOnly = True
         TXTNombreUsuarios.ReadOnly = True
         TXTPasswdUsuarios.ReadOnly = True
-        TXTRangoUsuarios.ReadOnly = True
+        'TXTRangoUsuarios.ReadOnly = True
+        CBXRangoUsuarios.Enabled = False
         PICUsuarios.Enabled = False
 
         TXTBusquedaUsuarios.ReadOnly = False
@@ -458,7 +486,7 @@ Public Class Programa
 
         'End If
 
-    
+
         '///////////////Paneles de agregar compras////////////////
         PNLAgregarcompraganado.Enabled = False
         PNLAgregarcompraganado.Visible = False
@@ -637,7 +665,7 @@ Public Class Programa
         Panelprincipalcompras.Visible = False
         Panelprincipalcompras.Enabled = False
     End Sub
-    
+
     Private Sub BTNEliminarmodicompra_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles BTNEliminarmodicompra.Click
         'Elimina el id de una compra juntos con todos los datos de ese id
         Consulta = "delete from compra where idc='" & TXTIdmodicompra.Text & "'"
@@ -956,7 +984,7 @@ Public Class Programa
             End Try
 
         End If
-        
+
     End Sub
     'BORRAR EN VENTA//////////////////////////////////////////
 
@@ -1005,7 +1033,7 @@ Public Class Programa
         labelceduladeclienteventa.Visible = True
         txbcedulaclienteventa.Visible = True
         labelidv.Visible = False
-        
+
     End Sub
 
     Private Sub btnclearventa_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnclearventa.Click
@@ -1146,7 +1174,7 @@ Public Class Programa
         End If
     End Sub
 
-  
+
 
 
     Private Sub Button4_MouseMove(ByVal sender As Object, ByVal e As System.Windows.Forms.MouseEventArgs) Handles btnmodificarventa.MouseMove
@@ -1176,7 +1204,7 @@ Public Class Programa
         Label6deborrarganado.Visible = True
         TexSelecCodigoG.Visible = True
         timer = 0
-       
+
     End Sub
 
 
@@ -1287,5 +1315,5 @@ Public Class Programa
 
     End Sub
 
-    
+
 End Class
