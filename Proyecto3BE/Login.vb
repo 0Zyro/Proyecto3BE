@@ -112,6 +112,8 @@ Public Class Login
         If TextBoxUser.Text = passwd Then
             Programa.setUser(ci, nombre, passwd, rango, imagen)
             Programa.Show()
+            Programa.TabbedPane.SelectedIndex = 1
+            Programa.TabbedPane.SelectedIndex = 0
             Me.Close()
         Else
             TextBoxUser.Text = ""

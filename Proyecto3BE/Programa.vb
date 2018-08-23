@@ -479,6 +479,29 @@ Public Class Programa
     End Sub
     Private Sub Form2_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
 
+        '////////////GANADO
+
+        'timer en ganado
+        TexSelecCodigoG.Visible = False
+        Label6deborrarganado.Visible = False
+
+        ' raza	sexo	estado	idventa	precioventa	idcompra	preciocompra	peso_inicial	edad
+        DataGridViewganado.Columns(5).Visible = False
+        DataGridViewganado.Columns(6).Visible = False
+        DataGridViewganado.Columns(7).Visible = False
+        DataGridViewganado.Columns(8).Visible = False
+
+        '//////////// FIN GANADO
+
+        '-------------------------------------------------------------------------------------------------------------------
+
+        '////////////VENTAS
+
+        labelceduladeclienteventa.Visible = False
+        'label's hide
+        txbcedulaclienteventa.Visible = False
+        labelidv.Visible = False
+
         'panel ventas
         paneldetextosenventas.Visible = False
         'If paneldetextosenventas.Visible = True Then
@@ -486,8 +509,26 @@ Public Class Programa
 
         'End If
 
+        '////////////FIN VENTAS
 
-        '///////////////Paneles de agregar compras////////////////
+        '-------------------------------------------------------------------------------------------------------------------
+
+        '////////////CLIENTES
+
+        PanelPrincipalclientes.Enabled = True
+        PanelPrincipalclientes.Visible = True
+        PanelPrincipalclientes.BringToFront()
+
+        PanelAgregarcliente.Enabled = False
+        PanelAgregarcliente.Visible = False
+
+        '////////////FIN CLIENTES
+
+        '-------------------------------------------------------------------------------------------------------------------
+
+        '////////////COMPRAS
+
+        'Paneles de agregar compras
         PNLAgregarcompraganado.Enabled = False
         PNLAgregarcompraganado.Visible = False
         PNLAgregarcompraganado.SendToBack()
@@ -496,85 +537,12 @@ Public Class Programa
         PNLAgregarcompraproducto.Visible = False
         PNLAgregarcompraproducto.SendToBack()
 
-
-        'timer en ganado
-        TexSelecCodigoG.Visible = False
-        Label6deborrarganado.Visible = False
-
-
-
-        '/////// CONSULTA VENTA
-        Consulta = "select * from venta"
-        consultar()
-        'actualiza la dgvw
-        DataGridViewVENTAS.DataSource = Tabla
-        labelceduladeclienteventa.Visible = False
-        'label's hide
-        txbcedulaclienteventa.Visible = False
-        labelidv.Visible = False
-
-
-
-
-        '////////////USUARIOS
-        CBXBusquedaUsuarios.SelectedIndex = 0
-
-        '////////////CLIENTES
-        PanelPrincipalclientes.Enabled = True
-        PanelPrincipalclientes.Visible = True
-        PanelPrincipalclientes.BringToFront()
-
-        PanelAgregarcliente.Enabled = False
-        PanelAgregarcliente.Visible = False
-
-        'CARGA DATAGRIDCLIENTES
-        Consulta = "select * from cliente"
-        consultar()
-        DataGridViewClientes.DataSource = Tabla
-        DataGridViewClientes.Columns(0).HeaderText = "Cedúla"
-        DataGridViewClientes.Columns(1).HeaderText = "Nombre y apellido"
-        DataGridViewClientes.Columns(2).HeaderText = "Dirección"
-        DataGridViewClientes.Columns(3).HeaderText = "Teléfono"
-
-        'CONSULTA DE TABLA(CARGA COMPRA)
-        Consulta = "select * from compra"
-        consultar()
-        DTGCompras.DataSource = Tabla
-        DTGCompras.Columns(0).HeaderText = "Id"
-        DTGCompras.Columns(1).HeaderText = "Fecha de Compra"
-        DTGCompras.Columns(2).HeaderText = "Comentario"
-        DTGCompras.Columns(3).HeaderText = "Total"
-
-        'Nose que es esto
-        CBXBusquedaUsuarios.SelectedIndex = 0
-
         'Muestra el panel principal de Compras y oculta los otros
         Panelprincipalcompras.BringToFront()
         Panelmodificarcompras.Visible = False
         Panelagregarcompras.Visible = False
 
-        'CONSULTA DE TABLA GANADO
-        Consulta = "select * from ganado"
-        consultar()
-        DataGridViewganado.DataSource = Tabla
-
-        'Cambiamos los headers
-        DataGridViewganado.Columns(0).HeaderText = "Codigo de ganado"
-        DataGridViewganado.Columns(1).HeaderText = "Raza"
-        DataGridViewganado.Columns(2).HeaderText = "Sexo"
-        DataGridViewganado.Columns(3).HeaderText = "Fecha nacimiento"
-        DataGridViewganado.Columns(4).HeaderText = "Estado"
-        DataGridViewganado.Columns(5).HeaderText = "Precio de venta"
-        DataGridViewganado.Columns(6).HeaderText = "Precio de compra"
-        DataGridViewganado.Columns(7).HeaderText = "Codigo de vompra"
-        DataGridViewganado.Columns(8).HeaderText = "Codigo de venta"
-
-        ' raza	sexo	estado	idventa	precioventa	idcompra	preciocompra	peso_inicial	edad
-        DataGridViewganado.Columns(5).Visible = False
-        DataGridViewganado.Columns(6).Visible = False
-        DataGridViewganado.Columns(7).Visible = False
-        DataGridViewganado.Columns(8).Visible = False
-
+        '////////////FIN COMPRAS
     End Sub
     Private Sub BTNVolverdeagregarcompra_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles BTNVolverdeagregarcompra.Click
         'Muestra panel pricipal de compras
@@ -1316,4 +1284,67 @@ Public Class Programa
     End Sub
 
 
+    Private Sub TabbedPane_SelectedIndexChanged(ByVal sender As Object, ByVal e As System.EventArgs) Handles TabbedPane.SelectedIndexChanged
+
+        Select Case TabbedPane.SelectedIndex
+            Case 0
+                'CONSULTA DE TABLA GANADO
+                Consulta = "select * from ganado"
+                consultar()
+                DataGridViewganado.DataSource = Tabla
+
+                'Cambiamos los headers
+                DataGridViewganado.Columns(0).HeaderText = "Codigo de ganado"
+                DataGridViewganado.Columns(1).HeaderText = "Raza"
+                DataGridViewganado.Columns(2).HeaderText = "Sexo"
+                DataGridViewganado.Columns(3).HeaderText = "Fecha nacimiento"
+                DataGridViewganado.Columns(4).HeaderText = "Estado"
+                DataGridViewganado.Columns(5).HeaderText = "Precio de venta"
+                DataGridViewganado.Columns(6).HeaderText = "Precio de compra"
+                DataGridViewganado.Columns(7).HeaderText = "Codigo de vompra"
+                DataGridViewganado.Columns(8).HeaderText = "Codigo de venta"
+
+                Exit Select
+            Case 1
+
+                'CONSULTA DE TABLA(CARGA COMPRA)
+                Consulta = "select * from compra"
+                consultar()
+                DTGCompras.DataSource = Tabla
+                DTGCompras.Columns(0).HeaderText = "Id"
+                DTGCompras.Columns(1).HeaderText = "Fecha de Compra"
+                DTGCompras.Columns(2).HeaderText = "Comentario"
+                DTGCompras.Columns(3).HeaderText = "Total"
+
+                Exit Select
+            Case 2
+
+                'CONSULTA VENTA
+                Consulta = "select * from venta"
+                consultar()
+                'actualiza la dgvw
+                DataGridViewVENTAS.DataSource = Tabla
+
+                Exit Select
+            Case 3
+
+                'CARGA DATAGRIDCLIENTES
+                Consulta = "select * from cliente"
+                consultar()
+                DataGridViewClientes.DataSource = Tabla
+                DataGridViewClientes.Columns(0).HeaderText = "Cedúla"
+                DataGridViewClientes.Columns(1).HeaderText = "Nombre y apellido"
+                DataGridViewClientes.Columns(2).HeaderText = "Dirección"
+                DataGridViewClientes.Columns(3).HeaderText = "Teléfono"
+
+                Exit Select
+            Case 4
+
+                BTNBusquedaUsuarios.PerformClick()
+                CBXBusquedaUsuarios.SelectedIndex = 0
+
+                Exit Select
+        End Select
+
+    End Sub
 End Class
