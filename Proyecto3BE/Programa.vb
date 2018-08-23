@@ -447,6 +447,7 @@ Public Class Programa
     End Sub
     Private Sub Form2_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
 
+    
         '///////////////Paneles de agregar compras////////////////
         PNLAgregarcompraganado.Enabled = False
         PNLAgregarcompraganado.Visible = False
@@ -468,7 +469,7 @@ Public Class Programa
         consultar()
         'actualiza la dgvw
         DataGridViewVENTAS.DataSource = Tabla
-        labeldeventa.Visible = False
+        labelceduladeclienteventa.Visible = False
         'label's hide
         txbcedulaclienteventa.Visible = False
         labelidv.Visible = False
@@ -905,61 +906,79 @@ Public Class Programa
 
     '////////////////////agregar en  ventas///////////////////
 
-    Private Sub agregarventa_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles agregarventa.Click
-
-
+    Private Sub agregarventa_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnagregarventa.Click
+        If lblparamostrarsisemodifico.Visible = True Then
+            lblparamostrarsisemodifico.Visible = False
+        End If
+        If lblmostrarqueseborro.Visible = True Then
+            lblmostrarqueseborro.Visible = False
+        End If
         Dim fecha As String = DateTimePicker1.Value.ToString("yyyy-MM-dd")
         Dim comentario As String = txbcomentarioventa.Text
         Dim totalv As String = txbtotalventa.Text
         Dim id As String = txbcedulaclienteventa.Text
 
 
+        If txbcedulaclienteventa.Text = "" Then
+            MsgBox("Complete el campo Cédula")
+        Else
 
-        Try
+            Try
 
-            'consulta
-            Consulta = "insert into venta (fechaventa,comentariov,totalv,id) values('" & fecha & "','" & comentario & "','" & totalv & "','" & id & "');"
-            consultar()
-            'select hacia venta
-            Consulta = "select * from venta"
-            consultar()
-            'actualiza la dgvw
-            DataGridViewVENTAS.DataSource = Tabla
-            MsgBox("se agregó con exito")
-        Catch ex As Exception
-            MsgBox("Verifique la cédula del cliente")
+                'consulta
+                Consulta = "insert into venta (fechaventa,comentariov,totalv,id) values('" & fecha & "','" & comentario & "','" & totalv & "','" & id & "');"
+                consultar()
+                'select hacia venta
+                Consulta = "select * from venta"
+                consultar()
+                'actualiza la dgvw
+                DataGridViewVENTAS.DataSource = Tabla
+                Labelparamostraragregado.Show()
+            Catch ex As Exception
+                MsgBox(ex)
 
 
-        End Try
+            End Try
 
+        End If
+        
     End Sub
     'BORRAR EN VENTA//////////////////////////////////////////
 
 
 
-    Private Sub Buttonborrarventas_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Buttonborrarventas.Click
+    Private Sub Buttonborrarventas_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnborrarventa.Click
+        If Labelparamostraragregado.Visible = True Then
+            Labelparamostraragregado.Visible = False
+        End If
+        If lblparamostrarsisemodifico.Visible = True Then
+            lblparamostrarsisemodifico.Visible = False
+        End If
 
-        Try
-            Consulta = "delete from venta where idv='" & txbcedulaclienteventa.Text & "'"
-            consultar()
+        If txbcedulaclienteventa.Text = "" Then
+            MsgBox("Complete campo idv")
+        Else
 
-            Consulta = "select * from venta"
-            consultar()
+            Try
+                Consulta = "delete from venta where idv='" & txbcedulaclienteventa.Text & "'"
+                consultar()
 
-            DataGridViewVENTAS.DataSource = Tabla
-            MsgBox("Se borro con exito")
-            'cambia de nombre el label
-            labeldeventa.Text = "Cédula cliente"
-        Catch ex As Exception
-            MsgBox(ex)
-        End Try
+                Consulta = "select * from venta"
+                consultar()
 
+                DataGridViewVENTAS.DataSource = Tabla
+                lblmostrarqueseborro.Show()
+
+            Catch ex As Exception
+                MsgBox(ex)
+            End Try
+        End If
 
     End Sub
     '////////////////////////////////////////////////////////////////////////////////////////////////
     'esto hace que el label cambie al pasar el boton por el boton de borrar
-    Private Sub Buttonborrarventas_MouseMove(ByVal sender As Object, ByVal e As System.Windows.Forms.MouseEventArgs) Handles Buttonborrarventas.MouseMove
-        labeldeventa.Visible = False
+    Private Sub Buttonborrarventas_MouseMove(ByVal sender As Object, ByVal e As System.Windows.Forms.MouseEventArgs) Handles btnborrarventa.MouseMove
+        labelceduladeclienteventa.Visible = False
         labelidv.Visible = True
         txbcedulaclienteventa.Visible = True
     End Sub
@@ -967,15 +986,24 @@ Public Class Programa
 
 
 
-    Private Sub agregarventa_MouseMove(ByVal sender As Object, ByVal e As System.Windows.Forms.MouseEventArgs) Handles agregarventa.MouseMove
-        labeldeventa.Visible = True
+    Private Sub agregarventa_MouseMove(ByVal sender As Object, ByVal e As System.Windows.Forms.MouseEventArgs) Handles btnagregarventa.MouseMove
+        labelceduladeclienteventa.Visible = True
         txbcedulaclienteventa.Visible = True
         labelidv.Visible = False
-        Timerventaseliminaryagregar.Enabled = True
-        Timerventaseliminaryagregar.Interval = 10000
+        
     End Sub
 
     Private Sub btnclearventa_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnclearventa.Click
+        If Labelparamostraragregado.Visible = True Then
+            Labelparamostraragregado.Visible = False
+        End If
+        If lblparamostrarsisemodifico.Visible = True Then
+            lblparamostrarsisemodifico.Visible = False
+        End If
+        If lblmostrarqueseborro.Visible = True Then
+            lblmostrarqueseborro.Visible = False
+        End If
+
         txbcedulaclienteventa.Text = ""
         txbcomentarioventa.Text = ""
         txbtotalventa.Text = ""
@@ -1067,7 +1095,13 @@ Public Class Programa
 
 
     'MODIFICAR VENTAS 
-    Private Sub Button4_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Button4.Click
+    Private Sub Button4_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnmodificarventa.Click
+        If Labelparamostraragregado.Visible = True Then
+            Labelparamostraragregado.Visible = False
+        End If
+        If lblmostrarqueseborro.Visible = True Then
+            lblmostrarqueseborro.Visible = False
+        End If
         Dim fecha As String = DateTimePicker1.Value.ToString("yyyy-MM-dd")
         Dim comentario As String = txbcomentarioventa.Text
         Dim totalv As String = txbtotalventa.Text
@@ -1087,7 +1121,8 @@ Public Class Programa
                 Consulta = "select * from venta"
                 consultar()
                 DataGridViewVENTAS.DataSource = Tabla
-                MsgBox("Se ha modificado con exito")
+                lblparamostrarsisemodifico.Show()
+
             Catch ex As Exception
                 MsgBox(ex)
 
@@ -1096,9 +1131,11 @@ Public Class Programa
         End If
     End Sub
 
+  
 
-    Private Sub Button4_MouseMove(ByVal sender As Object, ByVal e As System.Windows.Forms.MouseEventArgs) Handles Button4.MouseMove
-        labeldeventa.Visible = False
+
+    Private Sub Button4_MouseMove(ByVal sender As Object, ByVal e As System.Windows.Forms.MouseEventArgs) Handles btnmodificarventa.MouseMove
+        labelceduladeclienteventa.Visible = False
         labelidv.Visible = True
         txbcedulaclienteventa.Visible = True
     End Sub
@@ -1118,14 +1155,13 @@ Public Class Programa
         TexSelecCodigoG.Text = ""
 
     End Sub
-
+    ' timer 
     Private Sub btneliminarganado_MouseMove(ByVal sender As Object, ByVal e As System.Windows.Forms.MouseEventArgs) Handles btneliminarganado.MouseMove
         Dim timer As Integer
         Label6deborrarganado.Visible = True
         TexSelecCodigoG.Visible = True
         timer = 0
-        Timerganadoeliminar.Enabled = True
-        Timerganadoeliminar.Interval = 10000
+       
     End Sub
 
 
@@ -1133,17 +1169,17 @@ Public Class Programa
 
 
 
-    Private Sub Timer1_Tick_1(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Timerganadoeliminar.Tick
+    Private Sub Timer1_Tick_1(ByVal sender As System.Object, ByVal e As System.EventArgs)
         Label6deborrarganado.Visible = False
         TexSelecCodigoG.Visible = False
     End Sub
 
-    Private Sub Timerventaseliminaryagregar_Tick(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Timerventaseliminaryagregar.Tick
+    Private Sub Timerventaseliminaryagregar_Tick(ByVal sender As System.Object, ByVal e As System.EventArgs)
         labelidv.Visible = False
-        labeldeventa.Visible = False
+        labelceduladeclienteventa.Visible = False
         txbcedulaclienteventa.Visible = False
     End Sub
-
+    ' ////////////////////////////////////////////////////////////
     Private Sub BTNsalirmodicompra_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles BTNsalirmodicompra.Click
         'Oculta el panel de modificar compra
         Panelmodificarcompras.Enabled = False
@@ -1213,4 +1249,49 @@ Public Class Programa
             PNLAgregarcompraganado.SendToBack()
         End If
     End Sub
+    ' cosas de paneles
+
+    Private Sub btnagregarpanel_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnagregarpanel.Click
+        If lblmostrarqueseborro.Visible = True Then
+            lblmostrarqueseborro.Visible = False
+        End If
+        If lblparamostrarsisemodifico.Visible = True Then
+            lblparamostrarsisemodifico.Visible = False
+        End If
+        If Labelparamostraragregado.Visible = True Then
+            Labelparamostraragregado.Visible = False
+        End If
+        If paneldeventasagregar.Width = 10 Then
+            paneldeventasagregar.Width = 131
+        Else
+            paneldeventasagregar.Width = 10
+        End If
+
+        If paneldetextosenventas.Height = 10 Then
+            paneldetextosenventas.Height = 165
+        Else
+            paneldetextosenventas.Height = 10
+        End If
+
+       
+
+    End Sub
+
+    'Private Sub paneldeventasagregar_MouseMove(ByVal sender As Object, ByVal e As System.Windows.Forms.MouseEventArgs) Handles paneldeventasagregar.MouseMove
+    '    If paneldeventasagregar.Width = 83 Then
+    '        paneldeventasagregar.Width = 137
+    '    Else
+    '        paneldeventasagregar.Width = 83
+    '    End If
+    'End Sub
+
+
+
+
+  
+   
+
+    
+
+ 
 End Class
