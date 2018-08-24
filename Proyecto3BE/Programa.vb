@@ -485,11 +485,11 @@ Public Class Programa
         TexSelecCodigoG.Visible = False
         Label6deborrarganado.Visible = False
 
-        ' raza	sexo	estado	idventa	precioventa	idcompra	preciocompra	peso_inicial	edad
-        DataGridViewganado.Columns(5).Visible = False
-        DataGridViewganado.Columns(6).Visible = False
-        DataGridViewganado.Columns(7).Visible = False
-        DataGridViewganado.Columns(8).Visible = False
+        '' raza	sexo	estado	idventa	precioventa	idcompra	preciocompra	peso_inicial	edad
+        'DataGridViewganado.Columns(5).Visible = False
+        'DataGridViewganado.Columns(6).Visible = False
+        'DataGridViewganado.Columns(7).Visible = False
+        'DataGridViewganado.Columns(8).Visible = False
 
         '//////////// FIN GANADO
 
@@ -1264,21 +1264,22 @@ Public Class Programa
     ' cosas de paneles
 
     Private Sub btnagregarpanel_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnagregarpanel.Click
+        Panelagregarventaaganado.Visible = False
         paneldetextosenventas.Visible = True
-        If paneldetextosenventas.Height = 71 Then
+        If paneldetextosenventas.Height = 10 Then
             paneldetextosenventas.Height = 376
         Else
-            paneldetextosenventas.Height = 71
+            paneldetextosenventas.Height = 10
         End If
         If paneldetextosenventas.Visible = True Then
             btnagregarpanel.Image = Image.FromFile("..\..\Resources\flecha-hacia-la-izquierda.png")
 
 
         End If
-        If paneldetextosenventas.Height = 71 Then
+
+        If paneldetextosenventas.Height = 10 Then
             btnagregarpanel.Image = Image.FromFile("..\..\Resources\anadir.png")
         End If
-
 
 
     End Sub
@@ -1346,5 +1347,66 @@ Public Class Programa
                 Exit Select
         End Select
 
+    End Sub
+
+
+    Private Sub Panelagregarventaaganado_Paint(ByVal sender As System.Object, ByVal e As System.Windows.Forms.PaintEventArgs) Handles Panelagregarventaaganado.Paint
+       Consulta = " select * from ganado"
+        consultar()
+
+        DataGridViewganadoenventa.DataSource = Tabla
+    End Sub
+
+    Private Sub Button4_Click_1(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Button4.Click
+        paneldetextosenventas.Visible = False
+        Panelagregarventaaganado.Visible = True
+        btnbackdeagregaraganado.Visible = True
+        btnagregarpanel.Image = Image.FromFile("..\..\Resources\anadir.png")
+
+    End Sub
+
+    Private Sub Button5_Click_1(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Button5.Click
+        If txbiddeventaenganado.Text = "" And txbprecioventaenganado.Text = "" And txbcodigodeganadoenventa.Text = "" Then
+            MsgBox("Complete los campos faltantes ")
+        Else
+
+
+            Try
+
+                'consulta
+                Consulta = "update ganado  set idv='" + txbiddeventaenganado.Text + "', preciov='" + txbprecioventaenganado.Text + "' where idg='" + txbcodigodeganadoenventa.Text + "' "
+                consultar()
+                'select hacia ganado
+                Consulta = "select * from ganado"
+                consultar()
+                'actualiza la dgvw
+                DataGridViewganadoenventa.DataSource = Tabla
+
+            Catch ex As Exception
+                MsgBox(ex)
+
+
+            End Try
+        End If
+    End Sub
+
+    
+    
+
+
+    Private Sub Panel1_Paint(ByVal sender As System.Object, ByVal e As System.Windows.Forms.PaintEventArgs) Handles Panel1.Paint
+
+        Consulta = " select * from venta"
+        consultar()
+
+        DataGridViewganadoenventas2.DataSource = Tabla
+    End Sub
+
+
+  
+   
+    Private Sub btnbackdeagregaraganado_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnbackdeagregaraganado.Click
+        Panelagregarventaaganado.Visible = False
+        btnbackdeagregaraganado.Visible = False
     End Sub
 End Class
