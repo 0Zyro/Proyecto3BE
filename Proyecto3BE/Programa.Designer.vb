@@ -24,7 +24,7 @@ Partial Class Programa
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(Programa))
-        Dim DataGridViewCellStyle8 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle2 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Me.PanelUsuario = New System.Windows.Forms.Panel()
         Me.LBLCiUsuario = New System.Windows.Forms.Label()
         Me.BTNCerrarSesion = New System.Windows.Forms.Button()
@@ -34,7 +34,6 @@ Partial Class Programa
         Me.LBLRangoUsuario = New System.Windows.Forms.Label()
         Me.TabbedPane = New System.Windows.Forms.TabControl()
         Me.TabGanado = New System.Windows.Forms.TabPage()
-        Me.Label6deborrarganado = New System.Windows.Forms.Label()
         Me.Panelagregarganando = New System.Windows.Forms.Panel()
         Me.Button3 = New System.Windows.Forms.Button()
         Me.Button2 = New System.Windows.Forms.Button()
@@ -49,6 +48,7 @@ Partial Class Programa
         Me.Label3 = New System.Windows.Forms.Label()
         Me.Label2 = New System.Windows.Forms.Label()
         Me.Label1 = New System.Windows.Forms.Label()
+        Me.Label6deborrarganado = New System.Windows.Forms.Label()
         Me.TexSelecCodigoG = New System.Windows.Forms.TextBox()
         Me.DataGridViewganado = New System.Windows.Forms.DataGridView()
         Me.btneliminarganado = New System.Windows.Forms.Button()
@@ -121,6 +121,7 @@ Partial Class Programa
         Me.lblidventaenganado = New System.Windows.Forms.Label()
         Me.txbiddeventaenganado = New System.Windows.Forms.TextBox()
         Me.Button5 = New System.Windows.Forms.Button()
+        Me.btnbackdeagregaraganado = New System.Windows.Forms.Button()
         Me.Button4 = New System.Windows.Forms.Button()
         Me.btnagregarpanel = New System.Windows.Forms.Button()
         Me.paneldetextosenventas = New System.Windows.Forms.Panel()
@@ -202,7 +203,6 @@ Partial Class Programa
         Me.PICUsuarios = New System.Windows.Forms.PictureBox()
         Me.CHBPasswdUsuarios = New System.Windows.Forms.CheckBox()
         Me.ToolTip1 = New System.Windows.Forms.ToolTip(Me.components)
-        Me.btnbackdeagregaraganado = New System.Windows.Forms.Button()
         Me.PanelUsuario.SuspendLayout()
         CType(Me.PICUsuarioLogueado, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.TabbedPane.SuspendLayout()
@@ -326,14 +326,14 @@ Partial Class Programa
         Me.TabbedPane.Location = New System.Drawing.Point(101, 5)
         Me.TabbedPane.Name = "TabbedPane"
         Me.TabbedPane.SelectedIndex = 0
-        Me.TabbedPane.Size = New System.Drawing.Size(687, 463)
+        Me.TabbedPane.Size = New System.Drawing.Size(687, 466)
         Me.TabbedPane.TabIndex = 1
         '
         'TabGanado
         '
         Me.TabGanado.BackColor = System.Drawing.Color.SeaGreen
-        Me.TabGanado.Controls.Add(Me.Label6deborrarganado)
         Me.TabGanado.Controls.Add(Me.Panelagregarganando)
+        Me.TabGanado.Controls.Add(Me.Label6deborrarganado)
         Me.TabGanado.Controls.Add(Me.TexSelecCodigoG)
         Me.TabGanado.Controls.Add(Me.DataGridViewganado)
         Me.TabGanado.Controls.Add(Me.btneliminarganado)
@@ -342,22 +342,13 @@ Partial Class Programa
         Me.TabGanado.Location = New System.Drawing.Point(4, 22)
         Me.TabGanado.Name = "TabGanado"
         Me.TabGanado.Padding = New System.Windows.Forms.Padding(3)
-        Me.TabGanado.Size = New System.Drawing.Size(679, 437)
+        Me.TabGanado.Size = New System.Drawing.Size(679, 440)
         Me.TabGanado.TabIndex = 0
         Me.TabGanado.Text = "Ganado"
         '
-        'Label6deborrarganado
-        '
-        Me.Label6deborrarganado.AutoSize = True
-        Me.Label6deborrarganado.Location = New System.Drawing.Point(280, 336)
-        Me.Label6deborrarganado.Name = "Label6deborrarganado"
-        Me.Label6deborrarganado.Size = New System.Drawing.Size(110, 13)
-        Me.Label6deborrarganado.TabIndex = 87
-        Me.Label6deborrarganado.Text = "Código de ganado"
-        '
         'Panelagregarganando
         '
-        Me.Panelagregarganando.BackColor = System.Drawing.Color.SeaGreen
+        Me.Panelagregarganando.BackColor = System.Drawing.Color.Fuchsia
         Me.Panelagregarganando.Controls.Add(Me.Button3)
         Me.Panelagregarganando.Controls.Add(Me.Button2)
         Me.Panelagregarganando.Controls.Add(Me.Label27)
@@ -371,15 +362,15 @@ Partial Class Programa
         Me.Panelagregarganando.Controls.Add(Me.Label3)
         Me.Panelagregarganando.Controls.Add(Me.Label2)
         Me.Panelagregarganando.Controls.Add(Me.Label1)
-        Me.Panelagregarganando.Location = New System.Drawing.Point(0, 0)
+        Me.Panelagregarganando.Location = New System.Drawing.Point(122, 57)
         Me.Panelagregarganando.Name = "Panelagregarganando"
-        Me.Panelagregarganando.Size = New System.Drawing.Size(679, 401)
+        Me.Panelagregarganando.Size = New System.Drawing.Size(442, 312)
         Me.Panelagregarganando.TabIndex = 2
         Me.Panelagregarganando.Visible = False
         '
         'Button3
         '
-        Me.Button3.Location = New System.Drawing.Point(503, 376)
+        Me.Button3.Location = New System.Drawing.Point(150, 276)
         Me.Button3.Name = "Button3"
         Me.Button3.Size = New System.Drawing.Size(75, 23)
         Me.Button3.TabIndex = 21
@@ -388,7 +379,7 @@ Partial Class Programa
         '
         'Button2
         '
-        Me.Button2.Location = New System.Drawing.Point(391, 376)
+        Me.Button2.Location = New System.Drawing.Point(38, 276)
         Me.Button2.Name = "Button2"
         Me.Button2.Size = New System.Drawing.Size(75, 23)
         Me.Button2.TabIndex = 20
@@ -398,7 +389,7 @@ Partial Class Programa
         'Label27
         '
         Me.Label27.AutoSize = True
-        Me.Label27.Location = New System.Drawing.Point(212, 20)
+        Me.Label27.Location = New System.Drawing.Point(115, 22)
         Me.Label27.Name = "Label27"
         Me.Label27.Size = New System.Drawing.Size(197, 13)
         Me.Label27.TabIndex = 19
@@ -484,6 +475,15 @@ Partial Class Programa
         Me.Label1.TabIndex = 0
         Me.Label1.Text = "Codigo de ganado"
         '
+        'Label6deborrarganado
+        '
+        Me.Label6deborrarganado.AutoSize = True
+        Me.Label6deborrarganado.Location = New System.Drawing.Point(280, 336)
+        Me.Label6deborrarganado.Name = "Label6deborrarganado"
+        Me.Label6deborrarganado.Size = New System.Drawing.Size(110, 13)
+        Me.Label6deborrarganado.TabIndex = 87
+        Me.Label6deborrarganado.Text = "Código de ganado"
+        '
         'TexSelecCodigoG
         '
         Me.TexSelecCodigoG.Location = New System.Drawing.Point(174, 333)
@@ -497,6 +497,7 @@ Partial Class Programa
         Me.DataGridViewganado.AllowUserToDeleteRows = False
         Me.DataGridViewganado.AllowUserToResizeColumns = False
         Me.DataGridViewganado.AllowUserToResizeRows = False
+        Me.DataGridViewganado.BackgroundColor = System.Drawing.SystemColors.InactiveBorder
         Me.DataGridViewganado.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         Me.DataGridViewganado.EnableHeadersVisualStyles = False
         Me.DataGridViewganado.Location = New System.Drawing.Point(17, 22)
@@ -506,7 +507,7 @@ Partial Class Programa
         Me.DataGridViewganado.RowHeadersVisible = False
         Me.DataGridViewganado.ScrollBars = System.Windows.Forms.ScrollBars.Vertical
         Me.DataGridViewganado.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
-        Me.DataGridViewganado.Size = New System.Drawing.Size(656, 248)
+        Me.DataGridViewganado.Size = New System.Drawing.Size(506, 248)
         Me.DataGridViewganado.TabIndex = 90
         '
         'btneliminarganado
@@ -515,7 +516,7 @@ Partial Class Programa
         Me.btneliminarganado.BackColor = System.Drawing.Color.ForestGreen
         Me.btneliminarganado.Cursor = System.Windows.Forms.Cursors.Hand
         Me.btneliminarganado.Image = CType(resources.GetObject("btneliminarganado.Image"), System.Drawing.Image)
-        Me.btneliminarganado.Location = New System.Drawing.Point(162, 282)
+        Me.btneliminarganado.Location = New System.Drawing.Point(162, 284)
         Me.btneliminarganado.Name = "btneliminarganado"
         Me.btneliminarganado.Size = New System.Drawing.Size(44, 42)
         Me.btneliminarganado.TabIndex = 86
@@ -527,7 +528,7 @@ Partial Class Programa
         Me.btnagregarganado.BackColor = System.Drawing.Color.ForestGreen
         Me.btnagregarganado.Cursor = System.Windows.Forms.Cursors.Hand
         Me.btnagregarganado.Image = CType(resources.GetObject("btnagregarganado.Image"), System.Drawing.Image)
-        Me.btnagregarganado.Location = New System.Drawing.Point(70, 282)
+        Me.btnagregarganado.Location = New System.Drawing.Point(70, 284)
         Me.btnagregarganado.Name = "btnagregarganado"
         Me.btnagregarganado.Size = New System.Drawing.Size(46, 42)
         Me.btnagregarganado.TabIndex = 80
@@ -541,7 +542,7 @@ Partial Class Programa
         Me.TabCompras.Location = New System.Drawing.Point(4, 22)
         Me.TabCompras.Name = "TabCompras"
         Me.TabCompras.Padding = New System.Windows.Forms.Padding(3)
-        Me.TabCompras.Size = New System.Drawing.Size(679, 437)
+        Me.TabCompras.Size = New System.Drawing.Size(679, 440)
         Me.TabCompras.TabIndex = 2
         Me.TabCompras.Text = "Compras"
         Me.TabCompras.UseVisualStyleBackColor = True
@@ -1079,7 +1080,7 @@ Partial Class Programa
         Me.ventasmain.Location = New System.Drawing.Point(4, 22)
         Me.ventasmain.Name = "ventasmain"
         Me.ventasmain.Padding = New System.Windows.Forms.Padding(3)
-        Me.ventasmain.Size = New System.Drawing.Size(679, 437)
+        Me.ventasmain.Size = New System.Drawing.Size(679, 440)
         Me.ventasmain.TabIndex = 1
         Me.ventasmain.Text = "Ventas"
         '
@@ -1234,6 +1235,17 @@ Partial Class Programa
         Me.Button5.Size = New System.Drawing.Size(45, 42)
         Me.Button5.TabIndex = 95
         Me.Button5.UseVisualStyleBackColor = True
+        '
+        'btnbackdeagregaraganado
+        '
+        Me.btnbackdeagregaraganado.FlatStyle = System.Windows.Forms.FlatStyle.Popup
+        Me.btnbackdeagregaraganado.Image = Global.WindowsApplication1.My.Resources.Resources.boton_volver
+        Me.btnbackdeagregaraganado.Location = New System.Drawing.Point(414, 382)
+        Me.btnbackdeagregaraganado.Name = "btnbackdeagregaraganado"
+        Me.btnbackdeagregaraganado.Size = New System.Drawing.Size(45, 42)
+        Me.btnbackdeagregaraganado.TabIndex = 107
+        Me.btnbackdeagregaraganado.UseVisualStyleBackColor = True
+        Me.btnbackdeagregaraganado.Visible = False
         '
         'Button4
         '
@@ -1489,7 +1501,7 @@ Partial Class Programa
         Me.TabClientes.Location = New System.Drawing.Point(4, 22)
         Me.TabClientes.Name = "TabClientes"
         Me.TabClientes.Padding = New System.Windows.Forms.Padding(3)
-        Me.TabClientes.Size = New System.Drawing.Size(679, 437)
+        Me.TabClientes.Size = New System.Drawing.Size(679, 440)
         Me.TabClientes.TabIndex = 3
         Me.TabClientes.Text = "Clientes"
         '
@@ -1856,7 +1868,7 @@ Partial Class Programa
         Me.TabUsuarios.Location = New System.Drawing.Point(4, 22)
         Me.TabUsuarios.Name = "TabUsuarios"
         Me.TabUsuarios.Padding = New System.Windows.Forms.Padding(3)
-        Me.TabUsuarios.Size = New System.Drawing.Size(679, 437)
+        Me.TabUsuarios.Size = New System.Drawing.Size(679, 440)
         Me.TabUsuarios.TabIndex = 4
         Me.TabUsuarios.Text = "Usuarios"
         Me.TabUsuarios.UseVisualStyleBackColor = True
@@ -1891,14 +1903,14 @@ Partial Class Programa
         Me.DGVUsuarios.ClipboardCopyMode = System.Windows.Forms.DataGridViewClipboardCopyMode.Disable
         Me.DGVUsuarios.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         Me.DGVUsuarios.ColumnHeadersVisible = False
-        DataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle8.BackColor = System.Drawing.SystemColors.Window
-        DataGridViewCellStyle8.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle8.ForeColor = System.Drawing.SystemColors.ControlText
-        DataGridViewCellStyle8.SelectionBackColor = System.Drawing.SystemColors.ButtonHighlight
-        DataGridViewCellStyle8.SelectionForeColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(192, Byte), Integer))
-        DataGridViewCellStyle8.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
-        Me.DGVUsuarios.DefaultCellStyle = DataGridViewCellStyle8
+        DataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window
+        DataGridViewCellStyle2.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText
+        DataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.ButtonHighlight
+        DataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(192, Byte), Integer))
+        DataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
+        Me.DGVUsuarios.DefaultCellStyle = DataGridViewCellStyle2
         Me.DGVUsuarios.GridColor = System.Drawing.SystemColors.ButtonHighlight
         Me.DGVUsuarios.Location = New System.Drawing.Point(6, 47)
         Me.DGVUsuarios.MultiSelect = False
@@ -2093,17 +2105,6 @@ Partial Class Programa
         Me.CHBPasswdUsuarios.TabIndex = 21
         Me.CHBPasswdUsuarios.UseVisualStyleBackColor = True
         '
-        'btnbackdeagregaraganado
-        '
-        Me.btnbackdeagregaraganado.FlatStyle = System.Windows.Forms.FlatStyle.Popup
-        Me.btnbackdeagregaraganado.Image = Global.WindowsApplication1.My.Resources.Resources.boton_volver
-        Me.btnbackdeagregaraganado.Location = New System.Drawing.Point(414, 382)
-        Me.btnbackdeagregaraganado.Name = "btnbackdeagregaraganado"
-        Me.btnbackdeagregaraganado.Size = New System.Drawing.Size(45, 42)
-        Me.btnbackdeagregaraganado.TabIndex = 107
-        Me.btnbackdeagregaraganado.UseVisualStyleBackColor = True
-        Me.btnbackdeagregaraganado.Visible = False
-        '
         'Programa
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -2284,7 +2285,6 @@ Partial Class Programa
     Friend WithEvents LBLCiUsuario As System.Windows.Forms.Label
     Friend WithEvents btnagregarganado As System.Windows.Forms.Button
     Friend WithEvents btneliminarganado As System.Windows.Forms.Button
-    Friend WithEvents Label6deborrarganado As System.Windows.Forms.Label
     Friend WithEvents DataGridViewganado As System.Windows.Forms.DataGridView
     Friend WithEvents BTNsalirmodicompra As System.Windows.Forms.Button
     Friend WithEvents BTNlimpiarmodicompra As System.Windows.Forms.Button
@@ -2351,4 +2351,5 @@ Partial Class Programa
     Friend WithEvents lblganadoenventasmostrando As System.Windows.Forms.Label
     Friend WithEvents lblventasenganadomostrando As System.Windows.Forms.Label
     Friend WithEvents btnbackdeagregaraganado As System.Windows.Forms.Button
+    Friend WithEvents Label6deborrarganado As System.Windows.Forms.Label
 End Class

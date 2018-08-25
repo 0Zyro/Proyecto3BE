@@ -165,7 +165,7 @@ Public Class Programa
 
         Try
             'Se pide una confirmacion antes de proceder
-            If MessageBox.Show("¿Seguro que desea eliminar a este Usuario?", "Confirmacion", MessageBoxButtons.YesNo, MessageBoxIcon.Question) = Windows.Forms.DialogResult.Yes Then
+            If MessageBox.Show("¿Seguro que desea eliminar a este cliente?", "Confirmacion", MessageBoxButtons.YesNo, MessageBoxIcon.Question) = Windows.Forms.DialogResult.Yes Then
 
                 'Se ingresan los datos necesarios paras el comando
                 comando.CommandType = CommandType.Text
@@ -486,10 +486,7 @@ Public Class Programa
         Label6deborrarganado.Visible = False
 
         '' raza	sexo	estado	idventa	precioventa	idcompra	preciocompra	peso_inicial	edad
-        'DataGridViewganado.Columns(5).Visible = False
-        'DataGridViewganado.Columns(6).Visible = False
-        'DataGridViewganado.Columns(7).Visible = False
-        'DataGridViewganado.Columns(8).Visible = False
+     
 
         '//////////// FIN GANADO
 
@@ -787,9 +784,7 @@ Public Class Programa
         PanelModificarclientes.Visible = False
         PanelModificarclientes.Enabled = False
     End Sub
-
-    Private Sub DataGridViewModificarclientes_CellContentClick(ByVal sender As System.Object, ByVal e As System.Windows.Forms.DataGridViewCellEventArgs) Handles DataGridViewModificarclientes.CellContentClick
-
+    Private Sub DataGridViewModificarclientes_SelectionChanged(ByVal sender As Object, ByVal e As System.EventArgs) Handles DataGridViewModificarclientes.SelectionChanged
         Nombreyapellidomodificarcliente.Clear()
         Cedulamodificarcliente.Clear()
         Direccionmodificarcliente.Clear()
@@ -801,6 +796,7 @@ Public Class Programa
         Telefonomodificarcliente.Text = DataGridViewModificarclientes.Item(3, DataGridViewModificarclientes.CurrentRow.Index).Value
 
     End Sub
+    
 
     Private Sub Clearmodificarclientes_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Clearmodificarclientes.Click
         Nombreyapellidomodificarcliente.Clear()
@@ -811,29 +807,22 @@ Public Class Programa
     End Sub
 
     Private Sub Eliminarmodificacioncliente_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Eliminarmodificacioncliente.Click
-        'Elimina el id de una compra juntos con todos los datos de ese id
-        Consulta = "delete from cliente where id='" & Cedulamodificarcliente.Text & "'"
-        consultar()
+        If MessageBox.Show("¿Seguro que desea eliminar a este cliente?", "Confirmacion", MessageBoxButtons.YesNo, MessageBoxIcon.Question) = Windows.Forms.DialogResult.Yes Then
+            'Elimina el id de una compra juntos con todos los datos de ese id
+            Consulta = "delete from cliente where id='" & Cedulamodificarcliente.Text & "'"
+            consultar()
 
-        Consulta = "select * from cliente"
-        consultar()
-        'Actualiza la BD
-        DataGridViewModificarclientes.DataSource = Tabla
-        Cedulamodificarcliente.Text = ""
-        Nombreyapellidomodificarcliente.Text = ""
-        Direccionmodificarcliente.Text = ""
-        Telefonomodificarcliente.Text = ""
-        MsgBox("Datos eliminados correctamente")
-
-        'Me.DataGridViewModificarclientes.CurrentCell.RowIndex
-
-        'Consulta = "select * from cliente"
-        'consultar()
-        'DataGridViewModificarclientes.DataSource = Tabla
-        'DataGridViewModificarclientes.Columns(0).HeaderText = "Cédula"
-        'DataGridViewModificarclientes.Columns(1).HeaderText = "Nombre y apellido"
-        'DataGridViewModificarclientes.Columns(2).HeaderText = "Dirección"
-        'DataGridViewModificarclientes.Columns(3).HeaderText = "Teléfono"
+            Consulta = "select * from cliente"
+            consultar()
+            'Actualiza la BD
+            DataGridViewModificarclientes.DataSource = Tabla
+            Cedulamodificarcliente.Text = ""
+            Nombreyapellidomodificarcliente.Text = ""
+            Direccionmodificarcliente.Text = ""
+            Telefonomodificarcliente.Text = ""
+            MsgBox(" cliente eliminado")
+        End If
+        
     End Sub
 
     Private Sub ModificarClientes1_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles ModificarClientes1.Click
@@ -856,6 +845,7 @@ Public Class Programa
 
     Private Sub Agregarmodificacioncliente_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Agregarmodificacioncliente.Click
         'dsfvsdddsadasdsad
+
         If verificarCedula(Cedulamodificarcliente.Text) Then
             Consulta = "update cliente set id='" + Cedulamodificarcliente.Text + "', nombre='" + Nombreyapellidomodificarcliente.Text + "', direccion='" + Direccionmodificarcliente.Text + "', telefono='" + Telefonomodificarcliente.Text + "' where id='" + Cedulamodificarcliente.Text + "'"
             consultar()
@@ -1060,49 +1050,51 @@ Public Class Programa
     '''//////////////TABLA GANADO(CODIGO PARA INGRESAR DATOS)
     Private Sub Button2_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Button2.Click
 
-        Dim CodG As Integer = Texcodigoganado.Text
-        Dim sexo As String = Texsexoganado.Text
-        Dim raza As String = Texrazaganado.Text
-        Dim fechaN As String = DateTimePickerGanado.Value.ToString("yyyy-MM-dd")
-        Dim estadoG As String = Texestadoganado.Text
+        
+        If Texcodigoganado.Text <> "" And Texsexoganado.Text <> "" And Texrazaganado.Text <> "" And Texestadoganado.Text <> "" Then
+            If IsNumeric(Texcodigoganado.Text) Then
+                Dim CodG As Integer = Texcodigoganado.Text
+                Dim sexo As String = Texsexoganado.Text
+                Dim raza As String = Texrazaganado.Text
+                Dim fechaN As String = DateTimePickerGanado.Value.ToString("yyyy-MM-dd")
+                Dim estadoG As String = Texestadoganado.Text
+                Try
 
-        Try
-
-
-
-
-
-
-            Consulta = "INSERT INTO ganado (idg,sexo,raza,nacimiento,estado) values('" & CodG & "','" & sexo & "','" & raza & "','" & fechaN & "','" & estadoG & "' )"
-            consultar()
+                    Consulta = "INSERT INTO ganado (idg,sexo,raza,nacimiento,estado) values('" & CodG & "','" & sexo & "','" & raza & "','" & fechaN & "','" & estadoG & "' )"
+                    consultar()
 
 
-            Consulta = " select * from ganado"
-            consultar()
+                    Consulta = " select * from ganado"
+                    consultar()
 
-            DataGridViewganado.DataSource = Tabla
+                    DataGridViewganado.DataSource = Tabla
 
-        Catch ex As Exception
-            MsgBox(ex)
-        End Try
+                Catch ex As Exception
+                    MsgBox(ex)
+                End Try
+
+
+            Else
+                MsgBox("El codigo del ganado es numerico")
+            End If
+        Else
+            MsgBox("Debe completar todo los datos")
+        End If
     End Sub
+    ''///////// PARA SELECCIONAR GANADO EN DATAGRIDVIED
+    Private Sub DataGridViewganado_SelectionChanged(ByVal sender As Object, ByVal e As System.EventArgs) Handles DataGridViewganado.SelectionChanged
+        TexSelecCodigoG.Text = ""
+        TexSelecCodigoG.Clear()
 
+        TexSelecCodigoG.Text = DataGridViewganado.Item(0, DataGridViewganado.CurrentRow.Index).Value
+    End Sub
 
 
     Private Sub Button3_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Button3.Click
         Panelagregarganando.Visible = False
     End Sub
 
-    Private Sub DataGridViewganado_CellContentClick(ByVal sender As System.Object, ByVal e As System.Windows.Forms.DataGridViewCellEventArgs)
-        TexSelecCodigoG.Clear()
-
-        TexSelecCodigoG.Text = DataGridViewganado.Item(0, DataGridViewganado.CurrentRow.Index).Value
-
-        'Label6.Text = DataGridViewganado.Item(3, DataGridViewganado.CurrentRow.Index).Value
-    End Sub
-
-
-
+    
 
 
     'MODIFICAR VENTAS 
@@ -1305,6 +1297,10 @@ Public Class Programa
                 DataGridViewganado.Columns(7).HeaderText = "Codigo de vompra"
                 DataGridViewganado.Columns(8).HeaderText = "Codigo de venta"
 
+                DataGridViewganado.Columns(5).Visible = False
+                DataGridViewganado.Columns(6).Visible = False
+                DataGridViewganado.Columns(7).Visible = False
+                DataGridViewganado.Columns(8).Visible = False
                 Exit Select
             Case 1
 
@@ -1409,4 +1405,10 @@ Public Class Programa
         Panelagregarventaaganado.Visible = False
         btnbackdeagregaraganado.Visible = False
     End Sub
+
+ 
+  
+   
+   
+    
 End Class
