@@ -236,10 +236,40 @@ Public Class Programa
                 estadoVisualizar()
                 Exit Select
             Case "agregar"
-
-                MsgBox(stringaux)
-
                 If verificarCedula(TXTCiUsuarios.Text) Then
+                    comando.CommandText = ("select ci, estado from usuario")
+                    Try
+                        connection.Open()
+                        reader = comando.ExecuteReader()
+                        connection.Close()
+                        While reader.Read()
+                            If reader.GetInt32(0) = Convert.ToInt32(TXTCiUsuarios.Text) Then
+                                If reader.GetString(1) = "inactivo" Then
+                                    If MessageBox.Show("Un usuario con esta C.I. ya existe, ¿Desea restaurarlo?", "Confirmacion", MessageBoxButtons.YesNo, MessageBoxIcon.Question) = Windows.Forms.DialogResult.Yes Then
+                                        Dim asd As String = reader.GetInt32(0)
+                                        comando.CommandText = ("update usuario set estado='activo' where ci='" + asd + "'")
+                                        connection.Open()
+                                        MsgBox("asd")
+                                        comando.ExecuteReader()
+                                        MsgBox("asd")
+                                        connection.Close()
+                                        MsgBox("asd")
+                                        Exit Sub
+                                    Else
+                                        Exit Sub
+                                    End If
+                                Else
+                                    MessageBox.Show("Ya existe un usuario activo logueado con esta C.I.", "Usuario existente", MessageBoxButtons.AbortRetryIgnore, MessageBoxIcon.Information)
+                                    Exit Sub
+                                End If
+                            End If
+                        End While
+                    Catch ex As Exception
+                        LBLInfoUsuarios.Text = ("Error: " + ex.Message)
+                        If connection.State = ConnectionState.Open Then
+                            connection.Close()
+                        End If
+                    End Try
                     If verificarNombre() Then
                         If verificarPasswd() Then
                             comando.CommandText = ("insert into usuario values ('" +
@@ -372,21 +402,16 @@ Public Class Programa
     End Sub
 
     Private Sub estadoAgregar()
-
         estadoModificar()
 
         estadoUsuario = "agregar"
-
-        PICUsuarios.Image = Image.FromFile("../../Res/profile/nueva.bmp")
 
         TXTCiUsuarios.Text = ""
         TXTNombreUsuarios.Text = ""
         TXTPasswdUsuarios.Text = ""
         CBXRangoUsuarios.SelectedIndex = 0
 
-
         CHBUsuariosInactivos.Checked = False
-
     End Sub
 
     Private Sub estadoVisualizar()
