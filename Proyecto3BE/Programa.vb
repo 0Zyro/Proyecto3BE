@@ -482,8 +482,7 @@ Public Class Programa
         '////////////GANADO
 
         'timer en ganado
-        TexSelecCodigoG.Visible = False
-        Label6deborrarganado.Visible = False
+        
 
         '' raza	sexo	estado	idventa	precioventa	idcompra	preciocompra	peso_inicial	edad
      
@@ -1068,7 +1067,7 @@ Public Class Programa
                 Dim CodG As Integer = Texcodigoganado.Text
                 Dim sexo As String = Texsexoganado.Text
                 Dim raza As String = Texrazaganado.Text
-                Dim fechaN As String = DateTimePickerGanado.Value.ToString("yyyy-MM-dd")
+                Dim fechaN As String = DTPAgregarGanado.Value.ToString("yyyy-MM-dd")
                 Dim estadoG As String = Texestadoganado.Text
                 Try
 
@@ -1076,11 +1075,17 @@ Public Class Programa
                     consultar()
 
 
-                    Consulta = " select * from ganado"
+                    Consulta = " select idg,sexo,raza,nacimiento,estado from ganado"
                     consultar()
 
                     DataGridViewganado.DataSource = Tabla
-
+                    Texcodigoganado.Clear()
+                    Texsexoganado.Clear()
+                    Texrazaganado.Clear()
+                    DTPAgregarGanado.Value = Today
+                    Texestadoganado.Clear()
+                    MsgBox("Datos guardados", MsgBoxStyle.Information)
+                    
                 Catch ex As Exception
                     MsgBox(ex)
                 End Try
@@ -1094,54 +1099,50 @@ Public Class Programa
         End If
     End Sub
     Private Sub Button7_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Button7.Click
-        Dim idg As Integer = txtMcodigo.Text
+        Dim idg As String = txtMcodigo.Text
         Dim sexo As String = txtMsexo.Text
         Dim raza As String = txtMraza.Text
-        Dim fechaN As String = DateTimePickerModificar.Value.ToString("yyyy-MM-dd")
+        Dim fechaN As String = DTPModificarGanado.Value.ToString("yyyy-MM-dd")
         Dim estado As String = txtMestado.Text
 
-        Consulta = " update ganado set idg = '" + idg +
+        Consulta = "update ganado set idg = '" + idg +
                                   "',sexo='" + sexo +
                                   "',raza='" + raza +
                                   "',nacimiento='" + fechaN +
                                   "',estado='" + estado +
-                                  "', where idg= '" + idg + "'"
+                                  "' where idg= '" + idg + "'"
         consultar()
         Consulta = "select * from ganado"
         consultar()
         DataGridViewganado.DataSource = Tabla
+        txtMcodigo.Clear()
+        txtMsexo.Clear()
+        txtMraza.Clear()
+        DTPModificarGanado.Value = Today
+        txtMestado.Clear()
+
         PanelModificarclientes.Visible = False
     End Sub
 
-    Private Sub PictureBox1_Click_1(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles PictureBox1.Click
-        PanelModificarGanado.Visible = True
 
-
-        txtMraza.Text = DataGridViewganado.Item(2, DataGridViewganado.CurrentRow.Index).Value
-        DateTimePickerModificar.Text = DataGridViewganado.Item(3, DataGridViewganado.CurrentRow.Index).Value
-        txtMestado.Text = DataGridViewganado.Item(4, DataGridViewganado.CurrentRow.Index).Value
-        txtMcodigo.Text = DataGridViewganado.Item(0, DataGridViewganado.CurrentRow.Index).Value
-        txtMsexo.Text = DataGridViewganado.Item(1, DataGridViewganado.CurrentRow.Index).Value
-
-    End Sub
 
     Private Sub Button6_Click_1(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Button6.Click
+        txtMcodigo.Clear()
+        txtMsexo.Clear()
+        txtMraza.Clear()
+        DTPModificarGanado.Value = Today
+        txtMestado.Clear()
         PanelModificarGanado.Visible = False
     End Sub
     ''///////// PARA SELECCIONAR GANADO EN DATAGRIDVIED
-    Private Sub DataGridViewganado_SelectionChanged(ByVal sender As Object, ByVal e As System.EventArgs) Handles DataGridViewganado.SelectionChanged
-        TexSelecCodigoG.Text = ""
-        TexSelecCodigoG.Clear()
 
-        TexSelecCodigoG.Text = DataGridViewganado.Item(0, DataGridViewganado.CurrentRow.Index).Value
-    End Sub
 
 
     Private Sub Button3_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Button3.Click
         Panelagregarganando.Visible = False
     End Sub
 
-    
+
 
 
     'MODIFICAR VENTAS 
@@ -1191,39 +1192,36 @@ Public Class Programa
     End Sub
 
     Private Sub btnagregarganado_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnagregarganado.Click
+        Texcodigoganado.Clear()
+        Texsexoganado.Clear()
+        Texrazaganado.Clear()
+        DTPAgregarGanado.Value = Today
+        Texestadoganado.Clear()
+
         Panelagregarganando.Visible = True
     End Sub
 
     Private Sub Button6_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btneliminarganado.Click
         If MessageBox.Show("¿Seguro que desea eliminar ?", "Confirmacion", MessageBoxButtons.YesNo, MessageBoxIcon.Question) = Windows.Forms.DialogResult.Yes Then
-            Consulta = " delete from ganado where idg='" & TexSelecCodigoG.Text & "'"
+            Consulta = " delete from ganado where idg='" & DataGridViewganado.Item(0, DataGridViewganado.CurrentRow.Index).Value & "'"
             consultar()
 
-            Consulta = " select * from ganado"
+            Consulta = " select idg,sexo,raza,nacimiento,estado from ganado"
             consultar()
             DataGridViewganado.DataSource = Tabla
-            TexSelecCodigoG.Text = ""
-            MsgBox("Datos eliminados")
+
+            MsgBox("Datos eliminados", MsgBoxStyle.Critical)
         End If
     End Sub
-    ' timer 
-    Private Sub btneliminarganado_MouseMove(ByVal sender As Object, ByVal e As System.Windows.Forms.MouseEventArgs) Handles btneliminarganado.MouseMove
-        Dim timer As Integer
-        Label6deborrarganado.Visible = True
-        TexSelecCodigoG.Visible = True
-        timer = 0
-
-    End Sub
 
 
 
 
 
 
-    Private Sub Timer1_Tick_1(ByVal sender As System.Object, ByVal e As System.EventArgs)
-        Label6deborrarganado.Visible = False
-        TexSelecCodigoG.Visible = False
-    End Sub
+
+
+
 
     Private Sub Timerventaseliminaryagregar_Tick(ByVal sender As System.Object, ByVal e As System.EventArgs)
         labelidv.Visible = False
@@ -1330,7 +1328,7 @@ Public Class Programa
         Select Case TabbedPane.SelectedIndex
             Case 0
                 'CONSULTA DE TABLA GANADO
-                Consulta = "select * from ganado"
+                Consulta = "select idg,sexo,raza,nacimiento,estado from ganado"
                 consultar()
                 DataGridViewganado.DataSource = Tabla
 
@@ -1340,15 +1338,10 @@ Public Class Programa
                 DataGridViewganado.Columns(2).HeaderText = "Sexo"
                 DataGridViewganado.Columns(3).HeaderText = "Fecha nacimiento"
                 DataGridViewganado.Columns(4).HeaderText = "Estado"
-                DataGridViewganado.Columns(5).HeaderText = "Precio de venta"
-                DataGridViewganado.Columns(6).HeaderText = "Precio de compra"
-                DataGridViewganado.Columns(7).HeaderText = "Codigo de vompra"
-                DataGridViewganado.Columns(8).HeaderText = "Codigo de venta"
 
-                DataGridViewganado.Columns(5).Visible = False
-                DataGridViewganado.Columns(6).Visible = False
-                DataGridViewganado.Columns(7).Visible = False
-                DataGridViewganado.Columns(8).Visible = False
+
+
+
                 Exit Select
             Case 1
 
@@ -1395,7 +1388,7 @@ Public Class Programa
 
 
     Private Sub Panelagregarventaaganado_Paint(ByVal sender As System.Object, ByVal e As System.Windows.Forms.PaintEventArgs) Handles Panelagregarventaaganado.Paint
-       Consulta = " select * from ganado"
+        Consulta = " select * from ganado"
         consultar()
 
         DataGridViewganadoenventa.DataSource = Tabla
@@ -1434,8 +1427,8 @@ Public Class Programa
         End If
     End Sub
 
-    
-    
+
+
 
 
     Private Sub Panel1_Paint(ByVal sender As System.Object, ByVal e As System.Windows.Forms.PaintEventArgs) Handles Panel1.Paint
@@ -1447,17 +1440,34 @@ Public Class Programa
     End Sub
 
 
-  
-   
+
+
     Private Sub btnbackdeagregaraganado_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnbackdeagregaraganado.Click
         Panelagregarventaaganado.Visible = False
         btnbackdeagregaraganado.Visible = False
     End Sub
 
- 
-  
-   
-   
+
+
+
+
+
+
+
+    Private Sub ButPanelAgragarGanado_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles ButPanelAgragarGanado.Click
+        Try
+
+            txtMraza.Text = DataGridViewganado.Item(2, DataGridViewganado.CurrentRow.Index).Value
+            DTPModificarGanado.Text = DataGridViewganado.Item(3, DataGridViewganado.CurrentRow.Index).Value
+            txtMestado.Text = DataGridViewganado.Item(4, DataGridViewganado.CurrentRow.Index).Value
+            txtMcodigo.Text = DataGridViewganado.Item(0, DataGridViewganado.CurrentRow.Index).Value
+            txtMsexo.Text = DataGridViewganado.Item(1, DataGridViewganado.CurrentRow.Index).Value
+            PanelModificarGanado.Visible = True
+
+        Catch ex As Exception
+            MsgBox(ex.Message)
+        End Try
+    End Sub
+
     
-  
 End Class
