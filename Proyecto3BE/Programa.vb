@@ -108,8 +108,6 @@ Public Class Programa
         CiSeleccionado = DGVUsuarios.Item(0, DGVUsuarios.CurrentRow.Index).Value
         comando.CommandText = ("select * from usuario where ci='" + CiSeleccionado + "'")
 
-        'MsgBox(CiSeleccionado)
-
         Try
             'Se abre la conexion, se ejecuta el comando y se guarda el resultado en "reader"
             connection.Open()
@@ -122,7 +120,6 @@ Public Class Programa
             TXTCiUsuarios.Text = reader.GetInt32(0).ToString
             TXTNombreUsuarios.Text = reader.GetString(1)
             TXTPasswdUsuarios.Text = reader.GetString(2)
-            'TXTRangoUsuarios.Text = reader.GetString(3)
 
             Select Case reader.GetString(3)
                 Case "Admin"
@@ -138,22 +135,17 @@ Public Class Programa
             LabelEstadoUsuarios.Text = reader.GetString(4)
 
             If Dir$("../../Res/profile/" + reader.GetString(5) + ".bmp") <> "" Then
-                'PICUsuarios.Image = Image.FromFile("../../Res/profile/" + reader.GetString(5) + ".bmp")
                 PICUsuarios.ImageLocation = ("../../Res/profile/" + reader.GetString(5) + ".bmp")
             Else
-                'PICUsuarios.Image = Image.FromFile("../../Res/profile/default.bmp")
                 PICUsuarios.ImageLocation = ("../../Res/profile/default.bmp")
             End If
-
-            'Se guarda la ci del usuario seleccionado
-            CiSeleccionado = TXTCiUsuarios.Text
 
             'Se cierra la conexion
             connection.Close()
 
         Catch ex As Exception
             'Se reportan errores
-            LBLInfoUsuarios.Text = ("Error: " + ex.Message)
+            LBLInfoUsuarios.Text = ("No se encontraron resultados")
             If connection.State = ConnectionState.Open Then
                 connection.Close()
             End If
@@ -197,8 +189,10 @@ Public Class Programa
 
     'Boton de modificacion de datos de tab "Usuarios"
     Private Sub BotonModificarUsuarios_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles BTNModificarUsuarios.Click
-        LBLInfoUsuarios.Text = ""
-        estadoModificar()
+        If Not DGVUsuarios.CurrentRow Is Nothing Then
+            LBLInfoUsuarios.Text = ""
+            estadoModificar()
+        End If
     End Sub
 
     'Boton de cancelacion de edicion de tab "Usuarios"
@@ -211,11 +205,8 @@ Public Class Programa
     Private Sub BotonAceptarUsuarios_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles BTNAceptarUsuarios.Click
 
         '/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-        Dim stringaux() As String
-        stringaux = PICUsuarios.ImageLocation.Split("/")
-        stringaux = stringaux(stringaux.Length - 1).Split(".")
+        Dim stringaux As String = imagenSeleccionada()
         '/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
 
         'Info necesaria para el comando
         comando.CommandType = CommandType.Text
@@ -227,7 +218,7 @@ Public Class Programa
                                "', contrasena='" + TXTPasswdUsuarios.Text +
                                "', nombre='" + TXTNombreUsuarios.Text +
                                "', rango='" + CBXRangoUsuarios.SelectedItem.ToString +
-                               "', perfil='" + stringaux(0) +
+                               "', perfil='" + stringaux +
                                "' where ci='" + CiSeleccionado + "'")
                 Try
                     'Se abre la conexion
@@ -245,10 +236,19 @@ Public Class Programa
                 estadoVisualizar()
                 Exit Select
             Case "agregar"
+
+                MsgBox(stringaux)
+
                 If verificarCedula(TXTCiUsuarios.Text) Then
                     If verificarNombre() Then
                         If verificarPasswd() Then
-                            comando.CommandText = ("insert into usuario values ('" + TXTCiUsuarios.Text + "','" + TXTNombreUsuarios.Text + "','" + TXTPasswdUsuarios.Text + "','" + CBXRangoUsuarios.SelectedItem.ToString + "','activo','" + StringImagenUsuarios + "')")
+                            comando.CommandText = ("insert into usuario values ('" +
+                                                   TXTCiUsuarios.Text + "','" +
+                                                   TXTNombreUsuarios.Text + "','" +
+                                                   TXTPasswdUsuarios.Text + "','" +
+                                                   CBXRangoUsuarios.SelectedItem.ToString +
+                                                   "','activo','" + stringaux +
+                                                   "')")
                             Try
                                 connection.Open()
                                 comando.ExecuteNonQuery()
@@ -268,6 +268,24 @@ Public Class Programa
         End Select
         estadoVisualizar()
     End Sub
+
+    Private Function imagenSeleccionada()
+
+        Dim nombre() As String
+
+        MsgBox(PICUsuarios.ImageLocation)
+
+        If PICUsuarios.ImageLocation <> "../../Res/profile/default.bmp" And PICUsuarios.ImageLocation <> "../../Res/profile/nueva.bmp" Then
+            nombre = PICUsuarios.ImageLocation.Split("/")
+            nombre = nombre(nombre.Length - 1).Split(".")
+
+            Return nombre(0)
+        
+        End If
+
+        Return "default"
+
+    End Function
 
     Private Function verificarPasswd()
         If TXTPasswdUsuarios.Text < 7 Then
@@ -345,9 +363,9 @@ Public Class Programa
         TXTCiUsuarios.ReadOnly = False
         TXTNombreUsuarios.ReadOnly = False
         TXTPasswdUsuarios.ReadOnly = False
-        'TXTRangoUsuarios.ReadOnly = False
         CBXRangoUsuarios.Enabled = True
         PICUsuarios.Enabled = True
+        PICUsuarios.ImageLocation = "../../Res/profile/nueva.bmp"
 
         TXTBusquedaUsuarios.ReadOnly = True
 
@@ -436,6 +454,7 @@ Public Class Programa
         openFileDialog.Filter = "Image Files (*.bmp)|*.bmp"
         openFileDialog.FilterIndex = 1
         openFileDialog.RestoreDirectory = True
+        openFileDialog.FileName = ""
 
         Dim aux() As String
 
@@ -449,7 +468,8 @@ Public Class Programa
                         aux = openFileDialog.FileName.Split("\")
                         aux = aux(aux.Length - 1).Split(".")
                         PICUsuarios.ImageLocation = ("../../Res/profile/" + aux(0) + ".bmp")
-                        'StringImagenUsuarios = aux(0)
+
+                        openFileDialog.FileName = ""
                     Else
                         openFileDialog.FileName = ""
                         MsgBox("La imagen seleccionda no debe superar 90 x 90")
