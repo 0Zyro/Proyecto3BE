@@ -850,29 +850,7 @@ Public Class Programa
 
     End Sub
 
-    Private Sub Eliminarmodificacioncliente_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Eliminarmodificacioncliente.Click
-
-        If MessageBox.Show("¿Seguro que desea eliminar a este cliente?", "Confirmacion", MessageBoxButtons.YesNo, MessageBoxIcon.Question) = Windows.Forms.DialogResult.Yes Then
-            Try
-                'Elimina el id de una compra juntos con todos los datos de ese id
-                Consulta = "delete from cliente where id='" & Cedulamodificarcliente.Text & "'"
-                consultar()
-
-                Consulta = "select * from cliente"
-                consultar()
-                'Actualiza la BD
-                DataGridViewModificarclientes.DataSource = Tabla
-                Cedulamodificarcliente.Text = ""
-                Nombreyapellidomodificarcliente.Text = ""
-                Direccionmodificarcliente.Text = ""
-                Telefonomodificarcliente.Text = ""
-                MsgBox(" cliente eliminado")
-            Catch ex As Exception
-                MsgBox(ex)
-            End Try
-        End If
-        
-    End Sub
+   
 
     Private Sub ModificarClientes1_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles ModificarClientes1.Click
         PanelModificarclientes.BringToFront()
@@ -1105,36 +1083,37 @@ Public Class Programa
 
     '''//////////////TABLA GANADO(CODIGO PARA INGRESAR DATOS)
     Private Sub Button2_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Button2.Click
+        If MessageBox.Show("¿Seguro desea guardar datos ?", "Confirmacion", MessageBoxButtons.YesNo, MessageBoxIcon.Question) = Windows.Forms.DialogResult.Yes Then
 
-        
-        If Texcodigoganado.Text <> "" And Texsexoganado.Text <> "" And Texrazaganado.Text <> "" And Texestadoganado.Text <> "" Then
-            If IsNumeric(Texcodigoganado.Text) Then
-                Dim CodG As Integer = Texcodigoganado.Text
-                Dim sexo As String = Texsexoganado.Text
-                Dim raza As String = Texrazaganado.Text
-                Dim fechaN As String = DTPAgregarGanado.Value.ToString("yyyy-MM-dd")
-                Dim estadoG As String = Texestadoganado.Text
-                Try
+            If Texcodigoganado.Text <> "" And Texsexoganado.Text <> "" And Texrazaganado.Text <> "" And Texestadoganado.Text <> "" Then
+                If IsNumeric(Texcodigoganado.Text) Then
+                    Dim CodG As Integer = Texcodigoganado.Text
+                    Dim sexo As String = Texsexoganado.Text
+                    Dim raza As String = Texrazaganado.Text
+                    Dim fechaN As String = DTPAgregarGanado.Value.ToString("yyyy-MM-dd")
+                    Dim estadoG As String = Texestadoganado.Text
+                    Try
 
-                    Consulta = "INSERT INTO ganado (idg,sexo,raza,nacimiento,estado) values('" & CodG & "','" & sexo & "','" & raza & "','" & fechaN & "','" & estadoG & "' )"
-                    consultar()
+                        Consulta = "INSERT INTO ganado (idg,sexo,raza,nacimiento,estado) values('" & CodG & "','" & sexo & "','" & raza & "','" & fechaN & "','" & estadoG & "' )"
+                        consultar()
 
 
-                    Consulta = " select idg,sexo,raza,nacimiento,estado from ganado"
-                    consultar()
+                        Consulta = " select idg,sexo,raza,nacimiento,estado from ganado"
+                        consultar()
 
-                    DataGridViewganado.DataSource = Tabla
-                    Texcodigoganado.Clear()
-                    Texsexoganado.Clear()
-                    Texrazaganado.Clear()
-                    DTPAgregarGanado.Value = Today
-                    Texestadoganado.Clear()
-                    MsgBox("Datos guardados", MsgBoxStyle.Information)
-                    
-                Catch ex As Exception
-                    MsgBox(ex)
-                End Try
+                        DataGridViewganado.DataSource = Tabla
+                        Texcodigoganado.Clear()
+                        Texsexoganado.Clear()
+                        Texrazaganado.Clear()
+                        DTPAgregarGanado.Value = Today
+                        Texestadoganado.Clear()
+                        MsgBox("Datos guardados", MsgBoxStyle.Information)
+                        Panelagregarganando.Visible = False
 
+                    Catch ex As Exception
+                        MsgBox(ex)
+                    End Try
+                End If
 
             Else
                 MsgBox("El codigo del ganado es numerico")
@@ -1143,30 +1122,35 @@ Public Class Programa
             MsgBox("Debe completar todo los datos")
         End If
     End Sub
+
+    ''//////////////////// cCONSULTA MODIFICAR GANADO///////////////
+    ''////////////////////////////////////////////////////////////////
     Private Sub Button7_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Button7.Click
+
         Dim idg As String = txtMcodigo.Text
         Dim sexo As String = txtMsexo.Text
         Dim raza As String = txtMraza.Text
         Dim fechaN As String = DTPModificarGanado.Value.ToString("yyyy-MM-dd")
         Dim estado As String = txtMestado.Text
-
-        Consulta = "update ganado set idg = '" + idg +
-                                  "',sexo='" + sexo +
-                                  "',raza='" + raza +
-                                  "',nacimiento='" + fechaN +
-                                  "',estado='" + estado +
-                                  "' where idg= '" + idg + "'"
-        consultar()
-        Consulta = "select * from ganado"
-        consultar()
-        DataGridViewganado.DataSource = Tabla
-        txtMcodigo.Clear()
-        txtMsexo.Clear()
-        txtMraza.Clear()
-        DTPModificarGanado.Value = Today
-        txtMestado.Clear()
-
-        PanelModificarclientes.Visible = False
+        If MessageBox.Show("¿Seguro que desea modificar ?", "Confirmacion", MessageBoxButtons.YesNo, MessageBoxIcon.Question) = Windows.Forms.DialogResult.Yes Then
+            Consulta = "update ganado set idg = '" + idg +
+                                      "',sexo='" + sexo +
+                                      "',raza='" + raza +
+                                      "',nacimiento='" + fechaN +
+                                      "',estado='" + estado +
+                                      "' where idg= '" + idg + "'"
+            consultar()
+            Consulta = "select idg,sexo,raza,nacimiento,estado from ganado"
+            consultar()
+            DataGridViewganado.DataSource = Tabla
+            txtMcodigo.Clear()
+            txtMsexo.Clear()
+            txtMraza.Clear()
+            DTPModificarGanado.Value = Today
+            txtMestado.Clear()
+            MsgBox("Datos editados", MsgBoxStyle.Information)
+            PanelMGanado.Visible = False
+        End If
     End Sub
 
 
@@ -1177,7 +1161,7 @@ Public Class Programa
         txtMraza.Clear()
         DTPModificarGanado.Value = Today
         txtMestado.Clear()
-        PanelModificarGanado.Visible = False
+        PanelMGanado.Visible = False
     End Sub
     ''///////// PARA SELECCIONAR GANADO EN DATAGRIDVIED
 
@@ -1507,7 +1491,7 @@ Public Class Programa
             txtMestado.Text = DataGridViewganado.Item(4, DataGridViewganado.CurrentRow.Index).Value
             txtMcodigo.Text = DataGridViewganado.Item(0, DataGridViewganado.CurrentRow.Index).Value
             txtMsexo.Text = DataGridViewganado.Item(1, DataGridViewganado.CurrentRow.Index).Value
-            PanelModificarGanado.Visible = True
+            PanelMGanado.Visible = True
 
         Catch ex As Exception
             MsgBox(ex.Message)
@@ -1515,4 +1499,22 @@ Public Class Programa
     End Sub
 
     
+    Private Sub Eliminarmodificacioncliente_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Eliminarmodificacioncliente.Click
+        If MessageBox.Show("¿Seguro que desea eliminar a este cliente?", "Confirmacion", MessageBoxButtons.YesNo, MessageBoxIcon.Question) = Windows.Forms.DialogResult.Yes Then
+            Try
+                'Elimina el id de una compra juntos con todos los datos de ese id
+                Consulta = "delete from cliente where id='" & DataGridViewClientes.Item(0, DataGridViewClientes.CurrentRow.Index).Value & "'"
+                consultar()
+
+                Consulta = "select * from cliente"
+                consultar()
+                'Actualiza la BD
+                DataGridViewClientes.DataSource = Tabla
+
+                MsgBox(" cliente eliminado", MsgBoxStyle.Critical)
+            Catch ex As Exception
+                MsgBox(ex)
+            End Try
+        End If
+    End Sub
 End Class
