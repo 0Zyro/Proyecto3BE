@@ -55,21 +55,27 @@ Public Class Programa
         'Si el panel de busqueda esta vacio se buscaran todos, en caso contrario se busca lo especificado
         If TXTBusquedaUsuarios.Text = "" Then
             If CHBUsuariosInactivos.Checked Then
-                Consulta = ("select ci, nombre from usuario")
+                Consulta = ("select ci, nombre, contrasena, rango, estado from usuario")
             Else
-                Consulta = ("select ci, nombre from usuario where estado='activo'")
+                Consulta = ("select ci, nombre, contrasena, rango, estado from usuario where estado='activo'")
             End If
         Else
             If CHBUsuariosInactivos.Checked Then
-                Consulta = ("select ci, nombre from usuario where " + CBXBusquedaUsuarios.SelectedItem + "='" + TXTBusquedaUsuarios.Text + "'")
+                Consulta = ("select ci, nombre, contrasena, rango, estado from usuario where " + CBXBusquedaUsuarios.SelectedItem + "='" + TXTBusquedaUsuarios.Text + "'")
             Else
-                Consulta = ("select ci, nombre from usuario where estado='activo' and " + CBXBusquedaUsuarios.SelectedItem + "='" + TXTBusquedaUsuarios.Text + "'")
+                Consulta = ("select ci, nombre, contrasena, rango, estado from usuario where estado='activo' and " + CBXBusquedaUsuarios.SelectedItem + "='" + TXTBusquedaUsuarios.Text + "'")
             End If
         End If
 
         consultar()
 
         DGVUsuarios.DataSource = Tabla
+
+        If CHBUsuariosInactivos.Checked = True Then
+        Else
+            DGVUsuarios.Columns(4).Visible = False
+        End If
+
     End Sub
 
     Private Sub CBXBusquedaUsuarios_SelectedIndexChanged(ByVal sender As Object, ByVal e As System.EventArgs) Handles CBXBusquedaUsuarios.SelectedIndexChanged
@@ -105,10 +111,10 @@ Public Class Programa
         comando.Connection = connection
         'Se hace la consulta segun que ha seleccionado el usuario en "ListBoxUsuarios"
 
-        CiSeleccionado = DGVUsuarios.Item(0, DGVUsuarios.CurrentRow.Index).Value
-        comando.CommandText = ("select * from usuario where ci='" + CiSeleccionado + "'")
-
         Try
+            CiSeleccionado = DGVUsuarios.Item(0, DGVUsuarios.CurrentRow.Index).Value
+            comando.CommandText = ("select * from usuario where ci='" + CiSeleccionado + "'")
+
             'Se abre la conexion, se ejecuta el comando y se guarda el resultado en "reader"
             connection.Open()
             reader = comando.ExecuteReader()
@@ -132,7 +138,7 @@ Public Class Programa
                     CBXRangoUsuarios.SelectedIndex = 2
             End Select
 
-            LabelEstadoUsuarios.Text = reader.GetString(4)
+            LBLEstadoUsuarios.Text = reader.GetString(4)
 
             If Dir$("../../Res/profile/" + reader.GetString(5) + ".bmp") <> "" Then
                 PICUsuarios.ImageLocation = ("../../Res/profile/" + reader.GetString(5) + ".bmp")
@@ -157,7 +163,7 @@ Public Class Programa
 
         Try
             'Se pide una confirmacion antes de proceder
-            If MessageBox.Show("¿Seguro que desea eliminar a este cliente?", "Confirmacion", MessageBoxButtons.YesNo, MessageBoxIcon.Question) = Windows.Forms.DialogResult.Yes Then
+            If MessageBox.Show("¿Seguro que desea eliminar a este usuario?", "Confirmacion", MessageBoxButtons.YesNo, MessageBoxIcon.Question) = Windows.Forms.DialogResult.Yes Then
 
                 'Se ingresan los datos necesarios paras el comando
                 comando.CommandType = CommandType.Text
@@ -214,107 +220,153 @@ Public Class Programa
 
         Select Case estadoUsuario
             Case "modificar"
-                comando.CommandText = ("update usuario set ci='" + TXTCiUsuarios.Text +
+                If verificarCedula(TXTCiUsuarios.Text) Then
+                    If checarUsuario(TXTCiUsuarios.Text) = "noexiste" Then
+                        If verificarNombre() Then
+                            If verificarPasswd() Then
+                                comando.CommandText = ("update usuario set ci='" + TXTCiUsuarios.Text +
                                "', contrasena='" + TXTPasswdUsuarios.Text +
                                "', nombre='" + TXTNombreUsuarios.Text +
                                "', rango='" + CBXRangoUsuarios.SelectedItem.ToString +
                                "', perfil='" + stringaux +
                                "' where ci='" + CiSeleccionado + "'")
-                Try
-                    'Se abre la conexion
-                    connection.Open()
-                    'Se ejecuta el comando
-                    comando.ExecuteNonQuery()
-                    'Se cierra la conexion
-                    connection.Close()
-                    'Se informa de la correcta modificacion del usuario
-                    LBLInfoUsuarios.Text = "Usuario modificado"
-                Catch ex As Exception
-                    'Se informan errores
-                    MsgBox("Error: " + ex.Message)
-                End Try
-                estadoVisualizar()
+                                Try
+                                    'Se abre la conexion
+                                    connection.Open()
+                                    'Se ejecuta el comando
+                                    comando.ExecuteNonQuery()
+                                    'Se cierra la conexion
+                                    connection.Close()
+                                    'Se informa de la correcta modificacion del usuario
+                                    LBLInfoUsuarios.Text = "Usuario modificado"
+                                    estadoVisualizar()
+                                Catch ex As Exception
+                                    'Se informan errores
+                                    MsgBox("Error: " + ex.Message)
+                                End Try
+                                estadoVisualizar()
+                            Else
+                                LBLInfoUsuarios.Text = "Contraseña muy corta"
+                            End If
+                        Else
+                            LBLInfoUsuarios.Text = "Nombre incorrecto"
+                        End If
+                    Else
+                        LBLInfoUsuarios.Text = "Ci ya registrada en otro usuario"
+                    End If
+                Else
+                    LBLInfoUsuarios.Text = "Cedula no valida"
+                End If
                 Exit Select
             Case "agregar"
                 If verificarCedula(TXTCiUsuarios.Text) Then
-                    comando.CommandText = ("select ci, estado from usuario")
-                    Try
-                        connection.Open()
-                        reader = comando.ExecuteReader()
-                        connection.Close()
-                        While reader.Read()
-                            If reader.GetInt32(0) = Convert.ToInt32(TXTCiUsuarios.Text) Then
-                                If reader.GetString(1) = "inactivo" Then
-                                    If MessageBox.Show("Un usuario con esta C.I. ya existe, ¿Desea restaurarlo?", "Confirmacion", MessageBoxButtons.YesNo, MessageBoxIcon.Question) = Windows.Forms.DialogResult.Yes Then
-                                        Dim asd As String = reader.GetInt32(0)
-                                        comando.CommandText = ("update usuario set estado='activo' where ci='" + asd + "'")
-                                        connection.Open()
-                                        MsgBox("asd")
-                                        comando.ExecuteReader()
-                                        MsgBox("asd")
-                                        connection.Close()
-                                        MsgBox("asd")
-                                        Exit Sub
-                                    Else
-                                        Exit Sub
-                                    End If
-                                Else
-                                    MessageBox.Show("Ya existe un usuario activo logueado con esta C.I.", "Usuario existente", MessageBoxButtons.AbortRetryIgnore, MessageBoxIcon.Information)
-                                    Exit Sub
-                                End If
+                    Select Case checarUsuario(TXTCiUsuarios.Text)
+                        Case "inactivo"
+                            If MessageBox.Show("Un usuario con esta ci ya existe pero se encuentra inactivo ¿Desea darlo de alta?", "Usuario existente", MessageBoxButtons.YesNo, MessageBoxIcon.Question) = Windows.Forms.DialogResult.Yes Then
+                                altaUsuario(TXTCiUsuarios.Text)
+                            Else
+                                Exit Sub
                             End If
-                        End While
-                    Catch ex As Exception
-                        LBLInfoUsuarios.Text = ("Error: " + ex.Message)
-                        If connection.State = ConnectionState.Open Then
-                            connection.Close()
-                        End If
-                    End Try
-                    If verificarNombre() Then
-                        If verificarPasswd() Then
-                            comando.CommandText = ("insert into usuario values ('" +
-                                                   TXTCiUsuarios.Text + "','" +
-                                                   TXTNombreUsuarios.Text + "','" +
-                                                   TXTPasswdUsuarios.Text + "','" +
-                                                   CBXRangoUsuarios.SelectedItem.ToString +
-                                                   "','activo','" + stringaux +
-                                                   "')")
-                            Try
-                                connection.Open()
-                                comando.ExecuteNonQuery()
-                                connection.Close()
-                            Catch ex As Exception
-                                LBLInfoUsuarios.Text = ("Error:" + ex.Message)
-                            End Try
-                        Else
-                            LBLInfoUsuarios.Text = "Contraseña erronea"
-                        End If
-                    Else
-                        LBLInfoUsuarios.Text = "Nombre erroneo"
-                    End If
+                        Case "activo"
+                            MessageBox.Show("Un usuario con esta ci ya existe y esta activo", "Usuario existente", MessageBoxButtons.OK, MessageBoxIcon.Information)
+                            Exit Sub
+                        Case "noexiste"
+                            If verificarNombre() Then
+                                If verificarPasswd() Then
+                                    comando.CommandText = ("insert into usuario values ('" +
+                                                           TXTCiUsuarios.Text + "','" +
+                                                           TXTNombreUsuarios.Text + "','" +
+                                                           TXTPasswdUsuarios.Text + "','" +
+                                                           CBXRangoUsuarios.SelectedItem.ToString +
+                                                           "','activo','" +
+                                                           stringaux +
+                                                           "')")
+                                    Try
+                                        connection.Open()
+                                        comando.ExecuteNonQuery()
+                                        connection.Close()
+                                        estadoVisualizar()
+                                    Catch ex As Exception
+                                        LBLInfoUsuarios.Text = ("Error:" + ex.Message)
+                                    End Try
+                                Else
+                                    LBLInfoUsuarios.Text = "Contraseña erronea"
+                                End If
+                            Else
+                                LBLInfoUsuarios.Text = "Nombre erroneo"
+                            End If
+                    End Select
                 Else
                     LBLInfoUsuarios.Text = "Cedula erronea"
                 End If
         End Select
-        estadoVisualizar()
     End Sub
+
+    Private Sub altaUsuario(ByVal ci As String)
+
+        comando.CommandType = CommandType.Text
+        comando.Connection = connection
+        comando.CommandText = ("update usuario set estado='activo' where ci='" + ci + "'")
+
+        Try
+            connection.Open()
+
+            comando.ExecuteNonQuery()
+
+            connection.Close()
+        Catch ex As Exception
+
+        End Try
+
+    End Sub
+
+    Private Function checarUsuario(ByVal ci As String)
+
+        comando.CommandType = CommandType.Text
+        comando.Connection = connection
+        comando.CommandText = "select ci, estado from usuario"
+
+        Try
+            connection.Open()
+            reader = comando.ExecuteReader()
+
+            While reader.Read()
+
+                If reader.GetInt32(0).ToString = ci Then
+                    If reader.GetString(1) = "inactivo" Then
+                        connection.Close()
+                        Return "inactivo"
+                    Else
+                        connection.Close()
+                        Return "activo"
+                    End If
+                End If
+
+            End While
+
+            connection.Close()
+
+        Catch ex As Exception
+
+        End Try
+
+        Return "noexiste"
+
+    End Function
 
     Private Function imagenSeleccionada()
 
         Dim nombre() As String
-
-        MsgBox(PICUsuarios.ImageLocation)
 
         If PICUsuarios.ImageLocation <> "../../Res/profile/default.bmp" And PICUsuarios.ImageLocation <> "../../Res/profile/nueva.bmp" Then
             nombre = PICUsuarios.ImageLocation.Split("/")
             nombre = nombre(nombre.Length - 1).Split(".")
 
             Return nombre(0)
-        
+
         End If
 
         Return "default"
-
     End Function
 
     Private Function verificarPasswd()
@@ -448,12 +500,13 @@ Public Class Programa
     End Sub
 
     Private Sub CheckBoxUsuarios_CheckStateChanged(ByVal sender As Object, ByVal e As System.EventArgs) Handles CHBUsuariosInactivos.CheckStateChanged
+
         BTNBusquedaUsuarios.PerformClick()
 
         If CHBUsuariosInactivos.Checked Then
-            LabelEstadoUsuarios.Visible = True
+            DGVUsuarios.Columns(4).Visible = True
         Else
-            LabelEstadoUsuarios.Visible = False
+            DGVUsuarios.Columns(4).Visible = False
         End If
     End Sub
 
