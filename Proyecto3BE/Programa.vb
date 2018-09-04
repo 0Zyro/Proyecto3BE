@@ -523,9 +523,16 @@ Public Class Programa
         End If
     End Sub
     Private Sub Form2_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
-
+        Consulta = "select * from venta"
+        consultar()
+        'actualiza la dgvw
+        DataGridViewVENTAS.DataSource = Tabla
+  
         '////////////GANADO
-
+        Consulta = "select * from ganado"
+        consultar()
+        'actualiza la dgvw
+        DataGridViewganado.DataSource = Tabla
         'timer en ganado
         
 
@@ -1309,24 +1316,29 @@ Public Class Programa
 
     Private Sub btnagregarpanel_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnagregarpanel.Click
         DataGridViewganadoenventa.Visible = True
+        panelparaocultar.Visible = False
         paneldetextosenventas.Visible = True
-        'If paneldetextosenventas.Height = 10 Then
-        '    paneldetextosenventas.Height = 376
-        'Else
-        '    paneldetextosenventas.Height = 10
-        'End If
+
+        If paneldetextosenventas.Width = 10 Then
+            paneldetextosenventas.Width = 671
+            btnagregarpanel.Image = Image.FromFile("..\..\Resources\flecha-hacia-la-izquierda.png")
+        Else
+            paneldetextosenventas.Width = 10
+            btnagregarpanel.Image = Image.FromFile("..\..\Resources\anadir.png")
+            panelparaocultar.Visible = True
+        End If
 
         
-                If paneldetextosenventas.Visible = True Then
-                    btnagregarpanel.Image = Image.FromFile("..\..\Resources\flecha-hacia-la-izquierda.png")
+        'If paneldetextosenventas.Visible = True Then
 
 
-                End If
 
-                If paneldetextosenventas.Visible = False Then
-                    btnagregarpanel.Image = Image.FromFile("..\..\Resources\anadir.png")
+        'End If
 
-                End If
+        'If paneldetextosenventas.Visible = False Then
+        '    btnagregarpanel.Image = Image.FromFile("..\..\Resources\anadir.png")
+
+        'End If
 
 
 
@@ -1502,13 +1514,18 @@ Public Class Programa
         DataGridViewganadoenventa.DataSource = Tabla
     End Sub
 
-   
-
-    Private Sub DataGridViewganadoenventa_SelectionChanged(ByVal sender As Object, ByVal e As System.EventArgs) Handles DataGridViewganadoenventa.SelectionChanged
+    Private Sub DataGridViewganadoenventa_MouseClick(ByVal sender As Object, ByVal e As System.Windows.Forms.MouseEventArgs) Handles DataGridViewganadoenventa.MouseClick
         txbcodigodeganadoenventa.Text = DataGridViewganadoenventa.Item(0, DataGridViewganadoenventa.CurrentRow.Index).Value
 
     End Sub
 
    
+
+   
  
+    Private Sub ventasmain_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles ventasmain.Click
+        panelparaocultar.Visible = True
+    End Sub
+
+  
 End Class
