@@ -4,7 +4,7 @@ Imports MySql.Data.MySqlClient
 Imports System.IO
 
 Public Class Programa
-
+    Dim error1 As Integer
     Dim data As String = ("Server=localhost;Database=vacas;User id=root;Password=;Port=3306;")
     'Dim data As String = ("Server=www.db4free.net;Database=database_vacas;User id=zero22394;Password=zero22394;Port=3306;")
 
@@ -21,8 +21,10 @@ Public Class Programa
             Conexion = New MySqlDataAdapter(Consulta, data)
             Tabla = New DataTable
             Conexion.Fill(Tabla)
+            error1 = 0
         Catch ex As Exception
             MsgBox(ex.Message)
+            error1 = 1
         End Try
     End Sub
 
@@ -576,7 +578,7 @@ Public Class Programa
         End If
     End Sub
     Private Sub Form2_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
-
+        
         '////////////GANADO
 
         'timer en ganado
@@ -1073,13 +1075,16 @@ Public Class Programa
                         consultar()
 
                         DataGridViewganado.DataSource = Tabla
+                        Consulta = " select idg from ganado"
+                        consultar()
+                        DataGridganadoguardado.DataSource = Tabla
                         Texcodigoganado.Clear()
                         Texsexoganado.Clear()
                         Texrazaganado.Clear()
                         DTPAgregarGanado.Value = Today
                         Texestadoganado.Clear()
                         MsgBox("Datos guardados", MsgBoxStyle.Information)
-                        Panelagregarganando.Visible = False
+
 
                     Catch ex As Exception
                         MsgBox(ex)
@@ -1188,6 +1193,7 @@ Public Class Programa
   
 
     Private Sub btnagregarganado_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnagregarganado.Click
+
         Texcodigoganado.Clear()
         Texsexoganado.Clear()
         Texrazaganado.Clear()
@@ -1195,6 +1201,11 @@ Public Class Programa
         Texestadoganado.Clear()
 
         Panelagregarganando.Visible = True
+
+        Consulta = " select idg from ganado"
+        consultar()
+        DataGridganadoguardado.DataSource = Tabla
+        DataGridganadoguardado.Columns(0).HeaderText = "Codigo de ganado"
     End Sub
 
     Private Sub Button6_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btneliminarganado.Click
@@ -1544,22 +1555,37 @@ Public Class Programa
     End Sub
 
     Private Sub BTNEliminarcliente_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles BTNEliminarcliente.Click
+
+        Dim MsgStyle As MsgBoxStyle = MsgBoxStyle.Critical + MsgBoxStyle.OkOnly
+        Dim MsgStyle1 As MsgBoxStyle = MsgBoxStyle.Information + MsgBoxStyle.OkOnly
+
         If MessageBox.Show("¿Seguro que desea eliminar a este cliente?", "Confirmacion", MessageBoxButtons.YesNo, MessageBoxIcon.Question) = Windows.Forms.DialogResult.Yes Then
             Try
                 'Elimina el id de una compra juntos con todos los datos de ese id
                 Consulta = "delete from cliente where id='" & DataGridViewClientes.Item(0, DataGridViewClientes.CurrentRow.Index).Value & "'"
                 consultar()
 
-                Consulta = "select * from cliente"
-                consultar()
-                'Actualiza la BD
+                Select Case error1
 
-                DataGridViewClientes.DataSource = Tabla
+                    Case 1
+                        MsgBox("no se pudo borrar", MsgStyle, Title:="Error")
+                    Case 0
+                        Consulta = "select * from cliente"
+                        consultar()
+                        'Actualiza la BD
 
-                MsgBox(" cliente eliminado", MsgBoxStyle.Critical)
+                        DataGridViewClientes.DataSource = Tabla
+
+                        MsgBox(" cliente eliminado", MsgStyle1, Title:="Eliminado")
+
+                End Select
+
+
+
             Catch ex As Exception
                 MsgBox(ex)
             End Try
         End If
     End Sub
+
 End Class
