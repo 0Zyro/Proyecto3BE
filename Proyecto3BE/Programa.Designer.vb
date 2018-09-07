@@ -24,7 +24,7 @@ Partial Class Programa
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(Programa))
-        Dim DataGridViewCellStyle2 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle3 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Me.PanelUsuario = New System.Windows.Forms.Panel()
         Me.LBLCiUsuario = New System.Windows.Forms.Label()
         Me.BTNCerrarSesion = New System.Windows.Forms.Button()
@@ -66,7 +66,7 @@ Partial Class Programa
         Me.Label12 = New System.Windows.Forms.Label()
         Me.DataGridViewganado = New System.Windows.Forms.DataGridView()
         Me.btnagregarganado = New System.Windows.Forms.Button()
-        Me.ButPanelAgragarGanado = New System.Windows.Forms.Button()
+        Me.ButPanelModificarGanado = New System.Windows.Forms.Button()
         Me.btneliminarganado = New System.Windows.Forms.Button()
         Me.TabCompras = New System.Windows.Forms.TabPage()
         Me.Panelprincipalcompras = New System.Windows.Forms.Panel()
@@ -336,7 +336,7 @@ Partial Class Programa
         Me.TabGanado.Controls.Add(Me.PanelMGanado)
         Me.TabGanado.Controls.Add(Me.DataGridViewganado)
         Me.TabGanado.Controls.Add(Me.btnagregarganado)
-        Me.TabGanado.Controls.Add(Me.ButPanelAgragarGanado)
+        Me.TabGanado.Controls.Add(Me.ButPanelModificarGanado)
         Me.TabGanado.Controls.Add(Me.btneliminarganado)
         Me.TabGanado.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.TabGanado.Location = New System.Drawing.Point(4, 22)
@@ -673,14 +673,14 @@ Partial Class Programa
         Me.btnagregarganado.TabIndex = 80
         Me.btnagregarganado.UseVisualStyleBackColor = False
         '
-        'ButPanelAgragarGanado
+        'ButPanelModificarGanado
         '
-        Me.ButPanelAgragarGanado.Location = New System.Drawing.Point(117, 384)
-        Me.ButPanelAgragarGanado.Name = "ButPanelAgragarGanado"
-        Me.ButPanelAgragarGanado.Size = New System.Drawing.Size(50, 50)
-        Me.ButPanelAgragarGanado.TabIndex = 91
-        Me.ButPanelAgragarGanado.Text = "Button8"
-        Me.ButPanelAgragarGanado.UseVisualStyleBackColor = True
+        Me.ButPanelModificarGanado.Location = New System.Drawing.Point(117, 384)
+        Me.ButPanelModificarGanado.Name = "ButPanelModificarGanado"
+        Me.ButPanelModificarGanado.Size = New System.Drawing.Size(50, 50)
+        Me.ButPanelModificarGanado.TabIndex = 91
+        Me.ButPanelModificarGanado.Text = "Button8"
+        Me.ButPanelModificarGanado.UseVisualStyleBackColor = True
         '
         'btneliminarganado
         '
@@ -1980,14 +1980,14 @@ Partial Class Programa
         Me.DGVUsuarios.ClipboardCopyMode = System.Windows.Forms.DataGridViewClipboardCopyMode.Disable
         Me.DGVUsuarios.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         Me.DGVUsuarios.ColumnHeadersVisible = False
-        DataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window
-        DataGridViewCellStyle2.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText
-        DataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.ButtonHighlight
-        DataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(192, Byte), Integer))
-        DataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
-        Me.DGVUsuarios.DefaultCellStyle = DataGridViewCellStyle2
+        DataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Window
+        DataGridViewCellStyle3.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.ControlText
+        DataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.ButtonHighlight
+        DataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(192, Byte), Integer))
+        DataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
+        Me.DGVUsuarios.DefaultCellStyle = DataGridViewCellStyle3
         Me.DGVUsuarios.GridColor = System.Drawing.SystemColors.ButtonHighlight
         Me.DGVUsuarios.Location = New System.Drawing.Point(6, 47)
         Me.DGVUsuarios.MultiSelect = False
@@ -2195,7 +2195,6 @@ Partial Class Programa
         Me.Name = "Programa"
         Me.ShowIcon = False
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent
-        Me.Text = "se"
         Me.PanelUsuario.ResumeLayout(False)
         Me.PanelUsuario.PerformLayout()
         CType(Me.PICUsuarioLogueado, System.ComponentModel.ISupportInitialize).EndInit()
@@ -2413,7 +2412,7 @@ Partial Class Programa
     Friend WithEvents Label10 As System.Windows.Forms.Label
     Friend WithEvents Label11 As System.Windows.Forms.Label
     Friend WithEvents Label12 As System.Windows.Forms.Label
-    Friend WithEvents ButPanelAgragarGanado As System.Windows.Forms.Button
+    Friend WithEvents ButPanelModificarGanado As System.Windows.Forms.Button
     Friend WithEvents DataGridViewganado As System.Windows.Forms.DataGridView
     Friend WithEvents DataGridViewganadoenventa As System.Windows.Forms.DataGridView
     Friend WithEvents txbcodigodeganadoenventa As System.Windows.Forms.TextBox
