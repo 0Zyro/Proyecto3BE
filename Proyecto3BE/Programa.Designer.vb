@@ -24,7 +24,7 @@ Partial Class Programa
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(Programa))
-        Dim DataGridViewCellStyle6 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle2 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Me.PanelUsuario = New System.Windows.Forms.Panel()
         Me.LBLCiUsuario = New System.Windows.Forms.Label()
         Me.BTNCerrarSesion = New System.Windows.Forms.Button()
@@ -667,7 +667,7 @@ Partial Class Programa
         Me.btnagregarganado.BackColor = System.Drawing.Color.ForestGreen
         Me.btnagregarganado.Cursor = System.Windows.Forms.Cursors.Hand
         Me.btnagregarganado.Image = CType(resources.GetObject("btnagregarganado.Image"), System.Drawing.Image)
-        Me.btnagregarganado.Location = New System.Drawing.Point(217, 363)
+        Me.btnagregarganado.Location = New System.Drawing.Point(51, 383)
         Me.btnagregarganado.Name = "btnagregarganado"
         Me.btnagregarganado.Size = New System.Drawing.Size(50, 50)
         Me.btnagregarganado.TabIndex = 80
@@ -675,7 +675,7 @@ Partial Class Programa
         '
         'ButPanelAgragarGanado
         '
-        Me.ButPanelAgragarGanado.Location = New System.Drawing.Point(313, 366)
+        Me.ButPanelAgragarGanado.Location = New System.Drawing.Point(117, 384)
         Me.ButPanelAgragarGanado.Name = "ButPanelAgragarGanado"
         Me.ButPanelAgragarGanado.Size = New System.Drawing.Size(50, 50)
         Me.ButPanelAgragarGanado.TabIndex = 91
@@ -688,7 +688,7 @@ Partial Class Programa
         Me.btneliminarganado.BackColor = System.Drawing.Color.ForestGreen
         Me.btneliminarganado.Cursor = System.Windows.Forms.Cursors.Hand
         Me.btneliminarganado.Image = CType(resources.GetObject("btneliminarganado.Image"), System.Drawing.Image)
-        Me.btneliminarganado.Location = New System.Drawing.Point(436, 363)
+        Me.btneliminarganado.Location = New System.Drawing.Point(184, 384)
         Me.btneliminarganado.Name = "btneliminarganado"
         Me.btneliminarganado.Size = New System.Drawing.Size(50, 50)
         Me.btneliminarganado.TabIndex = 86
@@ -1980,14 +1980,14 @@ Partial Class Programa
         Me.DGVUsuarios.ClipboardCopyMode = System.Windows.Forms.DataGridViewClipboardCopyMode.Disable
         Me.DGVUsuarios.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         Me.DGVUsuarios.ColumnHeadersVisible = False
-        DataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle6.BackColor = System.Drawing.SystemColors.Window
-        DataGridViewCellStyle6.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle6.ForeColor = System.Drawing.SystemColors.ControlText
-        DataGridViewCellStyle6.SelectionBackColor = System.Drawing.SystemColors.ButtonHighlight
-        DataGridViewCellStyle6.SelectionForeColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(192, Byte), Integer))
-        DataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
-        Me.DGVUsuarios.DefaultCellStyle = DataGridViewCellStyle6
+        DataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window
+        DataGridViewCellStyle2.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText
+        DataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.ButtonHighlight
+        DataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(192, Byte), Integer))
+        DataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
+        Me.DGVUsuarios.DefaultCellStyle = DataGridViewCellStyle2
         Me.DGVUsuarios.GridColor = System.Drawing.SystemColors.ButtonHighlight
         Me.DGVUsuarios.Location = New System.Drawing.Point(6, 47)
         Me.DGVUsuarios.MultiSelect = False

@@ -1209,15 +1209,23 @@ Public Class Programa
     End Sub
 
     Private Sub Button6_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btneliminarganado.Click
+        Dim MsgStyle As MsgBoxStyle = MsgBoxStyle.Critical + MsgBoxStyle.OkOnly
+        Dim MsgStyle1 As MsgBoxStyle = MsgBoxStyle.Information + MsgBoxStyle.OkOnly
         If MessageBox.Show("¿Seguro que desea eliminar ?", "Confirmacion", MessageBoxButtons.YesNo, MessageBoxIcon.Question) = Windows.Forms.DialogResult.Yes Then
-            Consulta = " delete from ganado where idg='" & DataGridViewganado.Item(0, DataGridViewganado.CurrentRow.Index).Value & "'"
-            consultar()
+            Try
+                Consulta = " delete from ganado where idg='" & DataGridViewganado.Item(0, DataGridViewganado.CurrentRow.Index).Value & "'"
+                consultar()
 
-            Consulta = " select idg,sexo,raza,nacimiento,estado from ganado"
-            consultar()
-            DataGridViewganado.DataSource = Tabla
 
-            MsgBox("Datos eliminados", MsgBoxStyle.Critical)
+                Consulta = " select idg,sexo,raza,nacimiento,estado from ganado"
+                consultar()
+                DataGridViewganado.DataSource = Tabla
+
+                MsgBox("Datos borrados", MsgStyle1, Title:="Eliminado")
+            Catch ex As Exception
+                MsgBox("NO HAY DATOS PARA ELIMINAR" & vbCrLf & vbCrLf & ex.Message, MsgStyle, Title:="ERROR")
+            End Try
+
         End If
     End Sub
 
@@ -1436,7 +1444,7 @@ Public Class Programa
             PanelMGanado.Visible = True
 
         Catch ex As Exception
-            MsgBox(ex.Message)
+            MsgBox(" NO SELECCIONO DATO HA MODIFICAR" & vbCrLf & vbCrLf & ex.Message, MsgBoxStyle.Critical, Title:=" ERROR ")
         End Try
     End Sub
     Private Sub Button4_Click_2(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnañadiraganadounaventa.Click
