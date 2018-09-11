@@ -1020,7 +1020,7 @@ Public Class Programa
 
         If verificarCedula(Cedulamodificarcliente.Text) Then
             Try
-                Consulta = "update cliente set id='" + Cedulamodificarcliente.Text + "', nombre='" + Nombreyapellidomodificarcliente.Text + "', direccion='" + Direccionmodificarcliente.Text + "', telefono='" + Telefonomodificarcliente.Text + "' where id='" + Cedulamodificarcliente.Text + "'"
+                Consulta = "update cliente set nombre='" + Nombreyapellidomodificarcliente.Text + "', direccion='" + Direccionmodificarcliente.Text + "', telefono='" + Telefonomodificarcliente.Text + "' where id='" + Cedulamodificarcliente.Text + "'"
                 consultar()
                 Consulta = "select * from cliente"
                 consultar()

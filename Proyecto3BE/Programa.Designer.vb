@@ -24,7 +24,7 @@ Partial Class Programa
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(Programa))
-        Dim DataGridViewCellStyle3 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle4 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Me.PanelUsuario = New System.Windows.Forms.Panel()
         Me.LBLCiUsuario = New System.Windows.Forms.Label()
         Me.BTNCerrarSesion = New System.Windows.Forms.Button()
@@ -1566,9 +1566,9 @@ Partial Class Programa
         'TabClientes
         '
         Me.TabClientes.BackColor = System.Drawing.Color.Transparent
+        Me.TabClientes.Controls.Add(Me.PanelModificarclientes)
         Me.TabClientes.Controls.Add(Me.PanelPrincipalclientes)
         Me.TabClientes.Controls.Add(Me.PanelAgregarcliente)
-        Me.TabClientes.Controls.Add(Me.PanelModificarclientes)
         Me.TabClientes.Location = New System.Drawing.Point(4, 22)
         Me.TabClientes.Name = "TabClientes"
         Me.TabClientes.Padding = New System.Windows.Forms.Padding(3)
@@ -1761,7 +1761,7 @@ Partial Class Programa
         '
         'PanelModificarclientes
         '
-        Me.PanelModificarclientes.BackColor = System.Drawing.Color.DimGray
+        Me.PanelModificarclientes.BackColor = System.Drawing.Color.SeaGreen
         Me.PanelModificarclientes.Controls.Add(Me.Label22)
         Me.PanelModificarclientes.Controls.Add(Me.Button1)
         Me.PanelModificarclientes.Controls.Add(Me.Texbuscarcliente)
@@ -1831,30 +1831,31 @@ Partial Class Programa
         '
         'Nombreyapellidomodificarcliente
         '
-        Me.Nombreyapellidomodificarcliente.Location = New System.Drawing.Point(488, 137)
+        Me.Nombreyapellidomodificarcliente.Location = New System.Drawing.Point(488, 196)
         Me.Nombreyapellidomodificarcliente.Name = "Nombreyapellidomodificarcliente"
-        Me.Nombreyapellidomodificarcliente.Size = New System.Drawing.Size(100, 20)
+        Me.Nombreyapellidomodificarcliente.Size = New System.Drawing.Size(161, 20)
         Me.Nombreyapellidomodificarcliente.TabIndex = 9
         '
         'Direccionmodificarcliente
         '
         Me.Direccionmodificarcliente.Location = New System.Drawing.Point(488, 251)
         Me.Direccionmodificarcliente.Name = "Direccionmodificarcliente"
-        Me.Direccionmodificarcliente.Size = New System.Drawing.Size(100, 20)
+        Me.Direccionmodificarcliente.Size = New System.Drawing.Size(161, 20)
         Me.Direccionmodificarcliente.TabIndex = 8
         '
         'Telefonomodificarcliente
         '
         Me.Telefonomodificarcliente.Location = New System.Drawing.Point(488, 305)
         Me.Telefonomodificarcliente.Name = "Telefonomodificarcliente"
-        Me.Telefonomodificarcliente.Size = New System.Drawing.Size(100, 20)
+        Me.Telefonomodificarcliente.Size = New System.Drawing.Size(161, 20)
         Me.Telefonomodificarcliente.TabIndex = 7
         '
         'Cedulamodificarcliente
         '
-        Me.Cedulamodificarcliente.Location = New System.Drawing.Point(488, 196)
+        Me.Cedulamodificarcliente.Enabled = False
+        Me.Cedulamodificarcliente.Location = New System.Drawing.Point(488, 116)
         Me.Cedulamodificarcliente.Name = "Cedulamodificarcliente"
-        Me.Cedulamodificarcliente.Size = New System.Drawing.Size(100, 20)
+        Me.Cedulamodificarcliente.Size = New System.Drawing.Size(126, 20)
         Me.Cedulamodificarcliente.TabIndex = 6
         '
         'Label21
@@ -1878,7 +1879,7 @@ Partial Class Programa
         'Label19
         '
         Me.Label19.AutoSize = True
-        Me.Label19.Location = New System.Drawing.Point(521, 177)
+        Me.Label19.Location = New System.Drawing.Point(506, 100)
         Me.Label19.Name = "Label19"
         Me.Label19.Size = New System.Drawing.Size(40, 13)
         Me.Label19.TabIndex = 3
@@ -1887,7 +1888,7 @@ Partial Class Programa
         'Label18
         '
         Me.Label18.AutoSize = True
-        Me.Label18.Location = New System.Drawing.Point(485, 121)
+        Me.Label18.Location = New System.Drawing.Point(489, 180)
         Me.Label18.Name = "Label18"
         Me.Label18.Size = New System.Drawing.Size(92, 13)
         Me.Label18.TabIndex = 2
@@ -1980,14 +1981,14 @@ Partial Class Programa
         Me.DGVUsuarios.ClipboardCopyMode = System.Windows.Forms.DataGridViewClipboardCopyMode.Disable
         Me.DGVUsuarios.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         Me.DGVUsuarios.ColumnHeadersVisible = False
-        DataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Window
-        DataGridViewCellStyle3.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.ControlText
-        DataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.ButtonHighlight
-        DataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(192, Byte), Integer))
-        DataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
-        Me.DGVUsuarios.DefaultCellStyle = DataGridViewCellStyle3
+        DataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Window
+        DataGridViewCellStyle4.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.ControlText
+        DataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.ButtonHighlight
+        DataGridViewCellStyle4.SelectionForeColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(192, Byte), Integer))
+        DataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
+        Me.DGVUsuarios.DefaultCellStyle = DataGridViewCellStyle4
         Me.DGVUsuarios.GridColor = System.Drawing.SystemColors.ButtonHighlight
         Me.DGVUsuarios.Location = New System.Drawing.Point(6, 47)
         Me.DGVUsuarios.MultiSelect = False
