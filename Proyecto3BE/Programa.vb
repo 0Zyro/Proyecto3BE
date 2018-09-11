@@ -30,6 +30,22 @@ Public Class Programa
 
     '///SECCION USUARIOS
 
+    Private Sub LBLCambioContraseña_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles LBLCambioContraseña.Click
+        If MessageBox.Show("¿Seguro que desea cambiar su contraseña?", "Confirmacion", MessageBoxButtons.YesNo, MessageBoxIcon.Question) Then
+
+            Dim asd As String = InputBox("mensaje", "titulo")
+
+            If verificarPasswd(asd) Then
+
+                '///////////////////////////
+                'Cambiar contraseña usuaio logueado
+                '///////////////////////////
+
+            End If
+
+        End If
+    End Sub
+
     'Objetos auxiliares de busqueda
     Dim rows(0) As String
 
@@ -102,6 +118,8 @@ Public Class Programa
     'Cuando se cambia el item seleccionado en "DGVUsuarios"
     Private Sub DGVUsuarios_SelectionChanged(ByVal sender As Object, ByVal e As System.EventArgs) Handles DGVUsuarios.SelectionChanged
 
+        LBLInfoUsuarios.Text = ""
+
         'Limpieza de busquedas anteriores
         TXTCiUsuarios.Text = ""
         TXTNombreUsuarios.Text = ""
@@ -139,8 +157,6 @@ Public Class Programa
                 Case Else
                     CBXRangoUsuarios.SelectedIndex = 2
             End Select
-
-            LBLEstadoUsuarios.Text = reader.GetString(4)
 
             If Dir$("../../Res/profile/" + reader.GetString(5) + ".bmp") <> "" Then
                 PICUsuarios.ImageLocation = ("../../Res/profile/" + reader.GetString(5) + ".bmp")
@@ -222,42 +238,33 @@ Public Class Programa
 
         Select Case estadoUsuario
             Case "modificar"
-                If verificarCedula(TXTCiUsuarios.Text) Then
-                    If checarUsuario(TXTCiUsuarios.Text) = "noexiste" Then
-                        If verificarNombre() Then
-                            If verificarPasswd() Then
-                                comando.CommandText = ("update usuario set ci='" + TXTCiUsuarios.Text +
-                               "', contrasena='" + TXTPasswdUsuarios.Text +
-                               "', nombre='" + TXTNombreUsuarios.Text +
-                               "', rango='" + CBXRangoUsuarios.SelectedItem.ToString +
-                               "', perfil='" + stringaux +
-                               "' where ci='" + CiSeleccionado + "'")
-                                Try
-                                    'Se abre la conexion
-                                    connection.Open()
-                                    'Se ejecuta el comando
-                                    comando.ExecuteNonQuery()
-                                    'Se cierra la conexion
-                                    connection.Close()
-                                    'Se informa de la correcta modificacion del usuario
-                                    LBLInfoUsuarios.Text = "Usuario modificado"
-                                    estadoVisualizar()
-                                Catch ex As Exception
-                                    'Se informan errores
-                                    MsgBox("Error: " + ex.Message)
-                                End Try
-                                estadoVisualizar()
-                            Else
-                                LBLInfoUsuarios.Text = "Contraseña muy corta"
-                            End If
-                        Else
-                            LBLInfoUsuarios.Text = "Nombre incorrecto"
-                        End If
+                If verificarNombre() Then
+                    If verificarPasswd() Then
+                        comando.CommandText = ("update usuario set contrasena='" + TXTPasswdUsuarios.Text +
+                       "', nombre='" + TXTNombreUsuarios.Text +
+                       "', rango='" + CBXRangoUsuarios.SelectedItem.ToString +
+                       "', perfil='" + stringaux +
+                       "' where ci='" + CiSeleccionado + "'")
+                        Try
+                            'Se abre la conexion
+                            connection.Open()
+                            'Se ejecuta el comando
+                            comando.ExecuteNonQuery()
+                            'Se cierra la conexion
+                            connection.Close()
+                            'Se informa de la correcta modificacion del usuario
+                            LBLInfoUsuarios.Text = "Usuario modificado"
+                            estadoVisualizar()
+                        Catch ex As Exception
+                            'Se informan errores
+                            MsgBox("Error: " + ex.Message)
+                        End Try
+                        estadoVisualizar()
                     Else
-                        LBLInfoUsuarios.Text = "Ci ya registrada en otro usuario"
+                        LBLInfoUsuarios.Text = "Contraseña muy corta"
                     End If
                 Else
-                    LBLInfoUsuarios.Text = "Cedula no valida"
+                    LBLInfoUsuarios.Text = "Nombre incorrecto"
                 End If
                 Exit Select
             Case "agregar"
@@ -433,26 +440,23 @@ Public Class Programa
         BTNAceptarUsuarios.Visible = True
         BTNCancelarUsuarios.Visible = True
 
-        BTNBusquedaUsuarios.Enabled = False
-        CHBUsuariosInactivos.Enabled = False
+        BTNBusquedaUsuarios.Visible = False
+        CHBUsuariosInactivos.Visible = False
 
-        DGVUsuarios.Enabled = False
+        DGVUsuarios.Visible = False
 
-        CBXBusquedaUsuarios.Enabled = False
+        CBXBusquedaUsuarios.Visible = False
 
         BTNAgregarUsuarios.Visible = False
         BTNEliminarUsuarios.Visible = False
         BTNModificarUsuarios.Visible = False
 
-        TXTCiUsuarios.ReadOnly = False
-        TXTNombreUsuarios.ReadOnly = False
-        TXTPasswdUsuarios.ReadOnly = False
-        CBXRangoUsuarios.Enabled = True
         PICUsuarios.Enabled = True
-        PICUsuarios.ImageLocation = "../../Res/profile/nueva.bmp"
+        'PICUsuarios.ImageLocation = "../../Res/profile/nueva.bmp"
 
-        TXTBusquedaUsuarios.ReadOnly = True
+        TXTBusquedaUsuarios.Visible = False
 
+        PNLUsuarios.Visible = True
     End Sub
 
     Private Sub estadoAgregar()
@@ -464,8 +468,6 @@ Public Class Programa
         TXTNombreUsuarios.Text = ""
         TXTPasswdUsuarios.Text = ""
         CBXRangoUsuarios.SelectedIndex = 0
-
-        CHBUsuariosInactivos.Checked = False
     End Sub
 
     Private Sub estadoVisualizar()
@@ -475,25 +477,22 @@ Public Class Programa
         BTNAceptarUsuarios.Visible = False
         BTNCancelarUsuarios.Visible = False
 
-        BTNBusquedaUsuarios.Enabled = True
-        CHBUsuariosInactivos.Enabled = True
+        BTNBusquedaUsuarios.Visible = True
+        CHBUsuariosInactivos.Visible = True
 
-        DGVUsuarios.Enabled = True
+        DGVUsuarios.Visible = True
 
-        CBXBusquedaUsuarios.Enabled = True
+        CBXBusquedaUsuarios.Visible = True
 
         BTNModificarUsuarios.Visible = True
         BTNAgregarUsuarios.Visible = True
         BTNEliminarUsuarios.Visible = True
 
-        TXTCiUsuarios.ReadOnly = True
-        TXTNombreUsuarios.ReadOnly = True
-        TXTPasswdUsuarios.ReadOnly = True
-        'TXTRangoUsuarios.ReadOnly = True
-        CBXRangoUsuarios.Enabled = False
         PICUsuarios.Enabled = False
 
-        TXTBusquedaUsuarios.ReadOnly = False
+        TXTBusquedaUsuarios.Visible = False
+
+        PNLUsuarios.Visible = False
 
         BTNBusquedaUsuarios.PerformClick()
 
@@ -509,14 +508,6 @@ Public Class Programa
             DGVUsuarios.Columns(4).Visible = True
         Else
             DGVUsuarios.Columns(4).Visible = False
-        End If
-    End Sub
-
-    Private Sub CheckBoxPasswdUsuarios_CheckStateChanged(ByVal sender As Object, ByVal e As System.EventArgs) Handles CHBPasswdUsuarios.CheckStateChanged
-        If CHBPasswdUsuarios.Checked Then
-            TXTPasswdUsuarios.PasswordChar = ""
-        Else
-            TXTPasswdUsuarios.PasswordChar = "+"
         End If
     End Sub
 

@@ -24,7 +24,7 @@ Partial Class Programa
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(Programa))
-        Dim DataGridViewCellStyle2 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle3 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Me.PanelUsuario = New System.Windows.Forms.Panel()
         Me.LBLCiUsuario = New System.Windows.Forms.Label()
         Me.BTNCerrarSesion = New System.Windows.Forms.Button()
@@ -188,11 +188,11 @@ Partial Class Programa
         Me.Label18 = New System.Windows.Forms.Label()
         Me.DataGridViewModificarclientes = New System.Windows.Forms.DataGridView()
         Me.TabUsuarios = New System.Windows.Forms.TabPage()
+        Me.PNLUsuarios = New System.Windows.Forms.Panel()
         Me.CBXBusquedaRangoUsuarios = New System.Windows.Forms.ComboBox()
         Me.CBXRangoUsuarios = New System.Windows.Forms.ComboBox()
         Me.DGVUsuarios = New System.Windows.Forms.DataGridView()
         Me.CHBUsuariosInactivos = New System.Windows.Forms.CheckBox()
-        Me.LBLEstadoUsuarios = New System.Windows.Forms.Label()
         Me.BTNAceptarUsuarios = New System.Windows.Forms.Button()
         Me.BTNCancelarUsuarios = New System.Windows.Forms.Button()
         Me.LBLInfoUsuarios = New System.Windows.Forms.Label()
@@ -210,7 +210,6 @@ Partial Class Programa
         Me.TXTBusquedaUsuarios = New System.Windows.Forms.TextBox()
         Me.CBXBusquedaUsuarios = New System.Windows.Forms.ComboBox()
         Me.PICUsuarios = New System.Windows.Forms.PictureBox()
-        Me.CHBPasswdUsuarios = New System.Windows.Forms.CheckBox()
         Me.ToolTip1 = New System.Windows.Forms.ToolTip(Me.components)
         Me.PanelUsuario.SuspendLayout()
         CType(Me.PICUsuarioLogueado, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -240,6 +239,7 @@ Partial Class Programa
         Me.PanelModificarclientes.SuspendLayout()
         CType(Me.DataGridViewModificarclientes, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.TabUsuarios.SuspendLayout()
+        Me.PNLUsuarios.SuspendLayout()
         CType(Me.DGVUsuarios, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.PICUsuarios, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
@@ -419,10 +419,10 @@ Partial Class Programa
         '
         Me.Label27.AutoSize = True
         Me.Label27.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D
-        Me.Label27.Font = New System.Drawing.Font("Arial Narrow", 14.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label27.Font = New System.Drawing.Font("Microsoft Sans Serif", 14.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label27.Location = New System.Drawing.Point(263, 18)
         Me.Label27.Name = "Label27"
-        Me.Label27.Size = New System.Drawing.Size(102, 25)
+        Me.Label27.Size = New System.Drawing.Size(129, 26)
         Me.Label27.TabIndex = 19
         Me.Label27.Text = "REGISTROS"
         '
@@ -1933,29 +1933,20 @@ Partial Class Programa
         '
         'TabUsuarios
         '
+        Me.TabUsuarios.Controls.Add(Me.PNLUsuarios)
         Me.TabUsuarios.Controls.Add(Me.CBXBusquedaRangoUsuarios)
-        Me.TabUsuarios.Controls.Add(Me.CBXRangoUsuarios)
         Me.TabUsuarios.Controls.Add(Me.DGVUsuarios)
         Me.TabUsuarios.Controls.Add(Me.CHBUsuariosInactivos)
-        Me.TabUsuarios.Controls.Add(Me.LBLEstadoUsuarios)
         Me.TabUsuarios.Controls.Add(Me.BTNAceptarUsuarios)
         Me.TabUsuarios.Controls.Add(Me.BTNCancelarUsuarios)
         Me.TabUsuarios.Controls.Add(Me.LBLInfoUsuarios)
         Me.TabUsuarios.Controls.Add(Me.BTNModificarUsuarios)
         Me.TabUsuarios.Controls.Add(Me.BTNEliminarUsuarios)
         Me.TabUsuarios.Controls.Add(Me.BTNAgregarUsuarios)
-        Me.TabUsuarios.Controls.Add(Me.TXTPasswdUsuarios)
-        Me.TabUsuarios.Controls.Add(Me.TXTNombreUsuarios)
-        Me.TabUsuarios.Controls.Add(Me.TXTCiUsuarios)
-        Me.TabUsuarios.Controls.Add(Me.LBLPasswdUsuarios)
-        Me.TabUsuarios.Controls.Add(Me.LBLRangoUsuarios)
-        Me.TabUsuarios.Controls.Add(Me.LBLNombreUsuarios)
-        Me.TabUsuarios.Controls.Add(Me.LBLCiUsuarios)
         Me.TabUsuarios.Controls.Add(Me.BTNBusquedaUsuarios)
         Me.TabUsuarios.Controls.Add(Me.TXTBusquedaUsuarios)
         Me.TabUsuarios.Controls.Add(Me.CBXBusquedaUsuarios)
         Me.TabUsuarios.Controls.Add(Me.PICUsuarios)
-        Me.TabUsuarios.Controls.Add(Me.CHBPasswdUsuarios)
         Me.TabUsuarios.Location = New System.Drawing.Point(4, 22)
         Me.TabUsuarios.Name = "TabUsuarios"
         Me.TabUsuarios.Padding = New System.Windows.Forms.Padding(3)
@@ -1964,21 +1955,36 @@ Partial Class Programa
         Me.TabUsuarios.Text = "Usuarios"
         Me.TabUsuarios.UseVisualStyleBackColor = True
         '
+        'PNLUsuarios
+        '
+        Me.PNLUsuarios.Controls.Add(Me.TXTCiUsuarios)
+        Me.PNLUsuarios.Controls.Add(Me.LBLCiUsuarios)
+        Me.PNLUsuarios.Controls.Add(Me.CBXRangoUsuarios)
+        Me.PNLUsuarios.Controls.Add(Me.LBLNombreUsuarios)
+        Me.PNLUsuarios.Controls.Add(Me.LBLRangoUsuarios)
+        Me.PNLUsuarios.Controls.Add(Me.LBLPasswdUsuarios)
+        Me.PNLUsuarios.Controls.Add(Me.TXTNombreUsuarios)
+        Me.PNLUsuarios.Controls.Add(Me.TXTPasswdUsuarios)
+        Me.PNLUsuarios.Location = New System.Drawing.Point(145, 75)
+        Me.PNLUsuarios.Name = "PNLUsuarios"
+        Me.PNLUsuarios.Size = New System.Drawing.Size(139, 268)
+        Me.PNLUsuarios.TabIndex = 26
+        Me.PNLUsuarios.Visible = False
+        '
         'CBXBusquedaRangoUsuarios
         '
         Me.CBXBusquedaRangoUsuarios.FormattingEnabled = True
         Me.CBXBusquedaRangoUsuarios.Items.AddRange(New Object() {"User", "Admin", "Viewer"})
-        Me.CBXBusquedaRangoUsuarios.Location = New System.Drawing.Point(101, 20)
+        Me.CBXBusquedaRangoUsuarios.Location = New System.Drawing.Point(105, 18)
         Me.CBXBusquedaRangoUsuarios.Name = "CBXBusquedaRangoUsuarios"
-        Me.CBXBusquedaRangoUsuarios.Size = New System.Drawing.Size(127, 21)
+        Me.CBXBusquedaRangoUsuarios.Size = New System.Drawing.Size(203, 21)
         Me.CBXBusquedaRangoUsuarios.TabIndex = 25
         '
         'CBXRangoUsuarios
         '
-        Me.CBXRangoUsuarios.Enabled = False
         Me.CBXRangoUsuarios.FormattingEnabled = True
         Me.CBXRangoUsuarios.Items.AddRange(New Object() {"User", "Admin", "Viewer"})
-        Me.CBXRangoUsuarios.Location = New System.Drawing.Point(265, 333)
+        Me.CBXRangoUsuarios.Location = New System.Drawing.Point(14, 222)
         Me.CBXRangoUsuarios.Name = "CBXRangoUsuarios"
         Me.CBXRangoUsuarios.Size = New System.Drawing.Size(100, 21)
         Me.CBXRangoUsuarios.TabIndex = 24
@@ -1994,49 +2000,38 @@ Partial Class Programa
         Me.DGVUsuarios.ClipboardCopyMode = System.Windows.Forms.DataGridViewClipboardCopyMode.Disable
         Me.DGVUsuarios.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         Me.DGVUsuarios.ColumnHeadersVisible = False
-        DataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window
-        DataGridViewCellStyle2.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText
-        DataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.ButtonHighlight
-        DataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(192, Byte), Integer))
-        DataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
-        Me.DGVUsuarios.DefaultCellStyle = DataGridViewCellStyle2
+        DataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Window
+        DataGridViewCellStyle3.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.ControlText
+        DataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.ButtonHighlight
+        DataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(192, Byte), Integer))
+        DataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
+        Me.DGVUsuarios.DefaultCellStyle = DataGridViewCellStyle3
         Me.DGVUsuarios.GridColor = System.Drawing.SystemColors.ButtonHighlight
-        Me.DGVUsuarios.Location = New System.Drawing.Point(6, 47)
+        Me.DGVUsuarios.Location = New System.Drawing.Point(10, 47)
         Me.DGVUsuarios.MultiSelect = False
         Me.DGVUsuarios.Name = "DGVUsuarios"
         Me.DGVUsuarios.RowHeadersVisible = False
         Me.DGVUsuarios.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing
         Me.DGVUsuarios.ScrollBars = System.Windows.Forms.ScrollBars.None
         Me.DGVUsuarios.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
-        Me.DGVUsuarios.Size = New System.Drawing.Size(222, 365)
+        Me.DGVUsuarios.Size = New System.Drawing.Size(359, 310)
         Me.DGVUsuarios.TabIndex = 23
         '
         'CHBUsuariosInactivos
         '
         Me.CHBUsuariosInactivos.AutoSize = True
-        Me.CHBUsuariosInactivos.Location = New System.Drawing.Point(296, 22)
+        Me.CHBUsuariosInactivos.Location = New System.Drawing.Point(375, 18)
         Me.CHBUsuariosInactivos.Name = "CHBUsuariosInactivos"
         Me.CHBUsuariosInactivos.Size = New System.Drawing.Size(69, 17)
         Me.CHBUsuariosInactivos.TabIndex = 20
         Me.CHBUsuariosInactivos.Text = "Inactivos"
         Me.CHBUsuariosInactivos.UseVisualStyleBackColor = True
         '
-        'LBLEstadoUsuarios
-        '
-        Me.LBLEstadoUsuarios.AutoSize = True
-        Me.LBLEstadoUsuarios.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.LBLEstadoUsuarios.ForeColor = System.Drawing.Color.Red
-        Me.LBLEstadoUsuarios.Location = New System.Drawing.Point(266, 366)
-        Me.LBLEstadoUsuarios.Name = "LBLEstadoUsuarios"
-        Me.LBLEstadoUsuarios.Size = New System.Drawing.Size(0, 13)
-        Me.LBLEstadoUsuarios.TabIndex = 18
-        Me.LBLEstadoUsuarios.Visible = False
-        '
         'BTNAceptarUsuarios
         '
-        Me.BTNAceptarUsuarios.Location = New System.Drawing.Point(494, 278)
+        Me.BTNAceptarUsuarios.Location = New System.Drawing.Point(226, 379)
         Me.BTNAceptarUsuarios.Name = "BTNAceptarUsuarios"
         Me.BTNAceptarUsuarios.Size = New System.Drawing.Size(75, 56)
         Me.BTNAceptarUsuarios.TabIndex = 17
@@ -2046,7 +2041,7 @@ Partial Class Programa
         '
         'BTNCancelarUsuarios
         '
-        Me.BTNCancelarUsuarios.Location = New System.Drawing.Point(494, 188)
+        Me.BTNCancelarUsuarios.Location = New System.Drawing.Point(80, 379)
         Me.BTNCancelarUsuarios.Name = "BTNCancelarUsuarios"
         Me.BTNCancelarUsuarios.Size = New System.Drawing.Size(75, 56)
         Me.BTNCancelarUsuarios.TabIndex = 16
@@ -2057,7 +2052,7 @@ Partial Class Programa
         'LBLInfoUsuarios
         '
         Me.LBLInfoUsuarios.AutoSize = True
-        Me.LBLInfoUsuarios.Location = New System.Drawing.Point(7, 415)
+        Me.LBLInfoUsuarios.Location = New System.Drawing.Point(7, 360)
         Me.LBLInfoUsuarios.Name = "LBLInfoUsuarios"
         Me.LBLInfoUsuarios.Size = New System.Drawing.Size(0, 13)
         Me.LBLInfoUsuarios.TabIndex = 15
@@ -2065,7 +2060,7 @@ Partial Class Programa
         'BTNModificarUsuarios
         '
         Me.BTNModificarUsuarios.DialogResult = System.Windows.Forms.DialogResult.Cancel
-        Me.BTNModificarUsuarios.Location = New System.Drawing.Point(494, 235)
+        Me.BTNModificarUsuarios.Location = New System.Drawing.Point(159, 379)
         Me.BTNModificarUsuarios.Name = "BTNModificarUsuarios"
         Me.BTNModificarUsuarios.Size = New System.Drawing.Size(75, 56)
         Me.BTNModificarUsuarios.TabIndex = 14
@@ -2074,7 +2069,7 @@ Partial Class Programa
         '
         'BTNEliminarUsuarios
         '
-        Me.BTNEliminarUsuarios.Location = New System.Drawing.Point(494, 320)
+        Me.BTNEliminarUsuarios.Location = New System.Drawing.Point(294, 379)
         Me.BTNEliminarUsuarios.Name = "BTNEliminarUsuarios"
         Me.BTNEliminarUsuarios.Size = New System.Drawing.Size(75, 56)
         Me.BTNEliminarUsuarios.TabIndex = 13
@@ -2083,7 +2078,7 @@ Partial Class Programa
         '
         'BTNAgregarUsuarios
         '
-        Me.BTNAgregarUsuarios.Location = New System.Drawing.Point(494, 144)
+        Me.BTNAgregarUsuarios.Location = New System.Drawing.Point(10, 379)
         Me.BTNAgregarUsuarios.Name = "BTNAgregarUsuarios"
         Me.BTNAgregarUsuarios.Size = New System.Drawing.Size(75, 55)
         Me.BTNAgregarUsuarios.TabIndex = 12
@@ -2092,33 +2087,29 @@ Partial Class Programa
         '
         'TXTPasswdUsuarios
         '
-        Me.TXTPasswdUsuarios.Location = New System.Drawing.Point(265, 269)
+        Me.TXTPasswdUsuarios.Location = New System.Drawing.Point(14, 158)
         Me.TXTPasswdUsuarios.Name = "TXTPasswdUsuarios"
-        Me.TXTPasswdUsuarios.PasswordChar = Global.Microsoft.VisualBasic.ChrW(43)
-        Me.TXTPasswdUsuarios.ReadOnly = True
         Me.TXTPasswdUsuarios.Size = New System.Drawing.Size(100, 20)
         Me.TXTPasswdUsuarios.TabIndex = 10
         '
         'TXTNombreUsuarios
         '
-        Me.TXTNombreUsuarios.Location = New System.Drawing.Point(265, 201)
+        Me.TXTNombreUsuarios.Location = New System.Drawing.Point(14, 90)
         Me.TXTNombreUsuarios.Name = "TXTNombreUsuarios"
-        Me.TXTNombreUsuarios.ReadOnly = True
         Me.TXTNombreUsuarios.Size = New System.Drawing.Size(100, 20)
         Me.TXTNombreUsuarios.TabIndex = 9
         '
         'TXTCiUsuarios
         '
-        Me.TXTCiUsuarios.Location = New System.Drawing.Point(265, 137)
+        Me.TXTCiUsuarios.Location = New System.Drawing.Point(14, 26)
         Me.TXTCiUsuarios.Name = "TXTCiUsuarios"
-        Me.TXTCiUsuarios.ReadOnly = True
         Me.TXTCiUsuarios.Size = New System.Drawing.Size(100, 20)
         Me.TXTCiUsuarios.TabIndex = 8
         '
         'LBLPasswdUsuarios
         '
         Me.LBLPasswdUsuarios.AutoSize = True
-        Me.LBLPasswdUsuarios.Location = New System.Drawing.Point(262, 253)
+        Me.LBLPasswdUsuarios.Location = New System.Drawing.Point(11, 142)
         Me.LBLPasswdUsuarios.Name = "LBLPasswdUsuarios"
         Me.LBLPasswdUsuarios.Size = New System.Drawing.Size(61, 13)
         Me.LBLPasswdUsuarios.TabIndex = 7
@@ -2127,7 +2118,7 @@ Partial Class Programa
         'LBLRangoUsuarios
         '
         Me.LBLRangoUsuarios.AutoSize = True
-        Me.LBLRangoUsuarios.Location = New System.Drawing.Point(262, 317)
+        Me.LBLRangoUsuarios.Location = New System.Drawing.Point(11, 206)
         Me.LBLRangoUsuarios.Name = "LBLRangoUsuarios"
         Me.LBLRangoUsuarios.Size = New System.Drawing.Size(39, 13)
         Me.LBLRangoUsuarios.TabIndex = 6
@@ -2136,7 +2127,7 @@ Partial Class Programa
         'LBLNombreUsuarios
         '
         Me.LBLNombreUsuarios.AutoSize = True
-        Me.LBLNombreUsuarios.Location = New System.Drawing.Point(262, 185)
+        Me.LBLNombreUsuarios.Location = New System.Drawing.Point(11, 74)
         Me.LBLNombreUsuarios.Name = "LBLNombreUsuarios"
         Me.LBLNombreUsuarios.Size = New System.Drawing.Size(44, 13)
         Me.LBLNombreUsuarios.TabIndex = 5
@@ -2145,7 +2136,7 @@ Partial Class Programa
         'LBLCiUsuarios
         '
         Me.LBLCiUsuarios.AutoSize = True
-        Me.LBLCiUsuarios.Location = New System.Drawing.Point(262, 121)
+        Me.LBLCiUsuarios.Location = New System.Drawing.Point(11, 10)
         Me.LBLCiUsuarios.Name = "LBLCiUsuarios"
         Me.LBLCiUsuarios.Size = New System.Drawing.Size(23, 13)
         Me.LBLCiUsuarios.TabIndex = 4
@@ -2153,7 +2144,7 @@ Partial Class Programa
         '
         'BTNBusquedaUsuarios
         '
-        Me.BTNBusquedaUsuarios.Location = New System.Drawing.Point(235, 18)
+        Me.BTNBusquedaUsuarios.Location = New System.Drawing.Point(314, 14)
         Me.BTNBusquedaUsuarios.Name = "BTNBusquedaUsuarios"
         Me.BTNBusquedaUsuarios.Size = New System.Drawing.Size(55, 23)
         Me.BTNBusquedaUsuarios.TabIndex = 2
@@ -2162,16 +2153,16 @@ Partial Class Programa
         '
         'TXTBusquedaUsuarios
         '
-        Me.TXTBusquedaUsuarios.Location = New System.Drawing.Point(101, 20)
+        Me.TXTBusquedaUsuarios.Location = New System.Drawing.Point(105, 17)
         Me.TXTBusquedaUsuarios.Name = "TXTBusquedaUsuarios"
-        Me.TXTBusquedaUsuarios.Size = New System.Drawing.Size(128, 20)
+        Me.TXTBusquedaUsuarios.Size = New System.Drawing.Size(203, 20)
         Me.TXTBusquedaUsuarios.TabIndex = 1
         '
         'CBXBusquedaUsuarios
         '
         Me.CBXBusquedaUsuarios.FormattingEnabled = True
         Me.CBXBusquedaUsuarios.Items.AddRange(New Object() {"CI", "Nombre", "Contrasena", "Rango"})
-        Me.CBXBusquedaUsuarios.Location = New System.Drawing.Point(6, 20)
+        Me.CBXBusquedaUsuarios.Location = New System.Drawing.Point(10, 17)
         Me.CBXBusquedaUsuarios.Name = "CBXBusquedaUsuarios"
         Me.CBXBusquedaUsuarios.Size = New System.Drawing.Size(89, 21)
         Me.CBXBusquedaUsuarios.TabIndex = 0
@@ -2180,21 +2171,11 @@ Partial Class Programa
         '
         Me.PICUsuarios.Enabled = False
         Me.PICUsuarios.InitialImage = Nothing
-        Me.PICUsuarios.Location = New System.Drawing.Point(479, 18)
+        Me.PICUsuarios.Location = New System.Drawing.Point(375, 47)
         Me.PICUsuarios.Name = "PICUsuarios"
         Me.PICUsuarios.Size = New System.Drawing.Size(90, 90)
         Me.PICUsuarios.TabIndex = 22
         Me.PICUsuarios.TabStop = False
-        '
-        'CHBPasswdUsuarios
-        '
-        Me.CHBPasswdUsuarios.AutoSize = True
-        Me.CHBPasswdUsuarios.Image = CType(resources.GetObject("CHBPasswdUsuarios.Image"), System.Drawing.Image)
-        Me.CHBPasswdUsuarios.Location = New System.Drawing.Point(372, 272)
-        Me.CHBPasswdUsuarios.Name = "CHBPasswdUsuarios"
-        Me.CHBPasswdUsuarios.Size = New System.Drawing.Size(25, 14)
-        Me.CHBPasswdUsuarios.TabIndex = 21
-        Me.CHBPasswdUsuarios.UseVisualStyleBackColor = True
         '
         'Programa
         '
@@ -2250,6 +2231,8 @@ Partial Class Programa
         CType(Me.DataGridViewModificarclientes, System.ComponentModel.ISupportInitialize).EndInit()
         Me.TabUsuarios.ResumeLayout(False)
         Me.TabUsuarios.PerformLayout()
+        Me.PNLUsuarios.ResumeLayout(False)
+        Me.PNLUsuarios.PerformLayout()
         CType(Me.DGVUsuarios, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.PICUsuarios, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
@@ -2297,9 +2280,7 @@ Partial Class Programa
     Friend WithEvents LBLCambioContraseña As System.Windows.Forms.Label
     Friend WithEvents LBLNombreUsuario As System.Windows.Forms.Label
     Friend WithEvents LBLRangoUsuario As System.Windows.Forms.Label
-    Friend WithEvents CHBPasswdUsuarios As System.Windows.Forms.CheckBox
     Friend WithEvents CHBUsuariosInactivos As System.Windows.Forms.CheckBox
-    Friend WithEvents LBLEstadoUsuarios As System.Windows.Forms.Label
     Friend WithEvents BTNAceptarUsuarios As System.Windows.Forms.Button
     Friend WithEvents BTNCancelarUsuarios As System.Windows.Forms.Button
     Friend WithEvents BTNModificarUsuarios As System.Windows.Forms.Button
@@ -2442,4 +2423,5 @@ Partial Class Programa
     Friend WithEvents Label13 As System.Windows.Forms.Label
     Friend WithEvents TextBox2 As System.Windows.Forms.TextBox
     Friend WithEvents BTNEliminarCompra As System.Windows.Forms.Button
+    Friend WithEvents PNLUsuarios As System.Windows.Forms.Panel
 End Class
