@@ -578,29 +578,29 @@ Public Class Programa
         End If
     End Sub
     Private Sub Form2_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
-        
-
-
-  
-
-    '-------------------------------------------------------------------------------------------------------------------
-
-    '////////////VENTAS
 
 
 
-    'panel ventas
+
+
+        '-------------------------------------------------------------------------------------------------------------------
+
+        '////////////VENTAS
+
+
+
+        'panel ventas
         paneldetextosenventas.Visible = False
-    'If paneldetextosenventas.Visible = True Then
-    '    btnagregarpanel.BackgroundImage = Image.FromFile("C:\Users\Alumno-09\Desktop\Proyecto3BE-master\Proyecto3BE\Resources\flecha-hacia-la-izquierda.png")
+        'If paneldetextosenventas.Visible = True Then
+        '    btnagregarpanel.BackgroundImage = Image.FromFile("C:\Users\Alumno-09\Desktop\Proyecto3BE-master\Proyecto3BE\Resources\flecha-hacia-la-izquierda.png")
 
-    'End If
+        'End If
 
-    '////////////FIN VENTAS
+        '////////////FIN VENTAS
 
-    '-------------------------------------------------------------------------------------------------------------------
+        '-------------------------------------------------------------------------------------------------------------------
 
-    '////////////CLIENTES
+        '////////////CLIENTES
 
         PanelPrincipalclientes.Enabled = True
         PanelPrincipalclientes.Visible = True
@@ -609,14 +609,14 @@ Public Class Programa
         PanelAgregarcliente.Enabled = False
         PanelAgregarcliente.Visible = False
 
-    '////////////FIN CLIENTES
+        '////////////FIN CLIENTES
 
-    '-------------------------------------------------------------------------------------------------------------------
+        '-------------------------------------------------------------------------------------------------------------------
 
-    '////////////COMPRAS
+        '////////////COMPRAS
 
 
-    'Paneles de agregar compras
+        'Paneles de agregar compras
         PNLAgregarcompraganado.Enabled = False
         PNLAgregarcompraganado.Visible = False
         PNLAgregarcompraganado.SendToBack()
@@ -625,12 +625,12 @@ Public Class Programa
         PNLAgregarcompraproducto.Visible = False
         PNLAgregarcompraproducto.SendToBack()
 
-    'Muestra el panel principal de Compras y oculta los otros
-        Panelprincipalcompras.BringToFront()
+        'Muestra el panel principal de Compras y oculta los otros
+        PNLPrincipalcompra.BringToFront()
         Panelmodificarcompras.Visible = False
         Panelagregarcompras.Visible = False
 
-    '////////////FIN COMPRAS
+        '////////////FIN COMPRAS
     End Sub
     '////////////GANADO
 
@@ -801,9 +801,9 @@ Public Class Programa
 
     Private Sub BTNVolverdeagregarcompra_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles BTNVolverdeagregarcompra.Click
         'Muestra panel pricipal de compras
-        Panelprincipalcompras.Enabled = True
-        Panelprincipalcompras.Visible = True
-        Panelprincipalcompras.BringToFront()
+        PNLPrincipalcompra.Enabled = True
+        PNLPrincipalcompra.Visible = True
+        PNLPrincipalcompra.BringToFront()
 
 
         'Oculta panel de agregar compras
@@ -822,16 +822,16 @@ Public Class Programa
         PNLAgregarcompraganado.SendToBack()
     End Sub
     '/////////////////////////Boton de agregar compras////////////
-    Private Sub BTNpanelmodicompras_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles BTNpanelagregarcompras.Click
+    Private Sub BTNpanelmodicompras_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles BTNPanelagregarcompra.Click
         'Muestra el panel de agregar compras
         Panelagregarcompras.BringToFront()
         Panelagregarcompras.Visible = True
         Panelagregarcompras.Enabled = True
         CBXAgregarcompra.Text = "Elige una opción"
         'Oculta el panel principal de compras
-        Panelprincipalcompras.SendToBack()
-        Panelprincipalcompras.Enabled = False
-        Panelprincipalcompras.Visible = False
+        PNLPrincipalcompra.SendToBack()
+        PNLPrincipalcompra.Enabled = False
+        PNLPrincipalcompra.Visible = False
     End Sub
     Private Sub Button5_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles BTNAgregarganadocompra.Click
 
@@ -846,7 +846,7 @@ Public Class Programa
                 Consulta = "select * from compra"
                 consultar()
                 'Actualiza la BD
-                DTGCompras.DataSource = Tabla
+                DGVCompras.DataSource = Tabla
                 'Deja a los textbox vacios para ingresar nuevos datos
                 RTXComentariocompraproducto.Text = ""
                 TXTTotalpagadocomprasproducto.Text = ""
@@ -884,28 +884,12 @@ Public Class Programa
         DTGModificarcompra.Columns(3).HeaderText = "Total Pagado"
 
         'Oculta panel principal compras
-        Panelprincipalcompras.SendToBack()
-        Panelprincipalcompras.Visible = False
-        Panelprincipalcompras.Enabled = False
-    End Sub
-
-    Private Sub BTNEliminarmodicompra_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles BTNEliminarmodicompra.Click
-        'Elimina el id de una compra juntos con todos los datos de ese id
-        Consulta = "delete from compra where idc='" & TXTIdmodicompra.Text & "'"
-        consultar()
-
-        Consulta = "select * from compra"
-        consultar()
-        'Actualiza la BD
-        DTGModificarcompra.DataSource = Tabla
-        'Deja vacios los campos
-        RTXModicomentariocompra.Clear()
-        TXTModitotalapagarcompra.Clear()
-        TXTIdmodicompra.Clear()
-        MsgBox("Datos eliminados correctamente")
+        PNLPrincipalcompra.SendToBack()
+        PNLPrincipalcompra.Visible = False
+        PNLPrincipalcompra.Enabled = False
     End Sub
     Private Sub BTNBuscarcompra_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles BTNBuscarcompra.Click
-        DTGCompras.DataSource = Nothing
+        DGVCompras.DataSource = Nothing
 
     End Sub
     Private Sub BTNAgregarcomraganado_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles BTNAgregarcomraganado.Click
@@ -919,7 +903,7 @@ Public Class Programa
                 Consulta = "select * from compra"
                 consultar()
                 'Actualiza la BD
-                DTGCompras.DataSource = Tabla
+                DGVCompras.DataSource = Tabla
                 'Deja a los textbox vacios para ingresar nuevos datos
                 DTPFechacompraganado.Value = Today
                 RTXComentariocompraganado.Text = ""
@@ -950,49 +934,6 @@ Public Class Programa
         DTPFechanacimientocompra.Value = Today
         TXTEstadocompra.Clear()
     End Sub
-
-    Private Sub Button1_Click_1(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Button1.Click
-        Dim consulta As String
-        Dim lista As Byte
-        Dim datos As DataSet
-        If Texbuscarcliente.Text <> "" Then
-            consulta = " select * from cliente where id = '" & Texbuscarcliente.Text & "'"
-            Conexion = New MySqlDataAdapter(consulta, data)
-            datos = New DataSet
-            Conexion.Fill(datos, "cliente")
-            lista = datos.Tables("cliente").Rows.Count
-
-            If lista <> 0 Then
-                Nombreyapellidomodificarcliente.Text = datos.Tables("cliente").Rows(0).Item(1)
-                Cedulamodificarcliente.Text = datos.Tables("cliente").Rows(0).Item(0)
-                Direccionmodificarcliente.Text = datos.Tables("cliente").Rows(0).Item(2)
-                Telefonomodificarcliente.Text = datos.Tables("cliente").Rows(0).Item(3)
-
-            Else
-                MsgBox("Datos no encontrados")
-            End If
-
-        End If
-
-    End Sub
-
-    Private Sub Volvermodificarcliente_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Volvermodificarcliente.Click
-        PanelPrincipalclientes.BringToFront()
-        PanelPrincipalclientes.Visible = True
-        PanelPrincipalclientes.Enabled = True
-
-        Consulta = "select * from cliente"
-        consultar()
-        DataGridViewClientes.DataSource = Tabla
-        'DataGridViewClientes.Columns(0).HeaderText = "Cédula"
-        'DataGridViewClientes.Columns(1).HeaderText = "Nombre y apellido"
-        'DataGridViewClientes.Columns(2).HeaderText = "Dirección"
-        'DataGridViewClientes.Columns(3).HeaderText = "Teléfono"
-
-        PanelModificarclientes.SendToBack()
-        PanelModificarclientes.Visible = False
-        PanelModificarclientes.Enabled = False
-    End Sub
     Private Sub DataGridViewModificarclientes_SelectionChanged(ByVal sender As Object, ByVal e As System.EventArgs) Handles DataGridViewModificarclientes.SelectionChanged
         Nombreyapellidomodificarcliente.Clear()
         Cedulamodificarcliente.Clear()
@@ -1006,42 +947,6 @@ Public Class Programa
 
     End Sub
 
-
-    Private Sub Clearmodificarclientes_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Clearmodificarclientes.Click
-        Nombreyapellidomodificarcliente.Clear()
-        Cedulamodificarcliente.Clear()
-        Direccionmodificarcliente.Clear()
-        Telefonomodificarcliente.Clear()
-
-    End Sub
-
-    Private Sub Agregarmodificacioncliente_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Agregarmodificacioncliente.Click
-        'dsfvsdddsadasdsad
-
-        If verificarCedula(Cedulamodificarcliente.Text) Then
-            Try
-                Consulta = "update cliente set nombre='" + Nombreyapellidomodificarcliente.Text + "', direccion='" + Direccionmodificarcliente.Text + "', telefono='" + Telefonomodificarcliente.Text + "' where id='" + Cedulamodificarcliente.Text + "'"
-                consultar()
-                Consulta = "select * from cliente"
-                consultar()
-                Cedulamodificarcliente.Text = ""
-                Nombreyapellidomodificarcliente.Text = ""
-                Direccionmodificarcliente.Text = ""
-                Cedulamodificarcliente.Text = ""
-                DataGridViewModificarclientes.DataSource = Tabla
-                'DataGridViewModificarclientes.Columns(0).HeaderText = "Cédula"
-                'DataGridViewModificarclientes.Columns(1).HeaderText = "Nombre y apellido"
-                'DataGridViewModificarclientes.Columns(2).HeaderText = "Dirección"
-                'DataGridViewModificarclientes.Columns(3).HeaderText = "Teléfono"
-                MsgBox("Editado con exito")
-            Catch ex As Exception
-                MsgBox(ex)
-            End Try
-        Else
-            MsgBox("Cédula errónea")
-        End If
-
-    End Sub
     '/////NO BORRARasdkjbasdbashjsshjssddsdssdkejejerkjer
 
     'Private Sub BOTONquitarcliente_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles BOTONquitarcliente.Click
@@ -1217,12 +1122,12 @@ Public Class Programa
 
 
 
- 
 
 
 
-  
-  
+
+
+
 
 
 
@@ -1269,7 +1174,7 @@ Public Class Programa
 
 
 
-  
+
 
 
 
@@ -1288,19 +1193,19 @@ Public Class Programa
         Panelmodificarcompras.SendToBack()
 
         'Muestra el panel principal de compra
-        Panelprincipalcompras.Enabled = True
-        Panelprincipalcompras.Visible = True
-        Panelprincipalcompras.BringToFront()
+        PNLPrincipalcompra.Enabled = True
+        PNLPrincipalcompra.Visible = True
+        PNLPrincipalcompra.BringToFront()
 
         'Actualiza el datagrid del panel principal de compras
         Consulta = "select * from compra"
         consultar()
-        DTGCompras.DataSource = Tabla
+        DGVCompras.DataSource = Tabla
         'Cambia los headers de las tablas
-        DTGCompras.Columns(0).HeaderText = "Id"
-        DTGCompras.Columns(1).HeaderText = "Fecha de Compra"
-        DTGCompras.Columns(2).HeaderText = "Comentario"
-        DTGCompras.Columns(3).HeaderText = "Total Pagado"
+        DGVCompras.Columns(0).HeaderText = "Id"
+        DGVCompras.Columns(1).HeaderText = "Fecha de Compra"
+        DGVCompras.Columns(2).HeaderText = "Comentario"
+        DGVCompras.Columns(3).HeaderText = "Total Pagado"
     End Sub
     Private Sub DTGmodificarcompra_SelectionChanged(ByVal sender As Object, ByVal e As System.EventArgs) Handles DTGModificarcompra.SelectionChanged
         'Cuando se selecciona otra fila del data grid deja los textbox, richtextbox vacios para mostrar los nuevos datos
@@ -1404,11 +1309,11 @@ Public Class Programa
                 'CONSULTA DE TABLA(CARGA COMPRA)
                 Consulta = "select * from compra"
                 consultar()
-                DTGCompras.DataSource = Tabla
-                DTGCompras.Columns(0).HeaderText = "Id"
-                DTGCompras.Columns(1).HeaderText = "Fecha de Compra"
-                DTGCompras.Columns(2).HeaderText = "Comentario"
-                DTGCompras.Columns(3).HeaderText = "Total"
+                DGVCompras.DataSource = Tabla
+                DGVCompras.Columns(0).HeaderText = "Id"
+                DGVCompras.Columns(1).HeaderText = "Fecha de Compra"
+                DGVCompras.Columns(2).HeaderText = "Comentario"
+                DGVCompras.Columns(3).HeaderText = "Total"
 
                 Exit Select
             Case 2
@@ -1603,6 +1508,113 @@ Public Class Programa
                         DataGridViewClientes.DataSource = Tabla
 
                         MsgBox(" cliente eliminado", MsgStyle1, Title:="Eliminado")
+
+                End Select
+
+
+
+            Catch ex As Exception
+                MsgBox(ex)
+            End Try
+        End If
+    End Sub
+
+    Private Sub Button1_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Button1.Click
+        Dim consulta As String
+        Dim lista As Byte
+        Dim datos As DataSet
+        If Texbuscarcliente.Text <> "" Then
+            consulta = " select * from cliente where id = '" & Texbuscarcliente.Text & "'"
+            Conexion = New MySqlDataAdapter(consulta, data)
+            datos = New DataSet
+            Conexion.Fill(datos, "cliente")
+            lista = datos.Tables("cliente").Rows.Count
+
+            If lista <> 0 Then
+                Nombreyapellidomodificarcliente.Text = datos.Tables("cliente").Rows(0).Item(1)
+                Cedulamodificarcliente.Text = datos.Tables("cliente").Rows(0).Item(0)
+                Direccionmodificarcliente.Text = datos.Tables("cliente").Rows(0).Item(2)
+                Telefonomodificarcliente.Text = datos.Tables("cliente").Rows(0).Item(3)
+
+            Else
+                MsgBox("Datos no encontrados")
+            End If
+
+        End If
+    End Sub
+
+    Private Sub Button4_Click_1(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Button4.Click
+        If verificarCedula(Cedulamodificarcliente.Text) Then
+            Try
+                Consulta = "update cliente set nombre='" + Nombreyapellidomodificarcliente.Text + "', direccion='" + Direccionmodificarcliente.Text + "', telefono='" + Telefonomodificarcliente.Text + "' where id='" + Cedulamodificarcliente.Text + "'"
+                consultar()
+                Consulta = "select * from cliente"
+                consultar()
+                Cedulamodificarcliente.Text = ""
+                Nombreyapellidomodificarcliente.Text = ""
+                Direccionmodificarcliente.Text = ""
+                Cedulamodificarcliente.Text = ""
+                DataGridViewModificarclientes.DataSource = Tabla
+                'DataGridViewModificarclientes.Columns(0).HeaderText = "Cédula"
+                'DataGridViewModificarclientes.Columns(1).HeaderText = "Nombre y apellido"
+                'DataGridViewModificarclientes.Columns(2).HeaderText = "Dirección"
+                'DataGridViewModificarclientes.Columns(3).HeaderText = "Teléfono"
+                MsgBox("Editado con exito")
+            Catch ex As Exception
+                MsgBox(ex)
+            End Try
+        Else
+            MsgBox("Cédula errónea")
+        End If
+    End Sub
+
+    Private Sub Button5_Click_1(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Button5.Click
+        Nombreyapellidomodificarcliente.Clear()
+        Cedulamodificarcliente.Clear()
+        Direccionmodificarcliente.Clear()
+        Telefonomodificarcliente.Clear()
+    End Sub
+
+    Private Sub Button8_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Button8.Click
+        PanelPrincipalclientes.BringToFront()
+        PanelPrincipalclientes.Visible = True
+        PanelPrincipalclientes.Enabled = True
+
+        Consulta = "select * from cliente"
+        consultar()
+        DataGridViewClientes.DataSource = Tabla
+        'DataGridViewClientes.Columns(0).HeaderText = "Cédula"
+        'DataGridViewClientes.Columns(1).HeaderText = "Nombre y apellido"
+        'DataGridViewClientes.Columns(2).HeaderText = "Dirección"
+        'DataGridViewClientes.Columns(3).HeaderText = "Teléfono"
+
+        PanelModificarclientes.SendToBack()
+        PanelModificarclientes.Visible = False
+        PanelModificarclientes.Enabled = False
+    End Sub
+
+    Private Sub Button9_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles BTNEliminarCompra.Click
+        Dim MsgStyle As MsgBoxStyle = MsgBoxStyle.Critical + MsgBoxStyle.OkOnly
+        Dim MsgStyle1 As MsgBoxStyle = MsgBoxStyle.Information + MsgBoxStyle.OkOnly
+
+        If MessageBox.Show("¿Seguro que desea eliminar ésta compra?", "Confirmación", MessageBoxButtons.YesNo, MessageBoxIcon.Question) = Windows.Forms.DialogResult.Yes Then
+            Try
+                'Elimina el id de una compra juntos con todos los datos de ese id
+                Consulta = "delete from compra where idc='" & DGVCompras.Item(0, DGVCompras.CurrentRow.Index).Value & "'"
+                consultar()
+
+                Select Case error1
+
+                    Case 1
+                        MsgBox("No se pudo eliminar la compra", MsgStyle, Title:="Error")
+                    Case 0
+                        Consulta = "select * from compra"
+                        consultar()
+                        'Actualiza la BD
+
+                        DGVCompras.DataSource = Tabla
+
+                        MsgBox("Compra eliminada", MsgStyle1, Title:="Eliminado")
 
                 End Select
 

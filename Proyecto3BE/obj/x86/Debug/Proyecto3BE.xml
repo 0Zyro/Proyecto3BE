@@ -6,7 +6,33 @@ Proyecto3BE
 </name>
 </assembly>
 <members>
-<member name="P:WindowsApplication1.My.Resources.Resources.ResourceManager">
+<member name="M:WindowsApplication1.Programa.btnagregarganado_Click(System.Object,System.EventArgs)">
+//////////////////////////////////////////////////////////////////////////////////////////////////////////
+ 
+
+</member><member name="M:WindowsApplication1.Programa.Button2_Click(System.Object,System.EventArgs)">
+//////////////TABLA GANADO(CODIGO PARA INGRESAR DATOS)
+
+</member><member name="M:WindowsApplication1.Programa.Button3_Click(System.Object,System.EventArgs)">
+ ////////BOTON PARA REGREGAR AL PANEL PRINCIPAL/////////////////////////
+ '///////////////////////////////////////////////////////////////////////
+ 
+
+</member><member name="M:WindowsApplication1.Programa.Button6_Click(System.Object,System.EventArgs)">
+////////////////////////// BOTON PARA ELIMINAR GANADO/////////////////////////////
+/////////////////////////////////////////////////////////////////////////////////
+  
+
+</member><member name="M:WindowsApplication1.Programa.ButPanelModificarGanado_Click(System.Object,System.EventArgs)">
+///////////////////// BOTON PARA INGRESAR DATOS AL PANEL MODIFICAR GANADO////////////////////////
+ //////////////////////////////////////////////////////////////////////////////////////////////
+ 
+
+</member><member name="M:WindowsApplication1.Programa.Button6_Click_1(System.Object,System.EventArgs)">
+//////////////// BOTON PARA CANCELAR MODIFICACION DE GANADO, LIMPIA CAPOS Y VUELVE AL PANEL PRINCIPAL////////////
+ ////////////////////////////////////////////////////////////////////////////////////////////////////
+
+</member><member name="P:WindowsApplication1.My.Resources.Resources.ResourceManager">
 	<summary>
   Returns the cached ResourceManager instance used by this class.
 </summary>
@@ -67,32 +93,6 @@ Proyecto3BE
 	<summary>
   A strongly-typed resource class, for looking up localized strings, etc.
 </summary>
-</member><member name="M:WindowsApplication1.Programa.btnagregarganado_Click(System.Object,System.EventArgs)">
-//////////////////////////////////////////////////////////////////////////////////////////////////////////
- 
-
-</member><member name="M:WindowsApplication1.Programa.Button2_Click(System.Object,System.EventArgs)">
-//////////////TABLA GANADO(CODIGO PARA INGRESAR DATOS)
-
-</member><member name="M:WindowsApplication1.Programa.Button3_Click(System.Object,System.EventArgs)">
- ////////BOTON PARA REGREGAR AL PANEL PRINCIPAL/////////////////////////
- '///////////////////////////////////////////////////////////////////////
- 
-
-</member><member name="M:WindowsApplication1.Programa.Button6_Click(System.Object,System.EventArgs)">
-////////////////////////// BOTON PARA ELIMINAR GANADO/////////////////////////////
-/////////////////////////////////////////////////////////////////////////////////
-  
-
-</member><member name="M:WindowsApplication1.Programa.ButPanelModificarGanado_Click(System.Object,System.EventArgs)">
-///////////////////// BOTON PARA INGRESAR DATOS AL PANEL MODIFICAR GANADO////////////////////////
- //////////////////////////////////////////////////////////////////////////////////////////////
- 
-
-</member><member name="M:WindowsApplication1.Programa.Button6_Click_1(System.Object,System.EventArgs)">
-//////////////// BOTON PARA CANCELAR MODIFICACION DE GANADO, LIMPIA CAPOS Y VUELVE AL PANEL PRINCIPAL////////////
- ////////////////////////////////////////////////////////////////////////////////////////////////////
-
 </member>
 </members>
 </doc>
