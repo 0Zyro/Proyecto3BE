@@ -577,15 +577,18 @@ Public Class Programa
         '-------------------------------------------------------------------------------------------------------------------
 
         '////////////VENTAS
-
-
-
+        Consulta = "select * from venta"
+        consultar()
+        'actualiza la dgvw
+        DataGridViewVENTAS.DataSource = Tabla
+        DataGridViewVENTAS.Columns(0).HeaderText = "Id venta"
+        DataGridViewVENTAS.Columns(1).HeaderText = "Fecha de venta"
+        DataGridViewVENTAS.Columns(2).HeaderText = "Comentario"
+        DataGridViewVENTAS.Columns(3).HeaderText = "Total"
+        DataGridViewVENTAS.Columns(4).HeaderText = "Cédula de cliente"
         'panel ventas
         paneldetextosenventas.Visible = False
-        'If paneldetextosenventas.Visible = True Then
-        '    btnagregarpanel.BackgroundImage = Image.FromFile("C:\Users\Alumno-09\Desktop\Proyecto3BE-master\Proyecto3BE\Resources\flecha-hacia-la-izquierda.png")
-
-        'End If
+        
 
         '////////////FIN VENTAS
 
@@ -774,7 +777,7 @@ Public Class Programa
         End If
     End Sub
 
-    '''//////////////// BOTON PARA CANCELAR MODIFICACION DE GANADO, LIMPIA CAPOS Y VUELVE AL PANEL PRINCIPAL////////////
+    '''//////////////// BOTON PARA CANCELAR MODIFICACION DE GANADO, LIMPIA CAmPOS Y VUELVE AL PANEL PRINCIPAL////////////
     ''' ////////////////////////////////////////////////////////////////////////////////////////////////////
 
     Private Sub Button6_Click_1(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Button6.Click
@@ -1120,6 +1123,13 @@ Public Class Programa
                 consultar()
                 'actualiza la dgvw
                 DataGridViewVENTAS.DataSource = Tabla
+                DataGridViewVENTAS.Columns(0).HeaderText = "Id venta"
+                DataGridViewVENTAS.Columns(1).HeaderText = "Fecha de venta"
+                DataGridViewVENTAS.Columns(2).HeaderText = "Comentario"
+                DataGridViewVENTAS.Columns(3).HeaderText = "Total"
+                DataGridViewVENTAS.Columns(4).HeaderText = "Cédula de cliente"
+
+
                 Labelparamostraragregado.Show()
             Catch ex As Exception
                 MsgBox(ex)
@@ -1294,24 +1304,31 @@ Public Class Programa
     ' cosas de paneles
 
     Private Sub btnagregarpanel_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnagregarpanel.Click
+
+     
+
+
+        
+
         DataGridViewganadoenventa.Visible = True
         paneldetextosenventas.Visible = True
-        'If paneldetextosenventas.Height = 10 Then
-        '    paneldetextosenventas.Height = 376
-        'Else
-        '    paneldetextosenventas.Height = 10
-        'End If
+        ' cambiamos de tamaño el panel 
+        If paneldetextosenventas.Width = 10 Then
+            paneldetextosenventas.Width = 1014
+        Else
+            paneldetextosenventas.Width = 10
+        End If
 
-
-        If paneldetextosenventas.Visible = True Then
+        ' si el panel tiene... de ancho se cambia la imagen del boton 
+        If paneldetextosenventas.Width = 1014 Then
             btnagregarpanel.Image = Image.FromFile("..\..\Resources\flecha-hacia-la-izquierda.png")
-
+            Panelparaocultar.Visible = False
 
         End If
 
-        If paneldetextosenventas.Visible = False Then
+        If paneldetextosenventas.Width = 10 Then
             btnagregarpanel.Image = Image.FromFile("..\..\Resources\anadir.png")
-
+            Panelparaocultar.Visible = True
         End If
 
 
@@ -1378,8 +1395,13 @@ Public Class Programa
                 CBXBusquedaUsuarios.SelectedIndex = 0
 
                 Exit Select
+            
         End Select
 
+
+
+       
+        
     End Sub
 
 
@@ -1439,6 +1461,18 @@ Public Class Programa
         consultar()
         'actualiza la dgvw
         DataGridViewganadoenventa.DataSource = Tabla
+
+      
+        DataGridViewganadoenventa.Columns(0).HeaderText = "Id ganado"
+        DataGridViewganadoenventa.Columns(1).HeaderText = "Sexo"
+        DataGridViewganadoenventa.Columns(2).HeaderText = "Raza"
+        DataGridViewganadoenventa.Columns(3).HeaderText = "nacimiento"
+        DataGridViewganadoenventa.Columns(4).HeaderText = "Estado"
+        DataGridViewganadoenventa.Columns(5).HeaderText = "Precio de venta"
+        DataGridViewganadoenventa.Columns(6).HeaderText = "id de venta"
+
+
+
     End Sub
 
 
@@ -1627,4 +1661,7 @@ Public Class Programa
         PanelModificarclientes.Visible = False
         PanelModificarclientes.Enabled = False
     End Sub
+
+   
+   
 End Class

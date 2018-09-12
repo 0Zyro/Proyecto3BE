@@ -127,6 +127,7 @@ Partial Class Programa
         Me.LBLModicomentario = New System.Windows.Forms.Label()
         Me.LBLModifechacompra = New System.Windows.Forms.Label()
         Me.ventasmain = New System.Windows.Forms.TabPage()
+        Me.Panelparaocultar = New System.Windows.Forms.Panel()
         Me.btnagregarpanel = New System.Windows.Forms.Button()
         Me.paneldetextosenventas = New System.Windows.Forms.Panel()
         Me.lblexplicando = New System.Windows.Forms.Label()
@@ -261,7 +262,7 @@ Partial Class Programa
         Me.PanelUsuario.Location = New System.Drawing.Point(0, 0)
         Me.PanelUsuario.Margin = New System.Windows.Forms.Padding(4, 3, 4, 3)
         Me.PanelUsuario.Name = "PanelUsuario"
-        Me.PanelUsuario.Size = New System.Drawing.Size(133, 545)
+        Me.PanelUsuario.Size = New System.Drawing.Size(133, 544)
         Me.PanelUsuario.TabIndex = 0
         '
         'LBLCiUsuario
@@ -1352,7 +1353,7 @@ Partial Class Programa
         Me.LBLModitotalpagadocompra.Location = New System.Drawing.Point(705, 345)
         Me.LBLModitotalpagadocompra.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.LBLModitotalpagadocompra.Name = "LBLModitotalpagadocompra"
-        Me.LBLModitotalpagadocompra.Size = New System.Drawing.Size(81, 13)
+        Me.LBLModitotalpagadocompra.Size = New System.Drawing.Size(80, 13)
         Me.LBLModitotalpagadocompra.TabIndex = 4
         Me.LBLModitotalpagadocompra.Text = "Total Pagado"
         '
@@ -1384,6 +1385,7 @@ Partial Class Programa
         Me.ventasmain.Controls.Add(Me.btnagregarpanel)
         Me.ventasmain.Controls.Add(Me.paneldetextosenventas)
         Me.ventasmain.Controls.Add(Me.DataGridViewVENTAS)
+        Me.ventasmain.Controls.Add(Me.Panelparaocultar)
         Me.ventasmain.Location = New System.Drawing.Point(4, 24)
         Me.ventasmain.Margin = New System.Windows.Forms.Padding(4, 3, 4, 3)
         Me.ventasmain.Name = "ventasmain"
@@ -1391,6 +1393,13 @@ Partial Class Programa
         Me.ventasmain.Size = New System.Drawing.Size(908, 510)
         Me.ventasmain.TabIndex = 1
         Me.ventasmain.Text = "Ventas"
+        '
+        'Panelparaocultar
+        '
+        Me.Panelparaocultar.Location = New System.Drawing.Point(0, 18)
+        Me.Panelparaocultar.Name = "Panelparaocultar"
+        Me.Panelparaocultar.Size = New System.Drawing.Size(76, 431)
+        Me.Panelparaocultar.TabIndex = 105
         '
         'btnagregarpanel
         '
@@ -1428,7 +1437,7 @@ Partial Class Programa
         Me.paneldetextosenventas.Location = New System.Drawing.Point(0, 18)
         Me.paneldetextosenventas.Margin = New System.Windows.Forms.Padding(4, 3, 4, 3)
         Me.paneldetextosenventas.Name = "paneldetextosenventas"
-        Me.paneldetextosenventas.Size = New System.Drawing.Size(905, 415)
+        Me.paneldetextosenventas.Size = New System.Drawing.Size(908, 415)
         Me.paneldetextosenventas.TabIndex = 104
         '
         'lblexplicando
@@ -1494,7 +1503,6 @@ Partial Class Programa
         Me.DataGridViewganadoenventa.AllowUserToResizeColumns = False
         Me.DataGridViewganadoenventa.AllowUserToResizeRows = False
         Me.DataGridViewganadoenventa.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.DataGridViewganadoenventa.ColumnHeadersVisible = False
         Me.DataGridViewganadoenventa.Cursor = System.Windows.Forms.Cursors.Hand
         Me.DataGridViewganadoenventa.EnableHeadersVisualStyles = False
         Me.DataGridViewganadoenventa.Location = New System.Drawing.Point(8, 7)
@@ -1503,7 +1511,7 @@ Partial Class Programa
         Me.DataGridViewganadoenventa.ReadOnly = True
         Me.DataGridViewganadoenventa.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None
         Me.DataGridViewganadoenventa.RowHeadersVisible = False
-        Me.DataGridViewganadoenventa.Size = New System.Drawing.Size(889, 112)
+        Me.DataGridViewganadoenventa.Size = New System.Drawing.Size(708, 112)
         Me.DataGridViewganadoenventa.TabIndex = 113
         Me.DataGridViewganadoenventa.Visible = False
         '
@@ -1735,11 +1743,11 @@ Partial Class Programa
         Me.TabClientes.Controls.Add(Me.PanelPrincipalclientes)
         Me.TabClientes.Controls.Add(Me.PanelAgregarcliente)
         Me.TabClientes.Controls.Add(Me.PanelModificarclientes)
-        Me.TabClientes.Location = New System.Drawing.Point(4, 22)
+        Me.TabClientes.Location = New System.Drawing.Point(4, 24)
         Me.TabClientes.Margin = New System.Windows.Forms.Padding(4, 3, 4, 3)
         Me.TabClientes.Name = "TabClientes"
         Me.TabClientes.Padding = New System.Windows.Forms.Padding(4, 3, 4, 3)
-        Me.TabClientes.Size = New System.Drawing.Size(908, 512)
+        Me.TabClientes.Size = New System.Drawing.Size(908, 510)
         Me.TabClientes.TabIndex = 3
         Me.TabClientes.Text = "Clientes"
         '
@@ -2174,11 +2182,11 @@ Partial Class Programa
         Me.TabUsuarios.Controls.Add(Me.TXTBusquedaUsuarios)
         Me.TabUsuarios.Controls.Add(Me.CBXBusquedaUsuarios)
         Me.TabUsuarios.Controls.Add(Me.PICUsuarios)
-        Me.TabUsuarios.Location = New System.Drawing.Point(4, 22)
+        Me.TabUsuarios.Location = New System.Drawing.Point(4, 24)
         Me.TabUsuarios.Margin = New System.Windows.Forms.Padding(4, 3, 4, 3)
         Me.TabUsuarios.Name = "TabUsuarios"
         Me.TabUsuarios.Padding = New System.Windows.Forms.Padding(4, 3, 4, 3)
-        Me.TabUsuarios.Size = New System.Drawing.Size(908, 512)
+        Me.TabUsuarios.Size = New System.Drawing.Size(908, 510)
         Me.TabUsuarios.TabIndex = 4
         Me.TabUsuarios.Text = "Usuarios"
         Me.TabUsuarios.UseVisualStyleBackColor = True
@@ -2431,7 +2439,7 @@ Partial Class Programa
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 15.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(1059, 545)
+        Me.ClientSize = New System.Drawing.Size(1059, 544)
         Me.Controls.Add(Me.TabbedPane)
         Me.Controls.Add(Me.PanelUsuario)
         Me.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
@@ -2681,4 +2689,5 @@ Partial Class Programa
     Friend WithEvents TXTModificarcompra As System.Windows.Forms.TextBox
     Friend WithEvents BTNBuscarcliente As System.Windows.Forms.Button
     Friend WithEvents ComboBox1 As System.Windows.Forms.ComboBox
+    Friend WithEvents Panelparaocultar As System.Windows.Forms.Panel
 End Class
