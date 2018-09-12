@@ -789,7 +789,10 @@ Public Class Programa
     '/////////////////////////////////////////////////////////////////////////////////////////////
 
 
-
+    '///////////////////////////////////////COMPRAS//////////////////////////////////////////////
+    '////////////////////////////////////////////////////////////////////////////////////////////
+    '/////////////////////////////////////////////////////////////////////////////////////////////
+    '/////////////////////////////////////////////////////////////////////////////////////////////
     Private Sub BTNVolverdeagregarcompra_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles BTNVolverdeagregarcompra.Click
         'Muestra panel pricipal de compras
         PNLPrincipalcompra.Enabled = True
@@ -827,6 +830,7 @@ Public Class Programa
     Private Sub Button5_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles BTNAgregarganadocompra.Click
 
     End Sub
+
     Private Sub BTNAgregarcompra_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles BTNAgregarcompraproducto.Click
         Dim fechacompra As String = DTPFechacompraproducto.Value.ToString("yyyy-MM-dd")
         If fechacompra <> "" And RTXComentariocompraproducto.Text <> "" And TXTTotalpagadocomprasproducto.Text <> "" Then
@@ -880,7 +884,7 @@ Public Class Programa
         PNLPrincipalcompra.Enabled = False
     End Sub
     Private Sub BTNBuscarcompra_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles BTNBuscarcompra.Click
-        DGVCompras.DataSource = Nothing
+        
 
     End Sub
     Private Sub BTNAgregarcomraganado_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles BTNAgregarcomraganado.Click
@@ -974,7 +978,116 @@ Public Class Programa
             MsgBox(ex)
         End Try
     End Sub
+    Private Sub BTNsalirmodicompra_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles BTNsalirmodicompra.Click
+        'Oculta el panel de modificar compra
+        Panelmodificarcompras.Enabled = False
+        Panelmodificarcompras.Visible = False
+        Panelmodificarcompras.SendToBack()
 
+        'Muestra el panel principal de compra
+        PNLPrincipalcompra.Enabled = True
+        PNLPrincipalcompra.Visible = True
+        PNLPrincipalcompra.BringToFront()
+
+        'Actualiza el datagrid del panel principal de compras
+        Consulta = "select * from compra"
+        consultar()
+        DGVCompras.DataSource = Tabla
+        'Cambia los headers de las tablas
+        DGVCompras.Columns(0).HeaderText = "Id"
+        DGVCompras.Columns(1).HeaderText = "Fecha de Compra"
+        DGVCompras.Columns(2).HeaderText = "Comentario"
+        DGVCompras.Columns(3).HeaderText = "Total Pagado"
+    End Sub
+    Private Sub DTGmodificarcompra_SelectionChanged(ByVal sender As Object, ByVal e As System.EventArgs) Handles DTGModificarcompra.SelectionChanged
+        'Cuando se selecciona otra fila del data grid deja los textbox, richtextbox vacios para mostrar los nuevos datos
+        RTXModicomentariocompra.Clear()
+        TXTModitotalapagarcompra.Clear()
+        TXTIdmodicompra.Clear()
+
+
+        'Cada vez que se selecciona un item del datagrid, muestra los datos en los textbox,datatimerpick,richtextbox
+        TXTIdmodicompra.Text = DTGModificarcompra.Item(0, DTGModificarcompra.CurrentRow.Index).Value
+        DTPModifechacompra.Value = DTGModificarcompra.Item(1, DTGModificarcompra.CurrentRow.Index).Value
+        RTXModicomentariocompra.Text = DTGModificarcompra.Item(2, DTGModificarcompra.CurrentRow.Index).Value
+        TXTModitotalapagarcompra.Text = DTGModificarcompra.Item(3, DTGModificarcompra.CurrentRow.Index).Value
+    End Sub
+
+    Private Sub BTNlimpiarmodicompra_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles BTNlimpiarmodicompra.Click
+        'Deja vacio el campo de comentario
+        RTXModicomentariocompra.Clear()
+        'Deja vacio el campo de Total a pagar
+        TXTModitotalapagarcompra.Clear()
+        DTPModifechacompra.Value = Today
+    End Sub
+
+    Private Sub CBXAgregarcompra_SelectedIndexChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles CBXAgregarcompra.SelectedIndexChanged
+        If CBXAgregarcompra.Text = "Ganado" Then
+            PNLAgregarcompraganado.Visible = True
+            PNLAgregarcompraganado.Enabled = True
+            PNLAgregarcompraganado.BringToFront()
+
+            PNLAgregarcompraproducto.Visible = False
+            PNLAgregarcompraproducto.Enabled = False
+            PNLAgregarcompraproducto.SendToBack()
+        ElseIf CBXAgregarcompra.Text = "Productos" Then
+            PNLAgregarcompraproducto.Visible = True
+            PNLAgregarcompraproducto.Enabled = True
+            PNLAgregarcompraproducto.BringToFront()
+
+            PNLAgregarcompraganado.Visible = False
+            PNLAgregarcompraganado.Enabled = False
+            PNLAgregarcompraganado.SendToBack()
+        Else
+            PNLAgregarcompraproducto.Visible = False
+            PNLAgregarcompraproducto.Enabled = False
+            PNLAgregarcompraproducto.SendToBack()
+
+            PNLAgregarcompraganado.Visible = False
+            PNLAgregarcompraganado.Enabled = False
+            PNLAgregarcompraganado.SendToBack()
+        End If
+    End Sub
+    '//////Boton que elimina el ganado/////////
+    Private Sub BTNEliminarCompra_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles BTNEliminarCompra.Click
+        Dim MsgStyle As MsgBoxStyle = MsgBoxStyle.Critical + MsgBoxStyle.OkOnly
+        Dim MsgStyle1 As MsgBoxStyle = MsgBoxStyle.Information + MsgBoxStyle.OkOnly
+
+        If MessageBox.Show("¿Seguro que desea eliminar ésta compra?", "Confirmación", MessageBoxButtons.YesNo, MessageBoxIcon.Question) = Windows.Forms.DialogResult.Yes Then
+            Try
+                'Elimina el id de una compra juntos con todos los datos de ese id
+                Consulta = "delete from compra where idc='" & DGVCompras.Item(0, DGVCompras.CurrentRow.Index).Value & "'"
+                consultar()
+
+                Select Case error1
+
+                    Case 1
+                        MsgBox("No se pudo eliminar la compra", MsgStyle, Title:="Error")
+                    Case 0
+                        Consulta = "select * from compra"
+                        consultar()
+                        'Actualiza la BD
+
+                        DGVCompras.DataSource = Tabla
+
+                        MsgBox("Compra eliminada", MsgStyle1, Title:="Eliminado")
+
+                End Select
+
+
+
+            Catch ex As Exception
+                MsgBox(ex)
+            End Try
+        End If
+    End Sub
+
+    Private Sub TXTBuscarcompra_TextChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles TXTBuscarcompra.TextChanged
+
+    End Sub
+    '/////////////////////////////FIN COMPRAS//////////////////////////////////////////////////////////////////
+    '//////////////////////////////////////////////////////////////////////////////////////////////////////////
+    '//////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 
 
@@ -1177,76 +1290,7 @@ Public Class Programa
 
 
     ' ////////////////////////////////////////////////////////////
-    Private Sub BTNsalirmodicompra_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles BTNsalirmodicompra.Click
-        'Oculta el panel de modificar compra
-        Panelmodificarcompras.Enabled = False
-        Panelmodificarcompras.Visible = False
-        Panelmodificarcompras.SendToBack()
-
-        'Muestra el panel principal de compra
-        PNLPrincipalcompra.Enabled = True
-        PNLPrincipalcompra.Visible = True
-        PNLPrincipalcompra.BringToFront()
-
-        'Actualiza el datagrid del panel principal de compras
-        Consulta = "select * from compra"
-        consultar()
-        DGVCompras.DataSource = Tabla
-        'Cambia los headers de las tablas
-        DGVCompras.Columns(0).HeaderText = "Id"
-        DGVCompras.Columns(1).HeaderText = "Fecha de Compra"
-        DGVCompras.Columns(2).HeaderText = "Comentario"
-        DGVCompras.Columns(3).HeaderText = "Total Pagado"
-    End Sub
-    Private Sub DTGmodificarcompra_SelectionChanged(ByVal sender As Object, ByVal e As System.EventArgs) Handles DTGModificarcompra.SelectionChanged
-        'Cuando se selecciona otra fila del data grid deja los textbox, richtextbox vacios para mostrar los nuevos datos
-        RTXModicomentariocompra.Clear()
-        TXTModitotalapagarcompra.Clear()
-        TXTIdmodicompra.Clear()
-
-
-        'Cada vez que se selecciona un item del datagrid, muestra los datos en los textbox,datatimerpick,richtextbox
-        TXTIdmodicompra.Text = DTGModificarcompra.Item(0, DTGModificarcompra.CurrentRow.Index).Value
-        DTPModifechacompra.Value = DTGModificarcompra.Item(1, DTGModificarcompra.CurrentRow.Index).Value
-        RTXModicomentariocompra.Text = DTGModificarcompra.Item(2, DTGModificarcompra.CurrentRow.Index).Value
-        TXTModitotalapagarcompra.Text = DTGModificarcompra.Item(3, DTGModificarcompra.CurrentRow.Index).Value
-    End Sub
-
-    Private Sub BTNlimpiarmodicompra_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles BTNlimpiarmodicompra.Click
-        'Deja vacio el campo de comentario
-        RTXModicomentariocompra.Clear()
-        'Deja vacio el campo de Total a pagar
-        TXTModitotalapagarcompra.Clear()
-        DTPModifechacompra.Value = Today
-    End Sub
-
-    Private Sub CBXAgregarcompra_SelectedIndexChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles CBXAgregarcompra.SelectedIndexChanged
-        If CBXAgregarcompra.Text = "Ganado" Then
-            PNLAgregarcompraganado.Visible = True
-            PNLAgregarcompraganado.Enabled = True
-            PNLAgregarcompraganado.BringToFront()
-
-            PNLAgregarcompraproducto.Visible = False
-            PNLAgregarcompraproducto.Enabled = False
-            PNLAgregarcompraproducto.SendToBack()
-        ElseIf CBXAgregarcompra.Text = "Productos" Then
-            PNLAgregarcompraproducto.Visible = True
-            PNLAgregarcompraproducto.Enabled = True
-            PNLAgregarcompraproducto.BringToFront()
-
-            PNLAgregarcompraganado.Visible = False
-            PNLAgregarcompraganado.Enabled = False
-            PNLAgregarcompraganado.SendToBack()
-        Else
-            PNLAgregarcompraproducto.Visible = False
-            PNLAgregarcompraproducto.Enabled = False
-            PNLAgregarcompraproducto.SendToBack()
-
-            PNLAgregarcompraganado.Visible = False
-            PNLAgregarcompraganado.Enabled = False
-            PNLAgregarcompraganado.SendToBack()
-        End If
-    End Sub
+    
     ' cosas de paneles
 
     Private Sub btnagregarpanel_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnagregarpanel.Click
@@ -1583,38 +1627,4 @@ Public Class Programa
         PanelModificarclientes.Visible = False
         PanelModificarclientes.Enabled = False
     End Sub
-
-    Private Sub Button9_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles BTNEliminarCompra.Click
-        Dim MsgStyle As MsgBoxStyle = MsgBoxStyle.Critical + MsgBoxStyle.OkOnly
-        Dim MsgStyle1 As MsgBoxStyle = MsgBoxStyle.Information + MsgBoxStyle.OkOnly
-
-        If MessageBox.Show("¿Seguro que desea eliminar ésta compra?", "Confirmación", MessageBoxButtons.YesNo, MessageBoxIcon.Question) = Windows.Forms.DialogResult.Yes Then
-            Try
-                'Elimina el id de una compra juntos con todos los datos de ese id
-                Consulta = "delete from compra where idc='" & DGVCompras.Item(0, DGVCompras.CurrentRow.Index).Value & "'"
-                consultar()
-
-                Select Case error1
-
-                    Case 1
-                        MsgBox("No se pudo eliminar la compra", MsgStyle, Title:="Error")
-                    Case 0
-                        Consulta = "select * from compra"
-                        consultar()
-                        'Actualiza la BD
-
-                        DGVCompras.DataSource = Tabla
-
-                        MsgBox("Compra eliminada", MsgStyle1, Title:="Eliminado")
-
-                End Select
-
-
-
-            Catch ex As Exception
-                MsgBox(ex)
-            End Try
-        End If
-    End Sub
-
 End Class
