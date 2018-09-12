@@ -24,7 +24,7 @@ Partial Class Programa
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(Programa))
-        Dim DataGridViewCellStyle3 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle2 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Me.PanelUsuario = New System.Windows.Forms.Panel()
         Me.LBLCiUsuario = New System.Windows.Forms.Label()
         Me.BTNCerrarSesion = New System.Windows.Forms.Button()
@@ -115,7 +115,7 @@ Partial Class Programa
         Me.DTPModifechacompra = New System.Windows.Forms.DateTimePicker()
         Me.BTNlimpiarmodicompra = New System.Windows.Forms.Button()
         Me.BTNsalirmodicompra = New System.Windows.Forms.Button()
-        Me.Agregarmodificarcompra = New System.Windows.Forms.Button()
+        Me.BTNAgregarmodificacion = New System.Windows.Forms.Button()
         Me.TXTIdmodicompra = New System.Windows.Forms.TextBox()
         Me.LBLTitulomodicompra = New System.Windows.Forms.Label()
         Me.DTGModificarcompra = New System.Windows.Forms.DataGridView()
@@ -189,8 +189,15 @@ Partial Class Programa
         Me.DataGridViewModificarclientes = New System.Windows.Forms.DataGridView()
         Me.TabUsuarios = New System.Windows.Forms.TabPage()
         Me.PNLUsuarios = New System.Windows.Forms.Panel()
-        Me.CBXBusquedaRangoUsuarios = New System.Windows.Forms.ComboBox()
+        Me.TXTCiUsuarios = New System.Windows.Forms.TextBox()
+        Me.LBLCiUsuarios = New System.Windows.Forms.Label()
         Me.CBXRangoUsuarios = New System.Windows.Forms.ComboBox()
+        Me.LBLNombreUsuarios = New System.Windows.Forms.Label()
+        Me.LBLRangoUsuarios = New System.Windows.Forms.Label()
+        Me.LBLPasswdUsuarios = New System.Windows.Forms.Label()
+        Me.TXTNombreUsuarios = New System.Windows.Forms.TextBox()
+        Me.TXTPasswdUsuarios = New System.Windows.Forms.TextBox()
+        Me.CBXBusquedaRangoUsuarios = New System.Windows.Forms.ComboBox()
         Me.DGVUsuarios = New System.Windows.Forms.DataGridView()
         Me.CHBUsuariosInactivos = New System.Windows.Forms.CheckBox()
         Me.BTNAceptarUsuarios = New System.Windows.Forms.Button()
@@ -199,18 +206,14 @@ Partial Class Programa
         Me.BTNModificarUsuarios = New System.Windows.Forms.Button()
         Me.BTNEliminarUsuarios = New System.Windows.Forms.Button()
         Me.BTNAgregarUsuarios = New System.Windows.Forms.Button()
-        Me.TXTPasswdUsuarios = New System.Windows.Forms.TextBox()
-        Me.TXTNombreUsuarios = New System.Windows.Forms.TextBox()
-        Me.TXTCiUsuarios = New System.Windows.Forms.TextBox()
-        Me.LBLPasswdUsuarios = New System.Windows.Forms.Label()
-        Me.LBLRangoUsuarios = New System.Windows.Forms.Label()
-        Me.LBLNombreUsuarios = New System.Windows.Forms.Label()
-        Me.LBLCiUsuarios = New System.Windows.Forms.Label()
         Me.BTNBusquedaUsuarios = New System.Windows.Forms.Button()
         Me.TXTBusquedaUsuarios = New System.Windows.Forms.TextBox()
         Me.CBXBusquedaUsuarios = New System.Windows.Forms.ComboBox()
         Me.PICUsuarios = New System.Windows.Forms.PictureBox()
         Me.ToolTip1 = New System.Windows.Forms.ToolTip(Me.components)
+        Me.TXTModificarcompra = New System.Windows.Forms.TextBox()
+        Me.BTNBuscarmodificacioncompra = New System.Windows.Forms.Button()
+        Me.CBXModificarcompra = New System.Windows.Forms.ComboBox()
         Me.PanelUsuario.SuspendLayout()
         CType(Me.PICUsuarioLogueado, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.TabbedPane.SuspendLayout()
@@ -718,7 +721,7 @@ Partial Class Programa
         Me.PNLPrincipalcompra.Controls.Add(Me.CBXBuscarcompra)
         Me.PNLPrincipalcompra.Location = New System.Drawing.Point(-4, 0)
         Me.PNLPrincipalcompra.Name = "PNLPrincipalcompra"
-        Me.PNLPrincipalcompra.Size = New System.Drawing.Size(683, 438)
+        Me.PNLPrincipalcompra.Size = New System.Drawing.Size(683, 442)
         Me.PNLPrincipalcompra.TabIndex = 0
         '
         'BTNEliminarCompra
@@ -728,6 +731,7 @@ Partial Class Programa
         Me.BTNEliminarCompra.Name = "BTNEliminarCompra"
         Me.BTNEliminarCompra.Size = New System.Drawing.Size(32, 32)
         Me.BTNEliminarCompra.TabIndex = 9
+        Me.ToolTip1.SetToolTip(Me.BTNEliminarCompra, "Eliminar Compra")
         Me.BTNEliminarCompra.UseVisualStyleBackColor = True
         '
         'BTNBuscarcompra
@@ -737,6 +741,7 @@ Partial Class Programa
         Me.BTNBuscarcompra.Size = New System.Drawing.Size(75, 23)
         Me.BTNBuscarcompra.TabIndex = 8
         Me.BTNBuscarcompra.Text = "Buscar"
+        Me.ToolTip1.SetToolTip(Me.BTNBuscarcompra, "Buscar")
         Me.BTNBuscarcompra.UseVisualStyleBackColor = True
         '
         'BTNPanelmodicompra
@@ -746,6 +751,7 @@ Partial Class Programa
         Me.BTNPanelmodicompra.Name = "BTNPanelmodicompra"
         Me.BTNPanelmodicompra.Size = New System.Drawing.Size(32, 32)
         Me.BTNPanelmodicompra.TabIndex = 7
+        Me.ToolTip1.SetToolTip(Me.BTNPanelmodicompra, "Modificar Compra")
         Me.BTNPanelmodicompra.UseVisualStyleBackColor = True
         '
         'BTNPanelagregarcompra
@@ -755,6 +761,7 @@ Partial Class Programa
         Me.BTNPanelagregarcompra.Name = "BTNPanelagregarcompra"
         Me.BTNPanelagregarcompra.Size = New System.Drawing.Size(32, 32)
         Me.BTNPanelagregarcompra.TabIndex = 6
+        Me.ToolTip1.SetToolTip(Me.BTNPanelagregarcompra, "Agregar Compra")
         Me.BTNPanelagregarcompra.UseVisualStyleBackColor = True
         '
         'DGVCompras
@@ -800,7 +807,7 @@ Partial Class Programa
         Me.Panelagregarcompras.Controls.Add(Me.PNLAgregarcompraproducto)
         Me.Panelagregarcompras.Location = New System.Drawing.Point(-4, 0)
         Me.Panelagregarcompras.Name = "Panelagregarcompras"
-        Me.Panelagregarcompras.Size = New System.Drawing.Size(683, 447)
+        Me.Panelagregarcompras.Size = New System.Drawing.Size(683, 442)
         Me.Panelagregarcompras.TabIndex = 6
         '
         'CBXAgregarcompra
@@ -811,6 +818,7 @@ Partial Class Programa
         Me.CBXAgregarcompra.Name = "CBXAgregarcompra"
         Me.CBXAgregarcompra.Size = New System.Drawing.Size(121, 21)
         Me.CBXAgregarcompra.TabIndex = 18
+        Me.ToolTip1.SetToolTip(Me.CBXAgregarcompra, "Elige una opción")
         '
         'BTNVolverdeagregarcompra
         '
@@ -819,6 +827,7 @@ Partial Class Programa
         Me.BTNVolverdeagregarcompra.Name = "BTNVolverdeagregarcompra"
         Me.BTNVolverdeagregarcompra.Size = New System.Drawing.Size(32, 32)
         Me.BTNVolverdeagregarcompra.TabIndex = 12
+        Me.ToolTip1.SetToolTip(Me.BTNVolverdeagregarcompra, "Volver")
         Me.BTNVolverdeagregarcompra.UseVisualStyleBackColor = True
         '
         'LBLTituloagregarcompra
@@ -865,6 +874,7 @@ Partial Class Programa
         Me.BTNAgregarganadocompra.Size = New System.Drawing.Size(100, 23)
         Me.BTNAgregarganadocompra.TabIndex = 19
         Me.BTNAgregarganadocompra.Text = "OK"
+        Me.ToolTip1.SetToolTip(Me.BTNAgregarganadocompra, "Ok")
         Me.BTNAgregarganadocompra.UseVisualStyleBackColor = True
         '
         'BTNLimpiarcompraganado
@@ -874,6 +884,7 @@ Partial Class Programa
         Me.BTNLimpiarcompraganado.Name = "BTNLimpiarcompraganado"
         Me.BTNLimpiarcompraganado.Size = New System.Drawing.Size(32, 32)
         Me.BTNLimpiarcompraganado.TabIndex = 18
+        Me.ToolTip1.SetToolTip(Me.BTNLimpiarcompraganado, "Limpiar Campos")
         Me.BTNLimpiarcompraganado.UseVisualStyleBackColor = True
         '
         'BTNAgregarcomraganado
@@ -883,6 +894,7 @@ Partial Class Programa
         Me.BTNAgregarcomraganado.Name = "BTNAgregarcomraganado"
         Me.BTNAgregarcomraganado.Size = New System.Drawing.Size(32, 32)
         Me.BTNAgregarcomraganado.TabIndex = 17
+        Me.ToolTip1.SetToolTip(Me.BTNAgregarcomraganado, "Agregar Compra")
         Me.BTNAgregarcomraganado.UseVisualStyleBackColor = True
         '
         'LBLAgregartotalpagarcompraganado
@@ -1103,11 +1115,14 @@ Partial Class Programa
         'Panelmodificarcompras
         '
         Me.Panelmodificarcompras.BackColor = System.Drawing.Color.SeaGreen
+        Me.Panelmodificarcompras.Controls.Add(Me.CBXModificarcompra)
+        Me.Panelmodificarcompras.Controls.Add(Me.BTNBuscarmodificacioncompra)
+        Me.Panelmodificarcompras.Controls.Add(Me.TXTModificarcompra)
         Me.Panelmodificarcompras.Controls.Add(Me.RTXModicomentariocompra)
         Me.Panelmodificarcompras.Controls.Add(Me.DTPModifechacompra)
         Me.Panelmodificarcompras.Controls.Add(Me.BTNlimpiarmodicompra)
         Me.Panelmodificarcompras.Controls.Add(Me.BTNsalirmodicompra)
-        Me.Panelmodificarcompras.Controls.Add(Me.Agregarmodificarcompra)
+        Me.Panelmodificarcompras.Controls.Add(Me.BTNAgregarmodificacion)
         Me.Panelmodificarcompras.Controls.Add(Me.TXTIdmodicompra)
         Me.Panelmodificarcompras.Controls.Add(Me.LBLTitulomodicompra)
         Me.Panelmodificarcompras.Controls.Add(Me.DTGModificarcompra)
@@ -1117,7 +1132,7 @@ Partial Class Programa
         Me.Panelmodificarcompras.Controls.Add(Me.LBLModifechacompra)
         Me.Panelmodificarcompras.Location = New System.Drawing.Point(-4, 0)
         Me.Panelmodificarcompras.Name = "Panelmodificarcompras"
-        Me.Panelmodificarcompras.Size = New System.Drawing.Size(683, 437)
+        Me.Panelmodificarcompras.Size = New System.Drawing.Size(683, 442)
         Me.Panelmodificarcompras.TabIndex = 9
         '
         'RTXModicomentariocompra
@@ -1155,15 +1170,15 @@ Partial Class Programa
         Me.ToolTip1.SetToolTip(Me.BTNsalirmodicompra, "Volver")
         Me.BTNsalirmodicompra.UseVisualStyleBackColor = True
         '
-        'Agregarmodificarcompra
+        'BTNAgregarmodificacion
         '
-        Me.Agregarmodificarcompra.Image = Global.WindowsApplication1.My.Resources.Resources.anadir
-        Me.Agregarmodificarcompra.Location = New System.Drawing.Point(497, 354)
-        Me.Agregarmodificarcompra.Name = "Agregarmodificarcompra"
-        Me.Agregarmodificarcompra.Size = New System.Drawing.Size(32, 32)
-        Me.Agregarmodificarcompra.TabIndex = 12
-        Me.ToolTip1.SetToolTip(Me.Agregarmodificarcompra, "Agregar Modificación")
-        Me.Agregarmodificarcompra.UseVisualStyleBackColor = True
+        Me.BTNAgregarmodificacion.Image = Global.WindowsApplication1.My.Resources.Resources.anadir
+        Me.BTNAgregarmodificacion.Location = New System.Drawing.Point(497, 354)
+        Me.BTNAgregarmodificacion.Name = "BTNAgregarmodificacion"
+        Me.BTNAgregarmodificacion.Size = New System.Drawing.Size(32, 32)
+        Me.BTNAgregarmodificacion.TabIndex = 12
+        Me.ToolTip1.SetToolTip(Me.BTNAgregarmodificacion, "Agregar Modificación")
+        Me.BTNAgregarmodificacion.UseVisualStyleBackColor = True
         '
         'TXTIdmodicompra
         '
@@ -1196,7 +1211,7 @@ Partial Class Programa
         Me.DTGModificarcompra.Name = "DTGModificarcompra"
         Me.DTGModificarcompra.ReadOnly = True
         Me.DTGModificarcompra.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
-        Me.DTGModificarcompra.Size = New System.Drawing.Size(459, 268)
+        Me.DTGModificarcompra.Size = New System.Drawing.Size(459, 266)
         Me.DTGModificarcompra.TabIndex = 9
         '
         'TXTModitotalapagarcompra
@@ -1971,14 +1986,21 @@ Partial Class Programa
         Me.PNLUsuarios.TabIndex = 26
         Me.PNLUsuarios.Visible = False
         '
-        'CBXBusquedaRangoUsuarios
+        'TXTCiUsuarios
         '
-        Me.CBXBusquedaRangoUsuarios.FormattingEnabled = True
-        Me.CBXBusquedaRangoUsuarios.Items.AddRange(New Object() {"User", "Admin", "Viewer"})
-        Me.CBXBusquedaRangoUsuarios.Location = New System.Drawing.Point(105, 18)
-        Me.CBXBusquedaRangoUsuarios.Name = "CBXBusquedaRangoUsuarios"
-        Me.CBXBusquedaRangoUsuarios.Size = New System.Drawing.Size(203, 21)
-        Me.CBXBusquedaRangoUsuarios.TabIndex = 25
+        Me.TXTCiUsuarios.Location = New System.Drawing.Point(14, 26)
+        Me.TXTCiUsuarios.Name = "TXTCiUsuarios"
+        Me.TXTCiUsuarios.Size = New System.Drawing.Size(100, 20)
+        Me.TXTCiUsuarios.TabIndex = 8
+        '
+        'LBLCiUsuarios
+        '
+        Me.LBLCiUsuarios.AutoSize = True
+        Me.LBLCiUsuarios.Location = New System.Drawing.Point(11, 10)
+        Me.LBLCiUsuarios.Name = "LBLCiUsuarios"
+        Me.LBLCiUsuarios.Size = New System.Drawing.Size(23, 13)
+        Me.LBLCiUsuarios.TabIndex = 4
+        Me.LBLCiUsuarios.Text = "C.I."
         '
         'CBXRangoUsuarios
         '
@@ -1988,6 +2010,56 @@ Partial Class Programa
         Me.CBXRangoUsuarios.Name = "CBXRangoUsuarios"
         Me.CBXRangoUsuarios.Size = New System.Drawing.Size(100, 21)
         Me.CBXRangoUsuarios.TabIndex = 24
+        '
+        'LBLNombreUsuarios
+        '
+        Me.LBLNombreUsuarios.AutoSize = True
+        Me.LBLNombreUsuarios.Location = New System.Drawing.Point(11, 74)
+        Me.LBLNombreUsuarios.Name = "LBLNombreUsuarios"
+        Me.LBLNombreUsuarios.Size = New System.Drawing.Size(44, 13)
+        Me.LBLNombreUsuarios.TabIndex = 5
+        Me.LBLNombreUsuarios.Text = "Nombre"
+        '
+        'LBLRangoUsuarios
+        '
+        Me.LBLRangoUsuarios.AutoSize = True
+        Me.LBLRangoUsuarios.Location = New System.Drawing.Point(11, 206)
+        Me.LBLRangoUsuarios.Name = "LBLRangoUsuarios"
+        Me.LBLRangoUsuarios.Size = New System.Drawing.Size(39, 13)
+        Me.LBLRangoUsuarios.TabIndex = 6
+        Me.LBLRangoUsuarios.Text = "Rango"
+        '
+        'LBLPasswdUsuarios
+        '
+        Me.LBLPasswdUsuarios.AutoSize = True
+        Me.LBLPasswdUsuarios.Location = New System.Drawing.Point(11, 142)
+        Me.LBLPasswdUsuarios.Name = "LBLPasswdUsuarios"
+        Me.LBLPasswdUsuarios.Size = New System.Drawing.Size(61, 13)
+        Me.LBLPasswdUsuarios.TabIndex = 7
+        Me.LBLPasswdUsuarios.Text = "Contraseña"
+        '
+        'TXTNombreUsuarios
+        '
+        Me.TXTNombreUsuarios.Location = New System.Drawing.Point(14, 90)
+        Me.TXTNombreUsuarios.Name = "TXTNombreUsuarios"
+        Me.TXTNombreUsuarios.Size = New System.Drawing.Size(100, 20)
+        Me.TXTNombreUsuarios.TabIndex = 9
+        '
+        'TXTPasswdUsuarios
+        '
+        Me.TXTPasswdUsuarios.Location = New System.Drawing.Point(14, 158)
+        Me.TXTPasswdUsuarios.Name = "TXTPasswdUsuarios"
+        Me.TXTPasswdUsuarios.Size = New System.Drawing.Size(100, 20)
+        Me.TXTPasswdUsuarios.TabIndex = 10
+        '
+        'CBXBusquedaRangoUsuarios
+        '
+        Me.CBXBusquedaRangoUsuarios.FormattingEnabled = True
+        Me.CBXBusquedaRangoUsuarios.Items.AddRange(New Object() {"User", "Admin", "Viewer"})
+        Me.CBXBusquedaRangoUsuarios.Location = New System.Drawing.Point(105, 18)
+        Me.CBXBusquedaRangoUsuarios.Name = "CBXBusquedaRangoUsuarios"
+        Me.CBXBusquedaRangoUsuarios.Size = New System.Drawing.Size(203, 21)
+        Me.CBXBusquedaRangoUsuarios.TabIndex = 25
         '
         'DGVUsuarios
         '
@@ -2000,14 +2072,14 @@ Partial Class Programa
         Me.DGVUsuarios.ClipboardCopyMode = System.Windows.Forms.DataGridViewClipboardCopyMode.Disable
         Me.DGVUsuarios.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         Me.DGVUsuarios.ColumnHeadersVisible = False
-        DataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Window
-        DataGridViewCellStyle3.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.ControlText
-        DataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.ButtonHighlight
-        DataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(192, Byte), Integer))
-        DataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
-        Me.DGVUsuarios.DefaultCellStyle = DataGridViewCellStyle3
+        DataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window
+        DataGridViewCellStyle2.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText
+        DataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.ButtonHighlight
+        DataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(192, Byte), Integer))
+        DataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
+        Me.DGVUsuarios.DefaultCellStyle = DataGridViewCellStyle2
         Me.DGVUsuarios.GridColor = System.Drawing.SystemColors.ButtonHighlight
         Me.DGVUsuarios.Location = New System.Drawing.Point(10, 47)
         Me.DGVUsuarios.MultiSelect = False
@@ -2085,63 +2157,6 @@ Partial Class Programa
         Me.BTNAgregarUsuarios.Text = "Agregar"
         Me.BTNAgregarUsuarios.UseVisualStyleBackColor = True
         '
-        'TXTPasswdUsuarios
-        '
-        Me.TXTPasswdUsuarios.Location = New System.Drawing.Point(14, 158)
-        Me.TXTPasswdUsuarios.Name = "TXTPasswdUsuarios"
-        Me.TXTPasswdUsuarios.Size = New System.Drawing.Size(100, 20)
-        Me.TXTPasswdUsuarios.TabIndex = 10
-        '
-        'TXTNombreUsuarios
-        '
-        Me.TXTNombreUsuarios.Location = New System.Drawing.Point(14, 90)
-        Me.TXTNombreUsuarios.Name = "TXTNombreUsuarios"
-        Me.TXTNombreUsuarios.Size = New System.Drawing.Size(100, 20)
-        Me.TXTNombreUsuarios.TabIndex = 9
-        '
-        'TXTCiUsuarios
-        '
-        Me.TXTCiUsuarios.Location = New System.Drawing.Point(14, 26)
-        Me.TXTCiUsuarios.Name = "TXTCiUsuarios"
-        Me.TXTCiUsuarios.Size = New System.Drawing.Size(100, 20)
-        Me.TXTCiUsuarios.TabIndex = 8
-        '
-        'LBLPasswdUsuarios
-        '
-        Me.LBLPasswdUsuarios.AutoSize = True
-        Me.LBLPasswdUsuarios.Location = New System.Drawing.Point(11, 142)
-        Me.LBLPasswdUsuarios.Name = "LBLPasswdUsuarios"
-        Me.LBLPasswdUsuarios.Size = New System.Drawing.Size(61, 13)
-        Me.LBLPasswdUsuarios.TabIndex = 7
-        Me.LBLPasswdUsuarios.Text = "Contraseña"
-        '
-        'LBLRangoUsuarios
-        '
-        Me.LBLRangoUsuarios.AutoSize = True
-        Me.LBLRangoUsuarios.Location = New System.Drawing.Point(11, 206)
-        Me.LBLRangoUsuarios.Name = "LBLRangoUsuarios"
-        Me.LBLRangoUsuarios.Size = New System.Drawing.Size(39, 13)
-        Me.LBLRangoUsuarios.TabIndex = 6
-        Me.LBLRangoUsuarios.Text = "Rango"
-        '
-        'LBLNombreUsuarios
-        '
-        Me.LBLNombreUsuarios.AutoSize = True
-        Me.LBLNombreUsuarios.Location = New System.Drawing.Point(11, 74)
-        Me.LBLNombreUsuarios.Name = "LBLNombreUsuarios"
-        Me.LBLNombreUsuarios.Size = New System.Drawing.Size(44, 13)
-        Me.LBLNombreUsuarios.TabIndex = 5
-        Me.LBLNombreUsuarios.Text = "Nombre"
-        '
-        'LBLCiUsuarios
-        '
-        Me.LBLCiUsuarios.AutoSize = True
-        Me.LBLCiUsuarios.Location = New System.Drawing.Point(11, 10)
-        Me.LBLCiUsuarios.Name = "LBLCiUsuarios"
-        Me.LBLCiUsuarios.Size = New System.Drawing.Size(23, 13)
-        Me.LBLCiUsuarios.TabIndex = 4
-        Me.LBLCiUsuarios.Text = "C.I."
-        '
         'BTNBusquedaUsuarios
         '
         Me.BTNBusquedaUsuarios.Location = New System.Drawing.Point(314, 14)
@@ -2176,6 +2191,30 @@ Partial Class Programa
         Me.PICUsuarios.Size = New System.Drawing.Size(90, 90)
         Me.PICUsuarios.TabIndex = 22
         Me.PICUsuarios.TabStop = False
+        '
+        'TXTModificarcompra
+        '
+        Me.TXTModificarcompra.Location = New System.Drawing.Point(6, 87)
+        Me.TXTModificarcompra.Name = "TXTModificarcompra"
+        Me.TXTModificarcompra.Size = New System.Drawing.Size(238, 20)
+        Me.TXTModificarcompra.TabIndex = 18
+        '
+        'BTNBuscarmodificacioncompra
+        '
+        Me.BTNBuscarmodificacioncompra.Location = New System.Drawing.Point(390, 85)
+        Me.BTNBuscarmodificacioncompra.Name = "BTNBuscarmodificacioncompra"
+        Me.BTNBuscarmodificacioncompra.Size = New System.Drawing.Size(75, 23)
+        Me.BTNBuscarmodificacioncompra.TabIndex = 19
+        Me.BTNBuscarmodificacioncompra.Text = "Buscar"
+        Me.BTNBuscarmodificacioncompra.UseVisualStyleBackColor = True
+        '
+        'CBXModificarcompra
+        '
+        Me.CBXModificarcompra.FormattingEnabled = True
+        Me.CBXModificarcompra.Location = New System.Drawing.Point(250, 87)
+        Me.CBXModificarcompra.Name = "CBXModificarcompra"
+        Me.CBXModificarcompra.Size = New System.Drawing.Size(121, 21)
+        Me.CBXModificarcompra.TabIndex = 20
         '
         'Programa
         '
@@ -2313,7 +2352,7 @@ Partial Class Programa
     Friend WithEvents Label18 As System.Windows.Forms.Label
     Friend WithEvents Texbuscarcliente As System.Windows.Forms.TextBox
     Friend WithEvents TXTIdmodicompra As System.Windows.Forms.TextBox
-    Friend WithEvents Agregarmodificarcompra As System.Windows.Forms.Button
+    Friend WithEvents BTNAgregarmodificacion As System.Windows.Forms.Button
     Friend WithEvents Label22 As System.Windows.Forms.Label
     Friend WithEvents DataGridViewVENTAS As System.Windows.Forms.DataGridView
     Friend WithEvents btnclearventa As System.Windows.Forms.Button
@@ -2424,4 +2463,7 @@ Partial Class Programa
     Friend WithEvents TextBox2 As System.Windows.Forms.TextBox
     Friend WithEvents BTNEliminarCompra As System.Windows.Forms.Button
     Friend WithEvents PNLUsuarios As System.Windows.Forms.Panel
+    Friend WithEvents CBXModificarcompra As System.Windows.Forms.ComboBox
+    Friend WithEvents BTNBuscarmodificacioncompra As System.Windows.Forms.Button
+    Friend WithEvents TXTModificarcompra As System.Windows.Forms.TextBox
 End Class
