@@ -30,6 +30,15 @@ Public Class Programa
 
     '///SECCION USUARIOS
 
+
+    Private Sub BTNCerrarSesion_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles BTNCerrarSesion.Click
+
+        '////////
+        'Cerrar Sesion
+        '////////
+
+    End Sub
+
     Private Sub LBLCambioContraseña_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles LBLCambioContraseña.Click
 
         Dim asd As String = InputBox("¿Seguro que desea cambiar su contraseña?", "Confirmacion")
@@ -1687,7 +1696,4 @@ Public Class Programa
         PanelModificarclientes.Visible = False
         PanelModificarclientes.Enabled = False
     End Sub
-
-   
-   
 End Class
