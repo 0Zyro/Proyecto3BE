@@ -31,19 +31,35 @@ Public Class Programa
     '///SECCION USUARIOS
 
     Private Sub LBLCambioContraseña_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles LBLCambioContraseña.Click
-        If MessageBox.Show("¿Seguro que desea cambiar su contraseña?", "Confirmacion", MessageBoxButtons.YesNo, MessageBoxIcon.Question) Then
 
-            Dim asd As String = InputBox("mensaje", "titulo")
+        Dim asd As String = InputBox("¿Seguro que desea cambiar su contraseña?", "Confirmacion")
 
-            If verificarPasswd(asd) Then
+        If verificarPasswd(asd) Then
 
-                '///////////////////////////
-                'Cambiar contraseña usuaio logueado
-                '///////////////////////////
+            comando.CommandType = CommandType.Text
+            comando.Connection = connection
+            comando.CommandText = ("update usuario set contrasena='" + asd + "' where ci='" + PasswdUsuario + "'")
 
-            End If
+            Try
+
+                connection.Open()
+
+                comando.ExecuteNonQuery()
+
+                BTNBusquedaUsuarios.PerformClick()
+
+                connection.Close()
+
+            Catch ex As Exception
+                LBLInfoUsuarios.Text = ex.Message
+                If connection.State = ConnectionState.Open Then
+                    connection.Close()
+                End If
+            End Try
 
         End If
+
+
     End Sub
 
     'Objetos auxiliares de busqueda
@@ -83,6 +99,16 @@ Public Class Programa
             Else
                 Consulta = ("select ci, nombre, contrasena, rango, estado from usuario where estado='activo' and " + CBXBusquedaUsuarios.SelectedItem + "='" + TXTBusquedaUsuarios.Text + "'")
             End If
+        End If
+
+        If CBXBusquedaRangoUsuarios.Visible = True Then
+
+            If CHBUsuariosInactivos.Checked Then
+                Consulta = ("select ci, nombre, contrasena, rango, estado from usuario where rango='" + CBXBusquedaRangoUsuarios.SelectedItem + "'")
+            Else
+                Consulta = ("select ci, nombre, contrasena, rango, estado from usuario where rango='" + CBXBusquedaRangoUsuarios.SelectedItem + "' and estado='activo'")
+            End If
+
         End If
 
         consultar()
@@ -239,7 +265,7 @@ Public Class Programa
         Select Case estadoUsuario
             Case "modificar"
                 If verificarNombre() Then
-                    If verificarPasswd() Then
+                    If verificarPasswd(TXTPasswdUsuarios.Text) Then
                         comando.CommandText = ("update usuario set contrasena='" + TXTPasswdUsuarios.Text +
                        "', nombre='" + TXTNombreUsuarios.Text +
                        "', rango='" + CBXRangoUsuarios.SelectedItem.ToString +
@@ -281,7 +307,7 @@ Public Class Programa
                             Exit Sub
                         Case "noexiste"
                             If verificarNombre() Then
-                                If verificarPasswd() Then
+                                If verificarPasswd(TXTPasswdUsuarios.Text) Then
                                     comando.CommandText = ("insert into usuario values ('" +
                                                            TXTCiUsuarios.Text + "','" +
                                                            TXTNombreUsuarios.Text + "','" +
@@ -378,8 +404,8 @@ Public Class Programa
         Return "default"
     End Function
 
-    Private Function verificarPasswd()
-        If TXTPasswdUsuarios.Text < 7 Then
+    Private Function verificarPasswd(ByVal passwd As String)
+        If passwd.Length < 7 Then
             Return False
         End If
         Return True
@@ -490,7 +516,7 @@ Public Class Programa
 
         PICUsuarios.Enabled = False
 
-        TXTBusquedaUsuarios.Visible = False
+        TXTBusquedaUsuarios.Visible = True
 
         PNLUsuarios.Visible = False
 
