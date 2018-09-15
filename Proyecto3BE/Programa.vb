@@ -672,8 +672,7 @@ Public Class Programa
     Private Sub btnagregarganado_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnagregarganado.Click
 
         Texcodigoganado.Clear()
-        Texsexoganado.Clear()
-        Texrazaganado.Clear()
+      
         DTPAgregarGanado.Value = Today
         Texestadoganado.Clear()
 
@@ -688,14 +687,14 @@ Public Class Programa
     '''//////////////TABLA GANADO(CODIGO PARA INGRESAR DATOS)
     Private Sub Button2_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Button2.Click
         If MessageBox.Show("¿Seguro desea guardar datos ?", "Confirmacion", MessageBoxButtons.YesNo, MessageBoxIcon.Question) = Windows.Forms.DialogResult.Yes Then
-
-            If Texcodigoganado.Text <> "" And Texsexoganado.Text <> "" And Texrazaganado.Text <> "" And Texestadoganado.Text <> "" Then
+            Dim CodG As Integer = Val(Texcodigoganado.Text)
+            Dim sexo As String = CBXguardarsexo.SelectedItem.ToString
+            Dim raza As String = CBXguardarRaza.SelectedItem.ToString
+            Dim fechaN As String = DTPAgregarGanado.Value.ToString("yyyy-MM-dd")
+            Dim estadoG As String = Texestadoganado.Text
+            If Texcodigoganado.Text <> "" And CBXguardarsexo.Text <> "" And CBXguardarRaza.Text <> "" Then
                 If IsNumeric(Texcodigoganado.Text) Then
-                    Dim CodG As Integer = Texcodigoganado.Text
-                    Dim sexo As String = Texsexoganado.Text
-                    Dim raza As String = Texrazaganado.Text
-                    Dim fechaN As String = DTPAgregarGanado.Value.ToString("yyyy-MM-dd")
-                    Dim estadoG As String = Texestadoganado.Text
+
                     Try
 
                         Consulta = "INSERT INTO ganado (idg,sexo,raza,nacimiento,estado) values('" & CodG & "','" & sexo & "','" & raza & "','" & fechaN & "','" & estadoG & "' )"
@@ -710,8 +709,10 @@ Public Class Programa
                         consultar()
                         DataGridganadoguardado.DataSource = Tabla
                         Texcodigoganado.Clear()
-                        Texsexoganado.Clear()
-                        Texrazaganado.Clear()
+                        CBXguardarsexo.Text = ""
+                        CBXguardarRaza.Text = ""
+                        'Texsexoganado.Clear()
+                        'Texrazaganado.Clear()
                         DTPAgregarGanado.Value = Today
                         Texestadoganado.Clear()
                         MsgBox("Datos guardados", MsgBoxStyle.Information)
@@ -719,14 +720,18 @@ Public Class Programa
 
                     Catch ex As Exception
                         MsgBox(ex)
+
                     End Try
+
+                Else
+                    MsgBox("El codigo del ganado es numerico", MsgBoxStyle.Exclamation, Title:="No se guardaron datos")
+
                 End If
 
             Else
-                MsgBox("El codigo del ganado es numerico")
+                MsgBox("NO se completaron los campos requridos(Codigo ganado, Sexo, Raza, Fecha nacimiento)", MsgBoxStyle.Exclamation, Title:="No se guardaron datos")
             End If
-        Else
-            MsgBox("Debe completar todo los datos")
+        
         End If
     End Sub
 
@@ -770,11 +775,11 @@ Public Class Programa
     Private Sub ButPanelModificarGanado_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles ButPanelModificarGanado.Click
         Try
 
-            txtMraza.Text = DataGridViewganado.Item(2, DataGridViewganado.CurrentRow.Index).Value
+            CBXmodificarRaza.Text = DataGridViewganado.Item(2, DataGridViewganado.CurrentRow.Index).Value
             DTPModificarGanado.Text = DataGridViewganado.Item(3, DataGridViewganado.CurrentRow.Index).Value
             txtMestado.Text = DataGridViewganado.Item(4, DataGridViewganado.CurrentRow.Index).Value
             txtMcodigo.Text = DataGridViewganado.Item(0, DataGridViewganado.CurrentRow.Index).Value
-            txtMsexo.Text = DataGridViewganado.Item(1, DataGridViewganado.CurrentRow.Index).Value
+            CBXmodificarSexo.Text = DataGridViewganado.Item(1, DataGridViewganado.CurrentRow.Index).Value
             PanelMGanado.Visible = True
 
         Catch ex As Exception
@@ -787,38 +792,51 @@ Public Class Programa
     Private Sub Button7_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Button7.Click
 
         Dim idg As String = txtMcodigo.Text
-        Dim sexo As String = txtMsexo.Text
-        Dim raza As String = txtMraza.Text
+        Dim sexo As String = CBXmodificarSexo.SelectedItem.ToString
+        Dim raza As String = CBXmodificarRaza.SelectedItem.ToString
         Dim fechaN As String = DTPModificarGanado.Value.ToString("yyyy-MM-dd")
         Dim estado As String = txtMestado.Text
         If MessageBox.Show("¿Seguro que desea modificar ?", "Confirmacion", MessageBoxButtons.YesNo, MessageBoxIcon.Question) = Windows.Forms.DialogResult.Yes Then
-            Consulta = "update ganado set idg = '" + idg +
-                                      "',sexo='" + sexo +
-                                      "',raza='" + raza +
-                                      "',nacimiento='" + fechaN +
-                                      "',estado='" + estado +
-                                      "' where idg= '" + idg + "'"
-            consultar()
-            Consulta = "select idg,sexo,raza,nacimiento,estado from ganado"
-            consultar()
-            DataGridViewganado.DataSource = Tabla
-            txtMcodigo.Clear()
-            txtMsexo.Clear()
-            txtMraza.Clear()
-            DTPModificarGanado.Value = Today
-            txtMestado.Clear()
-            MsgBox("Datos editados", MsgBoxStyle.Information)
-            PanelMGanado.Visible = False
+            If txtMcodigo.Text <> "" And CBXmodificarSexo.Text <> "" And CBXmodificarRaza.Text <> "" Then
+                If IsNumeric(txtMcodigo.Text) Then
+                    Consulta = "update ganado set idg = '" + idg +
+                                              "',sexo= '" + sexo +
+                                              "',raza= '" + raza +
+                                              "',nacimiento= '" + fechaN +
+                                              "',estado= '" + estado +
+                                              "' where idg= '" + idg + "'"
+                    consultar()
+                    Consulta = "select idg,sexo,raza,nacimiento,estado from ganado"
+                    consultar()
+                    DataGridViewganado.DataSource = Tabla
+                    txtMcodigo.Clear()
+                    CBXmodificarSexo.Text = ""
+                    CBXmodificarRaza.Text = ""
+                    'txtMsexo.Clear()
+                    'txtMraza.Clear()
+                    DTPModificarGanado.Value = Today
+                    txtMestado.Clear()
+                    MsgBox("Datos editados", MsgBoxStyle.Information)
+                    PanelMGanado.Visible = False
+
+                Else
+                    MsgBox("El codigo de ganado es de tipo numerico", MsgBoxStyle.Exclamation, Title:="No se realizaron cambios")
+
+                End If
+
+            Else
+                MsgBox("Los campos Codigo de ganado, Sexo, Raza, no pueden estar vacios", MsgBoxStyle.Exclamation, Title:="No se realizaron cambios")
+            End If
         End If
     End Sub
 
     '''//////////////// BOTON PARA CANCELAR MODIFICACION DE GANADO, LIMPIA CAmPOS Y VUELVE AL PANEL PRINCIPAL////////////
     ''' ////////////////////////////////////////////////////////////////////////////////////////////////////
 
-    Private Sub Button6_Click_1(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Button6.Click
+    Private Sub ButCancelarModificacion_Click_1(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles ButCancelarModificacion.Click
         txtMcodigo.Clear()
-        txtMsexo.Clear()
-        txtMraza.Clear()
+        CBXmodificarRaza.Text = ""
+        CBXmodificarSexo.Text = ""
         DTPModificarGanado.Value = Today
         txtMestado.Clear()
         PanelMGanado.Visible = False
