@@ -670,17 +670,29 @@ Public Class Programa
     ''' ////////////////////////////////////////////////////////////////////////////////////////////////////////////
     ''' 
     Private Sub Button9_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles BOTONabrirAgregar.Click
+
+        DataGridViewganado.Enabled = False
+
         BOTONguardarAgregar.Visible = True
         BOTONcancelarAgregar.Visible = True
         BOTONabrirModificar.Enabled = False
+
         CBXguardarsexo.Enabled = True
         CBXguardarRaza.Enabled = True
+
         DTPAgregarGanado.Enabled = True
+
         Texcodigoganado.Enabled = True
+
+        Texcodigoganado.Focus()
+
         Texestadoganado.Enabled = True
+
         CBXguardarsexo.Text = ""
         CBXguardarRaza.Text = ""
+
         DTPAgregarGanado.Text = ""
+
         Texcodigoganado.Clear()
         Texestadoganado.Clear()
 
@@ -691,7 +703,7 @@ Public Class Programa
     '''/////////////////////////////////////////BOTON PARA CANCELAR EL GUARDADO DEL AGREGADO DE GANADO////////////////////////////////
     ''' ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     Private Sub BOTONcancelarAgregar_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles BOTONcancelarAgregar.Click
-
+        DataGridViewganado.Enabled = True
         BOTONguardarAgregar.Visible = False
 
         BOTONabrirModificar.Enabled = True
@@ -705,6 +717,9 @@ Public Class Programa
         DTPAgregarGanado.Text = ""
         Texcodigoganado.Clear()
         Texestadoganado.Clear()
+
+        DataGridViewganado.Focus()
+
         BOTONcancelarAgregar.Visible = False
     End Sub
 
@@ -827,6 +842,9 @@ Public Class Programa
         CBXguardarRaza.Enabled = True
         DTPAgregarGanado.Enabled = True
         Texcodigoganado.Enabled = True
+
+        Texcodigoganado.Focus()
+
         Texestadoganado.Enabled = True
         'CBXguardarsexo.Text = ""
         'CBXguardarRaza.Text = ""
@@ -850,6 +868,8 @@ Public Class Programa
         'DTPAgregarGanado.Text = ""
         'Texcodigoganado.Clear()
         'Texestadoganado.Clear()
+        DataGridViewganado.Focus()
+
         BOTONcancelarModificar.Visible = False
     End Sub
 
@@ -894,6 +914,8 @@ Public Class Programa
                 Consulta = " select idg,sexo,raza,nacimiento,estado from ganado"
                 consultar()
                 DataGridViewganado.DataSource = Tabla
+
+                DataGridViewganado.Focus()
 
                 MsgBox("Datos borrados", MsgStyle1, Title:="Eliminado")
             Catch ex As Exception
@@ -1463,6 +1485,8 @@ Public Class Programa
                 consultar()
                 DataGridViewganado.DataSource = Tabla
 
+                DataGridViewganado.Focus()
+
                 'Cambiamos los headers
                 DataGridViewganado.Columns(0).HeaderText = "Codigo de ganado"
                 DataGridViewganado.Columns(1).HeaderText = "Raza"
@@ -1788,6 +1812,8 @@ Public Class Programa
             Consulta = " SELECT idg,sexo,raza,nacimiento,estado from ganado where sexo= '" + CBXselecionarSexo.SelectedItem + "'"
             consultar()
             DataGridViewganado.DataSource = Tabla
+            DataGridViewganado.Focus()
+            CBXselecionarSexo.Text = ""
 
         Catch ex As Exception
             MsgBox(ex.ToString)
@@ -1801,6 +1827,10 @@ Public Class Programa
             consultar()
             DataGridViewganado.DataSource = Tabla
 
+            DataGridViewganado.Focus()
+
+            CBXseleccionarRaza.Text = ""
+
         Catch ex As Exception
             MsgBox(ex.ToString)
         End Try
@@ -1812,6 +1842,8 @@ Public Class Programa
             Consulta = " SELECT idg,sexo,raza,nacimiento,estado from ganado "
             consultar()
             DataGridViewganado.DataSource = Tabla
+
+            DataGridViewganado.Focus()
 
         Catch ex As Exception
             MsgBox(ex.ToString)
