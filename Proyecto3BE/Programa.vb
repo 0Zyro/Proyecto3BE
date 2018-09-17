@@ -696,7 +696,7 @@ Public Class Programa
         Texcodigoganado.Clear()
         Texestadoganado.Clear()
 
-
+        BOTONabrirAgregar.Enabled = False
 
 
     End Sub
@@ -705,6 +705,7 @@ Public Class Programa
     Private Sub BOTONcancelarAgregar_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles BOTONcancelarAgregar.Click
         DataGridViewganado.Enabled = True
         BOTONguardarAgregar.Visible = False
+        BOTONabrirAgregar.Enabled = True
 
         BOTONabrirModificar.Enabled = True
         CBXguardarsexo.Enabled = False
@@ -846,6 +847,7 @@ Public Class Programa
         Texcodigoganado.Focus()
 
         Texestadoganado.Enabled = True
+        BOTONabrirModificar.Enabled = False
         'CBXguardarsexo.Text = ""
         'CBXguardarRaza.Text = ""
         'DTPAgregarGanado.Text = ""
@@ -856,6 +858,7 @@ Public Class Programa
     ''' //////////////////////////////////////////////////////////////////////////////////////
     Private Sub BOTONcancelarModificar_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles BOTONcancelarModificar.Click
         BOTONguardarModificar.Visible = False
+        BOTONabrirModificar.Enabled = True
 
         BOTONabrirAgregar.Enabled = True
         CBXguardarsexo.Enabled = False
@@ -923,6 +926,20 @@ Public Class Programa
             End Try
 
         End If
+    End Sub
+    '''////////////////////////////PARA VOLVER A MOSTRAR DATOS COMPLETOS DE GANADO EN EL DATAGRID///////////////////
+    ''' ///////////////////////////////////////////////////////////////////////////////////////////////////////////
+    Private Sub Button2_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Button2.Click
+        Try
+            Consulta = " SELECT idg,sexo,raza,nacimiento,estado from ganado "
+            consultar()
+            DataGridViewganado.DataSource = Tabla
+
+            DataGridViewganado.Focus()
+
+        Catch ex As Exception
+            MsgBox(ex.ToString)
+        End Try
     End Sub
   
 
@@ -1835,18 +1852,25 @@ Public Class Programa
             MsgBox(ex.ToString)
         End Try
     End Sub
-    '''////////////////////////////PARA VOLVER A MOSTRAR DATOS COMPLETOS DE GANADO EN EL DATAGRID///////////////////
-    ''' ///////////////////////////////////////////////////////////////////////////////////////////////////////////
-    Private Sub Button2_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Button2.Click
-        Try
-            Consulta = " SELECT idg,sexo,raza,nacimiento,estado from ganado "
-            consultar()
-            DataGridViewganado.DataSource = Tabla
+    
 
-            DataGridViewganado.Focus()
+  
+    Private Sub BTNBuscarcliente_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles BTNBuscarcliente.Click
+        Consulta = " select * from cliente where id= '" + txtBUSCARcedula.Text + "'"
+        consultar()
+        DataGridViewClientes.DataSource = Tabla
 
-        Catch ex As Exception
-            MsgBox(ex.ToString)
-        End Try
     End Sub
+
+    Private Sub Button3_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Button3.Click
+        Consulta = " select * from cliente "
+        consultar()
+
+        DataGridViewClientes.DataSource = Tabla
+
+        txtBUSCARcedula.Clear()
+
+    End Sub
+
+   
 End Class

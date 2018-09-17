@@ -36,6 +36,10 @@ Proyecto3BE
 /////////////////////////////////////////////////////////////////////////////////
   
 
+</member><member name="M:WindowsApplication1.Programa.Button2_Click(System.Object,System.EventArgs)">
+////////////////////////////PARA VOLVER A MOSTRAR DATOS COMPLETOS DE GANADO EN EL DATAGRID///////////////////
+ ///////////////////////////////////////////////////////////////////////////////////////////////////////////
+
 </member><member name="M:WindowsApplication1.Programa.BOTONseleccionarSexo_Click(System.Object,System.EventArgs)">
 /////////////////////// MUESTRA EN EL DRATAGRID EL SEXO SELECCIONADO EN EL COMBOBOX/////////////////////////////////////
  ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -43,10 +47,6 @@ Proyecto3BE
 </member><member name="M:WindowsApplication1.Programa.BOTONseleccionarRaza_Click(System.Object,System.EventArgs)">
 /////////////////////// MUESTRA EN EL DRATAGRID LA RAZA SELECCIONADA EN EL COMBOBOX/////////////////////////////////////
  ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
-</member><member name="M:WindowsApplication1.Programa.Button2_Click(System.Object,System.EventArgs)">
-////////////////////////////PARA VOLVER A MOSTRAR DATOS COMPLETOS DE GANADO EN EL DATAGRID///////////////////
- ///////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 </member><member name="P:WindowsApplication1.My.Resources.Resources.ResourceManager">
 	<summary>
@@ -56,6 +56,38 @@ Proyecto3BE
 	<summary>
   Overrides the current thread's CurrentUICulture property for all
   resource lookups using this strongly typed resource class.
+</summary>
+</member><member name="P:WindowsApplication1.My.Resources.Resources._001_edit">
+	<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member><member name="P:WindowsApplication1.My.Resources.Resources._003_search">
+	<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member><member name="P:WindowsApplication1.My.Resources.Resources._004_add_friend">
+	<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member><member name="P:WindowsApplication1.My.Resources.Resources._006_remove_user">
+	<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member><member name="P:WindowsApplication1.My.Resources.Resources._007_add_user">
+	<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member><member name="P:WindowsApplication1.My.Resources.Resources._008_user">
+	<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member><member name="P:WindowsApplication1.My.Resources.Resources._019_confirm_1">
+	<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member><member name="P:WindowsApplication1.My.Resources.Resources._020_x_button">
+	<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
 </summary>
 </member><member name="P:WindowsApplication1.My.Resources.Resources.agregar_cliente">
 	<summary>
@@ -102,6 +134,10 @@ Proyecto3BE
   Looks up a localized resource of type System.Drawing.Bitmap.
 </summary>
 </member><member name="P:WindowsApplication1.My.Resources.Resources.modificar_cliente">
+	<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member><member name="P:WindowsApplication1.My.Resources.Resources.removed">
 	<summary>
   Looks up a localized resource of type System.Drawing.Bitmap.
 </summary>
