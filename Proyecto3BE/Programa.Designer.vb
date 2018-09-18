@@ -23,12 +23,14 @@ Partial Class Programa
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
-        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(Programa))
+        Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle2 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim DataGridViewCellStyle3 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle4 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(Programa))
         Me.PanelUsuario = New System.Windows.Forms.Panel()
         Me.LBLCiUsuario = New System.Windows.Forms.Label()
         Me.BTNCerrarSesion = New System.Windows.Forms.Button()
-        Me.PICUsuarioLogueado = New System.Windows.Forms.PictureBox()
         Me.LBLCambioContraseña = New System.Windows.Forms.Label()
         Me.LBLNombreUsuario = New System.Windows.Forms.Label()
         Me.LBLRangoUsuario = New System.Windows.Forms.Label()
@@ -45,36 +47,22 @@ Partial Class Programa
         Me.Texestadoganado = New System.Windows.Forms.TextBox()
         Me.DTPAgregarGanado = New System.Windows.Forms.DateTimePicker()
         Me.CBXguardarsexo = New System.Windows.Forms.ComboBox()
-        Me.Button2 = New System.Windows.Forms.Button()
         Me.BOTONseleccionarRaza = New System.Windows.Forms.Button()
         Me.CBXseleccionarRaza = New System.Windows.Forms.ComboBox()
         Me.BOTONseleccionarSexo = New System.Windows.Forms.Button()
         Me.CBXselecionarSexo = New System.Windows.Forms.ComboBox()
-        Me.BOTONcancelarModificar = New System.Windows.Forms.Button()
-        Me.BOTONcancelarAgregar = New System.Windows.Forms.Button()
-        Me.BOTONguardarModificar = New System.Windows.Forms.Button()
-        Me.BOTONguardarAgregar = New System.Windows.Forms.Button()
-        Me.BOTONabrirModificar = New System.Windows.Forms.Button()
-        Me.BOTONabrirAgregar = New System.Windows.Forms.Button()
-        Me.btneliminarganado = New System.Windows.Forms.Button()
         Me.DataGridViewganado = New System.Windows.Forms.DataGridView()
         Me.TabCompras = New System.Windows.Forms.TabPage()
         Me.PNLPrincipalcompra = New System.Windows.Forms.Panel()
-        Me.BTNEliminarCompra = New System.Windows.Forms.Button()
         Me.BTNBuscarcompra = New System.Windows.Forms.Button()
-        Me.BTNPanelmodicompra = New System.Windows.Forms.Button()
-        Me.BTNPanelagregarcompra = New System.Windows.Forms.Button()
         Me.DGVCompras = New System.Windows.Forms.DataGridView()
         Me.TXTBuscarcompra = New System.Windows.Forms.TextBox()
         Me.CBXBuscarcompra = New System.Windows.Forms.ComboBox()
         Me.Panelagregarcompras = New System.Windows.Forms.Panel()
         Me.CBXAgregarcompra = New System.Windows.Forms.ComboBox()
-        Me.BTNVolverdeagregarcompra = New System.Windows.Forms.Button()
         Me.LBLTituloagregarcompra = New System.Windows.Forms.Label()
         Me.PNLAgregarcompraganado = New System.Windows.Forms.Panel()
         Me.BTNAgregarganadocompra = New System.Windows.Forms.Button()
-        Me.BTNLimpiarcompraganado = New System.Windows.Forms.Button()
-        Me.BTNAgregarcomraganado = New System.Windows.Forms.Button()
         Me.LBLAgregartotalpagarcompraganado = New System.Windows.Forms.Label()
         Me.LBLAgregarcomentariocompraganado = New System.Windows.Forms.Label()
         Me.LBLAgregarfechacompraganado = New System.Windows.Forms.Label()
@@ -92,8 +80,6 @@ Partial Class Programa
         Me.TXTRazacompra = New System.Windows.Forms.TextBox()
         Me.TXTCodigoganadocompra = New System.Windows.Forms.TextBox()
         Me.PNLAgregarcompraproducto = New System.Windows.Forms.Panel()
-        Me.BTNAgregarcompraproducto = New System.Windows.Forms.Button()
-        Me.BTNclearagregarcompraproducto = New System.Windows.Forms.Button()
         Me.DTPFechacompraproducto = New System.Windows.Forms.DateTimePicker()
         Me.LBLFechacompraproducto = New System.Windows.Forms.Label()
         Me.RTXComentariocompraproducto = New System.Windows.Forms.RichTextBox()
@@ -106,9 +92,6 @@ Partial Class Programa
         Me.TXTModificarcompra = New System.Windows.Forms.TextBox()
         Me.RTXModicomentariocompra = New System.Windows.Forms.RichTextBox()
         Me.DTPModifechacompra = New System.Windows.Forms.DateTimePicker()
-        Me.BTNlimpiarmodicompra = New System.Windows.Forms.Button()
-        Me.BTNsalirmodicompra = New System.Windows.Forms.Button()
-        Me.BTNAgregarmodificacion = New System.Windows.Forms.Button()
         Me.TXTIdmodicompra = New System.Windows.Forms.TextBox()
         Me.LBLTitulomodicompra = New System.Windows.Forms.Label()
         Me.DTGModificarcompra = New System.Windows.Forms.DataGridView()
@@ -117,11 +100,9 @@ Partial Class Programa
         Me.LBLModicomentario = New System.Windows.Forms.Label()
         Me.LBLModifechacompra = New System.Windows.Forms.Label()
         Me.ventasmain = New System.Windows.Forms.TabPage()
-        Me.btnagregarpanel = New System.Windows.Forms.Button()
         Me.paneldetextosenventas = New System.Windows.Forms.Panel()
         Me.lblexplicando = New System.Windows.Forms.Label()
         Me.txbceduladeclientedeventas = New System.Windows.Forms.TextBox()
-        Me.btnañadiraganadounaventa = New System.Windows.Forms.Button()
         Me.txbcodigodeganadoenventa = New System.Windows.Forms.TextBox()
         Me.lblidgenventa = New System.Windows.Forms.Label()
         Me.DataGridViewganadoenventa = New System.Windows.Forms.DataGridView()
@@ -129,10 +110,6 @@ Partial Class Programa
         Me.Labelparamostraragregado = New System.Windows.Forms.Label()
         Me.labelceduladeclienteventa = New System.Windows.Forms.Label()
         Me.paneldeventasagregar = New System.Windows.Forms.Panel()
-        Me.btnmodificarventa = New System.Windows.Forms.Button()
-        Me.btnborrarventa = New System.Windows.Forms.Button()
-        Me.btnagregarventa = New System.Windows.Forms.Button()
-        Me.btnclearventa = New System.Windows.Forms.Button()
         Me.lblparamostrarsisemodifico = New System.Windows.Forms.Label()
         Me.txbcomentarioventa = New System.Windows.Forms.TextBox()
         Me.txbtotalventa = New System.Windows.Forms.TextBox()
@@ -145,19 +122,6 @@ Partial Class Programa
         Me.DataGridViewVENTAS = New System.Windows.Forms.DataGridView()
         Me.Panelparaocultar = New System.Windows.Forms.Panel()
         Me.TabClientes = New System.Windows.Forms.TabPage()
-        Me.PanelAgregarcliente = New System.Windows.Forms.Panel()
-        Me.BTNVolveragregarcliente = New System.Windows.Forms.Button()
-        Me.BTNClearclientes = New System.Windows.Forms.Button()
-        Me.BTNAgregarclientes = New System.Windows.Forms.Button()
-        Me.Label17 = New System.Windows.Forms.Label()
-        Me.LabelNombreyApellidocliente = New System.Windows.Forms.Label()
-        Me.Texttelefono = New System.Windows.Forms.TextBox()
-        Me.LabelCedulacliente = New System.Windows.Forms.Label()
-        Me.Texdireccion = New System.Windows.Forms.TextBox()
-        Me.Labeldireccioncliente = New System.Windows.Forms.Label()
-        Me.Texnombreapellido = New System.Windows.Forms.TextBox()
-        Me.Labeltelcliente = New System.Windows.Forms.Label()
-        Me.Texcedula = New System.Windows.Forms.TextBox()
         Me.PanelModificarclientes = New System.Windows.Forms.Panel()
         Me.GroupBox2 = New System.Windows.Forms.GroupBox()
         Me.Nombreyapellidomodificarcliente = New System.Windows.Forms.TextBox()
@@ -169,22 +133,23 @@ Partial Class Programa
         Me.Telefonomodificarcliente = New System.Windows.Forms.TextBox()
         Me.Direccionmodificarcliente = New System.Windows.Forms.TextBox()
         Me.Label13 = New System.Windows.Forms.Label()
-        Me.Button8 = New System.Windows.Forms.Button()
-        Me.Button5 = New System.Windows.Forms.Button()
-        Me.Button4 = New System.Windows.Forms.Button()
-        Me.Button1 = New System.Windows.Forms.Button()
         Me.Label22 = New System.Windows.Forms.Label()
         Me.Texbuscarcliente = New System.Windows.Forms.TextBox()
         Me.DataGridViewModificarclientes = New System.Windows.Forms.DataGridView()
         Me.PanelPrincipalclientes = New System.Windows.Forms.Panel()
-        Me.Button3 = New System.Windows.Forms.Button()
         Me.Label6 = New System.Windows.Forms.Label()
-        Me.BTNBuscarcliente = New System.Windows.Forms.Button()
         Me.txtBUSCARcedula = New System.Windows.Forms.TextBox()
-        Me.BTNPanelmodificarcliente = New System.Windows.Forms.Button()
-        Me.BTNEliminarcliente = New System.Windows.Forms.Button()
-        Me.BTNPanelagregarcliente = New System.Windows.Forms.Button()
         Me.DataGridViewClientes = New System.Windows.Forms.DataGridView()
+        Me.PanelAgregarcliente = New System.Windows.Forms.Panel()
+        Me.Label17 = New System.Windows.Forms.Label()
+        Me.LabelNombreyApellidocliente = New System.Windows.Forms.Label()
+        Me.Texttelefono = New System.Windows.Forms.TextBox()
+        Me.LabelCedulacliente = New System.Windows.Forms.Label()
+        Me.Texdireccion = New System.Windows.Forms.TextBox()
+        Me.Labeldireccioncliente = New System.Windows.Forms.Label()
+        Me.Texnombreapellido = New System.Windows.Forms.TextBox()
+        Me.Labeltelcliente = New System.Windows.Forms.Label()
+        Me.Texcedula = New System.Windows.Forms.TextBox()
         Me.TabUsuarios = New System.Windows.Forms.TabPage()
         Me.PNLUsuarios = New System.Windows.Forms.Panel()
         Me.TXTCiUsuarios = New System.Windows.Forms.TextBox()
@@ -198,19 +163,56 @@ Partial Class Programa
         Me.CBXBusquedaRangoUsuarios = New System.Windows.Forms.ComboBox()
         Me.DGVUsuarios = New System.Windows.Forms.DataGridView()
         Me.CHBUsuariosInactivos = New System.Windows.Forms.CheckBox()
+        Me.LBLInfoUsuarios = New System.Windows.Forms.Label()
+        Me.TXTBusquedaUsuarios = New System.Windows.Forms.TextBox()
+        Me.CBXBusquedaUsuarios = New System.Windows.Forms.ComboBox()
+        Me.ToolTip1 = New System.Windows.Forms.ToolTip(Me.components)
+        Me.Button2 = New System.Windows.Forms.Button()
+        Me.BOTONcancelarModificar = New System.Windows.Forms.Button()
+        Me.BOTONcancelarAgregar = New System.Windows.Forms.Button()
+        Me.BOTONguardarModificar = New System.Windows.Forms.Button()
+        Me.BOTONguardarAgregar = New System.Windows.Forms.Button()
+        Me.BOTONabrirModificar = New System.Windows.Forms.Button()
+        Me.BOTONabrirAgregar = New System.Windows.Forms.Button()
+        Me.btneliminarganado = New System.Windows.Forms.Button()
+        Me.BTNEliminarCompra = New System.Windows.Forms.Button()
+        Me.BTNPanelmodicompra = New System.Windows.Forms.Button()
+        Me.BTNPanelagregarcompra = New System.Windows.Forms.Button()
+        Me.BTNVolverdeagregarcompra = New System.Windows.Forms.Button()
+        Me.BTNLimpiarcompraganado = New System.Windows.Forms.Button()
+        Me.BTNAgregarcomraganado = New System.Windows.Forms.Button()
+        Me.BTNAgregarcompraproducto = New System.Windows.Forms.Button()
+        Me.BTNclearagregarcompraproducto = New System.Windows.Forms.Button()
+        Me.BTNlimpiarmodicompra = New System.Windows.Forms.Button()
+        Me.BTNsalirmodicompra = New System.Windows.Forms.Button()
+        Me.BTNAgregarmodificacion = New System.Windows.Forms.Button()
+        Me.btnagregarpanel = New System.Windows.Forms.Button()
+        Me.btnañadiraganadounaventa = New System.Windows.Forms.Button()
+        Me.btnmodificarventa = New System.Windows.Forms.Button()
+        Me.btnborrarventa = New System.Windows.Forms.Button()
+        Me.btnagregarventa = New System.Windows.Forms.Button()
+        Me.btnclearventa = New System.Windows.Forms.Button()
+        Me.Button8 = New System.Windows.Forms.Button()
+        Me.Button5 = New System.Windows.Forms.Button()
+        Me.Button4 = New System.Windows.Forms.Button()
+        Me.Button1 = New System.Windows.Forms.Button()
+        Me.Button3 = New System.Windows.Forms.Button()
+        Me.BTNBuscarcliente = New System.Windows.Forms.Button()
+        Me.BTNPanelmodificarcliente = New System.Windows.Forms.Button()
+        Me.BTNEliminarcliente = New System.Windows.Forms.Button()
+        Me.BTNPanelagregarcliente = New System.Windows.Forms.Button()
+        Me.BTNVolveragregarcliente = New System.Windows.Forms.Button()
+        Me.BTNClearclientes = New System.Windows.Forms.Button()
+        Me.BTNAgregarclientes = New System.Windows.Forms.Button()
         Me.BTNAceptarUsuarios = New System.Windows.Forms.Button()
         Me.BTNCancelarUsuarios = New System.Windows.Forms.Button()
-        Me.LBLInfoUsuarios = New System.Windows.Forms.Label()
         Me.BTNModificarUsuarios = New System.Windows.Forms.Button()
         Me.BTNEliminarUsuarios = New System.Windows.Forms.Button()
         Me.BTNAgregarUsuarios = New System.Windows.Forms.Button()
         Me.BTNBusquedaUsuarios = New System.Windows.Forms.Button()
-        Me.TXTBusquedaUsuarios = New System.Windows.Forms.TextBox()
-        Me.CBXBusquedaUsuarios = New System.Windows.Forms.ComboBox()
         Me.PICUsuarios = New System.Windows.Forms.PictureBox()
-        Me.ToolTip1 = New System.Windows.Forms.ToolTip(Me.components)
+        Me.PICUsuarioLogueado = New System.Windows.Forms.PictureBox()
         Me.PanelUsuario.SuspendLayout()
-        CType(Me.PICUsuarioLogueado, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.TabbedPane.SuspendLayout()
         Me.TabGanado.SuspendLayout()
         Me.GroupBox1.SuspendLayout()
@@ -229,16 +231,17 @@ Partial Class Programa
         Me.paneldeventasagregar.SuspendLayout()
         CType(Me.DataGridViewVENTAS, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.TabClientes.SuspendLayout()
-        Me.PanelAgregarcliente.SuspendLayout()
         Me.PanelModificarclientes.SuspendLayout()
         Me.GroupBox2.SuspendLayout()
         CType(Me.DataGridViewModificarclientes, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.PanelPrincipalclientes.SuspendLayout()
         CType(Me.DataGridViewClientes, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.PanelAgregarcliente.SuspendLayout()
         Me.TabUsuarios.SuspendLayout()
         Me.PNLUsuarios.SuspendLayout()
         CType(Me.DGVUsuarios, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.PICUsuarios, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.PICUsuarioLogueado, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'PanelUsuario
@@ -275,18 +278,6 @@ Partial Class Programa
         Me.BTNCerrarSesion.TabIndex = 18
         Me.BTNCerrarSesion.Text = "Salir"
         Me.BTNCerrarSesion.UseVisualStyleBackColor = True
-        '
-        'PICUsuarioLogueado
-        '
-        Me.PICUsuarioLogueado.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
-        Me.PICUsuarioLogueado.Image = CType(resources.GetObject("PICUsuarioLogueado.Image"), System.Drawing.Image)
-        Me.PICUsuarioLogueado.InitialImage = Nothing
-        Me.PICUsuarioLogueado.Location = New System.Drawing.Point(8, 8)
-        Me.PICUsuarioLogueado.Margin = New System.Windows.Forms.Padding(4, 3, 4, 3)
-        Me.PICUsuarioLogueado.Name = "PICUsuarioLogueado"
-        Me.PICUsuarioLogueado.Size = New System.Drawing.Size(104, 90)
-        Me.PICUsuarioLogueado.TabIndex = 14
-        Me.PICUsuarioLogueado.TabStop = False
         '
         'LBLCambioContraseña
         '
@@ -335,7 +326,7 @@ Partial Class Programa
         '
         'TabGanado
         '
-        Me.TabGanado.BackColor = System.Drawing.Color.Teal
+        Me.TabGanado.BackColor = System.Drawing.Color.CornflowerBlue
         Me.TabGanado.Controls.Add(Me.GroupBox1)
         Me.TabGanado.Controls.Add(Me.Button2)
         Me.TabGanado.Controls.Add(Me.BOTONseleccionarRaza)
@@ -371,9 +362,9 @@ Partial Class Programa
         Me.GroupBox1.Controls.Add(Me.Texestadoganado)
         Me.GroupBox1.Controls.Add(Me.DTPAgregarGanado)
         Me.GroupBox1.Controls.Add(Me.CBXguardarsexo)
-        Me.GroupBox1.Location = New System.Drawing.Point(29, 259)
+        Me.GroupBox1.Location = New System.Drawing.Point(30, 262)
         Me.GroupBox1.Name = "GroupBox1"
-        Me.GroupBox1.Size = New System.Drawing.Size(462, 176)
+        Me.GroupBox1.Size = New System.Drawing.Size(462, 174)
         Me.GroupBox1.TabIndex = 115
         Me.GroupBox1.TabStop = False
         '
@@ -382,7 +373,7 @@ Partial Class Programa
         Me.CBXguardarRaza.Enabled = False
         Me.CBXguardarRaza.FormattingEnabled = True
         Me.CBXguardarRaza.Items.AddRange(New Object() {"Aberdeen", "Angus", "Braford", "Hereford"})
-        Me.CBXguardarRaza.Location = New System.Drawing.Point(179, 80)
+        Me.CBXguardarRaza.Location = New System.Drawing.Point(179, 76)
         Me.CBXguardarRaza.Name = "CBXguardarRaza"
         Me.CBXguardarRaza.Size = New System.Drawing.Size(116, 21)
         Me.CBXguardarRaza.TabIndex = 102
@@ -390,7 +381,7 @@ Partial Class Programa
         'Label1
         '
         Me.Label1.AutoSize = True
-        Me.Label1.Location = New System.Drawing.Point(32, 19)
+        Me.Label1.Location = New System.Drawing.Point(32, 15)
         Me.Label1.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label1.Name = "Label1"
         Me.Label1.Size = New System.Drawing.Size(132, 13)
@@ -400,7 +391,7 @@ Partial Class Programa
         'Label2
         '
         Me.Label2.AutoSize = True
-        Me.Label2.Location = New System.Drawing.Point(124, 53)
+        Me.Label2.Location = New System.Drawing.Point(124, 49)
         Me.Label2.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label2.Name = "Label2"
         Me.Label2.Size = New System.Drawing.Size(40, 13)
@@ -410,7 +401,7 @@ Partial Class Programa
         'Label3
         '
         Me.Label3.AutoSize = True
-        Me.Label3.Location = New System.Drawing.Point(124, 88)
+        Me.Label3.Location = New System.Drawing.Point(124, 84)
         Me.Label3.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label3.Name = "Label3"
         Me.Label3.Size = New System.Drawing.Size(40, 13)
@@ -420,7 +411,7 @@ Partial Class Programa
         'Label4
         '
         Me.Label4.AutoSize = True
-        Me.Label4.Location = New System.Drawing.Point(15, 123)
+        Me.Label4.Location = New System.Drawing.Point(15, 119)
         Me.Label4.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label4.Name = "Label4"
         Me.Label4.Size = New System.Drawing.Size(149, 13)
@@ -430,7 +421,7 @@ Partial Class Programa
         'Label5
         '
         Me.Label5.AutoSize = True
-        Me.Label5.Location = New System.Drawing.Point(107, 155)
+        Me.Label5.Location = New System.Drawing.Point(107, 151)
         Me.Label5.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label5.Name = "Label5"
         Me.Label5.Size = New System.Drawing.Size(57, 13)
@@ -440,7 +431,7 @@ Partial Class Programa
         'Texcodigoganado
         '
         Me.Texcodigoganado.Enabled = False
-        Me.Texcodigoganado.Location = New System.Drawing.Point(179, 12)
+        Me.Texcodigoganado.Location = New System.Drawing.Point(179, 8)
         Me.Texcodigoganado.Margin = New System.Windows.Forms.Padding(4, 3, 4, 3)
         Me.Texcodigoganado.Name = "Texcodigoganado"
         Me.Texcodigoganado.Size = New System.Drawing.Size(116, 20)
@@ -450,7 +441,7 @@ Partial Class Programa
         'Texestadoganado
         '
         Me.Texestadoganado.Enabled = False
-        Me.Texestadoganado.Location = New System.Drawing.Point(179, 148)
+        Me.Texestadoganado.Location = New System.Drawing.Point(179, 144)
         Me.Texestadoganado.Margin = New System.Windows.Forms.Padding(4, 3, 4, 3)
         Me.Texestadoganado.Name = "Texestadoganado"
         Me.Texestadoganado.Size = New System.Drawing.Size(263, 20)
@@ -459,7 +450,7 @@ Partial Class Programa
         'DTPAgregarGanado
         '
         Me.DTPAgregarGanado.Enabled = False
-        Me.DTPAgregarGanado.Location = New System.Drawing.Point(179, 116)
+        Me.DTPAgregarGanado.Location = New System.Drawing.Point(179, 112)
         Me.DTPAgregarGanado.Margin = New System.Windows.Forms.Padding(4, 3, 4, 3)
         Me.DTPAgregarGanado.Name = "DTPAgregarGanado"
         Me.DTPAgregarGanado.Size = New System.Drawing.Size(263, 20)
@@ -470,23 +461,10 @@ Partial Class Programa
         Me.CBXguardarsexo.Enabled = False
         Me.CBXguardarsexo.FormattingEnabled = True
         Me.CBXguardarsexo.Items.AddRange(New Object() {"Macho", "Hembra"})
-        Me.CBXguardarsexo.Location = New System.Drawing.Point(179, 45)
+        Me.CBXguardarsexo.Location = New System.Drawing.Point(179, 41)
         Me.CBXguardarsexo.Name = "CBXguardarsexo"
         Me.CBXguardarsexo.Size = New System.Drawing.Size(116, 21)
         Me.CBXguardarsexo.TabIndex = 101
-        '
-        'Button2
-        '
-        Me.Button2.BackColor = System.Drawing.Color.Teal
-        Me.Button2.FlatAppearance.BorderSize = 0
-        Me.Button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.Button2.Image = Global.WindowsApplication1.My.Resources.Resources.boton_volver
-        Me.Button2.Location = New System.Drawing.Point(720, 65)
-        Me.Button2.Name = "Button2"
-        Me.Button2.Size = New System.Drawing.Size(53, 40)
-        Me.Button2.TabIndex = 114
-        Me.ToolTip1.SetToolTip(Me.Button2, "CARGAR GANADO")
-        Me.Button2.UseVisualStyleBackColor = False
         '
         'BOTONseleccionarRaza
         '
@@ -526,114 +504,6 @@ Partial Class Programa
         Me.CBXselecionarSexo.Size = New System.Drawing.Size(137, 21)
         Me.CBXselecionarSexo.TabIndex = 110
         '
-        'BOTONcancelarModificar
-        '
-        Me.BOTONcancelarModificar.BackColor = System.Drawing.Color.Teal
-        Me.BOTONcancelarModificar.FlatAppearance.BorderSize = 0
-        Me.BOTONcancelarModificar.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.BOTONcancelarModificar.Image = CType(resources.GetObject("BOTONcancelarModificar.Image"), System.Drawing.Image)
-        Me.BOTONcancelarModificar.Location = New System.Drawing.Point(653, 325)
-        Me.BOTONcancelarModificar.Margin = New System.Windows.Forms.Padding(4, 3, 4, 3)
-        Me.BOTONcancelarModificar.Name = "BOTONcancelarModificar"
-        Me.BOTONcancelarModificar.Size = New System.Drawing.Size(59, 50)
-        Me.BOTONcancelarModificar.TabIndex = 109
-        Me.ToolTip1.SetToolTip(Me.BOTONcancelarModificar, "CANCELAR")
-        Me.BOTONcancelarModificar.UseVisualStyleBackColor = False
-        Me.BOTONcancelarModificar.Visible = False
-        '
-        'BOTONcancelarAgregar
-        '
-        Me.BOTONcancelarAgregar.BackColor = System.Drawing.Color.Teal
-        Me.BOTONcancelarAgregar.FlatAppearance.BorderSize = 0
-        Me.BOTONcancelarAgregar.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.BOTONcancelarAgregar.Image = CType(resources.GetObject("BOTONcancelarAgregar.Image"), System.Drawing.Image)
-        Me.BOTONcancelarAgregar.Location = New System.Drawing.Point(653, 268)
-        Me.BOTONcancelarAgregar.Margin = New System.Windows.Forms.Padding(4, 3, 4, 3)
-        Me.BOTONcancelarAgregar.Name = "BOTONcancelarAgregar"
-        Me.BOTONcancelarAgregar.Size = New System.Drawing.Size(59, 48)
-        Me.BOTONcancelarAgregar.TabIndex = 108
-        Me.ToolTip1.SetToolTip(Me.BOTONcancelarAgregar, "CANCELAR")
-        Me.BOTONcancelarAgregar.UseVisualStyleBackColor = False
-        Me.BOTONcancelarAgregar.Visible = False
-        '
-        'BOTONguardarModificar
-        '
-        Me.BOTONguardarModificar.BackColor = System.Drawing.Color.Teal
-        Me.BOTONguardarModificar.FlatAppearance.BorderSize = 0
-        Me.BOTONguardarModificar.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.BOTONguardarModificar.Image = Global.WindowsApplication1.My.Resources.Resources._019_confirm_1
-        Me.BOTONguardarModificar.Location = New System.Drawing.Point(586, 325)
-        Me.BOTONguardarModificar.Margin = New System.Windows.Forms.Padding(4, 3, 4, 3)
-        Me.BOTONguardarModificar.Name = "BOTONguardarModificar"
-        Me.BOTONguardarModificar.Size = New System.Drawing.Size(59, 50)
-        Me.BOTONguardarModificar.TabIndex = 107
-        Me.ToolTip1.SetToolTip(Me.BOTONguardarModificar, "GUARDAR")
-        Me.BOTONguardarModificar.UseVisualStyleBackColor = False
-        Me.BOTONguardarModificar.Visible = False
-        '
-        'BOTONguardarAgregar
-        '
-        Me.BOTONguardarAgregar.BackColor = System.Drawing.Color.Teal
-        Me.BOTONguardarAgregar.FlatAppearance.BorderSize = 0
-        Me.BOTONguardarAgregar.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.BOTONguardarAgregar.Image = Global.WindowsApplication1.My.Resources.Resources._019_confirm_1
-        Me.BOTONguardarAgregar.Location = New System.Drawing.Point(586, 267)
-        Me.BOTONguardarAgregar.Margin = New System.Windows.Forms.Padding(4, 3, 4, 3)
-        Me.BOTONguardarAgregar.Name = "BOTONguardarAgregar"
-        Me.BOTONguardarAgregar.Size = New System.Drawing.Size(59, 49)
-        Me.BOTONguardarAgregar.TabIndex = 106
-        Me.ToolTip1.SetToolTip(Me.BOTONguardarAgregar, "GUARDAR")
-        Me.BOTONguardarAgregar.UseVisualStyleBackColor = False
-        Me.BOTONguardarAgregar.Visible = False
-        '
-        'BOTONabrirModificar
-        '
-        Me.BOTONabrirModificar.Anchor = System.Windows.Forms.AnchorStyles.None
-        Me.BOTONabrirModificar.BackColor = System.Drawing.Color.Teal
-        Me.BOTONabrirModificar.Cursor = System.Windows.Forms.Cursors.Hand
-        Me.BOTONabrirModificar.FlatAppearance.BorderSize = 0
-        Me.BOTONabrirModificar.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.BOTONabrirModificar.Image = Global.WindowsApplication1.My.Resources.Resources._001_edit
-        Me.BOTONabrirModificar.Location = New System.Drawing.Point(519, 325)
-        Me.BOTONabrirModificar.Margin = New System.Windows.Forms.Padding(4, 3, 4, 3)
-        Me.BOTONabrirModificar.Name = "BOTONabrirModificar"
-        Me.BOTONabrirModificar.Size = New System.Drawing.Size(59, 50)
-        Me.BOTONabrirModificar.TabIndex = 105
-        Me.ToolTip1.SetToolTip(Me.BOTONabrirModificar, "EDITAR")
-        Me.BOTONabrirModificar.UseVisualStyleBackColor = False
-        '
-        'BOTONabrirAgregar
-        '
-        Me.BOTONabrirAgregar.Anchor = System.Windows.Forms.AnchorStyles.None
-        Me.BOTONabrirAgregar.BackColor = System.Drawing.Color.Teal
-        Me.BOTONabrirAgregar.Cursor = System.Windows.Forms.Cursors.Hand
-        Me.BOTONabrirAgregar.FlatAppearance.BorderSize = 0
-        Me.BOTONabrirAgregar.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.BOTONabrirAgregar.Image = CType(resources.GetObject("BOTONabrirAgregar.Image"), System.Drawing.Image)
-        Me.BOTONabrirAgregar.Location = New System.Drawing.Point(519, 267)
-        Me.BOTONabrirAgregar.Margin = New System.Windows.Forms.Padding(4, 3, 4, 3)
-        Me.BOTONabrirAgregar.Name = "BOTONabrirAgregar"
-        Me.BOTONabrirAgregar.Size = New System.Drawing.Size(59, 50)
-        Me.BOTONabrirAgregar.TabIndex = 104
-        Me.ToolTip1.SetToolTip(Me.BOTONabrirAgregar, "AÑADIR")
-        Me.BOTONabrirAgregar.UseVisualStyleBackColor = False
-        '
-        'btneliminarganado
-        '
-        Me.btneliminarganado.Anchor = System.Windows.Forms.AnchorStyles.None
-        Me.btneliminarganado.BackColor = System.Drawing.Color.Teal
-        Me.btneliminarganado.Cursor = System.Windows.Forms.Cursors.Hand
-        Me.btneliminarganado.FlatAppearance.BorderSize = 0
-        Me.btneliminarganado.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.btneliminarganado.Image = Global.WindowsApplication1.My.Resources.Resources.removed
-        Me.btneliminarganado.Location = New System.Drawing.Point(519, 380)
-        Me.btneliminarganado.Margin = New System.Windows.Forms.Padding(4, 3, 4, 3)
-        Me.btneliminarganado.Name = "btneliminarganado"
-        Me.btneliminarganado.Size = New System.Drawing.Size(59, 50)
-        Me.btneliminarganado.TabIndex = 86
-        Me.ToolTip1.SetToolTip(Me.btneliminarganado, "ELIMINAR")
-        Me.btneliminarganado.UseVisualStyleBackColor = False
-        '
         'DataGridViewganado
         '
         Me.DataGridViewganado.AllowUserToAddRows = False
@@ -641,15 +511,42 @@ Partial Class Programa
         Me.DataGridViewganado.AllowUserToResizeColumns = False
         Me.DataGridViewganado.AllowUserToResizeRows = False
         Me.DataGridViewganado.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill
-        Me.DataGridViewganado.BackgroundColor = System.Drawing.SystemColors.InactiveBorder
-        Me.DataGridViewganado.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
+        Me.DataGridViewganado.BackgroundColor = System.Drawing.Color.FromArgb(CType(CType(45, Byte), Integer), CType(CType(66, Byte), Integer), CType(CType(91, Byte), Integer))
+        Me.DataGridViewganado.BorderStyle = System.Windows.Forms.BorderStyle.None
+        Me.DataGridViewganado.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None
+        DataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
+        DataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.HotTrack
+        DataGridViewCellStyle1.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle1.ForeColor = System.Drawing.Color.White
+        DataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight
+        DataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText
+        DataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.DataGridViewganado.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle1
+        Me.DataGridViewganado.ColumnHeadersHeight = 30
+        Me.DataGridViewganado.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing
+        DataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(CType(CType(45, Byte), Integer), CType(CType(66, Byte), Integer), CType(CType(91, Byte), Integer))
+        DataGridViewCellStyle2.Font = New System.Drawing.Font("Arial", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle2.ForeColor = System.Drawing.Color.White
+        DataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.SlateBlue
+        DataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.White
+        DataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
+        Me.DataGridViewganado.DefaultCellStyle = DataGridViewCellStyle2
         Me.DataGridViewganado.EnableHeadersVisualStyles = False
-        Me.DataGridViewganado.Location = New System.Drawing.Point(29, 65)
+        Me.DataGridViewganado.GridColor = System.Drawing.Color.SteelBlue
+        Me.DataGridViewganado.Location = New System.Drawing.Point(29, 64)
         Me.DataGridViewganado.Margin = New System.Windows.Forms.Padding(4, 3, 4, 3)
         Me.DataGridViewganado.Name = "DataGridViewganado"
         Me.DataGridViewganado.ReadOnly = True
-        Me.DataGridViewganado.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None
-        Me.DataGridViewganado.RowHeadersVisible = False
+        Me.DataGridViewganado.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.[Single]
+        DataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle3.BackColor = System.Drawing.Color.FromArgb(CType(CType(45, Byte), Integer), CType(CType(66, Byte), Integer), CType(CType(91, Byte), Integer))
+        DataGridViewCellStyle3.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle3.ForeColor = System.Drawing.Color.White
+        DataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.SteelBlue
+        DataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText
+        DataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.DataGridViewganado.RowHeadersDefaultCellStyle = DataGridViewCellStyle3
         Me.DataGridViewganado.ScrollBars = System.Windows.Forms.ScrollBars.Vertical
         Me.DataGridViewganado.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
         Me.DataGridViewganado.Size = New System.Drawing.Size(678, 196)
@@ -685,17 +582,6 @@ Partial Class Programa
         Me.PNLPrincipalcompra.Size = New System.Drawing.Size(797, 442)
         Me.PNLPrincipalcompra.TabIndex = 0
         '
-        'BTNEliminarCompra
-        '
-        Me.BTNEliminarCompra.Image = Global.WindowsApplication1.My.Resources.Resources.borrar
-        Me.BTNEliminarCompra.Location = New System.Drawing.Point(176, 390)
-        Me.BTNEliminarCompra.Margin = New System.Windows.Forms.Padding(4, 3, 4, 3)
-        Me.BTNEliminarCompra.Name = "BTNEliminarCompra"
-        Me.BTNEliminarCompra.Size = New System.Drawing.Size(38, 32)
-        Me.BTNEliminarCompra.TabIndex = 9
-        Me.ToolTip1.SetToolTip(Me.BTNEliminarCompra, "Eliminar Compra")
-        Me.BTNEliminarCompra.UseVisualStyleBackColor = True
-        '
         'BTNBuscarcompra
         '
         Me.BTNBuscarcompra.Location = New System.Drawing.Point(707, 18)
@@ -706,28 +592,6 @@ Partial Class Programa
         Me.BTNBuscarcompra.Text = "Buscar"
         Me.ToolTip1.SetToolTip(Me.BTNBuscarcompra, "Buscar")
         Me.BTNBuscarcompra.UseVisualStyleBackColor = True
-        '
-        'BTNPanelmodicompra
-        '
-        Me.BTNPanelmodicompra.Image = Global.WindowsApplication1.My.Resources.Resources.editar
-        Me.BTNPanelmodicompra.Location = New System.Drawing.Point(108, 390)
-        Me.BTNPanelmodicompra.Margin = New System.Windows.Forms.Padding(4, 3, 4, 3)
-        Me.BTNPanelmodicompra.Name = "BTNPanelmodicompra"
-        Me.BTNPanelmodicompra.Size = New System.Drawing.Size(38, 32)
-        Me.BTNPanelmodicompra.TabIndex = 7
-        Me.ToolTip1.SetToolTip(Me.BTNPanelmodicompra, "Modificar Compra")
-        Me.BTNPanelmodicompra.UseVisualStyleBackColor = True
-        '
-        'BTNPanelagregarcompra
-        '
-        Me.BTNPanelagregarcompra.Image = Global.WindowsApplication1.My.Resources.Resources.botoncompra
-        Me.BTNPanelagregarcompra.Location = New System.Drawing.Point(35, 390)
-        Me.BTNPanelagregarcompra.Margin = New System.Windows.Forms.Padding(4, 3, 4, 3)
-        Me.BTNPanelagregarcompra.Name = "BTNPanelagregarcompra"
-        Me.BTNPanelagregarcompra.Size = New System.Drawing.Size(38, 32)
-        Me.BTNPanelagregarcompra.TabIndex = 6
-        Me.ToolTip1.SetToolTip(Me.BTNPanelagregarcompra, "Agregar Compra")
-        Me.BTNPanelagregarcompra.UseVisualStyleBackColor = True
         '
         'DGVCompras
         '
@@ -790,17 +654,6 @@ Partial Class Programa
         Me.CBXAgregarcompra.TabIndex = 18
         Me.ToolTip1.SetToolTip(Me.CBXAgregarcompra, "Elige una opción")
         '
-        'BTNVolverdeagregarcompra
-        '
-        Me.BTNVolverdeagregarcompra.Image = Global.WindowsApplication1.My.Resources.Resources.flecha_hacia_la_izquierda
-        Me.BTNVolverdeagregarcompra.Location = New System.Drawing.Point(384, 402)
-        Me.BTNVolverdeagregarcompra.Margin = New System.Windows.Forms.Padding(4, 3, 4, 3)
-        Me.BTNVolverdeagregarcompra.Name = "BTNVolverdeagregarcompra"
-        Me.BTNVolverdeagregarcompra.Size = New System.Drawing.Size(38, 32)
-        Me.BTNVolverdeagregarcompra.TabIndex = 12
-        Me.ToolTip1.SetToolTip(Me.BTNVolverdeagregarcompra, "Volver")
-        Me.BTNVolverdeagregarcompra.UseVisualStyleBackColor = True
-        '
         'LBLTituloagregarcompra
         '
         Me.LBLTituloagregarcompra.AutoSize = True
@@ -850,28 +703,6 @@ Partial Class Programa
         Me.BTNAgregarganadocompra.Text = "OK"
         Me.ToolTip1.SetToolTip(Me.BTNAgregarganadocompra, "Ok")
         Me.BTNAgregarganadocompra.UseVisualStyleBackColor = True
-        '
-        'BTNLimpiarcompraganado
-        '
-        Me.BTNLimpiarcompraganado.Image = Global.WindowsApplication1.My.Resources.Resources.goma_de_borrar
-        Me.BTNLimpiarcompraganado.Location = New System.Drawing.Point(435, 243)
-        Me.BTNLimpiarcompraganado.Margin = New System.Windows.Forms.Padding(4, 3, 4, 3)
-        Me.BTNLimpiarcompraganado.Name = "BTNLimpiarcompraganado"
-        Me.BTNLimpiarcompraganado.Size = New System.Drawing.Size(38, 32)
-        Me.BTNLimpiarcompraganado.TabIndex = 18
-        Me.ToolTip1.SetToolTip(Me.BTNLimpiarcompraganado, "Limpiar Campos")
-        Me.BTNLimpiarcompraganado.UseVisualStyleBackColor = True
-        '
-        'BTNAgregarcomraganado
-        '
-        Me.BTNAgregarcomraganado.Image = Global.WindowsApplication1.My.Resources.Resources.anadir
-        Me.BTNAgregarcomraganado.Location = New System.Drawing.Point(332, 243)
-        Me.BTNAgregarcomraganado.Margin = New System.Windows.Forms.Padding(4, 3, 4, 3)
-        Me.BTNAgregarcomraganado.Name = "BTNAgregarcomraganado"
-        Me.BTNAgregarcomraganado.Size = New System.Drawing.Size(38, 32)
-        Me.BTNAgregarcomraganado.TabIndex = 17
-        Me.ToolTip1.SetToolTip(Me.BTNAgregarcomraganado, "Agregar Compra")
-        Me.BTNAgregarcomraganado.UseVisualStyleBackColor = True
         '
         'LBLAgregartotalpagarcompraganado
         '
@@ -1035,26 +866,6 @@ Partial Class Programa
         Me.PNLAgregarcompraproducto.Size = New System.Drawing.Size(802, 297)
         Me.PNLAgregarcompraproducto.TabIndex = 19
         '
-        'BTNAgregarcompraproducto
-        '
-        Me.BTNAgregarcompraproducto.Image = Global.WindowsApplication1.My.Resources.Resources.anadir
-        Me.BTNAgregarcompraproducto.Location = New System.Drawing.Point(342, 234)
-        Me.BTNAgregarcompraproducto.Margin = New System.Windows.Forms.Padding(4, 3, 4, 3)
-        Me.BTNAgregarcompraproducto.Name = "BTNAgregarcompraproducto"
-        Me.BTNAgregarcompraproducto.Size = New System.Drawing.Size(38, 32)
-        Me.BTNAgregarcompraproducto.TabIndex = 14
-        Me.BTNAgregarcompraproducto.UseVisualStyleBackColor = True
-        '
-        'BTNclearagregarcompraproducto
-        '
-        Me.BTNclearagregarcompraproducto.Image = Global.WindowsApplication1.My.Resources.Resources.goma_de_borrar
-        Me.BTNclearagregarcompraproducto.Location = New System.Drawing.Point(424, 234)
-        Me.BTNclearagregarcompraproducto.Margin = New System.Windows.Forms.Padding(4, 3, 4, 3)
-        Me.BTNclearagregarcompraproducto.Name = "BTNclearagregarcompraproducto"
-        Me.BTNclearagregarcompraproducto.Size = New System.Drawing.Size(38, 32)
-        Me.BTNclearagregarcompraproducto.TabIndex = 15
-        Me.BTNclearagregarcompraproducto.UseVisualStyleBackColor = True
-        '
         'DTPFechacompraproducto
         '
         Me.DTPFechacompraproducto.Location = New System.Drawing.Point(311, 29)
@@ -1181,39 +992,6 @@ Partial Class Programa
         Me.DTPModifechacompra.Size = New System.Drawing.Size(232, 20)
         Me.DTPModifechacompra.TabIndex = 16
         '
-        'BTNlimpiarmodicompra
-        '
-        Me.BTNlimpiarmodicompra.Image = Global.WindowsApplication1.My.Resources.Resources.goma_de_borrar
-        Me.BTNlimpiarmodicompra.Location = New System.Drawing.Point(700, 354)
-        Me.BTNlimpiarmodicompra.Margin = New System.Windows.Forms.Padding(4, 3, 4, 3)
-        Me.BTNlimpiarmodicompra.Name = "BTNlimpiarmodicompra"
-        Me.BTNlimpiarmodicompra.Size = New System.Drawing.Size(38, 32)
-        Me.BTNlimpiarmodicompra.TabIndex = 14
-        Me.ToolTip1.SetToolTip(Me.BTNlimpiarmodicompra, "Limpiar Campos")
-        Me.BTNlimpiarmodicompra.UseVisualStyleBackColor = True
-        '
-        'BTNsalirmodicompra
-        '
-        Me.BTNsalirmodicompra.Image = Global.WindowsApplication1.My.Resources.Resources.flecha_hacia_la_izquierda
-        Me.BTNsalirmodicompra.Location = New System.Drawing.Point(367, 400)
-        Me.BTNsalirmodicompra.Margin = New System.Windows.Forms.Padding(4, 3, 4, 3)
-        Me.BTNsalirmodicompra.Name = "BTNsalirmodicompra"
-        Me.BTNsalirmodicompra.Size = New System.Drawing.Size(38, 32)
-        Me.BTNsalirmodicompra.TabIndex = 13
-        Me.ToolTip1.SetToolTip(Me.BTNsalirmodicompra, "Volver")
-        Me.BTNsalirmodicompra.UseVisualStyleBackColor = True
-        '
-        'BTNAgregarmodificacion
-        '
-        Me.BTNAgregarmodificacion.Image = Global.WindowsApplication1.My.Resources.Resources.anadir
-        Me.BTNAgregarmodificacion.Location = New System.Drawing.Point(580, 354)
-        Me.BTNAgregarmodificacion.Margin = New System.Windows.Forms.Padding(4, 3, 4, 3)
-        Me.BTNAgregarmodificacion.Name = "BTNAgregarmodificacion"
-        Me.BTNAgregarmodificacion.Size = New System.Drawing.Size(38, 32)
-        Me.BTNAgregarmodificacion.TabIndex = 12
-        Me.ToolTip1.SetToolTip(Me.BTNAgregarmodificacion, "Agregar Modificación")
-        Me.BTNAgregarmodificacion.UseVisualStyleBackColor = True
-        '
         'TXTIdmodicompra
         '
         Me.TXTIdmodicompra.Location = New System.Drawing.Point(52, 402)
@@ -1307,17 +1085,6 @@ Partial Class Programa
         Me.ventasmain.TabIndex = 1
         Me.ventasmain.Text = "Ventas"
         '
-        'btnagregarpanel
-        '
-        Me.btnagregarpanel.FlatStyle = System.Windows.Forms.FlatStyle.Popup
-        Me.btnagregarpanel.Image = CType(resources.GetObject("btnagregarpanel.Image"), System.Drawing.Image)
-        Me.btnagregarpanel.Location = New System.Drawing.Point(88, 382)
-        Me.btnagregarpanel.Margin = New System.Windows.Forms.Padding(4, 3, 4, 3)
-        Me.btnagregarpanel.Name = "btnagregarpanel"
-        Me.btnagregarpanel.Size = New System.Drawing.Size(52, 42)
-        Me.btnagregarpanel.TabIndex = 94
-        Me.btnagregarpanel.UseVisualStyleBackColor = True
-        '
         'paneldetextosenventas
         '
         Me.paneldetextosenventas.BackColor = System.Drawing.Color.Transparent
@@ -1367,20 +1134,6 @@ Partial Class Programa
         Me.txbceduladeclientedeventas.Name = "txbceduladeclientedeventas"
         Me.txbceduladeclientedeventas.Size = New System.Drawing.Size(148, 21)
         Me.txbceduladeclientedeventas.TabIndex = 116
-        '
-        'btnañadiraganadounaventa
-        '
-        Me.btnañadiraganadounaventa.FlatStyle = System.Windows.Forms.FlatStyle.Popup
-        Me.btnañadiraganadounaventa.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btnañadiraganadounaventa.Image = CType(resources.GetObject("btnañadiraganadounaventa.Image"), System.Drawing.Image)
-        Me.btnañadiraganadounaventa.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.btnañadiraganadounaventa.Location = New System.Drawing.Point(242, 309)
-        Me.btnañadiraganadounaventa.Margin = New System.Windows.Forms.Padding(4, 3, 4, 3)
-        Me.btnañadiraganadounaventa.Name = "btnañadiraganadounaventa"
-        Me.btnañadiraganadounaventa.Size = New System.Drawing.Size(248, 42)
-        Me.btnañadiraganadounaventa.TabIndex = 105
-        Me.btnañadiraganadounaventa.Text = "Añadir a ganado"
-        Me.btnañadiraganadounaventa.UseVisualStyleBackColor = True
         '
         'txbcodigodeganadoenventa
         '
@@ -1470,62 +1223,6 @@ Partial Class Programa
         Me.paneldeventasagregar.Name = "paneldeventasagregar"
         Me.paneldeventasagregar.Size = New System.Drawing.Size(137, 225)
         Me.paneldeventasagregar.TabIndex = 93
-        '
-        'btnmodificarventa
-        '
-        Me.btnmodificarventa.Anchor = System.Windows.Forms.AnchorStyles.None
-        Me.btnmodificarventa.BackColor = System.Drawing.Color.ForestGreen
-        Me.btnmodificarventa.Cursor = System.Windows.Forms.Cursors.Hand
-        Me.btnmodificarventa.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.btnmodificarventa.Image = Global.WindowsApplication1.My.Resources.Resources.editar
-        Me.btnmodificarventa.Location = New System.Drawing.Point(0, 111)
-        Me.btnmodificarventa.Margin = New System.Windows.Forms.Padding(4, 3, 4, 3)
-        Me.btnmodificarventa.Name = "btnmodificarventa"
-        Me.btnmodificarventa.Size = New System.Drawing.Size(52, 42)
-        Me.btnmodificarventa.TabIndex = 80
-        Me.btnmodificarventa.UseVisualStyleBackColor = False
-        '
-        'btnborrarventa
-        '
-        Me.btnborrarventa.Anchor = System.Windows.Forms.AnchorStyles.None
-        Me.btnborrarventa.BackColor = System.Drawing.Color.ForestGreen
-        Me.btnborrarventa.Cursor = System.Windows.Forms.Cursors.Hand
-        Me.btnborrarventa.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.btnborrarventa.Image = Global.WindowsApplication1.My.Resources.Resources.borrar
-        Me.btnborrarventa.Location = New System.Drawing.Point(0, 65)
-        Me.btnborrarventa.Margin = New System.Windows.Forms.Padding(4, 3, 4, 3)
-        Me.btnborrarventa.Name = "btnborrarventa"
-        Me.btnborrarventa.Size = New System.Drawing.Size(52, 40)
-        Me.btnborrarventa.TabIndex = 85
-        Me.btnborrarventa.UseVisualStyleBackColor = False
-        '
-        'btnagregarventa
-        '
-        Me.btnagregarventa.Anchor = System.Windows.Forms.AnchorStyles.None
-        Me.btnagregarventa.BackColor = System.Drawing.Color.ForestGreen
-        Me.btnagregarventa.Cursor = System.Windows.Forms.Cursors.Hand
-        Me.btnagregarventa.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.btnagregarventa.Image = Global.WindowsApplication1.My.Resources.Resources.anadir
-        Me.btnagregarventa.Location = New System.Drawing.Point(0, 19)
-        Me.btnagregarventa.Margin = New System.Windows.Forms.Padding(4, 3, 4, 3)
-        Me.btnagregarventa.Name = "btnagregarventa"
-        Me.btnagregarventa.Size = New System.Drawing.Size(52, 40)
-        Me.btnagregarventa.TabIndex = 79
-        Me.btnagregarventa.UseVisualStyleBackColor = False
-        '
-        'btnclearventa
-        '
-        Me.btnclearventa.Anchor = System.Windows.Forms.AnchorStyles.None
-        Me.btnclearventa.BackColor = System.Drawing.Color.ForestGreen
-        Me.btnclearventa.Cursor = System.Windows.Forms.Cursors.Hand
-        Me.btnclearventa.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.btnclearventa.Image = Global.WindowsApplication1.My.Resources.Resources.goma_de_borrar
-        Me.btnclearventa.Location = New System.Drawing.Point(0, 159)
-        Me.btnclearventa.Margin = New System.Windows.Forms.Padding(4, 3, 4, 3)
-        Me.btnclearventa.Name = "btnclearventa"
-        Me.btnclearventa.Size = New System.Drawing.Size(52, 40)
-        Me.btnclearventa.TabIndex = 91
-        Me.btnclearventa.UseVisualStyleBackColor = False
         '
         'lblparamostrarsisemodifico
         '
@@ -1653,9 +1350,9 @@ Partial Class Programa
         'TabClientes
         '
         Me.TabClientes.BackColor = System.Drawing.Color.Transparent
-        Me.TabClientes.Controls.Add(Me.PanelModificarclientes)
         Me.TabClientes.Controls.Add(Me.PanelPrincipalclientes)
         Me.TabClientes.Controls.Add(Me.PanelAgregarcliente)
+        Me.TabClientes.Controls.Add(Me.PanelModificarclientes)
         Me.TabClientes.Location = New System.Drawing.Point(4, 22)
         Me.TabClientes.Margin = New System.Windows.Forms.Padding(4, 3, 4, 3)
         Me.TabClientes.Name = "TabClientes"
@@ -1663,151 +1360,6 @@ Partial Class Programa
         Me.TabClientes.Size = New System.Drawing.Size(794, 440)
         Me.TabClientes.TabIndex = 3
         Me.TabClientes.Text = "Clientes"
-        '
-        'PanelAgregarcliente
-        '
-        Me.PanelAgregarcliente.BackColor = System.Drawing.Color.Blue
-        Me.PanelAgregarcliente.Controls.Add(Me.BTNVolveragregarcliente)
-        Me.PanelAgregarcliente.Controls.Add(Me.BTNClearclientes)
-        Me.PanelAgregarcliente.Controls.Add(Me.BTNAgregarclientes)
-        Me.PanelAgregarcliente.Controls.Add(Me.Label17)
-        Me.PanelAgregarcliente.Controls.Add(Me.LabelNombreyApellidocliente)
-        Me.PanelAgregarcliente.Controls.Add(Me.Texttelefono)
-        Me.PanelAgregarcliente.Controls.Add(Me.LabelCedulacliente)
-        Me.PanelAgregarcliente.Controls.Add(Me.Texdireccion)
-        Me.PanelAgregarcliente.Controls.Add(Me.Labeldireccioncliente)
-        Me.PanelAgregarcliente.Controls.Add(Me.Texnombreapellido)
-        Me.PanelAgregarcliente.Controls.Add(Me.Labeltelcliente)
-        Me.PanelAgregarcliente.Controls.Add(Me.Texcedula)
-        Me.PanelAgregarcliente.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.PanelAgregarcliente.Location = New System.Drawing.Point(-4, 0)
-        Me.PanelAgregarcliente.Margin = New System.Windows.Forms.Padding(4, 3, 4, 3)
-        Me.PanelAgregarcliente.Name = "PanelAgregarcliente"
-        Me.PanelAgregarcliente.Size = New System.Drawing.Size(797, 445)
-        Me.PanelAgregarcliente.TabIndex = 13
-        '
-        'BTNVolveragregarcliente
-        '
-        Me.BTNVolveragregarcliente.FlatAppearance.BorderSize = 0
-        Me.BTNVolveragregarcliente.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.BTNVolveragregarcliente.Image = Global.WindowsApplication1.My.Resources.Resources.flecha_hacia_la_izquierda
-        Me.BTNVolveragregarcliente.Location = New System.Drawing.Point(395, 392)
-        Me.BTNVolveragregarcliente.Margin = New System.Windows.Forms.Padding(4, 3, 4, 3)
-        Me.BTNVolveragregarcliente.Name = "BTNVolveragregarcliente"
-        Me.BTNVolveragregarcliente.Size = New System.Drawing.Size(40, 40)
-        Me.BTNVolveragregarcliente.TabIndex = 21
-        Me.BTNVolveragregarcliente.UseVisualStyleBackColor = True
-        '
-        'BTNClearclientes
-        '
-        Me.BTNClearclientes.FlatAppearance.BorderSize = 0
-        Me.BTNClearclientes.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.BTNClearclientes.Image = Global.WindowsApplication1.My.Resources.Resources.goma_de_borrar
-        Me.BTNClearclientes.Location = New System.Drawing.Point(458, 321)
-        Me.BTNClearclientes.Margin = New System.Windows.Forms.Padding(4, 3, 4, 3)
-        Me.BTNClearclientes.Name = "BTNClearclientes"
-        Me.BTNClearclientes.Size = New System.Drawing.Size(40, 40)
-        Me.BTNClearclientes.TabIndex = 20
-        Me.BTNClearclientes.UseVisualStyleBackColor = True
-        '
-        'BTNAgregarclientes
-        '
-        Me.BTNAgregarclientes.FlatAppearance.BorderSize = 0
-        Me.BTNAgregarclientes.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.BTNAgregarclientes.Image = Global.WindowsApplication1.My.Resources.Resources.anadir
-        Me.BTNAgregarclientes.Location = New System.Drawing.Point(329, 321)
-        Me.BTNAgregarclientes.Margin = New System.Windows.Forms.Padding(4, 3, 4, 3)
-        Me.BTNAgregarclientes.Name = "BTNAgregarclientes"
-        Me.BTNAgregarclientes.Size = New System.Drawing.Size(40, 40)
-        Me.BTNAgregarclientes.TabIndex = 19
-        Me.BTNAgregarclientes.UseVisualStyleBackColor = True
-        '
-        'Label17
-        '
-        Me.Label17.AutoSize = True
-        Me.Label17.Font = New System.Drawing.Font("Comic Sans MS", 21.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label17.Location = New System.Drawing.Point(256, 7)
-        Me.Label17.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
-        Me.Label17.Name = "Label17"
-        Me.Label17.Size = New System.Drawing.Size(250, 40)
-        Me.Label17.TabIndex = 14
-        Me.Label17.Text = "Agregar Clientes"
-        '
-        'LabelNombreyApellidocliente
-        '
-        Me.LabelNombreyApellidocliente.AutoSize = True
-        Me.LabelNombreyApellidocliente.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.LabelNombreyApellidocliente.Location = New System.Drawing.Point(102, 112)
-        Me.LabelNombreyApellidocliente.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
-        Me.LabelNombreyApellidocliente.Name = "LabelNombreyApellidocliente"
-        Me.LabelNombreyApellidocliente.Size = New System.Drawing.Size(137, 16)
-        Me.LabelNombreyApellidocliente.TabIndex = 6
-        Me.LabelNombreyApellidocliente.Text = "Nombre y Apellido"
-        '
-        'Texttelefono
-        '
-        Me.Texttelefono.Location = New System.Drawing.Point(263, 222)
-        Me.Texttelefono.Margin = New System.Windows.Forms.Padding(4, 3, 4, 3)
-        Me.Texttelefono.Name = "Texttelefono"
-        Me.Texttelefono.Size = New System.Drawing.Size(316, 22)
-        Me.Texttelefono.TabIndex = 12
-        '
-        'LabelCedulacliente
-        '
-        Me.LabelCedulacliente.AutoSize = True
-        Me.LabelCedulacliente.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.LabelCedulacliente.Location = New System.Drawing.Point(182, 168)
-        Me.LabelCedulacliente.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
-        Me.LabelCedulacliente.Name = "LabelCedulacliente"
-        Me.LabelCedulacliente.Size = New System.Drawing.Size(57, 16)
-        Me.LabelCedulacliente.TabIndex = 5
-        Me.LabelCedulacliente.Text = "Cédula"
-        '
-        'Texdireccion
-        '
-        Me.Texdireccion.Location = New System.Drawing.Point(263, 277)
-        Me.Texdireccion.Margin = New System.Windows.Forms.Padding(4, 3, 4, 3)
-        Me.Texdireccion.Name = "Texdireccion"
-        Me.Texdireccion.Size = New System.Drawing.Size(316, 22)
-        Me.Texdireccion.TabIndex = 11
-        '
-        'Labeldireccioncliente
-        '
-        Me.Labeldireccioncliente.AutoSize = True
-        Me.Labeldireccioncliente.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Labeldireccioncliente.Location = New System.Drawing.Point(165, 277)
-        Me.Labeldireccioncliente.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
-        Me.Labeldireccioncliente.Name = "Labeldireccioncliente"
-        Me.Labeldireccioncliente.Size = New System.Drawing.Size(74, 16)
-        Me.Labeldireccioncliente.TabIndex = 7
-        Me.Labeldireccioncliente.Text = "Dirección"
-        '
-        'Texnombreapellido
-        '
-        Me.Texnombreapellido.Location = New System.Drawing.Point(263, 112)
-        Me.Texnombreapellido.Margin = New System.Windows.Forms.Padding(4, 3, 4, 3)
-        Me.Texnombreapellido.Name = "Texnombreapellido"
-        Me.Texnombreapellido.Size = New System.Drawing.Size(316, 22)
-        Me.Texnombreapellido.TabIndex = 10
-        '
-        'Labeltelcliente
-        '
-        Me.Labeltelcliente.AutoSize = True
-        Me.Labeltelcliente.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Labeltelcliente.Location = New System.Drawing.Point(169, 222)
-        Me.Labeltelcliente.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
-        Me.Labeltelcliente.Name = "Labeltelcliente"
-        Me.Labeltelcliente.Size = New System.Drawing.Size(70, 16)
-        Me.Labeltelcliente.TabIndex = 8
-        Me.Labeltelcliente.Text = "Teléfono"
-        '
-        'Texcedula
-        '
-        Me.Texcedula.Location = New System.Drawing.Point(263, 168)
-        Me.Texcedula.Margin = New System.Windows.Forms.Padding(4, 3, 4, 3)
-        Me.Texcedula.Name = "Texcedula"
-        Me.Texcedula.Size = New System.Drawing.Size(316, 22)
-        Me.Texcedula.TabIndex = 9
         '
         'PanelModificarclientes
         '
@@ -1927,55 +1479,6 @@ Partial Class Programa
         Me.Label13.TabIndex = 21
         Me.Label13.Text = "Modificar clientes"
         '
-        'Button8
-        '
-        Me.Button8.FlatAppearance.BorderSize = 0
-        Me.Button8.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.Button8.Image = Global.WindowsApplication1.My.Resources.Resources.flecha_hacia_la_izquierda
-        Me.Button8.Location = New System.Drawing.Point(36, 380)
-        Me.Button8.Margin = New System.Windows.Forms.Padding(4, 3, 4, 3)
-        Me.Button8.Name = "Button8"
-        Me.Button8.Size = New System.Drawing.Size(40, 40)
-        Me.Button8.TabIndex = 20
-        Me.Button8.UseVisualStyleBackColor = True
-        '
-        'Button5
-        '
-        Me.Button5.FlatAppearance.BorderSize = 0
-        Me.Button5.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.Button5.Image = Global.WindowsApplication1.My.Resources.Resources.goma_de_borrar
-        Me.Button5.Location = New System.Drawing.Point(704, 378)
-        Me.Button5.Margin = New System.Windows.Forms.Padding(4, 3, 4, 3)
-        Me.Button5.Name = "Button5"
-        Me.Button5.Size = New System.Drawing.Size(40, 40)
-        Me.Button5.TabIndex = 19
-        Me.Button5.UseVisualStyleBackColor = True
-        '
-        'Button4
-        '
-        Me.Button4.FlatAppearance.BorderSize = 0
-        Me.Button4.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.Button4.Image = Global.WindowsApplication1.My.Resources.Resources._001_edit
-        Me.Button4.Location = New System.Drawing.Point(628, 378)
-        Me.Button4.Margin = New System.Windows.Forms.Padding(4, 3, 4, 3)
-        Me.Button4.Name = "Button4"
-        Me.Button4.Size = New System.Drawing.Size(40, 40)
-        Me.Button4.TabIndex = 18
-        Me.Button4.UseVisualStyleBackColor = True
-        '
-        'Button1
-        '
-        Me.Button1.FlatAppearance.BorderSize = 0
-        Me.Button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.Button1.Image = Global.WindowsApplication1.My.Resources.Resources._003_search
-        Me.Button1.Location = New System.Drawing.Point(285, 63)
-        Me.Button1.Margin = New System.Windows.Forms.Padding(4, 3, 4, 3)
-        Me.Button1.Name = "Button1"
-        Me.Button1.Size = New System.Drawing.Size(40, 40)
-        Me.Button1.TabIndex = 17
-        Me.ToolTip1.SetToolTip(Me.Button1, "BUSCAR CLIENTE")
-        Me.Button1.UseVisualStyleBackColor = True
-        '
         'Label22
         '
         Me.Label22.AutoSize = True
@@ -2029,18 +1532,6 @@ Partial Class Programa
         Me.PanelPrincipalclientes.Size = New System.Drawing.Size(797, 445)
         Me.PanelPrincipalclientes.TabIndex = 14
         '
-        'Button3
-        '
-        Me.Button3.FlatAppearance.BorderSize = 0
-        Me.Button3.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.Button3.Image = Global.WindowsApplication1.My.Resources.Resources.boton_volver
-        Me.Button3.Location = New System.Drawing.Point(728, 80)
-        Me.Button3.Name = "Button3"
-        Me.Button3.Size = New System.Drawing.Size(40, 40)
-        Me.Button3.TabIndex = 20
-        Me.ToolTip1.SetToolTip(Me.Button3, "Cargar clientes")
-        Me.Button3.UseVisualStyleBackColor = True
-        '
         'Label6
         '
         Me.Label6.AutoSize = True
@@ -2052,19 +1543,6 @@ Partial Class Programa
         Me.Label6.Text = "CEDULA :"
         Me.Label6.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
         '
-        'BTNBuscarcliente
-        '
-        Me.BTNBuscarcliente.FlatAppearance.BorderSize = 0
-        Me.BTNBuscarcliente.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.BTNBuscarcliente.Image = Global.WindowsApplication1.My.Resources.Resources._003_search
-        Me.BTNBuscarcliente.Location = New System.Drawing.Point(728, 17)
-        Me.BTNBuscarcliente.Margin = New System.Windows.Forms.Padding(4, 3, 4, 3)
-        Me.BTNBuscarcliente.Name = "BTNBuscarcliente"
-        Me.BTNBuscarcliente.Size = New System.Drawing.Size(40, 40)
-        Me.BTNBuscarcliente.TabIndex = 18
-        Me.ToolTip1.SetToolTip(Me.BTNBuscarcliente, "Buscar cliente")
-        Me.BTNBuscarcliente.UseVisualStyleBackColor = True
-        '
         'txtBUSCARcedula
         '
         Me.txtBUSCARcedula.Location = New System.Drawing.Point(557, 33)
@@ -2072,45 +1550,6 @@ Partial Class Programa
         Me.txtBUSCARcedula.Name = "txtBUSCARcedula"
         Me.txtBUSCARcedula.Size = New System.Drawing.Size(159, 20)
         Me.txtBUSCARcedula.TabIndex = 16
-        '
-        'BTNPanelmodificarcliente
-        '
-        Me.BTNPanelmodificarcliente.FlatAppearance.BorderSize = 0
-        Me.BTNPanelmodificarcliente.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.BTNPanelmodificarcliente.Image = Global.WindowsApplication1.My.Resources.Resources._008_user
-        Me.BTNPanelmodificarcliente.Location = New System.Drawing.Point(105, 389)
-        Me.BTNPanelmodificarcliente.Margin = New System.Windows.Forms.Padding(4, 3, 4, 3)
-        Me.BTNPanelmodificarcliente.Name = "BTNPanelmodificarcliente"
-        Me.BTNPanelmodificarcliente.Size = New System.Drawing.Size(40, 40)
-        Me.BTNPanelmodificarcliente.TabIndex = 15
-        Me.ToolTip1.SetToolTip(Me.BTNPanelmodificarcliente, "Editar cliente")
-        Me.BTNPanelmodificarcliente.UseVisualStyleBackColor = True
-        '
-        'BTNEliminarcliente
-        '
-        Me.BTNEliminarcliente.FlatAppearance.BorderSize = 0
-        Me.BTNEliminarcliente.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.BTNEliminarcliente.Image = Global.WindowsApplication1.My.Resources.Resources._006_remove_user
-        Me.BTNEliminarcliente.Location = New System.Drawing.Point(173, 389)
-        Me.BTNEliminarcliente.Margin = New System.Windows.Forms.Padding(4, 3, 4, 3)
-        Me.BTNEliminarcliente.Name = "BTNEliminarcliente"
-        Me.BTNEliminarcliente.Size = New System.Drawing.Size(40, 40)
-        Me.BTNEliminarcliente.TabIndex = 14
-        Me.ToolTip1.SetToolTip(Me.BTNEliminarcliente, "Eliminar cliente")
-        Me.BTNEliminarcliente.UseVisualStyleBackColor = True
-        '
-        'BTNPanelagregarcliente
-        '
-        Me.BTNPanelagregarcliente.FlatAppearance.BorderSize = 0
-        Me.BTNPanelagregarcliente.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.BTNPanelagregarcliente.Image = Global.WindowsApplication1.My.Resources.Resources._007_add_user
-        Me.BTNPanelagregarcliente.Location = New System.Drawing.Point(36, 388)
-        Me.BTNPanelagregarcliente.Margin = New System.Windows.Forms.Padding(4, 3, 4, 3)
-        Me.BTNPanelagregarcliente.Name = "BTNPanelagregarcliente"
-        Me.BTNPanelagregarcliente.Size = New System.Drawing.Size(40, 40)
-        Me.BTNPanelagregarcliente.TabIndex = 13
-        Me.ToolTip1.SetToolTip(Me.BTNPanelagregarcliente, "Añadir cliente")
-        Me.BTNPanelagregarcliente.UseVisualStyleBackColor = True
         '
         'DataGridViewClientes
         '
@@ -2131,8 +1570,118 @@ Partial Class Programa
         Me.DataGridViewClientes.Size = New System.Drawing.Size(691, 283)
         Me.DataGridViewClientes.TabIndex = 4
         '
+        'PanelAgregarcliente
+        '
+        Me.PanelAgregarcliente.BackColor = System.Drawing.Color.Blue
+        Me.PanelAgregarcliente.Controls.Add(Me.BTNVolveragregarcliente)
+        Me.PanelAgregarcliente.Controls.Add(Me.BTNClearclientes)
+        Me.PanelAgregarcliente.Controls.Add(Me.BTNAgregarclientes)
+        Me.PanelAgregarcliente.Controls.Add(Me.Label17)
+        Me.PanelAgregarcliente.Controls.Add(Me.LabelNombreyApellidocliente)
+        Me.PanelAgregarcliente.Controls.Add(Me.Texttelefono)
+        Me.PanelAgregarcliente.Controls.Add(Me.LabelCedulacliente)
+        Me.PanelAgregarcliente.Controls.Add(Me.Texdireccion)
+        Me.PanelAgregarcliente.Controls.Add(Me.Labeldireccioncliente)
+        Me.PanelAgregarcliente.Controls.Add(Me.Texnombreapellido)
+        Me.PanelAgregarcliente.Controls.Add(Me.Labeltelcliente)
+        Me.PanelAgregarcliente.Controls.Add(Me.Texcedula)
+        Me.PanelAgregarcliente.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.PanelAgregarcliente.Location = New System.Drawing.Point(-4, 0)
+        Me.PanelAgregarcliente.Margin = New System.Windows.Forms.Padding(4, 3, 4, 3)
+        Me.PanelAgregarcliente.Name = "PanelAgregarcliente"
+        Me.PanelAgregarcliente.Size = New System.Drawing.Size(797, 445)
+        Me.PanelAgregarcliente.TabIndex = 13
+        '
+        'Label17
+        '
+        Me.Label17.AutoSize = True
+        Me.Label17.Font = New System.Drawing.Font("Comic Sans MS", 21.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label17.Location = New System.Drawing.Point(256, 7)
+        Me.Label17.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
+        Me.Label17.Name = "Label17"
+        Me.Label17.Size = New System.Drawing.Size(250, 40)
+        Me.Label17.TabIndex = 14
+        Me.Label17.Text = "Agregar Clientes"
+        '
+        'LabelNombreyApellidocliente
+        '
+        Me.LabelNombreyApellidocliente.AutoSize = True
+        Me.LabelNombreyApellidocliente.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.LabelNombreyApellidocliente.Location = New System.Drawing.Point(102, 112)
+        Me.LabelNombreyApellidocliente.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
+        Me.LabelNombreyApellidocliente.Name = "LabelNombreyApellidocliente"
+        Me.LabelNombreyApellidocliente.Size = New System.Drawing.Size(137, 16)
+        Me.LabelNombreyApellidocliente.TabIndex = 6
+        Me.LabelNombreyApellidocliente.Text = "Nombre y Apellido"
+        '
+        'Texttelefono
+        '
+        Me.Texttelefono.Location = New System.Drawing.Point(263, 222)
+        Me.Texttelefono.Margin = New System.Windows.Forms.Padding(4, 3, 4, 3)
+        Me.Texttelefono.Name = "Texttelefono"
+        Me.Texttelefono.Size = New System.Drawing.Size(316, 22)
+        Me.Texttelefono.TabIndex = 12
+        '
+        'LabelCedulacliente
+        '
+        Me.LabelCedulacliente.AutoSize = True
+        Me.LabelCedulacliente.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.LabelCedulacliente.Location = New System.Drawing.Point(182, 168)
+        Me.LabelCedulacliente.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
+        Me.LabelCedulacliente.Name = "LabelCedulacliente"
+        Me.LabelCedulacliente.Size = New System.Drawing.Size(57, 16)
+        Me.LabelCedulacliente.TabIndex = 5
+        Me.LabelCedulacliente.Text = "Cédula"
+        '
+        'Texdireccion
+        '
+        Me.Texdireccion.Location = New System.Drawing.Point(263, 277)
+        Me.Texdireccion.Margin = New System.Windows.Forms.Padding(4, 3, 4, 3)
+        Me.Texdireccion.Name = "Texdireccion"
+        Me.Texdireccion.Size = New System.Drawing.Size(316, 22)
+        Me.Texdireccion.TabIndex = 11
+        '
+        'Labeldireccioncliente
+        '
+        Me.Labeldireccioncliente.AutoSize = True
+        Me.Labeldireccioncliente.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Labeldireccioncliente.Location = New System.Drawing.Point(165, 277)
+        Me.Labeldireccioncliente.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
+        Me.Labeldireccioncliente.Name = "Labeldireccioncliente"
+        Me.Labeldireccioncliente.Size = New System.Drawing.Size(74, 16)
+        Me.Labeldireccioncliente.TabIndex = 7
+        Me.Labeldireccioncliente.Text = "Dirección"
+        '
+        'Texnombreapellido
+        '
+        Me.Texnombreapellido.Location = New System.Drawing.Point(263, 112)
+        Me.Texnombreapellido.Margin = New System.Windows.Forms.Padding(4, 3, 4, 3)
+        Me.Texnombreapellido.Name = "Texnombreapellido"
+        Me.Texnombreapellido.Size = New System.Drawing.Size(316, 22)
+        Me.Texnombreapellido.TabIndex = 10
+        '
+        'Labeltelcliente
+        '
+        Me.Labeltelcliente.AutoSize = True
+        Me.Labeltelcliente.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Labeltelcliente.Location = New System.Drawing.Point(169, 222)
+        Me.Labeltelcliente.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
+        Me.Labeltelcliente.Name = "Labeltelcliente"
+        Me.Labeltelcliente.Size = New System.Drawing.Size(70, 16)
+        Me.Labeltelcliente.TabIndex = 8
+        Me.Labeltelcliente.Text = "Teléfono"
+        '
+        'Texcedula
+        '
+        Me.Texcedula.Location = New System.Drawing.Point(263, 168)
+        Me.Texcedula.Margin = New System.Windows.Forms.Padding(4, 3, 4, 3)
+        Me.Texcedula.Name = "Texcedula"
+        Me.Texcedula.Size = New System.Drawing.Size(316, 22)
+        Me.Texcedula.TabIndex = 9
+        '
         'TabUsuarios
         '
+        Me.TabUsuarios.BackColor = System.Drawing.Color.CornflowerBlue
         Me.TabUsuarios.Controls.Add(Me.PNLUsuarios)
         Me.TabUsuarios.Controls.Add(Me.CBXBusquedaRangoUsuarios)
         Me.TabUsuarios.Controls.Add(Me.DGVUsuarios)
@@ -2154,10 +1703,10 @@ Partial Class Programa
         Me.TabUsuarios.Size = New System.Drawing.Size(794, 440)
         Me.TabUsuarios.TabIndex = 4
         Me.TabUsuarios.Text = "Usuarios"
-        Me.TabUsuarios.UseVisualStyleBackColor = True
         '
         'PNLUsuarios
         '
+        Me.PNLUsuarios.BackColor = System.Drawing.Color.Blue
         Me.PNLUsuarios.Controls.Add(Me.TXTCiUsuarios)
         Me.PNLUsuarios.Controls.Add(Me.LBLCiUsuarios)
         Me.PNLUsuarios.Controls.Add(Me.CBXRangoUsuarios)
@@ -2268,19 +1817,20 @@ Partial Class Programa
         Me.DGVUsuarios.ClipboardCopyMode = System.Windows.Forms.DataGridViewClipboardCopyMode.Disable
         Me.DGVUsuarios.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         Me.DGVUsuarios.ColumnHeadersVisible = False
-        DataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Window
-        DataGridViewCellStyle3.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.ControlText
-        DataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.ButtonHighlight
-        DataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(192, Byte), Integer))
-        DataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
-        Me.DGVUsuarios.DefaultCellStyle = DataGridViewCellStyle3
+        DataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Window
+        DataGridViewCellStyle4.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.ControlText
+        DataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.ButtonHighlight
+        DataGridViewCellStyle4.SelectionForeColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(192, Byte), Integer))
+        DataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
+        Me.DGVUsuarios.DefaultCellStyle = DataGridViewCellStyle4
         Me.DGVUsuarios.GridColor = System.Drawing.SystemColors.ButtonHighlight
         Me.DGVUsuarios.Location = New System.Drawing.Point(11, 47)
         Me.DGVUsuarios.Margin = New System.Windows.Forms.Padding(4, 3, 4, 3)
         Me.DGVUsuarios.MultiSelect = False
         Me.DGVUsuarios.Name = "DGVUsuarios"
+        Me.DGVUsuarios.ReadOnly = True
         Me.DGVUsuarios.RowHeadersVisible = False
         Me.DGVUsuarios.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing
         Me.DGVUsuarios.ScrollBars = System.Windows.Forms.ScrollBars.None
@@ -2299,28 +1849,6 @@ Partial Class Programa
         Me.CHBUsuariosInactivos.Text = "Inactivos"
         Me.CHBUsuariosInactivos.UseVisualStyleBackColor = True
         '
-        'BTNAceptarUsuarios
-        '
-        Me.BTNAceptarUsuarios.Location = New System.Drawing.Point(263, 379)
-        Me.BTNAceptarUsuarios.Margin = New System.Windows.Forms.Padding(4, 3, 4, 3)
-        Me.BTNAceptarUsuarios.Name = "BTNAceptarUsuarios"
-        Me.BTNAceptarUsuarios.Size = New System.Drawing.Size(88, 56)
-        Me.BTNAceptarUsuarios.TabIndex = 17
-        Me.BTNAceptarUsuarios.Text = "Aceptar"
-        Me.BTNAceptarUsuarios.UseVisualStyleBackColor = True
-        Me.BTNAceptarUsuarios.Visible = False
-        '
-        'BTNCancelarUsuarios
-        '
-        Me.BTNCancelarUsuarios.Location = New System.Drawing.Point(91, 378)
-        Me.BTNCancelarUsuarios.Margin = New System.Windows.Forms.Padding(4, 3, 4, 3)
-        Me.BTNCancelarUsuarios.Name = "BTNCancelarUsuarios"
-        Me.BTNCancelarUsuarios.Size = New System.Drawing.Size(88, 56)
-        Me.BTNCancelarUsuarios.TabIndex = 16
-        Me.BTNCancelarUsuarios.Text = "Cancelar"
-        Me.BTNCancelarUsuarios.UseVisualStyleBackColor = True
-        Me.BTNCancelarUsuarios.Visible = False
-        '
         'LBLInfoUsuarios
         '
         Me.LBLInfoUsuarios.AutoSize = True
@@ -2329,47 +1857,6 @@ Partial Class Programa
         Me.LBLInfoUsuarios.Name = "LBLInfoUsuarios"
         Me.LBLInfoUsuarios.Size = New System.Drawing.Size(0, 13)
         Me.LBLInfoUsuarios.TabIndex = 15
-        '
-        'BTNModificarUsuarios
-        '
-        Me.BTNModificarUsuarios.DialogResult = System.Windows.Forms.DialogResult.Cancel
-        Me.BTNModificarUsuarios.Location = New System.Drawing.Point(186, 379)
-        Me.BTNModificarUsuarios.Margin = New System.Windows.Forms.Padding(4, 3, 4, 3)
-        Me.BTNModificarUsuarios.Name = "BTNModificarUsuarios"
-        Me.BTNModificarUsuarios.Size = New System.Drawing.Size(88, 56)
-        Me.BTNModificarUsuarios.TabIndex = 14
-        Me.BTNModificarUsuarios.Text = "Modificar"
-        Me.BTNModificarUsuarios.UseVisualStyleBackColor = True
-        '
-        'BTNEliminarUsuarios
-        '
-        Me.BTNEliminarUsuarios.Location = New System.Drawing.Point(343, 379)
-        Me.BTNEliminarUsuarios.Margin = New System.Windows.Forms.Padding(4, 3, 4, 3)
-        Me.BTNEliminarUsuarios.Name = "BTNEliminarUsuarios"
-        Me.BTNEliminarUsuarios.Size = New System.Drawing.Size(88, 56)
-        Me.BTNEliminarUsuarios.TabIndex = 13
-        Me.BTNEliminarUsuarios.Text = "Eliminar"
-        Me.BTNEliminarUsuarios.UseVisualStyleBackColor = True
-        '
-        'BTNAgregarUsuarios
-        '
-        Me.BTNAgregarUsuarios.Location = New System.Drawing.Point(11, 379)
-        Me.BTNAgregarUsuarios.Margin = New System.Windows.Forms.Padding(4, 3, 4, 3)
-        Me.BTNAgregarUsuarios.Name = "BTNAgregarUsuarios"
-        Me.BTNAgregarUsuarios.Size = New System.Drawing.Size(88, 55)
-        Me.BTNAgregarUsuarios.TabIndex = 12
-        Me.BTNAgregarUsuarios.Text = "Agregar"
-        Me.BTNAgregarUsuarios.UseVisualStyleBackColor = True
-        '
-        'BTNBusquedaUsuarios
-        '
-        Me.BTNBusquedaUsuarios.Location = New System.Drawing.Point(367, 14)
-        Me.BTNBusquedaUsuarios.Margin = New System.Windows.Forms.Padding(4, 3, 4, 3)
-        Me.BTNBusquedaUsuarios.Name = "BTNBusquedaUsuarios"
-        Me.BTNBusquedaUsuarios.Size = New System.Drawing.Size(64, 23)
-        Me.BTNBusquedaUsuarios.TabIndex = 2
-        Me.BTNBusquedaUsuarios.Text = "Buscar"
-        Me.BTNBusquedaUsuarios.UseVisualStyleBackColor = True
         '
         'TXTBusquedaUsuarios
         '
@@ -2389,8 +1876,560 @@ Partial Class Programa
         Me.CBXBusquedaUsuarios.Size = New System.Drawing.Size(103, 21)
         Me.CBXBusquedaUsuarios.TabIndex = 0
         '
+        'Button2
+        '
+        Me.Button2.BackColor = System.Drawing.Color.Teal
+        Me.Button2.FlatAppearance.BorderSize = 0
+        Me.Button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.Button2.Image = Global.WindowsApplication1.My.Resources.Resources.boton_volver
+        Me.Button2.Location = New System.Drawing.Point(720, 65)
+        Me.Button2.Name = "Button2"
+        Me.Button2.Size = New System.Drawing.Size(53, 40)
+        Me.Button2.TabIndex = 114
+        Me.ToolTip1.SetToolTip(Me.Button2, "CARGAR GANADO")
+        Me.Button2.UseVisualStyleBackColor = False
+        '
+        'BOTONcancelarModificar
+        '
+        Me.BOTONcancelarModificar.BackColor = System.Drawing.Color.Teal
+        Me.BOTONcancelarModificar.FlatAppearance.BorderSize = 0
+        Me.BOTONcancelarModificar.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.BOTONcancelarModificar.Image = CType(resources.GetObject("BOTONcancelarModificar.Image"), System.Drawing.Image)
+        Me.BOTONcancelarModificar.Location = New System.Drawing.Point(653, 325)
+        Me.BOTONcancelarModificar.Margin = New System.Windows.Forms.Padding(4, 3, 4, 3)
+        Me.BOTONcancelarModificar.Name = "BOTONcancelarModificar"
+        Me.BOTONcancelarModificar.Size = New System.Drawing.Size(59, 50)
+        Me.BOTONcancelarModificar.TabIndex = 109
+        Me.ToolTip1.SetToolTip(Me.BOTONcancelarModificar, "CANCELAR")
+        Me.BOTONcancelarModificar.UseVisualStyleBackColor = False
+        Me.BOTONcancelarModificar.Visible = False
+        '
+        'BOTONcancelarAgregar
+        '
+        Me.BOTONcancelarAgregar.BackColor = System.Drawing.Color.Teal
+        Me.BOTONcancelarAgregar.FlatAppearance.BorderSize = 0
+        Me.BOTONcancelarAgregar.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.BOTONcancelarAgregar.Image = CType(resources.GetObject("BOTONcancelarAgregar.Image"), System.Drawing.Image)
+        Me.BOTONcancelarAgregar.Location = New System.Drawing.Point(653, 267)
+        Me.BOTONcancelarAgregar.Margin = New System.Windows.Forms.Padding(4, 3, 4, 3)
+        Me.BOTONcancelarAgregar.Name = "BOTONcancelarAgregar"
+        Me.BOTONcancelarAgregar.Size = New System.Drawing.Size(59, 50)
+        Me.BOTONcancelarAgregar.TabIndex = 108
+        Me.ToolTip1.SetToolTip(Me.BOTONcancelarAgregar, "CANCELAR")
+        Me.BOTONcancelarAgregar.UseVisualStyleBackColor = False
+        Me.BOTONcancelarAgregar.Visible = False
+        '
+        'BOTONguardarModificar
+        '
+        Me.BOTONguardarModificar.BackColor = System.Drawing.Color.Teal
+        Me.BOTONguardarModificar.FlatAppearance.BorderSize = 0
+        Me.BOTONguardarModificar.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.BOTONguardarModificar.Image = Global.WindowsApplication1.My.Resources.Resources._019_confirm_1
+        Me.BOTONguardarModificar.Location = New System.Drawing.Point(586, 325)
+        Me.BOTONguardarModificar.Margin = New System.Windows.Forms.Padding(4, 3, 4, 3)
+        Me.BOTONguardarModificar.Name = "BOTONguardarModificar"
+        Me.BOTONguardarModificar.Size = New System.Drawing.Size(59, 50)
+        Me.BOTONguardarModificar.TabIndex = 107
+        Me.ToolTip1.SetToolTip(Me.BOTONguardarModificar, "GUARDAR")
+        Me.BOTONguardarModificar.UseVisualStyleBackColor = False
+        Me.BOTONguardarModificar.Visible = False
+        '
+        'BOTONguardarAgregar
+        '
+        Me.BOTONguardarAgregar.BackColor = System.Drawing.Color.Teal
+        Me.BOTONguardarAgregar.FlatAppearance.BorderSize = 0
+        Me.BOTONguardarAgregar.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.BOTONguardarAgregar.Image = Global.WindowsApplication1.My.Resources.Resources._019_confirm_1
+        Me.BOTONguardarAgregar.Location = New System.Drawing.Point(586, 267)
+        Me.BOTONguardarAgregar.Margin = New System.Windows.Forms.Padding(4, 3, 4, 3)
+        Me.BOTONguardarAgregar.Name = "BOTONguardarAgregar"
+        Me.BOTONguardarAgregar.Size = New System.Drawing.Size(59, 50)
+        Me.BOTONguardarAgregar.TabIndex = 106
+        Me.ToolTip1.SetToolTip(Me.BOTONguardarAgregar, "GUARDAR")
+        Me.BOTONguardarAgregar.UseVisualStyleBackColor = False
+        Me.BOTONguardarAgregar.Visible = False
+        '
+        'BOTONabrirModificar
+        '
+        Me.BOTONabrirModificar.Anchor = System.Windows.Forms.AnchorStyles.None
+        Me.BOTONabrirModificar.BackColor = System.Drawing.Color.Teal
+        Me.BOTONabrirModificar.Cursor = System.Windows.Forms.Cursors.Hand
+        Me.BOTONabrirModificar.FlatAppearance.BorderSize = 0
+        Me.BOTONabrirModificar.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.BOTONabrirModificar.Image = Global.WindowsApplication1.My.Resources.Resources._001_edit
+        Me.BOTONabrirModificar.Location = New System.Drawing.Point(519, 325)
+        Me.BOTONabrirModificar.Margin = New System.Windows.Forms.Padding(4, 3, 4, 3)
+        Me.BOTONabrirModificar.Name = "BOTONabrirModificar"
+        Me.BOTONabrirModificar.Size = New System.Drawing.Size(59, 50)
+        Me.BOTONabrirModificar.TabIndex = 105
+        Me.ToolTip1.SetToolTip(Me.BOTONabrirModificar, "EDITAR")
+        Me.BOTONabrirModificar.UseVisualStyleBackColor = False
+        '
+        'BOTONabrirAgregar
+        '
+        Me.BOTONabrirAgregar.Anchor = System.Windows.Forms.AnchorStyles.None
+        Me.BOTONabrirAgregar.BackColor = System.Drawing.Color.Teal
+        Me.BOTONabrirAgregar.Cursor = System.Windows.Forms.Cursors.Hand
+        Me.BOTONabrirAgregar.FlatAppearance.BorderSize = 0
+        Me.BOTONabrirAgregar.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.BOTONabrirAgregar.Image = CType(resources.GetObject("BOTONabrirAgregar.Image"), System.Drawing.Image)
+        Me.BOTONabrirAgregar.Location = New System.Drawing.Point(519, 267)
+        Me.BOTONabrirAgregar.Margin = New System.Windows.Forms.Padding(4, 3, 4, 3)
+        Me.BOTONabrirAgregar.Name = "BOTONabrirAgregar"
+        Me.BOTONabrirAgregar.Size = New System.Drawing.Size(59, 50)
+        Me.BOTONabrirAgregar.TabIndex = 104
+        Me.ToolTip1.SetToolTip(Me.BOTONabrirAgregar, "AÑADIR")
+        Me.BOTONabrirAgregar.UseVisualStyleBackColor = False
+        '
+        'btneliminarganado
+        '
+        Me.btneliminarganado.Anchor = System.Windows.Forms.AnchorStyles.None
+        Me.btneliminarganado.BackColor = System.Drawing.Color.Teal
+        Me.btneliminarganado.Cursor = System.Windows.Forms.Cursors.Hand
+        Me.btneliminarganado.FlatAppearance.BorderSize = 0
+        Me.btneliminarganado.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.btneliminarganado.Image = Global.WindowsApplication1.My.Resources.Resources.removed
+        Me.btneliminarganado.Location = New System.Drawing.Point(519, 380)
+        Me.btneliminarganado.Margin = New System.Windows.Forms.Padding(4, 3, 4, 3)
+        Me.btneliminarganado.Name = "btneliminarganado"
+        Me.btneliminarganado.Size = New System.Drawing.Size(59, 50)
+        Me.btneliminarganado.TabIndex = 86
+        Me.ToolTip1.SetToolTip(Me.btneliminarganado, "ELIMINAR")
+        Me.btneliminarganado.UseVisualStyleBackColor = False
+        '
+        'BTNEliminarCompra
+        '
+        Me.BTNEliminarCompra.Image = Global.WindowsApplication1.My.Resources.Resources.borrar
+        Me.BTNEliminarCompra.Location = New System.Drawing.Point(176, 390)
+        Me.BTNEliminarCompra.Margin = New System.Windows.Forms.Padding(4, 3, 4, 3)
+        Me.BTNEliminarCompra.Name = "BTNEliminarCompra"
+        Me.BTNEliminarCompra.Size = New System.Drawing.Size(38, 32)
+        Me.BTNEliminarCompra.TabIndex = 9
+        Me.ToolTip1.SetToolTip(Me.BTNEliminarCompra, "Eliminar Compra")
+        Me.BTNEliminarCompra.UseVisualStyleBackColor = True
+        '
+        'BTNPanelmodicompra
+        '
+        Me.BTNPanelmodicompra.Image = Global.WindowsApplication1.My.Resources.Resources.editar
+        Me.BTNPanelmodicompra.Location = New System.Drawing.Point(108, 390)
+        Me.BTNPanelmodicompra.Margin = New System.Windows.Forms.Padding(4, 3, 4, 3)
+        Me.BTNPanelmodicompra.Name = "BTNPanelmodicompra"
+        Me.BTNPanelmodicompra.Size = New System.Drawing.Size(38, 32)
+        Me.BTNPanelmodicompra.TabIndex = 7
+        Me.ToolTip1.SetToolTip(Me.BTNPanelmodicompra, "Modificar Compra")
+        Me.BTNPanelmodicompra.UseVisualStyleBackColor = True
+        '
+        'BTNPanelagregarcompra
+        '
+        Me.BTNPanelagregarcompra.Image = Global.WindowsApplication1.My.Resources.Resources.botoncompra
+        Me.BTNPanelagregarcompra.Location = New System.Drawing.Point(35, 390)
+        Me.BTNPanelagregarcompra.Margin = New System.Windows.Forms.Padding(4, 3, 4, 3)
+        Me.BTNPanelagregarcompra.Name = "BTNPanelagregarcompra"
+        Me.BTNPanelagregarcompra.Size = New System.Drawing.Size(38, 32)
+        Me.BTNPanelagregarcompra.TabIndex = 6
+        Me.ToolTip1.SetToolTip(Me.BTNPanelagregarcompra, "Agregar Compra")
+        Me.BTNPanelagregarcompra.UseVisualStyleBackColor = True
+        '
+        'BTNVolverdeagregarcompra
+        '
+        Me.BTNVolverdeagregarcompra.Image = Global.WindowsApplication1.My.Resources.Resources.flecha_hacia_la_izquierda
+        Me.BTNVolverdeagregarcompra.Location = New System.Drawing.Point(384, 402)
+        Me.BTNVolverdeagregarcompra.Margin = New System.Windows.Forms.Padding(4, 3, 4, 3)
+        Me.BTNVolverdeagregarcompra.Name = "BTNVolverdeagregarcompra"
+        Me.BTNVolverdeagregarcompra.Size = New System.Drawing.Size(38, 32)
+        Me.BTNVolverdeagregarcompra.TabIndex = 12
+        Me.ToolTip1.SetToolTip(Me.BTNVolverdeagregarcompra, "Volver")
+        Me.BTNVolverdeagregarcompra.UseVisualStyleBackColor = True
+        '
+        'BTNLimpiarcompraganado
+        '
+        Me.BTNLimpiarcompraganado.Image = Global.WindowsApplication1.My.Resources.Resources.goma_de_borrar
+        Me.BTNLimpiarcompraganado.Location = New System.Drawing.Point(435, 243)
+        Me.BTNLimpiarcompraganado.Margin = New System.Windows.Forms.Padding(4, 3, 4, 3)
+        Me.BTNLimpiarcompraganado.Name = "BTNLimpiarcompraganado"
+        Me.BTNLimpiarcompraganado.Size = New System.Drawing.Size(38, 32)
+        Me.BTNLimpiarcompraganado.TabIndex = 18
+        Me.ToolTip1.SetToolTip(Me.BTNLimpiarcompraganado, "Limpiar Campos")
+        Me.BTNLimpiarcompraganado.UseVisualStyleBackColor = True
+        '
+        'BTNAgregarcomraganado
+        '
+        Me.BTNAgregarcomraganado.Image = Global.WindowsApplication1.My.Resources.Resources.anadir
+        Me.BTNAgregarcomraganado.Location = New System.Drawing.Point(332, 243)
+        Me.BTNAgregarcomraganado.Margin = New System.Windows.Forms.Padding(4, 3, 4, 3)
+        Me.BTNAgregarcomraganado.Name = "BTNAgregarcomraganado"
+        Me.BTNAgregarcomraganado.Size = New System.Drawing.Size(38, 32)
+        Me.BTNAgregarcomraganado.TabIndex = 17
+        Me.ToolTip1.SetToolTip(Me.BTNAgregarcomraganado, "Agregar Compra")
+        Me.BTNAgregarcomraganado.UseVisualStyleBackColor = True
+        '
+        'BTNAgregarcompraproducto
+        '
+        Me.BTNAgregarcompraproducto.Image = Global.WindowsApplication1.My.Resources.Resources.anadir
+        Me.BTNAgregarcompraproducto.Location = New System.Drawing.Point(342, 234)
+        Me.BTNAgregarcompraproducto.Margin = New System.Windows.Forms.Padding(4, 3, 4, 3)
+        Me.BTNAgregarcompraproducto.Name = "BTNAgregarcompraproducto"
+        Me.BTNAgregarcompraproducto.Size = New System.Drawing.Size(38, 32)
+        Me.BTNAgregarcompraproducto.TabIndex = 14
+        Me.BTNAgregarcompraproducto.UseVisualStyleBackColor = True
+        '
+        'BTNclearagregarcompraproducto
+        '
+        Me.BTNclearagregarcompraproducto.Image = Global.WindowsApplication1.My.Resources.Resources.goma_de_borrar
+        Me.BTNclearagregarcompraproducto.Location = New System.Drawing.Point(424, 234)
+        Me.BTNclearagregarcompraproducto.Margin = New System.Windows.Forms.Padding(4, 3, 4, 3)
+        Me.BTNclearagregarcompraproducto.Name = "BTNclearagregarcompraproducto"
+        Me.BTNclearagregarcompraproducto.Size = New System.Drawing.Size(38, 32)
+        Me.BTNclearagregarcompraproducto.TabIndex = 15
+        Me.BTNclearagregarcompraproducto.UseVisualStyleBackColor = True
+        '
+        'BTNlimpiarmodicompra
+        '
+        Me.BTNlimpiarmodicompra.Image = Global.WindowsApplication1.My.Resources.Resources.goma_de_borrar
+        Me.BTNlimpiarmodicompra.Location = New System.Drawing.Point(700, 354)
+        Me.BTNlimpiarmodicompra.Margin = New System.Windows.Forms.Padding(4, 3, 4, 3)
+        Me.BTNlimpiarmodicompra.Name = "BTNlimpiarmodicompra"
+        Me.BTNlimpiarmodicompra.Size = New System.Drawing.Size(38, 32)
+        Me.BTNlimpiarmodicompra.TabIndex = 14
+        Me.ToolTip1.SetToolTip(Me.BTNlimpiarmodicompra, "Limpiar Campos")
+        Me.BTNlimpiarmodicompra.UseVisualStyleBackColor = True
+        '
+        'BTNsalirmodicompra
+        '
+        Me.BTNsalirmodicompra.Image = Global.WindowsApplication1.My.Resources.Resources.flecha_hacia_la_izquierda
+        Me.BTNsalirmodicompra.Location = New System.Drawing.Point(367, 400)
+        Me.BTNsalirmodicompra.Margin = New System.Windows.Forms.Padding(4, 3, 4, 3)
+        Me.BTNsalirmodicompra.Name = "BTNsalirmodicompra"
+        Me.BTNsalirmodicompra.Size = New System.Drawing.Size(38, 32)
+        Me.BTNsalirmodicompra.TabIndex = 13
+        Me.ToolTip1.SetToolTip(Me.BTNsalirmodicompra, "Volver")
+        Me.BTNsalirmodicompra.UseVisualStyleBackColor = True
+        '
+        'BTNAgregarmodificacion
+        '
+        Me.BTNAgregarmodificacion.Image = Global.WindowsApplication1.My.Resources.Resources.anadir
+        Me.BTNAgregarmodificacion.Location = New System.Drawing.Point(580, 354)
+        Me.BTNAgregarmodificacion.Margin = New System.Windows.Forms.Padding(4, 3, 4, 3)
+        Me.BTNAgregarmodificacion.Name = "BTNAgregarmodificacion"
+        Me.BTNAgregarmodificacion.Size = New System.Drawing.Size(38, 32)
+        Me.BTNAgregarmodificacion.TabIndex = 12
+        Me.ToolTip1.SetToolTip(Me.BTNAgregarmodificacion, "Agregar Modificación")
+        Me.BTNAgregarmodificacion.UseVisualStyleBackColor = True
+        '
+        'btnagregarpanel
+        '
+        Me.btnagregarpanel.FlatStyle = System.Windows.Forms.FlatStyle.Popup
+        Me.btnagregarpanel.Image = CType(resources.GetObject("btnagregarpanel.Image"), System.Drawing.Image)
+        Me.btnagregarpanel.Location = New System.Drawing.Point(88, 382)
+        Me.btnagregarpanel.Margin = New System.Windows.Forms.Padding(4, 3, 4, 3)
+        Me.btnagregarpanel.Name = "btnagregarpanel"
+        Me.btnagregarpanel.Size = New System.Drawing.Size(52, 42)
+        Me.btnagregarpanel.TabIndex = 94
+        Me.btnagregarpanel.UseVisualStyleBackColor = True
+        '
+        'btnañadiraganadounaventa
+        '
+        Me.btnañadiraganadounaventa.FlatStyle = System.Windows.Forms.FlatStyle.Popup
+        Me.btnañadiraganadounaventa.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btnañadiraganadounaventa.Image = CType(resources.GetObject("btnañadiraganadounaventa.Image"), System.Drawing.Image)
+        Me.btnañadiraganadounaventa.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
+        Me.btnañadiraganadounaventa.Location = New System.Drawing.Point(242, 309)
+        Me.btnañadiraganadounaventa.Margin = New System.Windows.Forms.Padding(4, 3, 4, 3)
+        Me.btnañadiraganadounaventa.Name = "btnañadiraganadounaventa"
+        Me.btnañadiraganadounaventa.Size = New System.Drawing.Size(248, 42)
+        Me.btnañadiraganadounaventa.TabIndex = 105
+        Me.btnañadiraganadounaventa.Text = "Añadir a ganado"
+        Me.btnañadiraganadounaventa.UseVisualStyleBackColor = True
+        '
+        'btnmodificarventa
+        '
+        Me.btnmodificarventa.Anchor = System.Windows.Forms.AnchorStyles.None
+        Me.btnmodificarventa.BackColor = System.Drawing.Color.ForestGreen
+        Me.btnmodificarventa.Cursor = System.Windows.Forms.Cursors.Hand
+        Me.btnmodificarventa.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.btnmodificarventa.Image = Global.WindowsApplication1.My.Resources.Resources.editar
+        Me.btnmodificarventa.Location = New System.Drawing.Point(0, 111)
+        Me.btnmodificarventa.Margin = New System.Windows.Forms.Padding(4, 3, 4, 3)
+        Me.btnmodificarventa.Name = "btnmodificarventa"
+        Me.btnmodificarventa.Size = New System.Drawing.Size(52, 42)
+        Me.btnmodificarventa.TabIndex = 80
+        Me.btnmodificarventa.UseVisualStyleBackColor = False
+        '
+        'btnborrarventa
+        '
+        Me.btnborrarventa.Anchor = System.Windows.Forms.AnchorStyles.None
+        Me.btnborrarventa.BackColor = System.Drawing.Color.ForestGreen
+        Me.btnborrarventa.Cursor = System.Windows.Forms.Cursors.Hand
+        Me.btnborrarventa.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.btnborrarventa.Image = Global.WindowsApplication1.My.Resources.Resources.borrar
+        Me.btnborrarventa.Location = New System.Drawing.Point(0, 65)
+        Me.btnborrarventa.Margin = New System.Windows.Forms.Padding(4, 3, 4, 3)
+        Me.btnborrarventa.Name = "btnborrarventa"
+        Me.btnborrarventa.Size = New System.Drawing.Size(52, 40)
+        Me.btnborrarventa.TabIndex = 85
+        Me.btnborrarventa.UseVisualStyleBackColor = False
+        '
+        'btnagregarventa
+        '
+        Me.btnagregarventa.Anchor = System.Windows.Forms.AnchorStyles.None
+        Me.btnagregarventa.BackColor = System.Drawing.Color.ForestGreen
+        Me.btnagregarventa.Cursor = System.Windows.Forms.Cursors.Hand
+        Me.btnagregarventa.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.btnagregarventa.Image = Global.WindowsApplication1.My.Resources.Resources.anadir
+        Me.btnagregarventa.Location = New System.Drawing.Point(0, 19)
+        Me.btnagregarventa.Margin = New System.Windows.Forms.Padding(4, 3, 4, 3)
+        Me.btnagregarventa.Name = "btnagregarventa"
+        Me.btnagregarventa.Size = New System.Drawing.Size(52, 40)
+        Me.btnagregarventa.TabIndex = 79
+        Me.btnagregarventa.UseVisualStyleBackColor = False
+        '
+        'btnclearventa
+        '
+        Me.btnclearventa.Anchor = System.Windows.Forms.AnchorStyles.None
+        Me.btnclearventa.BackColor = System.Drawing.Color.ForestGreen
+        Me.btnclearventa.Cursor = System.Windows.Forms.Cursors.Hand
+        Me.btnclearventa.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.btnclearventa.Image = Global.WindowsApplication1.My.Resources.Resources.goma_de_borrar
+        Me.btnclearventa.Location = New System.Drawing.Point(0, 159)
+        Me.btnclearventa.Margin = New System.Windows.Forms.Padding(4, 3, 4, 3)
+        Me.btnclearventa.Name = "btnclearventa"
+        Me.btnclearventa.Size = New System.Drawing.Size(52, 40)
+        Me.btnclearventa.TabIndex = 91
+        Me.btnclearventa.UseVisualStyleBackColor = False
+        '
+        'Button8
+        '
+        Me.Button8.FlatAppearance.BorderSize = 0
+        Me.Button8.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.Button8.Image = Global.WindowsApplication1.My.Resources.Resources.flecha_hacia_la_izquierda
+        Me.Button8.Location = New System.Drawing.Point(36, 380)
+        Me.Button8.Margin = New System.Windows.Forms.Padding(4, 3, 4, 3)
+        Me.Button8.Name = "Button8"
+        Me.Button8.Size = New System.Drawing.Size(40, 40)
+        Me.Button8.TabIndex = 20
+        Me.Button8.UseVisualStyleBackColor = True
+        '
+        'Button5
+        '
+        Me.Button5.FlatAppearance.BorderSize = 0
+        Me.Button5.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.Button5.Image = Global.WindowsApplication1.My.Resources.Resources.goma_de_borrar
+        Me.Button5.Location = New System.Drawing.Point(704, 378)
+        Me.Button5.Margin = New System.Windows.Forms.Padding(4, 3, 4, 3)
+        Me.Button5.Name = "Button5"
+        Me.Button5.Size = New System.Drawing.Size(40, 40)
+        Me.Button5.TabIndex = 19
+        Me.Button5.UseVisualStyleBackColor = True
+        '
+        'Button4
+        '
+        Me.Button4.FlatAppearance.BorderSize = 0
+        Me.Button4.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.Button4.Image = Global.WindowsApplication1.My.Resources.Resources._001_edit
+        Me.Button4.Location = New System.Drawing.Point(628, 378)
+        Me.Button4.Margin = New System.Windows.Forms.Padding(4, 3, 4, 3)
+        Me.Button4.Name = "Button4"
+        Me.Button4.Size = New System.Drawing.Size(40, 40)
+        Me.Button4.TabIndex = 18
+        Me.Button4.UseVisualStyleBackColor = True
+        '
+        'Button1
+        '
+        Me.Button1.FlatAppearance.BorderSize = 0
+        Me.Button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.Button1.Image = Global.WindowsApplication1.My.Resources.Resources._003_search
+        Me.Button1.Location = New System.Drawing.Point(285, 63)
+        Me.Button1.Margin = New System.Windows.Forms.Padding(4, 3, 4, 3)
+        Me.Button1.Name = "Button1"
+        Me.Button1.Size = New System.Drawing.Size(40, 40)
+        Me.Button1.TabIndex = 17
+        Me.ToolTip1.SetToolTip(Me.Button1, "BUSCAR CLIENTE")
+        Me.Button1.UseVisualStyleBackColor = True
+        '
+        'Button3
+        '
+        Me.Button3.FlatAppearance.BorderSize = 0
+        Me.Button3.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.Button3.Image = Global.WindowsApplication1.My.Resources.Resources.boton_volver
+        Me.Button3.Location = New System.Drawing.Point(728, 80)
+        Me.Button3.Name = "Button3"
+        Me.Button3.Size = New System.Drawing.Size(40, 40)
+        Me.Button3.TabIndex = 20
+        Me.ToolTip1.SetToolTip(Me.Button3, "Cargar clientes")
+        Me.Button3.UseVisualStyleBackColor = True
+        '
+        'BTNBuscarcliente
+        '
+        Me.BTNBuscarcliente.FlatAppearance.BorderSize = 0
+        Me.BTNBuscarcliente.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.BTNBuscarcliente.Image = Global.WindowsApplication1.My.Resources.Resources._003_search
+        Me.BTNBuscarcliente.Location = New System.Drawing.Point(728, 17)
+        Me.BTNBuscarcliente.Margin = New System.Windows.Forms.Padding(4, 3, 4, 3)
+        Me.BTNBuscarcliente.Name = "BTNBuscarcliente"
+        Me.BTNBuscarcliente.Size = New System.Drawing.Size(40, 40)
+        Me.BTNBuscarcliente.TabIndex = 18
+        Me.ToolTip1.SetToolTip(Me.BTNBuscarcliente, "Buscar cliente")
+        Me.BTNBuscarcliente.UseVisualStyleBackColor = True
+        '
+        'BTNPanelmodificarcliente
+        '
+        Me.BTNPanelmodificarcliente.FlatAppearance.BorderSize = 0
+        Me.BTNPanelmodificarcliente.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.BTNPanelmodificarcliente.Image = Global.WindowsApplication1.My.Resources.Resources._008_user
+        Me.BTNPanelmodificarcliente.Location = New System.Drawing.Point(105, 389)
+        Me.BTNPanelmodificarcliente.Margin = New System.Windows.Forms.Padding(4, 3, 4, 3)
+        Me.BTNPanelmodificarcliente.Name = "BTNPanelmodificarcliente"
+        Me.BTNPanelmodificarcliente.Size = New System.Drawing.Size(40, 40)
+        Me.BTNPanelmodificarcliente.TabIndex = 15
+        Me.ToolTip1.SetToolTip(Me.BTNPanelmodificarcliente, "Editar cliente")
+        Me.BTNPanelmodificarcliente.UseVisualStyleBackColor = True
+        '
+        'BTNEliminarcliente
+        '
+        Me.BTNEliminarcliente.FlatAppearance.BorderSize = 0
+        Me.BTNEliminarcliente.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.BTNEliminarcliente.Image = Global.WindowsApplication1.My.Resources.Resources._006_remove_user
+        Me.BTNEliminarcliente.Location = New System.Drawing.Point(173, 389)
+        Me.BTNEliminarcliente.Margin = New System.Windows.Forms.Padding(4, 3, 4, 3)
+        Me.BTNEliminarcliente.Name = "BTNEliminarcliente"
+        Me.BTNEliminarcliente.Size = New System.Drawing.Size(40, 40)
+        Me.BTNEliminarcliente.TabIndex = 14
+        Me.ToolTip1.SetToolTip(Me.BTNEliminarcliente, "Eliminar cliente")
+        Me.BTNEliminarcliente.UseVisualStyleBackColor = True
+        '
+        'BTNPanelagregarcliente
+        '
+        Me.BTNPanelagregarcliente.FlatAppearance.BorderSize = 0
+        Me.BTNPanelagregarcliente.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.BTNPanelagregarcliente.Image = Global.WindowsApplication1.My.Resources.Resources._007_add_user
+        Me.BTNPanelagregarcliente.Location = New System.Drawing.Point(36, 388)
+        Me.BTNPanelagregarcliente.Margin = New System.Windows.Forms.Padding(4, 3, 4, 3)
+        Me.BTNPanelagregarcliente.Name = "BTNPanelagregarcliente"
+        Me.BTNPanelagregarcliente.Size = New System.Drawing.Size(40, 40)
+        Me.BTNPanelagregarcliente.TabIndex = 13
+        Me.ToolTip1.SetToolTip(Me.BTNPanelagregarcliente, "Añadir cliente")
+        Me.BTNPanelagregarcliente.UseVisualStyleBackColor = True
+        '
+        'BTNVolveragregarcliente
+        '
+        Me.BTNVolveragregarcliente.FlatAppearance.BorderSize = 0
+        Me.BTNVolveragregarcliente.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.BTNVolveragregarcliente.Image = Global.WindowsApplication1.My.Resources.Resources.flecha_hacia_la_izquierda
+        Me.BTNVolveragregarcliente.Location = New System.Drawing.Point(395, 392)
+        Me.BTNVolveragregarcliente.Margin = New System.Windows.Forms.Padding(4, 3, 4, 3)
+        Me.BTNVolveragregarcliente.Name = "BTNVolveragregarcliente"
+        Me.BTNVolveragregarcliente.Size = New System.Drawing.Size(40, 40)
+        Me.BTNVolveragregarcliente.TabIndex = 21
+        Me.BTNVolveragregarcliente.UseVisualStyleBackColor = True
+        '
+        'BTNClearclientes
+        '
+        Me.BTNClearclientes.FlatAppearance.BorderSize = 0
+        Me.BTNClearclientes.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.BTNClearclientes.Image = Global.WindowsApplication1.My.Resources.Resources.goma_de_borrar
+        Me.BTNClearclientes.Location = New System.Drawing.Point(458, 321)
+        Me.BTNClearclientes.Margin = New System.Windows.Forms.Padding(4, 3, 4, 3)
+        Me.BTNClearclientes.Name = "BTNClearclientes"
+        Me.BTNClearclientes.Size = New System.Drawing.Size(40, 40)
+        Me.BTNClearclientes.TabIndex = 20
+        Me.BTNClearclientes.UseVisualStyleBackColor = True
+        '
+        'BTNAgregarclientes
+        '
+        Me.BTNAgregarclientes.FlatAppearance.BorderSize = 0
+        Me.BTNAgregarclientes.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.BTNAgregarclientes.Image = Global.WindowsApplication1.My.Resources.Resources._019_confirm_1
+        Me.BTNAgregarclientes.Location = New System.Drawing.Point(329, 321)
+        Me.BTNAgregarclientes.Margin = New System.Windows.Forms.Padding(4, 3, 4, 3)
+        Me.BTNAgregarclientes.Name = "BTNAgregarclientes"
+        Me.BTNAgregarclientes.Size = New System.Drawing.Size(40, 40)
+        Me.BTNAgregarclientes.TabIndex = 19
+        Me.BTNAgregarclientes.UseVisualStyleBackColor = True
+        '
+        'BTNAceptarUsuarios
+        '
+        Me.BTNAceptarUsuarios.FlatAppearance.BorderSize = 0
+        Me.BTNAceptarUsuarios.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.BTNAceptarUsuarios.Image = Global.WindowsApplication1.My.Resources.Resources._018_confirm
+        Me.BTNAceptarUsuarios.Location = New System.Drawing.Point(259, 361)
+        Me.BTNAceptarUsuarios.Margin = New System.Windows.Forms.Padding(4, 3, 4, 3)
+        Me.BTNAceptarUsuarios.Name = "BTNAceptarUsuarios"
+        Me.BTNAceptarUsuarios.Size = New System.Drawing.Size(70, 72)
+        Me.BTNAceptarUsuarios.TabIndex = 17
+        Me.ToolTip1.SetToolTip(Me.BTNAceptarUsuarios, "ACEPTAR")
+        Me.BTNAceptarUsuarios.UseVisualStyleBackColor = True
+        Me.BTNAceptarUsuarios.Visible = False
+        '
+        'BTNCancelarUsuarios
+        '
+        Me.BTNCancelarUsuarios.FlatAppearance.BorderSize = 0
+        Me.BTNCancelarUsuarios.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.BTNCancelarUsuarios.Image = Global.WindowsApplication1.My.Resources.Resources._017_cancel_button
+        Me.BTNCancelarUsuarios.Location = New System.Drawing.Point(100, 360)
+        Me.BTNCancelarUsuarios.Margin = New System.Windows.Forms.Padding(4, 3, 4, 3)
+        Me.BTNCancelarUsuarios.Name = "BTNCancelarUsuarios"
+        Me.BTNCancelarUsuarios.Size = New System.Drawing.Size(70, 72)
+        Me.BTNCancelarUsuarios.TabIndex = 16
+        Me.ToolTip1.SetToolTip(Me.BTNCancelarUsuarios, "CANCELAR")
+        Me.BTNCancelarUsuarios.UseVisualStyleBackColor = True
+        Me.BTNCancelarUsuarios.Visible = False
+        '
+        'BTNModificarUsuarios
+        '
+        Me.BTNModificarUsuarios.DialogResult = System.Windows.Forms.DialogResult.Cancel
+        Me.BTNModificarUsuarios.FlatAppearance.BorderSize = 0
+        Me.BTNModificarUsuarios.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.BTNModificarUsuarios.Image = Global.WindowsApplication1.My.Resources.Resources._009_edit_2
+        Me.BTNModificarUsuarios.Location = New System.Drawing.Point(179, 361)
+        Me.BTNModificarUsuarios.Margin = New System.Windows.Forms.Padding(4, 3, 4, 3)
+        Me.BTNModificarUsuarios.Name = "BTNModificarUsuarios"
+        Me.BTNModificarUsuarios.Size = New System.Drawing.Size(70, 72)
+        Me.BTNModificarUsuarios.TabIndex = 14
+        Me.ToolTip1.SetToolTip(Me.BTNModificarUsuarios, "EDITAR USUARIO")
+        Me.BTNModificarUsuarios.UseVisualStyleBackColor = True
+        '
+        'BTNEliminarUsuarios
+        '
+        Me.BTNEliminarUsuarios.FlatAppearance.BorderSize = 0
+        Me.BTNEliminarUsuarios.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.BTNEliminarUsuarios.Image = Global.WindowsApplication1.My.Resources.Resources._016_remove_user_1
+        Me.BTNEliminarUsuarios.Location = New System.Drawing.Point(340, 360)
+        Me.BTNEliminarUsuarios.Margin = New System.Windows.Forms.Padding(4, 3, 4, 3)
+        Me.BTNEliminarUsuarios.Name = "BTNEliminarUsuarios"
+        Me.BTNEliminarUsuarios.Size = New System.Drawing.Size(70, 72)
+        Me.BTNEliminarUsuarios.TabIndex = 13
+        Me.ToolTip1.SetToolTip(Me.BTNEliminarUsuarios, "ELIMINAR USUARIO")
+        Me.BTNEliminarUsuarios.UseVisualStyleBackColor = True
+        '
+        'BTNAgregarUsuarios
+        '
+        Me.BTNAgregarUsuarios.FlatAppearance.BorderSize = 0
+        Me.BTNAgregarUsuarios.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.BTNAgregarUsuarios.Image = Global.WindowsApplication1.My.Resources.Resources._011_new_user
+        Me.BTNAgregarUsuarios.Location = New System.Drawing.Point(21, 360)
+        Me.BTNAgregarUsuarios.Margin = New System.Windows.Forms.Padding(4, 3, 4, 3)
+        Me.BTNAgregarUsuarios.Name = "BTNAgregarUsuarios"
+        Me.BTNAgregarUsuarios.Size = New System.Drawing.Size(70, 72)
+        Me.BTNAgregarUsuarios.TabIndex = 12
+        Me.ToolTip1.SetToolTip(Me.BTNAgregarUsuarios, "AGREGAR USUARIO")
+        Me.BTNAgregarUsuarios.UseVisualStyleBackColor = True
+        '
+        'BTNBusquedaUsuarios
+        '
+        Me.BTNBusquedaUsuarios.FlatAppearance.BorderSize = 0
+        Me.BTNBusquedaUsuarios.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.BTNBusquedaUsuarios.Image = Global.WindowsApplication1.My.Resources.Resources._003_search
+        Me.BTNBusquedaUsuarios.Location = New System.Drawing.Point(367, 4)
+        Me.BTNBusquedaUsuarios.Margin = New System.Windows.Forms.Padding(4, 3, 4, 3)
+        Me.BTNBusquedaUsuarios.Name = "BTNBusquedaUsuarios"
+        Me.BTNBusquedaUsuarios.Size = New System.Drawing.Size(40, 40)
+        Me.BTNBusquedaUsuarios.TabIndex = 2
+        Me.ToolTip1.SetToolTip(Me.BTNBusquedaUsuarios, "BUSCAR")
+        Me.BTNBusquedaUsuarios.UseVisualStyleBackColor = True
+        '
         'PICUsuarios
         '
+        Me.PICUsuarios.BackColor = System.Drawing.Color.Black
         Me.PICUsuarios.Enabled = False
         Me.PICUsuarios.InitialImage = Nothing
         Me.PICUsuarios.Location = New System.Drawing.Point(438, 47)
@@ -2399,6 +2438,18 @@ Partial Class Programa
         Me.PICUsuarios.Size = New System.Drawing.Size(105, 90)
         Me.PICUsuarios.TabIndex = 22
         Me.PICUsuarios.TabStop = False
+        '
+        'PICUsuarioLogueado
+        '
+        Me.PICUsuarioLogueado.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.PICUsuarioLogueado.Image = CType(resources.GetObject("PICUsuarioLogueado.Image"), System.Drawing.Image)
+        Me.PICUsuarioLogueado.InitialImage = Nothing
+        Me.PICUsuarioLogueado.Location = New System.Drawing.Point(8, 8)
+        Me.PICUsuarioLogueado.Margin = New System.Windows.Forms.Padding(4, 3, 4, 3)
+        Me.PICUsuarioLogueado.Name = "PICUsuarioLogueado"
+        Me.PICUsuarioLogueado.Size = New System.Drawing.Size(104, 90)
+        Me.PICUsuarioLogueado.TabIndex = 14
+        Me.PICUsuarioLogueado.TabStop = False
         '
         'Programa
         '
@@ -2421,7 +2472,6 @@ Partial Class Programa
         Me.Text = "  GESTIÓN Y CONTROL GANADERO"
         Me.PanelUsuario.ResumeLayout(False)
         Me.PanelUsuario.PerformLayout()
-        CType(Me.PICUsuarioLogueado, System.ComponentModel.ISupportInitialize).EndInit()
         Me.TabbedPane.ResumeLayout(False)
         Me.TabGanado.ResumeLayout(False)
         Me.GroupBox1.ResumeLayout(False)
@@ -2447,8 +2497,6 @@ Partial Class Programa
         Me.paneldeventasagregar.ResumeLayout(False)
         CType(Me.DataGridViewVENTAS, System.ComponentModel.ISupportInitialize).EndInit()
         Me.TabClientes.ResumeLayout(False)
-        Me.PanelAgregarcliente.ResumeLayout(False)
-        Me.PanelAgregarcliente.PerformLayout()
         Me.PanelModificarclientes.ResumeLayout(False)
         Me.PanelModificarclientes.PerformLayout()
         Me.GroupBox2.ResumeLayout(False)
@@ -2457,12 +2505,15 @@ Partial Class Programa
         Me.PanelPrincipalclientes.ResumeLayout(False)
         Me.PanelPrincipalclientes.PerformLayout()
         CType(Me.DataGridViewClientes, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.PanelAgregarcliente.ResumeLayout(False)
+        Me.PanelAgregarcliente.PerformLayout()
         Me.TabUsuarios.ResumeLayout(False)
         Me.TabUsuarios.PerformLayout()
         Me.PNLUsuarios.ResumeLayout(False)
         Me.PNLUsuarios.PerformLayout()
         CType(Me.DGVUsuarios, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.PICUsuarios, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.PICUsuarioLogueado, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
 
     End Sub

@@ -197,6 +197,24 @@
   <ItemGroup>
     <None Include="Resources\003-search.png" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\011-new-user.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\009-edit-2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\016-remove-user-1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\018-confirm.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\017-cancel-button.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\002-person.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

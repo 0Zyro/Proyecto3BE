@@ -1506,8 +1506,9 @@ Public Class Programa
 
                 'Cambiamos los headers
                 DataGridViewganado.Columns(0).HeaderText = "Codigo de ganado"
-                DataGridViewganado.Columns(1).HeaderText = "Raza"
-                DataGridViewganado.Columns(2).HeaderText = "Sexo"
+                DataGridViewganado.Columns(1).HeaderText = "Sexo"
+                DataGridViewganado.Columns(2).HeaderText = "Raza"
+
                 DataGridViewganado.Columns(3).HeaderText = "Fecha nacimiento"
                 DataGridViewganado.Columns(4).HeaderText = "Estado"
 
