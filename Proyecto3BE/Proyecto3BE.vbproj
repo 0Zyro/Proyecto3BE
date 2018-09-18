@@ -215,6 +215,33 @@
   <ItemGroup>
     <None Include="Resources\002-person.png" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\database.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\blackberry-qr-code-variant.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\cow.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\003-keyboard-key-s.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\001-letter-r-key-on-keyboard.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\hide.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\hide %281%29.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\cow %282%29.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

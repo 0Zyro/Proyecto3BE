@@ -664,7 +664,134 @@ Public Class Programa
   
     '''////////////////////////////////////////INICIO DE GANADO///////////////////////////////////////////////////////////////////
 
+    '''/////////////////////// MUESTRA EN EL DRATAGRID LA RAZA  Y EL SEXO SELECCIONAD0 EN EL COMBOBOX/////////////////////////////////////
+    ''' ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    Private Sub BOTONseleccionarRaza_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles BOTONseleccionarRaza.Click
+        If CBXseleccionarRaza.Text <> "" And CBXseleccionarSexo.Text <> "" Then
+            If CBXseleccionarSexo.Text = "Ambos" Then
+                Try
+                    Consulta = " SELECT idg,sexo,raza,nacimiento,estado from ganado where raza= '" + CBXseleccionarRaza.SelectedItem + "'"
+                    consultar()
+                    DataGridViewganado.DataSource = Tabla
 
+                    DataGridViewganado.Focus()
+                    CBXseleccionarRaza.Text = ""
+                    CBXseleccionarSexo.Text = ""
+
+                Catch ex As Exception
+                    MsgBox(ex.ToString)
+
+                End Try
+
+            ElseIf CBXseleccionarSexo.Text = "Macho" Then
+
+                Try
+                    Consulta = " SELECT idg,sexo,raza,nacimiento,estado from ganado where raza= '" + CBXseleccionarRaza.SelectedItem + "' And sexo = 'Macho' "
+                    consultar()
+                    DataGridViewganado.DataSource = Tabla
+
+                    DataGridViewganado.Focus()
+                    CBXseleccionarRaza.Text = ""
+                    CBXseleccionarSexo.Text = ""
+
+                Catch ex As Exception
+                    MsgBox(ex.ToString)
+
+                End Try
+
+            ElseIf CBXseleccionarSexo.Text = "Hembra" Then
+                Try
+                    Consulta = " SELECT idg,sexo,raza,nacimiento,estado from ganado where raza= '" + CBXseleccionarRaza.SelectedItem + "' And sexo = 'Hembra'"
+                    consultar()
+                    DataGridViewganado.DataSource = Tabla
+
+                    DataGridViewganado.Focus()
+                    CBXseleccionarRaza.Text = ""
+                    CBXseleccionarSexo.Text = ""
+
+                Catch ex As Exception
+                    MsgBox(ex.ToString)
+
+                End Try
+
+            End If
+        Else
+            MsgBox(" Debe seleccionar sexo y raza ", MsgBoxStyle.Critical, Title:=" Error ")
+
+        End If
+    End Sub
+
+
+
+    Private Sub BTNBuscarcliente_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles BTNBuscarcliente.Click
+        Consulta = " select * from cliente where id= '" + txtBUSCARcedula.Text + "'"
+        consultar()
+        DataGridViewClientes.DataSource = Tabla
+
+    End Sub
+
+    Private Sub Button3_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Button3.Click
+        Consulta = " select * from cliente "
+        consultar()
+
+        DataGridViewClientes.DataSource = Tabla
+
+        txtBUSCARcedula.Clear()
+
+    End Sub
+
+    '''///////////////////////////////////////// ABRE PANEL DE BUSQUEDA POR NACIEMIENTO
+    Private Sub BOTONpanelBuscarNacimiento_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles BOTONpanelBuscarNacimiento.Click
+        PanelBuscarFechaNacimiento.Visible = True
+    End Sub
+
+
+    '''/////////////////////////////// ABRE PANEL DE BUSQUEDA DE SEXO Y RAZA //////////////////////////////////////////////////////
+    ''' ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    Private Sub BOTONpanelSexoRaza_Click_1(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles BOTONpanelSexoRaza.Click
+        PanelBuscarSexoRaza.Visible = True
+    End Sub
+
+
+    '''///////////////////////////////////// VUELVE INVISIBLE EL PANEL DE BUSQUEQUE DE SEXO  Y RAZA//////////////////////////////
+    ''' //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    Private Sub BOTONocultarSexoRaza_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles BOTONocultarSexoRaza.Click
+
+        PanelBuscarSexoRaza.Visible = False
+
+    End Sub
+
+    '''//////////////////// OCULTA PANEL DE BUSQUE DE FACHA DE NACIMIENTO/////////////////////////////
+    ''' /////////////////////////////////////////////////////////////////////////////////////////////
+    Private Sub BOTONocultarPanelFechaG_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles BOTONocultarPanelFechaG.Click
+        PanelBuscarFechaNacimiento.Visible = False
+    End Sub
+
+  
+
+    '''////////////////////// BUSCA GANADO  POR FECHA DE NACIEMNTO//////////////////////////
+    ''' ////////////////////////////////////////////////////////////////////////////////////
+    Private Sub BuscarFechaGanado_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles BuscarFechaGanado.Click
+        Dim fecha As String = DateTimeBuscarFechaGanado.Value.ToString("yyyy-MM-dd")
+        Consulta = "select idg,sexo,raza,nacimiento,estado from ganado where nacimiento ='" + fecha + "'"
+        consultar()
+        DataGridViewganado.DataSource = Tabla
+
+        DataGridViewganado.Focus()
+
+        'Cambiamos los headers
+        DataGridViewganado.Columns(0).HeaderText = "Codigo de ganado"
+        DataGridViewganado.Columns(1).HeaderText = "Sexo"
+        DataGridViewganado.Columns(2).HeaderText = "Raza"
+
+        DataGridViewganado.Columns(3).HeaderText = "Fecha nacimiento"
+        DataGridViewganado.Columns(4).HeaderText = "Estado"
+
+        DataGridViewganado.Focus()
+
+
+    End Sub
+  
 
     '''/////////////////BOTON QUE ACTIVA EL BOTOS GUARDAR GANADO PARA AGREGAR////////////////////////////////////////
     ''' ////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -842,11 +969,10 @@ Public Class Programa
         CBXguardarsexo.Enabled = True
         CBXguardarRaza.Enabled = True
         DTPAgregarGanado.Enabled = True
-        Texcodigoganado.Enabled = True
-
-        Texcodigoganado.Focus()
+        Texcodigoganado.Enabled = False
 
         Texestadoganado.Enabled = True
+        DataGridViewganado.Focus()
         BOTONabrirModificar.Enabled = False
         'CBXguardarsexo.Text = ""
         'CBXguardarRaza.Text = ""
@@ -934,6 +1060,14 @@ Public Class Programa
             Consulta = " SELECT idg,sexo,raza,nacimiento,estado from ganado "
             consultar()
             DataGridViewganado.DataSource = Tabla
+
+            'Cambiamos los headers
+            DataGridViewganado.Columns(0).HeaderText = "Codigo de ganado"
+            DataGridViewganado.Columns(1).HeaderText = "Sexo"
+            DataGridViewganado.Columns(2).HeaderText = "Raza"
+
+            DataGridViewganado.Columns(3).HeaderText = "Fecha nacimiento"
+            DataGridViewganado.Columns(4).HeaderText = "Estado"
 
             DataGridViewganado.Focus()
 
@@ -1823,55 +1957,7 @@ Public Class Programa
     End Sub
 
 
-    '''/////////////////////// MUESTRA EN EL DRATAGRID EL SEXO SELECCIONADO EN EL COMBOBOX/////////////////////////////////////
-    ''' ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-    Private Sub BOTONseleccionarSexo_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles BOTONseleccionarSexo.Click
-        Try
-            Consulta = " SELECT idg,sexo,raza,nacimiento,estado from ganado where sexo= '" + CBXselecionarSexo.SelectedItem + "'"
-            consultar()
-            DataGridViewganado.DataSource = Tabla
-            DataGridViewganado.Focus()
-            CBXselecionarSexo.Text = ""
-
-        Catch ex As Exception
-            MsgBox(ex.ToString)
-        End Try
-    End Sub
-    '''/////////////////////// MUESTRA EN EL DRATAGRID LA RAZA SELECCIONADA EN EL COMBOBOX/////////////////////////////////////
-    ''' ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-    Private Sub BOTONseleccionarRaza_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles BOTONseleccionarRaza.Click
-        Try
-            Consulta = " SELECT idg,sexo,raza,nacimiento,estado from ganado where raza= '" + CBXseleccionarRaza.SelectedItem + "'"
-            consultar()
-            DataGridViewganado.DataSource = Tabla
-
-            DataGridViewganado.Focus()
-
-            CBXseleccionarRaza.Text = ""
-
-        Catch ex As Exception
-            MsgBox(ex.ToString)
-        End Try
-    End Sub
-    
-
   
-    Private Sub BTNBuscarcliente_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles BTNBuscarcliente.Click
-        Consulta = " select * from cliente where id= '" + txtBUSCARcedula.Text + "'"
-        consultar()
-        DataGridViewClientes.DataSource = Tabla
-
-    End Sub
-
-    Private Sub Button3_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Button3.Click
-        Consulta = " select * from cliente "
-        consultar()
-
-        DataGridViewClientes.DataSource = Tabla
-
-        txtBUSCARcedula.Clear()
-
-    End Sub
-
    
+    
 End Class

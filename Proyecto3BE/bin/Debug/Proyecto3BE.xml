@@ -6,7 +6,30 @@ Proyecto3BE
 </name>
 </assembly>
 <members>
-<member name="M:WindowsApplication1.Programa.Button9_Click(System.Object,System.EventArgs)">
+<member name="M:WindowsApplication1.Programa.BOTONseleccionarRaza_Click(System.Object,System.EventArgs)">
+/////////////////////// MUESTRA EN EL DRATAGRID LA RAZA  Y EL SEXO SELECCIONAD0 EN EL COMBOBOX/////////////////////////////////////
+ ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+</member><member name="M:WindowsApplication1.Programa.BOTONpanelBuscarNacimiento_Click(System.Object,System.EventArgs)">
+///////////////////////////////////////// ABRE PANEL DE BUSQUEDA POR NACIEMIENTO
+
+</member><member name="M:WindowsApplication1.Programa.BOTONpanelSexoRaza_Click_1(System.Object,System.EventArgs)">
+/////////////////////////////// ABRE PANEL DE BUSQUEDA DE SEXO Y RAZA //////////////////////////////////////////////////////
+ ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+</member><member name="M:WindowsApplication1.Programa.BOTONocultarSexoRaza_Click(System.Object,System.EventArgs)">
+///////////////////////////////////// VUELVE INVISIBLE EL PANEL DE BUSQUEQUE DE SEXO  Y RAZA//////////////////////////////
+ //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+</member><member name="M:WindowsApplication1.Programa.BOTONocultarPanelFechaG_Click(System.Object,System.EventArgs)">
+//////////////////// OCULTA PANEL DE BUSQUE DE FACHA DE NACIMIENTO/////////////////////////////
+ /////////////////////////////////////////////////////////////////////////////////////////////
+
+</member><member name="M:WindowsApplication1.Programa.BuscarFechaGanado_Click(System.Object,System.EventArgs)">
+////////////////////// BUSCA GANADO  POR FECHA DE NACIEMNTO//////////////////////////
+ ////////////////////////////////////////////////////////////////////////////////////
+
+</member><member name="M:WindowsApplication1.Programa.Button9_Click(System.Object,System.EventArgs)">
 /////////////////BOTON QUE ACTIVA EL BOTOS GUARDAR GANADO PARA AGREGAR////////////////////////////////////////
  ////////////////////////////////////////////////////////////////////////////////////////////////////////////
  
@@ -40,14 +63,6 @@ Proyecto3BE
 ////////////////////////////PARA VOLVER A MOSTRAR DATOS COMPLETOS DE GANADO EN EL DATAGRID///////////////////
  ///////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-</member><member name="M:WindowsApplication1.Programa.BOTONseleccionarSexo_Click(System.Object,System.EventArgs)">
-/////////////////////// MUESTRA EN EL DRATAGRID EL SEXO SELECCIONADO EN EL COMBOBOX/////////////////////////////////////
- ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
-</member><member name="M:WindowsApplication1.Programa.BOTONseleccionarRaza_Click(System.Object,System.EventArgs)">
-/////////////////////// MUESTRA EN EL DRATAGRID LA RAZA SELECCIONADA EN EL COMBOBOX/////////////////////////////////////
- ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
 </member><member name="P:WindowsApplication1.My.Resources.Resources.ResourceManager">
 	<summary>
   Returns the cached ResourceManager instance used by this class.
@@ -61,7 +76,15 @@ Proyecto3BE
 	<summary>
   Looks up a localized resource of type System.Drawing.Bitmap.
 </summary>
+</member><member name="P:WindowsApplication1.My.Resources.Resources._001_letter_r_key_on_keyboard">
+	<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
 </member><member name="P:WindowsApplication1.My.Resources.Resources._002_person">
+	<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member><member name="P:WindowsApplication1.My.Resources.Resources._003_keyboard_key_s">
 	<summary>
   Looks up a localized resource of type System.Drawing.Bitmap.
 </summary>
@@ -121,6 +144,10 @@ Proyecto3BE
 	<summary>
   Looks up a localized resource of type System.Drawing.Bitmap.
 </summary>
+</member><member name="P:WindowsApplication1.My.Resources.Resources.blackberry_qr_code_variant">
+	<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
 </member><member name="P:WindowsApplication1.My.Resources.Resources.borrar">
 	<summary>
   Looks up a localized resource of type System.Drawing.Bitmap.
@@ -145,6 +172,18 @@ Proyecto3BE
 	<summary>
   Looks up a localized resource of type System.Drawing.Bitmap.
 </summary>
+</member><member name="P:WindowsApplication1.My.Resources.Resources.cow">
+	<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member><member name="P:WindowsApplication1.My.Resources.Resources.cow__2_">
+	<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member><member name="P:WindowsApplication1.My.Resources.Resources.database">
+	<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
 </member><member name="P:WindowsApplication1.My.Resources.Resources.editar">
 	<summary>
   Looks up a localized resource of type System.Drawing.Bitmap.
@@ -154,6 +193,18 @@ Proyecto3BE
   Looks up a localized resource of type System.Drawing.Bitmap.
 </summary>
 </member><member name="P:WindowsApplication1.My.Resources.Resources.goma_de_borrar">
+	<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member><member name="P:WindowsApplication1.My.Resources.Resources.hide">
+	<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member><member name="P:WindowsApplication1.My.Resources.Resources.hide__1_">
+	<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member><member name="P:WindowsApplication1.My.Resources.Resources.icon">
 	<summary>
   Looks up a localized resource of type System.Drawing.Bitmap.
 </summary>
