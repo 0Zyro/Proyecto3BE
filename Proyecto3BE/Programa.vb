@@ -670,7 +670,7 @@ Public Class Programa
         If CBXseleccionarRaza.Text <> "" And CBXseleccionarSexo.Text <> "" Then
             If CBXseleccionarSexo.Text = "Ambos" Then
                 Try
-                    Consulta = " SELECT idg,sexo,raza,nacimiento,estado from ganado where raza= '" + CBXseleccionarRaza.SelectedItem + "'"
+                    Consulta = " SELECT idg,sexo,raza,nacimiento,estado, TIMESTAMPDIFF(YEAR,nacimiento,CURDATE()) AS 'Edad' from ganado where raza= '" + CBXseleccionarRaza.SelectedItem + "'"
                     consultar()
                     DataGridViewganado.DataSource = Tabla
 
@@ -744,9 +744,11 @@ Public Class Programa
     '''/////////////////////// ABRI PANEL BUSCAR CODIGO GANADO ////////////////////////////
     ''' ////////////////////////////////////////////////////////////////////////////////////
     Private Sub BOTONpanelCodigo_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles BOTONpanelCodigo.Click
+
         PanelBuscarSexoRaza.Visible = False
         PanelBuscarFechaNacimiento.Visible = False
         PanelBuscarCodGanado.Visible = True
+        txtBuscarCodGanado.Focus()
 
     End Sub
 
@@ -800,7 +802,7 @@ Public Class Programa
     ''' /////////////////////////////////////////////////////////////////////////////////////////////////////////
 
     Private Sub BOTONbuscaCodGanado_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles BOTONbuscaCodGanado.Click
-        Consulta = " select idg,sexo,raza,nacimiento,estado from ganado where idg ='" + txtBuscarCodGanado.Text + "'"
+        Consulta = " select idg,sexo,raza,nacimiento,estado,  TIMESTAMPDIFF(YEAR,nacimiento,CURDATE()) AS 'Edad' from ganado where idg ='" + txtBuscarCodGanado.Text + "'"
         consultar()
         DataGridViewganado.DataSource = Tabla
 
@@ -822,7 +824,7 @@ Public Class Programa
     ''' ////////////////////////////////////////////////////////////////////////////////////
     Private Sub BuscarFechaGanado_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles BuscarFechaGanado.Click
         Dim fecha As String = DateTimeBuscarFechaGanado.Value.ToString("yyyy-MM-dd")
-        Consulta = "select idg,sexo,raza,nacimiento,estado from ganado where nacimiento ='" + fecha + "'"
+        Consulta = "select idg,sexo,raza,nacimiento,estado,TIMESTAMPDIFF(YEAR,nacimiento,CURDATE()) AS 'Edad' from ganado where nacimiento ='" + fecha + "'"
         consultar()
         DataGridViewganado.DataSource = Tabla
 
@@ -918,7 +920,7 @@ Public Class Programa
                         consultar()
 
 
-                        Consulta = " select idg,sexo,raza,nacimiento,estado from ganado"
+                        Consulta = "select idg,sexo,raza,nacimiento,estado, TIMESTAMPDIFF(YEAR,nacimiento,CURDATE()) AS 'Edad' from ganado"
                         consultar()
 
                         DataGridViewganado.DataSource = Tabla
@@ -982,7 +984,7 @@ Public Class Programa
                                                   "',estado= '" + estado +
                                                   "' where idg= '" + idg + "'"
                         consultar()
-                        Consulta = "select idg,sexo,raza,nacimiento,estado from ganado"
+                        Consulta = "select idg,sexo,raza,nacimiento,estado, TIMESTAMPDIFF(YEAR,nacimiento,CURDATE()) AS 'Edad' from ganado"
                         consultar()
                         DataGridViewganado.DataSource = Tabla
                         Texcodigoganado.Clear()
@@ -1089,7 +1091,7 @@ Public Class Programa
                 consultar()
 
 
-                Consulta = " select idg,sexo,raza,nacimiento,estado from ganado"
+                Consulta = "select idg,sexo,raza,nacimiento,estado, TIMESTAMPDIFF(YEAR,nacimiento,CURDATE()) AS 'Edad' from ganado"
                 consultar()
                 DataGridViewganado.DataSource = Tabla
 
@@ -1106,7 +1108,7 @@ Public Class Programa
     ''' ///////////////////////////////////////////////////////////////////////////////////////////////////////////
     Private Sub Button2_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Button2.Click
         Try
-            Consulta = " SELECT idg,sexo,raza,nacimiento,estado from ganado "
+            Consulta = "select idg,sexo,raza,nacimiento,estado, TIMESTAMPDIFF(YEAR,nacimiento,CURDATE()) AS 'Edad' from ganado"
             consultar()
             DataGridViewganado.DataSource = Tabla
 
@@ -1681,13 +1683,14 @@ Public Class Programa
         Select Case TabbedPane.SelectedIndex
             Case 0
                 'CONSULTA DE TABLA GANADO
-                Consulta = "select idg,sexo,raza,nacimiento,estado from ganado"
+                Consulta = "select idg,sexo,raza,nacimiento,estado, TIMESTAMPDIFF(YEAR,nacimiento,CURDATE()) AS 'Edad' from ganado"
                 consultar()
                 DataGridViewganado.DataSource = Tabla
 
                 DataGridViewganado.Focus()
 
                 'Cambiamos los headers
+
                 DataGridViewganado.Columns(0).HeaderText = "Codigo de ganado"
                 DataGridViewganado.Columns(1).HeaderText = "Sexo"
                 DataGridViewganado.Columns(2).HeaderText = "Raza"
