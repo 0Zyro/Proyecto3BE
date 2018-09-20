@@ -675,8 +675,8 @@ Public Class Programa
                     DataGridViewganado.DataSource = Tabla
 
                     DataGridViewganado.Focus()
-                    CBXseleccionarRaza.Text = ""
-                    CBXseleccionarSexo.Text = ""
+                    'CBXseleccionarRaza.Text = ""
+                    'CBXseleccionarSexo.Text = ""
 
                 Catch ex As Exception
                     MsgBox(ex.ToString)
@@ -740,8 +740,22 @@ Public Class Programa
 
     End Sub
 
+  
+    '''/////////////////////// ABRI PANEL BUSCAR CODIGO GANADO ////////////////////////////
+    ''' ////////////////////////////////////////////////////////////////////////////////////
+    Private Sub BOTONpanelCodigo_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles BOTONpanelCodigo.Click
+        PanelBuscarSexoRaza.Visible = False
+        PanelBuscarFechaNacimiento.Visible = False
+        PanelBuscarCodGanado.Visible = True
+
+    End Sub
+
+
+
     '''///////////////////////////////////////// ABRE PANEL DE BUSQUEDA POR NACIEMIENTO
     Private Sub BOTONpanelBuscarNacimiento_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles BOTONpanelBuscarNacimiento.Click
+        PanelBuscarCodGanado.Visible = False
+        PanelBuscarSexoRaza.Visible = False
         PanelBuscarFechaNacimiento.Visible = True
     End Sub
 
@@ -749,6 +763,10 @@ Public Class Programa
     '''/////////////////////////////// ABRE PANEL DE BUSQUEDA DE SEXO Y RAZA //////////////////////////////////////////////////////
     ''' ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     Private Sub BOTONpanelSexoRaza_Click_1(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles BOTONpanelSexoRaza.Click
+
+        PanelBuscarCodGanado.Visible = False
+        PanelBuscarFechaNacimiento.Visible = False
+        
         PanelBuscarSexoRaza.Visible = True
     End Sub
 
@@ -756,7 +774,8 @@ Public Class Programa
     '''///////////////////////////////////// VUELVE INVISIBLE EL PANEL DE BUSQUEQUE DE SEXO  Y RAZA//////////////////////////////
     ''' //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     Private Sub BOTONocultarSexoRaza_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles BOTONocultarSexoRaza.Click
-
+        CBXseleccionarRaza.Text = ""
+        CBXseleccionarSexo.Text = ""
         PanelBuscarSexoRaza.Visible = False
 
     End Sub
@@ -764,10 +783,40 @@ Public Class Programa
     '''//////////////////// OCULTA PANEL DE BUSQUE DE FACHA DE NACIMIENTO/////////////////////////////
     ''' /////////////////////////////////////////////////////////////////////////////////////////////
     Private Sub BOTONocultarPanelFechaG_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles BOTONocultarPanelFechaG.Click
+        DateTimeBuscarFechaGanado.Text = ""
         PanelBuscarFechaNacimiento.Visible = False
     End Sub
 
-  
+
+    '''//////////// CERRAR PANEL BUSCAR CODIGO DE GANADO /////////////////////////////////////////////////////////
+    ''' /////////////////////////////////////////////////////////////////////////////////////////////////////////
+    ''' 
+    Private Sub BOTONcancelarBuscarCodigo_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles BOTONcancelarBuscarCodigo.Click
+        txtBuscarCodGanado.Text = ""
+        PanelBuscarCodGanado.Visible = False
+    End Sub
+
+    '''//////////////////////////////////BUSCAR GANADO POR SU CODIGO////////////////////////////
+    ''' /////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+    Private Sub BOTONbuscaCodGanado_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles BOTONbuscaCodGanado.Click
+        Consulta = " select idg,sexo,raza,nacimiento,estado from ganado where idg ='" + txtBuscarCodGanado.Text + "'"
+        consultar()
+        DataGridViewganado.DataSource = Tabla
+
+        'Cambiamos los headers
+        DataGridViewganado.Columns(0).HeaderText = "Codigo de ganado"
+        DataGridViewganado.Columns(1).HeaderText = "Sexo"
+        DataGridViewganado.Columns(2).HeaderText = "Raza"
+
+        DataGridViewganado.Columns(3).HeaderText = "Fecha nacimiento"
+        DataGridViewganado.Columns(4).HeaderText = "Estado"
+
+        DataGridViewganado.Focus()
+
+
+    End Sub
+
 
     '''////////////////////// BUSCA GANADO  POR FECHA DE NACIEMNTO//////////////////////////
     ''' ////////////////////////////////////////////////////////////////////////////////////
@@ -793,7 +842,7 @@ Public Class Programa
     End Sub
   
 
-    '''/////////////////BOTON QUE ACTIVA EL BOTOS GUARDAR GANADO PARA AGREGAR////////////////////////////////////////
+    '''/////////////////BOTON QUE ACTIVA LA OPCION GUARDAR GANADO PARA AGREGAR////////////////////////////////////////
     ''' ////////////////////////////////////////////////////////////////////////////////////////////////////////////
     ''' 
     Private Sub Button9_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles BOTONabrirAgregar.Click
@@ -1956,8 +2005,14 @@ Public Class Programa
         PanelModificarclientes.Enabled = False
     End Sub
 
+ 
+    Private Sub BOTONlimpiartxtGuardar_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles BOTONlimpiartxtGuardar.Click
+        CBXguardarsexo.Text = ""
+        CBXguardarRaza.Text = ""
 
-  
-   
-    
+        DTPAgregarGanado.Text = ""
+
+        Texcodigoganado.Clear()
+        Texestadoganado.Clear()
+    End Sub
 End Class

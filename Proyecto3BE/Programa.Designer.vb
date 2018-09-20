@@ -24,10 +24,10 @@ Partial Class Programa
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(Programa))
-        Dim DataGridViewCellStyle5 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle6 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle7 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle8 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle9 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle10 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle11 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle12 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Me.PanelUsuario = New System.Windows.Forms.Panel()
         Me.LBLCiUsuario = New System.Windows.Forms.Label()
         Me.BTNCerrarSesion = New System.Windows.Forms.Button()
@@ -37,14 +37,16 @@ Partial Class Programa
         Me.LBLRangoUsuario = New System.Windows.Forms.Label()
         Me.TabbedPane = New System.Windows.Forms.TabControl()
         Me.TabGanado = New System.Windows.Forms.TabPage()
+        Me.Panel1 = New System.Windows.Forms.Panel()
+        Me.Label10 = New System.Windows.Forms.Label()
+        Me.BOTONpanelCodigo = New System.Windows.Forms.Button()
+        Me.BOTONpanelSexoRaza = New System.Windows.Forms.Button()
+        Me.BOTONpanelBuscarNacimiento = New System.Windows.Forms.Button()
         Me.PanelBuscarFechaNacimiento = New System.Windows.Forms.Panel()
         Me.Label9 = New System.Windows.Forms.Label()
         Me.BOTONocultarPanelFechaG = New System.Windows.Forms.Button()
         Me.BuscarFechaGanado = New System.Windows.Forms.Button()
         Me.DateTimeBuscarFechaGanado = New System.Windows.Forms.DateTimePicker()
-        Me.BOTONpanelSexoRaza = New System.Windows.Forms.Button()
-        Me.Button13 = New System.Windows.Forms.Button()
-        Me.Button12 = New System.Windows.Forms.Button()
         Me.PanelBuscarSexoRaza = New System.Windows.Forms.Panel()
         Me.BOTONocultarSexoRaza = New System.Windows.Forms.Button()
         Me.BOTONseleccionarRaza = New System.Windows.Forms.Button()
@@ -52,24 +54,30 @@ Partial Class Programa
         Me.CBXseleccionarSexo = New System.Windows.Forms.ComboBox()
         Me.Label7 = New System.Windows.Forms.Label()
         Me.CBXseleccionarRaza = New System.Windows.Forms.ComboBox()
-        Me.BOTONpanelBuscarNacimiento = New System.Windows.Forms.Button()
-        Me.Button14 = New System.Windows.Forms.Button()
+        Me.PanelBuscarCodGanado = New System.Windows.Forms.Panel()
+        Me.Label11 = New System.Windows.Forms.Label()
+        Me.txtBuscarCodGanado = New System.Windows.Forms.TextBox()
+        Me.BOTONcancelarBuscarCodigo = New System.Windows.Forms.Button()
+        Me.BOTONbuscaCodGanado = New System.Windows.Forms.Button()
+        Me.Button13 = New System.Windows.Forms.Button()
+        Me.Button12 = New System.Windows.Forms.Button()
         Me.GroupBox1 = New System.Windows.Forms.GroupBox()
+        Me.BOTONlimpiartxtGuardar = New System.Windows.Forms.Button()
         Me.CBXguardarRaza = New System.Windows.Forms.ComboBox()
         Me.Label1 = New System.Windows.Forms.Label()
         Me.Label2 = New System.Windows.Forms.Label()
-        Me.Label3 = New System.Windows.Forms.Label()
         Me.Label4 = New System.Windows.Forms.Label()
-        Me.Label5 = New System.Windows.Forms.Label()
         Me.Texcodigoganado = New System.Windows.Forms.TextBox()
-        Me.Texestadoganado = New System.Windows.Forms.TextBox()
-        Me.DTPAgregarGanado = New System.Windows.Forms.DateTimePicker()
-        Me.CBXguardarsexo = New System.Windows.Forms.ComboBox()
+        Me.Label5 = New System.Windows.Forms.Label()
+        Me.Label3 = New System.Windows.Forms.Label()
         Me.BOTONcancelarModificar = New System.Windows.Forms.Button()
+        Me.DTPAgregarGanado = New System.Windows.Forms.DateTimePicker()
         Me.BOTONcancelarAgregar = New System.Windows.Forms.Button()
-        Me.Button2 = New System.Windows.Forms.Button()
+        Me.Texestadoganado = New System.Windows.Forms.TextBox()
         Me.BOTONguardarModificar = New System.Windows.Forms.Button()
         Me.BOTONguardarAgregar = New System.Windows.Forms.Button()
+        Me.CBXguardarsexo = New System.Windows.Forms.ComboBox()
+        Me.Button2 = New System.Windows.Forms.Button()
         Me.BOTONabrirModificar = New System.Windows.Forms.Button()
         Me.BOTONabrirAgregar = New System.Windows.Forms.Button()
         Me.btneliminarganado = New System.Windows.Forms.Button()
@@ -229,8 +237,10 @@ Partial Class Programa
         CType(Me.PICUsuarioLogueado, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.TabbedPane.SuspendLayout()
         Me.TabGanado.SuspendLayout()
+        Me.Panel1.SuspendLayout()
         Me.PanelBuscarFechaNacimiento.SuspendLayout()
         Me.PanelBuscarSexoRaza.SuspendLayout()
+        Me.PanelBuscarCodGanado.SuspendLayout()
         Me.GroupBox1.SuspendLayout()
         CType(Me.DataGridViewganado, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.TabCompras.SuspendLayout()
@@ -354,19 +364,11 @@ Partial Class Programa
         'TabGanado
         '
         Me.TabGanado.BackColor = System.Drawing.Color.CornflowerBlue
-        Me.TabGanado.Controls.Add(Me.PanelBuscarFechaNacimiento)
-        Me.TabGanado.Controls.Add(Me.BOTONpanelSexoRaza)
+        Me.TabGanado.Controls.Add(Me.Panel1)
         Me.TabGanado.Controls.Add(Me.Button13)
         Me.TabGanado.Controls.Add(Me.Button12)
-        Me.TabGanado.Controls.Add(Me.PanelBuscarSexoRaza)
-        Me.TabGanado.Controls.Add(Me.BOTONpanelBuscarNacimiento)
-        Me.TabGanado.Controls.Add(Me.Button14)
         Me.TabGanado.Controls.Add(Me.GroupBox1)
-        Me.TabGanado.Controls.Add(Me.BOTONcancelarModificar)
-        Me.TabGanado.Controls.Add(Me.BOTONcancelarAgregar)
         Me.TabGanado.Controls.Add(Me.Button2)
-        Me.TabGanado.Controls.Add(Me.BOTONguardarModificar)
-        Me.TabGanado.Controls.Add(Me.BOTONguardarAgregar)
         Me.TabGanado.Controls.Add(Me.BOTONabrirModificar)
         Me.TabGanado.Controls.Add(Me.BOTONabrirAgregar)
         Me.TabGanado.Controls.Add(Me.btneliminarganado)
@@ -380,15 +382,80 @@ Partial Class Programa
         Me.TabGanado.TabIndex = 0
         Me.TabGanado.Text = "Ganado"
         '
+        'Panel1
+        '
+        Me.Panel1.BackColor = System.Drawing.Color.Transparent
+        Me.Panel1.Controls.Add(Me.Label10)
+        Me.Panel1.Controls.Add(Me.BOTONpanelCodigo)
+        Me.Panel1.Controls.Add(Me.BOTONpanelSexoRaza)
+        Me.Panel1.Controls.Add(Me.BOTONpanelBuscarNacimiento)
+        Me.Panel1.Controls.Add(Me.PanelBuscarFechaNacimiento)
+        Me.Panel1.Controls.Add(Me.PanelBuscarSexoRaza)
+        Me.Panel1.Controls.Add(Me.PanelBuscarCodGanado)
+        Me.Panel1.Location = New System.Drawing.Point(15, 0)
+        Me.Panel1.Name = "Panel1"
+        Me.Panel1.Size = New System.Drawing.Size(711, 50)
+        Me.Panel1.TabIndex = 132
+        '
+        'Label10
+        '
+        Me.Label10.AutoSize = True
+        Me.Label10.Font = New System.Drawing.Font("Microsoft Sans Serif", 15.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label10.Location = New System.Drawing.Point(3, 13)
+        Me.Label10.Name = "Label10"
+        Me.Label10.Size = New System.Drawing.Size(119, 25)
+        Me.Label10.TabIndex = 0
+        Me.Label10.Text = "BUSCAR :"
+        '
+        'BOTONpanelCodigo
+        '
+        Me.BOTONpanelCodigo.BackColor = System.Drawing.Color.White
+        Me.BOTONpanelCodigo.FlatAppearance.BorderSize = 0
+        Me.BOTONpanelCodigo.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.BOTONpanelCodigo.Image = Global.WindowsApplication1.My.Resources.Resources.blackberry_qr_code_variant
+        Me.BOTONpanelCodigo.Location = New System.Drawing.Point(126, 3)
+        Me.BOTONpanelCodigo.Name = "BOTONpanelCodigo"
+        Me.BOTONpanelCodigo.Size = New System.Drawing.Size(40, 40)
+        Me.BOTONpanelCodigo.TabIndex = 128
+        Me.ToolTip1.SetToolTip(Me.BOTONpanelCodigo, "Buscar por codigo")
+        Me.BOTONpanelCodigo.UseVisualStyleBackColor = False
+        '
+        'BOTONpanelSexoRaza
+        '
+        Me.BOTONpanelSexoRaza.BackColor = System.Drawing.Color.White
+        Me.BOTONpanelSexoRaza.FlatAppearance.BorderSize = 0
+        Me.BOTONpanelSexoRaza.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.BOTONpanelSexoRaza.Image = Global.WindowsApplication1.My.Resources.Resources.cow__2_
+        Me.BOTONpanelSexoRaza.Location = New System.Drawing.Point(171, 3)
+        Me.BOTONpanelSexoRaza.Name = "BOTONpanelSexoRaza"
+        Me.BOTONpanelSexoRaza.Size = New System.Drawing.Size(40, 40)
+        Me.BOTONpanelSexoRaza.TabIndex = 115
+        Me.ToolTip1.SetToolTip(Me.BOTONpanelSexoRaza, "Buscar por sexo y raza")
+        Me.BOTONpanelSexoRaza.UseVisualStyleBackColor = False
+        '
+        'BOTONpanelBuscarNacimiento
+        '
+        Me.BOTONpanelBuscarNacimiento.BackColor = System.Drawing.Color.White
+        Me.BOTONpanelBuscarNacimiento.FlatAppearance.BorderSize = 0
+        Me.BOTONpanelBuscarNacimiento.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.BOTONpanelBuscarNacimiento.Image = Global.WindowsApplication1.My.Resources.Resources.icon
+        Me.BOTONpanelBuscarNacimiento.Location = New System.Drawing.Point(216, 3)
+        Me.BOTONpanelBuscarNacimiento.Name = "BOTONpanelBuscarNacimiento"
+        Me.BOTONpanelBuscarNacimiento.Size = New System.Drawing.Size(40, 40)
+        Me.BOTONpanelBuscarNacimiento.TabIndex = 127
+        Me.ToolTip1.SetToolTip(Me.BOTONpanelBuscarNacimiento, "Buscar por fecha de nacimiento")
+        Me.BOTONpanelBuscarNacimiento.UseVisualStyleBackColor = False
+        '
         'PanelBuscarFechaNacimiento
         '
+        Me.PanelBuscarFechaNacimiento.BackColor = System.Drawing.Color.Transparent
         Me.PanelBuscarFechaNacimiento.Controls.Add(Me.Label9)
         Me.PanelBuscarFechaNacimiento.Controls.Add(Me.BOTONocultarPanelFechaG)
         Me.PanelBuscarFechaNacimiento.Controls.Add(Me.BuscarFechaGanado)
         Me.PanelBuscarFechaNacimiento.Controls.Add(Me.DateTimeBuscarFechaGanado)
-        Me.PanelBuscarFechaNacimiento.Location = New System.Drawing.Point(421, 0)
+        Me.PanelBuscarFechaNacimiento.Location = New System.Drawing.Point(275, 0)
         Me.PanelBuscarFechaNacimiento.Name = "PanelBuscarFechaNacimiento"
-        Me.PanelBuscarFechaNacimiento.Size = New System.Drawing.Size(370, 46)
+        Me.PanelBuscarFechaNacimiento.Size = New System.Drawing.Size(370, 49)
         Me.PanelBuscarFechaNacimiento.TabIndex = 131
         Me.PanelBuscarFechaNacimiento.Visible = False
         '
@@ -420,7 +487,7 @@ Partial Class Programa
         Me.BuscarFechaGanado.FlatAppearance.BorderSize = 0
         Me.BuscarFechaGanado.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.BuscarFechaGanado.Image = Global.WindowsApplication1.My.Resources.Resources._003_search
-        Me.BuscarFechaGanado.Location = New System.Drawing.Point(269, 5)
+        Me.BuscarFechaGanado.Location = New System.Drawing.Point(271, 5)
         Me.BuscarFechaGanado.Name = "BuscarFechaGanado"
         Me.BuscarFechaGanado.Size = New System.Drawing.Size(40, 40)
         Me.BuscarFechaGanado.TabIndex = 122
@@ -435,57 +502,18 @@ Partial Class Programa
         Me.DateTimeBuscarFechaGanado.Size = New System.Drawing.Size(263, 20)
         Me.DateTimeBuscarFechaGanado.TabIndex = 101
         '
-        'BOTONpanelSexoRaza
-        '
-        Me.BOTONpanelSexoRaza.BackColor = System.Drawing.Color.DarkOrchid
-        Me.BOTONpanelSexoRaza.FlatAppearance.BorderSize = 0
-        Me.BOTONpanelSexoRaza.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.BOTONpanelSexoRaza.Image = Global.WindowsApplication1.My.Resources.Resources.cow__2_
-        Me.BOTONpanelSexoRaza.Location = New System.Drawing.Point(721, 109)
-        Me.BOTONpanelSexoRaza.Name = "BOTONpanelSexoRaza"
-        Me.BOTONpanelSexoRaza.Size = New System.Drawing.Size(72, 50)
-        Me.BOTONpanelSexoRaza.TabIndex = 115
-        Me.ToolTip1.SetToolTip(Me.BOTONpanelSexoRaza, "Buscar por sexo y raza")
-        Me.BOTONpanelSexoRaza.UseVisualStyleBackColor = False
-        '
-        'Button13
-        '
-        Me.Button13.BackColor = System.Drawing.Color.DarkOrchid
-        Me.Button13.FlatAppearance.BorderSize = 0
-        Me.Button13.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.Button13.Image = Global.WindowsApplication1.My.Resources.Resources._003_keyboard_key_s
-        Me.Button13.Location = New System.Drawing.Point(721, 332)
-        Me.Button13.Name = "Button13"
-        Me.Button13.Size = New System.Drawing.Size(73, 50)
-        Me.Button13.TabIndex = 129
-        Me.ToolTip1.SetToolTip(Me.Button13, "CARGAR GANADO")
-        Me.Button13.UseVisualStyleBackColor = False
-        '
-        'Button12
-        '
-        Me.Button12.BackColor = System.Drawing.Color.DarkOrchid
-        Me.Button12.FlatAppearance.BorderSize = 0
-        Me.Button12.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.Button12.Image = Global.WindowsApplication1.My.Resources.Resources._001_letter_r_key_on_keyboard
-        Me.Button12.Location = New System.Drawing.Point(721, 276)
-        Me.Button12.Name = "Button12"
-        Me.Button12.Size = New System.Drawing.Size(72, 50)
-        Me.Button12.TabIndex = 130
-        Me.ToolTip1.SetToolTip(Me.Button12, "CARGAR GANADO")
-        Me.Button12.UseVisualStyleBackColor = False
-        '
         'PanelBuscarSexoRaza
         '
-        Me.PanelBuscarSexoRaza.BackColor = System.Drawing.Color.CornflowerBlue
+        Me.PanelBuscarSexoRaza.BackColor = System.Drawing.Color.Transparent
         Me.PanelBuscarSexoRaza.Controls.Add(Me.BOTONocultarSexoRaza)
         Me.PanelBuscarSexoRaza.Controls.Add(Me.BOTONseleccionarRaza)
         Me.PanelBuscarSexoRaza.Controls.Add(Me.Label8)
         Me.PanelBuscarSexoRaza.Controls.Add(Me.CBXseleccionarSexo)
         Me.PanelBuscarSexoRaza.Controls.Add(Me.Label7)
         Me.PanelBuscarSexoRaza.Controls.Add(Me.CBXseleccionarRaza)
-        Me.PanelBuscarSexoRaza.Location = New System.Drawing.Point(0, 0)
+        Me.PanelBuscarSexoRaza.Location = New System.Drawing.Point(275, 1)
         Me.PanelBuscarSexoRaza.Name = "PanelBuscarSexoRaza"
-        Me.PanelBuscarSexoRaza.Size = New System.Drawing.Size(396, 46)
+        Me.PanelBuscarSexoRaza.Size = New System.Drawing.Size(396, 49)
         Me.PanelBuscarSexoRaza.TabIndex = 120
         Me.PanelBuscarSexoRaza.Visible = False
         '
@@ -518,7 +546,7 @@ Partial Class Programa
         'Label8
         '
         Me.Label8.AutoSize = True
-        Me.Label8.Location = New System.Drawing.Point(152, 5)
+        Me.Label8.Location = New System.Drawing.Point(146, 5)
         Me.Label8.Name = "Label8"
         Me.Label8.Size = New System.Drawing.Size(40, 13)
         Me.Label8.TabIndex = 119
@@ -536,7 +564,7 @@ Partial Class Programa
         'Label7
         '
         Me.Label7.AutoSize = True
-        Me.Label7.Location = New System.Drawing.Point(9, 5)
+        Me.Label7.Location = New System.Drawing.Point(4, 5)
         Me.Label7.Name = "Label7"
         Me.Label7.Size = New System.Drawing.Size(40, 13)
         Me.Label7.TabIndex = 118
@@ -551,56 +579,131 @@ Partial Class Programa
         Me.CBXseleccionarRaza.Size = New System.Drawing.Size(137, 21)
         Me.CBXseleccionarRaza.TabIndex = 110
         '
-        'BOTONpanelBuscarNacimiento
+        'PanelBuscarCodGanado
         '
-        Me.BOTONpanelBuscarNacimiento.BackColor = System.Drawing.Color.DarkOrchid
-        Me.BOTONpanelBuscarNacimiento.FlatAppearance.BorderSize = 0
-        Me.BOTONpanelBuscarNacimiento.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.BOTONpanelBuscarNacimiento.Image = Global.WindowsApplication1.My.Resources.Resources.icon
-        Me.BOTONpanelBuscarNacimiento.Location = New System.Drawing.Point(721, 165)
-        Me.BOTONpanelBuscarNacimiento.Name = "BOTONpanelBuscarNacimiento"
-        Me.BOTONpanelBuscarNacimiento.Size = New System.Drawing.Size(72, 50)
-        Me.BOTONpanelBuscarNacimiento.TabIndex = 127
-        Me.ToolTip1.SetToolTip(Me.BOTONpanelBuscarNacimiento, "Buscar por fecha " & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "de nacimiento")
-        Me.BOTONpanelBuscarNacimiento.UseVisualStyleBackColor = False
+        Me.PanelBuscarCodGanado.BackColor = System.Drawing.Color.Transparent
+        Me.PanelBuscarCodGanado.Controls.Add(Me.Label11)
+        Me.PanelBuscarCodGanado.Controls.Add(Me.txtBuscarCodGanado)
+        Me.PanelBuscarCodGanado.Controls.Add(Me.BOTONcancelarBuscarCodigo)
+        Me.PanelBuscarCodGanado.Controls.Add(Me.BOTONbuscaCodGanado)
+        Me.PanelBuscarCodGanado.Location = New System.Drawing.Point(275, 0)
+        Me.PanelBuscarCodGanado.Name = "PanelBuscarCodGanado"
+        Me.PanelBuscarCodGanado.Size = New System.Drawing.Size(286, 48)
+        Me.PanelBuscarCodGanado.TabIndex = 133
+        Me.PanelBuscarCodGanado.Visible = False
         '
-        'Button14
+        'Label11
         '
-        Me.Button14.BackColor = System.Drawing.Color.DarkOrchid
-        Me.Button14.FlatAppearance.BorderSize = 0
-        Me.Button14.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.Button14.Image = Global.WindowsApplication1.My.Resources.Resources.blackberry_qr_code_variant
-        Me.Button14.Location = New System.Drawing.Point(721, 221)
-        Me.Button14.Name = "Button14"
-        Me.Button14.Size = New System.Drawing.Size(73, 50)
-        Me.Button14.TabIndex = 128
-        Me.ToolTip1.SetToolTip(Me.Button14, "CARGAR GANADO")
-        Me.Button14.UseVisualStyleBackColor = False
+        Me.Label11.AutoSize = True
+        Me.Label11.Location = New System.Drawing.Point(4, 6)
+        Me.Label11.Name = "Label11"
+        Me.Label11.Size = New System.Drawing.Size(40, 13)
+        Me.Label11.TabIndex = 133
+        Me.Label11.Text = "RAZA"
+        '
+        'txtBuscarCodGanado
+        '
+        Me.txtBuscarCodGanado.Location = New System.Drawing.Point(7, 22)
+        Me.txtBuscarCodGanado.Name = "txtBuscarCodGanado"
+        Me.txtBuscarCodGanado.Size = New System.Drawing.Size(169, 20)
+        Me.txtBuscarCodGanado.TabIndex = 124
+        '
+        'BOTONcancelarBuscarCodigo
+        '
+        Me.BOTONcancelarBuscarCodigo.BackColor = System.Drawing.Color.CornflowerBlue
+        Me.BOTONcancelarBuscarCodigo.FlatAppearance.BorderSize = 0
+        Me.BOTONcancelarBuscarCodigo.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.BOTONcancelarBuscarCodigo.Image = Global.WindowsApplication1.My.Resources.Resources.hide__1_
+        Me.BOTONcancelarBuscarCodigo.Location = New System.Drawing.Point(242, 4)
+        Me.BOTONcancelarBuscarCodigo.Name = "BOTONcancelarBuscarCodigo"
+        Me.BOTONcancelarBuscarCodigo.Size = New System.Drawing.Size(40, 40)
+        Me.BOTONcancelarBuscarCodigo.TabIndex = 123
+        Me.ToolTip1.SetToolTip(Me.BOTONcancelarBuscarCodigo, "Ocultar")
+        Me.BOTONcancelarBuscarCodigo.UseVisualStyleBackColor = False
+        '
+        'BOTONbuscaCodGanado
+        '
+        Me.BOTONbuscaCodGanado.BackColor = System.Drawing.Color.CornflowerBlue
+        Me.BOTONbuscaCodGanado.FlatAppearance.BorderSize = 0
+        Me.BOTONbuscaCodGanado.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.BOTONbuscaCodGanado.Image = Global.WindowsApplication1.My.Resources.Resources._003_search
+        Me.BOTONbuscaCodGanado.Location = New System.Drawing.Point(181, 4)
+        Me.BOTONbuscaCodGanado.Name = "BOTONbuscaCodGanado"
+        Me.BOTONbuscaCodGanado.Size = New System.Drawing.Size(40, 40)
+        Me.BOTONbuscaCodGanado.TabIndex = 122
+        Me.ToolTip1.SetToolTip(Me.BOTONbuscaCodGanado, "Buscar")
+        Me.BOTONbuscaCodGanado.UseVisualStyleBackColor = False
+        '
+        'Button13
+        '
+        Me.Button13.BackColor = System.Drawing.Color.DarkOrchid
+        Me.Button13.FlatAppearance.BorderSize = 0
+        Me.Button13.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.Button13.Image = Global.WindowsApplication1.My.Resources.Resources._003_keyboard_key_s
+        Me.Button13.Location = New System.Drawing.Point(733, 113)
+        Me.Button13.Name = "Button13"
+        Me.Button13.Size = New System.Drawing.Size(60, 50)
+        Me.Button13.TabIndex = 129
+        Me.ToolTip1.SetToolTip(Me.Button13, "CARGAR GANADO")
+        Me.Button13.UseVisualStyleBackColor = False
+        '
+        'Button12
+        '
+        Me.Button12.BackColor = System.Drawing.Color.DarkOrchid
+        Me.Button12.FlatAppearance.BorderSize = 0
+        Me.Button12.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.Button12.Image = Global.WindowsApplication1.My.Resources.Resources._001_letter_r_key_on_keyboard
+        Me.Button12.Location = New System.Drawing.Point(733, 57)
+        Me.Button12.Name = "Button12"
+        Me.Button12.Size = New System.Drawing.Size(60, 50)
+        Me.Button12.TabIndex = 130
+        Me.ToolTip1.SetToolTip(Me.Button12, "CARGAR GANADO")
+        Me.Button12.UseVisualStyleBackColor = False
         '
         'GroupBox1
         '
+        Me.GroupBox1.Controls.Add(Me.BOTONlimpiartxtGuardar)
         Me.GroupBox1.Controls.Add(Me.CBXguardarRaza)
         Me.GroupBox1.Controls.Add(Me.Label1)
         Me.GroupBox1.Controls.Add(Me.Label2)
-        Me.GroupBox1.Controls.Add(Me.Label3)
         Me.GroupBox1.Controls.Add(Me.Label4)
-        Me.GroupBox1.Controls.Add(Me.Label5)
         Me.GroupBox1.Controls.Add(Me.Texcodigoganado)
-        Me.GroupBox1.Controls.Add(Me.Texestadoganado)
+        Me.GroupBox1.Controls.Add(Me.Label5)
+        Me.GroupBox1.Controls.Add(Me.Label3)
+        Me.GroupBox1.Controls.Add(Me.BOTONcancelarModificar)
         Me.GroupBox1.Controls.Add(Me.DTPAgregarGanado)
+        Me.GroupBox1.Controls.Add(Me.BOTONcancelarAgregar)
+        Me.GroupBox1.Controls.Add(Me.Texestadoganado)
+        Me.GroupBox1.Controls.Add(Me.BOTONguardarModificar)
+        Me.GroupBox1.Controls.Add(Me.BOTONguardarAgregar)
         Me.GroupBox1.Controls.Add(Me.CBXguardarsexo)
-        Me.GroupBox1.Location = New System.Drawing.Point(7, 268)
+        Me.GroupBox1.Location = New System.Drawing.Point(15, 291)
         Me.GroupBox1.Name = "GroupBox1"
-        Me.GroupBox1.Size = New System.Drawing.Size(462, 169)
+        Me.GroupBox1.Size = New System.Drawing.Size(651, 146)
         Me.GroupBox1.TabIndex = 115
         Me.GroupBox1.TabStop = False
+        '
+        'BOTONlimpiartxtGuardar
+        '
+        Me.BOTONlimpiartxtGuardar.Anchor = System.Windows.Forms.AnchorStyles.None
+        Me.BOTONlimpiartxtGuardar.BackColor = System.Drawing.Color.Transparent
+        Me.BOTONlimpiartxtGuardar.Cursor = System.Windows.Forms.Cursors.Hand
+        Me.BOTONlimpiartxtGuardar.FlatAppearance.BorderSize = 0
+        Me.BOTONlimpiartxtGuardar.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.BOTONlimpiartxtGuardar.Image = Global.WindowsApplication1.My.Resources.Resources.goma_de_borrar
+        Me.BOTONlimpiartxtGuardar.Location = New System.Drawing.Point(594, 46)
+        Me.BOTONlimpiartxtGuardar.Margin = New System.Windows.Forms.Padding(4, 3, 4, 3)
+        Me.BOTONlimpiartxtGuardar.Name = "BOTONlimpiartxtGuardar"
+        Me.BOTONlimpiartxtGuardar.Size = New System.Drawing.Size(40, 40)
+        Me.BOTONlimpiartxtGuardar.TabIndex = 110
+        Me.BOTONlimpiartxtGuardar.UseVisualStyleBackColor = False
         '
         'CBXguardarRaza
         '
         Me.CBXguardarRaza.Enabled = False
         Me.CBXguardarRaza.FormattingEnabled = True
         Me.CBXguardarRaza.Items.AddRange(New Object() {"Aberdeen", "Angus", "Braford", "Hereford"})
-        Me.CBXguardarRaza.Location = New System.Drawing.Point(179, 77)
+        Me.CBXguardarRaza.Location = New System.Drawing.Point(379, 58)
         Me.CBXguardarRaza.Name = "CBXguardarRaza"
         Me.CBXguardarRaza.Size = New System.Drawing.Size(116, 21)
         Me.CBXguardarRaza.TabIndex = 102
@@ -608,7 +711,7 @@ Partial Class Programa
         'Label1
         '
         Me.Label1.AutoSize = True
-        Me.Label1.Location = New System.Drawing.Point(32, 16)
+        Me.Label1.Location = New System.Drawing.Point(42, 24)
         Me.Label1.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label1.Name = "Label1"
         Me.Label1.Size = New System.Drawing.Size(132, 13)
@@ -618,134 +721,111 @@ Partial Class Programa
         'Label2
         '
         Me.Label2.AutoSize = True
-        Me.Label2.Location = New System.Drawing.Point(124, 50)
+        Me.Label2.Location = New System.Drawing.Point(130, 66)
         Me.Label2.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label2.Name = "Label2"
         Me.Label2.Size = New System.Drawing.Size(40, 13)
         Me.Label2.TabIndex = 94
         Me.Label2.Text = "SEXO"
         '
-        'Label3
-        '
-        Me.Label3.AutoSize = True
-        Me.Label3.Location = New System.Drawing.Point(124, 85)
-        Me.Label3.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
-        Me.Label3.Name = "Label3"
-        Me.Label3.Size = New System.Drawing.Size(40, 13)
-        Me.Label3.TabIndex = 95
-        Me.Label3.Text = "RAZA"
-        '
         'Label4
         '
         Me.Label4.AutoSize = True
-        Me.Label4.Location = New System.Drawing.Point(15, 120)
+        Me.Label4.Location = New System.Drawing.Point(17, 106)
         Me.Label4.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label4.Name = "Label4"
         Me.Label4.Size = New System.Drawing.Size(149, 13)
         Me.Label4.TabIndex = 96
         Me.Label4.Text = "FECHA DE NACIMIENTO"
         '
-        'Label5
-        '
-        Me.Label5.AutoSize = True
-        Me.Label5.Location = New System.Drawing.Point(107, 152)
-        Me.Label5.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
-        Me.Label5.Name = "Label5"
-        Me.Label5.Size = New System.Drawing.Size(57, 13)
-        Me.Label5.TabIndex = 97
-        Me.Label5.Text = "ESTADO"
-        '
         'Texcodigoganado
         '
         Me.Texcodigoganado.Enabled = False
-        Me.Texcodigoganado.Location = New System.Drawing.Point(179, 9)
+        Me.Texcodigoganado.Location = New System.Drawing.Point(177, 18)
         Me.Texcodigoganado.Margin = New System.Windows.Forms.Padding(4, 3, 4, 3)
         Me.Texcodigoganado.Name = "Texcodigoganado"
         Me.Texcodigoganado.Size = New System.Drawing.Size(116, 20)
         Me.Texcodigoganado.TabIndex = 98
         Me.Texcodigoganado.WordWrap = False
         '
-        'Texestadoganado
+        'Label5
         '
-        Me.Texestadoganado.Enabled = False
-        Me.Texestadoganado.Location = New System.Drawing.Point(179, 145)
-        Me.Texestadoganado.Margin = New System.Windows.Forms.Padding(4, 3, 4, 3)
-        Me.Texestadoganado.Name = "Texestadoganado"
-        Me.Texestadoganado.Size = New System.Drawing.Size(263, 20)
-        Me.Texestadoganado.TabIndex = 99
+        Me.Label5.AutoSize = True
+        Me.Label5.Location = New System.Drawing.Point(315, 24)
+        Me.Label5.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
+        Me.Label5.Name = "Label5"
+        Me.Label5.Size = New System.Drawing.Size(57, 13)
+        Me.Label5.TabIndex = 97
+        Me.Label5.Text = "ESTADO"
         '
-        'DTPAgregarGanado
+        'Label3
         '
-        Me.DTPAgregarGanado.Enabled = False
-        Me.DTPAgregarGanado.Location = New System.Drawing.Point(179, 113)
-        Me.DTPAgregarGanado.Margin = New System.Windows.Forms.Padding(4, 3, 4, 3)
-        Me.DTPAgregarGanado.Name = "DTPAgregarGanado"
-        Me.DTPAgregarGanado.Size = New System.Drawing.Size(263, 20)
-        Me.DTPAgregarGanado.TabIndex = 100
-        '
-        'CBXguardarsexo
-        '
-        Me.CBXguardarsexo.Enabled = False
-        Me.CBXguardarsexo.FormattingEnabled = True
-        Me.CBXguardarsexo.Items.AddRange(New Object() {"Macho", "Hembra"})
-        Me.CBXguardarsexo.Location = New System.Drawing.Point(179, 42)
-        Me.CBXguardarsexo.Name = "CBXguardarsexo"
-        Me.CBXguardarsexo.Size = New System.Drawing.Size(116, 21)
-        Me.CBXguardarsexo.TabIndex = 101
+        Me.Label3.AutoSize = True
+        Me.Label3.Location = New System.Drawing.Point(332, 66)
+        Me.Label3.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
+        Me.Label3.Name = "Label3"
+        Me.Label3.Size = New System.Drawing.Size(40, 13)
+        Me.Label3.TabIndex = 95
+        Me.Label3.Text = "RAZA"
         '
         'BOTONcancelarModificar
         '
-        Me.BOTONcancelarModificar.BackColor = System.Drawing.Color.Teal
+        Me.BOTONcancelarModificar.BackColor = System.Drawing.Color.Transparent
         Me.BOTONcancelarModificar.FlatAppearance.BorderSize = 0
         Me.BOTONcancelarModificar.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.BOTONcancelarModificar.Image = CType(resources.GetObject("BOTONcancelarModificar.Image"), System.Drawing.Image)
-        Me.BOTONcancelarModificar.Location = New System.Drawing.Point(625, 328)
+        Me.BOTONcancelarModificar.Location = New System.Drawing.Point(594, 93)
         Me.BOTONcancelarModificar.Margin = New System.Windows.Forms.Padding(4, 3, 4, 3)
         Me.BOTONcancelarModificar.Name = "BOTONcancelarModificar"
-        Me.BOTONcancelarModificar.Size = New System.Drawing.Size(59, 50)
+        Me.BOTONcancelarModificar.Size = New System.Drawing.Size(40, 40)
         Me.BOTONcancelarModificar.TabIndex = 109
         Me.ToolTip1.SetToolTip(Me.BOTONcancelarModificar, "CANCELAR")
         Me.BOTONcancelarModificar.UseVisualStyleBackColor = False
         Me.BOTONcancelarModificar.Visible = False
         '
+        'DTPAgregarGanado
+        '
+        Me.DTPAgregarGanado.Enabled = False
+        Me.DTPAgregarGanado.Location = New System.Drawing.Point(177, 99)
+        Me.DTPAgregarGanado.Margin = New System.Windows.Forms.Padding(4, 3, 4, 3)
+        Me.DTPAgregarGanado.Name = "DTPAgregarGanado"
+        Me.DTPAgregarGanado.Size = New System.Drawing.Size(263, 20)
+        Me.DTPAgregarGanado.TabIndex = 100
+        '
         'BOTONcancelarAgregar
         '
-        Me.BOTONcancelarAgregar.BackColor = System.Drawing.Color.Teal
+        Me.BOTONcancelarAgregar.BackColor = System.Drawing.Color.Transparent
         Me.BOTONcancelarAgregar.FlatAppearance.BorderSize = 0
         Me.BOTONcancelarAgregar.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.BOTONcancelarAgregar.Image = CType(resources.GetObject("BOTONcancelarAgregar.Image"), System.Drawing.Image)
-        Me.BOTONcancelarAgregar.Location = New System.Drawing.Point(625, 270)
+        Me.BOTONcancelarAgregar.Location = New System.Drawing.Point(596, 95)
         Me.BOTONcancelarAgregar.Margin = New System.Windows.Forms.Padding(4, 3, 4, 3)
         Me.BOTONcancelarAgregar.Name = "BOTONcancelarAgregar"
-        Me.BOTONcancelarAgregar.Size = New System.Drawing.Size(59, 50)
+        Me.BOTONcancelarAgregar.Size = New System.Drawing.Size(40, 40)
         Me.BOTONcancelarAgregar.TabIndex = 108
         Me.ToolTip1.SetToolTip(Me.BOTONcancelarAgregar, "CANCELAR")
         Me.BOTONcancelarAgregar.UseVisualStyleBackColor = False
         Me.BOTONcancelarAgregar.Visible = False
         '
-        'Button2
+        'Texestadoganado
         '
-        Me.Button2.BackColor = System.Drawing.Color.DarkOrchid
-        Me.Button2.FlatAppearance.BorderSize = 0
-        Me.Button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.Button2.Image = Global.WindowsApplication1.My.Resources.Resources.boton_volver
-        Me.Button2.Location = New System.Drawing.Point(721, 53)
-        Me.Button2.Name = "Button2"
-        Me.Button2.Size = New System.Drawing.Size(72, 50)
-        Me.Button2.TabIndex = 114
-        Me.ToolTip1.SetToolTip(Me.Button2, "CARGAR GANADO")
-        Me.Button2.UseVisualStyleBackColor = False
+        Me.Texestadoganado.Enabled = False
+        Me.Texestadoganado.Location = New System.Drawing.Point(380, 18)
+        Me.Texestadoganado.Margin = New System.Windows.Forms.Padding(4, 3, 4, 3)
+        Me.Texestadoganado.Name = "Texestadoganado"
+        Me.Texestadoganado.Size = New System.Drawing.Size(236, 20)
+        Me.Texestadoganado.TabIndex = 99
         '
         'BOTONguardarModificar
         '
-        Me.BOTONguardarModificar.BackColor = System.Drawing.Color.Teal
+        Me.BOTONguardarModificar.BackColor = System.Drawing.Color.Transparent
         Me.BOTONguardarModificar.FlatAppearance.BorderSize = 0
         Me.BOTONguardarModificar.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.BOTONguardarModificar.Image = Global.WindowsApplication1.My.Resources.Resources._019_confirm_1
-        Me.BOTONguardarModificar.Location = New System.Drawing.Point(558, 328)
+        Me.BOTONguardarModificar.Location = New System.Drawing.Point(529, 93)
         Me.BOTONguardarModificar.Margin = New System.Windows.Forms.Padding(4, 3, 4, 3)
         Me.BOTONguardarModificar.Name = "BOTONguardarModificar"
-        Me.BOTONguardarModificar.Size = New System.Drawing.Size(59, 50)
+        Me.BOTONguardarModificar.Size = New System.Drawing.Size(40, 40)
         Me.BOTONguardarModificar.TabIndex = 107
         Me.ToolTip1.SetToolTip(Me.BOTONguardarModificar, "GUARDAR")
         Me.BOTONguardarModificar.UseVisualStyleBackColor = False
@@ -753,31 +833,54 @@ Partial Class Programa
         '
         'BOTONguardarAgregar
         '
-        Me.BOTONguardarAgregar.BackColor = System.Drawing.Color.Teal
+        Me.BOTONguardarAgregar.BackColor = System.Drawing.Color.Transparent
         Me.BOTONguardarAgregar.FlatAppearance.BorderSize = 0
         Me.BOTONguardarAgregar.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.BOTONguardarAgregar.Image = Global.WindowsApplication1.My.Resources.Resources._019_confirm_1
-        Me.BOTONguardarAgregar.Location = New System.Drawing.Point(558, 270)
+        Me.BOTONguardarAgregar.Location = New System.Drawing.Point(527, 95)
         Me.BOTONguardarAgregar.Margin = New System.Windows.Forms.Padding(4, 3, 4, 3)
         Me.BOTONguardarAgregar.Name = "BOTONguardarAgregar"
-        Me.BOTONguardarAgregar.Size = New System.Drawing.Size(59, 50)
+        Me.BOTONguardarAgregar.Size = New System.Drawing.Size(40, 40)
         Me.BOTONguardarAgregar.TabIndex = 106
         Me.ToolTip1.SetToolTip(Me.BOTONguardarAgregar, "GUARDAR")
         Me.BOTONguardarAgregar.UseVisualStyleBackColor = False
         Me.BOTONguardarAgregar.Visible = False
         '
+        'CBXguardarsexo
+        '
+        Me.CBXguardarsexo.Enabled = False
+        Me.CBXguardarsexo.FormattingEnabled = True
+        Me.CBXguardarsexo.Items.AddRange(New Object() {"Macho", "Hembra"})
+        Me.CBXguardarsexo.Location = New System.Drawing.Point(177, 59)
+        Me.CBXguardarsexo.Name = "CBXguardarsexo"
+        Me.CBXguardarsexo.Size = New System.Drawing.Size(116, 21)
+        Me.CBXguardarsexo.TabIndex = 101
+        '
+        'Button2
+        '
+        Me.Button2.BackColor = System.Drawing.Color.DarkOrchid
+        Me.Button2.FlatAppearance.BorderSize = 0
+        Me.Button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.Button2.Image = Global.WindowsApplication1.My.Resources.Resources.boton_volver
+        Me.Button2.Location = New System.Drawing.Point(733, 1)
+        Me.Button2.Name = "Button2"
+        Me.Button2.Size = New System.Drawing.Size(60, 50)
+        Me.Button2.TabIndex = 114
+        Me.ToolTip1.SetToolTip(Me.Button2, "CARGAR GANADO")
+        Me.Button2.UseVisualStyleBackColor = False
+        '
         'BOTONabrirModificar
         '
         Me.BOTONabrirModificar.Anchor = System.Windows.Forms.AnchorStyles.None
-        Me.BOTONabrirModificar.BackColor = System.Drawing.Color.Teal
+        Me.BOTONabrirModificar.BackColor = System.Drawing.Color.DimGray
         Me.BOTONabrirModificar.Cursor = System.Windows.Forms.Cursors.Hand
         Me.BOTONabrirModificar.FlatAppearance.BorderSize = 0
         Me.BOTONabrirModificar.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.BOTONabrirModificar.Image = Global.WindowsApplication1.My.Resources.Resources._001_edit
-        Me.BOTONabrirModificar.Location = New System.Drawing.Point(491, 328)
+        Me.BOTONabrirModificar.Location = New System.Drawing.Point(686, 343)
         Me.BOTONabrirModificar.Margin = New System.Windows.Forms.Padding(4, 3, 4, 3)
         Me.BOTONabrirModificar.Name = "BOTONabrirModificar"
-        Me.BOTONabrirModificar.Size = New System.Drawing.Size(59, 50)
+        Me.BOTONabrirModificar.Size = New System.Drawing.Size(40, 40)
         Me.BOTONabrirModificar.TabIndex = 105
         Me.ToolTip1.SetToolTip(Me.BOTONabrirModificar, "EDITAR")
         Me.BOTONabrirModificar.UseVisualStyleBackColor = False
@@ -785,15 +888,15 @@ Partial Class Programa
         'BOTONabrirAgregar
         '
         Me.BOTONabrirAgregar.Anchor = System.Windows.Forms.AnchorStyles.None
-        Me.BOTONabrirAgregar.BackColor = System.Drawing.Color.Teal
+        Me.BOTONabrirAgregar.BackColor = System.Drawing.Color.DimGray
         Me.BOTONabrirAgregar.Cursor = System.Windows.Forms.Cursors.Hand
         Me.BOTONabrirAgregar.FlatAppearance.BorderSize = 0
         Me.BOTONabrirAgregar.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.BOTONabrirAgregar.Image = CType(resources.GetObject("BOTONabrirAgregar.Image"), System.Drawing.Image)
-        Me.BOTONabrirAgregar.Location = New System.Drawing.Point(491, 270)
+        Me.BOTONabrirAgregar.Location = New System.Drawing.Point(686, 296)
         Me.BOTONabrirAgregar.Margin = New System.Windows.Forms.Padding(4, 3, 4, 3)
         Me.BOTONabrirAgregar.Name = "BOTONabrirAgregar"
-        Me.BOTONabrirAgregar.Size = New System.Drawing.Size(59, 50)
+        Me.BOTONabrirAgregar.Size = New System.Drawing.Size(40, 40)
         Me.BOTONabrirAgregar.TabIndex = 104
         Me.ToolTip1.SetToolTip(Me.BOTONabrirAgregar, "AÑADIR")
         Me.BOTONabrirAgregar.UseVisualStyleBackColor = False
@@ -801,15 +904,15 @@ Partial Class Programa
         'btneliminarganado
         '
         Me.btneliminarganado.Anchor = System.Windows.Forms.AnchorStyles.None
-        Me.btneliminarganado.BackColor = System.Drawing.Color.Teal
+        Me.btneliminarganado.BackColor = System.Drawing.Color.DimGray
         Me.btneliminarganado.Cursor = System.Windows.Forms.Cursors.Hand
         Me.btneliminarganado.FlatAppearance.BorderSize = 0
         Me.btneliminarganado.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.btneliminarganado.Image = Global.WindowsApplication1.My.Resources.Resources.removed
-        Me.btneliminarganado.Location = New System.Drawing.Point(491, 383)
+        Me.btneliminarganado.Location = New System.Drawing.Point(686, 390)
         Me.btneliminarganado.Margin = New System.Windows.Forms.Padding(4, 3, 4, 3)
         Me.btneliminarganado.Name = "btneliminarganado"
-        Me.btneliminarganado.Size = New System.Drawing.Size(59, 50)
+        Me.btneliminarganado.Size = New System.Drawing.Size(40, 40)
         Me.btneliminarganado.TabIndex = 86
         Me.ToolTip1.SetToolTip(Me.btneliminarganado, "ELIMINAR")
         Me.btneliminarganado.UseVisualStyleBackColor = False
@@ -823,43 +926,43 @@ Partial Class Programa
         Me.DataGridViewganado.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill
         Me.DataGridViewganado.BackgroundColor = System.Drawing.Color.FromArgb(CType(CType(45, Byte), Integer), CType(CType(66, Byte), Integer), CType(CType(91, Byte), Integer))
         Me.DataGridViewganado.BorderStyle = System.Windows.Forms.BorderStyle.None
-        Me.DataGridViewganado.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None
-        DataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
-        DataGridViewCellStyle5.BackColor = System.Drawing.Color.OrangeRed
-        DataGridViewCellStyle5.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle5.ForeColor = System.Drawing.Color.White
-        DataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.Highlight
-        DataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.HighlightText
-        DataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.DataGridViewganado.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle5
+        Me.DataGridViewganado.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.[Single]
+        DataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
+        DataGridViewCellStyle9.BackColor = System.Drawing.Color.DarkOrange
+        DataGridViewCellStyle9.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle9.ForeColor = System.Drawing.Color.White
+        DataGridViewCellStyle9.SelectionBackColor = System.Drawing.SystemColors.Highlight
+        DataGridViewCellStyle9.SelectionForeColor = System.Drawing.SystemColors.HighlightText
+        DataGridViewCellStyle9.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.DataGridViewganado.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle9
         Me.DataGridViewganado.ColumnHeadersHeight = 35
         Me.DataGridViewganado.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing
-        DataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle6.BackColor = System.Drawing.Color.FromArgb(CType(CType(45, Byte), Integer), CType(CType(66, Byte), Integer), CType(CType(91, Byte), Integer))
-        DataGridViewCellStyle6.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle6.ForeColor = System.Drawing.Color.White
-        DataGridViewCellStyle6.SelectionBackColor = System.Drawing.Color.SlateBlue
-        DataGridViewCellStyle6.SelectionForeColor = System.Drawing.Color.White
-        DataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
-        Me.DataGridViewganado.DefaultCellStyle = DataGridViewCellStyle6
+        DataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle10.BackColor = System.Drawing.Color.FromArgb(CType(CType(45, Byte), Integer), CType(CType(66, Byte), Integer), CType(CType(91, Byte), Integer))
+        DataGridViewCellStyle10.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle10.ForeColor = System.Drawing.Color.White
+        DataGridViewCellStyle10.SelectionBackColor = System.Drawing.Color.SlateBlue
+        DataGridViewCellStyle10.SelectionForeColor = System.Drawing.Color.White
+        DataGridViewCellStyle10.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
+        Me.DataGridViewganado.DefaultCellStyle = DataGridViewCellStyle10
         Me.DataGridViewganado.EnableHeadersVisualStyles = False
         Me.DataGridViewganado.GridColor = System.Drawing.Color.SteelBlue
-        Me.DataGridViewganado.Location = New System.Drawing.Point(4, 47)
+        Me.DataGridViewganado.Location = New System.Drawing.Point(15, 50)
         Me.DataGridViewganado.Margin = New System.Windows.Forms.Padding(4, 3, 4, 3)
         Me.DataGridViewganado.Name = "DataGridViewganado"
         Me.DataGridViewganado.ReadOnly = True
         Me.DataGridViewganado.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.[Single]
-        DataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle7.BackColor = System.Drawing.Color.FromArgb(CType(CType(45, Byte), Integer), CType(CType(66, Byte), Integer), CType(CType(91, Byte), Integer))
-        DataGridViewCellStyle7.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle7.ForeColor = System.Drawing.Color.White
-        DataGridViewCellStyle7.SelectionBackColor = System.Drawing.Color.SteelBlue
-        DataGridViewCellStyle7.SelectionForeColor = System.Drawing.SystemColors.HighlightText
-        DataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.DataGridViewganado.RowHeadersDefaultCellStyle = DataGridViewCellStyle7
+        DataGridViewCellStyle11.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle11.BackColor = System.Drawing.Color.FromArgb(CType(CType(45, Byte), Integer), CType(CType(66, Byte), Integer), CType(CType(91, Byte), Integer))
+        DataGridViewCellStyle11.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle11.ForeColor = System.Drawing.Color.White
+        DataGridViewCellStyle11.SelectionBackColor = System.Drawing.Color.SteelBlue
+        DataGridViewCellStyle11.SelectionForeColor = System.Drawing.SystemColors.HighlightText
+        DataGridViewCellStyle11.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.DataGridViewganado.RowHeadersDefaultCellStyle = DataGridViewCellStyle11
         Me.DataGridViewganado.ScrollBars = System.Windows.Forms.ScrollBars.Vertical
         Me.DataGridViewganado.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
-        Me.DataGridViewganado.Size = New System.Drawing.Size(710, 218)
+        Me.DataGridViewganado.Size = New System.Drawing.Size(711, 239)
         Me.DataGridViewganado.TabIndex = 90
         '
         'TabCompras
@@ -2476,14 +2579,14 @@ Partial Class Programa
         Me.DGVUsuarios.ClipboardCopyMode = System.Windows.Forms.DataGridViewClipboardCopyMode.Disable
         Me.DGVUsuarios.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         Me.DGVUsuarios.ColumnHeadersVisible = False
-        DataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle8.BackColor = System.Drawing.SystemColors.Window
-        DataGridViewCellStyle8.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle8.ForeColor = System.Drawing.SystemColors.ControlText
-        DataGridViewCellStyle8.SelectionBackColor = System.Drawing.SystemColors.ButtonHighlight
-        DataGridViewCellStyle8.SelectionForeColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(192, Byte), Integer))
-        DataGridViewCellStyle8.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
-        Me.DGVUsuarios.DefaultCellStyle = DataGridViewCellStyle8
+        DataGridViewCellStyle12.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle12.BackColor = System.Drawing.SystemColors.Window
+        DataGridViewCellStyle12.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle12.ForeColor = System.Drawing.SystemColors.ControlText
+        DataGridViewCellStyle12.SelectionBackColor = System.Drawing.SystemColors.ButtonHighlight
+        DataGridViewCellStyle12.SelectionForeColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(192, Byte), Integer))
+        DataGridViewCellStyle12.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
+        Me.DGVUsuarios.DefaultCellStyle = DataGridViewCellStyle12
         Me.DGVUsuarios.GridColor = System.Drawing.SystemColors.ButtonHighlight
         Me.DGVUsuarios.Location = New System.Drawing.Point(11, 47)
         Me.DGVUsuarios.Margin = New System.Windows.Forms.Padding(4, 3, 4, 3)
@@ -2652,10 +2755,14 @@ Partial Class Programa
         CType(Me.PICUsuarioLogueado, System.ComponentModel.ISupportInitialize).EndInit()
         Me.TabbedPane.ResumeLayout(False)
         Me.TabGanado.ResumeLayout(False)
+        Me.Panel1.ResumeLayout(False)
+        Me.Panel1.PerformLayout()
         Me.PanelBuscarFechaNacimiento.ResumeLayout(False)
         Me.PanelBuscarFechaNacimiento.PerformLayout()
         Me.PanelBuscarSexoRaza.ResumeLayout(False)
         Me.PanelBuscarSexoRaza.PerformLayout()
+        Me.PanelBuscarCodGanado.ResumeLayout(False)
+        Me.PanelBuscarCodGanado.PerformLayout()
         Me.GroupBox1.ResumeLayout(False)
         Me.GroupBox1.PerformLayout()
         CType(Me.DataGridViewganado, System.ComponentModel.ISupportInitialize).EndInit()
@@ -2884,7 +2991,7 @@ Partial Class Programa
     Friend WithEvents BOTONpanelSexoRaza As System.Windows.Forms.Button
     Friend WithEvents Button12 As System.Windows.Forms.Button
     Friend WithEvents Button13 As System.Windows.Forms.Button
-    Friend WithEvents Button14 As System.Windows.Forms.Button
+    Friend WithEvents BOTONpanelCodigo As System.Windows.Forms.Button
     Friend WithEvents BOTONpanelBuscarNacimiento As System.Windows.Forms.Button
     Friend WithEvents Label8 As System.Windows.Forms.Label
     Friend WithEvents Label7 As System.Windows.Forms.Label
@@ -2895,4 +3002,12 @@ Partial Class Programa
     Friend WithEvents BuscarFechaGanado As System.Windows.Forms.Button
     Friend WithEvents DateTimeBuscarFechaGanado As System.Windows.Forms.DateTimePicker
     Friend WithEvents Label9 As System.Windows.Forms.Label
+    Friend WithEvents Panel1 As System.Windows.Forms.Panel
+    Friend WithEvents Label10 As System.Windows.Forms.Label
+    Friend WithEvents PanelBuscarCodGanado As System.Windows.Forms.Panel
+    Friend WithEvents txtBuscarCodGanado As System.Windows.Forms.TextBox
+    Friend WithEvents BOTONcancelarBuscarCodigo As System.Windows.Forms.Button
+    Friend WithEvents BOTONbuscaCodGanado As System.Windows.Forms.Button
+    Friend WithEvents Label11 As System.Windows.Forms.Label
+    Friend WithEvents BOTONlimpiartxtGuardar As System.Windows.Forms.Button
 End Class
