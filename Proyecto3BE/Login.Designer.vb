@@ -72,11 +72,11 @@ Partial Class Login
         Me.BotonVolver.UseVisualStyleBackColor = True
         Me.BotonVolver.Visible = False
         '
-        'Form1
+        'Login
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(268, 112)
+        Me.ClientSize = New System.Drawing.Size(268, 111)
         Me.Controls.Add(Me.BotonVolver)
         Me.Controls.Add(Me.BotonAceptar)
         Me.Controls.Add(Me.LabelInfo)
@@ -84,7 +84,7 @@ Partial Class Login
         Me.Controls.Add(Me.LabelUser)
         Me.MaximumSize = New System.Drawing.Size(284, 150)
         Me.MinimumSize = New System.Drawing.Size(284, 150)
-        Me.Name = "Form1"
+        Me.Name = "Login"
         Me.ShowIcon = False
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "Ingresar"
