@@ -81,7 +81,7 @@ Public Class Programa
         'ImagenUsuario = imagen
         PasswdUsuario = passwd
 
-        PICUsuarioLogueado.ImageLocation = ("../../Res/profile/" + imagen + ".bmp")
+        PICUsuarioLogueado.ImageLocation = (imagen + ".bmp")
     End Sub
 
     'Boton de busqueda de usuarios
@@ -194,7 +194,9 @@ Public Class Programa
             'PICUsuarios.ImageLocation = ("../../Res/profile/default.bmp")
             'End If
 
-            PICUsuarios.ImageLocation = reader.GetString(5) + ".bmp"
+            'PICUsuarios.ImageLocation = reader.GetString(5) + ".bmp"
+
+            PICUsuarios.ImageLocation = reader.GetString(5)
 
             'Se cierra la conexion
             connection.Close()
@@ -261,7 +263,7 @@ Public Class Programa
     Private Sub BotonAceptarUsuarios_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles BTNAceptarUsuarios.Click
 
         '/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-        Dim stringaux As String = imagenSeleccionada()
+        'Dim stringaux As String = imagenSeleccionada()
         '/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
         'Info necesaria para el comando
@@ -270,17 +272,23 @@ Public Class Programa
 
         Select Case estadoUsuario
             Case "modificar"
+
+
+
                 If verificarNombre() Then
                     If verificarPasswd(TXTPasswdUsuarios.Text) Then
                         comando.CommandText = ("update usuario set contrasena='" + TXTPasswdUsuarios.Text +
                        "', nombre='" + TXTNombreUsuarios.Text +
                        "', rango='" + CBXRangoUsuarios.SelectedItem.ToString +
-                       "', perfil='" + stringaux +
+                       "', perfil='" + PICUsuarios.ImageLocation +
                        "' where ci='" + CiSeleccionado + "'")
                         Try
                             'Se abre la conexion
                             connection.Open()
                             'Se ejecuta el comando
+
+
+
                             comando.ExecuteNonQuery()
                             'Se cierra la conexion
                             connection.Close()
@@ -320,9 +328,12 @@ Public Class Programa
                                                            TXTPasswdUsuarios.Text + "','" +
                                                            CBXRangoUsuarios.SelectedItem.ToString +
                                                            "','activo','" +
-                                                           stringaux +
+                                                           PICUsuarios.ImageLocation +
                                                            "')")
                                     Try
+
+                                        MsgBox(PICUsuarios.ImageLocation)
+
                                         connection.Open()
                                         comando.ExecuteNonQuery()
                                         connection.Close()
@@ -395,20 +406,20 @@ Public Class Programa
 
     End Function
 
-    Private Function imagenSeleccionada()
+    'Private Function imagenSeleccionada()
 
-        Dim nombre() As String
+    'Dim nombre() As String
 
-        If PICUsuarios.ImageLocation <> "../../Res/profile/default.bmp" And PICUsuarios.ImageLocation <> "../../Res/profile/nueva.bmp" Then
-            nombre = PICUsuarios.ImageLocation.Split("/")
-            nombre = nombre(nombre.Length - 1).Split(".")
+    '   If PICUsuarios.ImageLocation <> "../../Res/profile/default.bmp" And PICUsuarios.ImageLocation <> "../../Res/profile/nueva.bmp" Then
+    '      nombre = PICUsuarios.ImageLocation.Split("/")
+    '     nombre = nombre(nombre.Length - 1).Split(".")
 
-            Return nombre(0)
+    '        Return nombre(0)
 
-        End If
+    '   End If
 
-        Return "default"
-    End Function
+    '    Return "default"
+    'End Function
 
     Private Function verificarPasswd(ByVal passwd As String)
         If passwd.Length < 7 Then
@@ -488,6 +499,9 @@ Public Class Programa
 
         TXTBusquedaUsuarios.Visible = False
 
+        TXTCiUsuarios.Visible = False
+        LBLCiUsuarios.Visible = False
+
         PNLUsuarios.Visible = True
     End Sub
 
@@ -495,6 +509,9 @@ Public Class Programa
         estadoModificar()
 
         estadoUsuario = "agregar"
+
+        TXTCiUsuarios.Visible = True
+        LBLCiUsuarios.Visible = True
 
         TXTCiUsuarios.Text = ""
         TXTNombreUsuarios.Text = ""
@@ -568,9 +585,11 @@ Public Class Programa
                 Try
                     ImagenUsuarios = Image.FromFile(openFileDialog.FileName)
                     If ImagenUsuarios.Height <= 90 And ImagenUsuarios.Width <= 90 Then
-                        aux = openFileDialog.FileName.Split("\")
-                        aux = aux(aux.Length - 1).Split(".")
-                        PICUsuarios.ImageLocation = ("../../Res/profile/" + aux(0) + ".bmp")
+                        'aux = openFileDialog.FileName.Split("\")
+                        'aux = aux(aux.Length - 1).Split(".")
+                        'PICUsuarios.ImageLocation = ("../../Res/profile/" + aux(0) + ".bmp")
+
+                        PICUsuarios.ImageLocation = openFileDialog.FileName
 
                         openFileDialog.FileName = ""
                     Else
@@ -622,7 +641,7 @@ Public Class Programa
 
         '-------------------------------------------------------------------------------------------------------------------
 
-      
+
 
         '-------------------------------------------------------------------------------------------------------------------
 
@@ -658,7 +677,7 @@ Public Class Programa
 
         '////////////FIN COMPRAS
     End Sub
-  
+
     '////////////////////////////////////////INICIO DE GANADO///////////////////////////////////////////////////////////////////
 
     '/////////////////////// MUESTRA EN EL DRATAGRID LA RAZA  Y EL SEXO SELECCIONAD0 EN EL COMBOBOX/////////////////////////////////////
@@ -746,7 +765,7 @@ Public Class Programa
 
         PanelBuscarCodGanado.Visible = False
         PanelBuscarFechaNacimiento.Visible = False
-        
+
         PanelBuscarSexoRaza.Visible = True
     End Sub
 
@@ -820,7 +839,7 @@ Public Class Programa
 
 
     End Sub
-  
+
 
     '''/////////////////BOTON QUE ACTIVA LA OPCION GUARDAR GANADO PARA AGREGAR////////////////////////////////////////
     ''' ////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -931,7 +950,7 @@ Public Class Programa
 
         End If
     End Sub
-    
+
     '///////////////////////////////////BOTON PARA LIMPIAR TEXTBOX DE GANADO ////////////////////////////////////
     Private Sub BOTONlimpiartxtGuardarGanado_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles BOTONlimpiartxtGuardarGanado.Click
         CBXguardarsexo.Text = ""
@@ -1903,9 +1922,6 @@ Public Class Programa
                 DataGridViewganado.Columns(3).HeaderText = "Fecha nacimiento"
                 DataGridViewganado.Columns(4).HeaderText = "Estado"
 
-
-
-
                 Exit Select
             Case 1
 
@@ -1941,18 +1957,12 @@ Public Class Programa
 
                 Exit Select
             Case 4
-
                 BTNBusquedaUsuarios.PerformClick()
                 CBXBusquedaUsuarios.SelectedIndex = 0
 
                 Exit Select
 
         End Select
-
-
-
-
-
     End Sub
 
 
@@ -2033,9 +2043,9 @@ Public Class Programa
 
     End Sub
 
-    
 
- 
+
+
 
 
 End Class
