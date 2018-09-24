@@ -30,13 +30,8 @@ Public Class Programa
 
     '///SECCION USUARIOS
 
-
     Private Sub BTNCerrarSesion_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles BTNCerrarSesion.Click
-
-        '////////
-        'Cerrar Sesion
-        '////////
-
+        Me.Close()
     End Sub
 
     Private Sub LBLCambioContraseña_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles LBLCambioContraseña.Click
@@ -193,11 +188,13 @@ Public Class Programa
                     CBXRangoUsuarios.SelectedIndex = 2
             End Select
 
-            If Dir$("../../Res/profile/" + reader.GetString(5) + ".bmp") <> "" Then
-                PICUsuarios.ImageLocation = ("../../Res/profile/" + reader.GetString(5) + ".bmp")
-            Else
-                PICUsuarios.ImageLocation = ("../../Res/profile/default.bmp")
-            End If
+            'If Dir$("../../Res/profile/" + reader.GetString(5) + ".bmp") <> "" Then
+            'PICUsuarios.ImageLocation = ("../../Res/profile/" + reader.GetString(5) + ".bmp")
+            'Else
+            'PICUsuarios.ImageLocation = ("../../Res/profile/default.bmp")
+            'End If
+
+            PICUsuarios.ImageLocation = reader.GetString(5) + ".bmp"
 
             'Se cierra la conexion
             connection.Close()
