@@ -1006,7 +1006,7 @@ Public Class Programa
         End If
     End Sub
 
-    Private Sub Button10_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles BOTONabrirModificar.Click
+    Private Sub BOTONabrirModificar_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles BOTONabrirModificar.Click
         BOTONguardarModificar.Visible = True
         BOTONcancelarModificar.Visible = True
         BOTONabrirAgregar.Enabled = False
