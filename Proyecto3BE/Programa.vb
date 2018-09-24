@@ -686,7 +686,7 @@ Public Class Programa
             ElseIf CBXseleccionarSexo.Text = "Macho" Then
 
                 Try
-                    Consulta = " SELECT idg,sexo,raza,nacimiento,estado from ganado where raza= '" + CBXseleccionarRaza.SelectedItem + "' And sexo = 'Macho' "
+                    Consulta = " SELECT idg,sexo,raza,nacimiento,estado, TIMESTAMPDIFF(YEAR,nacimiento,CURDATE()) AS 'Edad' from ganado where raza= '" + CBXseleccionarRaza.SelectedItem + "' And sexo = 'Macho' "
                     consultar()
                     DataGridViewganado.DataSource = Tabla
 
@@ -701,7 +701,7 @@ Public Class Programa
 
             ElseIf CBXseleccionarSexo.Text = "Hembra" Then
                 Try
-                    Consulta = " SELECT idg,sexo,raza,nacimiento,estado from ganado where raza= '" + CBXseleccionarRaza.SelectedItem + "' And sexo = 'Hembra'"
+                    Consulta = " SELECT idg,sexo,raza,nacimiento,estado, TIMESTAMPDIFF(YEAR,nacimiento,CURDATE()) AS 'Edad' from ganado where raza= '" + CBXseleccionarRaza.SelectedItem + "' And sexo = 'Hembra'"
                     consultar()
                     DataGridViewganado.DataSource = Tabla
 
