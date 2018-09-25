@@ -92,13 +92,13 @@ Public Class Programa
         'ImagenUsuario = imagen
         PasswdUsuario = passwd
 
-        PICUsuarioLogueado.ImageLocation = (imagen + ".bmp")
+        PICUsuarioLogueado.ImageLocation = imagen
     End Sub
 
     'Boton de busqueda de usuarios
     Private Sub BotonBusquedaUsuarios_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles BTNBusquedaUsuarios.Click
 
-        'Se borra el contenido anterior del listbox
+        'Se borra el contenido anterior del datagrid
         DGVUsuarios.DataSource = Nothing
 
         'Si el panel de busqueda esta vacio se buscaran todos, en caso contrario se busca lo especificado
@@ -206,6 +206,8 @@ Public Class Programa
             'End If
 
             'PICUsuarios.ImageLocation = reader.GetString(5) + ".bmp"
+
+            'MsgBox(reader.GetString(5))
 
             PICUsuarios.ImageLocation = reader.GetString(5)
 
@@ -2005,7 +2007,9 @@ Public Class Programa
 
                 Exit Select
             Case 4
+
                 BTNBusquedaUsuarios.PerformClick()
+
                 CBXBusquedaUsuarios.SelectedIndex = 0
 
                 Exit Select
