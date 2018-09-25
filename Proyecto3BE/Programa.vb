@@ -600,7 +600,7 @@ Public Class Programa
                         'aux = aux(aux.Length - 1).Split(".")
                         'PICUsuarios.ImageLocation = ("../../Res/profile/" + aux(0) + ".bmp")
 
-                        PICUsuarios.ImageLocation = openFileDialog.FileName
+                        PICUsuarios.ImageLocation = openFileDialog.FileName.Replace("\", "/")
 
                         openFileDialog.FileName = ""
                     Else
