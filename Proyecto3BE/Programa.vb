@@ -16,6 +16,17 @@ Public Class Programa
     Private PasswdUsuario As String
     Private ImagenUsuario As String
 
+
+    Structure vacas
+        Dim codigoganado As Integer
+        Dim strraza As String
+        Dim strsexo As String
+        Dim fechanacimiento As Date
+        Dim estado As String
+    End Structure
+
+
+
     Public Sub consultar()
         Try
             Conexion = New MySqlDataAdapter(Consulta, data)
@@ -1453,39 +1464,69 @@ Public Class Programa
         PNLPrincipalcompra.Enabled = False
     End Sub
     Private Sub BTNBuscarcompra_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles BTNBuscarcompra.Click
+        DGVUsuarios.DataSource = Nothing
+
+        If CBXBuscarcompra.Text = "Id" Then
+
+            Consulta = ("select idc,fechacompra,comentarioc,totalc from compra where idc ='" + TXTBuscarcompra.Text + "'")
+            consultar()
+            DGVCompras.DataSource = Tabla
+
+            DGVCompras.Focus()
+        ElseIf TXTBuscarcompra.Text = "" Then
+            Consulta = "select * from compra"
+            consultar()
+            DGVCompras.DataSource = Tabla
+
+        Else : CBXBuscarcompra.Text = "Fecha de Compra"
+            Consulta = ("select idc,fechacompra,comentarioc,totalc from compra where fechacompra ='" + TXTBuscarcompra.Text + "'")
+            consultar()
+            DGVCompras.DataSource = Tabla
+
+            DGVCompras.Focus()
+
+        End If
 
 
     End Sub
     Private Sub BTNAgregarcomraganado_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles BTNAgregarcomraganado.Click
         Dim fechacompra As String = DTPFechacompraganado.Value.ToString("yyyy-MM-dd")
-        Dim fechanac As String = DTPFechanacimientocompra.Value.ToString("yyyy-MM-dd")
-        If fechacompra <> "" And RTXComentariocompraganado.Text <> "" And TXTTotalapagarcompraganado.Text Then
-            If IsNumeric(TXTTotalapagarcompraganado.Text) Then
-                'Agrega los valores de los campos a cada tabla correspondiente
-                Consulta = "insert into compra values (0,'" & fechacompra & "','" & RTXComentariocompraganado.Text & "','" & TXTTotalapagarcompraganado.Text & "')"
-                consultar()
-                Consulta = "select * from compra"
-                consultar()
-                'Actualiza la BD
-                DGVCompras.DataSource = Tabla
-                'Deja a los textbox vacios para ingresar nuevos datos
-                DTPFechacompraganado.Value = Today
-                RTXComentariocompraganado.Text = ""
-                TXTTotalapagarcompraganado.Text = ""
 
-                TXTCodigoganadocompra.Text = ""
-                TXTRazacompra.Text = ""
-                TXTSexocompra.Text = ""
-                DTPFechanacimientocompra.Value = Today
-                TXTEstadocompra.Text = ""
-            Else
-                'Muestra mensaje diciendo que no se ingresaron valores numericos o que solo acepta valores numericos
-                MsgBox("Ingrese solo valor numerico en total")
-            End If
+        Dim fechanac As String = DTPFechanacimientocompra.Value.ToString("yyyy-MM-dd")
+
+        If fechacompra <> "" And RTXComentariocompraganado.Text <> "" And TXTTotalapagarcompraganado.Text Then
+            Try
+                If IsNumeric(TXTTotalapagarcompraganado.Text) Then
+                    'Agrega los valores de los campos a cada tabla correspondiente
+                    Consulta = "insert into compra values (0,'" & fechacompra & "','" & RTXComentariocompraganado.Text & "','" & TXTTotalapagarcompraganado.Text & "')"
+                    consultar()
+                    Consulta = "select * from compra"
+                    consultar()
+                    'Actualiza la BD
+                    DGVCompras.DataSource = Tabla
+                    'Deja a los textbox vacios para ingresar nuevos datos
+                    DTPFechacompraganado.Value = Today
+                    RTXComentariocompraganado.Text = ""
+                    TXTTotalapagarcompraganado.Text = ""
+
+                    TXTCodigoganadocompra.Text = ""
+                    TXTRazacompra.Text = ""
+                    TXTSexocompra.Text = ""
+                    DTPFechanacimientocompra.Value = Today
+                    TXTEstadocompra.Text = ""
+                Else
+                    'Muestra mensaje diciendo que no se ingresaron valores numericos o que solo acepta valores numericos
+                    MsgBox("Ingrese solo valor numerico en total")
+                End If
+            Catch ex As Exception
+                MsgBox(ex)
+            End Try
         Else
             'Muestra mensaje que todos los campos no estan completos
             MsgBox("Complete todos los campos vacios")
+
         End If
+        
     End Sub
     Private Sub BTNLimpiarcompraganado_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles BTNLimpiarcompraganado.Click
         RTXComentariocompraganado.Clear()
@@ -1652,6 +1693,13 @@ Public Class Programa
     End Sub
 
     Private Sub TXTBuscarcompra_TextChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles TXTBuscarcompra.TextChanged
+
+    End Sub
+
+    Private Sub BTNBuscarmodificacioncompra_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles BTNBuscarmodificacioncompra.Click
+        If CBXBuscarcompra.Text = "Id" And TXTBuscarcompra.Text = "" Then
+
+        End If
 
     End Sub
     '/////////////////////////////FIN COMPRAS//////////////////////////////////////////////////////////////////
@@ -2042,10 +2090,5 @@ Public Class Programa
         txbcodigodeganadoenventa.Text = DataGridViewganadoenventa.Item(0, DataGridViewganadoenventa.CurrentRow.Index).Value
 
     End Sub
-
-
-
-
-
 
 End Class
