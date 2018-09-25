@@ -1467,7 +1467,7 @@ Public Class Programa
     End Sub
     Private Sub BTNBuscarcompra_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles BTNBuscarcompra.Click
         DGVUsuarios.DataSource = Nothing
-
+        Dim fecha As String = DTPBuscarcompra.Value.ToString("yyyy-MM-dd")
         If CBXBuscarcompra.Text = "Id" Then
 
             Consulta = ("select idc,fechacompra,comentarioc,totalc from compra where idc ='" + TXTBuscarcompra.Text + "'")
@@ -1475,17 +1475,17 @@ Public Class Programa
             DGVCompras.DataSource = Tabla
 
             DGVCompras.Focus()
-        ElseIf TXTBuscarcompra.Text = "" Then
-            Consulta = "select * from compra"
+        ElseIf CBXBuscarcompra.Text = "Id" And TXTBuscarcompra.Text = "" Then
+            Consulta = ("select * from compra")
             consultar()
             DGVCompras.DataSource = Tabla
 
         Else : CBXBuscarcompra.Text = "Fecha de Compra"
-            Consulta = ("select idc,fechacompra,comentarioc,totalc from compra where fechacompra ='" + TXTBuscarcompra.Text + "'")
+            Consulta = ("select idc,fechacompra,comentarioc,totalc from compra where fechacompra ='" + fecha + "'")
             consultar()
             DGVCompras.DataSource = Tabla
-
             DGVCompras.Focus()
+
 
         End If
 
@@ -1703,6 +1703,16 @@ Public Class Programa
 
         End If
 
+    End Sub
+
+    Private Sub CBXBuscarcompra_SelectedIndexChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles CBXBuscarcompra.SelectedIndexChanged
+        If CBXBuscarcompra.Text = "Fecha de Compra" Then
+            DTPBuscarcompra.Visible = True
+            TXTBuscarcompra.Visible = False
+        Else
+            DTPBuscarcompra.Visible = False
+            TXTBuscarcompra.Visible = True
+        End If
     End Sub
     '/////////////////////////////FIN COMPRAS//////////////////////////////////////////////////////////////////
     '//////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -2095,6 +2105,4 @@ Public Class Programa
 
     End Sub
 
-   
-   
 End Class
