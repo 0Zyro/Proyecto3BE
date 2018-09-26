@@ -285,9 +285,6 @@ Public Class Programa
 
         Select Case estadoUsuario
             Case "modificar"
-
-
-
                 If verificarNombre() Then
                     If verificarPasswd(TXTPasswdUsuarios.Text) Then
                         comando.CommandText = ("update usuario set contrasena='" + TXTPasswdUsuarios.Text +
@@ -299,9 +296,6 @@ Public Class Programa
                             'Se abre la conexion
                             connection.Open()
                             'Se ejecuta el comando
-
-
-
                             comando.ExecuteNonQuery()
                             'Se cierra la conexion
                             connection.Close()
@@ -344,12 +338,14 @@ Public Class Programa
                                                            PICUsuarios.ImageLocation +
                                                            "')")
                                     Try
-
-                                        MsgBox(PICUsuarios.ImageLocation)
-
                                         connection.Open()
                                         comando.ExecuteNonQuery()
                                         connection.Close()
+
+                                        'My.Computer.FileSystem.CopyFile(PICUsuarios.ImageLocation, "", Microsoft.VisualBasic.FileIO.UIOption.AllDialogs, Microsoft.VisualBasic.FileIO.UICancelOption.DoNothing)
+
+
+
                                         estadoVisualizar()
                                     Catch ex As Exception
                                         LBLInfoUsuarios.Text = ("Error:" + ex.Message)
@@ -366,6 +362,27 @@ Public Class Programa
                 End If
         End Select
     End Sub
+
+    Private Function getAbsoluteRoute()
+        Dim aux As String() = PICUsuarios.ImageLocation.Split("/")
+        MsgBox(aux.Length)
+
+        ReDim Preserve aux(aux.Length - 2)
+        MsgBox(aux.Length)
+
+        For Each e As String In aux
+            MsgBox(e)
+        Next
+
+        'Dim fullPath As String =
+        'fullPath = My.Computer.FileSystem.CombinePath("../../Res/profile", aux(aux.Length - 1))
+        'MsgBox(fullPath)
+
+
+
+        Return "asd"
+
+    End Function
 
     Private Sub altaUsuario(ByVal ci As String)
 
@@ -2171,4 +2188,13 @@ Public Class Programa
         txbcodigodeganadoenventa.Text = DataGridViewganadoenventa.Item(0, DataGridViewganadoenventa.CurrentRow.Index).Value
 
     End Sub
+<<<<<<< HEAD
+=======
+
+    Private Sub Button6_Click_1(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Button6.Click
+
+        getAbsoluteRoute()
+
+    End Sub
+>>>>>>> 52cbe44b37f802f0dc1cd557df263797505e4abb
 End Class
