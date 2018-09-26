@@ -672,7 +672,7 @@ Public Class Programa
         '-------------------------------------------------------------------------------------------------------------------
 
         '////////////COMPRAS
-
+        CBXBuscarcompra.Text = "Elige una opción"
 
         'Paneles de agregar compras
         PNLAgregarcompraganado.Enabled = False
@@ -1375,6 +1375,7 @@ Public Class Programa
     '////////////////////////////////////////////////////////////////////////////////////////////
     '/////////////////////////////////////////////////////////////////////////////////////////////
     '/////////////////////////////////////////////////////////////////////////////////////////////
+    'boton que sale del panel de agregar compras y muestra panel principal
     Private Sub BTNVolverdeagregarcompra_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles BTNVolverdeagregarcompra.Click
         'Muestra panel pricipal de compras
         PNLPrincipalcompra.Enabled = True
@@ -1387,7 +1388,7 @@ Public Class Programa
         Panelagregarcompras.Visible = False
         Panelagregarcompras.Enabled = False
 
-        CBXAgregarcompra.Text = ""
+
 
         PNLAgregarcompraproducto.Visible = False
         PNLAgregarcompraproducto.Enabled = False
@@ -1397,7 +1398,7 @@ Public Class Programa
         PNLAgregarcompraganado.Enabled = False
         PNLAgregarcompraganado.SendToBack()
     End Sub
-    '/////////////////////////Boton de agregar compras////////////
+    '/////////////////////////Boton de para entrar al panel de agregar compras
     Private Sub BTNpanelmodicompras_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles BTNPanelagregarcompra.Click
         'Muestra el panel de agregar compras
         Panelagregarcompras.BringToFront()
@@ -1409,7 +1410,8 @@ Public Class Programa
         PNLPrincipalcompra.Enabled = False
         PNLPrincipalcompra.Visible = False
     End Sub
-    Private Sub Button5_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles BTNAgregarganadocompra.Click
+    'boton que agrega el ganado al arraylist
+    Private Sub BTNAgregarganadocompra_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles BTNAgregarganadocompra.Click
 
     End Sub
 
@@ -1459,7 +1461,7 @@ Public Class Programa
         DTGModificarcompra.Columns(1).HeaderText = "Fecha de Compra"
         DTGModificarcompra.Columns(2).HeaderText = "Comentario"
         DTGModificarcompra.Columns(3).HeaderText = "Total Pagado"
-
+        CBXModificarcompra.Text = "Elige una opción"
         'Oculta panel principal compras
         PNLPrincipalcompra.SendToBack()
         PNLPrincipalcompra.Visible = False
@@ -1468,28 +1470,40 @@ Public Class Programa
     Private Sub BTNBuscarcompra_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles BTNBuscarcompra.Click
         DGVUsuarios.DataSource = Nothing
         Dim fecha As String = DTPBuscarcompra.Value.ToString("yyyy-MM-dd")
-        If CBXBuscarcompra.Text = "Id" Then
+        Try
+            If CBXBuscarcompra.Text = "Id" And TXTBuscarcompra.Text = "" Then
+                Consulta = ("select * from compra")
+                consultar()
+                DGVCompras.DataSource = Tabla
+            ElseIf CBXBuscarcompra.Text = "Elige una opción" Then
+                Consulta = ("select * from compra")
+                consultar()
+                DGVCompras.DataSource = Tabla
+            Else
 
-            Consulta = ("select idc,fechacompra,comentarioc,totalc from compra where idc ='" + TXTBuscarcompra.Text + "'")
-            consultar()
-            DGVCompras.DataSource = Tabla
+                If CBXBuscarcompra.Text = "Id" Then
+                    If IsNumeric(TXTBuscarcompra.Text) Then
+                        Consulta = ("select idc,fechacompra,comentarioc,totalc from compra where idc ='" + TXTBuscarcompra.Text + "'")
+                        consultar()
+                        DGVCompras.DataSource = Tabla
 
-            DGVCompras.Focus()
-        ElseIf CBXBuscarcompra.Text = "Id" And TXTBuscarcompra.Text = "" Then
-            Consulta = ("select * from compra")
-            consultar()
-            DGVCompras.DataSource = Tabla
+                        DGVCompras.Focus()
+                    Else
+                        MsgBox("Tiene que ser valor númerico")
+                    End If
 
-        Else : CBXBuscarcompra.Text = "Fecha de Compra"
-            Consulta = ("select idc,fechacompra,comentarioc,totalc from compra where fechacompra ='" + fecha + "'")
-            consultar()
-            DGVCompras.DataSource = Tabla
-            DGVCompras.Focus()
-
-
-        End If
+                Else : CBXBuscarcompra.Text = "Fecha de Compra"
+                    Consulta = ("select idc,fechacompra,comentarioc,totalc from compra where fechacompra ='" + fecha + "'")
+                    consultar()
+                    DGVCompras.DataSource = Tabla
+                    DGVCompras.Focus()
 
 
+                End If
+                End If
+        Catch ex As Exception
+            MsgBox(ex)
+        End Try
     End Sub
     Private Sub BTNAgregarcomraganado_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles BTNAgregarcomraganado.Click
         Dim fechacompra As String = DTPFechacompraganado.Value.ToString("yyyy-MM-dd")
@@ -1512,10 +1526,9 @@ Public Class Programa
                     TXTTotalapagarcompraganado.Text = ""
 
                     TXTCodigoganadocompra.Text = ""
-                    TXTRazacompra.Text = ""
-                    TXTSexocompra.Text = ""
                     DTPFechanacimientocompra.Value = Today
                     TXTEstadocompra.Text = ""
+                    MsgBox("Los datos se ingresaron correctamente")
                 Else
                     'Muestra mensaje diciendo que no se ingresaron valores numericos o que solo acepta valores numericos
                     MsgBox("Ingrese solo valor numerico en total")
@@ -1536,8 +1549,6 @@ Public Class Programa
         DTPFechacompraganado.Value = Today
 
         TXTCodigoganadocompra.Clear()
-        TXTRazacompra.Clear()
-        TXTSexocompra.Clear()
         DTPFechanacimientocompra.Value = Today
         TXTEstadocompra.Clear()
     End Sub
@@ -1573,22 +1584,34 @@ Public Class Programa
 
     Private Sub Agregarmodificarcompra_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles BTNAgregarmodificacion.Click
         Dim fechacompra As String = DTPModifechacompra.Value.ToString("yyyy-MM-dd")
-        Try
-            Consulta = "update compra set idc ='" + TXTIdmodicompra.Text + "', fechacompra='" + fechacompra + "', comentarioc='" + RTXModicomentariocompra.Text + "', totalc='" + TXTModitotalapagarcompra.Text + "' where idc='" + TXTIdmodicompra.Text + "'"
-            consultar()
-            Consulta = "select * from compra"
-            consultar()
+
+        If MessageBox.Show("¿Seguro que desea modificar ?", "Confirmacion", MessageBoxButtons.YesNo, MessageBoxIcon.Question) = Windows.Forms.DialogResult.Yes Then
 
 
-            DTGModificarcompra.DataSource = Tabla
-            DTGModificarcompra.Columns(0).HeaderText = "Id"
-            DTGModificarcompra.Columns(1).HeaderText = "Fecha de compra"
-            DTGModificarcompra.Columns(2).HeaderText = "Comentario"
-            DTGModificarcompra.Columns(3).HeaderText = "Total a pagado"
-            MsgBox("La compra se modifico con exito")
-        Catch ex As Exception
-            MsgBox(ex)
-        End Try
+            Try
+                If IsNumeric(TXTModitotalapagarcompra.Text) Then
+
+                    Consulta = ("update compra set idc ='" & DTGModificarcompra.Item(0, DTGModificarcompra.CurrentRow.Index).Value & "', fechacompra='" + fechacompra + "', comentarioc='" + RTXModicomentariocompra.Text + "', totalc='" + TXTModitotalapagarcompra.Text + "' where idc= '" & DTGModificarcompra.Item(0, DTGModificarcompra.CurrentRow.Index).Value & "'")
+                    consultar()
+                    Consulta = "select * from compra"
+                    consultar()
+
+
+                    DTGModificarcompra.DataSource = Tabla
+                    DTGModificarcompra.Focus()
+                    DTGModificarcompra.Columns(0).HeaderText = "Id"
+                    DTGModificarcompra.Columns(1).HeaderText = "Fecha de compra"
+                    DTGModificarcompra.Columns(2).HeaderText = "Comentario"
+                    DTGModificarcompra.Columns(3).HeaderText = "Total a pagado"
+                    MsgBox("La compra se modificó con exito")
+                Else
+                    MsgBox("Ingrese solo valor numerico en total")
+                End If
+            Catch ex As Exception
+                MsgBox(ex)
+            End Try
+        End If
+
     End Sub
     Private Sub BTNsalirmodicompra_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles BTNsalirmodicompra.Click
         'Oculta el panel de modificar compra
@@ -1615,11 +1638,10 @@ Public Class Programa
         'Cuando se selecciona otra fila del data grid deja los textbox, richtextbox vacios para mostrar los nuevos datos
         RTXModicomentariocompra.Clear()
         TXTModitotalapagarcompra.Clear()
-        TXTIdmodicompra.Clear()
+
 
 
         'Cada vez que se selecciona un item del datagrid, muestra los datos en los textbox,datatimerpick,richtextbox
-        TXTIdmodicompra.Text = DTGModificarcompra.Item(0, DTGModificarcompra.CurrentRow.Index).Value
         DTPModifechacompra.Value = DTGModificarcompra.Item(1, DTGModificarcompra.CurrentRow.Index).Value
         RTXModicomentariocompra.Text = DTGModificarcompra.Item(2, DTGModificarcompra.CurrentRow.Index).Value
         TXTModitotalapagarcompra.Text = DTGModificarcompra.Item(3, DTGModificarcompra.CurrentRow.Index).Value
@@ -1699,19 +1721,64 @@ Public Class Programa
     End Sub
 
     Private Sub BTNBuscarmodificacioncompra_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles BTNBuscarmodificacioncompra.Click
-        If CBXBuscarcompra.Text = "Id" And TXTBuscarcompra.Text = "" Then
+        Dim fecha As String = DTPBuscarmodificarcompra.Value.ToString("yyyy-MM-dd")
+        Try
+            If CBXModificarcompra.Text = "Id" And TXTBuscarmodificarcompra.Text = "" Then
+                Consulta = ("select * from compra")
+                consultar()
+                DTGModificarcompra.DataSource = Tabla
+            ElseIf CBXModificarcompra.Text = "Elige una opción" Then
+                Consulta = ("select * from compra")
+                consultar()
+                DTGModificarcompra.DataSource = Tabla
+            Else
 
-        End If
+                If CBXModificarcompra.Text = "Id" Then
+                    If IsNumeric(TXTBuscarmodificarcompra.Text) Then
+                        Consulta = ("select idc,fechacompra,comentarioc,totalc from compra where idc ='" + TXTBuscarmodificarcompra.Text + "'")
+                        consultar()
+                        DTGModificarcompra.DataSource = Tabla
+                        DGVCompras.Focus()
+                    Else
+                        MsgBox("El id tiene que ser un valor númerico")
+                    End If
+                Else : CBXBuscarcompra.Text = "Fecha de Compra"
+                    Consulta = ("select idc,fechacompra,comentarioc,totalc from compra where fechacompra ='" + fecha + "'")
+                    consultar()
+                    DTGModificarcompra.DataSource = Tabla
+                    DTGModificarcompra.Focus()
+                End If
+                End If
+        Catch ex As Exception
+            MsgBox(ex)
+        End Try
 
     End Sub
 
     Private Sub CBXBuscarcompra_SelectedIndexChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles CBXBuscarcompra.SelectedIndexChanged
-        If CBXBuscarcompra.Text = "Fecha de Compra" Then
+        If CBXBuscarcompra.Text = "Elige una opción" Then
+            DTPBuscarcompra.Visible = False
+            TXTBuscarcompra.Visible = False
+
+        ElseIf CBXBuscarcompra.Text = "Fecha de Compra" Then
             DTPBuscarcompra.Visible = True
             TXTBuscarcompra.Visible = False
+            DTPBuscarcompra.Value = Today
         Else
             DTPBuscarcompra.Visible = False
             TXTBuscarcompra.Visible = True
+        End If
+    End Sub
+    Private Sub CBXModificarcompra_SelectedIndexChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles CBXModificarcompra.SelectedIndexChanged
+        If CBXModificarcompra.Text = "Elige una opción" Then
+            DTPBuscarmodificarcompra.Visible = False
+            TXTBuscarmodificarcompra.Visible = False
+        ElseIf CBXModificarcompra.Text = "Id" Then
+            DTPBuscarmodificarcompra.Visible = False
+            TXTBuscarmodificarcompra.Visible = True
+        Else
+            DTPBuscarmodificarcompra.Visible = True
+            TXTBuscarmodificarcompra.Visible = False
         End If
     End Sub
     '/////////////////////////////FIN COMPRAS//////////////////////////////////////////////////////////////////
@@ -2104,6 +2171,4 @@ Public Class Programa
         txbcodigodeganadoenventa.Text = DataGridViewganadoenventa.Item(0, DataGridViewganadoenventa.CurrentRow.Index).Value
 
     End Sub
-
-  
 End Class
