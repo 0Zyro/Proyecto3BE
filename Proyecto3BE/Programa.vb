@@ -367,11 +367,7 @@ Public Class Programa
         Dim aux As String() = PICUsuarios.ImageLocation.Split("/")
         MsgBox(aux.Length)
 
-        For Each e As String In aux
-            MsgBox(e)
-        Next
-
-        ReDim Preserve aux(aux.Length - 1)
+        ReDim Preserve aux(aux.Length - 2)
         MsgBox(aux.Length)
 
         For Each e As String In aux
