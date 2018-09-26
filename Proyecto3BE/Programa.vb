@@ -1506,7 +1506,7 @@ Public Class Programa
 
                         DGVCompras.Focus()
                     Else
-                        MsgBox("Tiene que ser valor númerico")
+                        MsgBox("El id tiene que ser valor númerico")
                     End If
 
                 Else : CBXBuscarcompra.Text = "Fecha de Compra"
