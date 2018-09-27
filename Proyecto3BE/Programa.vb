@@ -1824,13 +1824,13 @@ Public Class Programa
 
     '////////////////////agregar en  ventas///////////////////
 
-    Private Sub agregarventa_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnagregarventa.Click
-        If lblparamostrarsisemodifico.Visible = True Then
-            lblparamostrarsisemodifico.Visible = False
-        End If
-        If lblmostrarqueseborro.Visible = True Then
-            lblmostrarqueseborro.Visible = False
-        End If
+    Private Sub agregarventa_Click(ByVal sender As System.Object, ByVal e As System.EventArgs)
+        'If lblparamostrarsisemodifico.Visible = True Then
+        '    lblparamostrarsisemodifico.Visible = False
+        'End If
+        'If lblmostrarqueseborro.Visible = True Then
+        '    lblmostrarqueseborro.Visible = False
+        'End If
         Dim fecha As String = DateTimePicker1.Value.ToString("yyyy-MM-dd")
         Dim comentario As String = txbcomentarioventa.Text
         Dim totalv As String = txbtotalventa.Text
@@ -1909,18 +1909,10 @@ Public Class Programa
 
 
     Private Sub btnclearventa_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnclearventa.Click
-        If Labelparamostraragregado.Visible = True Then
-            Labelparamostraragregado.Visible = False
-        End If
-        If lblparamostrarsisemodifico.Visible = True Then
-            lblparamostrarsisemodifico.Visible = False
-        End If
-        If lblmostrarqueseborro.Visible = True Then
-            lblmostrarqueseborro.Visible = False
-        End If
+     
         txbcodigodeganadoenventa.Clear()
         txbiddeventa.Text = ""
-        txbcomentarioventa.Text = ""
+        rtbventa.Text = ""
         txbtotalventa.Text = ""
         txbceduladeclientedeventas.Clear()
     End Sub
@@ -2152,7 +2144,7 @@ Public Class Programa
     End Sub
 
 
-    Private Sub Button4_Click_2(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnañadiraganadounaventa.Click
+    Private Sub Button4_Click_2(ByVal sender As System.Object, ByVal e As System.EventArgs)
 
         paneldetextosenventas.Visible = False
 
@@ -2202,8 +2194,16 @@ Public Class Programa
 
 
 
-    Private Sub DataGridViewganadoenventa_SelectionChanged(ByVal sender As Object, ByVal e As System.EventArgs) Handles DataGridViewganadoenventa.SelectionChanged
+    Private Sub DataGridViewganadoenventa_SelectionChanged(ByVal sender As Object, ByVal e As System.EventArgs)
         txbcodigodeganadoenventa.Text = DataGridViewganadoenventa.Item(0, DataGridViewganadoenventa.CurrentRow.Index).Value
 
+    End Sub
+
+    Private Sub btnclearventaxd_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnclearventaxd.Click
+        txbcodigodeganadoenventa.Clear()
+        txbiddeventa.Text = ""
+        rtbventa.Text = ""
+        txbtotalventa.Text = ""
+        txbceduladeclientedeventas.Clear()
     End Sub
 End Class
