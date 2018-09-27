@@ -3194,11 +3194,10 @@ Partial Class Programa
     Friend WithEvents DTPBuscarcompra As System.Windows.Forms.DateTimePicker
     Friend WithEvents btnbuscarventa As System.Windows.Forms.Button
     Friend WithEvents txbbuscarventa As System.Windows.Forms.TextBox
-<<<<<<< HEAD
     Friend WithEvents CBXSexocompra As System.Windows.Forms.ComboBox
     Friend WithEvents CBXRazacompra As System.Windows.Forms.ComboBox
     Friend WithEvents DTPBuscarmodificarcompra As System.Windows.Forms.DateTimePicker
-=======
+
     Friend WithEvents Button6 As System.Windows.Forms.Button
->>>>>>> 52cbe44b37f802f0dc1cd557df263797505e4abb
+
 End Class
