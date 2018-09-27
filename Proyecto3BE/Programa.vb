@@ -2206,13 +2206,4 @@ Public Class Programa
         txbcodigodeganadoenventa.Text = DataGridViewganadoenventa.Item(0, DataGridViewganadoenventa.CurrentRow.Index).Value
 
     End Sub
-
-
-
-    Private Sub Button6_Click_1(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Button6.Click
-
-        getAbsoluteRoute()
-
-    End Sub
-
 End Class
