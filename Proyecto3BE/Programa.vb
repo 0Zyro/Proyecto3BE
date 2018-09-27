@@ -689,6 +689,10 @@ Public Class Programa
         '-------------------------------------------------------------------------------------------------------------------
 
         '////////////COMPRAS
+
+        
+
+
         CBXBuscarcompra.Text = "Elige una opción"
 
         'Paneles de agregar compras
@@ -705,6 +709,7 @@ Public Class Programa
         Panelmodificarcompras.Visible = False
         Panelagregarcompras.Visible = False
 
+        
         '////////////FIN COMPRAS
     End Sub
 
@@ -1439,10 +1444,15 @@ Public Class Programa
                 'Agrega los valores de los campos a cada tabla correspondiente
                 Consulta = "insert into compra values (0,'" & fechacompra & "','" & RTXComentariocompraproducto.Text & "','" & TXTTotalpagadocomprasproducto.Text & "')"
                 consultar()
+
+                Consulta = ("update compra set comentarioc = concat(upper(left(comentarioc,1)), right(comentarioc,length(comentarioc)-1))")
+                consultar()
                 Consulta = "select * from compra"
                 consultar()
+
                 'Actualiza la BD
                 DGVCompras.DataSource = Tabla
+
                 'Deja a los textbox vacios para ingresar nuevos datos
                 RTXComentariocompraproducto.Text = ""
                 TXTTotalpagadocomprasproducto.Text = ""
@@ -1533,10 +1543,16 @@ Public Class Programa
                     'Agrega los valores de los campos a cada tabla correspondiente
                     Consulta = "insert into compra values (0,'" & fechacompra & "','" & RTXComentariocompraganado.Text & "','" & TXTTotalapagarcompraganado.Text & "')"
                     consultar()
+
+                    Consulta = ("update compra set comentarioc = concat(upper(left(comentarioc,1)), right(comentarioc,length(comentarioc)-1))")
+                    consultar()
+
                     Consulta = "select * from compra"
                     consultar()
+
                     'Actualiza la BD
                     DGVCompras.DataSource = Tabla
+
                     'Deja a los textbox vacios para ingresar nuevos datos
                     DTPFechacompraganado.Value = Today
                     RTXComentariocompraganado.Text = ""
@@ -1605,29 +1621,31 @@ Public Class Programa
         If MessageBox.Show("¿Seguro que desea modificar ?", "Confirmacion", MessageBoxButtons.YesNo, MessageBoxIcon.Question) = Windows.Forms.DialogResult.Yes Then
 
 
-            Try
-                If IsNumeric(TXTModitotalapagarcompra.Text) Then
 
-                    Consulta = ("update compra set idc ='" & DTGModificarcompra.Item(0, DTGModificarcompra.CurrentRow.Index).Value & "', fechacompra='" + fechacompra + "', comentarioc='" + RTXModicomentariocompra.Text + "', totalc='" + TXTModitotalapagarcompra.Text + "' where idc= '" & DTGModificarcompra.Item(0, DTGModificarcompra.CurrentRow.Index).Value & "'")
-                    consultar()
-                    Consulta = "select * from compra"
-                    consultar()
+            If IsNumeric(TXTModitotalapagarcompra.Text) Then
 
+                Consulta = ("update compra set idc ='" & DTGModificarcompra.Item(0, DTGModificarcompra.CurrentRow.Index).Value & "', fechacompra='" & fechacompra & "', comentarioc='" & RTXModicomentariocompra.Text & "', totalc='" & TXTModitotalapagarcompra.Text & "' where idc= '" & DTGModificarcompra.Item(0, DTGModificarcompra.CurrentRow.Index).Value & "'")
+                consultar()
 
-                    DTGModificarcompra.DataSource = Tabla
-                    DTGModificarcompra.Focus()
-                    DTGModificarcompra.Columns(0).HeaderText = "Id"
-                    DTGModificarcompra.Columns(1).HeaderText = "Fecha de compra"
-                    DTGModificarcompra.Columns(2).HeaderText = "Comentario"
-                    DTGModificarcompra.Columns(3).HeaderText = "Total a pagado"
-                    MsgBox("La compra se modificó con exito")
-                Else
-                    MsgBox("Ingrese solo valor numerico en total")
-                End If
-            Catch ex As Exception
-                MsgBox(ex)
-            End Try
+                Consulta = ("update compra set comentarioc = concat(upper(left(comentarioc,1)), right(comentarioc,length(comentarioc)-1))")
+                consultar()
+
+                Consulta = ("select * from compra")
+                consultar()
+
+                DTGModificarcompra.DataSource = Tabla
+                DTGModificarcompra.Columns(0).HeaderText = "Id"
+                DTGModificarcompra.Columns(1).HeaderText = "Fecha de Compra"
+                DTGModificarcompra.Columns(2).HeaderText = "Comentario"
+                DTGModificarcompra.Columns(3).HeaderText = "Total Pagado"
+                MsgBox("La compra se modificó con exito")
+                
+            Else
+                MsgBox("Ingrese solo valor numerico en total")
+            End If
+
         End If
+        
 
     End Sub
     Private Sub BTNsalirmodicompra_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles BTNsalirmodicompra.Click
