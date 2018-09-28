@@ -606,7 +606,7 @@ Public Class Programa
         openFileDialog.RestoreDirectory = True
         openFileDialog.FileName = ""
 
-        Dim aux() As String
+
 
         Dim ImagenUsuarios As Image
 
@@ -642,17 +642,14 @@ Public Class Programa
 
 
 
-    Private Sub TabClientes_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles TabClientes.Click
-        If paneldetextosenventas.Visible = True Then
-            btnagregarpanel.Image = Image.FromFile("Resources\flecha-hacia-la-izquierda.png")
-        Else
-            btnagregarpanel.Image = Image.FromFile("Resources\anadir.png")
-        End If
-    End Sub
+
     Private Sub Form2_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
 
 
         '////////////VENTAS
+
+
+
         Consulta = "select * from venta"
         consultar()
         'actualiza la dgvw
@@ -1968,6 +1965,7 @@ Public Class Programa
 
 
     Private Sub Buttonborrarventas_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnborrarventa.Click
+
         'If Labelparamostraragregado.Visible = True Then
         '    Labelparamostraragregado.Visible = False
         'End If
@@ -1975,12 +1973,10 @@ Public Class Programa
         '    lblparamostrarsisemodifico.Visible = False
         'End If
 
-        If txbiddeventa.Text = "" Then
-            MsgBox("Complete campo idv")
-        Else
+     
 
             Try
-                Consulta = "delete from venta where idv= '" & txbiddeventa.Text & "'"
+                Consulta = "delete from venta where idv= '" & DataGridViewVENTAS.Item(0, DataGridViewVENTAS.CurrentRow.Index).Value & "'"
                 consultar()
 
                 Consulta = "select * from venta"
@@ -1992,7 +1988,7 @@ Public Class Programa
             Catch ex As Exception
                 MsgBox(ex)
             End Try
-        End If
+
 
     End Sub
     '////////////////////////////////////////////////////////////////////////////////////////////////
@@ -2005,8 +2001,7 @@ Public Class Programa
 
     Private Sub btnclearventa_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnclearventa.Click
 
-        txbcodigodeganadoenventa.Clear()
-        txbiddeventa.Text = ""
+       
         rtbventa.Text = ""
         txbtotalventa.Text = ""
         txbceduladeclientedeventas.Clear()
@@ -2034,11 +2029,11 @@ Public Class Programa
     End Sub
     Private Sub DataGridViewVENTAS_SelectionChanged(ByVal sender As Object, ByVal e As System.EventArgs) Handles DataGridViewVENTAS.SelectionChanged
 
-        txbiddeventa.Clear()
+
         'txbcomentarioventa.Clear()
         txbtotalventa.Clear()
 
-        txbiddeventa.Text = DataGridViewVENTAS.Item(0, DataGridViewVENTAS.CurrentRow.Index).Value
+
         'txbcomentarioventa.Text = DataGridViewVENTAS.Item(2, DataGridViewVENTAS.CurrentRow.Index).Value
         txbtotalventa.Text = DataGridViewVENTAS.Item(3, DataGridViewVENTAS.CurrentRow.Index).Value
 
@@ -2062,41 +2057,36 @@ Public Class Programa
 
 
     'MODIFICAR VENTAS 
-    'Private Sub Button4_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnmodificarventa.Click
-    '    If Labelparamostraragregado.Visible = True Then
-    '        Labelparamostraragregado.Visible = False
-    '    End If
-    '    If lblmostrarqueseborro.Visible = True Then
-    '        lblmostrarqueseborro.Visible = False
-    '    End If
-    '    Dim fecha As String = DateTimePicker1.Value.ToString("yyyy-MM-dd")
-    '    Dim comentario As String = txbcomentarioventa.Text
-    '    Dim totalv As String = txbtotalventa.Text
-    '    Dim id As String = txbiddeventa.Text
+    Private Sub Button4_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnmodificarventa.Click
+        'If Labelparamostraragregado.Visible = True Then
+        '    Labelparamostraragregado.Visible = False
+        'End If
+        'If lblmostrarqueseborro.Visible = True Then
+        '    lblmostrarqueseborro.Visible = False
+        'End If
+        Dim fecha As String = DateTimePicker1.Value.ToString("yyyy-MM-dd")
+        Dim comentario As String = rtbventa.Text
+        Dim totalv As String = txbtotalventa.Text
 
 
-    '    If txbiddeventa.Text = "" Then
-    '        MsgBox("Complete el campo ID ")
-    '        'ElseIf txbcomentarioventa.Text = "" And txbtotalventa.Text = "" Then
-    '        '    MsgBox("Complete los campos restantes ")
-    '        'Else
+
+       
 
 
-    '        Try
-    '            Consulta = ("update venta set idv='" + txbiddeventa.Text + "', fechaventa='" + fecha + "', comentariov='" + txbcomentarioventa.Text + "', totalv='" + txbtotalventa.Text + "' where idv='" + txbiddeventa.Text + "'")
-    '            consultar()
-    '            Consulta = "select * from venta"
-    '            consultar()
-    '            DataGridViewVENTAS.DataSource = Tabla
-    '            'lblparamostrarsisemodifico.Show()
+            Try
+            Consulta = ("update venta set idv='" + DataGridViewVENTAS.Item(0, DataGridViewVENTAS.CurrentRow.Index).Value + "', fechaventa='" + fecha + "', comentariov='" + rtbventa.Text + "', totalv='" + txbtotalventa.Text + "' where idv='" + DataGridViewVENTAS.Item(0, DataGridViewVENTAS.CurrentRow.Index).Value + "'")
+                consultar()
+                Consulta = "select * from venta"
+                consultar()
+                DataGridViewVENTAS.DataSource = Tabla
+                'lblparamostrarsisemodifico.Show()
 
-    '        Catch ex As Exception
-    '            MsgBox(ex)
+            Catch ex As Exception
+                MsgBox(ex)
 
-    '        End Try
+            End Try
 
-    '    End If
-    'End Sub
+    End Sub
 
 
 
@@ -2118,37 +2108,7 @@ Public Class Programa
 
     ' cosas de paneles
 
-    Private Sub btnagregarpanel_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnagregarpanel.Click
 
-
-
-
-
-
-        'DataGridViewganadoenventa.Visible = True
-        paneldetextosenventas.Visible = True
-        ' cambiamos de tamaño el panel 
-        If paneldetextosenventas.Width = 10 Then
-            paneldetextosenventas.Width = 1014
-        Else
-            paneldetextosenventas.Width = 10
-        End If
-
-        ' si el panel tiene... de ancho se cambia la imagen del boton 
-        If paneldetextosenventas.Width = 1014 Then
-            btnagregarpanel.Image = Image.FromFile("..\..\Resources\flecha-hacia-la-izquierda.png")
-            'Panelparaocultar.Visible = False
-
-        End If
-
-        If paneldetextosenventas.Width = 10 Then
-            btnagregarpanel.Image = Image.FromFile("..\..\Resources\anadir.png")
-            'Panelparaocultar.Visible = True
-        End If
-
-
-
-    End Sub
 
 
     Private Sub TabbedPane_SelectedIndexChanged(ByVal sender As Object, ByVal e As System.EventArgs) Handles TabbedPane.SelectedIndexChanged
@@ -2239,34 +2199,34 @@ Public Class Programa
     End Sub
 
 
-    Private Sub Button4_Click_2(ByVal sender As System.Object, ByVal e As System.EventArgs)
+    'Private Sub Button4_Click_2(ByVal sender As System.Object, ByVal e As System.EventArgs)
 
-        paneldetextosenventas.Visible = False
-
-
-        btnagregarpanel.Image = Image.FromFile("..\..\Resources\anadir.png")
+    '    paneldetextosenventas.Visible = False
 
 
 
 
-        Try
-
-            'consulta
-            Consulta = "update ganado  set idv='" + txbiddeventa.Text + "', preciov='" + txbtotalventa.Text + "' where idg='" + txbcodigodeganadoenventa.Text + "' "
-            consultar()
-            'select hacia ganado
-            Consulta = "select idg,sexo,raza,nacimiento,estado,preciov,idv from ganado"
-            consultar()
-            'actualiza la dgvw
-            'DataGridViewganadoenventa.DataSource = Tabla
-            MsgBox("se agregó con éxito")
-        Catch ex As Exception
-            MsgBox(ex)
 
 
-        End Try
 
-    End Sub
+    '    Try
+
+    '        'consulta
+    '        Consulta = "update ganado  set idv='" + DataGridViewVENTAS.Item(0, DataGridViewVENTAS.CurrentRow.Index).Value + "', preciov='" + txbtotalventa.Text + "' where idg='" + txbcodigodeganadoenventa.Text + "' "
+    '        consultar()
+    '        'select hacia ganado
+    '        Consulta = "select idg,sexo,raza,nacimiento,estado,preciov,idv from ganado"
+    '        consultar()
+    '        'actualiza la dgvw
+    '        'DataGridViewganadoenventa.DataSource = Tabla
+    '        MsgBox("se agregó con éxito")
+    '    Catch ex As Exception
+    '        MsgBox(ex)
+
+
+    '    End Try
+
+    'End Sub
 
     Private Sub paneldetextosenventas_Paint(ByVal sender As System.Object, ByVal e As System.Windows.Forms.PaintEventArgs) Handles paneldetextosenventas.Paint
         Consulta = "select idg,sexo,raza,nacimiento,estado,preciov,idv from ganado"
@@ -2295,10 +2255,61 @@ Public Class Programa
     End Sub
 
     Private Sub btnclearventaxd_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnclearventaxd.Click
-        txbcodigodeganadoenventa.Clear()
-        txbiddeventa.Text = ""
+
+
         rtbventa.Text = ""
         txbtotalventa.Text = ""
         txbceduladeclientedeventas.Clear()
+    End Sub
+
+    Private Sub btnagregarventa_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnagregarventa.Click
+
+    End Sub
+
+    Private Sub Button6_Click_1(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Button6.Click
+
+        cbxventa.Items.Clear()
+
+        'El comando va por texto
+        comando.CommandType = CommandType.Text
+        'el comando se conecta a traves del objeto connection
+        comando.Connection = connection
+
+        comando.CommandText = ("select idg from ganado where estado='activo'")
+
+        Try
+
+            connection.Open()
+
+            reader = comando.ExecuteReader()
+
+            If reader.HasRows() Then
+
+                While reader.Read()
+
+                    cbxventa.Items.Add(reader.GetString(0))
+
+                End While
+
+            End If
+
+            connection.Close()
+
+        Catch ex As Exception
+            MsgBox(ex.Message)
+            If connection.State = ConnectionState.Open Then
+                connection.Close()
+            End If
+
+        End Try
+
+        paneldetextosenventas.Visible = True
+
+    End Sub
+
+    Private Sub cbxventa_SelectedIndexChanged(ByVal sender As Object, ByVal e As System.EventArgs) Handles cbxventa.SelectedIndexChanged
+
+        'ppp
+
     End Sub
 End Class
