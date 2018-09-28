@@ -2083,7 +2083,7 @@ Public Class Programa
         Select Case TabbedPane.SelectedIndex
             Case 0
                 'CONSULTA DE TABLA GANADO
-                Consulta = "select idg,sexo,raza,nacimiento,estado, TIMESTAMPDIFF(YEAR,nacimiento,CURDATE()) AS 'Edad' from ganado"
+                Consulta = "select idg,sexo,raza,nacimiento,estado, TIMESTAMPDIFF(YEAR,ganado.nacimiento,CURDATE()) AS 'Anios', TIMESTAMPDIFF(month, ganado.nacimiento,NOW())%12 AS 'Meses' from ganado"
                 consultar()
                 DataGridViewganado.DataSource = Tabla
 
@@ -2095,9 +2095,9 @@ Public Class Programa
                 DataGridViewganado.Columns(1).HeaderText = "Sexo"
                 DataGridViewganado.Columns(2).HeaderText = "Raza"
 
-                DataGridViewganado.Columns(3).HeaderText = "Fecha nacimiento"
+                'DataGridViewganado.Columns(3).HeaderText = "Fecha"
                 DataGridViewganado.Columns(4).HeaderText = "Estado"
-
+                DataGridViewganado.Columns(3).Visible = False
                 Exit Select
             Case 1
 
