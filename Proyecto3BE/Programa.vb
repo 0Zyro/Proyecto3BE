@@ -287,11 +287,17 @@ Public Class Programa
             Case "modificar"
                 If verificarNombre() Then
                     If verificarPasswd(TXTPasswdUsuarios.Text) Then
+
+                        My.Computer.FileSystem.CopyFile(PICUsuarios.ImageLocation, ("../../Resources/profile/" + getFileName()), Microsoft.VisualBasic.FileIO.UIOption.OnlyErrorDialogs)
+
+                        PICUsuarios.ImageLocation = ("../../Resources/profile/" + getFileName())
+
                         comando.CommandText = ("update usuario set contrasena='" + TXTPasswdUsuarios.Text +
                        "', nombre='" + TXTNombreUsuarios.Text +
                        "', rango='" + CBXRangoUsuarios.SelectedItem.ToString +
-                       "', perfil='" + PICUsuarios.ImageLocation +
+                       "', perfil='" + getAbsoluteRoute() +
                        "' where ci='" + CiSeleccionado + "'")
+
                         Try
                             'Se abre la conexion
                             connection.Open()
@@ -329,22 +335,24 @@ Public Class Programa
                         Case "noexiste"
                             If verificarNombre() Then
                                 If verificarPasswd(TXTPasswdUsuarios.Text) Then
+
+                                    My.Computer.FileSystem.CopyFile(getAbsoluteRoute(), ("../../Resources/profile/" + getFileName()), Microsoft.VisualBasic.FileIO.UIOption.AllDialogs)
+
+                                    PICUsuarios.ImageLocation = ("../../Resources/profile/" + getFileName())
+
                                     comando.CommandText = ("insert into usuario values ('" +
                                                            TXTCiUsuarios.Text + "','" +
                                                            TXTNombreUsuarios.Text + "','" +
                                                            TXTPasswdUsuarios.Text + "','" +
                                                            CBXRangoUsuarios.SelectedItem.ToString +
                                                            "','activo','" +
-                                                           PICUsuarios.ImageLocation +
+                                                           getAbsoluteRoute() +
                                                            "')")
+
                                     Try
                                         connection.Open()
                                         comando.ExecuteNonQuery()
                                         connection.Close()
-
-                                        'My.Computer.FileSystem.CopyFile(PICUsuarios.ImageLocation, "", Microsoft.VisualBasic.FileIO.UIOption.AllDialogs, Microsoft.VisualBasic.FileIO.UICancelOption.DoNothing)
-
-
 
                                         estadoVisualizar()
                                     Catch ex As Exception
@@ -364,25 +372,39 @@ Public Class Programa
     End Sub
 
     Private Function getAbsoluteRoute()
+
         Dim aux As String() = PICUsuarios.ImageLocation.Split("/")
-        MsgBox(aux.Length)
+
+        Dim fileName As String = aux(aux.Length - 1)
+        Dim fileRoute As String = ""
 
         ReDim Preserve aux(aux.Length - 2)
-        MsgBox(aux.Length)
 
         For Each e As String In aux
-            MsgBox(e)
+            fileRoute = (fileRoute + e + "/")
         Next
 
-        'Dim fullPath As String =
-        'fullPath = My.Computer.FileSystem.CombinePath("../../Res/profile", aux(aux.Length - 1))
-        'MsgBox(fullPath)
+        Dim absoluteRoute As String = My.Computer.FileSystem.CombinePath(fileRoute, fileName)
 
+        absoluteRoute = absoluteRoute.Replace("\", "/")
 
-
-        Return "asd"
+        Return absoluteRoute
 
     End Function
+
+    Private Function getFileName()
+
+        Dim aux As String() = PICUsuarios.ImageLocation.Split("/")
+
+        Return aux(aux.Length - 1)
+
+    End Function
+
+    Private Sub Button7_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Button7.Click
+
+        My.Computer.FileSystem.CopyFile(getAbsoluteRoute(), ("../../Resources/profile/" + getFileName()), Microsoft.VisualBasic.FileIO.UIOption.AllDialogs)
+
+    End Sub
 
     Private Sub altaUsuario(ByVal ci As String)
 
@@ -542,6 +564,8 @@ Public Class Programa
 
         TXTCiUsuarios.Visible = True
         LBLCiUsuarios.Visible = True
+
+        PICUsuarios.ImageLocation = ("../../Resources/profile/nueva.bmp")
 
         TXTCiUsuarios.Text = ""
         TXTNombreUsuarios.Text = ""
