@@ -1431,6 +1431,19 @@ Public Class Programa
         PNLPrincipalcompra.SendToBack()
         PNLPrincipalcompra.Enabled = False
         PNLPrincipalcompra.Visible = False
+
+        'Deja los textbox richtbox vacios, y los dtp con la fecha actual
+        RTXComentariocompraganado.Clear()
+        TXTTotalapagarcompraganado.Clear()
+        DTPFechacompraganado.Value = Today
+
+        TXTCodigoganadocompra.Clear()
+        DTPFechanacimientocompra.Value = Today
+        TXTEstadocompra.Clear()
+
+        RTXComentariocompraproducto.Clear()
+        TXTTotalpagadocomprasproducto.Clear()
+        DTPFechacompraproducto.Value = Today
     End Sub
     'boton que agrega el ganado al arraylist
     Private Sub BTNAgregarganadocompra_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles BTNAgregarganadocompra.Click
@@ -1438,32 +1451,45 @@ Public Class Programa
     End Sub
 
     Private Sub BTNAgregarcompra_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles BTNAgregarcompraproducto.Click
+
         Dim fechacompra As String = DTPFechacompraproducto.Value.ToString("yyyy-MM-dd")
         If fechacompra <> "" And RTXComentariocompraproducto.Text <> "" And TXTTotalpagadocomprasproducto.Text <> "" Then
-            If IsNumeric(TXTTotalpagadocomprasproducto.Text) Then
-                'Agrega los valores de los campos a cada tabla correspondiente
-                Consulta = "insert into compra values (0,'" & fechacompra & "','" & RTXComentariocompraproducto.Text & "','" & TXTTotalpagadocomprasproducto.Text & "')"
-                consultar()
-
-                Consulta = ("update compra set comentarioc = concat(upper(left(comentarioc,1)), right(comentarioc,length(comentarioc)-1))")
-                consultar()
-                Consulta = "select * from compra"
-                consultar()
-
-                'Actualiza la BD
-                DGVCompras.DataSource = Tabla
-
-                'Deja a los textbox vacios para ingresar nuevos datos
-                RTXComentariocompraproducto.Text = ""
-                TXTTotalpagadocomprasproducto.Text = ""
+            'Si la fecha de compra es mayor que la fecha actual salta el msgbox
+            If DTPFechacompraproducto.Value > Today Then
+                MsgBox("La fecha de compra no puede ser mayor a la fecha actual")
+                'Sino, guarda los datos mientras se cumplan los demas requisitos
             Else
-                'Muestra mensaje diciendo que no se ingresaron valores numericos o que solo acepta valores numericos
-                MsgBox("Igrese solo valor numerico en total")
+
+                If IsNumeric(TXTTotalpagadocomprasproducto.Text) Then
+                    'Agrega los valores de los campos a cada tabla correspondiente
+                    Consulta = "insert into compra values (0,'" & fechacompra & "','" & RTXComentariocompraproducto.Text & "','" & TXTTotalpagadocomprasproducto.Text & "')"
+                    consultar()
+
+                    Consulta = ("update compra set comentarioc = concat(upper(left(comentarioc,1)), right(comentarioc,length(comentarioc)-1))")
+                    consultar()
+                    Consulta = "select * from compra"
+                    consultar()
+
+                    'Actualiza la BD
+                    DGVCompras.DataSource = Tabla
+
+                    'Deja a los textbox vacios para ingresar nuevos datos
+                    RTXComentariocompraproducto.Text = ""
+                    TXTTotalpagadocomprasproducto.Text = ""
+
+                    MsgBox("Se han agregado los datos correctamente")
+                Else
+                    'Muestra mensaje diciendo que no se ingresaron valores numericos o que solo acepta valores numericos
+                    MsgBox("Igrese solo valor numerico en total")
+                End If
             End If
+
         Else
+
             'Muestra mensaje que todos los campos no estan completos
             MsgBox("Complete todos los campos vacios")
         End If
+
     End Sub
     '////////////////Boton clear de agregar compra//////////////
     Private Sub BTNclearagregarcompra_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles BTNclearagregarcompraproducto.Click
@@ -1493,6 +1519,11 @@ Public Class Programa
         PNLPrincipalcompra.SendToBack()
         PNLPrincipalcompra.Visible = False
         PNLPrincipalcompra.Enabled = False
+
+        'deja los richtbox y los textbox vacios, y los datatimerpick con la fecha actual
+        RTXModicomentariocompra.Clear()
+        TXTModitotalapagarcompra.Clear()
+        DTPModifechacompra.Value = Today
     End Sub
     Private Sub BTNBuscarcompra_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles BTNBuscarcompra.Click
         DGVUsuarios.DataSource = Nothing
@@ -1539,32 +1570,38 @@ Public Class Programa
 
         If fechacompra <> "" And RTXComentariocompraganado.Text <> "" And TXTTotalapagarcompraganado.Text Then
             Try
-                If IsNumeric(TXTTotalapagarcompraganado.Text) Then
-                    'Agrega los valores de los campos a cada tabla correspondiente
-                    Consulta = "insert into compra values (0,'" & fechacompra & "','" & RTXComentariocompraganado.Text & "','" & TXTTotalapagarcompraganado.Text & "')"
-                    consultar()
-
-                    Consulta = ("update compra set comentarioc = concat(upper(left(comentarioc,1)), right(comentarioc,length(comentarioc)-1))")
-                    consultar()
-
-                    Consulta = "select * from compra"
-                    consultar()
-
-                    'Actualiza la BD
-                    DGVCompras.DataSource = Tabla
-
-                    'Deja a los textbox vacios para ingresar nuevos datos
-                    DTPFechacompraganado.Value = Today
-                    RTXComentariocompraganado.Text = ""
-                    TXTTotalapagarcompraganado.Text = ""
-
-                    TXTCodigoganadocompra.Text = ""
-                    DTPFechanacimientocompra.Value = Today
-                    TXTEstadocompra.Text = ""
-                    MsgBox("Los datos se ingresaron correctamente")
+                'Si la fecha de compra es mayor a la actual salta el msgbox
+                If DTPFechacompraganado.Value > Today Then
+                    MsgBox("La fecha de compra no puede ser mayor a la fecha actual")
                 Else
-                    'Muestra mensaje diciendo que no se ingresaron valores numericos o que solo acepta valores numericos
-                    MsgBox("Ingrese solo valor numerico en total")
+
+                    If IsNumeric(TXTTotalapagarcompraganado.Text) Then
+                        'Agrega los valores de los campos a cada tabla correspondiente
+                        Consulta = "insert into compra values (0,'" & fechacompra & "','" & RTXComentariocompraganado.Text & "','" & TXTTotalapagarcompraganado.Text & "')"
+                        consultar()
+
+                        Consulta = ("update compra set comentarioc = concat(upper(left(comentarioc,1)), right(comentarioc,length(comentarioc)-1))")
+                        consultar()
+
+                        Consulta = "select * from compra"
+                        consultar()
+
+                        'Actualiza la BD
+                        DGVCompras.DataSource = Tabla
+
+                        'Deja a los textbox vacios para ingresar nuevos datos
+                        DTPFechacompraganado.Value = Today
+                        RTXComentariocompraganado.Text = ""
+                        TXTTotalapagarcompraganado.Text = ""
+
+                        TXTCodigoganadocompra.Text = ""
+                        DTPFechanacimientocompra.Value = Today
+                        TXTEstadocompra.Text = ""
+                        MsgBox("Los datos se ingresaron correctamente")
+                    Else
+                        'Muestra mensaje diciendo que no se ingresaron valores numericos o que solo acepta valores numericos
+                        MsgBox("Ingrese solo valor numerico en total")
+                    End If
                 End If
             Catch ex As Exception
                 MsgBox(ex)
@@ -1645,8 +1682,17 @@ Public Class Programa
             End If
 
         End If
-        
+    
 
+
+    End Sub
+    '//////////////textbox para buscar id en modificar compra
+    Private Sub TXTBuscarmodificarcompra_TextChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles TXTBuscarmodificarcompra.TextChanged
+        'Actualiza en vivo buscando en el datagrid lo que se escribe en el textbox
+        Consulta = ("select * from compra where idc like '" & TXTBuscarmodificarcompra.Text & "%'")
+        consultar()
+        'Actualiza el datagrid
+        DTGModificarcompra.DataSource = Tabla
     End Sub
     Private Sub BTNsalirmodicompra_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles BTNsalirmodicompra.Click
         'Oculta el panel de modificar compra
@@ -1669,6 +1715,7 @@ Public Class Programa
         DGVCompras.Columns(2).HeaderText = "Comentario"
         DGVCompras.Columns(3).HeaderText = "Total Pagado"
     End Sub
+    '///////////Datagridview del panel de modificarcompra
     Private Sub DTGmodificarcompra_SelectionChanged(ByVal sender As Object, ByVal e As System.EventArgs) Handles DTGModificarcompra.SelectionChanged
         'Cuando se selecciona otra fila del data grid deja los textbox, richtextbox vacios para mostrar los nuevos datos
         RTXModicomentariocompra.Clear()
@@ -1681,7 +1728,7 @@ Public Class Programa
         RTXModicomentariocompra.Text = DTGModificarcompra.Item(2, DTGModificarcompra.CurrentRow.Index).Value
         TXTModitotalapagarcompra.Text = DTGModificarcompra.Item(3, DTGModificarcompra.CurrentRow.Index).Value
     End Sub
-
+    '////boton para limpiar los campos en moidicar compra
     Private Sub BTNlimpiarmodicompra_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles BTNlimpiarmodicompra.Click
         'Deja vacio el campo de comentario
         RTXModicomentariocompra.Clear()
@@ -1689,7 +1736,7 @@ Public Class Programa
         TXTModitotalapagarcompra.Clear()
         DTPModifechacompra.Value = Today
     End Sub
-
+    '/////////////////combobox de agregar compras, para seleccionar producto o ganado
     Private Sub CBXAgregarcompra_SelectedIndexChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles CBXAgregarcompra.SelectedIndexChanged
         If CBXAgregarcompra.Text = "Ganado" Then
             PNLAgregarcompraganado.Visible = True
@@ -1752,9 +1799,11 @@ Public Class Programa
     End Sub
 
     Private Sub TXTBuscarcompra_TextChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles TXTBuscarcompra.TextChanged
-
+        Consulta = "select * from compra where idc like '" & TXTBuscarcompra.Text & "%'"
+        consultar()
+        DGVCompras.DataSource = Tabla
     End Sub
-
+    '///////////////Boton buscar en modificacion de compra
     Private Sub BTNBuscarmodificacioncompra_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles BTNBuscarmodificacioncompra.Click
         Dim fecha As String = DTPBuscarmodificarcompra.Value.ToString("yyyy-MM-dd")
         Try
@@ -1783,38 +1832,84 @@ Public Class Programa
                     DTGModificarcompra.DataSource = Tabla
                     DTGModificarcompra.Focus()
                 End If
-                End If
+            End If
         Catch ex As Exception
             MsgBox(ex)
         End Try
 
     End Sub
-
+    '/////combobox del panel principal de compras
     Private Sub CBXBuscarcompra_SelectedIndexChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles CBXBuscarcompra.SelectedIndexChanged
+        'Si el combo box esta en elige una opcion, oculta el datatimerpick y el textbox
         If CBXBuscarcompra.Text = "Elige una opción" Then
+            'Cuando se encuentra en elige una opcion actualiza la base de datos
+            Consulta = ("select * from compra")
+            consultar()
+            DGVCompras.DataSource = Tabla
             DTPBuscarcompra.Visible = False
             TXTBuscarcompra.Visible = False
-
+            'Muesta el datatimerpick y oculta el textbox
         ElseIf CBXBuscarcompra.Text = "Fecha de Compra" Then
             DTPBuscarcompra.Visible = True
             TXTBuscarcompra.Visible = False
+            'Pone el datatimerpick en la fecha actual
             DTPBuscarcompra.Value = Today
+            'Sino muestra el textbox y oculta el datatimerpick
         Else
+            Consulta = ("select * from compra")
+            consultar()
+            DGVCompras.DataSource = Tabla
             DTPBuscarcompra.Visible = False
             TXTBuscarcompra.Visible = True
         End If
     End Sub
+    '////combobox de modificar compra////
     Private Sub CBXModificarcompra_SelectedIndexChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles CBXModificarcompra.SelectedIndexChanged
+        'Si el combo box esta en elige una opcion, oculta el datatimerpick y el textbox
         If CBXModificarcompra.Text = "Elige una opción" Then
+            'Cuando se encuentra en elige una opcion actualiza la base de datos
+            Consulta = ("select * from compra")
+            consultar()
+            DTGModificarcompra.DataSource = Tabla
             DTPBuscarmodificarcompra.Visible = False
             TXTBuscarmodificarcompra.Visible = False
+            'Si el combobox esta en id, oculta el datatimerpick y muestra el textbox
         ElseIf CBXModificarcompra.Text = "Id" Then
+            Consulta = ("select * from compra")
+            consultar()
+            DTGModificarcompra.DataSource = Tabla
             DTPBuscarmodificarcompra.Visible = False
             TXTBuscarmodificarcompra.Visible = True
+            'Sino muestra el datatimerpick y oculta el textbox
         Else
             DTPBuscarmodificarcompra.Visible = True
             TXTBuscarmodificarcompra.Visible = False
         End If
+    End Sub
+    '//////Datatimerpick para la busqueda de fechas en el panel principal de compras
+    Private Sub DTPBuscarcompra_ValueChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles DTPBuscarcompra.ValueChanged
+        'Convierte datatimerpick en un string
+        Dim fecha As String = DTPBuscarcompra.Value.ToString("yyyy-MM-dd")
+        'Ve la fecha del datatimerpick y hace la consulta a la base de datos
+        Consulta = "select * from compra where fechacompra like '" & fecha & "%'"
+        consultar()
+        'Actualiza el datagrid
+        DGVCompras.DataSource = Tabla
+    End Sub
+    '/////Datatimerpick para buscar por fecha en modificacion de compra
+    Private Sub DTPBuscarmodificarcompra_ValueChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles DTPBuscarmodificarcompra.ValueChanged
+        Dim fecha As String = DTPModifechacompra.Value.ToString("yyyy-MM-dd")
+        'Ve la fecha del datatimerpick y hace la consulta a la base de datos
+        Consulta = "select * from compra where fechacompra like '" & fecha & "%'"
+        consultar()
+        DTGModificarcompra.DataSource = Tabla
+    End Sub
+    Private Sub Label16_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Label16.Click
+
+
+        Consulta = ("select sum(totalc) as 'Total que se pago en el año' from compra where year(fechacompra) = year(now())")
+        consultar()
+
     End Sub
     '/////////////////////////////FIN COMPRAS//////////////////////////////////////////////////////////////////
     '//////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -1832,7 +1927,7 @@ Public Class Programa
         '    lblmostrarqueseborro.Visible = False
         'End If
         Dim fecha As String = DateTimePicker1.Value.ToString("yyyy-MM-dd")
-        Dim comentario As String = txbcomentarioventa.Text
+        'Dim comentario As String = txbcomentarioventa.Text
         Dim totalv As String = txbtotalventa.Text
         Dim id As String = txbceduladeclientedeventas.Text
 
@@ -1844,7 +1939,7 @@ Public Class Programa
             Try
 
                 'consulta
-                Consulta = "insert into venta (fechaventa,comentariov,totalv,id) values('" & fecha & "','" & comentario & "','" & totalv & "','" & id & "');"
+                'Consulta = "insert into venta (fechaventa,comentariov,totalv,id) values('" & fecha & "','" & comentario & "','" & totalv & "','" & id & "');"
                 consultar()
                 'select hacia venta
                 Consulta = "select * from venta"
@@ -1858,7 +1953,7 @@ Public Class Programa
                 DataGridViewVENTAS.Columns(4).HeaderText = "Cédula de cliente"
 
 
-                Labelparamostraragregado.Show()
+                'Labelparamostraragregado.Show()
             Catch ex As Exception
                 MsgBox(ex)
 
@@ -1873,12 +1968,12 @@ Public Class Programa
 
 
     Private Sub Buttonborrarventas_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnborrarventa.Click
-        If Labelparamostraragregado.Visible = True Then
-            Labelparamostraragregado.Visible = False
-        End If
-        If lblparamostrarsisemodifico.Visible = True Then
-            lblparamostrarsisemodifico.Visible = False
-        End If
+        'If Labelparamostraragregado.Visible = True Then
+        '    Labelparamostraragregado.Visible = False
+        'End If
+        'If lblparamostrarsisemodifico.Visible = True Then
+        '    lblparamostrarsisemodifico.Visible = False
+        'End If
 
         If txbiddeventa.Text = "" Then
             MsgBox("Complete campo idv")
@@ -1892,7 +1987,7 @@ Public Class Programa
                 consultar()
 
                 DataGridViewVENTAS.DataSource = Tabla
-                lblmostrarqueseborro.Show()
+                'lblmostrarqueseborro.Show()
 
             Catch ex As Exception
                 MsgBox(ex)
@@ -1909,7 +2004,7 @@ Public Class Programa
 
 
     Private Sub btnclearventa_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnclearventa.Click
-     
+
         txbcodigodeganadoenventa.Clear()
         txbiddeventa.Text = ""
         rtbventa.Text = ""
@@ -1940,11 +2035,11 @@ Public Class Programa
     Private Sub DataGridViewVENTAS_SelectionChanged(ByVal sender As Object, ByVal e As System.EventArgs) Handles DataGridViewVENTAS.SelectionChanged
 
         txbiddeventa.Clear()
-        txbcomentarioventa.Clear()
+        'txbcomentarioventa.Clear()
         txbtotalventa.Clear()
 
         txbiddeventa.Text = DataGridViewVENTAS.Item(0, DataGridViewVENTAS.CurrentRow.Index).Value
-        txbcomentarioventa.Text = DataGridViewVENTAS.Item(2, DataGridViewVENTAS.CurrentRow.Index).Value
+        'txbcomentarioventa.Text = DataGridViewVENTAS.Item(2, DataGridViewVENTAS.CurrentRow.Index).Value
         txbtotalventa.Text = DataGridViewVENTAS.Item(3, DataGridViewVENTAS.CurrentRow.Index).Value
 
     End Sub
@@ -1967,41 +2062,41 @@ Public Class Programa
 
 
     'MODIFICAR VENTAS 
-    Private Sub Button4_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnmodificarventa.Click
-        If Labelparamostraragregado.Visible = True Then
-            Labelparamostraragregado.Visible = False
-        End If
-        If lblmostrarqueseborro.Visible = True Then
-            lblmostrarqueseborro.Visible = False
-        End If
-        Dim fecha As String = DateTimePicker1.Value.ToString("yyyy-MM-dd")
-        Dim comentario As String = txbcomentarioventa.Text
-        Dim totalv As String = txbtotalventa.Text
-        Dim id As String = txbiddeventa.Text
+    'Private Sub Button4_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnmodificarventa.Click
+    '    If Labelparamostraragregado.Visible = True Then
+    '        Labelparamostraragregado.Visible = False
+    '    End If
+    '    If lblmostrarqueseborro.Visible = True Then
+    '        lblmostrarqueseborro.Visible = False
+    '    End If
+    '    Dim fecha As String = DateTimePicker1.Value.ToString("yyyy-MM-dd")
+    '    Dim comentario As String = txbcomentarioventa.Text
+    '    Dim totalv As String = txbtotalventa.Text
+    '    Dim id As String = txbiddeventa.Text
 
 
-        If txbiddeventa.Text = "" Then
-            MsgBox("Complete el campo ID ")
-        ElseIf txbcomentarioventa.Text = "" And txbtotalventa.Text = "" Then
-            MsgBox("Complete los campos restantes ")
-        Else
+    '    If txbiddeventa.Text = "" Then
+    '        MsgBox("Complete el campo ID ")
+    '        'ElseIf txbcomentarioventa.Text = "" And txbtotalventa.Text = "" Then
+    '        '    MsgBox("Complete los campos restantes ")
+    '        'Else
 
 
-            Try
-                Consulta = ("update venta set idv='" + txbiddeventa.Text + "', fechaventa='" + fecha + "', comentariov='" + txbcomentarioventa.Text + "', totalv='" + txbtotalventa.Text + "' where idv='" + txbiddeventa.Text + "'")
-                consultar()
-                Consulta = "select * from venta"
-                consultar()
-                DataGridViewVENTAS.DataSource = Tabla
-                lblparamostrarsisemodifico.Show()
+    '        Try
+    '            Consulta = ("update venta set idv='" + txbiddeventa.Text + "', fechaventa='" + fecha + "', comentariov='" + txbcomentarioventa.Text + "', totalv='" + txbtotalventa.Text + "' where idv='" + txbiddeventa.Text + "'")
+    '            consultar()
+    '            Consulta = "select * from venta"
+    '            consultar()
+    '            DataGridViewVENTAS.DataSource = Tabla
+    '            'lblparamostrarsisemodifico.Show()
 
-            Catch ex As Exception
-                MsgBox(ex)
+    '        Catch ex As Exception
+    '            MsgBox(ex)
 
-            End Try
+    '        End Try
 
-        End If
-    End Sub
+    '    End If
+    'End Sub
 
 
 
@@ -2030,7 +2125,7 @@ Public Class Programa
 
 
 
-        DataGridViewganadoenventa.Visible = True
+        'DataGridViewganadoenventa.Visible = True
         paneldetextosenventas.Visible = True
         ' cambiamos de tamaño el panel 
         If paneldetextosenventas.Width = 10 Then
@@ -2042,13 +2137,13 @@ Public Class Programa
         ' si el panel tiene... de ancho se cambia la imagen del boton 
         If paneldetextosenventas.Width = 1014 Then
             btnagregarpanel.Image = Image.FromFile("..\..\Resources\flecha-hacia-la-izquierda.png")
-            Panelparaocultar.Visible = False
+            'Panelparaocultar.Visible = False
 
         End If
 
         If paneldetextosenventas.Width = 10 Then
             btnagregarpanel.Image = Image.FromFile("..\..\Resources\anadir.png")
-            Panelparaocultar.Visible = True
+            'Panelparaocultar.Visible = True
         End If
 
 
@@ -2163,7 +2258,7 @@ Public Class Programa
             Consulta = "select idg,sexo,raza,nacimiento,estado,preciov,idv from ganado"
             consultar()
             'actualiza la dgvw
-            DataGridViewganadoenventa.DataSource = Tabla
+            'DataGridViewganadoenventa.DataSource = Tabla
             MsgBox("se agregó con éxito")
         Catch ex As Exception
             MsgBox(ex)
@@ -2177,16 +2272,16 @@ Public Class Programa
         Consulta = "select idg,sexo,raza,nacimiento,estado,preciov,idv from ganado"
         consultar()
         'actualiza la dgvw
-        DataGridViewganadoenventa.DataSource = Tabla
+        'DataGridViewganadoenventa.DataSource = Tabla
 
 
-        DataGridViewganadoenventa.Columns(0).HeaderText = "Id ganado"
-        DataGridViewganadoenventa.Columns(1).HeaderText = "Sexo"
-        DataGridViewganadoenventa.Columns(2).HeaderText = "Raza"
-        DataGridViewganadoenventa.Columns(3).HeaderText = "nacimiento"
-        DataGridViewganadoenventa.Columns(4).HeaderText = "Estado"
-        DataGridViewganadoenventa.Columns(5).HeaderText = "Precio de venta"
-        DataGridViewganadoenventa.Columns(6).HeaderText = "id de venta"
+        'DataGridViewganadoenventa.Columns(0).HeaderText = "Id ganado"
+        'DataGridViewganadoenventa.Columns(1).HeaderText = "Sexo"
+        'DataGridViewganadoenventa.Columns(2).HeaderText = "Raza"
+        'DataGridViewganadoenventa.Columns(3).HeaderText = "nacimiento"
+        'DataGridViewganadoenventa.Columns(4).HeaderText = "Estado"
+        'DataGridViewganadoenventa.Columns(5).HeaderText = "Precio de venta"
+        'DataGridViewganadoenventa.Columns(6).HeaderText = "id de venta"
 
 
 
@@ -2195,7 +2290,7 @@ Public Class Programa
 
 
     Private Sub DataGridViewganadoenventa_SelectionChanged(ByVal sender As Object, ByVal e As System.EventArgs)
-        txbcodigodeganadoenventa.Text = DataGridViewganadoenventa.Item(0, DataGridViewganadoenventa.CurrentRow.Index).Value
+        'txbcodigodeganadoenventa.Text = DataGridViewganadoenventa.Item(0, DataGridViewganadoenventa.CurrentRow.Index).Value
 
     End Sub
 
