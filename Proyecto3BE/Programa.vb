@@ -1924,47 +1924,7 @@ Public Class Programa
     '////////////////////agregar en  ventas///////////////////
 
     Private Sub agregarventa_Click(ByVal sender As System.Object, ByVal e As System.EventArgs)
-        'If lblparamostrarsisemodifico.Visible = True Then
-        '    lblparamostrarsisemodifico.Visible = False
-        'End If
-        'If lblmostrarqueseborro.Visible = True Then
-        '    lblmostrarqueseborro.Visible = False
-        'End If
-        Dim fecha As String = DateTimePicker1.Value.ToString("yyyy-MM-dd")
-        'Dim comentario As String = txbcomentarioventa.Text
-        Dim totalv As String = txbtotalventa.Text
-        Dim id As String = txbceduladeclientedeventas.Text
-
-
-        If txbceduladeclientedeventas.Text = "" Then
-            MsgBox("Complete el campo Cédula")
-        Else
-
-            Try
-
-                'consulta
-                'Consulta = "insert into venta (fechaventa,comentariov,totalv,id) values('" & fecha & "','" & comentario & "','" & totalv & "','" & id & "');"
-                consultar()
-                'select hacia venta
-                Consulta = "select * from venta"
-                consultar()
-                'actualiza la dgvw
-                DataGridViewVENTAS.DataSource = Tabla
-                DataGridViewVENTAS.Columns(0).HeaderText = "Id venta"
-                DataGridViewVENTAS.Columns(1).HeaderText = "Fecha de venta"
-                DataGridViewVENTAS.Columns(2).HeaderText = "Comentario"
-                DataGridViewVENTAS.Columns(3).HeaderText = "Total"
-                DataGridViewVENTAS.Columns(4).HeaderText = "Cédula de cliente"
-
-
-                'Labelparamostraragregado.Show()
-            Catch ex As Exception
-                MsgBox(ex)
-
-
-            End Try
-
-        End If
+        
 
     End Sub
     'BORRAR EN VENTA//////////////////////////////////////////
@@ -2269,13 +2229,11 @@ Public Class Programa
         txbceduladeclientedeventas.Clear()
     End Sub
 
-    Private Sub btnagregarventa_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnagregarventa.Click
-
-    End Sub
-
     Private Sub Button6_Click_1(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Button6.Click
 
         cbxventa.Items.Clear()
+
+        LSTVentas.Items.Clear()
 
         'El comando va por texto
         comando.CommandType = CommandType.Text
@@ -2316,7 +2274,69 @@ Public Class Programa
 
     Private Sub cbxventa_SelectedIndexChanged(ByVal sender As Object, ByVal e As System.EventArgs) Handles cbxventa.SelectedIndexChanged
 
-        'ppp
+        LSTVentas.Items.Add(cbxventa.SelectedItem.ToString)
+
+        cbxventa.Items.RemoveAt(cbxventa.SelectedIndex)
+
+    End Sub
+
+
+    Private Sub BTNQuitarLista_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles BTNQuitarLista.Click
+
+        If IsNumeric(TXTIndiceQuitar.Text) Then
+            If Convert.ToInt32(TXTIndiceQuitar.Text) >= 0 And Convert.ToInt32(TXTIndiceQuitar.Text) < LSTVentas.Items.Count Then
+
+                cbxventa.Items.Add(LSTVentas.Items.Item(Convert.ToInt32(TXTIndiceQuitar.Text)))
+
+                LSTVentas.Items.RemoveAt(Convert.ToInt32(TXTIndiceQuitar.Text))
+
+            End If
+        End If
+
+    End Sub
+
+    Private Sub btnagregarventa_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnagregarventa.Click
+        
+        Dim fecha As String = DateTimePicker1.Value.ToString("yyyy-MM-dd")
+        Dim comentario As String = rtbventa.Text
+        Dim totalv As String = txbtotalventa.Text
+        Dim id As String = txbceduladeclientedeventas.Text
+
+
+        If txbceduladeclientedeventas.Text = "" Then
+            MsgBox("Complete el campo Cédula")
+        Else
+
+            Try
+
+                'consulta
+                Consulta = "insert into venta (fechaventa,comentariov,totalv,id) values('" & fecha & "','" & comentario & "','" & totalv & "','" & id & "');"
+                consultar()
+                'select hacia venta
+                Consulta = "select * from venta"
+                consultar()
+                'actualiza la dgvw
+                DataGridViewVENTAS.DataSource = Tabla
+                DataGridViewVENTAS.Columns(0).HeaderText = "Id venta"
+                DataGridViewVENTAS.Columns(1).HeaderText = "Fecha de venta"
+                DataGridViewVENTAS.Columns(2).HeaderText = "Comentario"
+                DataGridViewVENTAS.Columns(3).HeaderText = "Total"
+                DataGridViewVENTAS.Columns(4).HeaderText = "Cédula de cliente"
+
+
+
+            Catch ex As Exception
+                MsgBox(ex)
+
+
+            End Try
+
+        End If
+        For i As Integer = 0 To LSTVentas.Items.Count
+
+            Consulta = "update ganado set idv = "
+
+        Next
 
     End Sub
 End Class
