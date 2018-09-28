@@ -687,7 +687,12 @@ Public Class Programa
 
         '////////////COMPRAS
 
-        
+
+        Consulta = "select sum(totalc) from compra where year(fechacompra) = year(now())"
+        consultar()
+
+        DGVAuxiliarcompra.DataSource = Tabla
+
 
 
         CBXBuscarcompra.Text = "Elige una opción"
@@ -1787,7 +1792,11 @@ Public Class Programa
 
                 End Select
 
+                Consulta = "select sum(totalc) from compra where year(fechacompra) = year(now())"
+                consultar()
+                DGVAuxiliarcompra.DataSource = Tabla
 
+                Label16.Text = DGVAuxiliarcompra.Item(0, DGVAuxiliarcompra.CurrentRow.Index).Value
 
             Catch ex As Exception
                 MsgBox(ex)
@@ -1883,6 +1892,7 @@ Public Class Programa
             TXTBuscarmodificarcompra.Visible = False
         End If
     End Sub
+        
     '//////Datatimerpick para la busqueda de fechas en el panel principal de compras
     Private Sub DTPBuscarcompra_ValueChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles DTPBuscarcompra.ValueChanged
         'Convierte datatimerpick en un string
@@ -1901,12 +1911,9 @@ Public Class Programa
         consultar()
         DTGModificarcompra.DataSource = Tabla
     End Sub
-    Private Sub Label16_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Label16.Click
 
-
-        Consulta = ("select sum(totalc) as 'Total que se pago en el año' from compra where year(fechacompra) = year(now())")
-        consultar()
-
+    Private Sub DGVAuxiliarcompra_SelectionChanged(ByVal sender As Object, ByVal e As System.EventArgs) Handles DGVAuxiliarcompra.SelectionChanged
+        Label16.Text = DGVAuxiliarcompra.Item(0, DGVAuxiliarcompra.CurrentRow.Index).Value
     End Sub
     '/////////////////////////////FIN COMPRAS//////////////////////////////////////////////////////////////////
     '//////////////////////////////////////////////////////////////////////////////////////////////////////////
