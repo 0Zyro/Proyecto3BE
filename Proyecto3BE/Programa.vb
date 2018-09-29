@@ -1953,18 +1953,15 @@ Public Class Programa
     End Sub
     'BORRAR EN VENTA//////////////////////////////////////////
 
+    Private Sub Button10_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Button10.Click
 
 
-    Private Sub Buttonborrarventas_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnborrarventa.Click
 
-        'If Labelparamostraragregado.Visible = True Then
-        '    Labelparamostraragregado.Visible = False
-        'End If
-        'If lblparamostrarsisemodifico.Visible = True Then
-        '    lblparamostrarsisemodifico.Visible = False
-        'End If
 
-     
+        If MessageBox.Show("¿Seguro que desea eliminar ésta venta?", "Confirmación", MessageBoxButtons.YesNo, MessageBoxIcon.Question) = Windows.Forms.DialogResult.Yes Then
+
+
+
 
             Try
                 Consulta = "delete from venta where idv= '" & DataGridViewVENTAS.Item(0, DataGridViewVENTAS.CurrentRow.Index).Value & "'"
@@ -1979,6 +1976,7 @@ Public Class Programa
             Catch ex As Exception
                 MsgBox(ex)
             End Try
+        End If
 
 
     End Sub
@@ -1990,9 +1988,9 @@ Public Class Programa
 
 
 
-    Private Sub btnclearventa_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnclearventa.Click
+    Private Sub btnclearventa_Click(ByVal sender As System.Object, ByVal e As System.EventArgs)
 
-       
+
         rtbventa.Text = ""
         txbtotalventa.Text = ""
         txbceduladeclientedeventas.Clear()
@@ -2048,34 +2046,29 @@ Public Class Programa
 
 
     'MODIFICAR VENTAS 
-    Private Sub Button4_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnmodificarventa.Click
-        'If Labelparamostraragregado.Visible = True Then
-        '    Labelparamostraragregado.Visible = False
-        'End If
-        'If lblmostrarqueseborro.Visible = True Then
-        '    lblmostrarqueseborro.Visible = False
-        'End If
+    Private Sub Button4_Click(ByVal sender As System.Object, ByVal e As System.EventArgs)
+
         Dim fecha As String = DateTimePicker1.Value.ToString("yyyy-MM-dd")
         Dim comentario As String = rtbventa.Text
         Dim totalv As String = txbtotalventa.Text
 
 
 
-       
 
 
-            Try
+
+        Try
             Consulta = ("update venta set idv='" + DataGridViewVENTAS.Item(0, DataGridViewVENTAS.CurrentRow.Index).Value + "', fechaventa='" + fecha + "', comentariov='" + rtbventa.Text + "', totalv='" + txbtotalventa.Text + "' where idv='" + DataGridViewVENTAS.Item(0, DataGridViewVENTAS.CurrentRow.Index).Value + "'")
-                consultar()
-                Consulta = "select * from venta"
-                consultar()
-                DataGridViewVENTAS.DataSource = Tabla
-                'lblparamostrarsisemodifico.Show()
+            consultar()
+            Consulta = "select * from venta"
+            consultar()
+            DataGridViewVENTAS.DataSource = Tabla
+            'lblparamostrarsisemodifico.Show()
 
-            Catch ex As Exception
-                MsgBox(ex)
+        Catch ex As Exception
+            MsgBox(ex)
 
-            End Try
+        End Try
 
     End Sub
 
@@ -2090,14 +2083,6 @@ Public Class Programa
 
 
 
-
-
-
-
-
-    ' ////////////////////////////////////////////////////////////
-
-    ' cosas de paneles
 
 
 
@@ -2253,48 +2238,7 @@ Public Class Programa
         txbceduladeclientedeventas.Clear()
     End Sub
 
-    Private Sub Button6_Click_1(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Button6.Click
 
-        cbxventa.Items.Clear()
-
-        LSTVentas.Items.Clear()
-
-        'El comando va por texto
-        comando.CommandType = CommandType.Text
-        'el comando se conecta a traves del objeto connection
-        comando.Connection = connection
-
-        comando.CommandText = ("select idg from ganado where estado='activo'")
-
-        Try
-
-            connection.Open()
-
-            reader = comando.ExecuteReader()
-
-            If reader.HasRows() Then
-
-                While reader.Read()
-
-                    cbxventa.Items.Add(reader.GetString(0))
-
-                End While
-
-            End If
-
-            connection.Close()
-
-        Catch ex As Exception
-            MsgBox(ex.Message)
-            If connection.State = ConnectionState.Open Then
-                connection.Close()
-            End If
-
-        End Try
-
-        paneldetextosenventas.Visible = True
-
-    End Sub
 
     Private Sub cbxventa_SelectedIndexChanged(ByVal sender As Object, ByVal e As System.EventArgs) Handles cbxventa.SelectedIndexChanged
 
@@ -2320,7 +2264,7 @@ Public Class Programa
     End Sub
 
     Private Sub btnagregarventa_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnagregarventa.Click
-        
+
         Dim fecha As String = DateTimePicker1.Value.ToString("yyyy-MM-dd")
         Dim comentario As String = rtbventa.Text
         Dim totalv As String = txbtotalventa.Text
@@ -2362,5 +2306,105 @@ Public Class Programa
 
         Next
 
+    End Sub
+
+    Private Sub Button8_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Button8.Click
+        paneldetextosenventas.Visible = False
+    End Sub
+
+    Private Sub Button9_Click_1(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles BTNAGREGARVENTAP.Click
+        paneldetextosenventas.BringToFront()
+        cbxventa.Items.Clear()
+
+        LSTVentas.Items.Clear()
+
+        'El comando va por texto
+        comando.CommandType = CommandType.Text
+        'el comando se conecta a traves del objeto connection
+        comando.Connection = connection
+
+        comando.CommandText = ("select idg from ganado where estado='activo'")
+
+        Try
+
+            connection.Open()
+
+            reader = comando.ExecuteReader()
+
+            If reader.HasRows() Then
+
+                While reader.Read()
+
+                    cbxventa.Items.Add(reader.GetString(0))
+
+                End While
+
+            End If
+
+            connection.Close()
+
+        Catch ex As Exception
+            MsgBox(ex.Message)
+            If connection.State = ConnectionState.Open Then
+                connection.Close()
+            End If
+
+        End Try
+
+        paneldetextosenventas.Visible = True
+    End Sub
+
+    'MODIFICAR VENTAS 
+    Private Sub Button6_Click_1(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnmodificarventa.Click
+
+        paneldemodificarventa.BringToFront()
+        
+
+        paneldemodificarventa.Visible = True
+
+        Consulta = "select * from venta"
+        consultar()
+        DataGridViewmodificarventa.DataSource = Tabla
+       
+        DataGridViewmodificarventa.Columns(0).HeaderText = "Id"
+        DataGridViewmodificarventa.Columns(1).HeaderText = "Fecha de venta"
+        DataGridViewmodificarventa.Columns(2).HeaderText = "Comentario"
+        DataGridViewmodificarventa.Columns(3).HeaderText = "Total Pagado"
+        DataGridViewmodificarventa.Columns(4).HeaderText = "Cédula de cliente"
+
+
+    End Sub
+
+    Private Sub DataGridViewmodificarventa_SelectionChanged(ByVal sender As Object, ByVal e As System.EventArgs) Handles DataGridViewmodificarventa.SelectionChanged
+
+        DateTimePickermodificarventa.Text = DataGridViewmodificarventa.Item(1, DataGridViewmodificarventa.CurrentRow.Index).Value
+        RichTextBoxmodificarventa.Text = DataGridViewmodificarventa.Item(2, DataGridViewmodificarventa.CurrentRow.Index).Value
+        txbmodificarventa.Text = DataGridViewmodificarventa.Item(3, DataGridViewmodificarventa.CurrentRow.Index).Value
+
+    End Sub
+
+    Private Sub Button6_Click_2(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Button6.Click
+
+        Dim fecha As String = DateTimePickermodificarventa.Value.ToString("yyyy-MM-dd")
+        Dim comentario As String = RichTextBoxmodificarventa.Text
+        Dim totalv As String = txbmodificarventa.Text
+        Dim dedo As String = DataGridViewmodificarventa.Item(0, DataGridViewmodificarventa.CurrentRow.Index).Value
+
+
+        Try
+            Consulta = ("update venta set idv='" & dedo & "', fechaventa='" + fecha + "', comentariov='" + comentario + "', totalv='" + totalv + "' where idv='" & dedo & "'")
+            consultar()
+            Consulta = "select * from venta"
+            consultar()
+            DataGridViewmodificarventa.DataSource = Tabla
+
+
+        Catch ex As Exception
+            MsgBox(ex)
+        End Try
+    End Sub
+
+    Private Sub btnvolvervm_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnvolvervm.Click
+        paneldemodificarventa.Visible = False
     End Sub
 End Class
