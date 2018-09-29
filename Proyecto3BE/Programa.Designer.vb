@@ -91,16 +91,10 @@ Partial Class Programa
         Me.BOTONpanelCodigo = New System.Windows.Forms.Button()
         Me.BOTONpanelSexoRaza = New System.Windows.Forms.Button()
         Me.BOTONpanelBuscarNacimiento = New System.Windows.Forms.Button()
-        Me.PanelBuscarFechaNacimiento = New System.Windows.Forms.Panel()
-        Me.Label9 = New System.Windows.Forms.Label()
-        Me.BOTONocultarPanelFechaG = New System.Windows.Forms.Button()
-        Me.BuscarFechaGanado = New System.Windows.Forms.Button()
-        Me.DateTimeBuscarFechaGanado = New System.Windows.Forms.DateTimePicker()
         Me.PanelBuscarCodGanado = New System.Windows.Forms.Panel()
         Me.Label11 = New System.Windows.Forms.Label()
         Me.txtBuscarCodGanado = New System.Windows.Forms.TextBox()
         Me.BOTONcancelarBuscarCodigo = New System.Windows.Forms.Button()
-        Me.BOTONbuscaCodGanado = New System.Windows.Forms.Button()
         Me.PanelBuscarSexoRaza = New System.Windows.Forms.Panel()
         Me.BOTONocultarSexoRaza = New System.Windows.Forms.Button()
         Me.BOTONseleccionarRaza = New System.Windows.Forms.Button()
@@ -108,6 +102,11 @@ Partial Class Programa
         Me.CBXseleccionarSexo = New System.Windows.Forms.ComboBox()
         Me.Label7 = New System.Windows.Forms.Label()
         Me.CBXseleccionarRaza = New System.Windows.Forms.ComboBox()
+        Me.PanelBuscarFechaNacimiento = New System.Windows.Forms.Panel()
+        Me.Label9 = New System.Windows.Forms.Label()
+        Me.BOTONocultarPanelFechaG = New System.Windows.Forms.Button()
+        Me.BuscarFechaGanado = New System.Windows.Forms.Button()
+        Me.DateTimeBuscarFechaGanado = New System.Windows.Forms.DateTimePicker()
         Me.Button2 = New System.Windows.Forms.Button()
         Me.BOTONabrirModificar = New System.Windows.Forms.Button()
         Me.BOTONabrirAgregar = New System.Windows.Forms.Button()
@@ -257,9 +256,9 @@ Partial Class Programa
         Me.TabGanado.SuspendLayout()
         Me.GroupBox1.SuspendLayout()
         Me.Panel1.SuspendLayout()
-        Me.PanelBuscarFechaNacimiento.SuspendLayout()
         Me.PanelBuscarCodGanado.SuspendLayout()
         Me.PanelBuscarSexoRaza.SuspendLayout()
+        Me.PanelBuscarFechaNacimiento.SuspendLayout()
         CType(Me.DataGridViewganado, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.TabCompras.SuspendLayout()
         Me.Panelagregarcompras.SuspendLayout()
@@ -1013,9 +1012,9 @@ Partial Class Programa
         Me.Panel1.Controls.Add(Me.BOTONpanelCodigo)
         Me.Panel1.Controls.Add(Me.BOTONpanelSexoRaza)
         Me.Panel1.Controls.Add(Me.BOTONpanelBuscarNacimiento)
-        Me.Panel1.Controls.Add(Me.PanelBuscarFechaNacimiento)
         Me.Panel1.Controls.Add(Me.PanelBuscarCodGanado)
         Me.Panel1.Controls.Add(Me.PanelBuscarSexoRaza)
+        Me.Panel1.Controls.Add(Me.PanelBuscarFechaNacimiento)
         Me.Panel1.Location = New System.Drawing.Point(15, 0)
         Me.Panel1.Name = "Panel1"
         Me.Panel1.Size = New System.Drawing.Size(779, 50)
@@ -1079,73 +1078,15 @@ Partial Class Programa
         Me.ToolTip1.SetToolTip(Me.BOTONpanelBuscarNacimiento, "Buscar por fecha de nacimiento")
         Me.BOTONpanelBuscarNacimiento.UseVisualStyleBackColor = False
         '
-        'PanelBuscarFechaNacimiento
-        '
-        Me.PanelBuscarFechaNacimiento.BackColor = System.Drawing.Color.Transparent
-        Me.PanelBuscarFechaNacimiento.Controls.Add(Me.Label9)
-        Me.PanelBuscarFechaNacimiento.Controls.Add(Me.BOTONocultarPanelFechaG)
-        Me.PanelBuscarFechaNacimiento.Controls.Add(Me.BuscarFechaGanado)
-        Me.PanelBuscarFechaNacimiento.Controls.Add(Me.DateTimeBuscarFechaGanado)
-        Me.PanelBuscarFechaNacimiento.Location = New System.Drawing.Point(314, 0)
-        Me.PanelBuscarFechaNacimiento.Name = "PanelBuscarFechaNacimiento"
-        Me.PanelBuscarFechaNacimiento.Size = New System.Drawing.Size(259, 49)
-        Me.PanelBuscarFechaNacimiento.TabIndex = 131
-        Me.PanelBuscarFechaNacimiento.Visible = False
-        '
-        'Label9
-        '
-        Me.Label9.AutoSize = True
-        Me.Label9.Location = New System.Drawing.Point(3, 6)
-        Me.Label9.Name = "Label9"
-        Me.Label9.Size = New System.Drawing.Size(128, 13)
-        Me.Label9.TabIndex = 124
-        Me.Label9.Text = "FECHA NACIMIENTO"
-        '
-        'BOTONocultarPanelFechaG
-        '
-        Me.BOTONocultarPanelFechaG.BackColor = System.Drawing.Color.CornflowerBlue
-        Me.BOTONocultarPanelFechaG.FlatAppearance.BorderSize = 0
-        Me.BOTONocultarPanelFechaG.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.BOTONocultarPanelFechaG.Image = Global.WindowsApplication1.My.Resources.Resources.hide__1_
-        Me.BOTONocultarPanelFechaG.Location = New System.Drawing.Point(207, 5)
-        Me.BOTONocultarPanelFechaG.Name = "BOTONocultarPanelFechaG"
-        Me.BOTONocultarPanelFechaG.Size = New System.Drawing.Size(40, 40)
-        Me.BOTONocultarPanelFechaG.TabIndex = 123
-        Me.ToolTip1.SetToolTip(Me.BOTONocultarPanelFechaG, "Ocultar")
-        Me.BOTONocultarPanelFechaG.UseVisualStyleBackColor = False
-        '
-        'BuscarFechaGanado
-        '
-        Me.BuscarFechaGanado.BackColor = System.Drawing.Color.CornflowerBlue
-        Me.BuscarFechaGanado.FlatAppearance.BorderSize = 0
-        Me.BuscarFechaGanado.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.BuscarFechaGanado.Image = Global.WindowsApplication1.My.Resources.Resources._003_search
-        Me.BuscarFechaGanado.Location = New System.Drawing.Point(148, 5)
-        Me.BuscarFechaGanado.Name = "BuscarFechaGanado"
-        Me.BuscarFechaGanado.Size = New System.Drawing.Size(40, 40)
-        Me.BuscarFechaGanado.TabIndex = 122
-        Me.ToolTip1.SetToolTip(Me.BuscarFechaGanado, "Buscar")
-        Me.BuscarFechaGanado.UseVisualStyleBackColor = False
-        '
-        'DateTimeBuscarFechaGanado
-        '
-        Me.DateTimeBuscarFechaGanado.Format = System.Windows.Forms.DateTimePickerFormat.[Short]
-        Me.DateTimeBuscarFechaGanado.Location = New System.Drawing.Point(4, 22)
-        Me.DateTimeBuscarFechaGanado.Margin = New System.Windows.Forms.Padding(4, 3, 4, 3)
-        Me.DateTimeBuscarFechaGanado.Name = "DateTimeBuscarFechaGanado"
-        Me.DateTimeBuscarFechaGanado.Size = New System.Drawing.Size(127, 20)
-        Me.DateTimeBuscarFechaGanado.TabIndex = 101
-        '
         'PanelBuscarCodGanado
         '
         Me.PanelBuscarCodGanado.BackColor = System.Drawing.Color.Transparent
         Me.PanelBuscarCodGanado.Controls.Add(Me.Label11)
         Me.PanelBuscarCodGanado.Controls.Add(Me.txtBuscarCodGanado)
         Me.PanelBuscarCodGanado.Controls.Add(Me.BOTONcancelarBuscarCodigo)
-        Me.PanelBuscarCodGanado.Controls.Add(Me.BOTONbuscaCodGanado)
         Me.PanelBuscarCodGanado.Location = New System.Drawing.Point(314, 0)
         Me.PanelBuscarCodGanado.Name = "PanelBuscarCodGanado"
-        Me.PanelBuscarCodGanado.Size = New System.Drawing.Size(286, 48)
+        Me.PanelBuscarCodGanado.Size = New System.Drawing.Size(247, 48)
         Me.PanelBuscarCodGanado.TabIndex = 133
         Me.PanelBuscarCodGanado.Visible = False
         '
@@ -1171,25 +1112,12 @@ Partial Class Programa
         Me.BOTONcancelarBuscarCodigo.FlatAppearance.BorderSize = 0
         Me.BOTONcancelarBuscarCodigo.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.BOTONcancelarBuscarCodigo.Image = Global.WindowsApplication1.My.Resources.Resources.hide__1_
-        Me.BOTONcancelarBuscarCodigo.Location = New System.Drawing.Point(242, 4)
+        Me.BOTONcancelarBuscarCodigo.Location = New System.Drawing.Point(196, 4)
         Me.BOTONcancelarBuscarCodigo.Name = "BOTONcancelarBuscarCodigo"
         Me.BOTONcancelarBuscarCodigo.Size = New System.Drawing.Size(40, 40)
         Me.BOTONcancelarBuscarCodigo.TabIndex = 123
         Me.ToolTip1.SetToolTip(Me.BOTONcancelarBuscarCodigo, "Ocultar")
         Me.BOTONcancelarBuscarCodigo.UseVisualStyleBackColor = False
-        '
-        'BOTONbuscaCodGanado
-        '
-        Me.BOTONbuscaCodGanado.BackColor = System.Drawing.Color.CornflowerBlue
-        Me.BOTONbuscaCodGanado.FlatAppearance.BorderSize = 0
-        Me.BOTONbuscaCodGanado.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.BOTONbuscaCodGanado.Image = Global.WindowsApplication1.My.Resources.Resources._003_search
-        Me.BOTONbuscaCodGanado.Location = New System.Drawing.Point(181, 4)
-        Me.BOTONbuscaCodGanado.Name = "BOTONbuscaCodGanado"
-        Me.BOTONbuscaCodGanado.Size = New System.Drawing.Size(40, 40)
-        Me.BOTONbuscaCodGanado.TabIndex = 122
-        Me.ToolTip1.SetToolTip(Me.BOTONbuscaCodGanado, "Buscar")
-        Me.BOTONbuscaCodGanado.UseVisualStyleBackColor = False
         '
         'PanelBuscarSexoRaza
         '
@@ -1267,6 +1195,63 @@ Partial Class Programa
         Me.CBXseleccionarRaza.Name = "CBXseleccionarRaza"
         Me.CBXseleccionarRaza.Size = New System.Drawing.Size(137, 21)
         Me.CBXseleccionarRaza.TabIndex = 110
+        '
+        'PanelBuscarFechaNacimiento
+        '
+        Me.PanelBuscarFechaNacimiento.BackColor = System.Drawing.Color.Transparent
+        Me.PanelBuscarFechaNacimiento.Controls.Add(Me.Label9)
+        Me.PanelBuscarFechaNacimiento.Controls.Add(Me.BOTONocultarPanelFechaG)
+        Me.PanelBuscarFechaNacimiento.Controls.Add(Me.BuscarFechaGanado)
+        Me.PanelBuscarFechaNacimiento.Controls.Add(Me.DateTimeBuscarFechaGanado)
+        Me.PanelBuscarFechaNacimiento.Location = New System.Drawing.Point(314, 0)
+        Me.PanelBuscarFechaNacimiento.Name = "PanelBuscarFechaNacimiento"
+        Me.PanelBuscarFechaNacimiento.Size = New System.Drawing.Size(259, 49)
+        Me.PanelBuscarFechaNacimiento.TabIndex = 131
+        Me.PanelBuscarFechaNacimiento.Visible = False
+        '
+        'Label9
+        '
+        Me.Label9.AutoSize = True
+        Me.Label9.Location = New System.Drawing.Point(3, 6)
+        Me.Label9.Name = "Label9"
+        Me.Label9.Size = New System.Drawing.Size(128, 13)
+        Me.Label9.TabIndex = 124
+        Me.Label9.Text = "FECHA NACIMIENTO"
+        '
+        'BOTONocultarPanelFechaG
+        '
+        Me.BOTONocultarPanelFechaG.BackColor = System.Drawing.Color.CornflowerBlue
+        Me.BOTONocultarPanelFechaG.FlatAppearance.BorderSize = 0
+        Me.BOTONocultarPanelFechaG.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.BOTONocultarPanelFechaG.Image = Global.WindowsApplication1.My.Resources.Resources.hide__1_
+        Me.BOTONocultarPanelFechaG.Location = New System.Drawing.Point(207, 5)
+        Me.BOTONocultarPanelFechaG.Name = "BOTONocultarPanelFechaG"
+        Me.BOTONocultarPanelFechaG.Size = New System.Drawing.Size(40, 40)
+        Me.BOTONocultarPanelFechaG.TabIndex = 123
+        Me.ToolTip1.SetToolTip(Me.BOTONocultarPanelFechaG, "Ocultar")
+        Me.BOTONocultarPanelFechaG.UseVisualStyleBackColor = False
+        '
+        'BuscarFechaGanado
+        '
+        Me.BuscarFechaGanado.BackColor = System.Drawing.Color.CornflowerBlue
+        Me.BuscarFechaGanado.FlatAppearance.BorderSize = 0
+        Me.BuscarFechaGanado.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.BuscarFechaGanado.Image = Global.WindowsApplication1.My.Resources.Resources._003_search
+        Me.BuscarFechaGanado.Location = New System.Drawing.Point(148, 5)
+        Me.BuscarFechaGanado.Name = "BuscarFechaGanado"
+        Me.BuscarFechaGanado.Size = New System.Drawing.Size(40, 40)
+        Me.BuscarFechaGanado.TabIndex = 122
+        Me.ToolTip1.SetToolTip(Me.BuscarFechaGanado, "Buscar")
+        Me.BuscarFechaGanado.UseVisualStyleBackColor = False
+        '
+        'DateTimeBuscarFechaGanado
+        '
+        Me.DateTimeBuscarFechaGanado.Format = System.Windows.Forms.DateTimePickerFormat.[Short]
+        Me.DateTimeBuscarFechaGanado.Location = New System.Drawing.Point(4, 22)
+        Me.DateTimeBuscarFechaGanado.Margin = New System.Windows.Forms.Padding(4, 3, 4, 3)
+        Me.DateTimeBuscarFechaGanado.Name = "DateTimeBuscarFechaGanado"
+        Me.DateTimeBuscarFechaGanado.Size = New System.Drawing.Size(127, 20)
+        Me.DateTimeBuscarFechaGanado.TabIndex = 101
         '
         'Button2
         '
@@ -3007,12 +2992,12 @@ Partial Class Programa
         Me.GroupBox1.PerformLayout()
         Me.Panel1.ResumeLayout(False)
         Me.Panel1.PerformLayout()
-        Me.PanelBuscarFechaNacimiento.ResumeLayout(False)
-        Me.PanelBuscarFechaNacimiento.PerformLayout()
         Me.PanelBuscarCodGanado.ResumeLayout(False)
         Me.PanelBuscarCodGanado.PerformLayout()
         Me.PanelBuscarSexoRaza.ResumeLayout(False)
         Me.PanelBuscarSexoRaza.PerformLayout()
+        Me.PanelBuscarFechaNacimiento.ResumeLayout(False)
+        Me.PanelBuscarFechaNacimiento.PerformLayout()
         CType(Me.DataGridViewganado, System.ComponentModel.ISupportInitialize).EndInit()
         Me.TabCompras.ResumeLayout(False)
         Me.Panelagregarcompras.ResumeLayout(False)
@@ -3224,7 +3209,6 @@ Partial Class Programa
     Friend WithEvents PanelBuscarCodGanado As System.Windows.Forms.Panel
     Friend WithEvents txtBuscarCodGanado As System.Windows.Forms.TextBox
     Friend WithEvents BOTONcancelarBuscarCodigo As System.Windows.Forms.Button
-    Friend WithEvents BOTONbuscaCodGanado As System.Windows.Forms.Button
     Friend WithEvents Label11 As System.Windows.Forms.Label
     Friend WithEvents BOTONlimpiartxtGuardarGanado As System.Windows.Forms.Button
     Friend WithEvents Button3 As System.Windows.Forms.Button

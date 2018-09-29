@@ -927,35 +927,13 @@ Public Class Programa
         PanelBuscarCodGanado.Visible = False
     End Sub
 
-    '//////////////////////////////////BUSCAR GANADO POR SU CODIGO////////////////////////////
-    ' /////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-    ' ////////////////////////NOOOOOOOOOO BORRAR///////////////////////////////////////////////////
-
-    Private Sub BOTONbuscaCodGanado_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles BOTONbuscaCodGanado.Click
-
-        '    'Consulta = " select idg,sexo,raza,nacimiento,estado,  TIMESTAMPDIFF(YEAR,nacimiento,CURDATE()) AS 'Edad' from ganado where idg ='" + txtBuscarCodGanado.Text + "'"
-        '    'consultar()
-        '    'DataGridViewganado.DataSource = Tabla
-
-        '    ''Cambiamos los headers
-        '    'DataGridViewganado.Columns(0).HeaderText = "Codigo de ganado"
-        '    'DataGridViewganado.Columns(1).HeaderText = "Sexo"
-        '    'DataGridViewganado.Columns(2).HeaderText = "Raza"
-
-        '    'DataGridViewganado.Columns(3).HeaderText = "Fecha nacimiento"
-        '    'DataGridViewganado.Columns(4).HeaderText = "Estado"
-
-        '    'DataGridViewganado.Focus()
-
-
-    End Sub
 
 
     '''/////////////////BOTON QUE ACTIVA LA OPCION GUARDAR GANADO PARA AGREGAR////////////////////////////////////////
     ''' ////////////////////////////////////////////////////////////////////////////////////////////////////////////
     ''' 
-    Private Sub Button9_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles BOTONabrirAgregar.Click
+    Private Sub BOTONabrirAgregar_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles BOTONabrirAgregar.Click
 
         DataGridViewganado.Enabled = False
 
@@ -968,7 +946,7 @@ Public Class Programa
 
         DTPAgregarGanado.Enabled = True
 
-       
+
 
         CBXestadoGanado.Enabled = True
 
