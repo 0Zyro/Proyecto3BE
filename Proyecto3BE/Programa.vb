@@ -46,34 +46,37 @@ Public Class Programa
 
         'Cambiamos los headers
 
-        DataGridViewganado.Columns(0).HeaderText = "Codigo "
+        DataGridViewganado.Columns(0).HeaderText = "Codigo"
         DataGridViewganado.Columns(1).HeaderText = "Sexo"
         DataGridViewganado.Columns(2).HeaderText = "Raza"
 
-        'DataGridViewganado.Columns(3).HeaderText = "Fecha"
-        DataGridViewganado.Columns(4).HeaderText = "Estado"
-        DataGridViewganado.Columns(3).Visible = False
+        DataGridViewganado.Columns(4).HeaderText = "Fecha Nacimiento"
+        DataGridViewganado.Columns(3).HeaderText = "Estado"
+        DataGridViewganado.Columns(5).HeaderText = "Años"
+        DataGridViewganado.Columns(6).HeaderText = "Meses"
+
     End Sub
 
 
     Public Sub actualizar()
         'CONSULTA DE TABLA GANADO
         Try
-            Consulta = "select idg,sexo,raza,nacimiento,estado, TIMESTAMPDIFF(YEAR,ganado.nacimiento,CURDATE()) AS 'Anios', TIMESTAMPDIFF(month, ganado.nacimiento,NOW())%12 AS 'Meses' from ganado"
+            Consulta = "select idg,sexo,raza,estado,nacimiento, TIMESTAMPDIFF(YEAR,ganado.nacimiento,CURDATE()) AS 'Anios', TIMESTAMPDIFF(month, ganado.nacimiento,NOW())%12 AS 'Meses' from ganado"
             consultar()
             DataGridViewganado.DataSource = Tabla
 
             DataGridViewganado.Focus()
 
             'Cambiamos los headers
-
             DataGridViewganado.Columns(0).HeaderText = "Codigo"
             DataGridViewganado.Columns(1).HeaderText = "Sexo"
             DataGridViewganado.Columns(2).HeaderText = "Raza"
 
-            'DataGridViewganado.Columns(3).HeaderText = "Fecha"
-            DataGridViewganado.Columns(4).HeaderText = "Estado"
-            DataGridViewganado.Columns(3).Visible = False
+            DataGridViewganado.Columns(4).HeaderText = "Fecha Nacimiento"
+            DataGridViewganado.Columns(3).HeaderText = "Estado"
+            DataGridViewganado.Columns(5).HeaderText = "Años"
+            DataGridViewganado.Columns(6).HeaderText = "Meses"
+
         Catch ex As Exception
             MsgBox(ex.ToString)
         End Try
@@ -786,11 +789,9 @@ Public Class Programa
         If CBXseleccionarRaza.Text <> "" And CBXseleccionarSexo.Text <> "" Then
             If CBXseleccionarSexo.Text = "Ambos" Then
                 Try
-                    Consulta = " SELECT idg,sexo,raza,nacimiento,estado, TIMESTAMPDIFF(YEAR,nacimiento,CURDATE()) AS 'Edad' from ganado where raza= '" + CBXseleccionarRaza.SelectedItem + "'"
-                    consultar()
-                    DataGridViewganado.DataSource = Tabla
+                    Consulta = " SELECT idg,sexo,raza,estado,nacimiento, TIMESTAMPDIFF(YEAR,nacimiento,CURDATE()) AS 'Edad', TIMESTAMPDIFF(month, ganado.nacimiento,NOW())%12 AS 'Meses' from ganado where raza= '" + CBXseleccionarRaza.SelectedItem + "'"
+                    ActualizarSinConsulta()
 
-                    DataGridViewganado.Focus()
 
                     If DataGridViewganado.Rows.Count = 0 Then
                         MessageBox.Show("NO hay ganado registrado con los datos ingresado en la busqueda", "Busqueda de ganado", MessageBoxButtons.OK, MessageBoxIcon.Information)
@@ -806,13 +807,12 @@ Public Class Programa
             ElseIf CBXseleccionarSexo.Text = "Macho" Then
 
                 Try
-                    Consulta = " SELECT idg,sexo,raza,nacimiento,estado, TIMESTAMPDIFF(YEAR,nacimiento,CURDATE()) AS 'Edad' from ganado where raza= '" + CBXseleccionarRaza.SelectedItem + "' And sexo = 'Macho' "
-                    consultar()
-                    DataGridViewganado.DataSource = Tabla
+                    Consulta = " SELECT idg,sexo,raza,estado,nacimiento, TIMESTAMPDIFF(YEAR,nacimiento,CURDATE()) AS 'Edad', TIMESTAMPDIFF(month, ganado.nacimiento,NOW())%12 AS 'Meses' from ganado where raza= '" + CBXseleccionarRaza.SelectedItem + "' And sexo = 'Macho' "
+                    ActualizarSinConsulta()
 
-                    DataGridViewganado.Focus()
-                    CBXseleccionarRaza.Text = ""
-                    CBXseleccionarSexo.Text = ""
+                    'CBXseleccionarRaza.Text = ""
+                    'CBXseleccionarSexo.Text = ""
+
                     If DataGridViewganado.Rows.Count = 0 Then
                         MessageBox.Show("NO hay ganado registrado con los datos ingresado en la busqueda", "Busqueda de ganado", MessageBoxButtons.OK, MessageBoxIcon.Information)
                         CBXseleccionarRaza.Text = ""
@@ -827,13 +827,11 @@ Public Class Programa
 
             ElseIf CBXseleccionarSexo.Text = "Hembra" Then
                 Try
-                    Consulta = " SELECT idg,sexo,raza,nacimiento,estado, TIMESTAMPDIFF(YEAR,nacimiento,CURDATE()) AS 'Edad' from ganado where raza= '" + CBXseleccionarRaza.SelectedItem + "' And sexo = 'Hembra'"
-                    consultar()
-                    DataGridViewganado.DataSource = Tabla
+                    Consulta = " SELECT idg,sexo,raza,estado,nacimiento, TIMESTAMPDIFF(YEAR,nacimiento,CURDATE()) AS 'Edad', TIMESTAMPDIFF(month, ganado.nacimiento,NOW())%12 AS 'Meses' from ganado where raza= '" + CBXseleccionarRaza.SelectedItem + "' And sexo = 'Hembra'"
+                    ActualizarSinConsulta()
 
-                    DataGridViewganado.Focus()
-                    CBXseleccionarRaza.Text = ""
-                    CBXseleccionarSexo.Text = ""
+                    'CBXseleccionarRaza.Text = ""
+                    'CBXseleccionarSexo.Text = ""
                     If DataGridViewganado.Rows.Count = 0 Then
                         MessageBox.Show("NO hay ganado registrado con los datos ingresado en la busqueda", "Busqueda de ganado", MessageBoxButtons.OK, MessageBoxIcon.Information)
                         CBXseleccionarRaza.Text = ""
@@ -945,21 +943,11 @@ Public Class Programa
     ''' ////////////////////////////////////////////////////////////////////////////////////
     Private Sub BuscarFechaGanado_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles BuscarFechaGanado.Click
         Dim fecha As String = DateTimeBuscarFechaGanado.Value.ToString("yyyy-MM-dd")
-        Consulta = "select idg,sexo,raza,nacimiento,estado,TIMESTAMPDIFF(YEAR,nacimiento,CURDATE()) AS 'Edad' from ganado where nacimiento ='" + fecha + "'"
-        consultar()
-        DataGridViewganado.DataSource = Tabla
+        Consulta = "select idg,sexo,raza,estado,nacimiento, TIMESTAMPDIFF(YEAR,ganado.nacimiento,CURDATE()) AS 'Anios', TIMESTAMPDIFF(month, ganado.nacimiento,NOW())%12 AS 'Meses' from ganado where nacimiento ='" + fecha + "'"
+        ActualizarSinConsulta()
 
-        DataGridViewganado.Focus()
 
-        'Cambiamos los headers
-        DataGridViewganado.Columns(0).HeaderText = "Codigo de ganado"
-        DataGridViewganado.Columns(1).HeaderText = "Sexo"
-        DataGridViewganado.Columns(2).HeaderText = "Raza"
 
-        DataGridViewganado.Columns(3).HeaderText = "Fecha nacimiento"
-        DataGridViewganado.Columns(4).HeaderText = "Estado"
-
-        DataGridViewganado.Focus()
 
 
     End Sub
@@ -1037,16 +1025,10 @@ Public Class Programa
 
                     Try
 
-                        Consulta = "INSERT INTO ganado (idg,sexo,raza,nacimiento,estado) values('" & CodG & "','" & sexo & "','" & raza & "','" & fechaN & "','" & estadoG & "' )"
+                        Consulta = "INSERT INTO ganado (idg,sexo,raza,estado,nacimiento) values('" & CodG & "','" & sexo & "','" & raza & "','" & estadoG & "','" & fechaN & "' )"
                         consultar()
 
-
-                        Consulta = "select idg,sexo,raza,nacimiento,estado, TIMESTAMPDIFF(YEAR,nacimiento,CURDATE()) AS 'Edad' from ganado"
-                        consultar()
-
-                        DataGridViewganado.DataSource = Tabla
-                        Consulta = " select idg from ganado"
-                        consultar()
+                        actualizar()
 
                         Texcodigoganado.Clear()
                         CBXguardarsexo.Text = ""
@@ -1113,13 +1095,12 @@ Public Class Programa
                         Consulta = "update ganado set idg = '" + idg +
                                                   "',sexo= '" + sexo +
                                                   "',raza= '" + raza +
+                                                  "',estado = '" + estado +
                                                   "',nacimiento= '" + fechaN +
-                                                  "',estado= '" + estado +
                                                   "' where idg= '" + idg + "'"
                         consultar()
-                        Consulta = "select idg,sexo,raza,nacimiento,estado, TIMESTAMPDIFF(YEAR,nacimiento,CURDATE()) AS 'Edad' from ganado"
-                        consultar()
-                        DataGridViewganado.DataSource = Tabla
+                        actualizar()
+
                         Texcodigoganado.Clear()
                         CBXguardarRaza.Text = ""
                         CBXguardarsexo.Text = ""
@@ -1203,7 +1184,7 @@ Public Class Programa
             Texestadoganado.Text = DataGridViewganado.Item(4, DataGridViewganado.CurrentRow.Index).Value
 
         Catch ex As Exception
-            MsgBox(" NO SELECCIONO DATO HA MODIFICAR" & vbCrLf & vbCrLf & ex.Message, MsgBoxStyle.Critical, Title:=" ERROR ")
+            'MsgBox(" NO SELECCIONO DATO HA MODIFICAR" & vbCrLf & vbCrLf & ex.Message, MsgBoxStyle.Critical, Title:=" ERROR ")
         End Try
 
     End Sub
@@ -1223,10 +1204,7 @@ Public Class Programa
                 Consulta = " delete from ganado where idg='" & DataGridViewganado.Item(0, DataGridViewganado.CurrentRow.Index).Value & "'"
                 consultar()
 
-
-                Consulta = "select idg,sexo,raza,nacimiento,estado, TIMESTAMPDIFF(YEAR,nacimiento,CURDATE()) AS 'Edad' from ganado"
-                consultar()
-                DataGridViewganado.DataSource = Tabla
+                actualizar()
 
                 DataGridViewganado.Focus()
 
@@ -2125,7 +2103,7 @@ Public Class Programa
         Select Case TabbedPane.SelectedIndex
             Case 0
                 'CONSULTA DE TABLA GANADO
-                Consulta = "select idg,sexo,raza,nacimiento,estado, TIMESTAMPDIFF(YEAR,ganado.nacimiento,CURDATE()) AS 'Anios', TIMESTAMPDIFF(month, ganado.nacimiento,NOW())%12 AS 'Meses' from ganado"
+                Consulta = "select idg, sexo, raza, estado, nacimiento, TIMESTAMPDIFF(YEAR,ganado.nacimiento,CURDATE()) AS 'Anios', TIMESTAMPDIFF(month, ganado.nacimiento,NOW())%12 AS 'Meses' from ganado"
                 consultar()
                 DataGridViewganado.DataSource = Tabla
 
@@ -2133,13 +2111,15 @@ Public Class Programa
 
                 'Cambiamos los headers
 
-                DataGridViewganado.Columns(0).HeaderText = "Codigo de ganado"
+                DataGridViewganado.Columns(0).HeaderText = "Codigo"
                 DataGridViewganado.Columns(1).HeaderText = "Sexo"
                 DataGridViewganado.Columns(2).HeaderText = "Raza"
 
-                'DataGridViewganado.Columns(3).HeaderText = "Fecha"
-                DataGridViewganado.Columns(4).HeaderText = "Estado"
-                DataGridViewganado.Columns(3).Visible = False
+                DataGridViewganado.Columns(4).HeaderText = "Fecha Nacimiento"
+                DataGridViewganado.Columns(3).HeaderText = "Estado"
+                DataGridViewganado.Columns(5).HeaderText = "Años"
+                DataGridViewganado.Columns(6).HeaderText = "Meses"
+
                 Exit Select
             Case 1
 
@@ -2467,7 +2447,7 @@ Public Class Programa
     Private Sub txtBuscarCodGanado_TextChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles txtBuscarCodGanado.TextChanged
         If IsNumeric(txtBuscarCodGanado.Text) Then
 
-            Consulta = "SELECT idg,sexo,raza,nacimiento,estado, TIMESTAMPDIFF(YEAR,ganado.nacimiento,CURDATE()) AS'Anios', TIMESTAMPDIFF(month, ganado.nacimiento,NOW())%12 AS 'Meses' from ganado where idg like '" & txtBuscarCodGanado.Text & "%'"
+            Consulta = "SELECT idg,sexo,raza,estado,nacimiento, TIMESTAMPDIFF(YEAR,ganado.nacimiento,CURDATE()) AS'Anios', TIMESTAMPDIFF(month, ganado.nacimiento,NOW())%12 AS 'Meses' from ganado where idg like '" & txtBuscarCodGanado.Text & "%'"
 
             consultar()
             DataGridViewganado.DataSource = Tabla
@@ -2475,7 +2455,7 @@ Public Class Programa
         Else
             txtBuscarCodGanado.Clear()
 
-            Consulta = "SELECT idg,sexo,raza,nacimiento,estado, TIMESTAMPDIFF(YEAR,ganado.nacimiento,CURDATE()) AS'Anios', TIMESTAMPDIFF(month, ganado.nacimiento,NOW())%12 AS 'Meses' from ganado " '"
+            Consulta = "SELECT idg,sexo,raza,estado,nacimiento, TIMESTAMPDIFF(YEAR,ganado.nacimiento,CURDATE()) AS'Anios', TIMESTAMPDIFF(month, ganado.nacimiento,NOW())%12 AS 'Meses' from ganado " '"
             consultar()
             DataGridViewganado.DataSource = Tabla
 
@@ -2483,11 +2463,15 @@ Public Class Programa
             DataGridViewganado.Columns(1).HeaderText = " Sexo "
             DataGridViewganado.Columns(0).HeaderText = " Raza "
             DataGridViewganado.Columns(0).HeaderText = " Estado "
-            DataGridViewganado.Columns(3).Visible = False
+            DataGridViewganado.Columns(3).HeaderText = " Fecha Nacimiento"
 
         End If
 
 
     End Sub
 
+   
+    Private Sub DataGridViewganado_CellContentClick(ByVal sender As System.Object, ByVal e As System.Windows.Forms.DataGridViewCellEventArgs) Handles DataGridViewganado.CellContentClick
+
+    End Sub
 End Class
