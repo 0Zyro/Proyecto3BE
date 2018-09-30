@@ -38,6 +38,27 @@ Public Class Programa
             error1 = 1
         End Try
     End Sub
+    Public Sub ACtivarBotones()
+        GroupBox3.Enabled = True
+        BOTONguardarAgregar.Enabled = True
+        BOTONcancelarAgregar.Enabled = True
+        BOTONguardarModificar.Enabled = True
+        BOTONcancelarModificar.Enabled = True
+        DataGridViewganado.Visible = True
+    End Sub
+    Public Sub DesactivarBotones()
+        GroupBox3.Enabled = False
+        BOTONguardarAgregar.Enabled = False
+        BOTONcancelarAgregar.Enabled = False
+        BOTONguardarModificar.Enabled = False
+        BOTONcancelarModificar.Enabled = False
+        DataGridViewganado.Visible = False
+        CBXsexoGanado.Text = ""
+        CBXRazaGanado.Text = ""
+
+        DTPAgregarGanado.Value = Today
+        CBXestadoGanado.Text = ""
+    End Sub
     Public Sub ActualizarSinConsulta()
 
         consultar()
@@ -786,6 +807,10 @@ Public Class Programa
     '/////////////////////// MUESTRA EN EL DRATAGRID LA RAZA  Y EL SEXO SELECCIONAD0 EN EL COMBOBOX/////////////////////////////////////
     ' ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     Private Sub BOTONseleccionarRaza_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles BOTONseleccionarRaza.Click
+
+        DataGridGanadoEconomico.Visible = False
+        ACtivarBotones()
+
         If CBXseleccionarRaza.Text <> "" And CBXseleccionarSexo.Text <> "" Then
             If CBXseleccionarSexo.Text = "Ambos" Then
                 Try
@@ -897,6 +922,8 @@ Public Class Programa
 
     '//////////////////BUSCA GANADO POR SU FECHA DE NACIMIENTO ///////////////////////////////////////
     Private Sub BuscarFechaGanado_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles BuscarFechaGanado.Click
+        DataGridGanadoEconomico.Visible = False
+        ACtivarBotones()
         Dim FechaN As String = DateTimeBuscarFechaGanado.Value.ToString("yyyy-MM-dd")
 
         Consulta = "SELECT idg,sexo,raza,estado,nacimiento, TIMESTAMPDIFF(YEAR,ganado.nacimiento,CURDATE()) AS'Anios', TIMESTAMPDIFF(month, ganado.nacimiento,NOW())%12 AS 'Meses' from ganado Where nacimiento ='" & FechaN & "'"
@@ -996,7 +1023,7 @@ Public Class Programa
             Dim fechaN As String = DTPAgregarGanado.Value.ToString("yyyy-MM-dd")
             Dim estadoG As String = CBXestadoGanado.SelectedItem.ToString
             If CBXsexoGanado.Text <> "" And CBXRazaGanado.Text <> "" And CBXestadoGanado.Text <> "" Then
-               
+
                
                 Try
 
@@ -1029,12 +1056,10 @@ Public Class Programa
 
     '///////////////////////////////////BOTON PARA LIMPIAR TEXTBOX DE GANADO ////////////////////////////////////
     Private Sub BOTONlimpiartxtGuardarGanado_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles BOTONlimpiartxtGuardarGanado.Click
-        CBXsexoGanado.Text = ""
+         CBXsexoGanado.Text = ""
         CBXRazaGanado.Text = ""
 
-        DTPAgregarGanado.Text = ""
-
-
+        DTPAgregarGanado.Value = Today
         CBXestadoGanado.Text = ""
     End Sub
 
@@ -1178,6 +1203,9 @@ Public Class Programa
     '''////////////////////////////PARA VOLVER A MOSTRAR DATOS COMPLETOS DE GANADO EN EL DATAGRID///////////////////
     ''' ///////////////////////////////////////////////////////////////////////////////////////////////////////////
     Private Sub Button2_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Button2.Click
+        DataGridGanadoEconomico.Visible = False
+        ACtivarBotones()
+
         actualizar()
     End Sub
     '////////////                                      FIN GANADO
@@ -2405,12 +2433,23 @@ Public Class Programa
     End Sub
 
     Private Sub txtBuscarCodGanado_TextChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles txtBuscarCodGanado.TextChanged
+        DataGridGanadoEconomico.Visible = False
+        ACtivarBotones()
         If IsNumeric(txtBuscarCodGanado.Text) Then
 
             Consulta = "SELECT idg,sexo,raza,estado,nacimiento, TIMESTAMPDIFF(YEAR,ganado.nacimiento,CURDATE()) AS'Anios', TIMESTAMPDIFF(month, ganado.nacimiento,NOW())%12 AS 'Meses' from ganado where idg like '" & txtBuscarCodGanado.Text & "%'"
 
             consultar()
             DataGridViewganado.DataSource = Tabla
+            DataGridViewganado.Columns(0).HeaderText = "Codigo"
+            DataGridViewganado.Columns(1).HeaderText = "Sexo"
+            DataGridViewganado.Columns(2).HeaderText = "Raza"
+
+            DataGridViewganado.Columns(4).HeaderText = "Fecha Nacimiento"
+            DataGridViewganado.Columns(3).HeaderText = "Estado"
+            DataGridViewganado.Columns(5).HeaderText = "Años"
+            DataGridViewganado.Columns(6).HeaderText = "Meses"
+
 
         Else
             txtBuscarCodGanado.Clear()
@@ -2419,12 +2458,14 @@ Public Class Programa
             consultar()
             DataGridViewganado.DataSource = Tabla
 
-            DataGridViewganado.Columns(0).HeaderText = " Codigo "
-            DataGridViewganado.Columns(1).HeaderText = " Sexo "
-            DataGridViewganado.Columns(0).HeaderText = " Raza "
-            DataGridViewganado.Columns(0).HeaderText = " Estado "
-            DataGridViewganado.Columns(3).HeaderText = " Fecha Nacimiento"
+            DataGridViewganado.Columns(0).HeaderText = "Codigo"
+            DataGridViewganado.Columns(1).HeaderText = "Sexo"
+            DataGridViewganado.Columns(2).HeaderText = "Raza"
 
+            DataGridViewganado.Columns(4).HeaderText = "Fecha Nacimiento"
+            DataGridViewganado.Columns(3).HeaderText = "Estado"
+            DataGridViewganado.Columns(5).HeaderText = "Años"
+            DataGridViewganado.Columns(6).HeaderText = "Meses"
         End If
 
 
@@ -2435,7 +2476,82 @@ Public Class Programa
   
   
   
-    Private Sub Button9_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Button9.Click
+    Private Sub BOTONpanelActividadEconomica_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles BOTONpanelActividadEconomica.Click
+        PanelActividadEconomica.Visible = True
+        BOTONpanelActividadEconomica.Visible = False
+        BOTONcerrarActividadEconomica.Visible = True
 
+    End Sub
+
+
+    Private Sub BOTONganadoVendido_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles BOTONganadoVendido.Click
+        DesactivarBotones()
+        DataGridGanadoEconomico.Visible = True
+        Consulta = " SELECT idg AS 'Cod Ganado', sexo AS 'Sexo', raza AS 'Raza', estado AS 'Estado', nacimiento, venta.idv AS 'Num Venta', fechaventa As 'Fecha de Venta', totalv AS 'Total US$' from ganado left join venta on ganado.idv = venta.idv where ganado.idv is not null "
+        consultar()
+        DataGridGanadoEconomico.DataSource = Tabla
+       
+        DataGridGanadoEconomico.Columns(4).Visible = False
+        DataGridGanadoEconomico.Focus()
+
+        PanelActividadEconomica.Visible = False
+
+        BOTONpanelActividadEconomica.Visible = True
+        BOTONcerrarActividadEconomica.Visible = False
+        If DataGridGanadoEconomico.Rows.Count = 0 Then
+
+            MsgBox("No se encontraron datos de ganados vendidos", MsgBoxStyle.Information, Title:="Venta de ganado")
+            ACtivarBotones()
+
+        End If
+    End Sub
+
+    Private Sub BOTONcerrarActividadEconomica_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles BOTONcerrarActividadEconomica.Click
+        PanelActividadEconomica.Visible = False
+        BOTONpanelActividadEconomica.Visible = True
+    End Sub
+
+    
+    Private Sub BOTONganadoSInvender_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles BOTONganadoSInvender.Click
+        DesactivarBotones()
+        DataGridGanadoEconomico.Visible = True
+        Consulta = " SELECT idg AS 'Cod Ganado', sexo AS 'Sexo', raza AS 'Raza', estado AS 'Estado', nacimiento, venta.idv AS 'Num Venta', fechaventa As 'Fecha de Venta', totalv AS 'Total US$' from ganado left join venta on ganado.idv = venta.idv where ganado.idv is null "
+        consultar()
+        DataGridGanadoEconomico.DataSource = Tabla
+        DataGridGanadoEconomico.Columns(4).Visible = False
+        DataGridGanadoEconomico.Focus()
+
+        PanelActividadEconomica.Visible = False
+
+        BOTONpanelActividadEconomica.Visible = True
+        BOTONcerrarActividadEconomica.Visible = False
+        If DataGridGanadoEconomico.Rows.Count = 0 Then
+
+            MsgBox("No se encontraron datos de ganado sin vender", MsgBoxStyle.Information, Title:="Ganado sin venta")
+            ACtivarBotones()
+
+        End If
+    End Sub
+
+  
+    Private Sub BOTONganadoComprado_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles BOTONganadoComprado.Click
+        DesactivarBotones()
+        DataGridGanadoEconomico.Visible = True
+        Consulta = " SELECT idg AS 'Cod Ganado', sexo AS 'Sexo', raza AS 'Raza', estado AS 'Estado', nacimiento, compra.idc AS 'Num Compra', fechacompra As 'Fecha de compra', totalc AS 'Total US$' from ganado left join compra on ganado.idc = compra.idc where ganado.idc is not null "
+        consultar()
+        DataGridGanadoEconomico.DataSource = Tabla
+        DataGridGanadoEconomico.Columns(4).Visible = False
+        DataGridGanadoEconomico.Focus()
+
+        PanelActividadEconomica.Visible = False
+
+        BOTONpanelActividadEconomica.Visible = True
+        BOTONcerrarActividadEconomica.Visible = False
+        If DataGridGanadoEconomico.Rows.Count = 0 Then
+
+            MsgBox("No se encontraron datos de ganado comprado", MsgBoxStyle.Information, Title:="Compra de ganado")
+            ACtivarBotones()
+
+        End If
     End Sub
 End Class
