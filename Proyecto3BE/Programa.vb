@@ -38,7 +38,25 @@ Public Class Programa
             error1 = 1
         End Try
     End Sub
-    Public Sub ACtivarBotones()
+
+    Public Sub actualizarCliente()
+        'CARGA DATAGRIDCLIENTES
+        Consulta = "select * from cliente"
+        consultar()
+
+        DataGridViewClientes.DataSource = Tabla
+
+        DataGridViewClientes.Columns(0).HeaderText = "Cédula"
+        DataGridViewClientes.Columns(1).HeaderText = "Nombre"
+        DataGridViewClientes.Columns(2).HeaderText = "Apellido"
+        DataGridViewClientes.Columns(3).HeaderText = "Dirección"
+        DataGridViewClientes.Columns(4).HeaderText = "Dirección"
+
+    End Sub
+
+
+    '//////// ACTIVA Y VUELVE VISIBLE LOS BOTONES Y EL DATAGRID PRINCIPAL QUE FUERON DESACTIVADOS POR EL EVENTO DesactivarBotones() ////////////////////////////
+    Public Sub ACtivarBotonesGanado()
         GroupBox3.Enabled = True
         BOTONguardarAgregar.Enabled = True
         BOTONcancelarAgregar.Enabled = True
@@ -46,7 +64,8 @@ Public Class Programa
         BOTONcancelarModificar.Enabled = True
         DataGridViewganado.Visible = True
     End Sub
-    Public Sub DesactivarBotones()
+    '/////////////////////////// DESACTIVA Y OCULTA VARIOS BOTONES Y EL DATAGRID PRINCIPAL ///////////////////////////////////////////
+    Public Sub DesactivarBotonesGanado()
         GroupBox3.Enabled = False
         BOTONguardarAgregar.Enabled = False
         BOTONcancelarAgregar.Enabled = False
@@ -59,7 +78,8 @@ Public Class Programa
         DTPAgregarGanado.Value = Today
         CBXestadoGanado.Text = ""
     End Sub
-    Public Sub ActualizarSinConsulta()
+
+    Public Sub ActualizarGanadoSinConsulta()
 
         consultar()
         DataGridViewganado.DataSource = Tabla
@@ -78,9 +98,10 @@ Public Class Programa
 
     End Sub
 
+    'CONSULTA DE TABLA GANADO
 
-    Public Sub actualizar()
-        'CONSULTA DE TABLA GANADO
+    Public Sub actualizarGanado()
+
         Try
             Consulta = "select idg,sexo,raza,estado,nacimiento, TIMESTAMPDIFF(YEAR,ganado.nacimiento,CURDATE()) AS 'Anios', TIMESTAMPDIFF(month, ganado.nacimiento,NOW())%12 AS 'Meses' from ganado"
             consultar()
@@ -809,20 +830,20 @@ Public Class Programa
     Private Sub BOTONseleccionarRaza_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles BOTONseleccionarRaza.Click
 
         DataGridGanadoEconomico.Visible = False
-        ACtivarBotones()
+        ACtivarBotonesGanado()
 
         If CBXseleccionarRaza.Text <> "" And CBXseleccionarSexo.Text <> "" Then
             If CBXseleccionarSexo.Text = "Ambos" Then
                 Try
                     Consulta = " SELECT idg,sexo,raza,estado,nacimiento, TIMESTAMPDIFF(YEAR,nacimiento,CURDATE()) AS 'Edad', TIMESTAMPDIFF(month, ganado.nacimiento,NOW())%12 AS 'Meses' from ganado where raza= '" + CBXseleccionarRaza.SelectedItem + "'"
-                    ActualizarSinConsulta()
+                    ActualizarGanadoSinConsulta()
 
 
                     If DataGridViewganado.Rows.Count = 0 Then
                         MessageBox.Show("NO hay ganado registrado con los datos ingresado en la busqueda", "Busqueda de ganado", MessageBoxButtons.OK, MessageBoxIcon.Information)
                         CBXseleccionarRaza.Text = ""
                         CBXseleccionarSexo.Text = ""
-                        actualizar()
+                        actualizarGanado()
                     End If
                 Catch ex As Exception
                     MsgBox(ex.ToString)
@@ -833,7 +854,7 @@ Public Class Programa
 
                 Try
                     Consulta = " SELECT idg,sexo,raza,estado,nacimiento, TIMESTAMPDIFF(YEAR,nacimiento,CURDATE()) AS 'Edad', TIMESTAMPDIFF(month, ganado.nacimiento,NOW())%12 AS 'Meses' from ganado where raza= '" + CBXseleccionarRaza.SelectedItem + "' And sexo = 'Macho' "
-                    ActualizarSinConsulta()
+                    ActualizarGanadoSinConsulta()
 
                     'CBXseleccionarRaza.Text = ""
                     'CBXseleccionarSexo.Text = ""
@@ -842,7 +863,7 @@ Public Class Programa
                         MessageBox.Show("NO hay ganado registrado con los datos ingresado en la busqueda", "Busqueda de ganado", MessageBoxButtons.OK, MessageBoxIcon.Information)
                         CBXseleccionarRaza.Text = ""
                         CBXseleccionarSexo.Text = ""
-                        actualizar()
+                        actualizarGanado()
 
                     End If
                 Catch ex As Exception
@@ -853,7 +874,7 @@ Public Class Programa
             ElseIf CBXseleccionarSexo.Text = "Hembra" Then
                 Try
                     Consulta = " SELECT idg,sexo,raza,estado,nacimiento, TIMESTAMPDIFF(YEAR,nacimiento,CURDATE()) AS 'Edad', TIMESTAMPDIFF(month, ganado.nacimiento,NOW())%12 AS 'Meses' from ganado where raza= '" + CBXseleccionarRaza.SelectedItem + "' And sexo = 'Hembra'"
-                    ActualizarSinConsulta()
+                    ActualizarGanadoSinConsulta()
 
                     'CBXseleccionarRaza.Text = ""
                     'CBXseleccionarSexo.Text = ""
@@ -861,7 +882,7 @@ Public Class Programa
                         MessageBox.Show("NO hay ganado registrado con los datos ingresado en la busqueda", "Busqueda de ganado", MessageBoxButtons.OK, MessageBoxIcon.Information)
                         CBXseleccionarRaza.Text = ""
                         CBXseleccionarSexo.Text = ""
-                        actualizar()
+                        actualizarGanado()
 
                     End If
                 Catch ex As Exception
@@ -915,7 +936,7 @@ Public Class Programa
     Private Sub BOTONocultarSexoRaza_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles BOTONocultarSexoRaza.Click
         CBXseleccionarRaza.Text = ""
         CBXseleccionarSexo.Text = ""
-        actualizar()
+        actualizarGanado()
 
         PanelBuscarSexoRaza.Visible = False
 
@@ -924,14 +945,14 @@ Public Class Programa
     '//////////////////BUSCA GANADO POR SU FECHA DE NACIMIENTO ///////////////////////////////////////
     Private Sub BuscarFechaGanado_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles BOTONBuscarFechaGanado.Click
         DataGridGanadoEconomico.Visible = False
-        ACtivarBotones()
+        ACtivarBotonesGanado()
         Dim FechaN As String = DateTimeBuscarFechaGanado.Value.ToString("yyyy-MM-dd")
 
         Consulta = "SELECT idg,sexo,raza,estado,nacimiento, TIMESTAMPDIFF(YEAR,ganado.nacimiento,CURDATE()) AS'Anios', TIMESTAMPDIFF(month, ganado.nacimiento,NOW())%12 AS 'Meses' from ganado Where nacimiento ='" & FechaN & "'"
-        ActualizarSinConsulta()
+        ActualizarGanadoSinConsulta()
         If DataGridViewganado.Rows.Count = 0 Then
             MessageBox.Show("No se encontraron datos de la fecha que usted ingreso", "No hay datos", MessageBoxButtons.OK, MessageBoxIcon.Information)
-            actualizar()
+            actualizarGanado()
         End If
 
 
@@ -940,7 +961,7 @@ Public Class Programa
     ''' /////////////////////////////////////////////////////////////////////////////////////////////
     Private Sub BOTONocultarPanelFechaG_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles BOTONocultarPanelFechaG.Click
         DateTimeBuscarFechaGanado.Text = ""
-        actualizar()
+        actualizarGanado()
         PanelBuscarFechaNacimiento.Visible = False
     End Sub
 
@@ -950,7 +971,7 @@ Public Class Programa
     ''' 
     Private Sub BOTONcancelarBuscarCodigo_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles BOTONcancelarBuscarCodigo.Click
         txtBuscarCodGanado.Text = ""
-        actualizar()
+        actualizarGanado()
 
         PanelBuscarCodGanado.Visible = False
     End Sub
@@ -1031,7 +1052,7 @@ Public Class Programa
                     Consulta = "INSERT INTO ganado (sexo,raza,estado,nacimiento) values('" & sexo & "','" & raza & "','" & estadoG & "','" & fechaN & "' )"
                     consultar()
 
-                    actualizar()
+                    actualizarGanado()
 
 
                     CBXsexoGanado.Text = ""
@@ -1095,7 +1116,7 @@ Public Class Programa
                                               "',nacimiento= '" + fechaN +
                                               "' where idg= '" + codigo + "'"
                     consultar()
-                    actualizar()
+                    actualizarGanado()
 
 
                     CBXRazaGanado.Text = ""
@@ -1190,7 +1211,7 @@ Public Class Programa
                 Consulta = " delete from ganado where idg='" & DataGridViewganado.Item(0, DataGridViewganado.CurrentRow.Index).Value & "'"
                 consultar()
 
-                actualizar()
+                actualizarGanado()
 
                 DataGridViewganado.Focus()
 
@@ -1205,9 +1226,217 @@ Public Class Programa
     ''' ///////////////////////////////////////////////////////////////////////////////////////////////////////////
     Private Sub Button2_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Button2.Click
         DataGridGanadoEconomico.Visible = False
-        ACtivarBotones()
+        ACtivarBotonesGanado()
 
-        actualizar()
+        actualizarGanado()
+    End Sub
+    Private Sub txtBuscarCodGanado_TextChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles txtBuscarCodGanado.TextChanged
+        DataGridGanadoEconomico.Visible = False
+        ACtivarBotonesGanado()
+        If IsNumeric(txtBuscarCodGanado.Text) Then
+
+            Consulta = "SELECT idg,sexo,raza,estado,nacimiento, TIMESTAMPDIFF(YEAR,ganado.nacimiento,CURDATE()) AS'Anios', TIMESTAMPDIFF(month, ganado.nacimiento,NOW())%12 AS 'Meses' from ganado where idg like '" & txtBuscarCodGanado.Text & "%'"
+
+            consultar()
+            DataGridViewganado.DataSource = Tabla
+            DataGridViewganado.Columns(0).HeaderText = "Codigo"
+            DataGridViewganado.Columns(1).HeaderText = "Sexo"
+            DataGridViewganado.Columns(2).HeaderText = "Raza"
+
+            DataGridViewganado.Columns(4).HeaderText = "Fecha Nacimiento"
+            DataGridViewganado.Columns(3).HeaderText = "Estado"
+            DataGridViewganado.Columns(5).HeaderText = "Años"
+            DataGridViewganado.Columns(6).HeaderText = "Meses"
+
+
+        Else
+            txtBuscarCodGanado.Clear()
+
+            Consulta = "SELECT idg,sexo,raza,estado,nacimiento, TIMESTAMPDIFF(YEAR,ganado.nacimiento,CURDATE()) AS'Anios', TIMESTAMPDIFF(month, ganado.nacimiento,NOW())%12 AS 'Meses' from ganado " '"
+            consultar()
+            DataGridViewganado.DataSource = Tabla
+
+            DataGridViewganado.Columns(0).HeaderText = "Codigo"
+            DataGridViewganado.Columns(1).HeaderText = "Sexo"
+            DataGridViewganado.Columns(2).HeaderText = "Raza"
+
+            DataGridViewganado.Columns(4).HeaderText = "Fecha Nacimiento"
+            DataGridViewganado.Columns(3).HeaderText = "Estado"
+            DataGridViewganado.Columns(5).HeaderText = "Años"
+            DataGridViewganado.Columns(6).HeaderText = "Meses"
+        End If
+
+
+    End Sub
+
+
+
+
+
+
+    Private Sub BOTONpanelActividadEconomica_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles BOTONpanelActividadEconomica.Click
+        PanelActividadEconomica.Visible = True
+        BOTONpanelActividadEconomica.Visible = False
+        BOTONcerrarActividadEconomica.Visible = True
+
+    End Sub
+
+
+    Private Sub BOTONganadoVendido_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles BOTONganadoVendido.Click
+        DesactivarBotonesGanado()
+        DataGridGanadoEconomico.Visible = True
+        Consulta = " SELECT idg AS 'Cod Ganado', sexo AS 'Sexo', raza AS 'Raza', estado AS 'Estado', nacimiento, venta.idv AS 'Num Venta', fechaventa As 'Fecha de Venta', totalv AS 'Total US$' from ganado left join venta on ganado.idv = venta.idv where ganado.idv is not null "
+        consultar()
+        DataGridGanadoEconomico.DataSource = Tabla
+
+        DataGridGanadoEconomico.Columns(4).Visible = False
+        DataGridGanadoEconomico.Focus()
+
+        PanelActividadEconomica.Visible = False
+
+        BOTONpanelActividadEconomica.Visible = True
+        BOTONcerrarActividadEconomica.Visible = False
+        If DataGridGanadoEconomico.Rows.Count = 0 Then
+
+            MsgBox("No se encontraron datos de ganados vendidos", MsgBoxStyle.Information, Title:="Venta de ganado")
+            ACtivarBotonesGanado()
+
+        End If
+    End Sub
+
+    Private Sub BOTONcerrarActividadEconomica_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles BOTONcerrarActividadEconomica.Click
+        PanelActividadEconomica.Visible = False
+        BOTONpanelActividadEconomica.Visible = True
+    End Sub
+
+
+    Private Sub BOTONganadoSInvender_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles BOTONganadoSInvender.Click
+        DesactivarBotonesGanado()
+        DataGridGanadoEconomico.Visible = True
+        Consulta = " SELECT idg AS 'Cod Ganado', sexo AS 'Sexo', raza AS 'Raza', estado AS 'Estado', nacimiento, venta.idv AS 'Num Venta', fechaventa As 'Fecha de Venta', totalv AS 'Total US$' from ganado left join venta on ganado.idv = venta.idv where ganado.idv is null "
+        consultar()
+        DataGridGanadoEconomico.DataSource = Tabla
+        DataGridGanadoEconomico.Columns(4).Visible = False
+        DataGridGanadoEconomico.Focus()
+
+        PanelActividadEconomica.Visible = False
+
+        BOTONpanelActividadEconomica.Visible = True
+        BOTONcerrarActividadEconomica.Visible = False
+        If DataGridGanadoEconomico.Rows.Count = 0 Then
+
+            MsgBox("No se encontraron datos de ganado sin vender", MsgBoxStyle.Information, Title:="Ganado sin venta")
+            ACtivarBotonesGanado()
+
+        End If
+    End Sub
+
+
+    Private Sub BOTONganadoComprado_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles BOTONganadoComprado.Click
+        DesactivarBotonesGanado()
+        DataGridGanadoEconomico.Visible = True
+        Consulta = " SELECT idg AS 'Cod Ganado', sexo AS 'Sexo', raza AS 'Raza', estado AS 'Estado', nacimiento, compra.idc AS 'Num Compra', fechacompra As 'Fecha de compra', totalc AS 'Total US$' from ganado left join compra on ganado.idc = compra.idc where ganado.idc is not null "
+        consultar()
+        DataGridGanadoEconomico.DataSource = Tabla
+        DataGridGanadoEconomico.Columns(4).Visible = False
+        DataGridGanadoEconomico.Focus()
+
+        PanelActividadEconomica.Visible = False
+
+        BOTONpanelActividadEconomica.Visible = True
+        BOTONcerrarActividadEconomica.Visible = False
+        If DataGridGanadoEconomico.Rows.Count = 0 Then
+
+            MsgBox("No se encontraron datos de ganado comprado", MsgBoxStyle.Information, Title:="Compra de ganado")
+            ACtivarBotonesGanado()
+
+        End If
+    End Sub
+
+    Private Sub BOTONbuscarPanelestado_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles BOTONbuscarPanelestado.Click
+        PanelBuscarSexoRaza.Visible = False
+        PanelBuscarFechaNacimiento.Visible = False
+        PanelBuscarCodGanado.Visible = False
+        PanelBuscarEstadoGanado.Visible = True
+    End Sub
+
+    Private Sub BOTONcerrarPanelEstado_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles BOTONcerrarPanelEstado.Click
+        PanelBuscarEstadoGanado.Visible = False
+        actualizarGanado()
+
+    End Sub
+
+    Private Sub BOTONbuscarEstadoGanado_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles BOTONbuscarEstadoGanado.Click
+
+        DataGridGanadoEconomico.Visible = False
+        ACtivarBotonesGanado()
+
+        If CBXbuscarEstadoGanado.Text <> "" Then
+
+
+            If CBXbuscarEstadoGanado.Text = "activo" Then
+
+                Try
+                    Consulta = "select idg, sexo, raza, estado, nacimiento, TIMESTAMPDIFF(YEAR,ganado.nacimiento,CURDATE()) AS 'Anios', TIMESTAMPDIFF(month, ganado.nacimiento,NOW())%12 AS 'Meses' from ganado where estado = '" & CBXbuscarEstadoGanado.SelectedItem & "'"
+                    ActualizarGanadoSinConsulta()
+
+                    If DataGridViewganado.Rows.Count = 0 Then
+                        MessageBox.Show("No se encontraron datos en esta busqueda", "Busqueda por Estado", MessageBoxButtons.OK, MessageBoxIcon.Information)
+                        actualizarGanado()
+
+                    End If
+
+                Catch ex As Exception
+                    MsgBox(ex.Message)
+                End Try
+
+
+            ElseIf CBXbuscarEstadoGanado.Text = "vendido" Then
+
+                Try
+
+                    Consulta = "select idg, sexo, raza, estado, nacimiento, TIMESTAMPDIFF(YEAR,ganado.nacimiento,CURDATE()) AS 'Anios', TIMESTAMPDIFF(month, ganado.nacimiento,NOW())%12 AS 'Meses' from ganado where estado = '" & CBXbuscarEstadoGanado.SelectedItem & "'"
+                    ActualizarGanadoSinConsulta()
+
+                    If DataGridViewganado.Rows.Count = 0 Then
+                        MessageBox.Show("No se encontraron datos en esta busqueda", "Busqueda por Estado", MessageBoxButtons.OK, MessageBoxIcon.Information)
+                        actualizarGanado()
+
+                    End If
+
+                Catch ex As Exception
+                    MsgBox(ex.Message)
+                End Try
+
+
+
+            ElseIf CBXbuscarEstadoGanado.Text = "enfermo/a" Then
+
+                Try
+
+                    Consulta = "select idg, sexo, raza, estado, nacimiento, TIMESTAMPDIFF(YEAR,ganado.nacimiento,CURDATE()) AS 'Anios', TIMESTAMPDIFF(month, ganado.nacimiento,NOW())%12 AS 'Meses' from ganado where estado = '" & CBXbuscarEstadoGanado.SelectedItem & "'"
+                    ActualizarGanadoSinConsulta()
+
+                    If DataGridViewganado.Rows.Count = 0 Then
+                        MessageBox.Show("No se encontraron datos en esta busqueda", "Busqueda por Estado", MessageBoxButtons.OK, MessageBoxIcon.Information)
+                        actualizarGanado()
+
+
+                    End If
+
+                Catch ex As Exception
+                    MsgBox(ex.Message)
+                End Try
+            Else
+
+            End If
+        Else
+
+            MessageBox.Show("debe seleccionar una opcion para relizar busqueda", "Busqueda por Estado", MessageBoxButtons.OK, MessageBoxIcon.Information)
+
+
+
+        End If
     End Sub
     '////////////                                      FIN GANADO
     '/////////////////////////////////////////////////////////////////////////////////////////////
@@ -1217,109 +1446,71 @@ Public Class Programa
     '//////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 
-    '///////////////////////////////////BOTON PARA AGREGAR CLIENTE//////////////////////////////////////////////////
-    Private Sub BTNAgregarclientes_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles BTNAgregarclientes.Click
-        If Texcedula.Text <> "" And Texnombreapellido.Text <> "" And Texdireccion.Text <> "" And Texttelefono.Text <> "" Then
-            If verificarCedula(Texcedula.Text) Then
 
-                Consulta = "INSERT INTO cliente values('" & Texcedula.Text & "','" & Texnombreapellido.Text & "','" & Texdireccion.Text & "','" & Texttelefono.Text & "' )"
-                consultar()
-                Consulta = "select * from cliente"
-                consultar()
-                DataGridViewClientes.DataSource = Tabla
-                Texcedula.Text = ""
-                Texnombreapellido.Text = ""
-                Texdireccion.Text = ""
-                Texttelefono.Text = ""
-                MsgBox("Registro exitoso")
-            Else
-                MsgBox("Cedula erronea")
-            End If
-        Else
-            MsgBox("Complete todos los campos vacios")
-        End If
-    End Sub
-    '/////////// BONTON DENTRO DEL PANEL DE AGREGAR CLIENTES(LIMPIA LOS TEXTBOX)//////////////////////
-    Private Sub BTNClearclientes_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles BTNClearclientes.Click
-        Texcedula.Clear()
-        Texdireccion.Clear()
-        Texnombreapellido.Clear()
-        Texttelefono.Clear()
-    End Sub
-
-    '////////////////////////////BOTON QUE VUELVE AL PANEL PRINCIPAL///////////////////////////////////
-    Private Sub BTNVolveragregarcliente_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles BTNVolveragregarcliente.Click
-        PanelPrincipalclientes.BringToFront()
-        PanelPrincipalclientes.Visible = True
-        PanelPrincipalclientes.Enabled = True
-
-        Consulta = "select * from cliente"
-        consultar()
-        DataGridViewClientes.DataSource = Tabla
-
-
-        PanelAgregarcliente.Enabled = False
-        PanelAgregarcliente.Visible = False
-        PanelAgregarcliente.SendToBack()
-    End Sub
     '////////////////////BOTON QUE ABRE PANEL DE AGREGAR CLIENTE  OCULTA PANEL PRINCIPAL/////////////////////////
-    Private Sub BTNPanelagregarcliente_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles BTNPanelagregarcliente.Click
-        PanelAgregarcliente.BringToFront()
-        PanelAgregarcliente.Visible = True
-        PanelAgregarcliente.Enabled = True
+    Private Sub BOTONagregarcliente_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles BOTONagregarcliente.Click
+        DataGridViewClientes.Enabled = False
 
-        PanelPrincipalclientes.SendToBack()
-        PanelPrincipalclientes.Visible = False
-        PanelPrincipalclientes.Enabled = False
+        BOTONguardarAgregarCliente.Visible = True
+        BOTONcancelarGuardarCliente.Visible = True
+        BOTONvaciarCamposCliente.Visible = True
+
+        'BOTONguardarModificarCliente.Visible = False
+        'BOTONcancelarModificarCliente.Visible = False
+
+        BOTONagregarcliente.Enabled = False
+        BOTONmodificarCliente.Enabled = False
+
+        txtnombreCliente.Text = ""
+        txtapellidoCliente.Text = ""
+        txtcedulaCliente.Text = ""
+        txttelefonoCliente.Text = ""
+        txtdireccionCliente.Text = ""
+
+
+
+        txtnombreCliente.Enabled = True
+        txtnombreCliente.Focus()
+        txtapellidoCliente.Enabled = True
+        txtcedulaCliente.Enabled = True
+        txttelefonoCliente.Enabled = True
+        txtdireccionCliente.Enabled = True
+
+
+
+       
+
+
+
     End Sub
 
-    '//////////////////BOTON PARA ABRIR PANEL MODIFICAR CLIENTE//////////////////////////////////////////////////////////////////
-    Private Sub BTNPanelmodificarcliente_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles BTNPanelmodificarcliente.Click
-        PanelModificarclientes.BringToFront()
-        PanelModificarclientes.Visible = True
-        PanelModificarclientes.Enabled = True
+    '//////////////////BOTON PARA ACTIVAR BOTONES MODIFICAR CLIENT//////////////////////////////////////////////////////////////////
+    Private Sub BTNPanelmodificarcliente_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles BOTONmodificarCliente.Click
 
-        Consulta = "select * from cliente"
-        consultar()
-        DataGridViewModificarclientes.DataSource = Tabla
-        'DataGridViewModificarclientes.Columns(0).HeaderText = "Cédula"
-        'DataGridViewModificarclientes.Columns(1).HeaderText = "Nombre y apellido"
-        'DataGridViewModificarclientes.Columns(2).HeaderText = "Dirección"
-        'DataGridViewModificarclientes.Columns(3).HeaderText = "Teléfono"
 
-        PanelPrincipalclientes.SendToBack()
-        PanelPrincipalclientes.Visible = False
-        PanelPrincipalclientes.Enabled = False
+        'BOTONguardarAgregarCliente.Visible = True
+        'BOTONcancelarGuardarCliente.Visible = True
+        'BOTONvaciarCamposCliente.Visible = True
+
+        BOTONguardarModificarCliente.Visible = True
+        BOTONcancelarModificarCliente.Visible = True
+
+        BOTONagregarcliente.Enabled = False
+        BOTONmodificarCliente.Enabled = False
+
+        txtnombreCliente.Enabled = True
+        txtnombreCliente.Focus()
+        txtapellidoCliente.Enabled = True
+        txtcedulaCliente.Enabled = False
+        txttelefonoCliente.Enabled = True
+        txtdireccionCliente.Enabled = True
+
     End Sub
 
-    '/////////////////////////////////BOTON PARA MODIFICAR CLIENTE//////////////////////////////////////////
-    Private Sub Button4_Click_1(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Button4.Click
-        If verificarCedula(Cedulamodificarcliente.Text) Then
-            Try
-                Consulta = "update cliente set nombre='" + Nombreyapellidomodificarcliente.Text + "', direccion='" + Direccionmodificarcliente.Text + "', telefono='" + Telefonomodificarcliente.Text + "' where id='" + Cedulamodificarcliente.Text + "'"
-                consultar()
-                Consulta = "select * from cliente"
-                consultar()
-                Cedulamodificarcliente.Text = ""
-                Nombreyapellidomodificarcliente.Text = ""
-                Direccionmodificarcliente.Text = ""
-                Cedulamodificarcliente.Text = ""
-                DataGridViewModificarclientes.DataSource = Tabla
-                'DataGridViewModificarclientes.Columns(0).HeaderText = "Cédula"
-                'DataGridViewModificarclientes.Columns(1).HeaderText = "Nombre y apellido"
-                'DataGridViewModificarclientes.Columns(2).HeaderText = "Dirección"
-                'DataGridViewModificarclientes.Columns(3).HeaderText = "Teléfono"
-                MsgBox("Editado con exito")
-            Catch ex As Exception
-                MsgBox(ex)
-            End Try
-        Else
-            MsgBox("Cédula errónea")
-        End If
-    End Sub
+
 
     '////////////////////////////////////////////////////BOTON PARA ELIMINAR CLIENTE
-    Private Sub BTNEliminarcliente_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles BTNEliminarcliente.Click
+    Private Sub BTNEliminarcliente_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles BOTONEliminarcliente.Click
 
         Dim MsgStyle As MsgBoxStyle = MsgBoxStyle.Critical + MsgBoxStyle.OkOnly
         Dim MsgStyle1 As MsgBoxStyle = MsgBoxStyle.Information + MsgBoxStyle.OkOnly
@@ -1353,39 +1544,7 @@ Public Class Programa
         End If
     End Sub
 
-    '//////////////////////////////BTON PARA BUSCAR CLIENTE CLIENTE DENTRO DEL PANEL MODIFICAR///////////////////////////////
-    Private Sub Button1_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Button1.Click
-        Dim consulta As String
-        Dim lista As Byte
-        Dim datos As DataSet
-        If Texbuscarcliente.Text <> "" Then
-            consulta = " select * from cliente where id = '" & Texbuscarcliente.Text & "'"
-            Conexion = New MySqlDataAdapter(consulta, data)
-            datos = New DataSet
-            Conexion.Fill(datos, "cliente")
-            lista = datos.Tables("cliente").Rows.Count
 
-            If lista <> 0 Then
-                Nombreyapellidomodificarcliente.Text = datos.Tables("cliente").Rows(0).Item(1)
-                Cedulamodificarcliente.Text = datos.Tables("cliente").Rows(0).Item(0)
-                Direccionmodificarcliente.Text = datos.Tables("cliente").Rows(0).Item(2)
-                Telefonomodificarcliente.Text = datos.Tables("cliente").Rows(0).Item(3)
-
-            Else
-                MsgBox("Datos no encontrados")
-            End If
-
-        End If
-    End Sub
-
-
-    '/////////////////////////////////BOTON LIMPIAR CLIENTE DENTRO DEL PANEL MODIFICAR////////////////////////////
-    Private Sub Button5_Click_1(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Button5.Click
-        Nombreyapellidomodificarcliente.Clear()
-        Cedulamodificarcliente.Clear()
-        Direccionmodificarcliente.Clear()
-        Telefonomodificarcliente.Clear()
-    End Sub
     '///////////////////BOTON PARA SALIR DEL PANEL MODIFICAR Y REGRESAR AL PANEL PRINCIPAL////////////////////////////////////////
     Private Sub BOTONregrasarPrincipalCliente_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles BOTONregrasarPrincipalCliente.Click
         PanelPrincipalclientes.BringToFront()
@@ -1648,33 +1807,7 @@ Public Class Programa
         DTPFechanacimientocompra.Value = Today
         TXTEstadocompra.Clear()
     End Sub
-    Private Sub DataGridViewModificarclientes_SelectionChanged(ByVal sender As Object, ByVal e As System.EventArgs) Handles DataGridViewModificarclientes.SelectionChanged
-        Nombreyapellidomodificarcliente.Clear()
-        Cedulamodificarcliente.Clear()
-        Direccionmodificarcliente.Clear()
-        Telefonomodificarcliente.Clear()
 
-        Nombreyapellidomodificarcliente.Text = DataGridViewModificarclientes.Item(1, DataGridViewModificarclientes.CurrentRow.Index).Value
-        Cedulamodificarcliente.Text = DataGridViewModificarclientes.Item(0, DataGridViewModificarclientes.CurrentRow.Index).Value
-        Direccionmodificarcliente.Text = DataGridViewModificarclientes.Item(2, DataGridViewModificarclientes.CurrentRow.Index).Value
-        Telefonomodificarcliente.Text = DataGridViewModificarclientes.Item(3, DataGridViewModificarclientes.CurrentRow.Index).Value
-
-    End Sub
-
-    '/////NO BORRARasdkjbasdbashjsshjssddsdssdkejejerkjer
-
-    'Private Sub BOTONquitarcliente_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles BOTONquitarcliente.Click
-    '    Consulta = "delete from cliente where id='" & Texcedula.Text & "'"
-    '    consultar()
-
-    '    Consulta = "select * from cliente"
-    '    consultar()
-    '    DataGridViewClientes.DataSource = Tabla
-    '    Texcedula.Text = ""
-    '    Texnombreapellido.Text = ""
-    '    Texdireccion.Text = ""
-    '    Texttelefono.Text = ""
-    'End Sub
 
 
 
@@ -2136,11 +2269,16 @@ Public Class Programa
                 'CARGA DATAGRIDCLIENTES
                 Consulta = "select * from cliente"
                 consultar()
+
                 DataGridViewClientes.DataSource = Tabla
-                DataGridViewClientes.Columns(0).HeaderText = "Cedúla"
-                DataGridViewClientes.Columns(1).HeaderText = "Nombre y apellido"
-                DataGridViewClientes.Columns(2).HeaderText = "Dirección"
-                DataGridViewClientes.Columns(3).HeaderText = "Teléfono"
+
+                DataGridViewClientes.Focus()
+
+                DataGridViewClientes.Columns(0).HeaderText = "Cédula"
+                DataGridViewClientes.Columns(1).HeaderText = "Nombre"
+                DataGridViewClientes.Columns(2).HeaderText = "Apellido"
+                DataGridViewClientes.Columns(3).HeaderText = "Dirección"
+                DataGridViewClientes.Columns(4).HeaderText = "Dirección"
 
                 Exit Select
             Case 4
@@ -2412,7 +2550,20 @@ Public Class Programa
 
 
 
+
+
+
+
+
+    '/////////////////////////// ARREGLOS EN CLIENTE///////////////////////////////////////////////////////////////////////////////////////////
+
+
+
     Private Sub txtBUSCARcedula_TextChanged_1(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles txtBUSCARcedula.TextChanged
+        BOTONguardarAgregarCliente.Visible = False
+        BOTONcancelarGuardarCliente.Visible = False
+        BOTONagregarcliente.Enabled = True
+        BOTONmodificarCliente.Enabled = True
 
         If IsNumeric(txtBUSCARcedula.Text) Then
 
@@ -2433,216 +2584,281 @@ Public Class Programa
         End If
     End Sub
 
-    Private Sub txtBuscarCodGanado_TextChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles txtBuscarCodGanado.TextChanged
-        DataGridGanadoEconomico.Visible = False
-        ACtivarBotones()
-        If IsNumeric(txtBuscarCodGanado.Text) Then
-
-            Consulta = "SELECT idg,sexo,raza,estado,nacimiento, TIMESTAMPDIFF(YEAR,ganado.nacimiento,CURDATE()) AS'Anios', TIMESTAMPDIFF(month, ganado.nacimiento,NOW())%12 AS 'Meses' from ganado where idg like '" & txtBuscarCodGanado.Text & "%'"
-
-            consultar()
-            DataGridViewganado.DataSource = Tabla
-            DataGridViewganado.Columns(0).HeaderText = "Codigo"
-            DataGridViewganado.Columns(1).HeaderText = "Sexo"
-            DataGridViewganado.Columns(2).HeaderText = "Raza"
-
-            DataGridViewganado.Columns(4).HeaderText = "Fecha Nacimiento"
-            DataGridViewganado.Columns(3).HeaderText = "Estado"
-            DataGridViewganado.Columns(5).HeaderText = "Años"
-            DataGridViewganado.Columns(6).HeaderText = "Meses"
 
 
-        Else
-            txtBuscarCodGanado.Clear()
-
-            Consulta = "SELECT idg,sexo,raza,estado,nacimiento, TIMESTAMPDIFF(YEAR,ganado.nacimiento,CURDATE()) AS'Anios', TIMESTAMPDIFF(month, ganado.nacimiento,NOW())%12 AS 'Meses' from ganado " '"
-            consultar()
-            DataGridViewganado.DataSource = Tabla
-
-            DataGridViewganado.Columns(0).HeaderText = "Codigo"
-            DataGridViewganado.Columns(1).HeaderText = "Sexo"
-            DataGridViewganado.Columns(2).HeaderText = "Raza"
-
-            DataGridViewganado.Columns(4).HeaderText = "Fecha Nacimiento"
-            DataGridViewganado.Columns(3).HeaderText = "Estado"
-            DataGridViewganado.Columns(5).HeaderText = "Años"
-            DataGridViewganado.Columns(6).HeaderText = "Meses"
-        End If
 
 
-    End Sub
+
+
+
+    '' ''///////////////////////////////////BOTON PARA AGREGAR CLIENTE//////////////////////////////////////////////////
+    ' ''Private Sub BTNAgregarclientes_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles BTNAgregarclientes.Click
+    ' ''    If Texcedula.Text <> "" And Texnombreapellido.Text <> "" And Texdireccion.Text <> "" And Texttelefono.Text <> "" Then
+    ' ''        If verificarCedula(Texcedula.Text) Then
+
+    ' ''            Consulta = "INSERT INTO cliente values('" & Texcedula.Text & "','" & Texnombreapellido.Text & "','" & Texdireccion.Text & "','" & Texttelefono.Text & "' )"
+    ' ''            consultar()
+    ' ''            Consulta = "select * from cliente"
+    ' ''            consultar()
+    ' ''            DataGridViewClientes.DataSource = Tabla
+    ' ''            Texcedula.Text = ""
+    ' ''            Texnombreapellido.Text = ""
+    ' ''            Texdireccion.Text = ""
+    ' ''            Texttelefono.Text = ""
+    ' ''            MsgBox("Registro exitoso")
+    ' ''        Else
+    ' ''            MsgBox("Cedula erronea")
+    ' ''        End If
+    ' ''    Else
+    ' ''        MsgBox("Complete todos los campos vacios")
+    ' ''    End If
+    ' ''End Sub
+    ' ''/////////// BONTON DENTRO DEL PANEL DE AGREGAR CLIENTES(LIMPIA LOS TEXTBOX)//////////////////////
+    ''Private Sub BTNClearclientes_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles BTNClearclientes.Click
+    ''    Texcedula.Clear()
+    ''    Texdireccion.Clear()
+    ''    Texnombreapellido.Clear()
+    ''    Texttelefono.Clear()
+    ''End Sub
+
+    ''////////////////////////////BOTON QUE VUELVE AL PANEL PRINCIPAL///////////////////////////////////
+    'Private Sub BTNVolveragregarcliente_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles BTNVolveragregarcliente.Click
+    '    PanelPrincipalclientes.BringToFront()
+    '    PanelPrincipalclientes.Visible = True
+    '    PanelPrincipalclientes.Enabled = True
+
+    '    Consulta = "select * from cliente"
+    '    consultar()
+    '    DataGridViewClientes.DataSource = Tabla
+
+
+    '    PanelAgregarcliente.Enabled = False
+    '    PanelAgregarcliente.Visible = False
+    '    PanelAgregarcliente.SendToBack()
+    'End Sub
 
    
- 
-  
-  
-  
-    Private Sub BOTONpanelActividadEconomica_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles BOTONpanelActividadEconomica.Click
-        PanelActividadEconomica.Visible = True
-        BOTONpanelActividadEconomica.Visible = False
-        BOTONcerrarActividadEconomica.Visible = True
+    Private Sub Button12_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Button12.Click
+        PanelAgregarcliente.BringToFront()
+        PanelAgregarcliente.Visible = True
+        PanelAgregarcliente.Enabled = True
+
+        PanelPrincipalclientes.SendToBack()
+        PanelPrincipalclientes.Visible = False
+        PanelPrincipalclientes.Enabled = False
+    End Sub
+
+    Private Sub Button13_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Button13.Click
+        PanelModificarclientes.BringToFront()
+        PanelModificarclientes.Visible = True
+        PanelModificarclientes.Enabled = True
+        PanelPrincipalclientes.SendToBack()
+        PanelPrincipalclientes.Visible = False
+        PanelPrincipalclientes.Enabled = False
+    End Sub
+
+    Private Sub BOTONcancelarGuardarCliente_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles BOTONcancelarGuardarCliente.Click
+        DataGridViewClientes.Enabled = True
+
+
+        BOTONguardarAgregarCliente.Visible = False
+        BOTONcancelarGuardarCliente.Visible = False
+        BOTONvaciarCamposCliente.Visible = False
+
+        BOTONguardarModificarCliente.Visible = False
+        BOTONcancelarModificarCliente.Visible = False
+
+        BOTONagregarcliente.Enabled = True
+        BOTONmodificarCliente.Enabled = True
+
+
+        txtnombreCliente.Text = ""
+        txtapellidoCliente.Text = ""
+        txtcedulaCliente.Text = ""
+        txttelefonoCliente.Text = ""
+        txtdireccionCliente.Text = ""
+
+
+        DataGridViewClientes.Focus()
+
+        txtcedulaCliente.Text = DataGridViewClientes.Item(0, DataGridViewClientes.CurrentRow.Index).Value
+        txtnombreCliente.Text = DataGridViewClientes.Item(1, DataGridViewClientes.CurrentRow.Index).Value
+        txtapellidoCliente.Text = DataGridViewClientes.Item(2, DataGridViewClientes.CurrentRow.Index).Value
+        txtdireccionCliente.Text = DataGridViewClientes.Item(3, DataGridViewClientes.CurrentRow.Index).Value
+        txttelefonoCliente.Text = DataGridViewClientes.Item(4, DataGridViewClientes.CurrentRow.Index).Value
+
+        txtnombreCliente.Enabled = False
+        txtapellidoCliente.Enabled = False
+        txtcedulaCliente.Enabled = False
+        txttelefonoCliente.Enabled = False
+        txtdireccionCliente.Enabled = False
 
     End Sub
 
-
-    Private Sub BOTONganadoVendido_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles BOTONganadoVendido.Click
-        DesactivarBotones()
-        DataGridGanadoEconomico.Visible = True
-        Consulta = " SELECT idg AS 'Cod Ganado', sexo AS 'Sexo', raza AS 'Raza', estado AS 'Estado', nacimiento, venta.idv AS 'Num Venta', fechaventa As 'Fecha de Venta', totalv AS 'Total US$' from ganado left join venta on ganado.idv = venta.idv where ganado.idv is not null "
-        consultar()
-        DataGridGanadoEconomico.DataSource = Tabla
-       
-        DataGridGanadoEconomico.Columns(4).Visible = False
-        DataGridGanadoEconomico.Focus()
-
-        PanelActividadEconomica.Visible = False
-
-        BOTONpanelActividadEconomica.Visible = True
-        BOTONcerrarActividadEconomica.Visible = False
-        If DataGridGanadoEconomico.Rows.Count = 0 Then
-
-            MsgBox("No se encontraron datos de ganados vendidos", MsgBoxStyle.Information, Title:="Venta de ganado")
-            ACtivarBotones()
-
-        End If
-    End Sub
-
-    Private Sub BOTONcerrarActividadEconomica_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles BOTONcerrarActividadEconomica.Click
-        PanelActividadEconomica.Visible = False
-        BOTONpanelActividadEconomica.Visible = True
-    End Sub
-
-    
-    Private Sub BOTONganadoSInvender_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles BOTONganadoSInvender.Click
-        DesactivarBotones()
-        DataGridGanadoEconomico.Visible = True
-        Consulta = " SELECT idg AS 'Cod Ganado', sexo AS 'Sexo', raza AS 'Raza', estado AS 'Estado', nacimiento, venta.idv AS 'Num Venta', fechaventa As 'Fecha de Venta', totalv AS 'Total US$' from ganado left join venta on ganado.idv = venta.idv where ganado.idv is null "
-        consultar()
-        DataGridGanadoEconomico.DataSource = Tabla
-        DataGridGanadoEconomico.Columns(4).Visible = False
-        DataGridGanadoEconomico.Focus()
-
-        PanelActividadEconomica.Visible = False
-
-        BOTONpanelActividadEconomica.Visible = True
-        BOTONcerrarActividadEconomica.Visible = False
-        If DataGridGanadoEconomico.Rows.Count = 0 Then
-
-            MsgBox("No se encontraron datos de ganado sin vender", MsgBoxStyle.Information, Title:="Ganado sin venta")
-            ACtivarBotones()
-
-        End If
-    End Sub
-
-  
-    Private Sub BOTONganadoComprado_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles BOTONganadoComprado.Click
-        DesactivarBotones()
-        DataGridGanadoEconomico.Visible = True
-        Consulta = " SELECT idg AS 'Cod Ganado', sexo AS 'Sexo', raza AS 'Raza', estado AS 'Estado', nacimiento, compra.idc AS 'Num Compra', fechacompra As 'Fecha de compra', totalc AS 'Total US$' from ganado left join compra on ganado.idc = compra.idc where ganado.idc is not null "
-        consultar()
-        DataGridGanadoEconomico.DataSource = Tabla
-        DataGridGanadoEconomico.Columns(4).Visible = False
-        DataGridGanadoEconomico.Focus()
-
-        PanelActividadEconomica.Visible = False
-
-        BOTONpanelActividadEconomica.Visible = True
-        BOTONcerrarActividadEconomica.Visible = False
-        If DataGridGanadoEconomico.Rows.Count = 0 Then
-
-            MsgBox("No se encontraron datos de ganado comprado", MsgBoxStyle.Information, Title:="Compra de ganado")
-            ACtivarBotones()
-
-        End If
-    End Sub
-
-    Private Sub BOTONbuscarPanelestado_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles BOTONbuscarPanelestado.Click
-        PanelBuscarSexoRaza.Visible = False
-        PanelBuscarFechaNacimiento.Visible = False
-        PanelBuscarCodGanado.Visible = False
-        PanelBuscarEstadoGanado.Visible = True
-    End Sub
-
-    Private Sub BOTONcerrarPanelEstado_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles BOTONcerrarPanelEstado.Click
-        PanelBuscarEstadoGanado.Visible = False
-        actualizar()
-
-    End Sub
-
-    Private Sub BOTONbuscarEstadoGanado_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles BOTONbuscarEstadoGanado.Click
-
-        DataGridGanadoEconomico.Visible = False
-        ACtivarBotones()
-
-        If CBXbuscarEstadoGanado.Text <> "" Then
+    Private Sub BOTONguardarAgregarCliente_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles BOTONguardarAgregarCliente.Click
+        If txtnombreCliente.Text <> "" And txtapellidoCliente.Text <> "" And txtcedulaCliente.Text <> "" And txtdireccionCliente.Text <> "" And txttelefonoCliente.Text <> "" Then
+            If IsNumeric(txtcedulaCliente.Text) Then
 
 
-            If CBXbuscarEstadoGanado.Text = "activo" Then
-
-                Try
-                    Consulta = "select idg, sexo, raza, estado, nacimiento, TIMESTAMPDIFF(YEAR,ganado.nacimiento,CURDATE()) AS 'Anios', TIMESTAMPDIFF(month, ganado.nacimiento,NOW())%12 AS 'Meses' from ganado where estado = '" & CBXbuscarEstadoGanado.SelectedItem & "'"
-                    ActualizarSinConsulta()
-
-                    If DataGridViewganado.Rows.Count = 0 Then
-                        MessageBox.Show("No se encontraron datos en esta busqueda", "Busqueda por Estado", MessageBoxButtons.OK, MessageBoxIcon.Information)
-                        actualizar()
-
-                    End If
-
-                Catch ex As Exception
-                    MsgBox(ex.Message)
-                End Try
+                If verificarCedula(txtcedulaCliente.Text) Then
+                    Try
+                        'Select Case error1
+                        '    Case 0
+                        Consulta = "INSERT INTO cliente values('" & txtcedulaCliente.Text & "','" & txtnombreCliente.Text & "','" & txtapellidoCliente.Text & "','" & txtdireccionCliente.Text & "','" & txttelefonoCliente.Text & "')"
+                        consultar()
 
 
-            ElseIf CBXbuscarEstadoGanado.Text = "vendido" Then
-
-                Try
-
-                    Consulta = "select idg, sexo, raza, estado, nacimiento, TIMESTAMPDIFF(YEAR,ganado.nacimiento,CURDATE()) AS 'Anios', TIMESTAMPDIFF(month, ganado.nacimiento,NOW())%12 AS 'Meses' from ganado where estado = '" & CBXbuscarEstadoGanado.SelectedItem & "'"
-                    ActualizarSinConsulta()
-
-                    If DataGridViewganado.Rows.Count = 0 Then
-                        MessageBox.Show("No se encontraron datos en esta busqueda", "Busqueda por Estado", MessageBoxButtons.OK, MessageBoxIcon.Information)
-                        actualizar()
-
-                    End If
-
-                Catch ex As Exception
-                    MsgBox(ex.Message)
-                End Try
+                        Consulta = "select * from cliente"
+                        consultar()
+                        DataGridViewClientes.DataSource = Tabla
 
 
 
-            ElseIf CBXbuscarEstadoGanado.Text = "enfermo/a" Then
 
-                Try
+                        txtnombreCliente.Text = ""
+                        txtapellidoCliente.Text = ""
+                        txtcedulaCliente.Text = ""
+                        txtdireccionCliente.Text = ""
+                        txttelefonoCliente.Text = ""
 
-                    Consulta = "select idg, sexo, raza, estado, nacimiento, TIMESTAMPDIFF(YEAR,ganado.nacimiento,CURDATE()) AS 'Anios', TIMESTAMPDIFF(month, ganado.nacimiento,NOW())%12 AS 'Meses' from ganado where estado = '" & CBXbuscarEstadoGanado.SelectedItem & "'"
-                    ActualizarSinConsulta()
+                        MsgBox("Registro exitoso")
 
-                    If DataGridViewganado.Rows.Count = 0 Then
-                        MessageBox.Show("No se encontraron datos en esta busqueda", "Busqueda por Estado", MessageBoxButtons.OK, MessageBoxIcon.Information)
-                        actualizar()
-
-
-                    End If
-
-                Catch ex As Exception
-                    MsgBox(ex.Message)
-                End Try
+                        '    Case 1
+                        '        MsgBox("esa cedula,ya existe")
+                        'End Select
+                    Catch ex As Exception
+                        MsgBox(ex)
+                    End Try
+                Else
+                    MsgBox("Cedula erronea")
+                End If
             Else
+
+                MsgBox("La cedula es numerica")
 
             End If
         Else
+            MsgBox("Complete todos los campos vacios")
+        End If
+    End Sub
+  
 
-            MessageBox.Show("debe seleccionar una opcion para relizar busqueda", "Busqueda por Estado", MessageBoxButtons.OK, MessageBoxIcon.Information)
+    '///////////////////////////BOTON QUE VUELVE AL PANEL PRINCIPAL///////////////////////////////////
+    Private Sub BTNVolveragregarcliente_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles BTNVolveragregarcliente.Click
+        PanelPrincipalclientes.BringToFront()
+        PanelPrincipalclientes.Visible = True
+        PanelPrincipalclientes.Enabled = True
+
+        Consulta = "select * from cliente"
+        consultar()
+        DataGridViewClientes.DataSource = Tabla
 
 
+        PanelAgregarcliente.Enabled = False
+        PanelAgregarcliente.Visible = False
+        PanelAgregarcliente.SendToBack()
+    End Sub
+
+    Private Sub BOTONcancelarModificarCliente_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles BOTONcancelarModificarCliente.Click
+
+
+        'BOTONguardarAgregarCliente.Visible = True
+        'BOTONcancelarGuardarCliente.Visible = True
+        'BOTONvaciarCamposCliente.Visible = True
+
+        BOTONguardarModificarCliente.Visible = False
+        BOTONcancelarModificarCliente.Visible = False
+
+        BOTONagregarcliente.Enabled = True
+        BOTONmodificarCliente.Enabled = True
+
+        txtnombreCliente.Text = ""
+        txtapellidoCliente.Text = ""
+        txtcedulaCliente.Text = ""
+        txttelefonoCliente.Text = ""
+        txtdireccionCliente.Text = ""
+
+        DataGridViewClientes.Focus()
+
+        txtcedulaCliente.Text = DataGridViewClientes.Item(0, DataGridViewClientes.CurrentRow.Index).Value
+        txtnombreCliente.Text = DataGridViewClientes.Item(1, DataGridViewClientes.CurrentRow.Index).Value
+        txtapellidoCliente.Text = DataGridViewClientes.Item(2, DataGridViewClientes.CurrentRow.Index).Value
+        txtdireccionCliente.Text = DataGridViewClientes.Item(3, DataGridViewClientes.CurrentRow.Index).Value
+        txttelefonoCliente.Text = DataGridViewClientes.Item(4, DataGridViewClientes.CurrentRow.Index).Value
+
+        txtnombreCliente.Enabled = False
+        txtnombreCliente.Focus()
+        txtapellidoCliente.Enabled = False
+        txtcedulaCliente.Enabled = False
+        txttelefonoCliente.Enabled = False
+        txtdireccionCliente.Enabled = False
+
+    End Sub
+
+    Private Sub BOTONguardarModificarCliente_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles BOTONguardarModificarCliente.Click
+
+        Dim cedula As String = DataGridViewClientes.Item(0, DataGridViewClientes.CurrentRow.Index).Value
+        If txtnombreCliente.Text <> "" And txtapellidoCliente.Text <> "" And txtdireccionCliente.Text <> "" And txttelefonoCliente.Text <> "" Then
+
+
+            'If IsNumeric(txttelefonoCliente.Text) Then
+            '    If Not IsNumeric(txtnombreCliente.Text) Then
+            '        If Not IsNumeric(txtapellidoCliente.Text) Then
+
+
+            Consulta = "update cliente set nombre='" + txtnombreCliente.Text +
+                "', apellido='" + txtapellidoCliente.Text +
+                "', direccion='" + txtdireccionCliente.Text +
+                "', telefono = '" + txttelefonoCliente.Text +
+                "' where id='" + cedula + "'"
+            consultar()
+            actualizarCliente()
+            MsgBox(" Se editaron datos")
+
+        Else
+            '    MsgBox("El apellido no puede contener datos numericos")
+            'End If
+            '        Else
+
+            'MsgBox("El nombre no puede conter datos numericos")
+
+            '        End If
+
+            'MsgBox("Telefono es un datos de tipo numerico")
+            '    End If
+
+            'Else
+
+            MsgBox("Todos los campos deben tener un contenido")
 
         End If
+    End Sub
 
+    
 
+    Private Sub DataGridViewClientes_SelectionChanged(ByVal sender As Object, ByVal e As System.EventArgs) Handles DataGridViewClientes.SelectionChanged
+        txtcedulaCliente.Text = ""
+        txtnombreCliente.Text = ""
+        txtapellidoCliente.Text = ""
+        txtdireccionCliente.Text = ""
+        txttelefonoCliente.Text = ""
 
+        txtcedulaCliente.Text = DataGridViewClientes.Item(0, DataGridViewClientes.CurrentRow.Index).Value
+        txtnombreCliente.Text = DataGridViewClientes.Item(1, DataGridViewClientes.CurrentRow.Index).Value
+        txtapellidoCliente.Text = DataGridViewClientes.Item(2, DataGridViewClientes.CurrentRow.Index).Value
+        txtdireccionCliente.Text = DataGridViewClientes.Item(3, DataGridViewClientes.CurrentRow.Index).Value
+        txttelefonoCliente.Text = DataGridViewClientes.Item(4, DataGridViewClientes.CurrentRow.Index).Value
+    End Sub
+
+ 
+    
+
+    Private Sub BOTONvaciarCamposCliente_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles BOTONvaciarCamposCliente.Click
+        txtcedulaCliente.Text = ""
+        txtnombreCliente.Text = ""
+        txtapellidoCliente.Text = ""
+        txtdireccionCliente.Text = ""
+        txttelefonoCliente.Text = ""
 
     End Sub
 End Class
