@@ -209,6 +209,10 @@ Proyecto3BE
 	<summary>
   Looks up a localized resource of type System.Drawing.Bitmap.
 </summary>
+</member><member name="P:WindowsApplication1.My.Resources.Resources.keyboard_key_e">
+	<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
 </member><member name="P:WindowsApplication1.My.Resources.Resources.modificar_cliente">
 	<summary>
   Looks up a localized resource of type System.Drawing.Bitmap.

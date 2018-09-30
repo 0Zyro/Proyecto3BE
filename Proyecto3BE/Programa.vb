@@ -880,7 +880,7 @@ Public Class Programa
     '''/////////////////////// ABRI PANEL BUSCAR CODIGO GANADO ////////////////////////////
     ''' ////////////////////////////////////////////////////////////////////////////////////
     Private Sub BOTONpanelCodigo_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles BOTONpanelCodigo.Click
-
+        PanelBuscarEstadoGanado.Visible = False
         PanelBuscarSexoRaza.Visible = False
         PanelBuscarFechaNacimiento.Visible = False
         PanelBuscarCodGanado.Visible = True
@@ -892,6 +892,7 @@ Public Class Programa
 
     '''///////////////////////////////////////// ABRE PANEL DE BUSQUEDA POR NACIEMIENTO
     Private Sub BOTONpanelBuscarNacimiento_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles BOTONpanelBuscarNacimiento.Click
+        PanelBuscarEstadoGanado.Visible = False
         PanelBuscarCodGanado.Visible = False
         PanelBuscarSexoRaza.Visible = False
         PanelBuscarFechaNacimiento.Visible = True
@@ -901,7 +902,7 @@ Public Class Programa
     '''/////////////////////////////// ABRE PANEL DE BUSQUEDA DE SEXO Y RAZA //////////////////////////////////////////////////////
     ''' ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     Private Sub BOTONpanelSexoRaza_Click_1(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles BOTONpanelSexoRaza.Click
-
+        PanelBuscarEstadoGanado.Visible = False
         PanelBuscarCodGanado.Visible = False
         PanelBuscarFechaNacimiento.Visible = False
 
@@ -921,7 +922,7 @@ Public Class Programa
     End Sub
 
     '//////////////////BUSCA GANADO POR SU FECHA DE NACIMIENTO ///////////////////////////////////////
-    Private Sub BuscarFechaGanado_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles BuscarFechaGanado.Click
+    Private Sub BuscarFechaGanado_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles BOTONBuscarFechaGanado.Click
         DataGridGanadoEconomico.Visible = False
         ACtivarBotones()
         Dim FechaN As String = DateTimeBuscarFechaGanado.Value.ToString("yyyy-MM-dd")
@@ -2553,5 +2554,95 @@ Public Class Programa
             ACtivarBotones()
 
         End If
+    End Sub
+
+    Private Sub BOTONbuscarPanelestado_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles BOTONbuscarPanelestado.Click
+        PanelBuscarSexoRaza.Visible = False
+        PanelBuscarFechaNacimiento.Visible = False
+        PanelBuscarCodGanado.Visible = False
+        PanelBuscarEstadoGanado.Visible = True
+    End Sub
+
+    Private Sub BOTONcerrarPanelEstado_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles BOTONcerrarPanelEstado.Click
+        PanelBuscarEstadoGanado.Visible = False
+        actualizar()
+
+    End Sub
+
+    Private Sub BOTONbuscarEstadoGanado_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles BOTONbuscarEstadoGanado.Click
+
+        DataGridGanadoEconomico.Visible = False
+        ACtivarBotones()
+
+        If CBXbuscarEstadoGanado.Text <> "" Then
+
+
+            If CBXbuscarEstadoGanado.Text = "activo" Then
+
+                Try
+                    Consulta = "select idg, sexo, raza, estado, nacimiento, TIMESTAMPDIFF(YEAR,ganado.nacimiento,CURDATE()) AS 'Anios', TIMESTAMPDIFF(month, ganado.nacimiento,NOW())%12 AS 'Meses' from ganado where estado = '" & CBXbuscarEstadoGanado.SelectedItem & "'"
+                    ActualizarSinConsulta()
+
+                    If DataGridViewganado.Rows.Count = 0 Then
+                        MessageBox.Show("No se encontraron datos en esta busqueda", "Busqueda por Estado", MessageBoxButtons.OK, MessageBoxIcon.Information)
+                        actualizar()
+
+                    End If
+
+                Catch ex As Exception
+                    MsgBox(ex.Message)
+                End Try
+
+
+            ElseIf CBXbuscarEstadoGanado.Text = "vendido" Then
+
+                Try
+
+                    Consulta = "select idg, sexo, raza, estado, nacimiento, TIMESTAMPDIFF(YEAR,ganado.nacimiento,CURDATE()) AS 'Anios', TIMESTAMPDIFF(month, ganado.nacimiento,NOW())%12 AS 'Meses' from ganado where estado = '" & CBXbuscarEstadoGanado.SelectedItem & "'"
+                    ActualizarSinConsulta()
+
+                    If DataGridViewganado.Rows.Count = 0 Then
+                        MessageBox.Show("No se encontraron datos en esta busqueda", "Busqueda por Estado", MessageBoxButtons.OK, MessageBoxIcon.Information)
+                        actualizar()
+
+                    End If
+
+                Catch ex As Exception
+                    MsgBox(ex.Message)
+                End Try
+
+
+
+            ElseIf CBXbuscarEstadoGanado.Text = "enfermo/a" Then
+
+                Try
+
+                    Consulta = "select idg, sexo, raza, estado, nacimiento, TIMESTAMPDIFF(YEAR,ganado.nacimiento,CURDATE()) AS 'Anios', TIMESTAMPDIFF(month, ganado.nacimiento,NOW())%12 AS 'Meses' from ganado where estado = '" & CBXbuscarEstadoGanado.SelectedItem & "'"
+                    ActualizarSinConsulta()
+
+                    If DataGridViewganado.Rows.Count = 0 Then
+                        MessageBox.Show("No se encontraron datos en esta busqueda", "Busqueda por Estado", MessageBoxButtons.OK, MessageBoxIcon.Information)
+                        actualizar()
+
+
+                    End If
+
+                Catch ex As Exception
+                    MsgBox(ex.Message)
+                End Try
+            Else
+
+            End If
+        Else
+
+            MessageBox.Show("debe seleccionar una opcion para relizar busqueda", "Busqueda por Estado", MessageBoxButtons.OK, MessageBoxIcon.Information)
+
+
+
+        End If
+
+
+
+
     End Sub
 End Class
