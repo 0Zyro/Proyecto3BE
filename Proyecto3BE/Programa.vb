@@ -941,8 +941,8 @@ Public Class Programa
         BOTONcancelarAgregar.Visible = True
         BOTONabrirModificar.Enabled = False
 
-        CBXguardarsexo.Enabled = True
-        CBXguardarRaza.Enabled = True
+        CBXsexoGanado.Enabled = True
+        CBXRazaGanado.Enabled = True
 
         DTPAgregarGanado.Enabled = True
 
@@ -950,8 +950,8 @@ Public Class Programa
 
         CBXestadoGanado.Enabled = True
 
-        CBXguardarsexo.Text = ""
-        CBXguardarRaza.Text = ""
+        CBXsexoGanado.Text = ""
+        CBXRazaGanado.Text = ""
 
         DTPAgregarGanado.Text = ""
 
@@ -970,13 +970,13 @@ Public Class Programa
         BOTONabrirAgregar.Enabled = True
 
         BOTONabrirModificar.Enabled = True
-        CBXguardarsexo.Enabled = False
-        CBXguardarRaza.Enabled = False
+        CBXsexoGanado.Enabled = False
+        CBXRazaGanado.Enabled = False
         DTPAgregarGanado.Enabled = False
 
         CBXestadoGanado.Enabled = False
-        CBXguardarsexo.Text = ""
-        CBXguardarRaza.Text = ""
+        CBXsexoGanado.Text = ""
+        CBXRazaGanado.Text = ""
         DTPAgregarGanado.Text = ""
 
         CBXestadoGanado.Text = ""
@@ -991,13 +991,13 @@ Public Class Programa
     Private Sub BOTONguardarAgregar_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles BOTONguardarAgregar.Click
         If MessageBox.Show("¿Seguro desea guardar datos ?", "Confirmacion", MessageBoxButtons.YesNo, MessageBoxIcon.Question) = Windows.Forms.DialogResult.Yes Then
             'Dim CodG As Integer = Val(Texcodigoganado.Text)
-            Dim sexo As String = CBXguardarsexo.SelectedItem.ToString
-            Dim raza As String = CBXguardarRaza.SelectedItem.ToString
+            Dim sexo As String = CBXsexoGanado.SelectedItem.ToString
+            Dim raza As String = CBXRazaGanado.SelectedItem.ToString
             Dim fechaN As String = DTPAgregarGanado.Value.ToString("yyyy-MM-dd")
             Dim estadoG As String = CBXestadoGanado.SelectedItem.ToString
-            If CBXguardarsexo.Text <> "" And CBXguardarRaza.Text <> "" Then
-                'If IsNumeric(Texcodigoganado.Text) Then
-
+            If CBXsexoGanado.Text <> "" And CBXRazaGanado.Text <> "" And CBXestadoGanado.Text <> "" Then
+               
+               
                 Try
 
                     Consulta = "INSERT INTO ganado (sexo,raza,estado,nacimiento) values('" & sexo & "','" & raza & "','" & estadoG & "','" & fechaN & "' )"
@@ -1006,36 +1006,31 @@ Public Class Programa
                     actualizar()
 
 
-                    CBXguardarsexo.Text = ""
-                    CBXguardarRaza.Text = ""
-                    'Texsexoganado.Clear()
-                    'Texrazaganado.Clear()
+                    CBXsexoGanado.Text = ""
+                    CBXRazaGanado.Text = ""
+
                     DTPAgregarGanado.Value = Today
                     CBXestadoGanado.Text = ""
                     MsgBox("Datos guardados", MsgBoxStyle.Information)
 
 
                 Catch ex As Exception
-                    MsgBox(ex)
+                    MsgBox(ex.Message)
 
                 End Try
-
-                'Else
-                '    MsgBox("El codigo del ganado es numerico", MsgBoxStyle.Exclamation, Title:="No se guardaron datos")
-
-                'End If
+              
 
             Else
-                MsgBox("NO se completaron los campos requridos(Codigo ganado, Sexo, Raza, Fecha nacimiento)", MsgBoxStyle.Exclamation, Title:="No se guardaron datos")
+                MsgBox("Debes completar todos los campos(Sexo, Raza, estado, Fecha nacimiento)", MsgBoxStyle.Exclamation, Title:="No se guardaron datos")
             End If
-
         End If
+
     End Sub
 
     '///////////////////////////////////BOTON PARA LIMPIAR TEXTBOX DE GANADO ////////////////////////////////////
     Private Sub BOTONlimpiartxtGuardarGanado_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles BOTONlimpiartxtGuardarGanado.Click
-        CBXguardarsexo.Text = ""
-        CBXguardarRaza.Text = ""
+        CBXsexoGanado.Text = ""
+        CBXRazaGanado.Text = ""
 
         DTPAgregarGanado.Text = ""
 
@@ -1054,17 +1049,17 @@ Public Class Programa
         If MessageBox.Show("¿Seguro que desea modificar ?", "Confirmacion", MessageBoxButtons.YesNo, MessageBoxIcon.Question) = Windows.Forms.DialogResult.Yes Then
 
             Dim codigo As String = DataGridViewganado.Item(0, DataGridViewganado.CurrentRow.Index).Value
-            Dim sexo As String = CBXguardarsexo.SelectedItem.ToString
-            Dim raza As String = CBXguardarRaza.SelectedItem.ToString
+            Dim sexo As String = CBXsexoGanado.SelectedItem.ToString
+            Dim raza As String = CBXRazaGanado.SelectedItem.ToString
             Dim estado As String = CBXestadoGanado.SelectedItem.ToString
             Dim fechaN As String = DTPAgregarGanado.Value.ToString("yyyy-MM-dd")
 
 
-            If CBXguardarsexo.Text <> "" And CBXguardarRaza.Text <> "" Then
+            If CBXsexoGanado.Text <> "" And CBXRazaGanado.Text <> "" And CBXestadoGanado.Text <> "" Then
 
 
 
-                'If IsNumeric(Texcodigoganado.Text) Then
+
 
                 Try
 
@@ -1077,27 +1072,21 @@ Public Class Programa
                     actualizar()
 
 
-                    CBXguardarRaza.Text = ""
-                    CBXguardarsexo.Text = ""
-                    'txtMsexo.Clear()
-                    'txtMraza.Clear()
+                    CBXRazaGanado.Text = ""
+                    CBXsexoGanado.Text = ""
+
                     DTPAgregarGanado.Value = Today
                     CBXestadoGanado.Text = ""
                     MsgBox("Datos editados", MsgBoxStyle.Information)
 
-                    'PanelMGanado.Visible = False
+
 
                 Catch ex As Exception
                     MsgBox(ex.ToString)
                 End Try
 
-                'Else
-                '    MsgBox("El codigo de ganado es de tipo numerico", MsgBoxStyle.Exclamation, Title:="No se realizaron cambios")
-
-                'End If
-
             Else
-                MsgBox("Los campos Codigo de ganado, Sexo, Raza, no pueden estar vacios", MsgBoxStyle.Exclamation, Title:="No se realizaron cambios")
+                MsgBox("Los campos no pueden estar vacios", MsgBoxStyle.Exclamation, Title:="No se realizaron cambios")
             End If
         End If
     End Sub
@@ -1106,19 +1095,15 @@ Public Class Programa
         BOTONguardarModificar.Visible = True
         BOTONcancelarModificar.Visible = True
         BOTONabrirAgregar.Enabled = False
-        CBXguardarsexo.Enabled = True
-        CBXguardarRaza.Enabled = True
+        CBXsexoGanado.Enabled = True
+        CBXRazaGanado.Enabled = True
         DTPAgregarGanado.Enabled = True
 
 
         CBXestadoGanado.Enabled = True
         DataGridViewganado.Focus()
         BOTONabrirModificar.Enabled = False
-        'CBXguardarsexo.Text = ""
-        'CBXguardarRaza.Text = ""
-        'DTPAgregarGanado.Text = ""
-        'Texcodigoganado.Clear()
-        'Texestadoganado.Clear()
+
     End Sub
     '''(((((((/////////////////////CANCELA Y CIERRA EL BOTON MODIFICAR//////////////////////////////
     ''' //////////////////////////////////////////////////////////////////////////////////////
@@ -1127,8 +1112,8 @@ Public Class Programa
         BOTONabrirModificar.Enabled = True
 
         BOTONabrirAgregar.Enabled = True
-        CBXguardarsexo.Enabled = False
-        CBXguardarRaza.Enabled = False
+        CBXsexoGanado.Enabled = False
+        CBXRazaGanado.Enabled = False
         DTPAgregarGanado.Enabled = False
 
         CBXestadoGanado.Enabled = False
@@ -1148,13 +1133,13 @@ Public Class Programa
         Try
 
 
-            CBXguardarsexo.Text = ""
-            CBXguardarRaza.Text = ""
+            CBXsexoGanado.Text = ""
+            CBXRazaGanado.Text = ""
             DTPAgregarGanado.Text = ""
             CBXestadoGanado.Text = ""
 
-            CBXguardarsexo.Text = DataGridViewganado.Item(1, DataGridViewganado.CurrentRow.Index).Value
-            CBXguardarRaza.Text = DataGridViewganado.Item(2, DataGridViewganado.CurrentRow.Index).Value
+            CBXsexoGanado.Text = DataGridViewganado.Item(1, DataGridViewganado.CurrentRow.Index).Value
+            CBXRazaGanado.Text = DataGridViewganado.Item(2, DataGridViewganado.CurrentRow.Index).Value
             DTPAgregarGanado.Text = DataGridViewganado.Item(4, DataGridViewganado.CurrentRow.Index).Value
             CBXestadoGanado.Text = DataGridViewganado.Item(3, DataGridViewganado.CurrentRow.Index).Value
 
@@ -2450,4 +2435,7 @@ Public Class Programa
   
   
   
+    Private Sub Button9_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Button9.Click
+
+    End Sub
 End Class
