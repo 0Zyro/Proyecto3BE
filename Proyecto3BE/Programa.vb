@@ -2697,44 +2697,51 @@ Public Class Programa
 
     Private Sub BOTONguardarAgregarCliente_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles BOTONguardarAgregarCliente.Click
         If txtnombreCliente.Text <> "" And txtapellidoCliente.Text <> "" And txtcedulaCliente.Text <> "" And txtdireccionCliente.Text <> "" And txttelefonoCliente.Text <> "" Then
-            If IsNumeric(txtcedulaCliente.Text) Then
-
-
-                If verificarCedula(txtcedulaCliente.Text) Then
-                    Try
-                        'Select Case error1
-                        '    Case 0
-                        Consulta = "INSERT INTO cliente values('" & txtcedulaCliente.Text & "','" & txtnombreCliente.Text & "','" & txtapellidoCliente.Text & "','" & txtdireccionCliente.Text & "','" & txttelefonoCliente.Text & "')"
-                        consultar()
-
-
-                        Consulta = "select * from cliente"
-                        consultar()
-                        DataGridViewClientes.DataSource = Tabla
+            If IsNumeric(txtcedulaCliente.Text) And IsNumeric(txttelefonoCliente.Text) Then
+                If Not IsNumeric(txtnombreCliente.Text) And Not IsNumeric(txtapellidoCliente.Text) Then
 
 
 
+                    If verificarCedula(txtcedulaCliente.Text) Then
+                        Try
+                            'Select Case error1
+                            '    Case 0
+                            Consulta = "INSERT INTO cliente values('" & txtcedulaCliente.Text & "','" & txtnombreCliente.Text & "','" & txtapellidoCliente.Text & "','" & txtdireccionCliente.Text & "','" & txttelefonoCliente.Text & "')"
+                            consultar()
 
-                        txtnombreCliente.Text = ""
-                        txtapellidoCliente.Text = ""
-                        txtcedulaCliente.Text = ""
-                        txtdireccionCliente.Text = ""
-                        txttelefonoCliente.Text = ""
 
-                        MsgBox("Registro exitoso")
+                            Consulta = "select * from cliente"
+                            consultar()
+                            DataGridViewClientes.DataSource = Tabla
 
-                        '    Case 1
-                        '        MsgBox("esa cedula,ya existe")
-                        'End Select
-                    Catch ex As Exception
-                        MsgBox(ex)
-                    End Try
+
+
+
+                            txtnombreCliente.Text = ""
+                            txtapellidoCliente.Text = ""
+                            txtcedulaCliente.Text = ""
+                            txtdireccionCliente.Text = ""
+                            txttelefonoCliente.Text = ""
+
+                            MsgBox("Registro exitoso")
+
+                            '    Case 1
+                            '        MsgBox("esa cedula,ya existe")
+                            'End Select
+                        Catch ex As Exception
+                            MsgBox(ex)
+                        End Try
+                    Else
+                        MsgBox("Cedula erronea")
+                    End If
+
                 Else
-                    MsgBox("Cedula erronea")
+                    MsgBox("Nombre y Apellido no pueden contener datos numericos")
+
                 End If
             Else
 
-                MsgBox("La cedula es numerica")
+                MsgBox("Cedula y telefono son numericos")
 
             End If
         Else
