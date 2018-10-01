@@ -1230,42 +1230,58 @@ Public Class Programa
 
         actualizarGanado()
     End Sub
-    Private Sub txtBuscarCodGanado_TextChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles txtBuscarCodGanado.TextChanged
+
+    Private Sub txtBuscarCodGanado_KeyPress(ByVal sender As Object, ByVal e As System.Windows.Forms.KeyPressEventArgs) Handles txtBuscarCodGanado.KeyPress
         DataGridGanadoEconomico.Visible = False
         ACtivarBotonesGanado()
-        If IsNumeric(txtBuscarCodGanado.Text) Then
 
-            Consulta = "SELECT idg,sexo,raza,estado,nacimiento, TIMESTAMPDIFF(YEAR,ganado.nacimiento,CURDATE()) AS'Anios', TIMESTAMPDIFF(month, ganado.nacimiento,NOW())%12 AS 'Meses' from ganado where idg like '" & txtBuscarCodGanado.Text & "%'"
-
-            consultar()
-            DataGridViewganado.DataSource = Tabla
-            DataGridViewganado.Columns(0).HeaderText = "Codigo"
-            DataGridViewganado.Columns(1).HeaderText = "Sexo"
-            DataGridViewganado.Columns(2).HeaderText = "Raza"
-
-            DataGridViewganado.Columns(4).HeaderText = "Fecha Nacimiento"
-            DataGridViewganado.Columns(3).HeaderText = "Estado"
-            DataGridViewganado.Columns(5).HeaderText = "Años"
-            DataGridViewganado.Columns(6).HeaderText = "Meses"
+        If Char.IsNumber(e.KeyChar) Then
+            e.Handled = False
+        ElseIf Char.IsControl(e.KeyChar) Then
+            e.Handled = False
+        ElseIf Char.IsSeparator(e.KeyChar) Then
 
 
+            'If IsNumeric(txtBuscarCodGanado.Text) Then
+
+          
         Else
-            txtBuscarCodGanado.Clear()
-
-            Consulta = "SELECT idg,sexo,raza,estado,nacimiento, TIMESTAMPDIFF(YEAR,ganado.nacimiento,CURDATE()) AS'Anios', TIMESTAMPDIFF(month, ganado.nacimiento,NOW())%12 AS 'Meses' from ganado " '"
-            consultar()
-            DataGridViewganado.DataSource = Tabla
-
-            DataGridViewganado.Columns(0).HeaderText = "Codigo"
-            DataGridViewganado.Columns(1).HeaderText = "Sexo"
-            DataGridViewganado.Columns(2).HeaderText = "Raza"
-
-            DataGridViewganado.Columns(4).HeaderText = "Fecha Nacimiento"
-            DataGridViewganado.Columns(3).HeaderText = "Estado"
-            DataGridViewganado.Columns(5).HeaderText = "Años"
-            DataGridViewganado.Columns(6).HeaderText = "Meses"
+            e.Handled = True
         End If
+        'DataGridViewganado.Columns(0).HeaderText = "Codigo"
+        'DataGridViewganado.Columns(1).HeaderText = "Sexo"
+        'DataGridViewganado.Columns(2).HeaderText = "Raza"
 
+        'DataGridViewganado.Columns(4).HeaderText = "Fecha Nacimiento"
+        'DataGridViewganado.Columns(3).HeaderText = "Estado"
+        'DataGridViewganado.Columns(5).HeaderText = "Años"
+        'DataGridViewganado.Columns(6).HeaderText = "Meses"
+
+
+        'Else
+        'txtBuscarCodGanado.Clear()
+
+        'Consulta = "SELECT idg,sexo,raza,estado,nacimiento, TIMESTAMPDIFF(YEAR,ganado.nacimiento,CURDATE()) AS'Anios', TIMESTAMPDIFF(month, ganado.nacimiento,NOW())%12 AS 'Meses' from ganado " '"
+        'consultar()
+        'DataGridViewganado.DataSource = Tabla
+
+        'DataGridViewganado.Columns(0).HeaderText = "Codigo"
+        'DataGridViewganado.Columns(1).HeaderText = "Sexo"
+        'DataGridViewganado.Columns(2).HeaderText = "Raza"
+
+        'DataGridViewganado.Columns(4).HeaderText = "Fecha Nacimiento"
+        'DataGridViewganado.Columns(3).HeaderText = "Estado"
+        'DataGridViewganado.Columns(5).HeaderText = "Años"
+        'DataGridViewganado.Columns(6).HeaderText = "Meses"
+
+
+        'End If
+    End Sub
+    Private Sub txtBuscarCodGanado_TextChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles txtBuscarCodGanado.TextChanged
+        Consulta = "SELECT idg,sexo,raza,estado,nacimiento, TIMESTAMPDIFF(YEAR,ganado.nacimiento,CURDATE()) AS'Anios', TIMESTAMPDIFF(month, ganado.nacimiento,NOW())%12 AS 'Meses' from ganado where idg like '" & txtBuscarCodGanado.Text & "%'"
+
+        consultar()
+        DataGridViewganado.DataSource = Tabla
 
     End Sub
 
@@ -2555,8 +2571,24 @@ Public Class Programa
 
 
 
-    '/////////////////////////// ARREGLOS EN CLIENTE///////////////////////////////////////////////////////////////////////////////////////////
 
+
+    '/////////////////////////// ARREGLOS EN CLIENTE///////////////////////////////////////////////////////////////////////////////////////////
+    Private Sub txtBUSCARcedula_KeyPress(ByVal sender As Object, ByVal e As System.Windows.Forms.KeyPressEventArgs) Handles txtBUSCARcedula.KeyPress
+        If Char.IsNumber(e.KeyChar) Then
+            e.Handled = False
+        ElseIf Char.IsControl(e.KeyChar) Then
+            e.Handled = False
+        ElseIf Char.IsSeparator(e.KeyChar) Then
+
+
+            'If IsNumeric(txtBuscarCodGanado.Text) Then
+
+
+        Else
+            e.Handled = True
+        End If
+    End Sub
 
 
     Private Sub txtBUSCARcedula_TextChanged_1(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles txtBUSCARcedula.TextChanged
@@ -2565,23 +2597,23 @@ Public Class Programa
         BOTONagregarcliente.Enabled = True
         BOTONmodificarCliente.Enabled = True
 
-        If IsNumeric(txtBUSCARcedula.Text) Then
+        'If IsNumeric(txtBUSCARcedula.Text) Then
 
 
-            Consulta = " SELECT * from cliente where id like '" & txtBUSCARcedula.Text & "%'"
-            consultar()
+        Consulta = " SELECT * from cliente where id like '" & txtBUSCARcedula.Text & "%'"
+        consultar()
 
-            DataGridViewClientes.DataSource = Tabla
+        DataGridViewClientes.DataSource = Tabla
 
-        Else
+        'Else
 
-            txtBUSCARcedula.Clear()
-            Consulta = " SELECT * from cliente where id like '" & txtBUSCARcedula.Text & "%'"
-            consultar()
+        '    txtBUSCARcedula.Clear()
+        '    Consulta = " SELECT * from cliente where id like '" & txtBUSCARcedula.Text & "%'"
+        '    consultar()
 
-            DataGridViewClientes.DataSource = Tabla
+        '    DataGridViewClientes.DataSource = Tabla
 
-        End If
+        'End If
     End Sub
 
 
@@ -2694,51 +2726,112 @@ Public Class Programa
         txtdireccionCliente.Enabled = False
 
     End Sub
+    ''//////////////// CODIGO QUE SOLO PERMITE INGRESO DE LETRAR EN TEXTBOX/////////////////////////
+    Private Sub txtnombreCliente_KeyPress(ByVal sender As Object, ByVal e As System.Windows.Forms.KeyPressEventArgs) Handles txtnombreCliente.KeyPress
+
+        If Char.IsLetter(e.KeyChar) Then
+            e.Handled = False
+        ElseIf Char.IsControl(e.KeyChar) Then
+            e.Handled = False
+        ElseIf Char.IsSeparator(e.KeyChar) Then
+
+
+            'If IsNumeric(txtBuscarCodGanado.Text) Then
+
+
+        Else
+            e.Handled = True
+
+        End If
+
+    End Sub
+
+    '////////////////// CODIGO QUE SOLO ADMITE LETRAS EN TEXTBOX DE APELLIDO///////////////
+    Private Sub txtapellidoCliente_KeyPress(ByVal sender As Object, ByVal e As System.Windows.Forms.KeyPressEventArgs) Handles txtapellidoCliente.KeyPress
+
+        If Char.IsLetter(e.KeyChar) Then
+            e.Handled = False
+        ElseIf Char.IsControl(e.KeyChar) Then
+            e.Handled = False
+        ElseIf Char.IsSeparator(e.KeyChar) Then
+
+
+            'If IsNumeric(txtBuscarCodGanado.Text) Then
+
+
+        Else
+
+            e.Handled = True
+
+        End If
+
+    End Sub
+
+    Private Sub txtcedulaCliente_KeyPress(ByVal sender As Object, ByVal e As System.Windows.Forms.KeyPressEventArgs) Handles txtcedulaCliente.KeyPress
+
+
+        If Char.IsLetter(e.KeyChar) Then
+            e.Handled = False
+        ElseIf Char.IsControl(e.KeyChar) Then
+            e.Handled = False
+        ElseIf Char.IsSeparator(e.KeyChar) Then
+
+
+            'If IsNumeric(txtBuscarCodGanado.Text) Then
+
+
+        Else
+
+            e.Handled = True
+
+        End If
+
+    End Sub
 
     Private Sub BOTONguardarAgregarCliente_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles BOTONguardarAgregarCliente.Click
         If txtnombreCliente.Text <> "" And txtapellidoCliente.Text <> "" And txtcedulaCliente.Text <> "" And txtdireccionCliente.Text <> "" And txttelefonoCliente.Text <> "" Then
             If IsNumeric(txtcedulaCliente.Text) And IsNumeric(txttelefonoCliente.Text) Then
-                If Not IsNumeric(txtnombreCliente.Text) And Not IsNumeric(txtapellidoCliente.Text) Then
+                'If Not IsNumeric(txtnombreCliente.Text) And Not IsNumeric(txtapellidoCliente.Text) Then
 
 
 
-                    If verificarCedula(txtcedulaCliente.Text) Then
-                        Try
-                            'Select Case error1
-                            '    Case 0
-                            Consulta = "INSERT INTO cliente values('" & txtcedulaCliente.Text & "','" & txtnombreCliente.Text & "','" & txtapellidoCliente.Text & "','" & txtdireccionCliente.Text & "','" & txttelefonoCliente.Text & "')"
-                            consultar()
+                If verificarCedula(txtcedulaCliente.Text) Then
+                    Try
+                        'Select Case error1
+                        '    Case 0
+                        Consulta = "INSERT INTO cliente values('" & txtcedulaCliente.Text & "','" & txtnombreCliente.Text & "','" & txtapellidoCliente.Text & "','" & txtdireccionCliente.Text & "','" & txttelefonoCliente.Text & "')"
+                        consultar()
 
 
-                            Consulta = "select * from cliente"
-                            consultar()
-                            DataGridViewClientes.DataSource = Tabla
+                        Consulta = "select * from cliente"
+                        consultar()
+                        DataGridViewClientes.DataSource = Tabla
 
 
 
 
-                            txtnombreCliente.Text = ""
-                            txtapellidoCliente.Text = ""
-                            txtcedulaCliente.Text = ""
-                            txtdireccionCliente.Text = ""
-                            txttelefonoCliente.Text = ""
+                        txtnombreCliente.Text = ""
+                        txtapellidoCliente.Text = ""
+                        txtcedulaCliente.Text = ""
+                        txtdireccionCliente.Text = ""
+                        txttelefonoCliente.Text = ""
 
-                            MsgBox("Registro exitoso")
+                        MsgBox("Registro exitoso")
 
-                            '    Case 1
-                            '        MsgBox("esa cedula,ya existe")
-                            'End Select
-                        Catch ex As Exception
-                            MsgBox(ex)
-                        End Try
-                    Else
-                        MsgBox("Cedula erronea")
-                    End If
-
+                        '    Case 1
+                        '        MsgBox("esa cedula,ya existe")
+                        'End Select
+                    Catch ex As Exception
+                        MsgBox(ex)
+                    End Try
                 Else
-                    MsgBox("Nombre y Apellido no pueden contener datos numericos")
-
+                    MsgBox("Cedula erronea")
                 End If
+
+                'Else
+                '    MsgBox("Nombre y Apellido no pueden contener datos numericos")
+
+                'End If
             Else
 
                 MsgBox("Cedula y telefono son numericos")
@@ -2868,4 +2961,7 @@ Public Class Programa
         txttelefonoCliente.Text = ""
 
     End Sub
+
+ 
+   
 End Class
