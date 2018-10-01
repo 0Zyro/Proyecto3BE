@@ -1218,8 +1218,9 @@ Public Class Programa
 
                 MsgBox("Datos borrados", MsgStyle1, Title:="Eliminado")
             Catch ex As Exception
-                MsgBox("NO HAY DATOS PARA ELIMINAR" & vbCrLf & vbCrLf & ex.Message, MsgStyle, Title:="ERROR")
+                MsgBox("NO HAY DATOS PARA ELIMINAR" & vbCrLf & vbCrLf, MsgStyle, Title:="ERROR")
             End Try
+            '& vbCrLf & vbCrLf & ex.Message, MsgStyle, Title:="ERROR
 
         End If
     End Sub
@@ -1556,7 +1557,7 @@ Public Class Programa
 
 
             Catch ex As Exception
-                MsgBox(ex)
+                MsgBox(ex.Message)
             End Try
         End If
     End Sub
@@ -2942,17 +2943,23 @@ Public Class Programa
     
 
     Private Sub DataGridViewClientes_SelectionChanged(ByVal sender As Object, ByVal e As System.EventArgs) Handles DataGridViewClientes.SelectionChanged
-        txtcedulaCliente.Text = ""
-        txtnombreCliente.Text = ""
-        txtapellidoCliente.Text = ""
-        txtdireccionCliente.Text = ""
-        txttelefonoCliente.Text = ""
+        Try
 
-        txtcedulaCliente.Text = DataGridViewClientes.Item(0, DataGridViewClientes.CurrentRow.Index).Value
-        txtnombreCliente.Text = DataGridViewClientes.Item(1, DataGridViewClientes.CurrentRow.Index).Value
-        txtapellidoCliente.Text = DataGridViewClientes.Item(2, DataGridViewClientes.CurrentRow.Index).Value
-        txtdireccionCliente.Text = DataGridViewClientes.Item(3, DataGridViewClientes.CurrentRow.Index).Value
-        txttelefonoCliente.Text = DataGridViewClientes.Item(4, DataGridViewClientes.CurrentRow.Index).Value
+            txtcedulaCliente.Text = ""
+            txtnombreCliente.Text = ""
+            txtapellidoCliente.Text = ""
+            txtdireccionCliente.Text = ""
+            txttelefonoCliente.Text = ""
+
+            txtcedulaCliente.Text = DataGridViewClientes.Item(0, DataGridViewClientes.CurrentRow.Index).Value
+            txtnombreCliente.Text = DataGridViewClientes.Item(1, DataGridViewClientes.CurrentRow.Index).Value
+            txtapellidoCliente.Text = DataGridViewClientes.Item(2, DataGridViewClientes.CurrentRow.Index).Value
+            txtdireccionCliente.Text = DataGridViewClientes.Item(3, DataGridViewClientes.CurrentRow.Index).Value
+            txttelefonoCliente.Text = DataGridViewClientes.Item(4, DataGridViewClientes.CurrentRow.Index).Value
+
+        Catch ex As Exception
+            MsgBox(ex.Message)
+        End Try
     End Sub
 
  
@@ -2967,4 +2974,5 @@ Public Class Programa
 
     End Sub
 
+ 
 End Class
