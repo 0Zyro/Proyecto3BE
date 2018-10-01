@@ -796,7 +796,8 @@ Public Class Programa
         '////////////COMPRAS
 
 
-        Consulta = "select sum(totalc) from compra where year(fechacompra) = year(now())"
+        'Consulta = "select sum(totalc) from compra where year(fechacompra) = year(now())"
+        Consulta = "select fechacompra from compra where fechacompra = (select max(fechacompra) from compra)"
         consultar()
 
         DGVAuxiliarcompra.DataSource = Tabla
@@ -1653,7 +1654,8 @@ Public Class Programa
 
     Private Sub BTNAgregarcompra_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles BTNAgregarcompraproducto.Click
 
-        Dim fechacompra As String = DTPFechacompraproducto.Value.ToString("yyyy-MM-dd")
+        Dim fechacompra As String = DTPFechacompraproducto.Value.ToString("yyyy-MM-dd hh-mm-ss")
+
         If fechacompra <> "" And RTXComentariocompraproducto.Text <> "" And TXTTotalpagadocomprasproducto.Text <> "" Then
             'Si la fecha de compra es mayor que la fecha actual salta el msgbox
             If DTPFechacompraproducto.Value > Today Then
@@ -1929,6 +1931,9 @@ Public Class Programa
             PNLAgregarcompraganado.Visible = False
             PNLAgregarcompraganado.Enabled = False
             PNLAgregarcompraganado.SendToBack()
+            DTPFechacompraproducto.CustomFormat = "dd/MM/yyyy hh:mm:ss"
+            DTPFechacompraproducto.Format = DateTimePickerFormat.Custom
+
         Else
             PNLAgregarcompraproducto.Visible = False
             PNLAgregarcompraproducto.Enabled = False
@@ -2962,6 +2967,4 @@ Public Class Programa
 
     End Sub
 
- 
-   
 End Class
