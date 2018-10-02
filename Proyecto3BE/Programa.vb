@@ -797,10 +797,7 @@ Public Class Programa
 
 
         'Consulta = "select sum(totalc) from compra where year(fechacompra) = year(now())"
-        Consulta = "select fechacompra from compra where fechacompra = (select max(fechacompra) from compra)"
-        consultar()
 
-        DGVAuxiliarcompra.DataSource = Tabla
 
 
 
@@ -1971,12 +1968,6 @@ Public Class Programa
 
                 End Select
 
-                Consulta = "select sum(totalc) from compra where year(fechacompra) = year(now())"
-                consultar()
-                DGVAuxiliarcompra.DataSource = Tabla
-
-                Label16.Text = DGVAuxiliarcompra.Item(0, DGVAuxiliarcompra.CurrentRow.Index).Value
-
             Catch ex As Exception
                 MsgBox(ex)
             End Try
@@ -2090,9 +2081,15 @@ Public Class Programa
         consultar()
         DTGModificarcompra.DataSource = Tabla
     End Sub
-
-    Private Sub DGVAuxiliarcompra_SelectionChanged(ByVal sender As Object, ByVal e As System.EventArgs) Handles DGVAuxiliarcompra.SelectionChanged
-        Label16.Text = DGVAuxiliarcompra.Item(0, DGVAuxiliarcompra.CurrentRow.Index).Value
+    Private Sub BTNGastosdelañocompra_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles BTNGastosdelañocompra.Click
+        Consulta = ("select sum(totalc) as 'Total que se pago en el año' from compra where year(fechacompra) = year(now())")
+        consultar()
+        DGVCompras.DataSource = Tabla
+    End Sub
+    Private Sub BTNUltimafechadecompra_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles BTNUltimafechadecompra.Click
+        Consulta = "select * from compra where fechacompra = (select max(fechacompra) from compra)"
+        consultar()
+        DGVCompras.DataSource = Tabla
     End Sub
     '/////////////////////////////FIN COMPRAS//////////////////////////////////////////////////////////////////
     '//////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -2974,5 +2971,5 @@ Public Class Programa
 
     End Sub
 
- 
+    
 End Class
