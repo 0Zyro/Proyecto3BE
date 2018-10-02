@@ -2773,7 +2773,7 @@ Public Class Programa
     Private Sub txtcedulaCliente_KeyPress(ByVal sender As Object, ByVal e As System.Windows.Forms.KeyPressEventArgs) Handles txtcedulaCliente.KeyPress
 
 
-        If Char.IsLetter(e.KeyChar) Then
+        If Char.IsNumber(e.KeyChar) Then
             e.Handled = False
         ElseIf Char.IsControl(e.KeyChar) Then
             e.Handled = False
@@ -2971,5 +2971,6 @@ Public Class Programa
 
     End Sub
 
-    
+   
+   
 End Class
