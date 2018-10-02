@@ -221,6 +221,10 @@ Proyecto3BE
 	<summary>
   Looks up a localized resource of type System.Drawing.Bitmap.
 </summary>
+</member><member name="P:WindowsApplication1.My.Resources.Resources.refresh_round_symbol">
+	<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
 </member><member name="P:WindowsApplication1.My.Resources.Resources.removed">
 	<summary>
   Looks up a localized resource of type System.Drawing.Bitmap.

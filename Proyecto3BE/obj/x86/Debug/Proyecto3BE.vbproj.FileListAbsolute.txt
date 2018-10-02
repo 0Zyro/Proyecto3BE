@@ -144,3 +144,7 @@ C:\Users\Matias\Documents\GitHub\Proyecto3BE\Proyecto3BE\obj\x86\Debug\WindowsAp
 C:\Users\Matias\Documents\GitHub\Proyecto3BE\Proyecto3BE\obj\x86\Debug\WindowsApplication1.Programa.resources
 C:\Users\Matias\Documents\GitHub\Proyecto3BE\Proyecto3BE\obj\x86\Debug\WindowsApplication1.Resources.resources
 C:\Users\Matias\Documents\GitHub\Proyecto3BE\Proyecto3BE\obj\x86\Debug\Proyecto3BE.vbproj.GenerateResource.Cache
+C:\Users\Matias\Documents\GitHub\Proyecto3BE\Proyecto3BE\bin\Debug\Proyecto3BE.exe.manifest
+C:\Users\Matias\Documents\GitHub\Proyecto3BE\Proyecto3BE\bin\Debug\Proyecto3BE.application
+C:\Users\Matias\Documents\GitHub\Proyecto3BE\Proyecto3BE\obj\x86\Debug\Proyecto3BE.exe.manifest
+C:\Users\Matias\Documents\GitHub\Proyecto3BE\Proyecto3BE\obj\x86\Debug\Proyecto3BE.application
