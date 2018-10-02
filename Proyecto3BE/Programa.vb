@@ -2459,11 +2459,38 @@ Public Class Programa
             End Try
 
         End If
-        For i As Integer = 0 To LSTVentas.Items.Count
 
-            Consulta = "update ganado set idv = "
 
-        Next
+        'Dim consultaconmayor As String = "select max(idv) from venta"
+
+        comando.CommandType = CommandType.Text
+        comando.Connection = connection
+        comando.CommandText = ("select max(idv) from venta")
+
+        Try
+            connection.Open()
+
+            reader = comando.ExecuteReader()
+
+            reader.Read()
+
+            Dim aux As String = reader.GetString(0)
+
+            connection.Close()
+
+            For i As Integer = 0 To LSTVentas.Items.Count - 1
+
+                Consulta = "update ganado set estado='vendido', idv='" + aux + "' where idg='" + LSTVentas.Items(i) + "'"
+
+                consultar()
+
+            Next
+
+        Catch ex As Exception
+            If connection.State = ConnectionState.Open Then
+                connection.Close()
+            End If
+        End Try
 
     End Sub
 
@@ -2973,4 +3000,37 @@ Public Class Programa
 
    
    
+    Private Sub Button1_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles BTNAparecerPanelCalculo.Click
+
+        For i As Integer = 0 To LSTVentas.Items.Count - 1
+
+            DGVCalculoK.Rows.Add()
+
+            DGVCalculoK.Item(0, i).Value = LSTVentas.Items(i).ToString
+
+        Next
+
+        PNLCalculoK.Visible = True
+
+    End Sub
+
+    Private Sub BTNCalculoK_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles BTNCalculoK.Click
+
+        Dim total As Integer = 0
+
+        For i As Integer = 0 To DGVCalculoK.Rows.Count - 1
+
+            total = (total + (Convert.ToInt32(DGVCalculoK.Item(1, i).Value) * (Convert.ToInt32(DGVCalculoK.Item(2, i).Value))))
+
+        Next
+
+        txbtotalventa.Text = (total)
+
+        'MsgBox(total)
+
+        PNLCalculoK.Visible = False
+
+        DGVCalculoK.Rows.Clear()
+
+    End Sub
 End Class
