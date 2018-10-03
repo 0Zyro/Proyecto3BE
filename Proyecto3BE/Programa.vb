@@ -799,9 +799,9 @@ Public Class Programa
         'Consulta = "select sum(totalc) from compra where year(fechacompra) = year(now())"
 
 
-        Panel2.Visible = False
 
-        CBXBuscarcompra.Text = "Id"
+
+        CBXBuscarcompra.Text = "Elige una opción"
 
         'Paneles de agregar compras
         PNLAgregarcompraganado.Enabled = False
@@ -1498,18 +1498,6 @@ Public Class Programa
 
 
     End Sub
-    Private Sub Button1_MouseEnter(ByVal sender As Object, ByVal e As System.EventArgs) Handles Button1.MouseEnter
-        Panel2.Visible = True
-    End Sub
-    Private Sub Panel2_MouseEnter(ByVal sender As Object, ByVal e As System.EventArgs) Handles Panel2.MouseEnter
-        Panel2.Visible = True
-    End Sub
-    Private Sub Button1_MouseLeave(ByVal sender As Object, ByVal e As System.EventArgs) Handles Button1.MouseLeave
-        Panel2.Visible = False
-    End Sub
-    Private Sub Panel2_MouseLeave(ByVal sender As Object, ByVal e As System.EventArgs) Handles Panel2.MouseLeave
-        Panel2.Visible = False
-    End Sub
 
     '//////////////////BOTON PARA ACTIVAR BOTONES MODIFICAR CLIENT//////////////////////////////////////////////////////////////////
     Private Sub BTNPanelmodificarcliente_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles BOTONmodificarCliente.Click
@@ -1631,14 +1619,6 @@ Public Class Programa
         PNLAgregarcompraganado.Visible = False
         PNLAgregarcompraganado.Enabled = False
         PNLAgregarcompraganado.SendToBack()
-
-        Consulta = ("select * from compra")
-        consultar()
-        DGVCompras.DataSource = Tabla
-        DGVCompras.Columns(0).HeaderText = "Id"
-        DGVCompras.Columns(1).HeaderText = "Fecha de Compra"
-        DGVCompras.Columns(2).HeaderText = "Comentario"
-        DGVCompras.Columns(3).HeaderText = "Total"
     End Sub
     '/////////////////////////Boton de para entrar al panel de agregar compras
     Private Sub BTNpanelmodicompras_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles BTNPanelagregarcompra.Click
@@ -1664,16 +1644,6 @@ Public Class Programa
         RTXComentariocompraproducto.Clear()
         TXTTotalpagadocomprasproducto.Clear()
         DTPFechacompraproducto.Value = Today
-    End Sub
-    Private Sub BTNActualizarcompra_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles BTNActualizarcompra.Click
-        Consulta = ("select * from compra")
-        consultar()
-        DGVCompras.DataSource = Tabla
-        DGVCompras.Columns(0).HeaderText = "Id"
-        DGVCompras.Columns(1).HeaderText = "Fecha de Compra"
-        DGVCompras.Columns(2).HeaderText = "Comentario"
-        DGVCompras.Columns(3).HeaderText = "Total"
-
     End Sub
     'boton que agrega el ganado al arraylist
     Private Sub BTNAgregarganadocompra_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles BTNAgregarganadocompra.Click
@@ -1879,7 +1849,7 @@ Public Class Programa
                 DTGModificarcompra.Columns(0).HeaderText = "Id"
                 DTGModificarcompra.Columns(1).HeaderText = "Fecha de Compra"
                 DTGModificarcompra.Columns(2).HeaderText = "Comentario"
-                DTGModificarcompra.Columns(3).HeaderText = "Total"
+                DTGModificarcompra.Columns(3).HeaderText = "Total Pagado"
                 MsgBox("La compra se modificó con exito")
 
             Else
@@ -1918,7 +1888,7 @@ Public Class Programa
         DGVCompras.Columns(0).HeaderText = "Id"
         DGVCompras.Columns(1).HeaderText = "Fecha de Compra"
         DGVCompras.Columns(2).HeaderText = "Comentario"
-        DGVCompras.Columns(3).HeaderText = "Total"
+        DGVCompras.Columns(3).HeaderText = "Total Pagado"
     End Sub
     '///////////Datagridview del panel de modificarcompra
     Private Sub DTGmodificarcompra_SelectionChanged(ByVal sender As Object, ByVal e As System.EventArgs) Handles DTGModificarcompra.SelectionChanged
@@ -1959,6 +1929,8 @@ Public Class Programa
             PNLAgregarcompraganado.Visible = False
             PNLAgregarcompraganado.Enabled = False
             PNLAgregarcompraganado.SendToBack()
+            DTPFechacompraproducto.CustomFormat = "dd/MM/yyyy hh:mm:ss"
+            DTPFechacompraproducto.Format = DateTimePickerFormat.Custom
 
         Else
             PNLAgregarcompraproducto.Visible = False
@@ -2045,7 +2017,15 @@ Public Class Programa
     '/////combobox del panel principal de compras
     Private Sub CBXBuscarcompra_SelectedIndexChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles CBXBuscarcompra.SelectedIndexChanged
         'Si el combo box esta en elige una opcion, oculta el datatimerpick y el textbox
-        If CBXBuscarcompra.Text = "Fecha de Compra" Then
+        If CBXBuscarcompra.Text = "Elige una opción" Then
+            'Cuando se encuentra en elige una opcion actualiza la base de datos
+            Consulta = ("select * from compra")
+            consultar()
+            DGVCompras.DataSource = Tabla
+            DTPBuscarcompra.Visible = False
+            TXTBuscarcompra.Visible = False
+            'Muesta el datatimerpick y oculta el textbox
+        ElseIf CBXBuscarcompra.Text = "Fecha de Compra" Then
             DTPBuscarcompra.Visible = True
             TXTBuscarcompra.Visible = False
             'Pone el datatimerpick en la fecha actual
@@ -2110,10 +2090,6 @@ Public Class Programa
         Consulta = "select * from compra where fechacompra = (select max(fechacompra) from compra)"
         consultar()
         DGVCompras.DataSource = Tabla
-        DGVCompras.Columns(0).HeaderText = "Id"
-        DGVCompras.Columns(1).HeaderText = "Fecha de Compra"
-        DGVCompras.Columns(2).HeaderText = "Comentario"
-        DGVCompras.Columns(3).HeaderText = "Total"
     End Sub
     '/////////////////////////////FIN COMPRAS//////////////////////////////////////////////////////////////////
     '//////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -3057,5 +3033,4 @@ Public Class Programa
         DGVCalculoK.Rows.Clear()
 
     End Sub
-    
 End Class
