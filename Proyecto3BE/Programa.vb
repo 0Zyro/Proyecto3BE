@@ -3015,22 +3015,27 @@ Public Class Programa
     End Sub
 
     Private Sub BTNCalculoK_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles BTNCalculoK.Click
+  
 
-        Dim total As Integer = 0
 
-        For i As Integer = 0 To DGVCalculoK.Rows.Count - 1
 
-            total = (total + (Convert.ToInt32(DGVCalculoK.Item(1, i).Value) * (Convert.ToInt32(DGVCalculoK.Item(2, i).Value))))
 
-        Next
+            Dim total As Integer = 0
 
-        txbtotalventa.Text = (total)
+            For i As Integer = 0 To DGVCalculoK.Rows.Count - 1
 
-        'MsgBox(total)
+                total = (total + (Convert.ToInt32(DGVCalculoK.Item(1, i).Value) * (Convert.ToInt32(DGVCalculoK.Item(2, i).Value))))
 
-        PNLCalculoK.Visible = False
+            Next
 
-        DGVCalculoK.Rows.Clear()
+            txbtotalventa.Text = (total)
+
+            'MsgBox(total)
+
+            PNLCalculoK.Visible = False
+
+            DGVCalculoK.Rows.Clear()
+
 
     End Sub
 End Class
