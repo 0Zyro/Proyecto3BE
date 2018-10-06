@@ -152,3 +152,7 @@ C:\Users\juanp\Documents\GitHub\Proyecto3BE\Proyecto3BE\bin\Debug\Proyecto3BE.ex
 C:\Users\juanp\Documents\GitHub\Proyecto3BE\Proyecto3BE\bin\Debug\Proyecto3BE.application
 C:\Users\juanp\Documents\GitHub\Proyecto3BE\Proyecto3BE\obj\x86\Debug\Proyecto3BE.exe.manifest
 C:\Users\juanp\Documents\GitHub\Proyecto3BE\Proyecto3BE\obj\x86\Debug\Proyecto3BE.application
+E:\Documents\Proyecto\Proyecto3BE\bin\Debug\Proyecto3BE.exe.manifest
+E:\Documents\Proyecto\Proyecto3BE\bin\Debug\Proyecto3BE.application
+E:\Documents\Proyecto\Proyecto3BE\obj\x86\Debug\Proyecto3BE.exe.manifest
+E:\Documents\Proyecto\Proyecto3BE\obj\x86\Debug\Proyecto3BE.application
