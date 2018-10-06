@@ -780,12 +780,12 @@ Partial Class Programa
         'Panel1
         '
         Me.Panel1.BackColor = System.Drawing.Color.Transparent
-        Me.Panel1.Controls.Add(Me.PanelCompradoVenedido)
         Me.Panel1.Controls.Add(Me.PanelBuscarSexoRaza)
         Me.Panel1.Controls.Add(Me.BOTONabriPanelDatosGanado)
         Me.Panel1.Controls.Add(Me.PanelBuscarFechaNacimiento)
         Me.Panel1.Controls.Add(Me.PanelBuscarCodGanado)
         Me.Panel1.Controls.Add(Me.PanelBuscarEstadoGanado)
+        Me.Panel1.Controls.Add(Me.PanelCompradoVenedido)
         Me.Panel1.Location = New System.Drawing.Point(15, 0)
         Me.Panel1.Name = "Panel1"
         Me.Panel1.Size = New System.Drawing.Size(779, 50)

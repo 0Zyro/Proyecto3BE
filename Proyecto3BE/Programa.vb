@@ -3038,9 +3038,11 @@ Public Class Programa
         txttelefonoCliente.Text = ""
 
     End Sub
+    '////////////////////////////////FIN DE ARREGLOS CLIENTES///////////////////////////////////////////////
 
 
 
+    '//////////////PARTE DE VENTA/////////////////////////////////////////////////
     Private Sub Button1_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles BTNAparecerPanelCalculo.Click
 
         For i As Integer = 0 To LSTVentas.Items.Count - 1
