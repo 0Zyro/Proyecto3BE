@@ -24,13 +24,13 @@ Partial Class Programa
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(Programa))
-        Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle2 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle3 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle4 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle5 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle6 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle7 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle64 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle65 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle66 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle67 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle68 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle69 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle70 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Me.PanelUsuario = New System.Windows.Forms.Panel()
         Me.LBLCiUsuario = New System.Windows.Forms.Label()
         Me.BTNCerrarSesion = New System.Windows.Forms.Button()
@@ -67,13 +67,6 @@ Partial Class Programa
         Me.BOTONguardarModificar = New System.Windows.Forms.Button()
         Me.BOTONguardarAgregar = New System.Windows.Forms.Button()
         Me.Panel1 = New System.Windows.Forms.Panel()
-        Me.PanelCompradoVenedido = New System.Windows.Forms.Panel()
-        Me.BOTONcerrarPanelCompradoVendido = New System.Windows.Forms.Button()
-        Me.BOTONbuscarCompradoVenedido = New System.Windows.Forms.Button()
-        Me.Label10 = New System.Windows.Forms.Label()
-        Me.CBXcompradoVendido = New System.Windows.Forms.ComboBox()
-        Me.Label12 = New System.Windows.Forms.Label()
-        Me.CBXrazaCompradoVendido = New System.Windows.Forms.ComboBox()
         Me.PanelBuscarSexoRaza = New System.Windows.Forms.Panel()
         Me.BOTONocultarSexoRaza = New System.Windows.Forms.Button()
         Me.BOTONseleccionarRaza = New System.Windows.Forms.Button()
@@ -96,6 +89,13 @@ Partial Class Programa
         Me.BOTONbuscarEstadoGanado = New System.Windows.Forms.Button()
         Me.Label25 = New System.Windows.Forms.Label()
         Me.CBXbuscarEstadoGanado = New System.Windows.Forms.ComboBox()
+        Me.PanelCompradoVenedido = New System.Windows.Forms.Panel()
+        Me.BOTONcerrarPanelCompradoVendido = New System.Windows.Forms.Button()
+        Me.BOTONbuscarCompradoVenedido = New System.Windows.Forms.Button()
+        Me.Label10 = New System.Windows.Forms.Label()
+        Me.CBXcompradoVendido = New System.Windows.Forms.ComboBox()
+        Me.Label12 = New System.Windows.Forms.Label()
+        Me.CBXrazaCompradoVendido = New System.Windows.Forms.ComboBox()
         Me.DataGridGanadoEconomico = New System.Windows.Forms.DataGridView()
         Me.DataGridViewganado = New System.Windows.Forms.DataGridView()
         Me.TabCompras = New System.Windows.Forms.TabPage()
@@ -276,11 +276,11 @@ Partial Class Programa
         Me.Panel3.SuspendLayout()
         Me.GroupBox1.SuspendLayout()
         Me.Panel1.SuspendLayout()
-        Me.PanelCompradoVenedido.SuspendLayout()
         Me.PanelBuscarSexoRaza.SuspendLayout()
         Me.PanelBuscarFechaNacimiento.SuspendLayout()
         Me.PanelBuscarCodGanado.SuspendLayout()
         Me.PanelBuscarEstadoGanado.SuspendLayout()
+        Me.PanelCompradoVenedido.SuspendLayout()
         CType(Me.DataGridGanadoEconomico, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.DataGridViewganado, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.TabCompras.SuspendLayout()
@@ -611,12 +611,12 @@ Partial Class Programa
         Me.GroupBox1.Controls.Add(Me.Label4)
         Me.GroupBox1.Controls.Add(Me.Label5)
         Me.GroupBox1.Controls.Add(Me.Label3)
-        Me.GroupBox1.Controls.Add(Me.BOTONcancelarModificar)
         Me.GroupBox1.Controls.Add(Me.DTPAgregarGanado)
-        Me.GroupBox1.Controls.Add(Me.BOTONcancelarAgregar)
         Me.GroupBox1.Controls.Add(Me.CBXsexoGanado)
         Me.GroupBox1.Controls.Add(Me.BOTONguardarModificar)
         Me.GroupBox1.Controls.Add(Me.BOTONguardarAgregar)
+        Me.GroupBox1.Controls.Add(Me.BOTONcancelarModificar)
+        Me.GroupBox1.Controls.Add(Me.BOTONcancelarAgregar)
         Me.GroupBox1.Location = New System.Drawing.Point(15, 306)
         Me.GroupBox1.Name = "GroupBox1"
         Me.GroupBox1.Size = New System.Drawing.Size(651, 122)
@@ -626,7 +626,7 @@ Partial Class Programa
         'CBXestadoGanado
         '
         Me.CBXestadoGanado.Enabled = False
-        Me.CBXestadoGanado.Items.AddRange(New Object() {"activo", "vendido", "enfermo/a"})
+        Me.CBXestadoGanado.Items.AddRange(New Object() {"activo", "enfermo/a"})
         Me.CBXestadoGanado.Location = New System.Drawing.Point(374, 23)
         Me.CBXestadoGanado.Name = "CBXestadoGanado"
         Me.CBXestadoGanado.Size = New System.Drawing.Size(116, 21)
@@ -728,7 +728,7 @@ Partial Class Programa
         Me.BOTONcancelarAgregar.FlatAppearance.BorderSize = 0
         Me.BOTONcancelarAgregar.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.BOTONcancelarAgregar.Image = CType(resources.GetObject("BOTONcancelarAgregar.Image"), System.Drawing.Image)
-        Me.BOTONcancelarAgregar.Location = New System.Drawing.Point(589, 18)
+        Me.BOTONcancelarAgregar.Location = New System.Drawing.Point(588, 17)
         Me.BOTONcancelarAgregar.Margin = New System.Windows.Forms.Padding(4, 3, 4, 3)
         Me.BOTONcancelarAgregar.Name = "BOTONcancelarAgregar"
         Me.BOTONcancelarAgregar.Size = New System.Drawing.Size(40, 40)
@@ -780,93 +780,16 @@ Partial Class Programa
         'Panel1
         '
         Me.Panel1.BackColor = System.Drawing.Color.Transparent
-        Me.Panel1.Controls.Add(Me.PanelBuscarSexoRaza)
         Me.Panel1.Controls.Add(Me.BOTONabriPanelDatosGanado)
-        Me.Panel1.Controls.Add(Me.PanelBuscarFechaNacimiento)
         Me.Panel1.Controls.Add(Me.PanelBuscarCodGanado)
         Me.Panel1.Controls.Add(Me.PanelBuscarEstadoGanado)
         Me.Panel1.Controls.Add(Me.PanelCompradoVenedido)
+        Me.Panel1.Controls.Add(Me.PanelBuscarSexoRaza)
+        Me.Panel1.Controls.Add(Me.PanelBuscarFechaNacimiento)
         Me.Panel1.Location = New System.Drawing.Point(15, 0)
         Me.Panel1.Name = "Panel1"
         Me.Panel1.Size = New System.Drawing.Size(779, 50)
         Me.Panel1.TabIndex = 132
-        '
-        'PanelCompradoVenedido
-        '
-        Me.PanelCompradoVenedido.BackColor = System.Drawing.Color.Transparent
-        Me.PanelCompradoVenedido.Controls.Add(Me.BOTONcerrarPanelCompradoVendido)
-        Me.PanelCompradoVenedido.Controls.Add(Me.BOTONbuscarCompradoVenedido)
-        Me.PanelCompradoVenedido.Controls.Add(Me.Label10)
-        Me.PanelCompradoVenedido.Controls.Add(Me.CBXcompradoVendido)
-        Me.PanelCompradoVenedido.Controls.Add(Me.Label12)
-        Me.PanelCompradoVenedido.Controls.Add(Me.CBXrazaCompradoVendido)
-        Me.PanelCompradoVenedido.Location = New System.Drawing.Point(95, 1)
-        Me.PanelCompradoVenedido.Name = "PanelCompradoVenedido"
-        Me.PanelCompradoVenedido.Size = New System.Drawing.Size(430, 49)
-        Me.PanelCompradoVenedido.TabIndex = 138
-        Me.PanelCompradoVenedido.Visible = False
-        '
-        'BOTONcerrarPanelCompradoVendido
-        '
-        Me.BOTONcerrarPanelCompradoVendido.BackColor = System.Drawing.Color.CornflowerBlue
-        Me.BOTONcerrarPanelCompradoVendido.FlatAppearance.BorderSize = 0
-        Me.BOTONcerrarPanelCompradoVendido.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.BOTONcerrarPanelCompradoVendido.Image = Global.WindowsApplication1.My.Resources.Resources.hide__1_
-        Me.BOTONcerrarPanelCompradoVendido.Location = New System.Drawing.Point(353, 4)
-        Me.BOTONcerrarPanelCompradoVendido.Name = "BOTONcerrarPanelCompradoVendido"
-        Me.BOTONcerrarPanelCompradoVendido.Size = New System.Drawing.Size(40, 40)
-        Me.BOTONcerrarPanelCompradoVendido.TabIndex = 121
-        Me.ToolTip1.SetToolTip(Me.BOTONcerrarPanelCompradoVendido, "TERMINAR BUSQUEDA")
-        Me.BOTONcerrarPanelCompradoVendido.UseVisualStyleBackColor = False
-        '
-        'BOTONbuscarCompradoVenedido
-        '
-        Me.BOTONbuscarCompradoVenedido.BackColor = System.Drawing.Color.CornflowerBlue
-        Me.BOTONbuscarCompradoVenedido.FlatAppearance.BorderSize = 0
-        Me.BOTONbuscarCompradoVenedido.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.BOTONbuscarCompradoVenedido.Image = Global.WindowsApplication1.My.Resources.Resources._003_search
-        Me.BOTONbuscarCompradoVenedido.Location = New System.Drawing.Point(294, 4)
-        Me.BOTONbuscarCompradoVenedido.Name = "BOTONbuscarCompradoVenedido"
-        Me.BOTONbuscarCompradoVenedido.Size = New System.Drawing.Size(40, 40)
-        Me.BOTONbuscarCompradoVenedido.TabIndex = 113
-        Me.ToolTip1.SetToolTip(Me.BOTONbuscarCompradoVenedido, "Buscar")
-        Me.BOTONbuscarCompradoVenedido.UseVisualStyleBackColor = False
-        '
-        'Label10
-        '
-        Me.Label10.AutoSize = True
-        Me.Label10.Location = New System.Drawing.Point(148, 5)
-        Me.Label10.Name = "Label10"
-        Me.Label10.Size = New System.Drawing.Size(40, 13)
-        Me.Label10.TabIndex = 119
-        Me.Label10.Text = "SEXO"
-        '
-        'CBXcompradoVendido
-        '
-        Me.CBXcompradoVendido.FormattingEnabled = True
-        Me.CBXcompradoVendido.Items.AddRange(New Object() {"Comprado", "Vendido"})
-        Me.CBXcompradoVendido.Location = New System.Drawing.Point(3, 23)
-        Me.CBXcompradoVendido.Name = "CBXcompradoVendido"
-        Me.CBXcompradoVendido.Size = New System.Drawing.Size(137, 21)
-        Me.CBXcompradoVendido.TabIndex = 112
-        '
-        'Label12
-        '
-        Me.Label12.AutoSize = True
-        Me.Label12.Location = New System.Drawing.Point(4, 5)
-        Me.Label12.Name = "Label12"
-        Me.Label12.Size = New System.Drawing.Size(139, 13)
-        Me.Label12.TabIndex = 118
-        Me.Label12.Text = "COMPRADO/VENDIDO"
-        '
-        'CBXrazaCompradoVendido
-        '
-        Me.CBXrazaCompradoVendido.FormattingEnabled = True
-        Me.CBXrazaCompradoVendido.Items.AddRange(New Object() {"Aberdeen", "Angus", "Braford", "Hereford"})
-        Me.CBXrazaCompradoVendido.Location = New System.Drawing.Point(151, 23)
-        Me.CBXrazaCompradoVendido.Name = "CBXrazaCompradoVendido"
-        Me.CBXrazaCompradoVendido.Size = New System.Drawing.Size(137, 21)
-        Me.CBXrazaCompradoVendido.TabIndex = 110
         '
         'PanelBuscarSexoRaza
         '
@@ -1115,6 +1038,83 @@ Partial Class Programa
         Me.CBXbuscarEstadoGanado.Size = New System.Drawing.Size(137, 21)
         Me.CBXbuscarEstadoGanado.TabIndex = 110
         '
+        'PanelCompradoVenedido
+        '
+        Me.PanelCompradoVenedido.BackColor = System.Drawing.Color.Transparent
+        Me.PanelCompradoVenedido.Controls.Add(Me.BOTONcerrarPanelCompradoVendido)
+        Me.PanelCompradoVenedido.Controls.Add(Me.BOTONbuscarCompradoVenedido)
+        Me.PanelCompradoVenedido.Controls.Add(Me.Label10)
+        Me.PanelCompradoVenedido.Controls.Add(Me.CBXcompradoVendido)
+        Me.PanelCompradoVenedido.Controls.Add(Me.Label12)
+        Me.PanelCompradoVenedido.Controls.Add(Me.CBXrazaCompradoVendido)
+        Me.PanelCompradoVenedido.Location = New System.Drawing.Point(95, 1)
+        Me.PanelCompradoVenedido.Name = "PanelCompradoVenedido"
+        Me.PanelCompradoVenedido.Size = New System.Drawing.Size(430, 49)
+        Me.PanelCompradoVenedido.TabIndex = 138
+        Me.PanelCompradoVenedido.Visible = False
+        '
+        'BOTONcerrarPanelCompradoVendido
+        '
+        Me.BOTONcerrarPanelCompradoVendido.BackColor = System.Drawing.Color.CornflowerBlue
+        Me.BOTONcerrarPanelCompradoVendido.FlatAppearance.BorderSize = 0
+        Me.BOTONcerrarPanelCompradoVendido.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.BOTONcerrarPanelCompradoVendido.Image = Global.WindowsApplication1.My.Resources.Resources.hide__1_
+        Me.BOTONcerrarPanelCompradoVendido.Location = New System.Drawing.Point(353, 4)
+        Me.BOTONcerrarPanelCompradoVendido.Name = "BOTONcerrarPanelCompradoVendido"
+        Me.BOTONcerrarPanelCompradoVendido.Size = New System.Drawing.Size(40, 40)
+        Me.BOTONcerrarPanelCompradoVendido.TabIndex = 121
+        Me.ToolTip1.SetToolTip(Me.BOTONcerrarPanelCompradoVendido, "TERMINAR BUSQUEDA")
+        Me.BOTONcerrarPanelCompradoVendido.UseVisualStyleBackColor = False
+        '
+        'BOTONbuscarCompradoVenedido
+        '
+        Me.BOTONbuscarCompradoVenedido.BackColor = System.Drawing.Color.CornflowerBlue
+        Me.BOTONbuscarCompradoVenedido.FlatAppearance.BorderSize = 0
+        Me.BOTONbuscarCompradoVenedido.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.BOTONbuscarCompradoVenedido.Image = Global.WindowsApplication1.My.Resources.Resources._003_search
+        Me.BOTONbuscarCompradoVenedido.Location = New System.Drawing.Point(294, 4)
+        Me.BOTONbuscarCompradoVenedido.Name = "BOTONbuscarCompradoVenedido"
+        Me.BOTONbuscarCompradoVenedido.Size = New System.Drawing.Size(40, 40)
+        Me.BOTONbuscarCompradoVenedido.TabIndex = 113
+        Me.ToolTip1.SetToolTip(Me.BOTONbuscarCompradoVenedido, "Buscar")
+        Me.BOTONbuscarCompradoVenedido.UseVisualStyleBackColor = False
+        '
+        'Label10
+        '
+        Me.Label10.AutoSize = True
+        Me.Label10.Location = New System.Drawing.Point(148, 5)
+        Me.Label10.Name = "Label10"
+        Me.Label10.Size = New System.Drawing.Size(40, 13)
+        Me.Label10.TabIndex = 119
+        Me.Label10.Text = "SEXO"
+        '
+        'CBXcompradoVendido
+        '
+        Me.CBXcompradoVendido.FormattingEnabled = True
+        Me.CBXcompradoVendido.Items.AddRange(New Object() {"Comprado", "Vendido"})
+        Me.CBXcompradoVendido.Location = New System.Drawing.Point(3, 23)
+        Me.CBXcompradoVendido.Name = "CBXcompradoVendido"
+        Me.CBXcompradoVendido.Size = New System.Drawing.Size(137, 21)
+        Me.CBXcompradoVendido.TabIndex = 112
+        '
+        'Label12
+        '
+        Me.Label12.AutoSize = True
+        Me.Label12.Location = New System.Drawing.Point(4, 5)
+        Me.Label12.Name = "Label12"
+        Me.Label12.Size = New System.Drawing.Size(139, 13)
+        Me.Label12.TabIndex = 118
+        Me.Label12.Text = "COMPRADO/VENDIDO"
+        '
+        'CBXrazaCompradoVendido
+        '
+        Me.CBXrazaCompradoVendido.FormattingEnabled = True
+        Me.CBXrazaCompradoVendido.Items.AddRange(New Object() {"Aberdeen", "Angus", "Braford", "Hereford"})
+        Me.CBXrazaCompradoVendido.Location = New System.Drawing.Point(151, 23)
+        Me.CBXrazaCompradoVendido.Name = "CBXrazaCompradoVendido"
+        Me.CBXrazaCompradoVendido.Size = New System.Drawing.Size(137, 21)
+        Me.CBXrazaCompradoVendido.TabIndex = 110
+        '
         'DataGridGanadoEconomico
         '
         Me.DataGridGanadoEconomico.AllowUserToAddRows = False
@@ -1125,24 +1125,24 @@ Partial Class Programa
         Me.DataGridGanadoEconomico.BackgroundColor = System.Drawing.Color.FromArgb(CType(CType(45, Byte), Integer), CType(CType(66, Byte), Integer), CType(CType(91, Byte), Integer))
         Me.DataGridGanadoEconomico.BorderStyle = System.Windows.Forms.BorderStyle.None
         Me.DataGridGanadoEconomico.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.[Single]
-        DataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
-        DataGridViewCellStyle1.BackColor = System.Drawing.Color.DarkOrange
-        DataGridViewCellStyle1.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle1.ForeColor = System.Drawing.Color.White
-        DataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight
-        DataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText
-        DataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.DataGridGanadoEconomico.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle1
+        DataGridViewCellStyle64.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
+        DataGridViewCellStyle64.BackColor = System.Drawing.Color.DarkOrange
+        DataGridViewCellStyle64.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle64.ForeColor = System.Drawing.Color.White
+        DataGridViewCellStyle64.SelectionBackColor = System.Drawing.SystemColors.Highlight
+        DataGridViewCellStyle64.SelectionForeColor = System.Drawing.SystemColors.HighlightText
+        DataGridViewCellStyle64.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.DataGridGanadoEconomico.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle64
         Me.DataGridGanadoEconomico.ColumnHeadersHeight = 35
         Me.DataGridGanadoEconomico.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing
-        DataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(CType(CType(45, Byte), Integer), CType(CType(66, Byte), Integer), CType(CType(91, Byte), Integer))
-        DataGridViewCellStyle2.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle2.ForeColor = System.Drawing.Color.White
-        DataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.SlateBlue
-        DataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.White
-        DataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
-        Me.DataGridGanadoEconomico.DefaultCellStyle = DataGridViewCellStyle2
+        DataGridViewCellStyle65.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle65.BackColor = System.Drawing.Color.FromArgb(CType(CType(45, Byte), Integer), CType(CType(66, Byte), Integer), CType(CType(91, Byte), Integer))
+        DataGridViewCellStyle65.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle65.ForeColor = System.Drawing.Color.White
+        DataGridViewCellStyle65.SelectionBackColor = System.Drawing.Color.SlateBlue
+        DataGridViewCellStyle65.SelectionForeColor = System.Drawing.Color.White
+        DataGridViewCellStyle65.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
+        Me.DataGridGanadoEconomico.DefaultCellStyle = DataGridViewCellStyle65
         Me.DataGridGanadoEconomico.EnableHeadersVisualStyles = False
         Me.DataGridGanadoEconomico.GridColor = System.Drawing.Color.SteelBlue
         Me.DataGridGanadoEconomico.Location = New System.Drawing.Point(15, 49)
@@ -1150,14 +1150,14 @@ Partial Class Programa
         Me.DataGridGanadoEconomico.Name = "DataGridGanadoEconomico"
         Me.DataGridGanadoEconomico.ReadOnly = True
         Me.DataGridGanadoEconomico.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.[Single]
-        DataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle3.BackColor = System.Drawing.Color.FromArgb(CType(CType(45, Byte), Integer), CType(CType(66, Byte), Integer), CType(CType(91, Byte), Integer))
-        DataGridViewCellStyle3.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle3.ForeColor = System.Drawing.Color.White
-        DataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.SteelBlue
-        DataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText
-        DataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.DataGridGanadoEconomico.RowHeadersDefaultCellStyle = DataGridViewCellStyle3
+        DataGridViewCellStyle66.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle66.BackColor = System.Drawing.Color.FromArgb(CType(CType(45, Byte), Integer), CType(CType(66, Byte), Integer), CType(CType(91, Byte), Integer))
+        DataGridViewCellStyle66.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle66.ForeColor = System.Drawing.Color.White
+        DataGridViewCellStyle66.SelectionBackColor = System.Drawing.Color.SteelBlue
+        DataGridViewCellStyle66.SelectionForeColor = System.Drawing.SystemColors.HighlightText
+        DataGridViewCellStyle66.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.DataGridGanadoEconomico.RowHeadersDefaultCellStyle = DataGridViewCellStyle66
         Me.DataGridGanadoEconomico.ScrollBars = System.Windows.Forms.ScrollBars.Vertical
         Me.DataGridGanadoEconomico.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
         Me.DataGridGanadoEconomico.Size = New System.Drawing.Size(711, 246)
@@ -1174,24 +1174,24 @@ Partial Class Programa
         Me.DataGridViewganado.BackgroundColor = System.Drawing.Color.FromArgb(CType(CType(45, Byte), Integer), CType(CType(66, Byte), Integer), CType(CType(91, Byte), Integer))
         Me.DataGridViewganado.BorderStyle = System.Windows.Forms.BorderStyle.None
         Me.DataGridViewganado.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.[Single]
-        DataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
-        DataGridViewCellStyle4.BackColor = System.Drawing.Color.DarkOrange
-        DataGridViewCellStyle4.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle4.ForeColor = System.Drawing.Color.White
-        DataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight
-        DataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText
-        DataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.DataGridViewganado.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle4
+        DataGridViewCellStyle67.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
+        DataGridViewCellStyle67.BackColor = System.Drawing.Color.DarkOrange
+        DataGridViewCellStyle67.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle67.ForeColor = System.Drawing.Color.White
+        DataGridViewCellStyle67.SelectionBackColor = System.Drawing.SystemColors.Highlight
+        DataGridViewCellStyle67.SelectionForeColor = System.Drawing.SystemColors.HighlightText
+        DataGridViewCellStyle67.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.DataGridViewganado.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle67
         Me.DataGridViewganado.ColumnHeadersHeight = 35
         Me.DataGridViewganado.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing
-        DataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle5.BackColor = System.Drawing.Color.FromArgb(CType(CType(45, Byte), Integer), CType(CType(66, Byte), Integer), CType(CType(91, Byte), Integer))
-        DataGridViewCellStyle5.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle5.ForeColor = System.Drawing.Color.White
-        DataGridViewCellStyle5.SelectionBackColor = System.Drawing.Color.SlateBlue
-        DataGridViewCellStyle5.SelectionForeColor = System.Drawing.Color.White
-        DataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
-        Me.DataGridViewganado.DefaultCellStyle = DataGridViewCellStyle5
+        DataGridViewCellStyle68.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle68.BackColor = System.Drawing.Color.FromArgb(CType(CType(45, Byte), Integer), CType(CType(66, Byte), Integer), CType(CType(91, Byte), Integer))
+        DataGridViewCellStyle68.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle68.ForeColor = System.Drawing.Color.White
+        DataGridViewCellStyle68.SelectionBackColor = System.Drawing.Color.SlateBlue
+        DataGridViewCellStyle68.SelectionForeColor = System.Drawing.Color.White
+        DataGridViewCellStyle68.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
+        Me.DataGridViewganado.DefaultCellStyle = DataGridViewCellStyle68
         Me.DataGridViewganado.EnableHeadersVisualStyles = False
         Me.DataGridViewganado.GridColor = System.Drawing.Color.SteelBlue
         Me.DataGridViewganado.Location = New System.Drawing.Point(15, 50)
@@ -1199,14 +1199,14 @@ Partial Class Programa
         Me.DataGridViewganado.Name = "DataGridViewganado"
         Me.DataGridViewganado.ReadOnly = True
         Me.DataGridViewganado.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.[Single]
-        DataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle6.BackColor = System.Drawing.Color.FromArgb(CType(CType(45, Byte), Integer), CType(CType(66, Byte), Integer), CType(CType(91, Byte), Integer))
-        DataGridViewCellStyle6.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle6.ForeColor = System.Drawing.Color.White
-        DataGridViewCellStyle6.SelectionBackColor = System.Drawing.Color.SteelBlue
-        DataGridViewCellStyle6.SelectionForeColor = System.Drawing.SystemColors.HighlightText
-        DataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.DataGridViewganado.RowHeadersDefaultCellStyle = DataGridViewCellStyle6
+        DataGridViewCellStyle69.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle69.BackColor = System.Drawing.Color.FromArgb(CType(CType(45, Byte), Integer), CType(CType(66, Byte), Integer), CType(CType(91, Byte), Integer))
+        DataGridViewCellStyle69.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle69.ForeColor = System.Drawing.Color.White
+        DataGridViewCellStyle69.SelectionBackColor = System.Drawing.Color.SteelBlue
+        DataGridViewCellStyle69.SelectionForeColor = System.Drawing.SystemColors.HighlightText
+        DataGridViewCellStyle69.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.DataGridViewganado.RowHeadersDefaultCellStyle = DataGridViewCellStyle69
         Me.DataGridViewganado.ScrollBars = System.Windows.Forms.ScrollBars.Vertical
         Me.DataGridViewganado.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
         Me.DataGridViewganado.Size = New System.Drawing.Size(711, 246)
@@ -2530,7 +2530,6 @@ Partial Class Programa
         'GroupBox4
         '
         Me.GroupBox4.Controls.Add(Me.BOTONvaciarCamposCliente)
-        Me.GroupBox4.Controls.Add(Me.BOTONcancelarGuardarCliente)
         Me.GroupBox4.Controls.Add(Me.txtdireccionCliente)
         Me.GroupBox4.Controls.Add(Me.Label1)
         Me.GroupBox4.Controls.Add(Me.txttelefonoCliente)
@@ -2547,6 +2546,7 @@ Partial Class Programa
         Me.GroupBox4.Controls.Add(Me.BOTONcancelarModificarCliente)
         Me.GroupBox4.Controls.Add(Me.BOTONguardarAgregarCliente)
         Me.GroupBox4.Controls.Add(Me.BOTONguardarModificarCliente)
+        Me.GroupBox4.Controls.Add(Me.BOTONcancelarGuardarCliente)
         Me.GroupBox4.Location = New System.Drawing.Point(25, 276)
         Me.GroupBox4.Name = "GroupBox4"
         Me.GroupBox4.Size = New System.Drawing.Size(701, 160)
@@ -3147,14 +3147,14 @@ Partial Class Programa
         Me.DGVUsuarios.ClipboardCopyMode = System.Windows.Forms.DataGridViewClipboardCopyMode.Disable
         Me.DGVUsuarios.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         Me.DGVUsuarios.ColumnHeadersVisible = False
-        DataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle7.BackColor = System.Drawing.SystemColors.Window
-        DataGridViewCellStyle7.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle7.ForeColor = System.Drawing.SystemColors.ControlText
-        DataGridViewCellStyle7.SelectionBackColor = System.Drawing.SystemColors.ButtonHighlight
-        DataGridViewCellStyle7.SelectionForeColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(192, Byte), Integer))
-        DataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
-        Me.DGVUsuarios.DefaultCellStyle = DataGridViewCellStyle7
+        DataGridViewCellStyle70.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle70.BackColor = System.Drawing.SystemColors.Window
+        DataGridViewCellStyle70.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle70.ForeColor = System.Drawing.SystemColors.ControlText
+        DataGridViewCellStyle70.SelectionBackColor = System.Drawing.SystemColors.ButtonHighlight
+        DataGridViewCellStyle70.SelectionForeColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(192, Byte), Integer))
+        DataGridViewCellStyle70.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
+        Me.DGVUsuarios.DefaultCellStyle = DataGridViewCellStyle70
         Me.DGVUsuarios.GridColor = System.Drawing.SystemColors.ButtonHighlight
         Me.DGVUsuarios.Location = New System.Drawing.Point(11, 47)
         Me.DGVUsuarios.Margin = New System.Windows.Forms.Padding(4, 3, 4, 3)
@@ -3329,8 +3329,6 @@ Partial Class Programa
         Me.GroupBox1.ResumeLayout(False)
         Me.GroupBox1.PerformLayout()
         Me.Panel1.ResumeLayout(False)
-        Me.PanelCompradoVenedido.ResumeLayout(False)
-        Me.PanelCompradoVenedido.PerformLayout()
         Me.PanelBuscarSexoRaza.ResumeLayout(False)
         Me.PanelBuscarSexoRaza.PerformLayout()
         Me.PanelBuscarFechaNacimiento.ResumeLayout(False)
@@ -3339,6 +3337,8 @@ Partial Class Programa
         Me.PanelBuscarCodGanado.PerformLayout()
         Me.PanelBuscarEstadoGanado.ResumeLayout(False)
         Me.PanelBuscarEstadoGanado.PerformLayout()
+        Me.PanelCompradoVenedido.ResumeLayout(False)
+        Me.PanelCompradoVenedido.PerformLayout()
         CType(Me.DataGridGanadoEconomico, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.DataGridViewganado, System.ComponentModel.ISupportInitialize).EndInit()
         Me.TabCompras.ResumeLayout(False)

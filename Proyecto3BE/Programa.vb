@@ -900,6 +900,13 @@ Public Class Programa
     '''/////////////////////// ABRI PANEL BUSCAR CODIGO GANADO ////////////////////////////
     ''' ////////////////////////////////////////////////////////////////////////////////////
     Private Sub BOTONpanelCodigo_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles BOTONpanelCodigo.Click
+        CBXcompradoVendido.Text = ""
+        CBXrazaCompradoVendido.Text = ""
+        DateTimeBuscarFechaGanado.Text = ""
+        CBXbuscarEstadoGanado.Text = ""
+        CBXseleccionarRaza.Text = ""
+        CBXseleccionarSexo.Text = ""
+
         PanelDatosGanado.Visible = False
         PanelBuscarEstadoGanado.Visible = False
         PanelBuscarSexoRaza.Visible = False
@@ -914,6 +921,15 @@ Public Class Programa
 
     '''///////////////////////////////////////// ABRE PANEL DE BUSQUEDA POR NACIEMIENTO
     Private Sub BOTONpanelBuscarNacimiento_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles BOTONpanelBuscarNacimiento.Click
+
+        txtBuscarCodGanado.Text = ""
+        CBXcompradoVendido.Text = ""
+        CBXrazaCompradoVendido.Text = ""
+        DateTimeBuscarFechaGanado.Text = ""
+        CBXbuscarEstadoGanado.Text = ""
+        CBXseleccionarRaza.Text = ""
+        CBXseleccionarSexo.Text = ""
+
         PanelDatosGanado.Visible = False
         PanelBuscarEstadoGanado.Visible = False
         PanelBuscarCodGanado.Visible = False
@@ -926,6 +942,15 @@ Public Class Programa
     '''/////////////////////////////// ABRE PANEL DE BUSQUEDA DE SEXO Y RAZA //////////////////////////////////////////////////////
     ''' ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     Private Sub BOTONpanelSexoRaza_Click_1(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles BOTONpanelSexoRaza.Click
+
+        txtBuscarCodGanado.Text = ""
+        CBXcompradoVendido.Text = ""
+        CBXrazaCompradoVendido.Text = ""
+        DateTimeBuscarFechaGanado.Text = ""
+        CBXbuscarEstadoGanado.Text = ""
+        CBXseleccionarRaza.Text = ""
+        CBXseleccionarSexo.Text = ""
+
         PanelDatosGanado.Visible = False
         PanelBuscarEstadoGanado.Visible = False
         PanelBuscarCodGanado.Visible = False
@@ -940,7 +965,8 @@ Public Class Programa
     Private Sub BOTONocultarSexoRaza_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles BOTONocultarSexoRaza.Click
         CBXseleccionarRaza.Text = ""
         CBXseleccionarSexo.Text = ""
-        actualizarGanado()
+
+        'actualizarGanado()
 
         PanelBuscarSexoRaza.Visible = False
 
@@ -965,7 +991,9 @@ Public Class Programa
     ''' /////////////////////////////////////////////////////////////////////////////////////////////
     Private Sub BOTONocultarPanelFechaG_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles BOTONocultarPanelFechaG.Click
         DateTimeBuscarFechaGanado.Text = ""
-        actualizarGanado()
+
+        'actualizarGanado()
+
         PanelBuscarFechaNacimiento.Visible = False
     End Sub
 
@@ -975,7 +1003,7 @@ Public Class Programa
     ''' 
     Private Sub BOTONcancelarBuscarCodigo_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles BOTONcancelarBuscarCodigo.Click
         txtBuscarCodGanado.Text = ""
-        actualizarGanado()
+        'actualizarGanado()
 
         PanelBuscarCodGanado.Visible = False
     End Sub
@@ -1019,7 +1047,7 @@ Public Class Programa
     ''' ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     Private Sub BOTONcancelarAgregar_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles BOTONcancelarAgregar.Click
         DataGridViewganado.Enabled = True
-        BOTONguardarAgregar.Visible = False
+
         BOTONabrirAgregar.Enabled = True
 
         BOTONabrirModificar.Enabled = True
@@ -1036,6 +1064,7 @@ Public Class Programa
 
         DataGridViewganado.Focus()
 
+        BOTONguardarAgregar.Visible = False
         BOTONcancelarAgregar.Visible = False
     End Sub
 
@@ -1159,22 +1188,29 @@ Public Class Programa
     '''(((((((/////////////////////CANCELA Y CIERRA EL BOTON MODIFICAR//////////////////////////////
     ''' //////////////////////////////////////////////////////////////////////////////////////
     Private Sub BOTONcancelarModificar_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles BOTONcancelarModificar.Click
-        BOTONguardarModificar.Visible = False
+
         BOTONabrirModificar.Enabled = True
 
         BOTONabrirAgregar.Enabled = True
+
         CBXsexoGanado.Enabled = False
         CBXRazaGanado.Enabled = False
         DTPAgregarGanado.Enabled = False
-
         CBXestadoGanado.Enabled = False
-        'CBXguardarsexo.Text = ""
-        'CBXguardarRaza.Text = ""
-        'DTPAgregarGanado.Text = ""
-        'Texcodigoganado.Clear()
+
+        CBXRazaGanado.Text = ""
+        CBXsexoGanado.Text = ""
+        DTPAgregarGanado.Text = ""
+        CBXestadoGanado.Text = ""
         'Texestadoganado.Clear()
         DataGridViewganado.Focus()
 
+        CBXsexoGanado.Text = DataGridViewganado.Item(1, DataGridViewganado.CurrentRow.Index).Value
+        CBXRazaGanado.Text = DataGridViewganado.Item(2, DataGridViewganado.CurrentRow.Index).Value
+        DTPAgregarGanado.Text = DataGridViewganado.Item(4, DataGridViewganado.CurrentRow.Index).Value
+        CBXestadoGanado.Text = DataGridViewganado.Item(3, DataGridViewganado.CurrentRow.Index).Value
+
+        BOTONguardarModificar.Visible = False
         BOTONcancelarModificar.Visible = False
     End Sub
 
@@ -1298,6 +1334,15 @@ Public Class Programa
   
 
     Private Sub BOTONbuscarPanelestado_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles BOTONbuscarPanelestado.Click
+
+        txtBuscarCodGanado.Text = ""
+        CBXcompradoVendido.Text = ""
+        CBXrazaCompradoVendido.Text = ""
+        DateTimeBuscarFechaGanado.Text = ""
+        CBXbuscarEstadoGanado.Text = ""
+        CBXseleccionarRaza.Text = ""
+        CBXseleccionarSexo.Text = ""
+
         PanelDatosGanado.Visible = False
         PanelBuscarSexoRaza.Visible = False
         PanelBuscarFechaNacimiento.Visible = False
@@ -1307,6 +1352,9 @@ Public Class Programa
     End Sub
 
     Private Sub BOTONcerrarPanelEstado_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles BOTONcerrarPanelEstado.Click
+
+        CBXbuscarEstadoGanado.Text = ""
+
         PanelBuscarEstadoGanado.Visible = False
         actualizarGanado()
 
@@ -1386,6 +1434,15 @@ Public Class Programa
     End Sub
 
     Private Sub BOTONpanelActividadEconomica_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles BOTONpanelActividadEconomica.Click
+
+        txtBuscarCodGanado.Text = ""
+        CBXcompradoVendido.Text = ""
+        CBXrazaCompradoVendido.Text = ""
+        DateTimeBuscarFechaGanado.Text = ""
+        CBXbuscarEstadoGanado.Text = ""
+        CBXseleccionarRaza.Text = ""
+        CBXseleccionarSexo.Text = ""
+
         PanelDatosGanado.Visible = False
         PanelBuscarEstadoGanado.Visible = False
         PanelBuscarSexoRaza.Visible = False
@@ -1453,9 +1510,14 @@ Public Class Programa
         End If
     End Sub
 
+
+
     Private Sub BOTONabriPanelDatosGanado_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles BOTONabriPanelDatosGanado.Click
         PanelDatosGanado.Visible = True
     End Sub
+
+
+    '//////////////////EVENTO MouseENTER//////////////////////////////////////
 
     Private Sub PanelCompradoVenedido_MouseEnter(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles PanelCompradoVenedido.MouseEnter
         PanelDatosGanado.Visible = False
@@ -1482,6 +1544,10 @@ Public Class Programa
         PanelDatosGanado.Visible = False
     End Sub
 
+    Private Sub Panel1_MouseEnter(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Panel1.MouseEnter
+        PanelDatosGanado.Visible = False
+    End Sub
+
     Private Sub DataGridGanadoEconomico_MouseEnter(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles DataGridGanadoEconomico.MouseEnter
         PanelDatosGanado.Visible = False
     End Sub
@@ -1491,6 +1557,10 @@ Public Class Programa
     End Sub
 
     Private Sub BOTONcerrarPanelCompradoVendido_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles BOTONcerrarPanelCompradoVendido.Click
+
+        CBXcompradoVendido.Text = ""
+        CBXrazaCompradoVendido.Text = ""
+
         PanelCompradoVenedido.Visible = False
     End Sub
 
@@ -3023,7 +3093,7 @@ Public Class Programa
             txttelefonoCliente.Text = DataGridViewClientes.Item(4, DataGridViewClientes.CurrentRow.Index).Value
 
         Catch ex As Exception
-            MsgBox(ex.Message)
+            MsgBox(ex.ToString)
         End Try
     End Sub
 
@@ -3082,6 +3152,7 @@ Public Class Programa
 
     End Sub
 
+   
    
    
 End Class
