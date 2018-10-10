@@ -41,7 +41,7 @@ Public Class Programa
 
     Public Sub actualizarCliente()
         'CARGA DATAGRIDCLIENTES
-        Consulta = "select * from cliente"
+        Consulta = "select * from cliente where estado = 'Activo'"
         consultar()
 
         DataGridViewClientes.DataSource = Tabla
@@ -50,7 +50,9 @@ Public Class Programa
         DataGridViewClientes.Columns(1).HeaderText = "Nombre"
         DataGridViewClientes.Columns(2).HeaderText = "Apellido"
         DataGridViewClientes.Columns(3).HeaderText = "Dirección"
-        DataGridViewClientes.Columns(4).HeaderText = "Dirección"
+        DataGridViewClientes.Columns(4).HeaderText = "Teléfono"
+        DataGridViewClientes.Columns(5).Visible = False
+
 
     End Sub
 
@@ -900,6 +902,12 @@ Public Class Programa
     '''/////////////////////// ABRI PANEL BUSCAR CODIGO GANADO ////////////////////////////
     ''' ////////////////////////////////////////////////////////////////////////////////////
     Private Sub BOTONpanelCodigo_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles BOTONpanelCodigo.Click
+        GroupBox3.Enabled = True
+        BOTONguardarAgregar.Enabled = True
+        BOTONcancelarAgregar.Enabled = True
+        BOTONguardarModificar.Enabled = True
+        BOTONcancelarModificar.Enabled = True
+
         CBXcompradoVendido.Text = ""
         CBXrazaCompradoVendido.Text = ""
         DateTimeBuscarFechaGanado.Text = ""
@@ -921,6 +929,11 @@ Public Class Programa
 
     '''///////////////////////////////////////// ABRE PANEL DE BUSQUEDA POR NACIEMIENTO
     Private Sub BOTONpanelBuscarNacimiento_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles BOTONpanelBuscarNacimiento.Click
+        GroupBox3.Enabled = True
+        BOTONguardarAgregar.Enabled = True
+        BOTONcancelarAgregar.Enabled = True
+        BOTONguardarModificar.Enabled = True
+        BOTONcancelarModificar.Enabled = True
 
         txtBuscarCodGanado.Text = ""
         CBXcompradoVendido.Text = ""
@@ -942,6 +955,11 @@ Public Class Programa
     '''/////////////////////////////// ABRE PANEL DE BUSQUEDA DE SEXO Y RAZA //////////////////////////////////////////////////////
     ''' ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     Private Sub BOTONpanelSexoRaza_Click_1(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles BOTONpanelSexoRaza.Click
+        GroupBox3.Enabled = True
+        BOTONguardarAgregar.Enabled = True
+        BOTONcancelarAgregar.Enabled = True
+        BOTONguardarModificar.Enabled = True
+        BOTONcancelarModificar.Enabled = True
 
         txtBuscarCodGanado.Text = ""
         CBXcompradoVendido.Text = ""
@@ -1319,6 +1337,8 @@ Public Class Programa
         'End If
     End Sub
     Private Sub txtBuscarCodGanado_TextChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles txtBuscarCodGanado.TextChanged
+        DataGridGanadoEconomico.Visible = False
+        DataGridViewganado.Visible = True
         Consulta = "SELECT idg,sexo,raza,estado,nacimiento, TIMESTAMPDIFF(YEAR,ganado.nacimiento,CURDATE()) AS'Anios', TIMESTAMPDIFF(month, ganado.nacimiento,NOW())%12 AS 'Meses' from ganado where idg like '" & txtBuscarCodGanado.Text & "%'"
 
         consultar()
@@ -1334,6 +1354,12 @@ Public Class Programa
   
 
     Private Sub BOTONbuscarPanelestado_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles BOTONbuscarPanelestado.Click
+        GroupBox3.Enabled = True
+        BOTONguardarAgregar.Enabled = True
+        BOTONcancelarAgregar.Enabled = True
+        BOTONguardarModificar.Enabled = True
+        BOTONcancelarModificar.Enabled = True
+
 
         txtBuscarCodGanado.Text = ""
         CBXcompradoVendido.Text = ""
@@ -1434,6 +1460,11 @@ Public Class Programa
     End Sub
 
     Private Sub BOTONpanelActividadEconomica_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles BOTONpanelActividadEconomica.Click
+        GroupBox3.Enabled = True
+        BOTONguardarAgregar.Enabled = True
+        BOTONcancelarAgregar.Enabled = True
+        BOTONguardarModificar.Enabled = True
+        BOTONcancelarModificar.Enabled = True
 
         txtBuscarCodGanado.Text = ""
         CBXcompradoVendido.Text = ""
@@ -1640,27 +1671,34 @@ Public Class Programa
 
         Dim MsgStyle As MsgBoxStyle = MsgBoxStyle.Critical + MsgBoxStyle.OkOnly
         Dim MsgStyle1 As MsgBoxStyle = MsgBoxStyle.Information + MsgBoxStyle.OkOnly
-
+        Dim estado As String = DataGridViewClientes.Item(0, DataGridViewClientes.CurrentRow.Index).Value
         If MessageBox.Show("¿Seguro que desea eliminar a este cliente?", "Confirmacion", MessageBoxButtons.YesNo, MessageBoxIcon.Question) = Windows.Forms.DialogResult.Yes Then
             Try
-                'Elimina el id de una compra juntos con todos los datos de ese id
-                Consulta = "delete from cliente where id='" & DataGridViewClientes.Item(0, DataGridViewClientes.CurrentRow.Index).Value & "'"
+                Consulta = " update cliente set estado = 'Desabilitado' where id='" & estado & "'"
                 consultar()
+                actualizarCliente()
 
-                Select Case error1
 
-                    Case 1
-                        MsgBox("no se pudo borrar", MsgStyle, Title:="Error")
-                    Case 0
-                        Consulta = "select * from cliente"
-                        consultar()
-                        'Actualiza la BD
 
-                        DataGridViewClientes.DataSource = Tabla
 
-                        MsgBox(" cliente eliminado", MsgStyle1, Title:="Eliminado")
+                'Elimina el id de una compra juntos con todos los datos de ese id
+                'Consulta = "delete from cliente where id='" & DataGridViewClientes.Item(0, DataGridViewClientes.CurrentRow.Index).Value & "'"
+                'consultar()
 
-                End Select
+                'Select Case error1
+
+                '    Case 1
+                '        MsgBox("no se pudo borrar", MsgStyle, Title:="Error")
+                '    Case 0
+                '        Consulta = "select * from cliente"
+                '        consultar()
+                '        'Actualiza la BD
+
+                '        DataGridViewClientes.DataSource = Tabla
+
+                '        MsgBox(" cliente eliminado", MsgStyle1, Title:="Eliminado")
+
+                'End Select
 
 
 
@@ -2397,7 +2435,7 @@ Public Class Programa
             Case 3
 
                 'CARGA DATAGRIDCLIENTES
-                Consulta = "select * from cliente"
+                Consulta = "select * from cliente where estado = 'Activo' "
                 consultar()
 
                 DataGridViewClientes.DataSource = Tabla
@@ -2409,6 +2447,7 @@ Public Class Programa
                 DataGridViewClientes.Columns(2).HeaderText = "Apellido"
                 DataGridViewClientes.Columns(3).HeaderText = "Dirección"
                 DataGridViewClientes.Columns(4).HeaderText = "Dirección"
+                DataGridViewClientes.Columns(5).Visible = False
 
                 Exit Select
             Case 4
@@ -2940,7 +2979,7 @@ Public Class Programa
                     Try
                         'Select Case error1
                         '    Case 0
-                        Consulta = "INSERT INTO cliente values('" & txtcedulaCliente.Text & "','" & txtnombreCliente.Text & "','" & txtapellidoCliente.Text & "','" & txtdireccionCliente.Text & "','" & txttelefonoCliente.Text & "')"
+                        Consulta = "INSERT INTO cliente(id,nombre,apellido,direccion,telefono) values('" & txtcedulaCliente.Text & "','" & txtnombreCliente.Text & "','" & txtapellidoCliente.Text & "','" & txtdireccionCliente.Text & "','" & txttelefonoCliente.Text & "')"
                         consultar()
 
 
