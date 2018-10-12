@@ -2254,33 +2254,33 @@ Public Class Programa
     End Sub
     'BORRAR EN VENTA//////////////////////////////////////////
 
-    Private Sub Button10_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Button10.Click
+    'Private Sub Button10_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Button10.Click
 
 
 
 
-        If MessageBox.Show("¿Seguro que desea eliminar ésta venta?", "Confirmación", MessageBoxButtons.YesNo, MessageBoxIcon.Question) = Windows.Forms.DialogResult.Yes Then
+    '    If MessageBox.Show("¿Seguro que desea eliminar ésta venta?", "Confirmación", MessageBoxButtons.YesNo, MessageBoxIcon.Question) = Windows.Forms.DialogResult.Yes Then
 
 
 
 
-            Try
-                Consulta = "delete from venta where idv= '" & DataGridViewVENTAS.Item(0, DataGridViewVENTAS.CurrentRow.Index).Value & "'"
-                consultar()
+    '        Try
+    '            Consulta = "delete from venta where idv= '" & DataGridViewVENTAS.Item(0, DataGridViewVENTAS.CurrentRow.Index).Value & "'"
+    '            consultar()
 
-                Consulta = "select * from venta"
-                consultar()
+    '            Consulta = "select * from venta"
+    '            consultar()
 
-                DataGridViewVENTAS.DataSource = Tabla
-                'lblmostrarqueseborro.Show()
+    '            DataGridViewVENTAS.DataSource = Tabla
+    '            'lblmostrarqueseborro.Show()
 
-            Catch ex As Exception
-                MsgBox(ex)
-            End Try
-        End If
+    '        Catch ex As Exception
+    '            MsgBox(ex)
+    '        End Try
+    '    End If
 
 
-    End Sub
+    'End Sub
     '////////////////////////////////////////////////////////////////////////////////////////////////
 
 
@@ -2612,6 +2612,9 @@ Public Class Programa
 
 
         'Dim consultaconmayor As String = "select max(idv) from venta"
+
+
+
 
         comando.CommandType = CommandType.Text
         comando.Connection = connection
@@ -3169,26 +3172,29 @@ Public Class Programa
     Private Sub BTNCalculoK_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles BTNCalculoK.Click
 
 
+        If IsNumeric(DGVCalculoK.SelectedRows) Then
 
 
 
-        Dim total As Integer = 0
 
-        For i As Integer = 0 To DGVCalculoK.Rows.Count - 1
+            Dim total As Integer = 0
 
-            total = (total + (Convert.ToInt32(DGVCalculoK.Item(1, i).Value) * (Convert.ToInt32(DGVCalculoK.Item(2, i).Value))))
+            For i As Integer = 0 To DGVCalculoK.Rows.Count - 1
 
-        Next
+                total = (total + (Convert.ToInt32(DGVCalculoK.Item(1, i).Value) * (Convert.ToInt32(DGVCalculoK.Item(2, i).Value))))
 
-        txbtotalventa.Text = (total)
+            Next
 
-        'MsgBox(total)
+            txbtotalventa.Text = (total)
 
-        PNLCalculoK.Visible = False
+            'MsgBox(total)
 
-        DGVCalculoK.Rows.Clear()
+            PNLCalculoK.Visible = False
 
-
+            DGVCalculoK.Rows.Clear()
+        Else
+            MsgBox("Solo ingrese nuemeros")
+        End If
     End Sub
 
    
