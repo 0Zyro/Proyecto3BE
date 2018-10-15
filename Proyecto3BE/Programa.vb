@@ -41,7 +41,7 @@ Public Class Programa
 
     Public Sub actualizarCliente()
         'CARGA DATAGRIDCLIENTES
-        Consulta = "select * from cliente where estado = 'Activo'"
+        Consulta = "select * from cliente where estado = 1"
         consultar()
 
         DataGridViewClientes.DataSource = Tabla
@@ -1034,6 +1034,13 @@ Public Class Programa
     ''' 
     Private Sub BOTONabrirAgregar_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles BOTONabrirAgregar.Click
 
+        If DataGridViewganado.Rows.Count = 0 Then
+            Consulta = " alter table ganado auto_increment = 1001 "
+            consultar()
+
+
+        End If
+
         DataGridViewganado.Enabled = False
 
         BOTONguardarAgregar.Visible = True
@@ -1674,7 +1681,7 @@ Public Class Programa
         Dim estado As String = DataGridViewClientes.Item(0, DataGridViewClientes.CurrentRow.Index).Value
         If MessageBox.Show("¿Seguro que desea eliminar a este cliente?", "Confirmacion", MessageBoxButtons.YesNo, MessageBoxIcon.Question) = Windows.Forms.DialogResult.Yes Then
             Try
-                Consulta = " update cliente set estado = 'Desabilitado' where id='" & estado & "'"
+                Consulta = " update cliente set estado = 0 where id='" & estado & "'"
                 consultar()
                 actualizarCliente()
 
@@ -1731,10 +1738,8 @@ Public Class Programa
 
     '//////////////////////////////////////////// BOTON PARA VOLVER A CARGAR LOS DATOS DE CLIENTE/////////////////////////////////////////////////
     Private Sub BOTONcargarDatosclientes_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles BOTONcargarDatosclientes.Click
-        Consulta = " select * from cliente "
-        consultar()
+        actualizarCliente()
 
-        DataGridViewClientes.DataSource = Tabla
 
         txtBUSCARcedula.Clear()
 
@@ -2435,7 +2440,7 @@ Public Class Programa
             Case 3
 
                 'CARGA DATAGRIDCLIENTES
-                Consulta = "select * from cliente where estado = 'Activo' "
+                Consulta = "select * from cliente where estado = 1 "
                 consultar()
 
                 DataGridViewClientes.DataSource = Tabla
@@ -3233,4 +3238,65 @@ Public Class Programa
     End Sub
 
 
+    Private Sub Button1_Click_1(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles BOTONclienteInactivo.Click
+        GroupBoxcliente.Enabled = False
+        DataGridViewClientes.Visible = False
+        DataGridclienteInactivos.Visible = True
+        BOTONcancelarHabilitado.Visible = True
+        BOTONaceptarHabilitado.Visible = True
+        BOTONcargarDatosclientes.Enabled = False
+        Consulta = " select * from cliente where estado = 0 "
+        consultar()
+
+        DataGridclienteInactivos.DataSource = Tabla
+
+        DataGridclienteInactivos.Columns(0).HeaderText = "Cédula"
+        DataGridclienteInactivos.Columns(1).HeaderText = "Nombre"
+        DataGridclienteInactivos.Columns(2).HeaderText = "Apellido"
+        DataGridclienteInactivos.Columns(3).HeaderText = "Dirección"
+        DataGridclienteInactivos.Columns(4).HeaderText = "Teléfono"
+        DataGridclienteInactivos.Columns(5).Visible = False
+    End Sub
+
+    Private Sub BOTONaceptarHabilitado_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles BOTONaceptarHabilitado.Click
+        Dim MsgStyle As MsgBoxStyle = MsgBoxStyle.Critical + MsgBoxStyle.OkOnly
+        Dim MsgStyle1 As MsgBoxStyle = MsgBoxStyle.Information + MsgBoxStyle.OkOnly
+        Dim estado As String = DataGridclienteInactivos.Item(0, DataGridclienteInactivos.CurrentRow.Index).Value
+        If MessageBox.Show("¿Seguro que desea al cliente seleccionado?", "Confirmacion", MessageBoxButtons.YesNo, MessageBoxIcon.Question) = Windows.Forms.DialogResult.Yes Then
+            Try
+                Consulta = " update cliente set estado = 1 where id='" & estado & "'"
+                consultar()
+                Consulta = " select * from cliente where estado = 0 "
+                consultar()
+
+                DataGridclienteInactivos.DataSource = Tabla
+
+                DataGridclienteInactivos.Columns(0).HeaderText = "Cédula"
+                DataGridclienteInactivos.Columns(1).HeaderText = "Nombre"
+                DataGridclienteInactivos.Columns(2).HeaderText = "Apellido"
+                DataGridclienteInactivos.Columns(3).HeaderText = "Dirección"
+                DataGridclienteInactivos.Columns(4).HeaderText = "Teléfono"
+                DataGridclienteInactivos.Columns(5).Visible = False
+
+                actualizarCliente()
+
+
+
+
+            Catch ex As Exception
+                MsgBox(ex.Message)
+            End Try
+        End If
+    End Sub
+
+    Private Sub BOTONcancelarHabilitado_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles BOTONcancelarHabilitado.Click
+        GroupBoxcliente.Enabled = True
+
+        DataGridclienteInactivos.Visible = False
+        DataGridViewClientes.Visible = True
+
+        BOTONcancelarHabilitado.Visible = False
+        BOTONaceptarHabilitado.Visible = False
+        BOTONcargarDatosclientes.Enabled = True
+    End Sub
 End Class
