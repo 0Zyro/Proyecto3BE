@@ -804,7 +804,7 @@ Public Class Programa
 
 
 
-        CBXBuscarcompra.Text = "Elige una opción"
+        CBXBuscarcompra.Text = "Id"
 
         'Paneles de agregar compras
         PNLAgregarcompraganado.Enabled = False
@@ -1793,11 +1793,45 @@ Public Class Programa
 
         TXTCodigoganadocompra.Clear()
         DTPFechanacimientocompra.Value = Today
-        TXTEstadocompra.Clear()
 
         RTXComentariocompraproducto.Clear()
         TXTTotalpagadocomprasproducto.Clear()
         DTPFechacompraproducto.Value = Today
+    End Sub
+    Private Sub BTNEstadisticascompras_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles BTNEstadisticascompras.Click
+        PNLEstadisticascompras.Visible = True
+    End Sub
+    Private Sub DGVCompras_MouseEnter(ByVal sender As Object, ByVal e As System.EventArgs) Handles DGVCompras.MouseEnter
+        PNLEstadisticascompras.Visible = False
+    End Sub
+    Private Sub PNLPrincipalcompra_MouseEnter(ByVal sender As Object, ByVal e As System.EventArgs) Handles PNLPrincipalcompra.MouseEnter
+        PNLEstadisticascompras.Visible = False
+    End Sub
+    Private Sub Button1_Click_2(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles BTNUltimafechacompra.Click
+        Consulta = "select * from compra where fechacompra = (select max(fechacompra) from compra)"
+        consultar()
+        DGVCompras.DataSource = Tabla
+        DGVCompras.Columns(0).HeaderText = "Id"
+        DGVCompras.Columns(1).HeaderText = "Fecha de Compra"
+        DGVCompras.Columns(2).HeaderText = "Comentario"
+        DGVCompras.Columns(3).HeaderText = "Total"
+    End Sub
+    Private Sub Button1_Click_3(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Button1.Click
+        Consulta = ("select sum(totalc) from compra where year(fechacompra) = year(now())")
+        consultar()
+        DGVCompras.DataSource = Tabla
+        DGVCompras.Columns(0).HeaderText = "Total que se gastó en el año"
+
+    End Sub
+   
+    Private Sub BTNActualizarcompras_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles BTNActualizarcompras.Click
+        Consulta = ("select * from compra")
+        consultar()
+        DGVCompras.DataSource = Tabla
+        DGVCompras.Columns(0).HeaderText = "Id"
+        DGVCompras.Columns(1).HeaderText = "Fecha de Compra"
+        DGVCompras.Columns(2).HeaderText = "Comentario"
+        DGVCompras.Columns(3).HeaderText = "Total"
     End Sub
     'boton que agrega el ganado al arraylist
     Private Sub BTNAgregarganadocompra_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles BTNAgregarganadocompra.Click
@@ -1869,7 +1903,7 @@ Public Class Programa
         DTGModificarcompra.Columns(1).HeaderText = "Fecha de Compra"
         DTGModificarcompra.Columns(2).HeaderText = "Comentario"
         DTGModificarcompra.Columns(3).HeaderText = "Total Pagado"
-        CBXModificarcompra.Text = "Elige una opción"
+        CBXModificarcompra.Text = "Id"
         'Oculta panel principal compras
         PNLPrincipalcompra.SendToBack()
         PNLPrincipalcompra.Visible = False
@@ -1951,7 +1985,6 @@ Public Class Programa
 
                         TXTCodigoganadocompra.Text = ""
                         DTPFechanacimientocompra.Value = Today
-                        TXTEstadocompra.Text = ""
                         MsgBox("Los datos se ingresaron correctamente")
                     Else
                         'Muestra mensaje diciendo que no se ingresaron valores numericos o que solo acepta valores numericos
@@ -1975,7 +2008,6 @@ Public Class Programa
 
         TXTCodigoganadocompra.Clear()
         DTPFechanacimientocompra.Value = Today
-        TXTEstadocompra.Clear()
     End Sub
 
 
@@ -2097,36 +2129,36 @@ Public Class Programa
         End If
     End Sub
     '//////Boton que elimina el ganado/////////
-    Private Sub BTNEliminarCompra_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles BTNEliminarCompra.Click
-        Dim MsgStyle As MsgBoxStyle = MsgBoxStyle.Critical + MsgBoxStyle.OkOnly
-        Dim MsgStyle1 As MsgBoxStyle = MsgBoxStyle.Information + MsgBoxStyle.OkOnly
+    'Private Sub BTNEliminarCompra_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles BTNEliminarCompra.Click
+    '    Dim MsgStyle As MsgBoxStyle = MsgBoxStyle.Critical + MsgBoxStyle.OkOnly
+    '    Dim MsgStyle1 As MsgBoxStyle = MsgBoxStyle.Information + MsgBoxStyle.OkOnly
 
-        If MessageBox.Show("¿Seguro que desea eliminar ésta compra?", "Confirmación", MessageBoxButtons.YesNo, MessageBoxIcon.Question) = Windows.Forms.DialogResult.Yes Then
-            Try
-                'Elimina el id de una compra juntos con todos los datos de ese id
-                Consulta = "delete from compra where idc='" & DGVCompras.Item(0, DGVCompras.CurrentRow.Index).Value & "'"
-                consultar()
+    '    If MessageBox.Show("¿Seguro que desea eliminar ésta compra?", "Confirmación", MessageBoxButtons.YesNo, MessageBoxIcon.Question) = Windows.Forms.DialogResult.Yes Then
+    '        Try
+    '            'Elimina el id de una compra juntos con todos los datos de ese id
+    '            Consulta = "delete from compra where idc='" & DGVCompras.Item(0, DGVCompras.CurrentRow.Index).Value & "'"
+    '            consultar()
 
-                Select Case error1
+    '            Select Case error1
 
-                    Case 1
-                        MsgBox("No se pudo eliminar la compra", MsgStyle, Title:="Error")
-                    Case 0
-                        Consulta = "select * from compra"
-                        consultar()
-                        'Actualiza la BD
+    '                Case 1
+    '                    MsgBox("No se pudo eliminar la compra", MsgStyle, Title:="Error")
+    '                Case 0
+    '                    Consulta = "select * from compra"
+    '                    consultar()
+    '                    'Actualiza la BD
 
-                        DGVCompras.DataSource = Tabla
+    '                    DGVCompras.DataSource = Tabla
 
-                        MsgBox("Compra eliminada", MsgStyle1, Title:="Eliminado")
+    '                    MsgBox("Compra eliminada", MsgStyle1, Title:="Eliminado")
 
-                End Select
+    '            End Select
 
-            Catch ex As Exception
-                MsgBox(ex)
-            End Try
-        End If
-    End Sub
+    '        Catch ex As Exception
+    '            MsgBox(ex)
+    '        End Try
+    '    End If
+    'End Sub
 
     Private Sub TXTBuscarcompra_TextChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles TXTBuscarcompra.TextChanged
         Consulta = "select * from compra where idc like '" & TXTBuscarcompra.Text & "%'"
@@ -2234,16 +2266,6 @@ Public Class Programa
         Consulta = "select * from compra where fechacompra like '" & fecha & "%'"
         consultar()
         DTGModificarcompra.DataSource = Tabla
-    End Sub
-    Private Sub BTNGastosdelañocompra_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles BTNGastosdelañocompra.Click
-        Consulta = ("select sum(totalc) as 'Total que se pago en el año' from compra where year(fechacompra) = year(now())")
-        consultar()
-        DGVCompras.DataSource = Tabla
-    End Sub
-    Private Sub BTNUltimafechadecompra_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles BTNUltimafechadecompra.Click
-        Consulta = "select * from compra where fechacompra = (select max(fechacompra) from compra)"
-        consultar()
-        DGVCompras.DataSource = Tabla
     End Sub
     '/////////////////////////////FIN COMPRAS//////////////////////////////////////////////////////////////////
     '//////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -3299,4 +3321,9 @@ Public Class Programa
         BOTONaceptarHabilitado.Visible = False
         BOTONcargarDatosclientes.Enabled = True
     End Sub
+
+    
+   
+    
+    
 End Class
