@@ -2813,7 +2813,24 @@ Public Class Programa
         End If
 
     End Sub
+    Private Sub txttelefonoCliente_KeyPress(ByVal sender As Object, ByVal e As System.Windows.Forms.KeyPressEventArgs) Handles txttelefonoCliente.KeyPress
 
+        If Char.IsNumber(e.KeyChar) Then
+            e.Handled = False
+        ElseIf Char.IsControl(e.KeyChar) Then
+            e.Handled = False
+            'ElseIf Char.IsSeparator(e.KeyChar) Then
+            '    e.Handled = True
+
+            'If IsNumeric(txtBuscarCodGanado.Text) Then
+
+
+        Else
+
+            e.Handled = True
+
+        End If
+    End Sub
     Private Sub txtcedulaCliente_KeyPress(ByVal sender As Object, ByVal e As System.Windows.Forms.KeyPressEventArgs) Handles txtcedulaCliente.KeyPress
 
 
@@ -2822,7 +2839,7 @@ Public Class Programa
         ElseIf Char.IsControl(e.KeyChar) Then
             e.Handled = False
         ElseIf Char.IsSeparator(e.KeyChar) Then
-
+            e.Handled = True
 
             'If IsNumeric(txtBuscarCodGanado.Text) Then
 
@@ -3322,8 +3339,11 @@ Public Class Programa
         BOTONcargarDatosclientes.Enabled = True
     End Sub
 
+
+
     
    
     
     
+
 End Class
