@@ -423,7 +423,11 @@ Public Class Programa
                             If verificarNombre() Then
                                 If verificarPasswd(TXTPasswdUsuarios.Text) Then
 
-                                    My.Computer.FileSystem.CopyFile(getAbsoluteRoute(), ("../../Resources/profile/" + getFileName()), Microsoft.VisualBasic.FileIO.UIOption.AllDialogs)
+                                    Try
+                                        My.Computer.FileSystem.CopyFile(getAbsoluteRoute(), ("../../Resources/profile/" + getFileName()), Microsoft.VisualBasic.FileIO.UIOption.AllDialogs)
+                                    Catch ex As Exception
+                                    End Try
+
 
                                     PICUsuarios.ImageLocation = ("../../Resources/profile/" + getFileName())
 
@@ -486,12 +490,6 @@ Public Class Programa
         Return aux(aux.Length - 1)
 
     End Function
-
-    Private Sub Button7_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Button7.Click
-
-        My.Computer.FileSystem.CopyFile(getAbsoluteRoute(), ("../../Resources/profile/" + getFileName()), Microsoft.VisualBasic.FileIO.UIOption.AllDialogs)
-
-    End Sub
 
     Private Sub altaUsuario(ByVal ci As String)
 
@@ -2584,12 +2582,10 @@ Public Class Programa
         Dim totalv As String = txbmodificarventa.Text
         Dim dedo As String = DataGridViewmodificarventa.Item(0, DataGridViewmodificarventa.CurrentRow.Index).Value
 
-        If CBXmodificarestadoventa.SelectedItem.ToString <> "" Then
-
-
             Try
-                Consulta = ("update venta set idv='" & dedo & "', fechaventa='" + fecha + "', comentariov='" + comentario + "', totalv='" + totalv + "', estado= '" + CBXmodificarestadoventa.SelectedItem.ToString + "' where idv='" & dedo & "'")
-                consultar()
+            Consulta = ("update venta set fechaventa='" + fecha + "', comentariov='" + comentario + "', totalv='" + totalv + "' where idv='" & dedo & "'")
+
+            consultar()
                 Consulta = "select * from venta"
                 consultar()
                 DataGridViewmodificarventa.DataSource = Tabla
@@ -2597,10 +2593,7 @@ Public Class Programa
 
             Catch ex As Exception
                 MsgBox(ex)
-            End Try
-        Else
-            MsgBox("complete el campo 'Estado'")
-        End If
+            End Try                     
     End Sub
 
     Private Sub btnvolvervm_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnvolvervm.Click
