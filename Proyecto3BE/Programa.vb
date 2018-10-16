@@ -2577,7 +2577,7 @@ Public Class Programa
 
     End Sub
 
-    Private Sub Button6_Click_2(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Button6.Click
+    Private Sub Button6_Click_2(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles BTNmodificarventas.Click
 
         Dim fecha As String = DateTimePickermodificarventa.Value.ToString("yyyy-MM-dd")
         Dim comentario As String = RichTextBoxmodificarventa.Text
@@ -3037,6 +3037,9 @@ Public Class Programa
 
     '//////////////PARTE DE VENTA///////////////////////////////////////////////////////////////////////////////
     Private Sub Button1_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles BTNAparecerPanelCalculo.Click
+
+        DGVCalculoK.Rows.Clear()
+
         For i As Integer = 0 To LSTVentas.Items.Count - 1
 
             DGVCalculoK.Rows.Add()
@@ -3051,25 +3054,28 @@ Public Class Programa
 
     Private Sub BTNCalculoK_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles BTNCalculoK.Click
 
-
-        If IsNumeric(DGVCalculoK.SelectedRows) Then
-
             Dim total As Integer = 0
 
             For i As Integer = 0 To DGVCalculoK.Rows.Count - 1
 
+            If IsNumeric(DGVCalculoK.Item(1, i).Value) And IsNumeric(DGVCalculoK.Item(2, i).Value) Then
+
+                DGVCalculoK.Item(3, i).Value = (Convert.ToInt32(DGVCalculoK.Item(1, i).Value)) * (Convert.ToInt32(DGVCalculoK.Item(2, i).Value))
                 total = (total + (Convert.ToInt32(DGVCalculoK.Item(1, i).Value) * (Convert.ToInt32(DGVCalculoK.Item(2, i).Value))))
 
-            Next
+            Else
+                MsgBox("Ingrese caracteres numericos solamente")
+                Exit Sub
+            End If
+
+        Next
 
             txbtotalventa.Text = (total)
 
-            PNLCalculoK.Visible = False
+        PNLCalculoK.Visible = False
 
-            DGVCalculoK.Rows.Clear()
-        Else
-            MsgBox("Solo ingrese números y/o rellene los campos faltantes")
-        End If
+
+
     End Sub
 
     Private Sub btnclearventaxd_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnclearventaxd.Click
@@ -3137,10 +3143,9 @@ Public Class Programa
 
             Catch ex As Exception
                 MsgBox(ex)
-
-
             End Try
         End If
+
         'Dim consultaconmayor As String = "select max(idv) from venta"
         comando.CommandType = CommandType.Text
         comando.Connection = connection
@@ -3157,23 +3162,32 @@ Public Class Programa
 
             connection.Close()
 
+            connection.Open()
+
             For i As Integer = 0 To LSTVentas.Items.Count - 1
 
-                Consulta = "update ganado set estado='vendido', idv='" + aux + "' where idg='" + LSTVentas.Items(i) + "'"
+                comando.CommandText = ("update ganado set estado='vendido', idv='" + aux + "', preciov='" + DGVCalculoK.Item(3, i).Value.ToString + "' where idg='" + LSTVentas.Items(i) + "'")
+                comando.ExecuteNonQuery()
 
-                consultar()
 
+                DataGridViewVENTAS.DataSource = Tabla
             Next
 
+            connection.Close()
+            MsgBox("Se agregó la venta con exito")
         Catch ex As Exception
+            MsgBox(ex.Message)
             If connection.State = ConnectionState.Open Then
                 connection.Close()
             End If
         End Try
 
+        rtbventa.Text = ""
+        txbtotalventa.Text = ""
+        txbceduladeclientedeventas.Clear()
     End Sub
 
-    Private Sub Button8_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Button8.Click
+    Private Sub Button8_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnvolverventa.Click
         paneldetextosenventas.Visible = False
     End Sub
     'AGREGAR VENTA
