@@ -870,8 +870,8 @@ Public Class Programa
 
         'Muestra el panel principal de Compras y oculta los otros
         PNLPrincipalcompra.BringToFront()
-        Panelmodificarcompras.Visible = False
-        Panelagregarcompras.Visible = False
+        PNLModificarcompras.Visible = False
+        PNLAgregarcompras.Visible = False
 
         '////////////FIN COMPRAS
     End Sub
@@ -1812,9 +1812,9 @@ Public Class Programa
 
 
         'Oculta panel de agregar compras
-        Panelagregarcompras.SendToBack()
-        Panelagregarcompras.Visible = False
-        Panelagregarcompras.Enabled = False
+        PNLAgregarcompras.SendToBack()
+        PNLAgregarcompras.Visible = False
+        PNLAgregarcompras.Enabled = False
 
 
 
@@ -1829,9 +1829,9 @@ Public Class Programa
     '/////////////////////////Boton de para entrar al panel de agregar compras
     Private Sub BTNpanelmodicompras_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles BTNPanelagregarcompra.Click
         'Muestra el panel de agregar compras
-        Panelagregarcompras.BringToFront()
-        Panelagregarcompras.Visible = True
-        Panelagregarcompras.Enabled = True
+        PNLAgregarcompras.BringToFront()
+        PNLAgregarcompras.Visible = True
+        PNLAgregarcompras.Enabled = True
         CBXAgregarcompra.Text = "Elige una opción"
         'Oculta el panel principal de compras
         PNLPrincipalcompra.SendToBack()
@@ -1887,7 +1887,15 @@ Public Class Programa
     End Sub
     'boton que agrega el ganado al arraylist
     Private Sub BTNAgregarganadocompra_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles BTNAgregarganadocompra.Click
+        Dim total As Integer = 0
+        For x As Integer = 0 To TXTTotalapagarcompraganado.Text.Count - 1
+            If IsNumeric(TextBox1.Text) And IsNumeric(TextBox2.Text) Then
+                TextBox3.Text = TextBox1.Text * TextBox2.Text
+                total = (total + (TextBox1.Text * TextBox2.Text))
+            End If
+        Next
 
+        TXTTotalapagarcompraganado.Text = (total)
     End Sub
 
     Private Sub BTNAgregarcompra_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles BTNAgregarcompraproducto.Click
@@ -1942,9 +1950,9 @@ Public Class Programa
     '////////////////////Boton muestra panel de modificar compras///////////////////
     Private Sub BTNPanelmodicompra_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles BTNPanelmodicompra.Click
         'Muestra el panel de modificar compras
-        Panelmodificarcompras.BringToFront()
-        Panelmodificarcompras.Visible = True
-        Panelmodificarcompras.Enabled = True
+        PNLModificarcompras.BringToFront()
+        PNLModificarcompras.Visible = True
+        PNLModificarcompras.Enabled = True
 
         'Actualiza datagrid de panel modificar compras
         Consulta = "select * from compra"
@@ -2109,9 +2117,9 @@ Public Class Programa
     End Sub
     Private Sub BTNsalirmodicompra_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles BTNsalirmodicompra.Click
         'Oculta el panel de modificar compra
-        Panelmodificarcompras.Enabled = False
-        Panelmodificarcompras.Visible = False
-        Panelmodificarcompras.SendToBack()
+        PNLModificarcompras.Enabled = False
+        PNLModificarcompras.Visible = False
+        PNLModificarcompras.SendToBack()
 
         'Muestra el panel principal de compra
         PNLPrincipalcompra.Enabled = True
