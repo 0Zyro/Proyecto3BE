@@ -816,10 +816,13 @@ Public Class Programa
 
     Private Sub Form2_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
 
+        TMRHoraFecha.Start()
+
+        Me.Text = ("Gestión y Control Ganadero || " + Date.Today.Day.ToString + "/" + Date.Today.Month.ToString + "/" + Date.Today.Year.ToString)
+
+        '-------------------------------------------------------------------------------------------------------------------
 
         '////////////VENTAS
-
-
 
         Consulta = "select * from venta"
         consultar()
@@ -833,13 +836,7 @@ Public Class Programa
         'panel ventas
         paneldetextosenventas.Visible = False
 
-
         '////////////FIN VENTAS
-
-
-        '-------------------------------------------------------------------------------------------------------------------
-
-
 
         '-------------------------------------------------------------------------------------------------------------------
 
@@ -858,11 +855,7 @@ Public Class Programa
 
         '////////////COMPRAS
 
-
         'Consulta = "select sum(totalc) from compra where year(fechacompra) = year(now())"
-
-
-
 
         CBXBuscarcompra.Text = "Id"
 
@@ -879,7 +872,6 @@ Public Class Programa
         PNLPrincipalcompra.BringToFront()
         Panelmodificarcompras.Visible = False
         Panelagregarcompras.Visible = False
-
 
         '////////////FIN COMPRAS
     End Sub
@@ -3406,5 +3398,19 @@ Public Class Programa
         BOTONcancelarHabilitado.Visible = False
         BOTONaceptarHabilitado.Visible = False
         BOTONcargarDatosclientes.Enabled = True
+    End Sub
+
+    Dim separador As Boolean = False
+
+    Private Sub TMRHoraFecha_Tick(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles TMRHoraFecha.Tick
+
+        If separador = False Then
+            LBLHora.Text = (Date.Now.Hour.ToString + " " + Date.Now.Minute.ToString)
+            separador = True
+        Else
+            LBLHora.Text = (Date.Now.Hour.ToString + ":" + Date.Now.Minute.ToString)
+            separador = False
+        End If
+
     End Sub
 End Class
