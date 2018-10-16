@@ -2,6 +2,8 @@
 Imports System.Data.OleDb
 Imports MySql.Data.MySqlClient
 Imports System.IO
+Imports System.Security.Cryptography
+Imports System.Text
 
 Public Class Programa
     Dim error1 As Integer
@@ -128,6 +130,56 @@ Public Class Programa
     End Sub
     '///SECCION USUARIOS
 
+    Private Sub BTNModificarContraseña_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles BTNModificarContraseña.Click
+
+        Dim aux As String = InputBox("¿Seguro que desea cambiar la contraseña?", "Confirmacion")
+
+        comando.CommandType = CommandType.Text
+        comando.Connection = connection
+        comando.CommandText = ("update usuario set contrasena='" + encriptar(aux) + "' where ci='" + CiSeleccionado + "'")
+
+        If verificarPasswd(aux) Then
+
+            Try
+
+                connection.Open()
+
+                comando.ExecuteNonQuery()
+
+                connection.Close()
+
+            Catch ex As Exception
+                MsgBox(ex.Message)
+                If connection.State = ConnectionState.Open Then
+                    connection.Close()
+                End If
+            End Try
+
+            LBLInfoUsuarios.Text = "Contraseña cambiada con exito"
+
+            BTNCancelarUsuarios.PerformClick()
+
+        End If
+
+    End Sub
+
+    Public Function encriptar(ByVal pass As String)
+
+        Dim sham As New SHA256Managed()
+
+        Dim tmp() As Byte = ASCIIEncoding.ASCII.GetBytes(pass)
+        Dim hash() As Byte = sham.ComputeHash(tmp)
+
+        Dim asdf As String = ""
+
+        For Each ele As Byte In hash
+            asdf = asdf + (ele.ToString)
+        Next
+
+        Return asdf
+
+    End Function
+
     Private Sub BTNCerrarSesion_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles BTNCerrarSesion.Click
         Me.Close()
     End Sub
@@ -140,7 +192,7 @@ Public Class Programa
 
             comando.CommandType = CommandType.Text
             comando.Connection = connection
-            comando.CommandText = ("update usuario set contrasena='" + asd + "' where ci='" + PasswdUsuario + "'")
+            comando.CommandText = ("update usuario set contrasena='" + encriptar(asd) + "' where ci='" + PasswdUsuario + "'")
 
             Try
 
@@ -191,24 +243,24 @@ Public Class Programa
         'Si el panel de busqueda esta vacio se buscaran todos, en caso contrario se busca lo especificado
         If TXTBusquedaUsuarios.Text = "" Then
             If CHBUsuariosInactivos.Checked Then
-                Consulta = ("select ci, nombre, contrasena, rango, estado from usuario")
+                Consulta = ("select ci, nombre, rango, estado from usuario")
             Else
-                Consulta = ("select ci, nombre, contrasena, rango, estado from usuario where estado='activo'")
+                Consulta = ("select ci, nombre, rango, estado from usuario where estado='activo'")
             End If
         Else
             If CHBUsuariosInactivos.Checked Then
-                Consulta = ("select ci, nombre, contrasena, rango, estado from usuario where " + CBXBusquedaUsuarios.SelectedItem + "='" + TXTBusquedaUsuarios.Text + "'")
+                Consulta = ("select ci, nombre, rango, estado from usuario where " + CBXBusquedaUsuarios.SelectedItem + "='" + TXTBusquedaUsuarios.Text + "'")
             Else
-                Consulta = ("select ci, nombre, contrasena, rango, estado from usuario where estado='activo' and " + CBXBusquedaUsuarios.SelectedItem + "='" + TXTBusquedaUsuarios.Text + "'")
+                Consulta = ("select ci, nombre, rango, estado from usuario where estado='activo' and " + CBXBusquedaUsuarios.SelectedItem + "='" + TXTBusquedaUsuarios.Text + "'")
             End If
         End If
 
         If CBXBusquedaRangoUsuarios.Visible = True Then
 
             If CHBUsuariosInactivos.Checked Then
-                Consulta = ("select ci, nombre, contrasena, rango, estado from usuario where rango='" + CBXBusquedaRangoUsuarios.SelectedItem + "'")
+                Consulta = ("select ci, nombre, rango, estado from usuario where rango='" + CBXBusquedaRangoUsuarios.SelectedItem + "'")
             Else
-                Consulta = ("select ci, nombre, contrasena, rango, estado from usuario where rango='" + CBXBusquedaRangoUsuarios.SelectedItem + "' and estado='activo'")
+                Consulta = ("select ci, nombre, rango, estado from usuario where rango='" + CBXBusquedaRangoUsuarios.SelectedItem + "' and estado='activo'")
             End If
 
         End If
@@ -219,7 +271,7 @@ Public Class Programa
 
         If CHBUsuariosInactivos.Checked = True Then
         Else
-            DGVUsuarios.Columns(4).Visible = False
+            DGVUsuarios.Columns(3).Visible = False
         End If
 
     End Sub
@@ -373,39 +425,39 @@ Public Class Programa
         Select Case estadoUsuario
             Case "modificar"
                 If verificarNombre() Then
-                    If verificarPasswd(TXTPasswdUsuarios.Text) Then
 
+                    Try
                         My.Computer.FileSystem.CopyFile(PICUsuarios.ImageLocation, ("../../Resources/profile/" + getFileName()), Microsoft.VisualBasic.FileIO.UIOption.OnlyErrorDialogs)
+                    Catch ex As Exception
+                    End Try
 
-                        PICUsuarios.ImageLocation = ("../../Resources/profile/" + getFileName())
+                    PICUsuarios.ImageLocation = ("../../Resources/profile/" + getFileName())
 
-                        comando.CommandText = ("update usuario set contrasena='" + TXTPasswdUsuarios.Text +
-                       "', nombre='" + TXTNombreUsuarios.Text +
-                       "', rango='" + CBXRangoUsuarios.SelectedItem.ToString +
-                       "', perfil='" + getAbsoluteRoute() +
-                       "' where ci='" + CiSeleccionado + "'")
+                    comando.CommandText = ("update usuario set nombre='" + TXTNombreUsuarios.Text +
+                   "', rango='" + CBXRangoUsuarios.SelectedItem.ToString +
+                   "', perfil='" + getAbsoluteRoute() +
+                   "' where ci='" + CiSeleccionado + "'")
 
-                        Try
-                            'Se abre la conexion
-                            connection.Open()
-                            'Se ejecuta el comando
-                            comando.ExecuteNonQuery()
-                            'Se cierra la conexion
-                            connection.Close()
-                            'Se informa de la correcta modificacion del usuario
-                            LBLInfoUsuarios.Text = "Usuario modificado"
-                            estadoVisualizar()
-                        Catch ex As Exception
-                            'Se informan errores
-                            MsgBox("Error: " + ex.Message)
-                        End Try
+                    Try
+                        'Se abre la conexion
+                        connection.Open()
+                        'Se ejecuta el comando
+                        comando.ExecuteNonQuery()
+                        'Se cierra la conexion
+                        connection.Close()
+                        'Se informa de la correcta modificacion del usuario
+                        LBLInfoUsuarios.Text = "Usuario modificado"
                         estadoVisualizar()
-                    Else
-                        LBLInfoUsuarios.Text = "Contraseña muy corta"
-                    End If
+                    Catch ex As Exception
+                        'Se informan errores
+                        MsgBox("Error: " + ex.Message)
+                    End Try
+                    estadoVisualizar()
+               
                 Else
                     LBLInfoUsuarios.Text = "Nombre incorrecto"
                 End If
+
                 Exit Select
             Case "agregar"
                 If verificarCedula(TXTCiUsuarios.Text) Then
@@ -434,7 +486,7 @@ Public Class Programa
                                     comando.CommandText = ("insert into usuario values ('" +
                                                            TXTCiUsuarios.Text + "','" +
                                                            TXTNombreUsuarios.Text + "','" +
-                                                           TXTPasswdUsuarios.Text + "','" +
+                                                           encriptar(TXTPasswdUsuarios.Text) + "','" +
                                                            CBXRangoUsuarios.SelectedItem.ToString +
                                                            "','activo','" +
                                                            getAbsoluteRoute() +
@@ -631,6 +683,8 @@ Public Class Programa
         BTNEliminarUsuarios.Visible = False
         BTNModificarUsuarios.Visible = False
 
+        BTNModificarContraseña.Visible = True
+
         PICUsuarios.Enabled = True
         'PICUsuarios.ImageLocation = "../../Res/profile/nueva.bmp"
 
@@ -638,6 +692,9 @@ Public Class Programa
 
         TXTCiUsuarios.Visible = False
         LBLCiUsuarios.Visible = False
+
+        TXTPasswdUsuarios.Visible = False
+        LBLPasswdUsuarios.Visible = False
 
         PNLUsuarios.Visible = True
     End Sub
@@ -649,6 +706,11 @@ Public Class Programa
 
         TXTCiUsuarios.Visible = True
         LBLCiUsuarios.Visible = True
+
+        TXTPasswdUsuarios.Visible = True
+        LBLPasswdUsuarios.Visible = True
+
+        BTNModificarContraseña.Visible = False
 
         PICUsuarios.ImageLocation = ("../../Resources/profile/nueva.bmp")
 
@@ -693,9 +755,9 @@ Public Class Programa
         BTNBusquedaUsuarios.PerformClick()
 
         If CHBUsuariosInactivos.Checked Then
-            DGVUsuarios.Columns(4).Visible = True
+            DGVUsuarios.Columns(3).Visible = True
         Else
-            DGVUsuarios.Columns(4).Visible = False
+            DGVUsuarios.Columns(3).Visible = False
         End If
     End Sub
 
@@ -1353,10 +1415,10 @@ Public Class Programa
 
 
 
-   
 
 
-  
+
+
 
     Private Sub BOTONbuscarPanelestado_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles BOTONbuscarPanelestado.Click
         GroupBox3.Enabled = True
@@ -1821,7 +1883,7 @@ Public Class Programa
         DGVCompras.Columns(0).HeaderText = "Total que se gastó en el año"
 
     End Sub
-   
+
     Private Sub BTNActualizarcompras_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles BTNActualizarcompras.Click
         Consulta = ("select * from compra")
         consultar()
@@ -2564,7 +2626,7 @@ Public Class Programa
 
     End Sub
 
-   
+
 
     Private Sub DataGridViewmodificarventa_SelectionChanged(ByVal sender As Object, ByVal e As System.EventArgs) Handles DataGridViewmodificarventa.SelectionChanged
 
@@ -2582,18 +2644,18 @@ Public Class Programa
         Dim totalv As String = txbmodificarventa.Text
         Dim dedo As String = DataGridViewmodificarventa.Item(0, DataGridViewmodificarventa.CurrentRow.Index).Value
 
-            Try
+        Try
             Consulta = ("update venta set fechaventa='" + fecha + "', comentariov='" + comentario + "', totalv='" + totalv + "' where idv='" & dedo & "'")
 
             consultar()
-                Consulta = "select * from venta"
-                consultar()
-                DataGridViewmodificarventa.DataSource = Tabla
+            Consulta = "select * from venta"
+            consultar()
+            DataGridViewmodificarventa.DataSource = Tabla
 
 
-            Catch ex As Exception
-                MsgBox(ex)
-            End Try                     
+        Catch ex As Exception
+            MsgBox(ex)
+        End Try
     End Sub
 
     Private Sub btnvolvervm_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnvolvervm.Click
@@ -3047,9 +3109,9 @@ Public Class Programa
 
     Private Sub BTNCalculoK_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles BTNCalculoK.Click
 
-            Dim total As Integer = 0
+        Dim total As Integer = 0
 
-            For i As Integer = 0 To DGVCalculoK.Rows.Count - 1
+        For i As Integer = 0 To DGVCalculoK.Rows.Count - 1
 
             If IsNumeric(DGVCalculoK.Item(1, i).Value) And IsNumeric(DGVCalculoK.Item(2, i).Value) Then
 
@@ -3063,7 +3125,7 @@ Public Class Programa
 
         Next
 
-            txbtotalventa.Text = (total)
+        txbtotalventa.Text = (total)
 
         PNLCalculoK.Visible = False
 
@@ -3249,7 +3311,7 @@ Public Class Programa
 
 
     End Sub
-   
+
 
 
     Private Sub btnbuscarventa_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnbuscarventa.Click
@@ -3345,12 +3407,4 @@ Public Class Programa
         BOTONaceptarHabilitado.Visible = False
         BOTONcargarDatosclientes.Enabled = True
     End Sub
-
-
-
-    
-   
-    
-    
-
 End Class

@@ -1,4 +1,6 @@
 ﻿Imports MySql.Data.MySqlClient
+Imports System.Security.Cryptography
+Imports System.Text
 
 Public Class Login
     'Objetos necesarios para realizar la conexion a la DB
@@ -11,7 +13,7 @@ Public Class Login
     Dim reader As MySqlDataReader
 
     'Usuario que actualmente intenta loguearse
-    Dim usuario As Integer = 0
+    Dim usuario As String = ""
 
     'Datos del usuario que intenta loguearse actualmente
     Dim ci As String = ""
@@ -36,7 +38,7 @@ Public Class Login
     'El estado 1 se encarga de recoger que usuario esta ingresando actualmente
     Private Sub estado1()
         'Array que contiene todos los usuarios de la DB cuando "estado" = 1
-        Dim cis(0) As Integer
+        Dim cis(0) As String
 
         'Se le asigna a consulta los valores necesarios, texto del comando, conexion a utilizar y tipo de comando
         consulta.CommandText = "select ci from usuario where estado='activo'"
@@ -50,7 +52,7 @@ Public Class Login
             'Si "reader" tiene algun resultado, se lee cada resultado y se guarda en el array "cis"
             If reader.HasRows Then
                 While reader.Read()
-                    cis(cis.Length - 1) = reader.GetInt32(0)
+                    cis(cis.Length - 1) = reader.GetString(0)
                     ReDim Preserve cis(cis.Length)
                 End While
                 ReDim Preserve cis(cis.Length - 2)
@@ -65,14 +67,14 @@ Public Class Login
         'Se compara el usuario ingresado con todos los usuarios encontrados en la DB
         'Si se encuentra coincidencia se iguala la variable "usuario" a este
         For Each ele As Integer In cis
-            If TextBoxUser.Text = ele.ToString Then
+            If TextBoxUser.Text = ele Then
                 usuario = ele
                 Exit For
             End If
         Next
 
         'Si ninguno coincide se informa de la excepcion
-        If usuario = 0 Then
+        If usuario = "" Then
             LabelInfo.Text = "Usuario no encontrado o incorrecto"
             TextBoxUser.Focus()
         Else
@@ -80,11 +82,28 @@ Public Class Login
         End If
     End Sub
 
+    Public Function encriptar(ByVal pass As String)
+
+        Dim sham As New SHA256Managed()
+
+        Dim tmp() As Byte = ASCIIEncoding.ASCII.GetBytes(pass)
+        Dim hash() As Byte = sham.ComputeHash(tmp)
+
+        Dim asdf As String = ""
+
+        For Each ele As Byte In hash
+            asdf = asdf + (ele.ToString)
+        Next
+
+        Return asdf
+
+    End Function
+
     'El estado 2 se encarga de recoger la contraseña del usuario en cuestion, validar y dar ingreso al programa
     Private Sub estado2()
 
         'Se le asigna a consulta los valores necesarios, texto del comando, conexion a utilizar y tipo de comando
-        consulta.CommandText = ("select ci, nombre, contrasena, perfil, rango from usuario where ci='" + Str(usuario) + "'")
+        consulta.CommandText = ("select ci, nombre, contrasena, perfil, rango from usuario where ci='" + usuario + "'")
         consulta.Connection = conexion
         consulta.CommandType = CommandType.Text
 
@@ -94,22 +113,29 @@ Public Class Login
             reader = consulta.ExecuteReader()
 
             'Se pasa la contraseña obtenida al la variable "passwd"
-            reader.Read()
-            ci = reader.GetInt32(0).ToString
-            nombre = reader.GetString(1)
-            passwd = reader.GetString(2)
-            imagen = reader.GetString(3)
-            rango = reader.GetString(4)
+            If reader.Read() Then
+
+                ci = reader.GetString(0)
+                nombre = reader.GetString(1)
+                passwd = reader.GetString(2)
+                imagen = reader.GetString(3)
+                rango = reader.GetString(4)
+
+            End If
 
             'Se cierra la conexion
             conexion.Close()
         Catch ex As Exception
             MsgBox("Error: " + ex.Message)
+            If conexion.State = ConnectionState.Open Then
+                conexion.Close()
+            End If
         End Try
 
         'Si coincide la contraseña ingresada con la obtenida de la DB, se ingresa
         'sino se informa del error
-        If TextBoxUser.Text = passwd Then
+
+        If encriptar(TextBoxUser.Text) = passwd Then
             Programa.setUser(ci, nombre, passwd, rango, imagen)
             Programa.Show()
             Programa.TabbedPane.SelectedIndex = 1
@@ -163,9 +189,5 @@ Public Class Login
     'El boton volver cvuelve a la interfaz anterior
     Private Sub BotonVolver_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles BotonVolver.Click
         volver()
-    End Sub
-
-    Private Sub Login_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
-
     End Sub
 End Class
