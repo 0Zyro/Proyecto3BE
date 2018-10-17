@@ -1888,7 +1888,7 @@ Public Class Programa
     'boton que agrega el ganado al arraylist
     Private Sub BTNAgregarganadocompra_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles BTNAgregarganadocompra.Click
         Dim total As Integer = 0
-        For x As Integer = 0 To TXTTotalapagarcompraganado.Text.Count - 1
+        For x As Integer = 0 TextBox1.Text.Count - 1 TextBox2.Text.Count - 1
             If IsNumeric(TextBox1.Text) And IsNumeric(TextBox2.Text) Then
                 TextBox3.Text = TextBox1.Text * TextBox2.Text
                 total = (total + (TextBox1.Text * TextBox2.Text))
@@ -1900,7 +1900,7 @@ Public Class Programa
 
     Private Sub BTNAgregarcompra_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles BTNAgregarcompraproducto.Click
 
-        Dim fechacompra As String = DTPFechacompraproducto.Value.ToString("yyyy-MM-dd hh-mm-ss")
+        Dim fechacompra As String = DTPFechacompraproducto.Value.ToString("yyyy-MM-dd")
 
         If fechacompra <> "" And RTXComentariocompraproducto.Text <> "" And TXTTotalpagadocomprasproducto.Text <> "" Then
             'Si la fecha de compra es mayor que la fecha actual salta el msgbox
@@ -2175,8 +2175,6 @@ Public Class Programa
             PNLAgregarcompraganado.Visible = False
             PNLAgregarcompraganado.Enabled = False
             PNLAgregarcompraganado.SendToBack()
-            DTPFechacompraproducto.CustomFormat = "dd/MM/yyyy hh:mm:ss"
-            DTPFechacompraproducto.Format = DateTimePickerFormat.Custom
 
         Else
             PNLAgregarcompraproducto.Visible = False
