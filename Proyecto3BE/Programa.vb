@@ -3246,14 +3246,17 @@ Public Class Programa
 
     Private Sub BTNCalculoK_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles BTNCalculoK.Click
 
-        Dim total As Integer = 0
+        Dim total As Double = 0
 
         For i As Integer = 0 To DGVCalculoK.Rows.Count - 1
-
             If IsNumeric(DGVCalculoK.Item(1, i).Value) And IsNumeric(DGVCalculoK.Item(2, i).Value) Then
 
-                DGVCalculoK.Item(3, i).Value = (Convert.ToInt32(DGVCalculoK.Item(1, i).Value)) * (Convert.ToInt32(DGVCalculoK.Item(2, i).Value))
-                total = (total + (Convert.ToInt32(DGVCalculoK.Item(1, i).Value) * (Convert.ToInt32(DGVCalculoK.Item(2, i).Value))))
+                DGVCalculoK.Item(1, i).Value = DGVCalculoK.Item(1, i).Value.ToString.Replace(".", ",")
+                DGVCalculoK.Item(2, i).Value = DGVCalculoK.Item(2, i).Value.ToString.Replace(".", ",")
+
+                DGVCalculoK.Item(3, i).Value = (Convert.ToDouble(DGVCalculoK.Item(1, i).Value)) * (Convert.ToDouble(DGVCalculoK.Item(2, i).Value))
+
+                total = (total + (Convert.ToDouble(DGVCalculoK.Item(3, i).Value)))
 
             Else
                 MsgBox("Ingrese caracteres numericos solamente")
