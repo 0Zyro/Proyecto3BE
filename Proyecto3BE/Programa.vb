@@ -3294,15 +3294,15 @@ Public Class Programa
 
     Private Sub BTNQuitarLista_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles BTNQuitarLista.Click
 
-        If IsNumeric(TXTIndiceQuitar.Text) Then
-            If Convert.ToInt32(TXTIndiceQuitar.Text) >= 0 And Convert.ToInt32(TXTIndiceQuitar.Text) < LSTVentas.Items.Count Then
+        Try
 
-                cbxventa.Items.Add(LSTVentas.Items.Item(Convert.ToInt32(TXTIndiceQuitar.Text)))
+            cbxventa.Items.Add(LSTVentas.Items.Item(LSTVentas.SelectedIndex))
 
-                LSTVentas.Items.RemoveAt(Convert.ToInt32(TXTIndiceQuitar.Text))
+            LSTVentas.Items.RemoveAt(LSTVentas.SelectedIndex)
 
-            End If
-        End If
+        Catch ex As Exception
+
+        End Try
 
     End Sub
     'AGREGAR EN VENTA
@@ -3503,5 +3503,6 @@ Public Class Programa
     End Sub
 
    
+    Dim index As Integer = 99999
 
 End Class
