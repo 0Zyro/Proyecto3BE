@@ -1546,7 +1546,54 @@ Public Class Programa
 
     Private Sub BOTONbuscarCompradoVenedido_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles BOTONbuscarCompradoVenedido.Click
         If CBXcompradoVendido.Text <> "" And CBXrazaCompradoVendido.Text <> "" Then
-            If CBXcompradoVendido.Text = "Vendido" Then
+
+            If CBXcompradoVendido.Text = "Vendido" And CBXrazaCompradoVendido.Text = "Todas las razas" Then
+
+
+                DesactivarBotonesGanado()
+                DataGridGanadoEconomico.Visible = True
+                Consulta = " SELECT idg AS 'Cod Ganado', sexo AS 'Sexo', raza AS 'Raza', estado AS 'Estado', nacimiento, venta.idv AS 'Num Venta', fechaventa As 'Fecha de Venta', totalv AS 'Total US$' from ganado inner join venta on ganado.idv = venta.idv "
+                consultar()
+                DataGridGanadoEconomico.DataSource = Tabla
+
+                DataGridGanadoEconomico.Columns(4).Visible = False
+                DataGridGanadoEconomico.Focus()
+
+
+
+                BOTONpanelActividadEconomica.Visible = True
+
+                If DataGridGanadoEconomico.Rows.Count = 0 Then
+
+                    MsgBox("No se encontraron datos de ganados vendidos", MsgBoxStyle.Information, Title:="Venta de ganado")
+                    ACtivarBotonesGanado()
+                    actualizarGanado()
+
+                End If
+
+            ElseIf CBXcompradoVendido.Text = "Comprado" And CBXrazaCompradoVendido.Text = "Todas las razas" Then
+
+                DesactivarBotonesGanado()
+                DataGridGanadoEconomico.Visible = True
+                Consulta = " SELECT idg AS 'Cod Ganado', sexo AS 'Sexo', raza AS 'Raza', estado AS 'Estado', nacimiento, compra.idc AS 'Num Compra', fechacompra As 'Fecha de compra', totalc AS 'Total US$' from ganado inner join compra on ganado.idc = compra.idc "
+                consultar()
+                DataGridGanadoEconomico.DataSource = Tabla
+                DataGridGanadoEconomico.Columns(4).Visible = False
+                DataGridGanadoEconomico.Focus()
+
+
+
+                BOTONpanelActividadEconomica.Visible = True
+
+                If DataGridGanadoEconomico.Rows.Count = 0 Then
+
+                    MsgBox("No se encontraron datos de ganado comprado", MsgBoxStyle.Information, Title:="Compra de ganado")
+                    ACtivarBotonesGanado()
+                    actualizarGanado()
+
+                End If
+
+            ElseIf CBXcompradoVendido.Text = "Vendido" Then
 
 
                 DesactivarBotonesGanado()
@@ -1564,7 +1611,7 @@ Public Class Programa
 
                 If DataGridGanadoEconomico.Rows.Count = 0 Then
 
-                    MsgBox("No se encontraron datos de ganados vendidos", MsgBoxStyle.Information, Title:="Venta de ganado")
+                    MsgBox("No se encontraron datos de ganados vendidos en la raza seleccionada", MsgBoxStyle.Information, Title:="Venta de ganado")
                     ACtivarBotonesGanado()
                     actualizarGanado()
 
@@ -1586,7 +1633,7 @@ Public Class Programa
 
                 If DataGridGanadoEconomico.Rows.Count = 0 Then
 
-                    MsgBox("No se encontraron datos de ganado comprado", MsgBoxStyle.Information, Title:="Compra de ganado")
+                    MsgBox("No se encontraron datos de ganado comprado de la raza seleccionada", MsgBoxStyle.Information, Title:="Compra de ganado")
                     ACtivarBotonesGanado()
                     actualizarGanado()
 
@@ -1595,7 +1642,7 @@ Public Class Programa
 
 
         Else
-            MsgBox("Debe seleccionar ambos campos")
+            MsgBox("Debe seleccionar dato en ambos campos")
 
         End If
     End Sub
@@ -1796,6 +1843,503 @@ Public Class Programa
         txtBUSCARcedula.Clear()
 
     End Sub
+
+    Private Sub Button1_Click_1(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles BOTONclienteInactivo.Click
+        GroupBoxcliente.Enabled = False
+        DataGridViewClientes.Visible = False
+        DataGridclienteInactivos.Visible = True
+        BOTONcancelarHabilitado.Visible = True
+        BOTONaceptarHabilitado.Visible = True
+        BOTONcargarDatosclientes.Enabled = False
+        Consulta = " select * from cliente where estado = 0 "
+        consultar()
+
+        DataGridclienteInactivos.DataSource = Tabla
+
+        DataGridclienteInactivos.Columns(0).HeaderText = "Cédula"
+        DataGridclienteInactivos.Columns(1).HeaderText = "Nombre"
+        DataGridclienteInactivos.Columns(2).HeaderText = "Apellido"
+        DataGridclienteInactivos.Columns(3).HeaderText = "Dirección"
+        DataGridclienteInactivos.Columns(4).HeaderText = "Teléfono"
+        DataGridclienteInactivos.Columns(5).Visible = False
+    End Sub
+
+    Private Sub BOTONaceptarHabilitado_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles BOTONaceptarHabilitado.Click
+        Dim MsgStyle As MsgBoxStyle = MsgBoxStyle.Critical + MsgBoxStyle.OkOnly
+        Dim MsgStyle1 As MsgBoxStyle = MsgBoxStyle.Information + MsgBoxStyle.OkOnly
+        Dim estado As String = DataGridclienteInactivos.Item(0, DataGridclienteInactivos.CurrentRow.Index).Value
+        If MessageBox.Show("¿Seguro que desea al cliente seleccionado?", "Confirmacion", MessageBoxButtons.YesNo, MessageBoxIcon.Question) = Windows.Forms.DialogResult.Yes Then
+            Try
+                Consulta = " update cliente set estado = 1 where id='" & estado & "'"
+                consultar()
+                Consulta = " select * from cliente where estado = 0 "
+                consultar()
+
+                DataGridclienteInactivos.DataSource = Tabla
+
+                DataGridclienteInactivos.Columns(0).HeaderText = "Cédula"
+                DataGridclienteInactivos.Columns(1).HeaderText = "Nombre"
+                DataGridclienteInactivos.Columns(2).HeaderText = "Apellido"
+                DataGridclienteInactivos.Columns(3).HeaderText = "Dirección"
+                DataGridclienteInactivos.Columns(4).HeaderText = "Teléfono"
+                DataGridclienteInactivos.Columns(5).Visible = False
+
+                actualizarCliente()
+
+
+
+
+            Catch ex As Exception
+                MsgBox(ex.Message)
+            End Try
+        End If
+    End Sub
+
+    Private Sub BOTONcancelarHabilitado_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles BOTONcancelarHabilitado.Click
+        GroupBoxcliente.Enabled = True
+
+        DataGridclienteInactivos.Visible = False
+        DataGridViewClientes.Visible = True
+
+        BOTONcancelarHabilitado.Visible = False
+        BOTONaceptarHabilitado.Visible = False
+        BOTONcargarDatosclientes.Enabled = True
+    End Sub
+
+    '/////////////////////////// ARREGLOS EN CLIENTE///////////////////////////////////////////////////////////////////////////////////////////
+    Private Sub txtBUSCARcedula_KeyPress(ByVal sender As Object, ByVal e As System.Windows.Forms.KeyPressEventArgs) Handles txtBUSCARcedula.KeyPress
+        If Char.IsNumber(e.KeyChar) Then
+            e.Handled = False
+        ElseIf Char.IsControl(e.KeyChar) Then
+            e.Handled = False
+        ElseIf Char.IsSeparator(e.KeyChar) Then
+
+
+            'If IsNumeric(txtBuscarCodGanado.Text) Then
+
+
+        Else
+            e.Handled = True
+        End If
+    End Sub
+
+
+    Private Sub txtBUSCARcedula_TextChanged_1(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles txtBUSCARcedula.TextChanged
+        BOTONguardarAgregarCliente.Visible = False
+        BOTONcancelarGuardarCliente.Visible = False
+        BOTONagregarcliente.Enabled = True
+        BOTONmodificarCliente.Enabled = True
+
+        'If IsNumeric(txtBUSCARcedula.Text) Then
+
+
+        Consulta = " SELECT * from cliente where id like '" & txtBUSCARcedula.Text & "%'"
+        consultar()
+
+        DataGridViewClientes.DataSource = Tabla
+
+        'Else
+
+        '    txtBUSCARcedula.Clear()
+        '    Consulta = " SELECT * from cliente where id like '" & txtBUSCARcedula.Text & "%'"
+        '    consultar()
+
+        '    DataGridViewClientes.DataSource = Tabla
+
+        'End If
+    End Sub
+
+
+
+
+
+
+
+
+    '' ''///////////////////////////////////BOTON PARA AGREGAR CLIENTE//////////////////////////////////////////////////
+    ' ''Private Sub BTNAgregarclientes_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles BTNAgregarclientes.Click
+    ' ''    If Texcedula.Text <> "" And Texnombreapellido.Text <> "" And Texdireccion.Text <> "" And Texttelefono.Text <> "" Then
+    ' ''        If verificarCedula(Texcedula.Text) Then
+
+    ' ''            Consulta = "INSERT INTO cliente values('" & Texcedula.Text & "','" & Texnombreapellido.Text & "','" & Texdireccion.Text & "','" & Texttelefono.Text & "' )"
+    ' ''            consultar()
+    ' ''            Consulta = "select * from cliente"
+    ' ''            consultar()
+    ' ''            DataGridViewClientes.DataSource = Tabla
+    ' ''            Texcedula.Text = ""
+    ' ''            Texnombreapellido.Text = ""
+    ' ''            Texdireccion.Text = ""
+    ' ''            Texttelefono.Text = ""
+    ' ''            MsgBox("Registro exitoso")
+    ' ''        Else
+    ' ''            MsgBox("Cedula erronea")
+    ' ''        End If
+    ' ''    Else
+    ' ''        MsgBox("Complete todos los campos vacios")
+    ' ''    End If
+    ' ''End Sub
+    ' ''/////////// BONTON DENTRO DEL PANEL DE AGREGAR CLIENTES(LIMPIA LOS TEXTBOX)//////////////////////
+    ''Private Sub BTNClearclientes_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles BTNClearclientes.Click
+    ''    Texcedula.Clear()
+    ''    Texdireccion.Clear()
+    ''    Texnombreapellido.Clear()
+    ''    Texttelefono.Clear()
+    ''End Sub
+
+    ''////////////////////////////BOTON QUE VUELVE AL PANEL PRINCIPAL///////////////////////////////////
+    'Private Sub BTNVolveragregarcliente_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles BTNVolveragregarcliente.Click
+    '    PanelPrincipalclientes.BringToFront()
+    '    PanelPrincipalclientes.Visible = True
+    '    PanelPrincipalclientes.Enabled = True
+
+    '    Consulta = "select * from cliente"
+    '    consultar()
+    '    DataGridViewClientes.DataSource = Tabla
+
+
+    '    PanelAgregarcliente.Enabled = False
+    '    PanelAgregarcliente.Visible = False
+    '    PanelAgregarcliente.SendToBack()
+    'End Sub
+
+
+    Private Sub Button12_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Button12.Click
+        PanelAgregarcliente.BringToFront()
+        PanelAgregarcliente.Visible = True
+        PanelAgregarcliente.Enabled = True
+
+        PanelPrincipalclientes.SendToBack()
+        PanelPrincipalclientes.Visible = False
+        PanelPrincipalclientes.Enabled = False
+    End Sub
+
+    Private Sub Button13_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Button13.Click
+        PanelModificarclientes.BringToFront()
+        PanelModificarclientes.Visible = True
+        PanelModificarclientes.Enabled = True
+        PanelPrincipalclientes.SendToBack()
+        PanelPrincipalclientes.Visible = False
+        PanelPrincipalclientes.Enabled = False
+    End Sub
+
+    Private Sub BOTONcancelarGuardarCliente_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles BOTONcancelarGuardarCliente.Click
+        DataGridViewClientes.Enabled = True
+
+
+        BOTONguardarAgregarCliente.Visible = False
+        BOTONcancelarGuardarCliente.Visible = False
+        BOTONvaciarCamposCliente.Visible = False
+
+        BOTONguardarModificarCliente.Visible = False
+        BOTONcancelarModificarCliente.Visible = False
+
+        BOTONagregarcliente.Enabled = True
+        BOTONmodificarCliente.Enabled = True
+
+
+        txtnombreCliente.Text = ""
+        txtapellidoCliente.Text = ""
+        txtcedulaCliente.Text = ""
+        txttelefonoCliente.Text = ""
+        txtdireccionCliente.Text = ""
+
+
+        DataGridViewClientes.Focus()
+
+        txtcedulaCliente.Text = DataGridViewClientes.Item(0, DataGridViewClientes.CurrentRow.Index).Value
+        txtnombreCliente.Text = DataGridViewClientes.Item(1, DataGridViewClientes.CurrentRow.Index).Value
+        txtapellidoCliente.Text = DataGridViewClientes.Item(2, DataGridViewClientes.CurrentRow.Index).Value
+        txtdireccionCliente.Text = DataGridViewClientes.Item(3, DataGridViewClientes.CurrentRow.Index).Value
+        txttelefonoCliente.Text = DataGridViewClientes.Item(4, DataGridViewClientes.CurrentRow.Index).Value
+
+        txtnombreCliente.Enabled = False
+        txtapellidoCliente.Enabled = False
+        txtcedulaCliente.Enabled = False
+        txttelefonoCliente.Enabled = False
+        txtdireccionCliente.Enabled = False
+
+    End Sub
+    ''//////////////// CODIGO QUE SOLO PERMITE INGRESO DE LETRAR EN TEXTBOX/////////////////////////
+    Private Sub txtnombreCliente_KeyPress(ByVal sender As Object, ByVal e As System.Windows.Forms.KeyPressEventArgs) Handles txtnombreCliente.KeyPress
+
+        If Char.IsLetter(e.KeyChar) Then
+            e.Handled = False
+        ElseIf Char.IsControl(e.KeyChar) Then
+            e.Handled = False
+        ElseIf Char.IsSeparator(e.KeyChar) Then
+
+
+            'If IsNumeric(txtBuscarCodGanado.Text) Then
+
+
+        Else
+            e.Handled = True
+
+        End If
+
+    End Sub
+
+    '////////////////// CODIGO QUE SOLO ADMITE LETRAS EN TEXTBOX DE APELLIDO///////////////
+    Private Sub txtapellidoCliente_KeyPress(ByVal sender As Object, ByVal e As System.Windows.Forms.KeyPressEventArgs) Handles txtapellidoCliente.KeyPress
+
+        If Char.IsLetter(e.KeyChar) Then
+            e.Handled = False
+        ElseIf Char.IsControl(e.KeyChar) Then
+            e.Handled = False
+        ElseIf Char.IsSeparator(e.KeyChar) Then
+
+
+            'If IsNumeric(txtBuscarCodGanado.Text) Then
+
+
+        Else
+
+            e.Handled = True
+
+        End If
+
+    End Sub
+    Private Sub txttelefonoCliente_KeyPress(ByVal sender As Object, ByVal e As System.Windows.Forms.KeyPressEventArgs) Handles txttelefonoCliente.KeyPress
+
+        If Char.IsNumber(e.KeyChar) Then
+            e.Handled = False
+        ElseIf Char.IsControl(e.KeyChar) Then
+            e.Handled = False
+            'ElseIf Char.IsSeparator(e.KeyChar) Then
+            '    e.Handled = True
+
+            'If IsNumeric(txtBuscarCodGanado.Text) Then
+
+
+        Else
+
+            e.Handled = True
+
+        End If
+    End Sub
+    Private Sub txtcedulaCliente_KeyPress(ByVal sender As Object, ByVal e As System.Windows.Forms.KeyPressEventArgs) Handles txtcedulaCliente.KeyPress
+
+
+        If Char.IsNumber(e.KeyChar) Then
+            e.Handled = False
+        ElseIf Char.IsControl(e.KeyChar) Then
+            e.Handled = False
+            'ElseIf Char.IsSeparator(e.KeyChar) Then
+            '    e.Handled = True
+
+            'If IsNumeric(txtBuscarCodGanado.Text) Then
+
+
+        Else
+
+            e.Handled = True
+
+        End If
+
+    End Sub
+
+    Private Sub BOTONguardarAgregarCliente_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles BOTONguardarAgregarCliente.Click
+        If txtnombreCliente.Text <> "" And txtapellidoCliente.Text <> "" And txtcedulaCliente.Text <> "" And txtdireccionCliente.Text <> "" And txttelefonoCliente.Text <> "" Then
+            If IsNumeric(txtcedulaCliente.Text) And IsNumeric(txttelefonoCliente.Text) Then
+                'If Not IsNumeric(txtnombreCliente.Text) And Not IsNumeric(txtapellidoCliente.Text) Then
+
+
+
+                If verificarCedula(txtcedulaCliente.Text) Then
+                    Try
+                        'Select Case error1
+                        '    Case 0
+                        Consulta = "INSERT INTO cliente(id,nombre,apellido,direccion,telefono) values('" & txtcedulaCliente.Text & "','" & txtnombreCliente.Text & "','" & txtapellidoCliente.Text & "','" & txtdireccionCliente.Text & "','" & txttelefonoCliente.Text & "')"
+                        consultar()
+
+
+                        Consulta = "select * from cliente"
+                        consultar()
+                        DataGridViewClientes.DataSource = Tabla
+
+
+
+
+                        txtnombreCliente.Text = ""
+                        txtapellidoCliente.Text = ""
+                        txtcedulaCliente.Text = ""
+                        txtdireccionCliente.Text = ""
+                        txttelefonoCliente.Text = ""
+
+                        MsgBox("Registro exitoso")
+
+                        '    Case 1
+                        '        MsgBox("esa cedula,ya existe")
+                        'End Select
+                    Catch ex As Exception
+                        MsgBox(ex)
+                    End Try
+                Else
+                    MsgBox("Cedula erronea")
+                End If
+
+                'Else
+                '    MsgBox("Nombre y Apellido no pueden contener datos numericos")
+
+                'End If
+            Else
+
+                MsgBox("Cedula y telefono son numericos")
+
+            End If
+        Else
+            MsgBox("Complete todos los campos vacios")
+        End If
+    End Sub
+
+
+    '///////////////////////////BOTON QUE VUELVE AL PANEL PRINCIPAL///////////////////////////////////
+    Private Sub BTNVolveragregarcliente_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles BTNVolveragregarcliente.Click
+        PanelPrincipalclientes.BringToFront()
+        PanelPrincipalclientes.Visible = True
+        PanelPrincipalclientes.Enabled = True
+
+        Consulta = "select * from cliente"
+        consultar()
+        DataGridViewClientes.DataSource = Tabla
+
+
+        PanelAgregarcliente.Enabled = False
+        PanelAgregarcliente.Visible = False
+        PanelAgregarcliente.SendToBack()
+    End Sub
+
+    Private Sub BOTONcancelarModificarCliente_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles BOTONcancelarModificarCliente.Click
+
+
+        'BOTONguardarAgregarCliente.Visible = True
+        'BOTONcancelarGuardarCliente.Visible = True
+        'BOTONvaciarCamposCliente.Visible = True
+
+        BOTONguardarModificarCliente.Visible = False
+        BOTONcancelarModificarCliente.Visible = False
+
+        BOTONagregarcliente.Enabled = True
+        BOTONmodificarCliente.Enabled = True
+
+        txtnombreCliente.Text = ""
+        txtapellidoCliente.Text = ""
+        txtcedulaCliente.Text = ""
+        txttelefonoCliente.Text = ""
+        txtdireccionCliente.Text = ""
+
+        DataGridViewClientes.Focus()
+
+        txtcedulaCliente.Text = DataGridViewClientes.Item(0, DataGridViewClientes.CurrentRow.Index).Value
+        txtnombreCliente.Text = DataGridViewClientes.Item(1, DataGridViewClientes.CurrentRow.Index).Value
+        txtapellidoCliente.Text = DataGridViewClientes.Item(2, DataGridViewClientes.CurrentRow.Index).Value
+        txtdireccionCliente.Text = DataGridViewClientes.Item(3, DataGridViewClientes.CurrentRow.Index).Value
+        txttelefonoCliente.Text = DataGridViewClientes.Item(4, DataGridViewClientes.CurrentRow.Index).Value
+
+        txtnombreCliente.Enabled = False
+        txtnombreCliente.Focus()
+        txtapellidoCliente.Enabled = False
+        txtcedulaCliente.Enabled = False
+        txttelefonoCliente.Enabled = False
+        txtdireccionCliente.Enabled = False
+
+    End Sub
+
+    Private Sub BOTONguardarModificarCliente_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles BOTONguardarModificarCliente.Click
+
+        Dim cedula As String = DataGridViewClientes.Item(0, DataGridViewClientes.CurrentRow.Index).Value
+        If txtnombreCliente.Text <> "" And txtapellidoCliente.Text <> "" And txtdireccionCliente.Text <> "" And txttelefonoCliente.Text <> "" Then
+
+
+            'If IsNumeric(txttelefonoCliente.Text) Then
+            '    If Not IsNumeric(txtnombreCliente.Text) Then
+            '        If Not IsNumeric(txtapellidoCliente.Text) Then
+
+
+            Consulta = "update cliente set nombre='" + txtnombreCliente.Text +
+                "', apellido='" + txtapellidoCliente.Text +
+                "', direccion='" + txtdireccionCliente.Text +
+                "', telefono = '" + txttelefonoCliente.Text +
+                "' where id='" + cedula + "'"
+            consultar()
+            actualizarCliente()
+            MsgBox(" Se editaron datos")
+
+        Else
+            '    MsgBox("El apellido no puede contener datos numericos")
+            'End If
+            '        Else
+
+            'MsgBox("El nombre no puede conter datos numericos")
+
+            '        End If
+
+            'MsgBox("Telefono es un datos de tipo numerico")
+            '    End If
+
+            'Else
+
+            MsgBox("Todos los campos deben tener un contenido")
+
+        End If
+    End Sub
+
+
+
+    Private Sub DataGridViewClientes_SelectionChanged(ByVal sender As Object, ByVal e As System.EventArgs) Handles DataGridViewClientes.SelectionChanged
+        Try
+
+            txtcedulaCliente.Text = ""
+            txtnombreCliente.Text = ""
+            txtapellidoCliente.Text = ""
+            txtdireccionCliente.Text = ""
+            txttelefonoCliente.Text = ""
+
+            txtcedulaCliente.Text = DataGridViewClientes.Item(0, DataGridViewClientes.CurrentRow.Index).Value
+            txtnombreCliente.Text = DataGridViewClientes.Item(1, DataGridViewClientes.CurrentRow.Index).Value
+            txtapellidoCliente.Text = DataGridViewClientes.Item(2, DataGridViewClientes.CurrentRow.Index).Value
+            txtdireccionCliente.Text = DataGridViewClientes.Item(3, DataGridViewClientes.CurrentRow.Index).Value
+            txttelefonoCliente.Text = DataGridViewClientes.Item(4, DataGridViewClientes.CurrentRow.Index).Value
+
+        Catch ex As Exception
+            MsgBox(ex.ToString)
+        End Try
+    End Sub
+
+
+
+
+    Private Sub BOTONvaciarCamposCliente_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles BOTONvaciarCamposCliente.Click
+        txtcedulaCliente.Text = ""
+        txtnombreCliente.Text = ""
+        txtapellidoCliente.Text = ""
+        txtdireccionCliente.Text = ""
+        txttelefonoCliente.Text = ""
+
+    End Sub
+
+    Private Sub DataGridclienteInactivos_MouseEnter(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles DataGridclienteInactivos.MouseEnter
+        If DataGridclienteInactivos.Rows.Count = 0 Then
+            BOTONaceptarHabilitado.Enabled = False
+
+        Else
+
+            BOTONaceptarHabilitado.Enabled = True
+
+        End If
+    End Sub
+
+    Private Sub BOTONaceptarHabilitado_MouseEnter(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles BOTONaceptarHabilitado.MouseEnter
+        If DataGridclienteInactivos.Rows.Count = 0 Then
+            BOTONaceptarHabilitado.Enabled = False
+
+        Else
+
+            BOTONaceptarHabilitado.Enabled = True
+
+        End If
+    End Sub
+    '////////////////////////////////FIN DE ARREGLOS CLIENTES///////////////////////////////////////////////
     '///////////////////////////////////////////////  FIN DE CLIENTEEEEEE ////////////////////////////////////////////////////////////////////
 
 
@@ -1887,15 +2431,15 @@ Public Class Programa
     End Sub
     'boton que agrega el ganado al arraylist
     Private Sub BTNAgregarganadocompra_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles BTNAgregarganadocompra.Click
-        Dim total As Integer = 0
-        For x As Integer = 0 TextBox1.Text.Count - 1 TextBox2.Text.Count - 1
-            If IsNumeric(TextBox1.Text) And IsNumeric(TextBox2.Text) Then
-                TextBox3.Text = TextBox1.Text * TextBox2.Text
-                total = (total + (TextBox1.Text * TextBox2.Text))
-            End If
-        Next
+        'Dim total As Integer = 0
+        'For x As Integer = 0 TextBox1.Text.Count - 1 TextBox2.Text.Count - 1
+        '    If IsNumeric(TextBox1.Text) And IsNumeric(TextBox2.Text) Then
+        '        TextBox3.Text = TextBox1.Text * TextBox2.Text
+        '        total = (total + (TextBox1.Text * TextBox2.Text))
+        '    End If
+        'Next
 
-        TXTTotalapagarcompraganado.Text = (total)
+        'TXTTotalapagarcompraganado.Text = (total)
     End Sub
 
     Private Sub BTNAgregarcompra_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles BTNAgregarcompraproducto.Click
@@ -2476,6 +3020,7 @@ Public Class Programa
     Private Sub TabbedPane_SelectedIndexChanged(ByVal sender As Object, ByVal e As System.EventArgs) Handles TabbedPane.SelectedIndexChanged
 
         Select Case TabbedPane.SelectedIndex
+
             Case 0
                 'CONSULTA DE TABLA GANADO
                 Consulta = "select idg, sexo, raza, estado, nacimiento, TIMESTAMPDIFF(YEAR,ganado.nacimiento,CURDATE()) AS 'Anios', TIMESTAMPDIFF(month, ganado.nacimiento,NOW())%12 AS 'Meses' from ganado"
@@ -2494,6 +3039,7 @@ Public Class Programa
                 DataGridViewganado.Columns(3).HeaderText = "Estado"
                 DataGridViewganado.Columns(5).HeaderText = "Años"
                 DataGridViewganado.Columns(6).HeaderText = "Meses"
+                PanelDatosGanado.Visible = False
 
                 Exit Select
             Case 1
@@ -2515,6 +3061,7 @@ Public Class Programa
                 consultar()
                 'actualiza la dgvw
                 DataGridViewVENTAS.DataSource = Tabla
+                PanelDatosGanado.Visible = False
 
                 Exit Select
             Case 3
@@ -2534,9 +3081,12 @@ Public Class Programa
                 DataGridViewClientes.Columns(4).HeaderText = "Dirección"
                 DataGridViewClientes.Columns(5).Visible = False
 
+                PanelDatosGanado.Visible = False
+
                 Exit Select
             Case 4
 
+                PanelDatosGanado.Visible = False
                 BTNBusquedaUsuarios.PerformClick()
 
                 CBXBusquedaUsuarios.SelectedIndex = 0
@@ -2673,418 +3223,7 @@ Public Class Programa
 
 
 
-    '/////////////////////////// ARREGLOS EN CLIENTE///////////////////////////////////////////////////////////////////////////////////////////
-    Private Sub txtBUSCARcedula_KeyPress(ByVal sender As Object, ByVal e As System.Windows.Forms.KeyPressEventArgs) Handles txtBUSCARcedula.KeyPress
-        If Char.IsNumber(e.KeyChar) Then
-            e.Handled = False
-        ElseIf Char.IsControl(e.KeyChar) Then
-            e.Handled = False
-        ElseIf Char.IsSeparator(e.KeyChar) Then
-
-
-            'If IsNumeric(txtBuscarCodGanado.Text) Then
-
-
-        Else
-            e.Handled = True
-        End If
-    End Sub
-
-
-    Private Sub txtBUSCARcedula_TextChanged_1(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles txtBUSCARcedula.TextChanged
-        BOTONguardarAgregarCliente.Visible = False
-        BOTONcancelarGuardarCliente.Visible = False
-        BOTONagregarcliente.Enabled = True
-        BOTONmodificarCliente.Enabled = True
-
-        'If IsNumeric(txtBUSCARcedula.Text) Then
-
-
-        Consulta = " SELECT * from cliente where id like '" & txtBUSCARcedula.Text & "%'"
-        consultar()
-
-        DataGridViewClientes.DataSource = Tabla
-
-        'Else
-
-        '    txtBUSCARcedula.Clear()
-        '    Consulta = " SELECT * from cliente where id like '" & txtBUSCARcedula.Text & "%'"
-        '    consultar()
-
-        '    DataGridViewClientes.DataSource = Tabla
-
-        'End If
-    End Sub
-
-
-
-
-
-
-
-
-    '' ''///////////////////////////////////BOTON PARA AGREGAR CLIENTE//////////////////////////////////////////////////
-    ' ''Private Sub BTNAgregarclientes_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles BTNAgregarclientes.Click
-    ' ''    If Texcedula.Text <> "" And Texnombreapellido.Text <> "" And Texdireccion.Text <> "" And Texttelefono.Text <> "" Then
-    ' ''        If verificarCedula(Texcedula.Text) Then
-
-    ' ''            Consulta = "INSERT INTO cliente values('" & Texcedula.Text & "','" & Texnombreapellido.Text & "','" & Texdireccion.Text & "','" & Texttelefono.Text & "' )"
-    ' ''            consultar()
-    ' ''            Consulta = "select * from cliente"
-    ' ''            consultar()
-    ' ''            DataGridViewClientes.DataSource = Tabla
-    ' ''            Texcedula.Text = ""
-    ' ''            Texnombreapellido.Text = ""
-    ' ''            Texdireccion.Text = ""
-    ' ''            Texttelefono.Text = ""
-    ' ''            MsgBox("Registro exitoso")
-    ' ''        Else
-    ' ''            MsgBox("Cedula erronea")
-    ' ''        End If
-    ' ''    Else
-    ' ''        MsgBox("Complete todos los campos vacios")
-    ' ''    End If
-    ' ''End Sub
-    ' ''/////////// BONTON DENTRO DEL PANEL DE AGREGAR CLIENTES(LIMPIA LOS TEXTBOX)//////////////////////
-    ''Private Sub BTNClearclientes_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles BTNClearclientes.Click
-    ''    Texcedula.Clear()
-    ''    Texdireccion.Clear()
-    ''    Texnombreapellido.Clear()
-    ''    Texttelefono.Clear()
-    ''End Sub
-
-    ''////////////////////////////BOTON QUE VUELVE AL PANEL PRINCIPAL///////////////////////////////////
-    'Private Sub BTNVolveragregarcliente_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles BTNVolveragregarcliente.Click
-    '    PanelPrincipalclientes.BringToFront()
-    '    PanelPrincipalclientes.Visible = True
-    '    PanelPrincipalclientes.Enabled = True
-
-    '    Consulta = "select * from cliente"
-    '    consultar()
-    '    DataGridViewClientes.DataSource = Tabla
-
-
-    '    PanelAgregarcliente.Enabled = False
-    '    PanelAgregarcliente.Visible = False
-    '    PanelAgregarcliente.SendToBack()
-    'End Sub
-
-
-    Private Sub Button12_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Button12.Click
-        PanelAgregarcliente.BringToFront()
-        PanelAgregarcliente.Visible = True
-        PanelAgregarcliente.Enabled = True
-
-        PanelPrincipalclientes.SendToBack()
-        PanelPrincipalclientes.Visible = False
-        PanelPrincipalclientes.Enabled = False
-    End Sub
-
-    Private Sub Button13_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Button13.Click
-        PanelModificarclientes.BringToFront()
-        PanelModificarclientes.Visible = True
-        PanelModificarclientes.Enabled = True
-        PanelPrincipalclientes.SendToBack()
-        PanelPrincipalclientes.Visible = False
-        PanelPrincipalclientes.Enabled = False
-    End Sub
-
-    Private Sub BOTONcancelarGuardarCliente_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles BOTONcancelarGuardarCliente.Click
-        DataGridViewClientes.Enabled = True
-
-
-        BOTONguardarAgregarCliente.Visible = False
-        BOTONcancelarGuardarCliente.Visible = False
-        BOTONvaciarCamposCliente.Visible = False
-
-        BOTONguardarModificarCliente.Visible = False
-        BOTONcancelarModificarCliente.Visible = False
-
-        BOTONagregarcliente.Enabled = True
-        BOTONmodificarCliente.Enabled = True
-
-
-        txtnombreCliente.Text = ""
-        txtapellidoCliente.Text = ""
-        txtcedulaCliente.Text = ""
-        txttelefonoCliente.Text = ""
-        txtdireccionCliente.Text = ""
-
-
-        DataGridViewClientes.Focus()
-
-        txtcedulaCliente.Text = DataGridViewClientes.Item(0, DataGridViewClientes.CurrentRow.Index).Value
-        txtnombreCliente.Text = DataGridViewClientes.Item(1, DataGridViewClientes.CurrentRow.Index).Value
-        txtapellidoCliente.Text = DataGridViewClientes.Item(2, DataGridViewClientes.CurrentRow.Index).Value
-        txtdireccionCliente.Text = DataGridViewClientes.Item(3, DataGridViewClientes.CurrentRow.Index).Value
-        txttelefonoCliente.Text = DataGridViewClientes.Item(4, DataGridViewClientes.CurrentRow.Index).Value
-
-        txtnombreCliente.Enabled = False
-        txtapellidoCliente.Enabled = False
-        txtcedulaCliente.Enabled = False
-        txttelefonoCliente.Enabled = False
-        txtdireccionCliente.Enabled = False
-
-    End Sub
-    ''//////////////// CODIGO QUE SOLO PERMITE INGRESO DE LETRAR EN TEXTBOX/////////////////////////
-    Private Sub txtnombreCliente_KeyPress(ByVal sender As Object, ByVal e As System.Windows.Forms.KeyPressEventArgs) Handles txtnombreCliente.KeyPress
-
-        If Char.IsLetter(e.KeyChar) Then
-            e.Handled = False
-        ElseIf Char.IsControl(e.KeyChar) Then
-            e.Handled = False
-        ElseIf Char.IsSeparator(e.KeyChar) Then
-
-
-            'If IsNumeric(txtBuscarCodGanado.Text) Then
-
-
-        Else
-            e.Handled = True
-
-        End If
-
-    End Sub
-
-    '////////////////// CODIGO QUE SOLO ADMITE LETRAS EN TEXTBOX DE APELLIDO///////////////
-    Private Sub txtapellidoCliente_KeyPress(ByVal sender As Object, ByVal e As System.Windows.Forms.KeyPressEventArgs) Handles txtapellidoCliente.KeyPress
-
-        If Char.IsLetter(e.KeyChar) Then
-            e.Handled = False
-        ElseIf Char.IsControl(e.KeyChar) Then
-            e.Handled = False
-        ElseIf Char.IsSeparator(e.KeyChar) Then
-
-
-            'If IsNumeric(txtBuscarCodGanado.Text) Then
-
-
-        Else
-
-            e.Handled = True
-
-        End If
-
-    End Sub
-    Private Sub txttelefonoCliente_KeyPress(ByVal sender As Object, ByVal e As System.Windows.Forms.KeyPressEventArgs) Handles txttelefonoCliente.KeyPress
-
-        If Char.IsNumber(e.KeyChar) Then
-            e.Handled = False
-        ElseIf Char.IsControl(e.KeyChar) Then
-            e.Handled = False
-            'ElseIf Char.IsSeparator(e.KeyChar) Then
-            '    e.Handled = True
-
-            'If IsNumeric(txtBuscarCodGanado.Text) Then
-
-
-        Else
-
-            e.Handled = True
-
-        End If
-    End Sub
-    Private Sub txtcedulaCliente_KeyPress(ByVal sender As Object, ByVal e As System.Windows.Forms.KeyPressEventArgs) Handles txtcedulaCliente.KeyPress
-
-
-        If Char.IsNumber(e.KeyChar) Then
-            e.Handled = False
-        ElseIf Char.IsControl(e.KeyChar) Then
-            e.Handled = False
-        ElseIf Char.IsSeparator(e.KeyChar) Then
-            e.Handled = True
-
-            'If IsNumeric(txtBuscarCodGanado.Text) Then
-
-
-        Else
-
-            e.Handled = True
-
-        End If
-
-    End Sub
-
-    Private Sub BOTONguardarAgregarCliente_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles BOTONguardarAgregarCliente.Click
-        If txtnombreCliente.Text <> "" And txtapellidoCliente.Text <> "" And txtcedulaCliente.Text <> "" And txtdireccionCliente.Text <> "" And txttelefonoCliente.Text <> "" Then
-            If IsNumeric(txtcedulaCliente.Text) And IsNumeric(txttelefonoCliente.Text) Then
-                'If Not IsNumeric(txtnombreCliente.Text) And Not IsNumeric(txtapellidoCliente.Text) Then
-
-
-
-                If verificarCedula(txtcedulaCliente.Text) Then
-                    Try
-                        'Select Case error1
-                        '    Case 0
-                        Consulta = "INSERT INTO cliente(id,nombre,apellido,direccion,telefono) values('" & txtcedulaCliente.Text & "','" & txtnombreCliente.Text & "','" & txtapellidoCliente.Text & "','" & txtdireccionCliente.Text & "','" & txttelefonoCliente.Text & "')"
-                        consultar()
-
-
-                        Consulta = "select * from cliente"
-                        consultar()
-                        DataGridViewClientes.DataSource = Tabla
-
-
-
-
-                        txtnombreCliente.Text = ""
-                        txtapellidoCliente.Text = ""
-                        txtcedulaCliente.Text = ""
-                        txtdireccionCliente.Text = ""
-                        txttelefonoCliente.Text = ""
-
-                        MsgBox("Registro exitoso")
-
-                        '    Case 1
-                        '        MsgBox("esa cedula,ya existe")
-                        'End Select
-                    Catch ex As Exception
-                        MsgBox(ex)
-                    End Try
-                Else
-                    MsgBox("Cedula erronea")
-                End If
-
-                'Else
-                '    MsgBox("Nombre y Apellido no pueden contener datos numericos")
-
-                'End If
-            Else
-
-                MsgBox("Cedula y telefono son numericos")
-
-            End If
-        Else
-            MsgBox("Complete todos los campos vacios")
-        End If
-    End Sub
-
-
-    '///////////////////////////BOTON QUE VUELVE AL PANEL PRINCIPAL///////////////////////////////////
-    Private Sub BTNVolveragregarcliente_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles BTNVolveragregarcliente.Click
-        PanelPrincipalclientes.BringToFront()
-        PanelPrincipalclientes.Visible = True
-        PanelPrincipalclientes.Enabled = True
-
-        Consulta = "select * from cliente"
-        consultar()
-        DataGridViewClientes.DataSource = Tabla
-
-
-        PanelAgregarcliente.Enabled = False
-        PanelAgregarcliente.Visible = False
-        PanelAgregarcliente.SendToBack()
-    End Sub
-
-    Private Sub BOTONcancelarModificarCliente_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles BOTONcancelarModificarCliente.Click
-
-
-        'BOTONguardarAgregarCliente.Visible = True
-        'BOTONcancelarGuardarCliente.Visible = True
-        'BOTONvaciarCamposCliente.Visible = True
-
-        BOTONguardarModificarCliente.Visible = False
-        BOTONcancelarModificarCliente.Visible = False
-
-        BOTONagregarcliente.Enabled = True
-        BOTONmodificarCliente.Enabled = True
-
-        txtnombreCliente.Text = ""
-        txtapellidoCliente.Text = ""
-        txtcedulaCliente.Text = ""
-        txttelefonoCliente.Text = ""
-        txtdireccionCliente.Text = ""
-
-        DataGridViewClientes.Focus()
-
-        txtcedulaCliente.Text = DataGridViewClientes.Item(0, DataGridViewClientes.CurrentRow.Index).Value
-        txtnombreCliente.Text = DataGridViewClientes.Item(1, DataGridViewClientes.CurrentRow.Index).Value
-        txtapellidoCliente.Text = DataGridViewClientes.Item(2, DataGridViewClientes.CurrentRow.Index).Value
-        txtdireccionCliente.Text = DataGridViewClientes.Item(3, DataGridViewClientes.CurrentRow.Index).Value
-        txttelefonoCliente.Text = DataGridViewClientes.Item(4, DataGridViewClientes.CurrentRow.Index).Value
-
-        txtnombreCliente.Enabled = False
-        txtnombreCliente.Focus()
-        txtapellidoCliente.Enabled = False
-        txtcedulaCliente.Enabled = False
-        txttelefonoCliente.Enabled = False
-        txtdireccionCliente.Enabled = False
-
-    End Sub
-
-    Private Sub BOTONguardarModificarCliente_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles BOTONguardarModificarCliente.Click
-
-        Dim cedula As String = DataGridViewClientes.Item(0, DataGridViewClientes.CurrentRow.Index).Value
-        If txtnombreCliente.Text <> "" And txtapellidoCliente.Text <> "" And txtdireccionCliente.Text <> "" And txttelefonoCliente.Text <> "" Then
-
-
-            'If IsNumeric(txttelefonoCliente.Text) Then
-            '    If Not IsNumeric(txtnombreCliente.Text) Then
-            '        If Not IsNumeric(txtapellidoCliente.Text) Then
-
-
-            Consulta = "update cliente set nombre='" + txtnombreCliente.Text +
-                "', apellido='" + txtapellidoCliente.Text +
-                "', direccion='" + txtdireccionCliente.Text +
-                "', telefono = '" + txttelefonoCliente.Text +
-                "' where id='" + cedula + "'"
-            consultar()
-            actualizarCliente()
-            MsgBox(" Se editaron datos")
-
-        Else
-            '    MsgBox("El apellido no puede contener datos numericos")
-            'End If
-            '        Else
-
-            'MsgBox("El nombre no puede conter datos numericos")
-
-            '        End If
-
-            'MsgBox("Telefono es un datos de tipo numerico")
-            '    End If
-
-            'Else
-
-            MsgBox("Todos los campos deben tener un contenido")
-
-        End If
-    End Sub
-
-
-
-    Private Sub DataGridViewClientes_SelectionChanged(ByVal sender As Object, ByVal e As System.EventArgs) Handles DataGridViewClientes.SelectionChanged
-        Try
-
-            txtcedulaCliente.Text = ""
-            txtnombreCliente.Text = ""
-            txtapellidoCliente.Text = ""
-            txtdireccionCliente.Text = ""
-            txttelefonoCliente.Text = ""
-
-            txtcedulaCliente.Text = DataGridViewClientes.Item(0, DataGridViewClientes.CurrentRow.Index).Value
-            txtnombreCliente.Text = DataGridViewClientes.Item(1, DataGridViewClientes.CurrentRow.Index).Value
-            txtapellidoCliente.Text = DataGridViewClientes.Item(2, DataGridViewClientes.CurrentRow.Index).Value
-            txtdireccionCliente.Text = DataGridViewClientes.Item(3, DataGridViewClientes.CurrentRow.Index).Value
-            txttelefonoCliente.Text = DataGridViewClientes.Item(4, DataGridViewClientes.CurrentRow.Index).Value
-
-        Catch ex As Exception
-            MsgBox(ex.ToString)
-        End Try
-    End Sub
-
-
-
-
-    Private Sub BOTONvaciarCamposCliente_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles BOTONvaciarCamposCliente.Click
-        txtcedulaCliente.Text = ""
-        txtnombreCliente.Text = ""
-        txtapellidoCliente.Text = ""
-        txtdireccionCliente.Text = ""
-        txttelefonoCliente.Text = ""
-
-    End Sub
-    '////////////////////////////////FIN DE ARREGLOS CLIENTES///////////////////////////////////////////////
+    
 
 
 
@@ -3344,67 +3483,7 @@ Public Class Programa
     End Sub
 
 
-    Private Sub Button1_Click_1(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles BOTONclienteInactivo.Click
-        GroupBoxcliente.Enabled = False
-        DataGridViewClientes.Visible = False
-        DataGridclienteInactivos.Visible = True
-        BOTONcancelarHabilitado.Visible = True
-        BOTONaceptarHabilitado.Visible = True
-        BOTONcargarDatosclientes.Enabled = False
-        Consulta = " select * from cliente where estado = 0 "
-        consultar()
-
-        DataGridclienteInactivos.DataSource = Tabla
-
-        DataGridclienteInactivos.Columns(0).HeaderText = "Cédula"
-        DataGridclienteInactivos.Columns(1).HeaderText = "Nombre"
-        DataGridclienteInactivos.Columns(2).HeaderText = "Apellido"
-        DataGridclienteInactivos.Columns(3).HeaderText = "Dirección"
-        DataGridclienteInactivos.Columns(4).HeaderText = "Teléfono"
-        DataGridclienteInactivos.Columns(5).Visible = False
-    End Sub
-
-    Private Sub BOTONaceptarHabilitado_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles BOTONaceptarHabilitado.Click
-        Dim MsgStyle As MsgBoxStyle = MsgBoxStyle.Critical + MsgBoxStyle.OkOnly
-        Dim MsgStyle1 As MsgBoxStyle = MsgBoxStyle.Information + MsgBoxStyle.OkOnly
-        Dim estado As String = DataGridclienteInactivos.Item(0, DataGridclienteInactivos.CurrentRow.Index).Value
-        If MessageBox.Show("¿Seguro que desea al cliente seleccionado?", "Confirmacion", MessageBoxButtons.YesNo, MessageBoxIcon.Question) = Windows.Forms.DialogResult.Yes Then
-            Try
-                Consulta = " update cliente set estado = 1 where id='" & estado & "'"
-                consultar()
-                Consulta = " select * from cliente where estado = 0 "
-                consultar()
-
-                DataGridclienteInactivos.DataSource = Tabla
-
-                DataGridclienteInactivos.Columns(0).HeaderText = "Cédula"
-                DataGridclienteInactivos.Columns(1).HeaderText = "Nombre"
-                DataGridclienteInactivos.Columns(2).HeaderText = "Apellido"
-                DataGridclienteInactivos.Columns(3).HeaderText = "Dirección"
-                DataGridclienteInactivos.Columns(4).HeaderText = "Teléfono"
-                DataGridclienteInactivos.Columns(5).Visible = False
-
-                actualizarCliente()
-
-
-
-
-            Catch ex As Exception
-                MsgBox(ex.Message)
-            End Try
-        End If
-    End Sub
-
-    Private Sub BOTONcancelarHabilitado_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles BOTONcancelarHabilitado.Click
-        GroupBoxcliente.Enabled = True
-
-        DataGridclienteInactivos.Visible = False
-        DataGridViewClientes.Visible = True
-
-        BOTONcancelarHabilitado.Visible = False
-        BOTONaceptarHabilitado.Visible = False
-        BOTONcargarDatosclientes.Enabled = True
-    End Sub
+   
 
     Dim separador As Boolean = False
 
@@ -3419,4 +3498,7 @@ Public Class Programa
         End If
 
     End Sub
+
+   
+
 End Class
