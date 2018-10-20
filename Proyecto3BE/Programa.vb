@@ -2396,6 +2396,15 @@ Public Class Programa
         PNLAgregarcompraganado.Enabled = False
         PNLAgregarcompraganado.SendToBack()
     End Sub
+    Private Sub BTNCancelarcompra_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles BTNCancelarcompra.Click
+        CBXAgregarcompra.Enabled = True
+        BTNVolverdeagregarcompra.Enabled = True
+        LTBGanadocompra.Items.Clear()
+        PNLGanadocompra.Visible = True
+        TextBox4.Clear()
+        TextBox3.Clear()
+        TXTTotalapagarcompraganado.Clear()
+    End Sub
     '/////////////////////////Boton de para entrar al panel de agregar compras
     Private Sub BTNpanelmodicompras_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles BTNPanelagregarcompra.Click
         'Muestra el panel de agregar compras
@@ -2455,17 +2464,50 @@ Public Class Programa
         DGVCompras.Columns(2).HeaderText = "Comentario"
         DGVCompras.Columns(3).HeaderText = "Total"
     End Sub
-    'boton que agrega el ganado al arraylist
-    Private Sub BTNAgregarganadocompra_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles BTNAgregarganadocompra.Click
-        'Dim total As Integer = 0
-        'For x As Integer = 0 TextBox1.Text.Count - 1 TextBox2.Text.Count - 1
-        '    If IsNumeric(TextBox1.Text) And IsNumeric(TextBox2.Text) Then
-        '        TextBox3.Text = TextBox1.Text * TextBox2.Text
-        '        total = (total + (TextBox1.Text * TextBox2.Text))
-        '    End If
-        'Next
 
-        'TXTTotalapagarcompraganado.Text = (total)
+    Dim acumulador As Double
+    Private Sub BTNAgregarganadocompra_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles BTNAgregarganadocompra.Click
+        Dim sexo As String = CBXSexocompra.SelectedItem
+        Dim raza As String = CBXRazacompra.SelectedItem
+        Dim fecha As String = DTPFechanacimientocompra.Value.ToString("yyyy-MM-dd")
+        Dim codigo As String = TXTCodigoganadocompra.Text
+
+
+
+
+        TextBox3.Text = TextBox1.Text * TextBox2.Text
+        acumulador = (acumulador + (TextBox1.Text * TextBox2.Text))
+        TextBox4.Text = acumulador
+        TXTTotalapagarcompraganado.Text = acumulador
+
+
+        If fecha <> "" And sexo <> "" And raza <> "" And codigo Then
+            If DTPFechanacimientocompra.Value > Today Then
+                MsgBox("La fecha de nacimiento no puede ser mayor a la fecha actual")
+            Else
+                If IsNumeric(codigo) Then
+                    LTBGanadocompra.Items.Add(codigo + " " + sexo + " " + raza + " " + fecha + " " + TextBox3.Text)
+                    TXTCodigoganadocompra.Clear()
+                    DTPFechanacimientocompra.Value = Today
+                    CBXRazacompra.Text = ""
+                    CBXSexocompra.Text = ""
+                    TextBox1.Clear()
+                    TextBox3.Clear()
+                Else
+                    MsgBox("Ingrese solo valor numerico en codigo de ganado")
+                End If
+            End If
+        Else
+            MsgBox("Complete todos los campos vacios")
+        End If
+        CBXAgregarcompra.Enabled = False
+        BTNVolverdeagregarcompra.Enabled = False
+    End Sub
+    Private Sub BTNEliminarganadocompra_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles BTNEliminarganadocompra.Click
+        LTBGanadocompra.Items.RemoveAt(LTBGanadocompra.SelectedIndex)
+    End Sub
+    Private Sub BTNavanzarcompra_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles BTNavanzarcompra.Click
+        PNLGanadocompra.Visible = False
     End Sub
 
     Private Sub BTNAgregarcompra_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles BTNAgregarcompraproducto.Click
@@ -3531,6 +3573,5 @@ Public Class Programa
    
     Dim index As Integer = 99999
 
-   
-
+    
 End Class
