@@ -108,7 +108,7 @@ Public Class Programa
     Public Sub actualizarGanado()
 
         Try
-            Consulta = "select idg,sexo,raza,estado,nacimiento, TIMESTAMPDIFF(YEAR,ganado.nacimiento,CURDATE()) AS 'Anios', TIMESTAMPDIFF(month, ganado.nacimiento,NOW())%12 AS 'Meses' from ganado"
+            Consulta = "select idg,sexo,raza,estado,nacimiento, TIMESTAMPDIFF(YEAR,ganado.nacimiento,CURDATE()) AS 'Anios', TIMESTAMPDIFF(month, ganado.nacimiento,NOW())%12 AS 'Meses' from ganado where estado <> 'Muerto/a' "
             consultar()
             DataGridViewganado.DataSource = Tabla
 
@@ -888,7 +888,7 @@ Public Class Programa
         If CBXseleccionarRaza.Text <> "" And CBXseleccionarSexo.Text <> "" Then
             If CBXseleccionarSexo.Text = "Ambos" Then
                 Try
-                    Consulta = " SELECT idg,sexo,raza,estado,nacimiento, TIMESTAMPDIFF(YEAR,nacimiento,CURDATE()) AS 'Edad', TIMESTAMPDIFF(month, ganado.nacimiento,NOW())%12 AS 'Meses' from ganado where raza= '" + CBXseleccionarRaza.SelectedItem + "'"
+                    Consulta = " SELECT idg,sexo,raza,estado,nacimiento, TIMESTAMPDIFF(YEAR,nacimiento,CURDATE()) AS 'Edad', TIMESTAMPDIFF(month, ganado.nacimiento,NOW())%12 AS 'Meses' from ganado  where estado <> 'Muerto/a' and raza= '" + CBXseleccionarRaza.SelectedItem + "'"
                     ActualizarGanadoSinConsulta()
 
 
@@ -906,7 +906,7 @@ Public Class Programa
             ElseIf CBXseleccionarSexo.Text = "Macho" Then
 
                 Try
-                    Consulta = " SELECT idg,sexo,raza,estado,nacimiento, TIMESTAMPDIFF(YEAR,nacimiento,CURDATE()) AS 'Edad', TIMESTAMPDIFF(month, ganado.nacimiento,NOW())%12 AS 'Meses' from ganado where raza= '" + CBXseleccionarRaza.SelectedItem + "' And sexo = 'Macho' "
+                    Consulta = " SELECT idg,sexo,raza,estado,nacimiento, TIMESTAMPDIFF(YEAR,nacimiento,CURDATE()) AS 'Edad', TIMESTAMPDIFF(month, ganado.nacimiento,NOW())%12 AS 'Meses' from ganado  where estado <> 'Muerto/a' and raza= '" + CBXseleccionarRaza.SelectedItem + "' And sexo = 'Macho' "
                     ActualizarGanadoSinConsulta()
 
                     'CBXseleccionarRaza.Text = ""
@@ -1048,7 +1048,7 @@ Public Class Programa
         ACtivarBotonesGanado()
         Dim FechaN As String = DateTimeBuscarFechaGanado.Value.ToString("yyyy-MM-dd")
 
-        Consulta = "SELECT idg,sexo,raza,estado,nacimiento, TIMESTAMPDIFF(YEAR,ganado.nacimiento,CURDATE()) AS'Anios', TIMESTAMPDIFF(month, ganado.nacimiento,NOW())%12 AS 'Meses' from ganado Where nacimiento ='" & FechaN & "'"
+        Consulta = "SELECT idg,sexo,raza,estado,nacimiento, TIMESTAMPDIFF(YEAR,ganado.nacimiento,CURDATE()) AS'Anios', TIMESTAMPDIFF(month, ganado.nacimiento,NOW())%12 AS 'Meses' from ganado  where estado <> 'Muerto/a' and nacimiento ='" & FechaN & "'"
         ActualizarGanadoSinConsulta()
         If DataGridViewganado.Rows.Count = 0 Then
             MessageBox.Show("No se encontraron datos de la fecha que usted ingreso", "No hay datos", MessageBoxButtons.OK, MessageBoxIcon.Information)
@@ -1398,7 +1398,7 @@ Public Class Programa
     Private Sub txtBuscarCodGanado_TextChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles txtBuscarCodGanado.TextChanged
         DataGridGanadoEconomico.Visible = False
         DataGridViewganado.Visible = True
-        Consulta = "SELECT idg,sexo,raza,estado,nacimiento, TIMESTAMPDIFF(YEAR,ganado.nacimiento,CURDATE()) AS'Anios', TIMESTAMPDIFF(month, ganado.nacimiento,NOW())%12 AS 'Meses' from ganado where idg like '" & txtBuscarCodGanado.Text & "%'"
+        Consulta = "SELECT idg,sexo,raza,estado,nacimiento, TIMESTAMPDIFF(YEAR,ganado.nacimiento,CURDATE()) AS'Anios', TIMESTAMPDIFF(month, ganado.nacimiento,NOW())%12 AS 'Meses' from ganado  where estado <> 'Muerto/a' and idg like '" & txtBuscarCodGanado.Text & "%'"
 
         consultar()
         DataGridViewganado.DataSource = Tabla
@@ -1552,7 +1552,7 @@ Public Class Programa
 
                 DesactivarBotonesGanado()
                 DataGridGanadoEconomico.Visible = True
-                Consulta = " SELECT idg AS 'Cod Ganado', sexo AS 'Sexo', raza AS 'Raza', estado AS 'Estado', nacimiento, venta.idv AS 'Num Venta', fechaventa As 'Fecha de Venta', totalv AS 'Total US$' from ganado inner join venta on ganado.idv = venta.idv "
+                Consulta = " SELECT idg AS 'Cod Ganado', sexo AS 'Sexo', raza AS 'Raza', estado AS 'Estado', nacimiento, venta.idv AS 'Num Venta', fechaventa As 'Fecha de Venta', totalv AS 'Total US$' from ganado where estado <> 'Muerto/a' inner join venta on ganado.idv = venta.idv "
                 consultar()
                 DataGridGanadoEconomico.DataSource = Tabla
 
@@ -1575,7 +1575,7 @@ Public Class Programa
 
                 DesactivarBotonesGanado()
                 DataGridGanadoEconomico.Visible = True
-                Consulta = " SELECT idg AS 'Cod Ganado', sexo AS 'Sexo', raza AS 'Raza', estado AS 'Estado', nacimiento, compra.idc AS 'Num Compra', fechacompra As 'Fecha de compra', totalc AS 'Total US$' from ganado inner join compra on ganado.idc = compra.idc "
+                Consulta = " SELECT idg AS 'Cod Ganado', sexo AS 'Sexo', raza AS 'Raza', estado AS 'Estado', nacimiento, compra.idc AS 'Num Compra', fechacompra As 'Fecha de compra', totalc AS 'Total US$' from ganado  where estado <> 'Muerto/a' inner join compra on ganado.idc = compra.idc "
                 consultar()
                 DataGridGanadoEconomico.DataSource = Tabla
                 DataGridGanadoEconomico.Columns(4).Visible = False
@@ -1598,7 +1598,7 @@ Public Class Programa
 
                 DesactivarBotonesGanado()
                 DataGridGanadoEconomico.Visible = True
-                Consulta = " SELECT idg AS 'Cod Ganado', sexo AS 'Sexo', raza AS 'Raza', estado AS 'Estado', nacimiento, venta.idv AS 'Num Venta', fechaventa As 'Fecha de Venta', totalv AS 'Total US$' from ganado left join venta on ganado.idv = venta.idv where ganado.idv is not null and raza ='" + CBXrazaCompradoVendido.SelectedItem + "'"
+                Consulta = " SELECT idg AS 'Cod Ganado', sexo AS 'Sexo', raza AS 'Raza', estado AS 'Estado', nacimiento, venta.idv AS 'Num Venta', fechaventa As 'Fecha de Venta', totalv AS 'Total US$' from ganado  where estado <> 'Muerto/a' left join venta on ganado.idv = venta.idv where ganado.idv is not null and raza ='" + CBXrazaCompradoVendido.SelectedItem + "'"
                 consultar()
                 DataGridGanadoEconomico.DataSource = Tabla
 
@@ -1621,7 +1621,7 @@ Public Class Programa
 
                 DesactivarBotonesGanado()
                 DataGridGanadoEconomico.Visible = True
-                Consulta = " SELECT idg AS 'Cod Ganado', sexo AS 'Sexo', raza AS 'Raza', estado AS 'Estado', nacimiento, compra.idc AS 'Num Compra', fechacompra As 'Fecha de compra', totalc AS 'Total US$' from ganado left join compra on ganado.idc = compra.idc where ganado.idc is not null and raza ='" + CBXrazaCompradoVendido.SelectedItem + "'"
+                Consulta = " SELECT idg AS 'Cod Ganado', sexo AS 'Sexo', raza AS 'Raza', estado AS 'Estado', nacimiento, compra.idc AS 'Num Compra', fechacompra As 'Fecha de compra', totalc AS 'Total US$' from ganado  where estado <> 'Muerto/a' left join compra on ganado.idc = compra.idc where ganado.idc is not null and raza ='" + CBXrazaCompradoVendido.SelectedItem + "'"
                 consultar()
                 DataGridGanadoEconomico.DataSource = Tabla
                 DataGridGanadoEconomico.Columns(4).Visible = False
