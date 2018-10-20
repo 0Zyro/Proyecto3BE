@@ -1845,23 +1845,40 @@ Public Class Programa
     End Sub
 
     Private Sub Button1_Click_1(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles BOTONclienteInactivo.Click
+        
         GroupBoxcliente.Enabled = False
         DataGridViewClientes.Visible = False
         DataGridclienteInactivos.Visible = True
         BOTONcancelarHabilitado.Visible = True
         BOTONaceptarHabilitado.Visible = True
         BOTONcargarDatosclientes.Enabled = False
-        Consulta = " select * from cliente where estado = 0 "
-        consultar()
+        BOTONclienteInactivo.Enabled = False
+        Try
+            Consulta = " select * from cliente where estado = 0 "
+            consultar()
 
-        DataGridclienteInactivos.DataSource = Tabla
+            DataGridclienteInactivos.DataSource = Tabla
 
-        DataGridclienteInactivos.Columns(0).HeaderText = "Cédula"
-        DataGridclienteInactivos.Columns(1).HeaderText = "Nombre"
-        DataGridclienteInactivos.Columns(2).HeaderText = "Apellido"
-        DataGridclienteInactivos.Columns(3).HeaderText = "Dirección"
-        DataGridclienteInactivos.Columns(4).HeaderText = "Teléfono"
-        DataGridclienteInactivos.Columns(5).Visible = False
+            DataGridclienteInactivos.Columns(0).HeaderText = "Cédula"
+            DataGridclienteInactivos.Columns(1).HeaderText = "Nombre"
+            DataGridclienteInactivos.Columns(2).HeaderText = "Apellido"
+            DataGridclienteInactivos.Columns(3).HeaderText = "Dirección"
+            DataGridclienteInactivos.Columns(4).HeaderText = "Teléfono"
+            DataGridclienteInactivos.Columns(5).Visible = False
+
+            If DataGridclienteInactivos.Rows.Count = 0 Then
+                BOTONaceptarHabilitado.Enabled = False
+
+            Else
+                BOTONaceptarHabilitado.Enabled = True
+
+            End If
+
+        Catch ex As Exception
+            MsgBox(ex.Message)
+
+        End Try
+
     End Sub
 
     Private Sub BOTONaceptarHabilitado_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles BOTONaceptarHabilitado.Click
@@ -1886,7 +1903,12 @@ Public Class Programa
 
                 actualizarCliente()
 
+                If DataGridclienteInactivos.Rows.Count = 0 Then
+                    BOTONaceptarHabilitado.Enabled = False
 
+                Else
+                    BOTONaceptarHabilitado.Enabled = True
+                End If
 
 
             Catch ex As Exception
@@ -1904,6 +1926,7 @@ Public Class Programa
         BOTONcancelarHabilitado.Visible = False
         BOTONaceptarHabilitado.Visible = False
         BOTONcargarDatosclientes.Enabled = True
+        BOTONclienteInactivo.Enabled = True
     End Sub
 
     '/////////////////////////// ARREGLOS EN CLIENTE///////////////////////////////////////////////////////////////////////////////////////////
@@ -2139,6 +2162,9 @@ Public Class Programa
     End Sub
 
     Private Sub BOTONguardarAgregarCliente_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles BOTONguardarAgregarCliente.Click
+
+        'Select Case error1
+        '    Case 0
         If txtnombreCliente.Text <> "" And txtapellidoCliente.Text <> "" And txtcedulaCliente.Text <> "" And txtdireccionCliente.Text <> "" And txttelefonoCliente.Text <> "" Then
             If IsNumeric(txtcedulaCliente.Text) And IsNumeric(txttelefonoCliente.Text) Then
                 'If Not IsNumeric(txtnombreCliente.Text) And Not IsNumeric(txtapellidoCliente.Text) Then
@@ -2147,8 +2173,7 @@ Public Class Programa
 
                 If verificarCedula(txtcedulaCliente.Text) Then
                     Try
-                        'Select Case error1
-                        '    Case 0
+
                         Consulta = "INSERT INTO cliente(id,nombre,apellido,direccion,telefono) values('" & txtcedulaCliente.Text & "','" & txtnombreCliente.Text & "','" & txtapellidoCliente.Text & "','" & txtdireccionCliente.Text & "','" & txttelefonoCliente.Text & "')"
                         consultar()
 
@@ -2168,11 +2193,8 @@ Public Class Programa
 
                         MsgBox("Registro exitoso")
 
-                        '    Case 1
-                        '        MsgBox("esa cedula,ya existe")
-                        'End Select
                     Catch ex As Exception
-                        MsgBox(ex)
+                        MsgBox(ex.Message)
                     End Try
                 Else
                     MsgBox("Cedula erronea")
@@ -2190,6 +2212,10 @@ Public Class Programa
         Else
             MsgBox("Complete todos los campos vacios")
         End If
+
+        '    Case 1
+        'MsgBox("esa cedula,ya existe")
+        'End Select
     End Sub
 
 
@@ -2319,25 +2345,25 @@ Public Class Programa
     End Sub
 
     Private Sub DataGridclienteInactivos_MouseEnter(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles DataGridclienteInactivos.MouseEnter
-        If DataGridclienteInactivos.Rows.Count = 0 Then
-            BOTONaceptarHabilitado.Enabled = False
+        'If DataGridclienteInactivos.Rows.Count = 0 Then
+        '    BOTONaceptarHabilitado.Enabled = False
 
-        Else
+        'Else
 
-            BOTONaceptarHabilitado.Enabled = True
+        '    BOTONaceptarHabilitado.Enabled = True
 
-        End If
+        'End If
     End Sub
 
     Private Sub BOTONaceptarHabilitado_MouseEnter(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles BOTONaceptarHabilitado.MouseEnter
-        If DataGridclienteInactivos.Rows.Count = 0 Then
-            BOTONaceptarHabilitado.Enabled = False
+        'If DataGridclienteInactivos.Rows.Count = 0 Then
+        '    BOTONaceptarHabilitado.Enabled = False
 
-        Else
+        'Else
 
-            BOTONaceptarHabilitado.Enabled = True
+        '    BOTONaceptarHabilitado.Enabled = True
 
-        End If
+        'End If
     End Sub
     '////////////////////////////////FIN DE ARREGLOS CLIENTES///////////////////////////////////////////////
     '///////////////////////////////////////////////  FIN DE CLIENTEEEEEE ////////////////////////////////////////////////////////////////////
@@ -3504,5 +3530,7 @@ Public Class Programa
 
    
     Dim index As Integer = 99999
+
+   
 
 End Class
