@@ -81,7 +81,7 @@ Public Class Programa
         CBXRazaGanado.Text = ""
 
         DTPAgregarGanado.Value = Today
-        CBXestadoGanado.Text = ""
+        CBXagregarEstadoGanado.Text = ""
     End Sub
 
     Public Sub ActualizarGanadoSinConsulta()
@@ -453,7 +453,7 @@ Public Class Programa
                         MsgBox("Error: " + ex.Message)
                     End Try
                     estadoVisualizar()
-               
+
                 Else
                     LBLInfoUsuarios.Text = "Nombre incorrecto"
                 End If
@@ -1093,12 +1093,15 @@ Public Class Programa
 
         End If
 
+        CBXmodificarEstadoGanado.Visible = False
+        'GroupBox1.Enabled = True
+
         DataGridViewganado.Enabled = False
 
         BOTONguardarAgregar.Visible = True
         BOTONcancelarAgregar.Visible = True
-        BOTONabrirModificar.Enabled = False
 
+        CBXagregarEstadoGanado.Visible = True
         CBXsexoGanado.Enabled = True
         CBXRazaGanado.Enabled = True
 
@@ -1106,7 +1109,7 @@ Public Class Programa
 
 
 
-        CBXestadoGanado.Enabled = True
+        'CBXagregarEstadoGanado.Enabled = True
 
         CBXsexoGanado.Text = ""
         CBXRazaGanado.Text = ""
@@ -1114,9 +1117,10 @@ Public Class Programa
         DTPAgregarGanado.Text = ""
 
 
-        CBXestadoGanado.Text = ""
+        CBXagregarEstadoGanado.Text = ""
 
         BOTONabrirAgregar.Enabled = False
+        BOTONabrirModificar.Enabled = False
 
 
     End Sub
@@ -1132,15 +1136,21 @@ Public Class Programa
         CBXRazaGanado.Enabled = False
         DTPAgregarGanado.Enabled = False
 
-        CBXestadoGanado.Enabled = False
+        CBXagregarEstadoGanado.Enabled = False
         CBXsexoGanado.Text = ""
         CBXRazaGanado.Text = ""
         DTPAgregarGanado.Text = ""
 
-        CBXestadoGanado.Text = ""
+        CBXagregarEstadoGanado.Text = ""
+        CBXmodificarEstadoGanado.Text = ""
 
         DataGridViewganado.Focus()
-
+        
+        CBXsexoGanado.Text = DataGridViewganado.Item(1, DataGridViewganado.CurrentRow.Index).Value
+        CBXRazaGanado.Text = DataGridViewganado.Item(2, DataGridViewganado.CurrentRow.Index).Value
+        DTPAgregarGanado.Text = DataGridViewganado.Item(4, DataGridViewganado.CurrentRow.Index).Value
+        CBXagregarEstadoGanado.Text = DataGridViewganado.Item(3, DataGridViewganado.CurrentRow.Index).Value
+        CBXmodificarEstadoGanado.Text = DataGridViewganado.Item(3, DataGridViewganado.CurrentRow.Index).Value
         BOTONguardarAgregar.Visible = False
         BOTONcancelarAgregar.Visible = False
     End Sub
@@ -1153,8 +1163,8 @@ Public Class Programa
             Dim sexo As String = CBXsexoGanado.SelectedItem.ToString
             Dim raza As String = CBXRazaGanado.SelectedItem.ToString
             Dim fechaN As String = DTPAgregarGanado.Value.ToString("yyyy-MM-dd")
-            Dim estadoG As String = CBXestadoGanado.SelectedItem.ToString
-            If CBXsexoGanado.Text <> "" And CBXRazaGanado.Text <> "" And CBXestadoGanado.Text <> "" Then
+            Dim estadoG As String = CBXagregarEstadoGanado.SelectedItem.ToString
+            If CBXsexoGanado.Text <> "" And CBXRazaGanado.Text <> "" And CBXagregarEstadoGanado.Text <> "" Then
 
 
                 Try
@@ -1169,7 +1179,7 @@ Public Class Programa
                     CBXRazaGanado.Text = ""
 
                     DTPAgregarGanado.Value = Today
-                    CBXestadoGanado.Text = ""
+                    CBXagregarEstadoGanado.Text = ""
                     MsgBox("Datos guardados", MsgBoxStyle.Information)
 
 
@@ -1192,7 +1202,7 @@ Public Class Programa
         CBXRazaGanado.Text = ""
 
         DTPAgregarGanado.Value = Today
-        CBXestadoGanado.Text = ""
+        CBXagregarEstadoGanado.Text = ""
     End Sub
 
     '///////////////////////////////BOTON PARA MODIFICAR DATOS EN LOS CAMPOS////////////////////////////////////////
@@ -1208,12 +1218,11 @@ Public Class Programa
             Dim codigo As String = DataGridViewganado.Item(0, DataGridViewganado.CurrentRow.Index).Value
             Dim sexo As String = CBXsexoGanado.SelectedItem.ToString
             Dim raza As String = CBXRazaGanado.SelectedItem.ToString
-            Dim estado As String = CBXestadoGanado.SelectedItem.ToString
+            Dim estado As String = CBXmodificarEstadoGanado.SelectedItem.ToString
             Dim fechaN As String = DTPAgregarGanado.Value.ToString("yyyy-MM-dd")
 
 
-            If CBXsexoGanado.Text <> "" And CBXRazaGanado.Text <> "" And CBXestadoGanado.Text <> "" Then
-
+            If CBXsexoGanado.Text <> "" And CBXRazaGanado.Text <> "" And CBXmodificarEstadoGanado.Text <> "" Then
 
 
 
@@ -1233,7 +1242,7 @@ Public Class Programa
                     CBXsexoGanado.Text = ""
 
                     DTPAgregarGanado.Value = Today
-                    CBXestadoGanado.Text = ""
+                    CBXagregarEstadoGanado.Text = ""
                     MsgBox("Datos editados", MsgBoxStyle.Information)
 
 
@@ -1241,9 +1250,13 @@ Public Class Programa
                 Catch ex As Exception
                     MsgBox(ex.ToString)
                 End Try
+           
+        Else
+            MsgBox("Los campos no pueden estar vacios", MsgBoxStyle.Exclamation, Title:="No se realizaron cambios")
+        End If
 
-            Else
-                MsgBox("Los campos no pueden estar vacios", MsgBoxStyle.Exclamation, Title:="No se realizaron cambios")
+            If CBXmodificarEstadoGanado.Text = "Muerto/a" Then
+                MsgBox("fdjvj")
             End If
         End If
     End Sub
@@ -1251,20 +1264,27 @@ Public Class Programa
     Private Sub BOTONabrirModificar_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles BOTONabrirModificar.Click
         BOTONguardarModificar.Visible = True
         BOTONcancelarModificar.Visible = True
-        BOTONabrirAgregar.Enabled = False
+        'BOTONabrirAgregar.Enabled = True
         CBXsexoGanado.Enabled = True
         CBXRazaGanado.Enabled = True
         DTPAgregarGanado.Enabled = True
 
 
-        CBXestadoGanado.Enabled = True
+        CBXagregarEstadoGanado.Visible = False
+        CBXmodificarEstadoGanado.Visible = True
+        CBXmodificarEstadoGanado.Enabled = True
+
         DataGridViewganado.Focus()
         BOTONabrirModificar.Enabled = False
+        BOTONabrirAgregar.Enabled = False
 
     End Sub
     '''(((((((/////////////////////CANCELA Y CIERRA EL BOTON MODIFICAR//////////////////////////////
     ''' //////////////////////////////////////////////////////////////////////////////////////
     Private Sub BOTONcancelarModificar_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles BOTONcancelarModificar.Click
+
+        CBXmodificarEstadoGanado.Visible = False
+        CBXagregarEstadoGanado.Visible = True
 
         BOTONabrirModificar.Enabled = True
 
@@ -1273,19 +1293,19 @@ Public Class Programa
         CBXsexoGanado.Enabled = False
         CBXRazaGanado.Enabled = False
         DTPAgregarGanado.Enabled = False
-        CBXestadoGanado.Enabled = False
+        CBXagregarEstadoGanado.Enabled = False
 
         CBXRazaGanado.Text = ""
         CBXsexoGanado.Text = ""
         DTPAgregarGanado.Text = ""
-        CBXestadoGanado.Text = ""
+        CBXagregarEstadoGanado.Text = ""
         'Texestadoganado.Clear()
         DataGridViewganado.Focus()
 
         CBXsexoGanado.Text = DataGridViewganado.Item(1, DataGridViewganado.CurrentRow.Index).Value
         CBXRazaGanado.Text = DataGridViewganado.Item(2, DataGridViewganado.CurrentRow.Index).Value
         DTPAgregarGanado.Text = DataGridViewganado.Item(4, DataGridViewganado.CurrentRow.Index).Value
-        CBXestadoGanado.Text = DataGridViewganado.Item(3, DataGridViewganado.CurrentRow.Index).Value
+        CBXagregarEstadoGanado.Text = DataGridViewganado.Item(3, DataGridViewganado.CurrentRow.Index).Value
 
         BOTONguardarModificar.Visible = False
         BOTONcancelarModificar.Visible = False
@@ -1294,22 +1314,31 @@ Public Class Programa
     '''//////////////////////////// DENTRO DEL DATAGRID ESTA EL CODIGO PARA PASAR DATOS A LOS CAMPOS//////////////////
     ''' ///////////////////////////////////////////////////////////////////////////////////////////////////////////////
     Private Sub DataGridViewganado_SelectionChanged(ByVal sender As Object, ByVal e As System.EventArgs) Handles DataGridViewganado.SelectionChanged
-        Try
 
+
+        Try
 
             CBXsexoGanado.Text = ""
             CBXRazaGanado.Text = ""
             DTPAgregarGanado.Text = ""
-            CBXestadoGanado.Text = ""
-
+            CBXagregarEstadoGanado.Text = ""
+            CBXmodificarEstadoGanado.Text = ""
+            CBXmodificarEstadoGanado.Enabled = True
             CBXsexoGanado.Text = DataGridViewganado.Item(1, DataGridViewganado.CurrentRow.Index).Value
             CBXRazaGanado.Text = DataGridViewganado.Item(2, DataGridViewganado.CurrentRow.Index).Value
             DTPAgregarGanado.Text = DataGridViewganado.Item(4, DataGridViewganado.CurrentRow.Index).Value
-            CBXestadoGanado.Text = DataGridViewganado.Item(3, DataGridViewganado.CurrentRow.Index).Value
+            CBXagregarEstadoGanado.Text = DataGridViewganado.Item(3, DataGridViewganado.CurrentRow.Index).Value
+            CBXmodificarEstadoGanado.Text = DataGridViewganado.Item(3, DataGridViewganado.CurrentRow.Index).Value
+            'If CBXmodificarEstadoGanado.SelectedItem = "vendido" Then
+            '    GroupBox1.Enabled = False
 
+            'Else
+            '    GroupBox1.Enabled = True
+            'End If
         Catch ex As Exception
             'MsgBox(" NO SELECCIONO DATO HA MODIFICAR" & vbCrLf & vbCrLf & ex.Message, MsgBoxStyle.Critical, Title:=" ERROR ")
         End Try
+
 
     End Sub
 
@@ -1460,7 +1489,7 @@ Public Class Programa
                     ActualizarGanadoSinConsulta()
 
                     If DataGridViewganado.Rows.Count = 0 Then
-                        MessageBox.Show("No se encontraron datos en esta busqueda", "Busqueda por Estado", MessageBoxButtons.OK, MessageBoxIcon.Information)
+                        MessageBox.Show("No se encontraron datos de ganado activo", "Busqueda por Estado", MessageBoxButtons.OK, MessageBoxIcon.Information)
                         actualizarGanado()
 
                     End If
@@ -1478,7 +1507,7 @@ Public Class Programa
                     ActualizarGanadoSinConsulta()
 
                     If DataGridViewganado.Rows.Count = 0 Then
-                        MessageBox.Show("No se encontraron datos en esta busqueda", "Busqueda por Estado", MessageBoxButtons.OK, MessageBoxIcon.Information)
+                        MessageBox.Show("No se encontraron datos de ganado vendido", "Busqueda por Estado", MessageBoxButtons.OK, MessageBoxIcon.Information)
                         actualizarGanado()
 
                     End If
@@ -1497,16 +1526,37 @@ Public Class Programa
                     ActualizarGanadoSinConsulta()
 
                     If DataGridViewganado.Rows.Count = 0 Then
-                        MessageBox.Show("No se encontraron datos en esta busqueda", "Busqueda por Estado", MessageBoxButtons.OK, MessageBoxIcon.Information)
+                        MessageBox.Show("No se encontraron datos de ganado Enfermo/a", "Busqueda por Estado", MessageBoxButtons.OK, MessageBoxIcon.Information)
                         actualizarGanado()
 
 
                     End If
 
+
+
                 Catch ex As Exception
                     MsgBox(ex.Message)
                 End Try
-            Else
+
+            ElseIf CBXbuscarEstadoGanado.Text = "Muerto/a" Then
+
+                Try
+
+                    Consulta = "select idg, sexo, raza, estado, nacimiento, TIMESTAMPDIFF(YEAR,ganado.nacimiento,CURDATE()) AS 'Anios', TIMESTAMPDIFF(month, ganado.nacimiento,NOW())%12 AS 'Meses' from ganado where estado = '" & CBXbuscarEstadoGanado.SelectedItem & "'"
+                    ActualizarGanadoSinConsulta()
+
+                    If DataGridViewganado.Rows.Count = 0 Then
+                        MessageBox.Show("No se encontraron datos de ganado Muerto/a", "Busqueda por Estado", MessageBoxButtons.OK, MessageBoxIcon.Information)
+                        actualizarGanado()
+
+
+                    End If
+
+
+
+                Catch ex As Exception
+                    MsgBox(ex.Message)
+                End Try
 
             End If
         Else
@@ -1552,11 +1602,11 @@ Public Class Programa
 
                 DesactivarBotonesGanado()
                 DataGridGanadoEconomico.Visible = True
-                Consulta = " SELECT idg AS 'Cod Ganado', sexo AS 'Sexo', raza AS 'Raza', estado AS 'Estado', nacimiento, venta.idv AS 'Num Venta', fechaventa As 'Fecha de Venta', totalv AS 'Total US$' from ganado where estado <> 'Muerto/a' inner join venta on ganado.idv = venta.idv "
+                Consulta = " SELECT idg AS 'Cod Ganado', sexo AS 'Sexo', raza AS 'Raza', estado AS 'Estado', nacimiento, venta.idv AS 'Num Venta', fechaventa As 'Fecha de Venta', totalv AS 'Total US$' from ganado inner join venta on ganado.idv = venta.idv"
                 consultar()
                 DataGridGanadoEconomico.DataSource = Tabla
 
-                DataGridGanadoEconomico.Columns(4).Visible = False
+                'DataGridGanadoEconomico.Columns(4).Visible = False
                 DataGridGanadoEconomico.Focus()
 
 
@@ -1575,7 +1625,7 @@ Public Class Programa
 
                 DesactivarBotonesGanado()
                 DataGridGanadoEconomico.Visible = True
-                Consulta = " SELECT idg AS 'Cod Ganado', sexo AS 'Sexo', raza AS 'Raza', estado AS 'Estado', nacimiento, compra.idc AS 'Num Compra', fechacompra As 'Fecha de compra', totalc AS 'Total US$' from ganado  where estado <> 'Muerto/a' inner join compra on ganado.idc = compra.idc "
+                Consulta = " SELECT idg AS 'Cod Ganado', sexo AS 'Sexo', raza AS 'Raza', estado AS 'Estado', nacimiento, compra.idc AS 'Num Compra', fechacompra As 'Fecha de compra', totalc AS 'Total US$' from ganado  inner join compra on ganado.idc = compra.idc  where estado <> 'Muerto/a' "
                 consultar()
                 DataGridGanadoEconomico.DataSource = Tabla
                 DataGridGanadoEconomico.Columns(4).Visible = False
@@ -3091,7 +3141,7 @@ Public Class Programa
 
             Case 0
                 'CONSULTA DE TABLA GANADO
-                Consulta = "select idg, sexo, raza, estado, nacimiento, TIMESTAMPDIFF(YEAR,ganado.nacimiento,CURDATE()) AS 'Anios', TIMESTAMPDIFF(month, ganado.nacimiento,NOW())%12 AS 'Meses' from ganado"
+                Consulta = "select idg, sexo, raza, estado, nacimiento, TIMESTAMPDIFF(YEAR,ganado.nacimiento,CURDATE()) AS 'Anios', TIMESTAMPDIFF(month, ganado.nacimiento,NOW())%12 AS 'Meses' from ganado Where estado = 'Muerto/a' "
                 consultar()
                 DataGridViewganado.DataSource = Tabla
 
@@ -3573,5 +3623,6 @@ Public Class Programa
    
     Dim index As Integer = 99999
 
-    
+   
+
 End Class
