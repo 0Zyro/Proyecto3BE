@@ -2449,11 +2449,16 @@ Public Class Programa
     Private Sub BTNCancelarcompra_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles BTNCancelarcompra.Click
         CBXAgregarcompra.Enabled = True
         BTNVolverdeagregarcompra.Enabled = True
-        LTBGanadocompra.Items.Clear()
+        DataGridView1.Rows.Clear()
         PNLGanadocompra.Visible = True
+        PNLGanadocompra.BringToFront()
+        TextBox1.Clear()
+        TextBox2.Clear()
         TextBox4.Clear()
         TextBox3.Clear()
         TXTTotalapagarcompraganado.Clear()
+        CBXAgregarcompra.Text = ""
+        acumulador = 0
     End Sub
     '/////////////////////////Boton de para entrar al panel de agregar compras
     Private Sub BTNpanelmodicompras_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles BTNPanelagregarcompra.Click
@@ -2522,21 +2527,18 @@ Public Class Programa
         Dim fecha As String = DTPFechanacimientocompra.Value.ToString("yyyy-MM-dd")
         Dim codigo As String = TXTCodigoganadocompra.Text
 
+        If fecha <> "" And sexo <> "" And raza <> "" And codigo <> "" And TextBox1.Text <> "" And TextBox2.Text <> "" Then
+            TextBox3.Text = TextBox1.Text * TextBox2.Text
+            acumulador = (acumulador + (TextBox1.Text * TextBox2.Text))
+            TextBox4.Text = acumulador
 
-
-
-        TextBox3.Text = TextBox1.Text * TextBox2.Text
-        acumulador = (acumulador + (TextBox1.Text * TextBox2.Text))
-        TextBox4.Text = acumulador
-        TXTTotalapagarcompraganado.Text = acumulador
-
-
-        If fecha <> "" And sexo <> "" And raza <> "" And codigo Then
             If DTPFechanacimientocompra.Value > Today Then
                 MsgBox("La fecha de nacimiento no puede ser mayor a la fecha actual")
             Else
                 If IsNumeric(codigo) Then
-                    LTBGanadocompra.Items.Add(codigo + " " + sexo + " " + raza + " " + fecha + " " + TextBox3.Text)
+
+                    DataGridView1.Rows.Add(codigo, raza, sexo, fecha, TextBox3.Text)
+
                     TXTCodigoganadocompra.Clear()
                     DTPFechanacimientocompra.Value = Today
                     CBXRazacompra.Text = ""
@@ -2552,12 +2554,18 @@ Public Class Programa
         End If
         CBXAgregarcompra.Enabled = False
         BTNVolverdeagregarcompra.Enabled = False
+        BTNavanzarcompra.Enabled = True
+        BTNCancelarcompra.Visible = True
     End Sub
     Private Sub BTNEliminarganadocompra_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles BTNEliminarganadocompra.Click
-        LTBGanadocompra.Items.RemoveAt(LTBGanadocompra.SelectedIndex)
+        acumulador = (acumulador - (DataGridView1.CurrentRow.Cells(4).Value))
+        TextBox4.Text = acumulador
+        DataGridView1.Rows.Remove(DataGridView1.CurrentRow)
+
     End Sub
     Private Sub BTNavanzarcompra_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles BTNavanzarcompra.Click
         PNLGanadocompra.Visible = False
+        TXTTotalapagarcompraganado.Text = acumulador
     End Sub
 
     Private Sub BTNAgregarcompra_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles BTNAgregarcompraproducto.Click
@@ -2837,7 +2845,7 @@ Public Class Programa
             PNLAgregarcompraganado.Visible = False
             PNLAgregarcompraganado.Enabled = False
             PNLAgregarcompraganado.SendToBack()
-
+            BTNCancelarcompra.Visible = False
         Else
             PNLAgregarcompraproducto.Visible = False
             PNLAgregarcompraproducto.Enabled = False
@@ -2846,6 +2854,7 @@ Public Class Programa
             PNLAgregarcompraganado.Visible = False
             PNLAgregarcompraganado.Enabled = False
             PNLAgregarcompraganado.SendToBack()
+            BTNCancelarcompra.Visible = False
         End If
     End Sub
     '//////Boton que elimina el ganado/////////
