@@ -1625,7 +1625,7 @@ Public Class Programa
 
                 DesactivarBotonesGanado()
                 DataGridGanadoEconomico.Visible = True
-                Consulta = " SELECT idg AS 'Cod Ganado', sexo AS 'Sexo', raza AS 'Raza', estado AS 'Estado', nacimiento, compra.idc AS 'Num Compra', fechacompra As 'Fecha de compra', totalc AS 'Total US$' from ganado  inner join compra on ganado.idc = compra.idc  where estado <> 'Muerto/a' "
+                Consulta = " SELECT idg AS 'Cod Ganado', sexo AS 'Sexo', raza AS 'Raza', estado AS 'Estado', nacimiento, compra.idc AS 'Id Compra', fechacompra As 'Fecha de compra', precioc AS 'Total US$' from ganado  inner join compra on ganado.idc = compra.idc  where estado <> 'Muerto/a' "
                 consultar()
                 DataGridGanadoEconomico.DataSource = Tabla
                 DataGridGanadoEconomico.Columns(4).Visible = False
@@ -2445,6 +2445,10 @@ Public Class Programa
         PNLAgregarcompraganado.Visible = False
         PNLAgregarcompraganado.Enabled = False
         PNLAgregarcompraganado.SendToBack()
+
+        Consulta = "select * from compra"
+        consultar()
+        DGVCompras.DataSource = Tabla
     End Sub
     Private Sub BTNCancelarcompra_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles BTNCancelarcompra.Click
         CBXAgregarcompra.Enabled = True
@@ -2699,23 +2703,25 @@ Public Class Programa
                         Consulta = "insert into compra values (0,'" & fechacompra & "','" & RTXComentariocompraganado.Text & "','" & TXTTotalapagarcompraganado.Text & "')"
                         consultar()
 
+                        'Pone la primera letra de comentario en mayuscula
                         Consulta = ("update compra set comentarioc = concat(upper(left(comentarioc,1)), right(comentarioc,length(comentarioc)-1))")
                         consultar()
 
                         Consulta = "select * from compra"
                         consultar()
+                        DGVCompras.DataSource = Tabla
 
                         Consulta = "select idc from compra where idc = (select max(idc) from compra)"
                         consultar()
                         DataGridView2.DataSource = Tabla
 
-                        For Each row As DataGridViewRow In DataGridView1.Rows
-                            Consulta = "insert into ganado(idg, sexo, raza, nacimiento, estado, precioc, idc) values ('" & DataGridView1.CurrentRow.Cells(0).Value & "','" & DataGridView1.CurrentRow.Cells(2).Value & "','" & DataGridView1.CurrentRow.Cells(1).Value & "','" & DataGridView1.CurrentRow.Cells(3).Value & "','Activo','" & DataGridView1.CurrentRow.Cells(4).Value & "','" & DataGridView2.CurrentRow.Cells(0).Value & "')"
+                        For row As Integer = 0 To DataGridView1.Rows.Count - 1
+                            Consulta = "insert into ganado(idg, sexo, raza, nacimiento, estado, precioc, idc) values ('" & DataGridView1.Rows(row).Cells(0).Value & "','" & DataGridView1.Rows(row).Cells(2).Value & "','" & DataGridView1.Rows(row).Cells(1).Value & "','" & DataGridView1.Rows(row).Cells(3).Value & "','Activo','" & DataGridView1.Rows(row).Cells(4).Value & "','" & DataGridView2.CurrentRow.Cells(0).Value & "')"
                             consultar()
                         Next
 
                         'Actualiza la BD
-                        DGVCompras.DataSource = Tabla
+
 
                         'Deja a los textbox vacios para ingresar nuevos datos
                         DTPFechacompraganado.Value = Today
