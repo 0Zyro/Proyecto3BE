@@ -2483,6 +2483,7 @@ Public Class Programa
         CBXAgregarcompra.Enabled = True
         BTNVolverdeagregarcompra.Enabled = True
         DataGridView1.Rows.Clear()
+        DataGridView2.Rows.Clear()
         PNLGanadocompra.Visible = True
         PNLGanadocompra.BringToFront()
         TextBox1.Clear()
@@ -2542,6 +2543,16 @@ Public Class Programa
         DGVCompras.Columns(0).HeaderText = "Total que se gastó en el año"
 
     End Sub
+    Private Sub Button3_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Button3.Click
+        Consulta = "select * from compra where idc = any (select idc from ganado)"
+        consultar()
+        DGVCompras.DataSource = Tabla
+    End Sub
+    Private Sub Button4_Click_1(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Button4.Click
+        Consulta = "select * from compra where idc not in (select idc from ganado)"
+        consultar()
+        DGVCompras.DataSource = Tabla
+    End Sub
 
     Private Sub BTNActualizarcompras_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles BTNActualizarcompras.Click
         Consulta = ("select * from compra")
@@ -2558,9 +2569,9 @@ Public Class Programa
         Dim sexo As String = CBXSexocompra.SelectedItem
         Dim raza As String = CBXRazacompra.SelectedItem
         Dim fecha As String = DTPFechanacimientocompra.Value.ToString("yyyy-MM-dd")
-        Dim codigo As String = TXTCodigoganadocompra.Text
 
-        If fecha <> "" And sexo <> "" And raza <> "" And codigo <> "" And TextBox1.Text <> "" And TextBox2.Text <> "" Then
+
+        If fecha <> "" And sexo <> "" And raza <> "" And TextBox1.Text <> "" And TextBox2.Text <> "" Then
             TextBox3.Text = TextBox1.Text * TextBox2.Text
             acumulador = (acumulador + (TextBox1.Text * TextBox2.Text))
             TextBox4.Text = acumulador
@@ -2568,19 +2579,18 @@ Public Class Programa
             If DTPFechanacimientocompra.Value > Today Then
                 MsgBox("La fecha de nacimiento no puede ser mayor a la fecha actual")
             Else
-                If IsNumeric(codigo) Then
 
-                    DataGridView1.Rows.Add(codigo, raza, sexo, fecha, TextBox3.Text)
 
-                    TXTCodigoganadocompra.Clear()
-                    DTPFechanacimientocompra.Value = Today
-                    CBXRazacompra.Text = ""
-                    CBXSexocompra.Text = ""
-                    TextBox1.Clear()
-                    TextBox3.Clear()
-                Else
-                    MsgBox("Ingrese solo valor numerico en codigo de ganado")
-                End If
+                DataGridView1.Rows.Add(raza, sexo, fecha, TextBox3.Text)
+
+                TXTCodigoganadocompra.Clear()
+                DTPFechanacimientocompra.Value = Today
+                CBXRazacompra.Text = ""
+                CBXSexocompra.Text = ""
+                TextBox1.Clear()
+                TextBox3.Clear()
+
+
             End If
         Else
             MsgBox("Complete todos los campos vacios")
@@ -2716,6 +2726,16 @@ Public Class Programa
         End Try
     End Sub
     Private Sub BTNAgregarcomraganado_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles BTNAgregarcomraganado.Click
+        If DataGridViewganado.Rows.Count = 0 Then
+            Consulta = " alter table ganado auto_increment = 1001 "
+            consultar()
+        End If
+        If DGVCompras.Rows.Count = 0 Then
+            Consulta = " alter table compra auto_increment = 2001 "
+            consultar()
+
+
+        End If
         Dim fechacompra As String = DTPFechacompraganado.Value.ToString("yyyy-MM-dd")
 
         Dim fechanac As String = DTPFechanacimientocompra.Value.ToString("yyyy-MM-dd")
@@ -2736,21 +2756,21 @@ Public Class Programa
                         Consulta = ("update compra set comentarioc = concat(upper(left(comentarioc,1)), right(comentarioc,length(comentarioc)-1))")
                         consultar()
 
-                        Consulta = "select * from compra"
-                        consultar()
-                        DGVCompras.DataSource = Tabla
+                        
 
                         Consulta = "select idc from compra where idc = (select max(idc) from compra)"
                         consultar()
                         DataGridView2.DataSource = Tabla
 
                         For row As Integer = 0 To DataGridView1.Rows.Count - 1
-                            Consulta = "insert into ganado(idg, sexo, raza, nacimiento, estado, precioc, idc) values ('" & DataGridView1.Rows(row).Cells(0).Value & "','" & DataGridView1.Rows(row).Cells(2).Value & "','" & DataGridView1.Rows(row).Cells(1).Value & "','" & DataGridView1.Rows(row).Cells(3).Value & "','Activo','" & DataGridView1.Rows(row).Cells(4).Value & "','" & DataGridView2.CurrentRow.Cells(0).Value & "')"
+                            Consulta = "insert into ganado(sexo, raza, nacimiento, estado, precioc, idc) values ('" & DataGridView1.Rows(row).Cells(1).Value & "','" & DataGridView1.Rows(row).Cells(0).Value & "','" & DataGridView1.Rows(row).Cells(2).Value & "','Activo','" & DataGridView1.Rows(row).Cells(3).Value & "','" & DataGridView2.CurrentRow.Cells(0).Value & "')"
                             consultar()
                         Next
 
                         'Actualiza la BD
-
+                        Consulta = "select * from compra"
+                        consultar()
+                        DGVCompras.DataSource = Tabla
 
                         'Deja a los textbox vacios para ingresar nuevos datos
                         DTPFechacompraganado.Value = Today
@@ -2760,6 +2780,19 @@ Public Class Programa
                         TXTCodigoganadocompra.Text = ""
                         DTPFechanacimientocompra.Value = Today
                         MsgBox("Los datos se ingresaron correctamente")
+                        CBXAgregarcompra.Enabled = True
+                        BTNVolverdeagregarcompra.Enabled = True
+                        DataGridView1.Rows.Clear()
+                        DataGridView2.Rows.Clear()
+                        PNLGanadocompra.Visible = True
+                        PNLGanadocompra.BringToFront()
+                        TextBox1.Clear()
+                        TextBox2.Clear()
+                        TextBox4.Clear()
+                        TextBox3.Clear()
+                        TXTTotalapagarcompraganado.Clear()
+                        CBXAgregarcompra.Text = ""
+                        acumulador = 0
                     Else
                         'Muestra mensaje diciendo que no se ingresaron valores numericos o que solo acepta valores numericos
                         MsgBox("Ingrese solo valor numerico en total")
@@ -2773,7 +2806,7 @@ Public Class Programa
             MsgBox("Complete todos los campos vacios")
 
         End If
-
+        
     End Sub
     Private Sub BTNLimpiarcompraganado_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles BTNLimpiarcompraganado.Click
         RTXComentariocompraganado.Clear()
@@ -2881,6 +2914,8 @@ Public Class Programa
             PNLAgregarcompraproducto.Visible = False
             PNLAgregarcompraproducto.Enabled = False
             PNLAgregarcompraproducto.SendToBack()
+            PNLGanadocompra.BringToFront()
+
         ElseIf CBXAgregarcompra.Text = "Productos" Then
             PNLAgregarcompraproducto.Visible = True
             PNLAgregarcompraproducto.Enabled = True
@@ -3676,7 +3711,4 @@ Public Class Programa
    
     Dim index As Integer = 99999
 
-   
-
-  
 End Class
