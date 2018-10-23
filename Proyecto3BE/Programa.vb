@@ -2705,6 +2705,15 @@ Public Class Programa
                         Consulta = "select * from compra"
                         consultar()
 
+                        Consulta = "select idc from compra where idc = (select max(idc) from compra)"
+                        consultar()
+                        DataGridView2.DataSource = Tabla
+
+                        For Each row As DataGridViewRow In DataGridView1.Rows
+                            Consulta = "insert into ganado(idg, sexo, raza, nacimiento, estado, precioc, idc) values ('" & DataGridView1.CurrentRow.Cells(0).Value & "','" & DataGridView1.CurrentRow.Cells(2).Value & "','" & DataGridView1.CurrentRow.Cells(1).Value & "','" & DataGridView1.CurrentRow.Cells(3).Value & "','Activo','" & DataGridView1.CurrentRow.Cells(4).Value & "','" & DataGridView2.CurrentRow.Cells(0).Value & "')"
+                            consultar()
+                        Next
+
                         'Actualiza la BD
                         DGVCompras.DataSource = Tabla
 
