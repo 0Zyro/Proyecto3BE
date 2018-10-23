@@ -1102,6 +1102,7 @@ Public Class Programa
         BOTONcancelarAgregar.Visible = True
 
         CBXagregarEstadoGanado.Visible = True
+        CBXagregarEstadoGanado.Enabled = True
         CBXsexoGanado.Enabled = True
         CBXRazaGanado.Enabled = True
 
@@ -1143,16 +1144,23 @@ Public Class Programa
 
         CBXagregarEstadoGanado.Text = ""
         CBXmodificarEstadoGanado.Text = ""
+        If DataGridViewganado.Rows.Count = 0 Then
+            BOTONabrirAgregar.Focus()
 
-        DataGridViewganado.Focus()
-        
-        CBXsexoGanado.Text = DataGridViewganado.Item(1, DataGridViewganado.CurrentRow.Index).Value
-        CBXRazaGanado.Text = DataGridViewganado.Item(2, DataGridViewganado.CurrentRow.Index).Value
-        DTPAgregarGanado.Text = DataGridViewganado.Item(4, DataGridViewganado.CurrentRow.Index).Value
-        CBXagregarEstadoGanado.Text = DataGridViewganado.Item(3, DataGridViewganado.CurrentRow.Index).Value
-        CBXmodificarEstadoGanado.Text = DataGridViewganado.Item(3, DataGridViewganado.CurrentRow.Index).Value
-        BOTONguardarAgregar.Visible = False
-        BOTONcancelarAgregar.Visible = False
+        Else
+
+            DataGridViewganado.Focus()
+
+            CBXsexoGanado.Text = DataGridViewganado.Item(1, DataGridViewganado.CurrentRow.Index).Value
+            CBXRazaGanado.Text = DataGridViewganado.Item(2, DataGridViewganado.CurrentRow.Index).Value
+            DTPAgregarGanado.Text = DataGridViewganado.Item(4, DataGridViewganado.CurrentRow.Index).Value
+            CBXagregarEstadoGanado.Text = DataGridViewganado.Item(3, DataGridViewganado.CurrentRow.Index).Value
+            CBXmodificarEstadoGanado.Text = DataGridViewganado.Item(3, DataGridViewganado.CurrentRow.Index).Value
+            BOTONguardarAgregar.Visible = False
+            BOTONcancelarAgregar.Visible = False
+
+        End If
+       
     End Sub
 
     '''/////////////////////////////////////BOTON PARA INGRESAR NUEVO GANADO//////////////////////////////////////
@@ -1262,6 +1270,21 @@ Public Class Programa
     End Sub
 
     Private Sub BOTONabrirModificar_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles BOTONabrirModificar.Click
+
+        If CBXmodificarEstadoGanado.SelectedItem = "vendido" Then
+            CBXmodificarEstadoGanado.Enabled = False
+            CBXRazaGanado.Enabled = False
+            CBXsexoGanado.Enabled = False
+            DTPAgregarGanado.Enabled = False
+
+        Else
+            CBXmodificarEstadoGanado.Enabled = True
+            CBXRazaGanado.Enabled = True
+            CBXsexoGanado.Enabled = True
+            DTPAgregarGanado.Enabled = True
+        End If
+
+
         BOTONguardarModificar.Visible = True
         BOTONcancelarModificar.Visible = True
         'BOTONabrirAgregar.Enabled = True
@@ -1329,12 +1352,18 @@ Public Class Programa
             DTPAgregarGanado.Text = DataGridViewganado.Item(4, DataGridViewganado.CurrentRow.Index).Value
             CBXagregarEstadoGanado.Text = DataGridViewganado.Item(3, DataGridViewganado.CurrentRow.Index).Value
             CBXmodificarEstadoGanado.Text = DataGridViewganado.Item(3, DataGridViewganado.CurrentRow.Index).Value
-            'If CBXmodificarEstadoGanado.SelectedItem = "vendido" Then
-            '    GroupBox1.Enabled = False
+            If CBXmodificarEstadoGanado.SelectedItem = "vendido" Then
+                CBXmodificarEstadoGanado.Enabled = False
+                CBXRazaGanado.Enabled = False
+                CBXsexoGanado.Enabled = False
+                DTPAgregarGanado.Enabled = False
 
-            'Else
-            '    GroupBox1.Enabled = True
-            'End If
+            Else
+                CBXmodificarEstadoGanado.Enabled = True
+                CBXRazaGanado.Enabled = True
+                CBXsexoGanado.Enabled = True
+                DTPAgregarGanado.Enabled = True
+            End If
         Catch ex As Exception
             'MsgBox(" NO SELECCIONO DATO HA MODIFICAR" & vbCrLf & vbCrLf & ex.Message, MsgBoxStyle.Critical, Title:=" ERROR ")
         End Try
@@ -3612,12 +3641,12 @@ Public Class Programa
             consultar()
             DataGridViewVENTAS.DataSource = Tabla
         End If
-        If CBXbuscarenventa.Text = "Última venta realizada en el año" Then
+        If CBXbuscarenventa.Text = "Última venta realizada en el año actual" Then
             Consulta = "SELECT * FROM `venta` WHERE MONTH(fechaventa) <= ALL (SELECT MONTH(fechaventa) FROM venta)"
             consultar()
             DataGridViewVENTAS.DataSource = Tabla
         End If
-        If CBXbuscarenventa.Text = "Primera venta realizada en el año" Then
+        If CBXbuscarenventa.Text = "Primera venta realizada en el año actual" Then
             Consulta = "SELECT * FROM `venta` WHERE MONTH(fechaventa) >= ALL (SELECT MONTH(fechaventa) FROM venta)"
             consultar()
             DataGridViewVENTAS.DataSource = Tabla
@@ -3649,4 +3678,5 @@ Public Class Programa
 
    
 
+  
 End Class
