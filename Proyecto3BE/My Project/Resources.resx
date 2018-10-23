@@ -124,6 +124,9 @@
   <data name="goma-de-borrar" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\goma-de-borrar.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="rising" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\rising.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="007-add-user" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\007-add-user.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
@@ -133,11 +136,11 @@
   <data name="flecha-hacia-la-izquierda" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\flecha-hacia-la-izquierda.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="botoncompra" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\botoncompra.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="003-keyboard-key-s" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\003-keyboard-key-s.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="refresh-round-symbol" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\refresh-round-symbol.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="004-add-friend" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\004-add-friend.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -145,20 +148,23 @@
   <data name="money-coin-or-button-with-dollar-sign-in-black-circle" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\money-coin-or-button-with-dollar-sign-in-black-circle.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="002-person" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\002-person.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
   <data name="editar" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\editar.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="018-confirm" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\018-confirm.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="016-remove-user-1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\016-remove-user-1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="011-new-user" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\011-new-user.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="icon" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\icon.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="blackberry-qr-code-variant" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\blackberry-qr-code-variant.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="Botonbuscar" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Botonbuscar.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -172,11 +178,14 @@
   <data name="busqueda" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\busqueda.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="009-edit-2" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\009-edit-2.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="hide" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\hide.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="botoncompra" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\botoncompra.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="002-person" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\002-person.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="agregar cliente" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\agregar cliente.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -184,14 +193,11 @@
   <data name="020-x-button" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\020-x-button.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="001-edit" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\001-edit.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
   <data name="cow" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\cow.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="009-edit-2" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\009-edit-2.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="refresh-round-symbol" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\refresh-round-symbol.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="modificar cliente" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\modificar cliente.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -226,19 +232,16 @@
   <data name="cow (2)" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\cow (2).png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="blackberry-qr-code-variant" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\blackberry-qr-code-variant.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="006-remove-user" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\006-remove-user.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="001-edit" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\001-edit.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="borrar" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\borrar.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="016-remove-user-1" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\016-remove-user-1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="006-remove-user" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\006-remove-user.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="rising" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\rising.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="forward" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\forward.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>
