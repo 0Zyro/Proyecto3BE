@@ -1454,40 +1454,10 @@ Public Class Programa
         ElseIf Char.IsSeparator(e.KeyChar) Then
 
 
-            'If IsNumeric(txtBuscarCodGanado.Text) Then
-
-
         Else
             e.Handled = True
         End If
-        'DataGridViewganado.Columns(0).HeaderText = "Codigo"
-        'DataGridViewganado.Columns(1).HeaderText = "Sexo"
-        'DataGridViewganado.Columns(2).HeaderText = "Raza"
-
-        'DataGridViewganado.Columns(4).HeaderText = "Fecha Nacimiento"
-        'DataGridViewganado.Columns(3).HeaderText = "Estado"
-        'DataGridViewganado.Columns(5).HeaderText = "Años"
-        'DataGridViewganado.Columns(6).HeaderText = "Meses"
-
-
-        'Else
-        'txtBuscarCodGanado.Clear()
-
-        'Consulta = "SELECT idg,sexo,raza,estado,nacimiento, TIMESTAMPDIFF(YEAR,ganado.nacimiento,CURDATE()) AS'Anios', TIMESTAMPDIFF(month, ganado.nacimiento,NOW())%12 AS 'Meses' from ganado " '"
-        'consultar()
-        'DataGridViewganado.DataSource = Tabla
-
-        'DataGridViewganado.Columns(0).HeaderText = "Codigo"
-        'DataGridViewganado.Columns(1).HeaderText = "Sexo"
-        'DataGridViewganado.Columns(2).HeaderText = "Raza"
-
-        'DataGridViewganado.Columns(4).HeaderText = "Fecha Nacimiento"
-        'DataGridViewganado.Columns(3).HeaderText = "Estado"
-        'DataGridViewganado.Columns(5).HeaderText = "Años"
-        'DataGridViewganado.Columns(6).HeaderText = "Meses"
-
-
-        'End If
+      
     End Sub
     Private Sub txtBuscarCodGanado_TextChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles txtBuscarCodGanado.TextChanged
         DataGridGanadoEconomico.Visible = False
