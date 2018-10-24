@@ -45,12 +45,17 @@ Partial Class Boleta
         '
         'DGVBOLETA
         '
+        Me.DGVBOLETA.AllowUserToAddRows = False
+        Me.DGVBOLETA.AllowUserToDeleteRows = False
+        Me.DGVBOLETA.AllowUserToResizeColumns = False
+        Me.DGVBOLETA.AllowUserToResizeRows = False
         Me.DGVBOLETA.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         Me.DGVBOLETA.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.Column4, Me.Column1, Me.Column2, Me.Column3})
         Me.DGVBOLETA.Location = New System.Drawing.Point(56, 135)
         Me.DGVBOLETA.Name = "DGVBOLETA"
         Me.DGVBOLETA.ReadOnly = True
-        Me.DGVBOLETA.Size = New System.Drawing.Size(443, 240)
+        Me.DGVBOLETA.RowHeadersVisible = False
+        Me.DGVBOLETA.Size = New System.Drawing.Size(403, 240)
         Me.DGVBOLETA.TabIndex = 2
         '
         'Column4

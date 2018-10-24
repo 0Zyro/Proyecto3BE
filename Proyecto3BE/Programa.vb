@@ -3518,7 +3518,8 @@ Public Class Programa
             DGVCalculoK.Rows.Add()
 
             DGVCalculoK.Item(0, i).Value = LSTVentas.Items(i).ToString
-            Module1.idganado = LSTVentas.Items(i).ToString
+            'Module1.idganado = LSTVentas.Items(i).ToString
+            'Module1.list = LSTVentas.Items.Count
         Next
 
         PNLCalculoK.Visible = True
@@ -3538,9 +3539,9 @@ Public Class Programa
                 DGVCalculoK.Item(3, i).Value = (Convert.ToDouble(DGVCalculoK.Item(1, i).Value)) * (Convert.ToDouble(DGVCalculoK.Item(2, i).Value))
 
                 total = (total + (Convert.ToDouble(DGVCalculoK.Item(3, i).Value)))
-                Module1.peso = DGVCalculoK.Item(1, i).Value
-                Module1.precio = DGVCalculoK.Item(2, i).Value
-                Module1.subtotal = DGVCalculoK.Item(3, i).Value
+                'Module1.peso = DGVCalculoK.Item(1, i).Value
+                'Module1.precio = DGVCalculoK.Item(2, i).Value
+                'Module1.subtotal = DGVCalculoK.Item(3, i).Value
 
             Else
                 MsgBox("Ingrese caracteres numericos solamente")
@@ -3781,10 +3782,10 @@ Public Class Programa
     Private Sub TMRHoraFecha_Tick(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles TMRHoraFecha.Tick
 
         If separador = False Then
-            LBLHora.Text = (Date.Now.Hour.ToString + " " + Date.Now.Minute.ToString)
+            LBLHora.Text = (Date.Now.Hour.ToString("00") + " " + Date.Now.Minute.ToString("00"))
             separador = True
         Else
-            LBLHora.Text = (Date.Now.Hour.ToString + ":" + Date.Now.Minute.ToString)
+            LBLHora.Text = (Date.Now.Hour.ToString("00") + ":" + Date.Now.Minute.ToString("00"))
             separador = False
         End If
 
@@ -3794,7 +3795,17 @@ Public Class Programa
     Dim index As Integer = 99999
 
     Private Sub BTNBoleta_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles BTNBoleta.Click
-        Module1.fechaventa = DTPVentas.Value.ToString("yyyy-MM-dd")
+
+        Boleta.clear()
+
+        For i As Integer = 0 To DGVCalculoK.Rows.Count - 1
+
+            Boleta.cargardatos(DGVCalculoK.Item(1, i).Value, DGVCalculoK.Item(2, i).Value, DGVCalculoK.Item(3, i).Value, DGVCalculoK.Item(0, i).Value, DTPVentas.Value.ToString("yy/MM/dd"))
+
+
+
+        Next
+
         Boleta.Show()
 
     End Sub

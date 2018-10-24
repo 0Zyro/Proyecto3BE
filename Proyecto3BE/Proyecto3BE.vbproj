@@ -140,7 +140,6 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
-    <Compile Include="Resources\Module1.vb" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Boleta.resx">

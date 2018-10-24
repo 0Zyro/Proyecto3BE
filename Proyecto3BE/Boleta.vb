@@ -12,28 +12,40 @@ Public Class Boleta
     Dim comando As New MySqlCommand
     Dim reader As MySqlDataReader
 
-    Private Sub Boleta_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
+    Public Sub clear()
+        DGVBOLETA.Rows.Clear()
+    End Sub
+
+    Public Sub cargardatos(ByVal peso As Double, ByVal precio As Double, ByVal subtotal As Double, ByVal idganado As Integer, ByVal fechaventa As String)
         txbfechaboleta.Text = fechaventa
 
-        For i As Integer = 0 To DGVBOLETA.Rows.Count - 1
+        DGVBOLETA.Rows.Add()
 
+        DGVBOLETA.Item(0, DGVBOLETA.Rows.Count - 1).Value = idganado
 
-            DGVBOLETA.Rows.Add()
-
-            DGVBOLETA.Item(0, i).Value = idganado
-
-            DGVBOLETA.Item(1, i).Value = peso
-            DGVBOLETA.Item(2, i).Value = precio
-            DGVBOLETA.Item(3, i).Value = subtotal
-
-
-        Next
-
-
-
-
+        DGVBOLETA.Item(1, DGVBOLETA.Rows.Count - 1).Value = peso
+        DGVBOLETA.Item(2, DGVBOLETA.Rows.Count - 1).Value = precio
+        DGVBOLETA.Item(3, DGVBOLETA.Rows.Count - 1).Value = subtotal
 
     End Sub
+
+    'Private Sub Boleta_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
+    '   
+
+    '    For i As Integer = 0 To DGVBOLETA.Rows.Count - 1
+
+
+    '        DGVBOLETA.Rows.Add()
+
+
+
+    '    Next
+
+
+
+
+
+    'End Sub
 
 
     Private Sub imprimir()
@@ -55,4 +67,6 @@ Public Class Boleta
     Private Sub BTNimprimir_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles BTNimprimir.Click
         imprimir()
     End Sub
+
+ 
 End Class
