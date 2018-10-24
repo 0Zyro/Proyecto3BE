@@ -3259,7 +3259,7 @@ Public Class Programa
     'MODIFICAR VENTAS 
     Private Sub Button4_Click(ByVal sender As System.Object, ByVal e As System.EventArgs)
 
-        Dim fecha As String = DateTimePicker1.Value.ToString("yyyy-MM-dd")
+        Dim fecha As String = DTPVentas.Value.ToString("yyyy-MM-dd")
         Dim comentario As String = rtbventa.Text
         Dim totalv As String = txbtotalventa.Text
 
@@ -3504,7 +3504,7 @@ Public Class Programa
 
 
 
-    
+
 
 
 
@@ -3518,7 +3518,7 @@ Public Class Programa
             DGVCalculoK.Rows.Add()
 
             DGVCalculoK.Item(0, i).Value = LSTVentas.Items(i).ToString
-
+            Module1.idganado = LSTVentas.Items(i).ToString
         Next
 
         PNLCalculoK.Visible = True
@@ -3538,6 +3538,9 @@ Public Class Programa
                 DGVCalculoK.Item(3, i).Value = (Convert.ToDouble(DGVCalculoK.Item(1, i).Value)) * (Convert.ToDouble(DGVCalculoK.Item(2, i).Value))
 
                 total = (total + (Convert.ToDouble(DGVCalculoK.Item(3, i).Value)))
+                Module1.peso = DGVCalculoK.Item(1, i).Value
+                Module1.precio = DGVCalculoK.Item(2, i).Value
+                Module1.subtotal = DGVCalculoK.Item(3, i).Value
 
             Else
                 MsgBox("Ingrese caracteres numericos solamente")
@@ -3589,7 +3592,7 @@ Public Class Programa
     'AGREGAR EN VENTA
     Private Sub btnagregarventa_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnagregarventa.Click
 
-        Dim fecha As String = DateTimePicker1.Value.ToString("yyyy-MM-dd")
+        Dim fecha As String = DTPVentas.Value.ToString("yyyy-MM-dd")
         Dim comentario As String = rtbventa.Text
         Dim totalv As String = txbtotalventa.Text
         Dim id As String = txbceduladeclientedeventas.Text
@@ -3657,6 +3660,10 @@ Public Class Programa
                 connection.Close()
             End If
         End Try
+
+
+
+
 
         rtbventa.Text = ""
         txbtotalventa.Text = ""
@@ -3785,4 +3792,10 @@ Public Class Programa
 
    
     Dim index As Integer = 99999
+
+    Private Sub BTNBoleta_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles BTNBoleta.Click
+        Module1.fechaventa = DTPVentas.Value.ToString("yyyy-MM-dd")
+        Boleta.Show()
+
+    End Sub
 End Class
