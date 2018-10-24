@@ -132,32 +132,46 @@ Public Class Programa
 
     Private Sub BTNModificarContraseña_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles BTNModificarContraseña.Click
 
-        Dim aux As String = InputBox("¿Seguro que desea cambiar la contraseña?", "Confirmacion")
+        Dim aux As String = ""
+
+        aux = InputBox("¿Seguro que desea cambiar la contraseña?", "Confirmacion")
 
         comando.CommandType = CommandType.Text
         comando.Connection = connection
         comando.CommandText = ("update usuario set contrasena='" + encriptar(aux) + "' where ci='" + CiSeleccionado + "'")
 
-        If verificarPasswd(aux) Then
+        If aux <> "" Then
 
-            Try
+            If aux = InputBox("Repita la contraseña, por favor", "Confirmacion") Then
 
-                connection.Open()
+                If verificarPasswd(aux) Then
 
-                comando.ExecuteNonQuery()
+                    Try
 
-                connection.Close()
+                        connection.Open()
 
-            Catch ex As Exception
-                MsgBox(ex.Message)
-                If connection.State = ConnectionState.Open Then
-                    connection.Close()
+                        comando.ExecuteNonQuery()
+
+                        connection.Close()
+
+                    Catch ex As Exception
+                        MsgBox(ex.Message)
+                        If connection.State = ConnectionState.Open Then
+                            connection.Close()
+                        End If
+                    End Try
+
+                    LBLInfoUsuarios.Text = "Contraseña cambiada con exito"
+
                 End If
-            End Try
 
-            LBLInfoUsuarios.Text = "Contraseña cambiada con exito"
+            Else
 
-            BTNCancelarUsuarios.PerformClick()
+                MsgBox("La contraseñas no coinciden")
+
+            End If
+
+            'BTNModificarContraseña.PerformClick()
 
         End If
 
