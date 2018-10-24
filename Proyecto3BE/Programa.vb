@@ -829,7 +829,7 @@ Public Class Programa
 
 
     Private Sub Form2_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
-
+        actualizarGanado()
         TMRHoraFecha.Start()
 
         Me.Text = ("Gestión y Control Ganadero || " + Date.Today.Day.ToString + "/" + Date.Today.Month.ToString + "/" + Date.Today.Year.ToString)
@@ -1099,7 +1099,7 @@ Public Class Programa
     ''' ////////////////////////////////////////////////////////////////////////////////////////////////////////////
     ''' 
     Private Sub BOTONabrirAgregar_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles BOTONabrirAgregar.Click
-
+        GroupBox1.Enabled = True
         If DataGridViewganado.Rows.Count = 0 Then
             Consulta = " alter table ganado auto_increment = 1001 "
             consultar()
@@ -1142,6 +1142,9 @@ Public Class Programa
     '''/////////////////////////////////////////BOTON PARA CANCELAR EL GUARDADO DEL AGREGADO DE GANADO////////////////////////////////
     ''' ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     Private Sub BOTONcancelarAgregar_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles BOTONcancelarAgregar.Click
+
+        GroupBox1.Enabled = False
+
         DataGridViewganado.Enabled = True
 
         BOTONabrirAgregar.Enabled = True
@@ -1285,6 +1288,8 @@ Public Class Programa
 
     Private Sub BOTONabrirModificar_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles BOTONabrirModificar.Click
 
+        GroupBox1.Enabled = True
+
         If CBXmodificarEstadoGanado.SelectedItem = "vendido" Then
             CBXmodificarEstadoGanado.Enabled = False
             CBXRazaGanado.Enabled = False
@@ -1312,6 +1317,30 @@ Public Class Programa
         CBXmodificarEstadoGanado.Enabled = True
 
         DataGridViewganado.Focus()
+
+        CBXsexoGanado.Text = DataGridViewganado.Item(1, DataGridViewganado.CurrentRow.Index).Value
+        CBXRazaGanado.Text = DataGridViewganado.Item(2, DataGridViewganado.CurrentRow.Index).Value
+        DTPAgregarGanado.Text = DataGridViewganado.Item(4, DataGridViewganado.CurrentRow.Index).Value
+        CBXagregarEstadoGanado.Text = DataGridViewganado.Item(3, DataGridViewganado.CurrentRow.Index).Value
+        CBXmodificarEstadoGanado.Text = DataGridViewganado.Item(3, DataGridViewganado.CurrentRow.Index).Value
+
+  
+            If CBXmodificarEstadoGanado.SelectedItem = "vendido" Then
+                CBXmodificarEstadoGanado.Enabled = False
+                CBXRazaGanado.Enabled = False
+                CBXsexoGanado.Enabled = False
+            DTPAgregarGanado.Enabled = False
+            BOTONguardarModificar.Enabled = False
+
+            Else
+                CBXmodificarEstadoGanado.Enabled = True
+                CBXRazaGanado.Enabled = True
+                CBXsexoGanado.Enabled = True
+            DTPAgregarGanado.Enabled = True
+            BOTONguardarModificar.Enabled = True
+            End If
+
+
         BOTONabrirModificar.Enabled = False
         BOTONabrirAgregar.Enabled = False
 
@@ -1319,6 +1348,7 @@ Public Class Programa
     '''(((((((/////////////////////CANCELA Y CIERRA EL BOTON MODIFICAR//////////////////////////////
     ''' //////////////////////////////////////////////////////////////////////////////////////
     Private Sub BOTONcancelarModificar_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles BOTONcancelarModificar.Click
+        GroupBox1.Enabled = False
 
         CBXmodificarEstadoGanado.Visible = False
         CBXagregarEstadoGanado.Visible = True
@@ -1366,17 +1396,28 @@ Public Class Programa
             DTPAgregarGanado.Text = DataGridViewganado.Item(4, DataGridViewganado.CurrentRow.Index).Value
             CBXagregarEstadoGanado.Text = DataGridViewganado.Item(3, DataGridViewganado.CurrentRow.Index).Value
             CBXmodificarEstadoGanado.Text = DataGridViewganado.Item(3, DataGridViewganado.CurrentRow.Index).Value
-            If CBXmodificarEstadoGanado.SelectedItem = "vendido" Then
+
+            If GroupBox1.Enabled = False Then
                 CBXmodificarEstadoGanado.Enabled = False
                 CBXRazaGanado.Enabled = False
                 CBXsexoGanado.Enabled = False
                 DTPAgregarGanado.Enabled = False
-
+                CBXagregarEstadoGanado.Enabled = False
             Else
-                CBXmodificarEstadoGanado.Enabled = True
-                CBXRazaGanado.Enabled = True
-                CBXsexoGanado.Enabled = True
-                DTPAgregarGanado.Enabled = True
+                If CBXmodificarEstadoGanado.SelectedItem = "vendido" Then
+                    CBXmodificarEstadoGanado.Enabled = False
+                    CBXRazaGanado.Enabled = False
+                    CBXsexoGanado.Enabled = False
+                    DTPAgregarGanado.Enabled = False
+                    BOTONguardarModificar.Enabled = False
+
+                Else
+                    CBXmodificarEstadoGanado.Enabled = True
+                    CBXRazaGanado.Enabled = True
+                    CBXsexoGanado.Enabled = True
+                    DTPAgregarGanado.Enabled = True
+                    BOTONguardarModificar.Enabled = True
+                End If
             End If
         Catch ex As Exception
             'MsgBox(" NO SELECCIONO DATO HA MODIFICAR" & vbCrLf & vbCrLf & ex.Message, MsgBoxStyle.Critical, Title:=" ERROR ")
@@ -1388,30 +1429,30 @@ Public Class Programa
 
 
 
-    '''////////////////////////// BOTON PARA ELIMINAR GANADO/////////////////////////////
-    '''/////////////////////////////////////////////////////////////////////////////////
-    '''  
+    '////////////////////////// BOTON PARA ELIMINAR GANADO/////////////////////////////
+    '/////////////////////////////////////////////////////////////////////////////////
 
-    Private Sub Button6_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btneliminarganado.Click
-        Dim MsgStyle As MsgBoxStyle = MsgBoxStyle.Critical + MsgBoxStyle.OkOnly
-        Dim MsgStyle1 As MsgBoxStyle = MsgBoxStyle.Information + MsgBoxStyle.OkOnly
-        If MessageBox.Show("¿Seguro que desea eliminar ?", "Confirmacion", MessageBoxButtons.YesNo, MessageBoxIcon.Question) = Windows.Forms.DialogResult.Yes Then
-            Try
-                Consulta = " delete from ganado where idg='" & DataGridViewganado.Item(0, DataGridViewganado.CurrentRow.Index).Value & "'"
-                consultar()
 
-                actualizarGanado()
+    'Private Sub Button6_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btneliminarganado.Click
+    '    Dim MsgStyle As MsgBoxStyle = MsgBoxStyle.Critical + MsgBoxStyle.OkOnly
+    '    Dim MsgStyle1 As MsgBoxStyle = MsgBoxStyle.Information + MsgBoxStyle.OkOnly
+    '    If MessageBox.Show("¿Seguro que desea eliminar ?", "Confirmacion", MessageBoxButtons.YesNo, MessageBoxIcon.Question) = Windows.Forms.DialogResult.Yes Then
+    '        Try
+    '            Consulta = " delete from ganado where idg='" & DataGridViewganado.Item(0, DataGridViewganado.CurrentRow.Index).Value & "'"
+    '            consultar()
 
-                DataGridViewganado.Focus()
+    '            actualizarGanado()
 
-                MsgBox("Datos borrados", MsgStyle1, Title:="Eliminado")
-            Catch ex As Exception
-                MsgBox("NO HAY DATOS PARA ELIMINAR" & vbCrLf & vbCrLf, MsgStyle, Title:="ERROR")
-            End Try
-            '& vbCrLf & vbCrLf & ex.Message, MsgStyle, Title:="ERROR
+    '            DataGridViewganado.Focus()
 
-        End If
-    End Sub
+    '            MsgBox("Datos borrados", MsgStyle1, Title:="Eliminado")
+    '        Catch ex As Exception
+    '            MsgBox("NO HAY DATOS PARA ELIMINAR" & vbCrLf & vbCrLf, MsgStyle, Title:="ERROR")
+    '        End Try
+    '        '& vbCrLf & vbCrLf & ex.Message, MsgStyle, Title:="ERROR
+
+    '    End If
+    'End Sub
     '''////////////////////////////PARA VOLVER A MOSTRAR DATOS COMPLETOS DE GANADO EN EL DATAGRID///////////////////
     ''' ///////////////////////////////////////////////////////////////////////////////////////////////////////////
     Private Sub Button2_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Button2.Click
@@ -3318,7 +3359,7 @@ Public Class Programa
 
             Case 0
                 'CONSULTA DE TABLA GANADO
-                Consulta = "select idg, sexo, raza, estado, nacimiento, TIMESTAMPDIFF(YEAR,ganado.nacimiento,CURDATE()) AS 'Anios', TIMESTAMPDIFF(month, ganado.nacimiento,NOW())%12 AS 'Meses' from ganado Where estado = 'Muerto/a' "
+                Consulta = "select idg, sexo, raza, estado, nacimiento, TIMESTAMPDIFF(YEAR,ganado.nacimiento,CURDATE()) AS 'Anios', TIMESTAMPDIFF(month, ganado.nacimiento,NOW())%12 AS 'Meses' from ganado Where estado <> 'Muerto/a' "
                 consultar()
                 DataGridViewganado.DataSource = Tabla
 
