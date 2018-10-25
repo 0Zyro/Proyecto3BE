@@ -3920,83 +3920,93 @@ Public Class Programa
     End Sub
 
     Private Sub BOTONagregarRazaCBX_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles BOTONagregarRazaCBX.Click
-        Consulta = "INSERT INTO razas(razitas) VALUES('" + txtAgregarRazaCBX.Text + "')"
-        consultar()
-        comando.CommandType = CommandType.Text
+        If MessageBox.Show("¿Seguro desea guardar datos ?", "Confirmacion", MessageBoxButtons.YesNo, MessageBoxIcon.Question) = Windows.Forms.DialogResult.Yes Then
 
-        comando.Connection = connection
+            If txtAgregarRazaCBX.Text <> "" Then
 
-        comando.CommandText = ("select razitas from razas")
+                Consulta = "INSERT INTO razas(razitas) VALUES('" + txtAgregarRazaCBX.Text + "')"
+                consultar()
 
-        Try
+                txtAgregarRazaCBX.Clear()
+                MsgBox("Se agrego raza con exito", MsgBoxStyle.Information, Title:="Agregado")
 
-            connection.Open()
+                comando.CommandType = CommandType.Text
 
-            reader = comando.ExecuteReader()
+                comando.Connection = connection
 
-            If reader.HasRows() Then
+                comando.CommandText = ("select razitas from razas")
 
-                While reader.Read()
+                Try
 
-                    CBXRazaGanado.Items.Remove(reader.GetString(0))
-                    CBXseleccionarRaza.Items.Remove(reader.GetString(0))
-                    CBXrazaCompradoVendido.Items.Remove(reader.GetString(0))
-                    CBXRazacompra.Items.Remove(reader.GetString(0))
-                    CBXModificarCBX.Items.Remove(reader.GetString(0))
+                    connection.Open()
+
+                    reader = comando.ExecuteReader()
+
+                    If reader.HasRows() Then
+
+                        While reader.Read()
+
+                            CBXRazaGanado.Items.Remove(reader.GetString(0))
+                            CBXseleccionarRaza.Items.Remove(reader.GetString(0))
+                            CBXrazaCompradoVendido.Items.Remove(reader.GetString(0))
+                            CBXRazacompra.Items.Remove(reader.GetString(0))
+                            CBXModificarCBX.Items.Remove(reader.GetString(0))
 
 
-                End While
+                        End While
 
+                    End If
+
+                    connection.Close()
+
+                Catch ex As Exception
+                    MsgBox(ex.Message)
+                    If connection.State = ConnectionState.Open Then
+                        connection.Close()
+                    End If
+
+                End Try
+
+                comando.CommandType = CommandType.Text
+
+                comando.Connection = connection
+
+                comando.CommandText = ("select razitas from razas")
+
+                Try
+
+                    connection.Open()
+
+                    reader = comando.ExecuteReader()
+
+                    If reader.HasRows() Then
+
+                        While reader.Read()
+
+                            CBXRazaGanado.Items.Add(reader.GetString(0))
+                            CBXseleccionarRaza.Items.Add(reader.GetString(0))
+                            CBXrazaCompradoVendido.Items.Add(reader.GetString(0))
+                            CBXRazacompra.Items.Add(reader.GetString(0))
+                            CBXModificarCBX.Items.Add(reader.GetString(0))
+
+
+                        End While
+
+                    End If
+
+                    connection.Close()
+
+                Catch ex As Exception
+                    MsgBox(ex.Message)
+                    If connection.State = ConnectionState.Open Then
+                        connection.Close()
+                    End If
+
+                End Try
+            Else
+                MsgBox("No puede agregar una raza con datos vacios", MsgBoxStyle.Critical, Title:=" No se pudo agregar raza")
             End If
-
-            connection.Close()
-
-        Catch ex As Exception
-            MsgBox(ex.Message)
-            If connection.State = ConnectionState.Open Then
-                connection.Close()
-            End If
-
-        End Try
-
-        comando.CommandType = CommandType.Text
-
-        comando.Connection = connection
-
-        comando.CommandText = ("select razitas from razas")
-
-        Try
-
-            connection.Open()
-
-            reader = comando.ExecuteReader()
-
-            If reader.HasRows() Then
-
-                While reader.Read()
-
-                    CBXRazaGanado.Items.Add(reader.GetString(0))
-                    CBXseleccionarRaza.Items.Add(reader.GetString(0))
-                    CBXrazaCompradoVendido.Items.Add(reader.GetString(0))
-                    CBXRazacompra.Items.Add(reader.GetString(0))
-                    CBXModificarCBX.Items.Add(reader.GetString(0))
-
-
-                End While
-
-            End If
-
-            connection.Close()
-
-        Catch ex As Exception
-            MsgBox(ex.Message)
-            If connection.State = ConnectionState.Open Then
-                connection.Close()
-            End If
-
-        End Try
-
-
+        End If
 
     End Sub
 
