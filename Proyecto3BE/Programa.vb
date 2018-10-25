@@ -849,6 +849,7 @@ Public Class Programa
                     CBXRazaGanado.Items.Add(reader.GetString(0))
                     CBXseleccionarRaza.Items.Add(reader.GetString(0))
                     CBXrazaCompradoVendido.Items.Add(reader.GetString(0))
+                    CBXRazacompra.Items.Add(reader.GetString(0))
 
 
                 End While
@@ -2688,7 +2689,7 @@ Public Class Programa
 
 
                     DTPFechanacimientocompra.Value = Today
-                    CBXRazacompra.Text = ""
+                    CBXRazacompra.Text = " "
                     CBXSexocompra.Text = ""
                     TextBox1.Clear()
                     TextBox3.Clear()
