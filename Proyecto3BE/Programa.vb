@@ -1021,6 +1021,39 @@ Public Class Programa
     '''/////////////////////////////// ABRE PANEL DE BUSQUEDA DE SEXO Y RAZA //////////////////////////////////////////////////////
     ''' ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     Private Sub BOTONpanelSexoRaza_Click_1(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles BOTONpanelSexoRaza.Click
+
+        comando.CommandType = CommandType.Text
+
+        comando.Connection = connection
+
+        comando.CommandText = ("select razaSR from razas")
+
+        Try
+
+            connection.Open()
+
+            reader = comando.ExecuteReader()
+
+            If reader.HasRows() Then
+
+                While reader.Read()
+
+                    CBXRazaGanado.Items.Add(reader.GetString(3))
+
+                End While
+
+            End If
+
+            connection.Close()
+
+        Catch ex As Exception
+            MsgBox(ex.Message)
+            If connection.State = ConnectionState.Open Then
+                connection.Close()
+            End If
+
+        End Try
+
         GroupBox3.Enabled = True
         BOTONguardarAgregar.Enabled = True
         BOTONcancelarAgregar.Enabled = True
@@ -1099,6 +1132,8 @@ Public Class Programa
     ''' ////////////////////////////////////////////////////////////////////////////////////////////////////////////
     ''' 
     Private Sub BOTONabrirAgregar_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles BOTONabrirAgregar.Click
+
+
         GroupBox1.Enabled = True
         If DataGridViewganado.Rows.Count = 0 Then
             Consulta = " alter table ganado auto_increment = 1001 "
@@ -1106,6 +1141,41 @@ Public Class Programa
 
 
         End If
+
+
+
+        comando.CommandType = CommandType.Text
+
+        comando.Connection = connection
+
+        comando.CommandText = ("select razaA from razas")
+
+        Try
+
+            connection.Open()
+
+            reader = comando.ExecuteReader()
+
+            If reader.HasRows() Then
+
+                While reader.Read()
+
+                    CBXRazaGanado.Items.Add(reader.GetString(1))
+
+                End While
+
+            End If
+
+            connection.Close()
+
+        Catch ex As Exception
+            MsgBox(ex.Message)
+            If connection.State = ConnectionState.Open Then
+                connection.Close()
+            End If
+
+        End Try
+
 
         CBXmodificarEstadoGanado.Visible = False
         'GroupBox1.Enabled = True
@@ -1653,6 +1723,39 @@ Public Class Programa
     End Sub
 
     Private Sub BOTONpanelActividadEconomica_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles BOTONpanelActividadEconomica.Click
+
+        comando.CommandType = CommandType.Text
+
+        comando.Connection = connection
+
+        comando.CommandText = ("select razaCV from razas")
+
+        Try
+
+            connection.Open()
+
+            reader = comando.ExecuteReader()
+
+            If reader.HasRows() Then
+
+                While reader.Read()
+
+                    CBXRazaGanado.Items.Add(reader.GetString(2))
+
+                End While
+
+            End If
+
+            connection.Close()
+
+        Catch ex As Exception
+            MsgBox(ex.Message)
+            If connection.State = ConnectionState.Open Then
+                connection.Close()
+            End If
+
+        End Try
+
         GroupBox3.Enabled = True
         BOTONguardarAgregar.Enabled = True
         BOTONcancelarAgregar.Enabled = True
