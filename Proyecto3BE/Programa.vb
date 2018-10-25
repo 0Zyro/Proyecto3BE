@@ -2640,7 +2640,7 @@ Public Class Programa
     Private Sub BTNCancelarcompra_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles BTNCancelarcompra.Click
         CBXAgregarcompra.Enabled = True
         BTNVolverdeagregarcompra.Enabled = True
-        DataGridView1.Rows.Clear()
+        DGVGanadocompra.Rows.Clear()
         DataGridView2.Rows.Clear()
         PNLGanadocompra.Visible = True
         PNLGanadocompra.BringToFront()
@@ -2728,39 +2728,43 @@ Public Class Programa
         Dim raza As String = CBXRazacompra.SelectedItem
         Dim fecha As String = DTPFechanacimientocompra.Value.ToString("yyyy-MM-dd")
 
+        If IsNumeric(TextBox1.Text) And IsNumeric(TextBox2.Text) And TextBox1.Text <> "" And TextBox2.Text <> "" Then
 
-        If fecha <> "" And sexo <> "" And raza <> "" And TextBox1.Text <> "" And TextBox2.Text <> "" Then
-            If IsNumeric(TextBox1.Text) <> "" And IsNumeric(TextBox2.Text) <> "" Then
-                TextBox3.Text = TextBox1.Text * TextBox2.Text
-                acumulador = (acumulador + (TextBox1.Text * TextBox2.Text))
-                TextBox4.Text = acumulador
+            TextBox3.Text = Convert.ToDouble(TextBox1.Text.ToString.Replace(".", ",")) * Convert.ToDouble(TextBox2.Text.ToString.Replace(".", ","))
+            acumulador = (acumulador + Convert.ToDouble(TextBox1.Text.ToString.Replace(".", ",")) * Convert.ToDouble(TextBox2.Text.ToString.Replace(".", ",")))
+            TextBox4.Text = (acumulador)
+            If fecha <> "" And sexo <> "" And raza <> "" Then
+
+
+                If DTPFechanacimientocompra.Value > Today Then
+                    MsgBox("La fecha de nacimiento no puede ser mayor a la fecha actual")
+                Else
+
+
+                    DGVGanadocompra.Rows.Add(raza, sexo, fecha, TextBox3.Text)
+
+
+                    DTPFechanacimientocompra.Value = Today
+                    CBXRazacompra.Text = ""
+                    CBXSexocompra.Text = ""
+                    TextBox1.Clear()
+                    TextBox3.Clear()
+                    CBXAgregarcompra.Enabled = False
+                    BTNVolverdeagregarcompra.Enabled = False
+                    BTNavanzarcompra.Enabled = True
+                    BTNCancelarcompra.Visible = True
+
+                End If
             Else
-                MsgBox("Ingrese solo valores numericos en kg y U$S")
+                MsgBox("Complete todos los campos vacíos")
+
             End If
 
-            If DTPFechanacimientocompra.Value > Today Then
-                MsgBox("La fecha de nacimiento no puede ser mayor a la fecha actual")
-            Else
 
-
-                DataGridView1.Rows.Add(raza, sexo, fecha, TextBox3.Text)
-
-
-                DTPFechanacimientocompra.Value = Today
-                CBXRazacompra.Text = ""
-                CBXSexocompra.Text = ""
-                TextBox1.Clear()
-                TextBox3.Clear()
-
-
-            End If
         Else
-            MsgBox("Complete todos los campos vacios")
+            MsgBox("Ingrese solo valor numérico en Kg y en U$S")
         End If
-            CBXAgregarcompra.Enabled = False
-            BTNVolverdeagregarcompra.Enabled = False
-            BTNavanzarcompra.Enabled = True
-            BTNCancelarcompra.Visible = True
+
     End Sub
     'Private Sub TextBox2_KeyPress(ByVal sender As Object, ByVal e As System.Windows.Forms.KeyPressEventArgs) Handles TextBox2.KeyPress
     '    If Char.IsNumber(e.KeyChar) Then
@@ -2786,9 +2790,9 @@ Public Class Programa
     '    End If
     'End Sub
     Private Sub BTNEliminarganadocompra_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles BTNEliminarganadocompra.Click
-        acumulador = (acumulador - (DataGridView1.CurrentRow.Cells(4).Value))
+        acumulador = (acumulador - (DGVGanadocompra.CurrentRow.Cells(3).Value))
         TextBox4.Text = acumulador
-        DataGridView1.Rows.Remove(DataGridView1.CurrentRow)
+        DGVGanadocompra.Rows.Remove(DGVGanadocompra.CurrentRow)
 
     End Sub
     Private Sub BTNavanzarcompra_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles BTNavanzarcompra.Click
@@ -2946,8 +2950,8 @@ Public Class Programa
                     consultar()
                     DataGridView2.DataSource = Tabla
 
-                    For row As Integer = 0 To DataGridView1.Rows.Count - 1
-                        Consulta = "insert into ganado(sexo, raza, nacimiento, estado, precioc, idc) values ('" & DataGridView1.Rows(row).Cells(1).Value & "','" & DataGridView1.Rows(row).Cells(0).Value & "','" & DataGridView1.Rows(row).Cells(2).Value & "','Activo','" & DataGridView1.Rows(row).Cells(3).Value & "','" & DataGridView2.CurrentRow.Cells(0).Value & "')"
+                    For row As Integer = 0 To DGVGanadocompra.Rows.Count - 1
+                        Consulta = "insert into ganado(sexo, raza, nacimiento, estado, precioc, idc) values ('" & DGVGanadocompra.Rows(row).Cells(1).Value & "','" & DGVGanadocompra.Rows(row).Cells(0).Value & "','" & DGVGanadocompra.Rows(row).Cells(2).Value & "','Activo','" & DGVGanadocompra.Rows(row).Cells(3).Value & "','" & DataGridView2.CurrentRow.Cells(0).Value & "')"
                         consultar()
                     Next
 
@@ -2966,7 +2970,7 @@ Public Class Programa
                     MsgBox("Los datos se ingresaron correctamente")
                     CBXAgregarcompra.Enabled = True
                     BTNVolverdeagregarcompra.Enabled = True
-                    DataGridView1.Rows.Clear()
+                    DGVGanadocompra.Rows.Clear()
                     PNLGanadocompra.Visible = True
                     PNLGanadocompra.BringToFront()
                     TextBox1.Clear()
@@ -2986,7 +2990,7 @@ Public Class Programa
             MsgBox("Complete todos los campos vacios")
 
         End If
-        
+
     End Sub
     Private Sub BTNLimpiarcompraganado_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles BTNLimpiarcompraganado.Click
         RTXComentariocompraganado.Clear()
