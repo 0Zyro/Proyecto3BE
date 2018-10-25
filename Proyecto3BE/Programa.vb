@@ -850,6 +850,7 @@ Public Class Programa
                     CBXseleccionarRaza.Items.Add(reader.GetString(0))
                     CBXrazaCompradoVendido.Items.Add(reader.GetString(0))
                     CBXRazacompra.Items.Add(reader.GetString(0))
+                    CBXModificarCBX.Items.Add(reader.GetString(0))
 
 
                 End While
@@ -1265,14 +1266,7 @@ Public Class Programa
 
     End Sub
 
-    '///////////////////////////////////BOTON PARA LIMPIAR TEXTBOX DE GANADO ////////////////////////////////////
-    Private Sub BOTONlimpiartxtGuardarGanado_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles BOTONlimpiartxtGuardarGanado.Click
-        CBXsexoGanado.Text = ""
-        CBXRazaGanado.Text = ""
-
-        DTPAgregarGanado.Value = Today
-        CBXagregarEstadoGanado.Text = ""
-    End Sub
+   
 
     '///////////////////////////////BOTON PARA MODIFICAR DATOS EN LOS CAMPOS////////////////////////////////////////
     ' //////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -3913,6 +3907,116 @@ Public Class Programa
         Next
 
         Boleta.Show()
+
+    End Sub
+
+    Private Sub BOTONAgregarModificarRaza_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles BOTONAgregarModificarRaza.Click
+        PanelAgregarModificarRaza.Visible = True
+
+    End Sub
+
+    Private Sub CBXModificarCBX_SelectedIndexChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles CBXModificarCBX.SelectedIndexChanged
+        txtModificarRazaCBX.Text = CBXModificarCBX.Text
+    End Sub
+
+    Private Sub BOTONagregarRazaCBX_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles BOTONagregarRazaCBX.Click
+        Consulta = "INSERT INTO razas(razitas) VALUES('" + txtAgregarRazaCBX.Text + "')"
+        consultar()
+        comando.CommandType = CommandType.Text
+
+        comando.Connection = connection
+
+        comando.CommandText = ("select razitas from razas")
+
+        Try
+
+            connection.Open()
+
+            reader = comando.ExecuteReader()
+
+            If reader.HasRows() Then
+
+                While reader.Read()
+
+                    CBXRazaGanado.Items.Remove(reader.GetString(0))
+                    CBXseleccionarRaza.Items.Remove(reader.GetString(0))
+                    CBXrazaCompradoVendido.Items.Remove(reader.GetString(0))
+                    CBXRazacompra.Items.Remove(reader.GetString(0))
+                    CBXModificarCBX.Items.Remove(reader.GetString(0))
+
+
+                End While
+
+            End If
+
+            connection.Close()
+
+        Catch ex As Exception
+            MsgBox(ex.Message)
+            If connection.State = ConnectionState.Open Then
+                connection.Close()
+            End If
+
+        End Try
+
+        comando.CommandType = CommandType.Text
+
+        comando.Connection = connection
+
+        comando.CommandText = ("select razitas from razas")
+
+        Try
+
+            connection.Open()
+
+            reader = comando.ExecuteReader()
+
+            If reader.HasRows() Then
+
+                While reader.Read()
+
+                    CBXRazaGanado.Items.Add(reader.GetString(0))
+                    CBXseleccionarRaza.Items.Add(reader.GetString(0))
+                    CBXrazaCompradoVendido.Items.Add(reader.GetString(0))
+                    CBXRazacompra.Items.Add(reader.GetString(0))
+                    CBXModificarCBX.Items.Add(reader.GetString(0))
+
+
+                End While
+
+            End If
+
+            connection.Close()
+
+        Catch ex As Exception
+            MsgBox(ex.Message)
+            If connection.State = ConnectionState.Open Then
+                connection.Close()
+            End If
+
+        End Try
+
+
+
+    End Sub
+
+
+    Private Sub BOTONcerrarPanelAMraza_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles BOTONcerrarPanelAMraza.Click
+        PanelAgregarModificarRaza.Visible = False
+    End Sub
+
+    Private Sub BOTONmodificarRazaCBX_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles BOTONmodificarRazaCBX.Click
+        'If CBXModificarCBX.Text <> "" And txtModificarRazaCBX.Text <> "" Then
+        '    Consulta = "UPDATE razas set razitas= '" + txtModificarRazaCBX.Text + "'"
+        '    consultar()
+
+        'End If
+
+       
+
+    End Sub
+
+    Private Sub txtModificarRazaCBX_TextChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles txtModificarRazaCBX.TextChanged
 
     End Sub
 End Class
