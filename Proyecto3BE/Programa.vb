@@ -3312,10 +3312,6 @@ Public Class Programa
     End Sub
 
 
-
-
-
-
     Private Sub Timer1_Tick(ByVal sender As System.Object, ByVal e As System.EventArgs)
 
     End Sub
@@ -3348,28 +3344,12 @@ Public Class Programa
 
     End Sub
 
-
-
-
-
-
-
-
-
-
-
-
-
     'MODIFICAR VENTAS 
     Private Sub Button4_Click(ByVal sender As System.Object, ByVal e As System.EventArgs)
 
         Dim fecha As String = DTPVentas.Value.ToString("yyyy-MM-dd")
         Dim comentario As String = rtbventa.Text
         Dim totalv As String = txbtotalventa.Text
-
-
-
-
 
 
         Try
@@ -3386,20 +3366,6 @@ Public Class Programa
         End Try
 
     End Sub
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
     Private Sub TabbedPane_SelectedIndexChanged(ByVal sender As Object, ByVal e As System.EventArgs) Handles TabbedPane.SelectedIndexChanged
@@ -3488,9 +3454,6 @@ Public Class Programa
 
 
     End Sub
-
-
-
 
 
 
@@ -3600,18 +3563,6 @@ Public Class Programa
     End Sub
 
 
-
-
-
-
-
-
-
-
-
-
-
-
     '//////////////PARTE DE VENTA///////////////////////////////////////////////////////////////////////////////
     Private Sub Button1_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles BTNAparecerPanelCalculo.Click
 
@@ -3654,7 +3605,7 @@ Public Class Programa
 
         Next
 
-        txbtotalventa.Text = (total)
+        txbtotalventa.Text = (((total * 22) / 100) + total).ToString
 
         PNLCalculoK.Visible = False
 
@@ -3717,7 +3668,6 @@ Public Class Programa
 
                 connection.Open()
 
-
                 comando.ExecuteNonQuery()
 
                 connection.Close()
@@ -3738,8 +3688,6 @@ Public Class Programa
             End Try
         End If
 
-        MsgBox("asd")
-
         'Dim consultaconmayor As String = "select max(idv) from venta"
         comando.CommandType = CommandType.Text
         comando.Connection = connection
@@ -3749,8 +3697,6 @@ Public Class Programa
             connection.Open()
 
             reader = comando.ExecuteReader()
-
-            MsgBox("max idv")
 
             reader.Read()
 
@@ -3889,9 +3835,6 @@ Public Class Programa
 
     End Sub
 
-
-   
-
     Dim separador As Boolean = False
 
     Private Sub TMRHoraFecha_Tick(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles TMRHoraFecha.Tick
@@ -3915,7 +3858,7 @@ Public Class Programa
 
         For i As Integer = 0 To DGVCalculoK.Rows.Count - 1
 
-            Boleta.cargardatos(DGVCalculoK.Item(1, i).Value, DGVCalculoK.Item(2, i).Value, DGVCalculoK.Item(3, i).Value, DGVCalculoK.Item(0, i).Value, DTPVentas.Value.ToString("yy/MM/dd"))
+            Boleta.cargardatos(DGVCalculoK.Item(1, i).Value, DGVCalculoK.Item(2, i).Value, DGVCalculoK.Item(3, i).Value, DGVCalculoK.Item(0, i).Value, DTPVentas.Value.ToString("yy/MM/dd"), Convert.ToDouble(txbtotalventa.Text))
 
 
 
@@ -4062,7 +4005,4 @@ Public Class Programa
 
     End Sub
 
-    Private Sub txtModificarRazaCBX_TextChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles TXTModificarRazaCBX.TextChanged
-
-    End Sub
 End Class

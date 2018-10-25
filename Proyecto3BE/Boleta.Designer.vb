@@ -24,7 +24,6 @@ Partial Class Boleta
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(Boleta))
-        Me.txbfechaboleta = New System.Windows.Forms.TextBox()
         Me.DGVBOLETA = New System.Windows.Forms.DataGridView()
         Me.Column4 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.Column1 = New System.Windows.Forms.DataGridViewTextBoxColumn()
@@ -33,15 +32,15 @@ Partial Class Boleta
         Me.BTNimprimir = New System.Windows.Forms.Button()
         Me.PrintForm1 = New Microsoft.VisualBasic.PowerPacks.Printing.PrintForm(Me.components)
         Me.lblfechaboleta = New System.Windows.Forms.Label()
+        Me.txbfechaboleta = New System.Windows.Forms.TextBox()
+        Me.TXTIVA = New System.Windows.Forms.TextBox()
+        Me.TXTTotalGeneral = New System.Windows.Forms.TextBox()
+        Me.Label2 = New System.Windows.Forms.Label()
+        Me.Label3 = New System.Windows.Forms.Label()
+        Me.TXTSubtotal = New System.Windows.Forms.TextBox()
+        Me.Label1 = New System.Windows.Forms.Label()
         CType(Me.DGVBOLETA, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
-        '
-        'txbfechaboleta
-        '
-        Me.txbfechaboleta.Location = New System.Drawing.Point(104, 20)
-        Me.txbfechaboleta.Name = "txbfechaboleta"
-        Me.txbfechaboleta.Size = New System.Drawing.Size(111, 20)
-        Me.txbfechaboleta.TabIndex = 0
         '
         'DGVBOLETA
         '
@@ -51,7 +50,7 @@ Partial Class Boleta
         Me.DGVBOLETA.AllowUserToResizeRows = False
         Me.DGVBOLETA.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         Me.DGVBOLETA.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.Column4, Me.Column1, Me.Column2, Me.Column3})
-        Me.DGVBOLETA.Location = New System.Drawing.Point(56, 135)
+        Me.DGVBOLETA.Location = New System.Drawing.Point(56, 63)
         Me.DGVBOLETA.Name = "DGVBOLETA"
         Me.DGVBOLETA.ReadOnly = True
         Me.DGVBOLETA.RowHeadersVisible = False
@@ -112,11 +111,72 @@ Partial Class Boleta
         Me.lblfechaboleta.TabIndex = 4
         Me.lblfechaboleta.Text = "FECHA "
         '
+        'txbfechaboleta
+        '
+        Me.txbfechaboleta.Location = New System.Drawing.Point(104, 20)
+        Me.txbfechaboleta.Name = "txbfechaboleta"
+        Me.txbfechaboleta.Size = New System.Drawing.Size(111, 20)
+        Me.txbfechaboleta.TabIndex = 0
+        '
+        'TXTIVA
+        '
+        Me.TXTIVA.Location = New System.Drawing.Point(348, 334)
+        Me.TXTIVA.Name = "TXTIVA"
+        Me.TXTIVA.Size = New System.Drawing.Size(111, 20)
+        Me.TXTIVA.TabIndex = 7
+        '
+        'TXTTotalGeneral
+        '
+        Me.TXTTotalGeneral.Location = New System.Drawing.Point(348, 360)
+        Me.TXTTotalGeneral.Name = "TXTTotalGeneral"
+        Me.TXTTotalGeneral.Size = New System.Drawing.Size(111, 20)
+        Me.TXTTotalGeneral.TabIndex = 8
+        '
+        'Label2
+        '
+        Me.Label2.AutoSize = True
+        Me.Label2.Location = New System.Drawing.Point(283, 337)
+        Me.Label2.Name = "Label2"
+        Me.Label2.Size = New System.Drawing.Size(59, 13)
+        Me.Label2.TabIndex = 9
+        Me.Label2.Text = "I.V.A (%22)"
+        '
+        'Label3
+        '
+        Me.Label3.AutoSize = True
+        Me.Label3.Location = New System.Drawing.Point(272, 363)
+        Me.Label3.Name = "Label3"
+        Me.Label3.Size = New System.Drawing.Size(71, 13)
+        Me.Label3.TabIndex = 10
+        Me.Label3.Text = "Total General"
+        '
+        'TXTSubtotal
+        '
+        Me.TXTSubtotal.Location = New System.Drawing.Point(348, 307)
+        Me.TXTSubtotal.Name = "TXTSubtotal"
+        Me.TXTSubtotal.Size = New System.Drawing.Size(111, 20)
+        Me.TXTSubtotal.TabIndex = 5
+        '
+        'Label1
+        '
+        Me.Label1.AutoSize = True
+        Me.Label1.Location = New System.Drawing.Point(297, 310)
+        Me.Label1.Name = "Label1"
+        Me.Label1.Size = New System.Drawing.Size(46, 13)
+        Me.Label1.TabIndex = 6
+        Me.Label1.Text = "Subtotal"
+        '
         'Boleta
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(736, 458)
+        Me.Controls.Add(Me.Label3)
+        Me.Controls.Add(Me.Label2)
+        Me.Controls.Add(Me.TXTTotalGeneral)
+        Me.Controls.Add(Me.TXTIVA)
+        Me.Controls.Add(Me.Label1)
+        Me.Controls.Add(Me.TXTSubtotal)
         Me.Controls.Add(Me.lblfechaboleta)
         Me.Controls.Add(Me.BTNimprimir)
         Me.Controls.Add(Me.DGVBOLETA)
@@ -128,7 +188,6 @@ Partial Class Boleta
         Me.PerformLayout()
 
     End Sub
-    Friend WithEvents txbfechaboleta As System.Windows.Forms.TextBox
     Friend WithEvents DGVBOLETA As System.Windows.Forms.DataGridView
     Friend WithEvents Column4 As System.Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents Column1 As System.Windows.Forms.DataGridViewTextBoxColumn
@@ -137,4 +196,11 @@ Partial Class Boleta
     Friend WithEvents BTNimprimir As System.Windows.Forms.Button
     Friend WithEvents PrintForm1 As Microsoft.VisualBasic.PowerPacks.Printing.PrintForm
     Friend WithEvents lblfechaboleta As System.Windows.Forms.Label
+    Friend WithEvents Label3 As System.Windows.Forms.Label
+    Friend WithEvents Label2 As System.Windows.Forms.Label
+    Friend WithEvents TXTTotalGeneral As System.Windows.Forms.TextBox
+    Friend WithEvents TXTIVA As System.Windows.Forms.TextBox
+    Friend WithEvents Label1 As System.Windows.Forms.Label
+    Friend WithEvents TXTSubtotal As System.Windows.Forms.TextBox
+    Friend WithEvents txbfechaboleta As System.Windows.Forms.TextBox
 End Class

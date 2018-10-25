@@ -16,7 +16,7 @@ Public Class Boleta
         DGVBOLETA.Rows.Clear()
     End Sub
 
-    Public Sub cargardatos(ByVal peso As Double, ByVal precio As Double, ByVal subtotal As Double, ByVal idganado As Integer, ByVal fechaventa As String)
+    Public Sub cargardatos(ByVal peso As Double, ByVal precio As Double, ByVal subtotal As Double, ByVal idganado As Integer, ByVal fechaventa As String, ByVal total As Double)
         txbfechaboleta.Text = fechaventa
 
         DGVBOLETA.Rows.Add()
@@ -27,6 +27,11 @@ Public Class Boleta
         DGVBOLETA.Item(2, DGVBOLETA.Rows.Count - 1).Value = precio
         DGVBOLETA.Item(3, DGVBOLETA.Rows.Count - 1).Value = subtotal
 
+        TXTSubtotal.Text = (total * 100) / 122
+
+        TXTIVA.Text = ((total * 22) / 122).ToString
+
+        TXTTotalGeneral.Text = total.ToString
     End Sub
 
     'Private Sub Boleta_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
@@ -51,10 +56,10 @@ Public Class Boleta
     Private Sub imprimir()
       
         Try
-            Cursor.Current = Cursors.WaitCursor
+            Cursor.Current = Cursors.WaitCursor 'flechi coso redondo
             With Me.PrintForm1
                 .PrintAction = Printing.PrintAction.PrintToPreview
-                .PrinterSettings.DefaultPageSettings.Landscape = True
+                .PrinterSettings.DefaultPageSettings.Landscape = True 'vista preeliminar
                 .Print(Me, PowerPacks.Printing.PrintForm.PrintOption.ClientAreaOnly)
             End With
             Cursor.Current = Cursors.Default
@@ -69,4 +74,7 @@ Public Class Boleta
     End Sub
 
  
+    Private Sub Boleta_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
+
+    End Sub
 End Class
