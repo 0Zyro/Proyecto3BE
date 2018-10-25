@@ -4,6 +4,7 @@ Imports MySql.Data.MySqlClient
 Imports System.IO
 Imports System.Security.Cryptography
 Imports System.Text
+Imports System.Math
 
 Public Class Programa
     Dim error1 As Integer
@@ -1230,16 +1231,18 @@ Public Class Programa
     Private Sub BOTONguardarAgregar_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles BOTONguardarAgregar.Click
         If MessageBox.Show("¿Seguro desea guardar datos ?", "Confirmacion", MessageBoxButtons.YesNo, MessageBoxIcon.Question) = Windows.Forms.DialogResult.Yes Then
             'Dim CodG As Integer = Val(Texcodigoganado.Text)
+
             Dim sexo As String = CBXsexoGanado.SelectedItem.ToString
             Dim raza As String = CBXRazaGanado.SelectedItem.ToString
             Dim fechaN As String = DTPAgregarGanado.Value.ToString("yyyy-MM-dd")
             Dim estadoG As String = CBXagregarEstadoGanado.SelectedItem.ToString
-            If CBXsexoGanado.Text <> "" And CBXRazaGanado.Text <> "" And CBXagregarEstadoGanado.Text <> "" Then
 
+
+            If CBXsexoGanado.Text <> "" And CBXRazaGanado.Text <> "" And CBXagregarEstadoGanado.Text <> "" Then
 
                 Try
 
-                    Consulta = "INSERT INTO ganado (sexo,raza,estado,nacimiento) values('" & sexo & "','" & raza & "','" & estadoG & "','" & fechaN & "' )"
+                    Consulta = "insert into ganado (sexo,raza,estado,nacimiento) values('" & sexo & "','" & raza & "','" & estadoG & "','" & fechaN & "' )"
                     consultar()
 
                     actualizarGanado()
@@ -1258,9 +1261,10 @@ Public Class Programa
 
                 End Try
 
-
             Else
-                MsgBox("Debes completar todos los campos(Sexo, Raza, estado, Fecha nacimiento)", MsgBoxStyle.Exclamation, Title:="No se guardaron datos")
+
+                MsgBox("Debes completar todos los campos", MsgBoxStyle.Exclamation, Title:="No se guardaron datos")
+
             End If
         End If
 
@@ -3331,11 +3335,11 @@ Public Class Programa
 
 
         'txbcomentarioventa.Clear()
-        txbtotalventa.Clear()
+        'txbtotalventa.Clear()
 
 
         'txbcomentarioventa.Text = DataGridViewVENTAS.Item(2, DataGridViewVENTAS.CurrentRow.Index).Value
-        txbtotalventa.Text = DataGridViewVENTAS.Item(3, DataGridViewVENTAS.CurrentRow.Index).Value
+        'txbtotalventa.Text = DataGridViewVENTAS.Item(3, DataGridViewVENTAS.CurrentRow.Index).Value
 
     End Sub
 
@@ -3698,7 +3702,6 @@ Public Class Programa
         Dim totalv As String = txbtotalventa.Text
         Dim id As String = txbceduladeclientedeventas.Text
 
-
         If txbceduladeclientedeventas.Text = "" Then
             MsgBox("Complete el campo Cédula")
         Else
@@ -3706,8 +3709,19 @@ Public Class Programa
             Try
 
                 'consulta
-                Consulta = "insert into venta (fechaventa,comentariov,totalv,id) values('" & fecha & "','" & comentario & "','" & totalv & "','" & id & "');"
-                consultar()
+                comando.CommandType = CommandType.Text
+                comando.Connection = connection
+                comando.CommandText = "insert into venta (fechaventa,comentariov,totalv,id) values('" & fecha & "','" & comentario & "','" & Round(Convert.ToDouble(totalv), 2).ToString.Replace(",", ".") & "','" & id & "')"
+
+                'MsgBox(Consulta)
+
+                connection.Open()
+
+
+                comando.ExecuteNonQuery()
+
+                connection.Close()
+
                 'select hacia venta
                 Consulta = "select * from venta"
                 consultar()
@@ -3719,12 +3733,12 @@ Public Class Programa
                 DataGridViewVENTAS.Columns(3).HeaderText = "Total"
                 DataGridViewVENTAS.Columns(4).HeaderText = "Cédula de cliente"
 
-
-
             Catch ex As Exception
-                MsgBox(ex)
+                MsgBox(ex.Message)
             End Try
         End If
+
+        MsgBox("asd")
 
         'Dim consultaconmayor As String = "select max(idv) from venta"
         comando.CommandType = CommandType.Text
@@ -3736,6 +3750,8 @@ Public Class Programa
 
             reader = comando.ExecuteReader()
 
+            MsgBox("max idv")
+
             reader.Read()
 
             Dim aux As String = reader.GetString(0)
@@ -3746,11 +3762,10 @@ Public Class Programa
 
             For i As Integer = 0 To LSTVentas.Items.Count - 1
 
-                comando.CommandText = ("update ganado set estado='vendido', idv='" + aux + "', preciov='" + DGVCalculoK.Item(3, i).Value.ToString + "' where idg='" + LSTVentas.Items(i) + "'")
+                comando.CommandText = ("update ganado set estado='vendido', idv='" + aux + "', preciov='" + DGVCalculoK.Item(3, i).Value.ToString.Replace(",", ".") + "' where idg='" + LSTVentas.Items(i) + "'")
+
                 comando.ExecuteNonQuery()
 
-
-                DataGridViewVENTAS.DataSource = Tabla
             Next
 
             connection.Close()
@@ -3763,12 +3778,12 @@ Public Class Programa
         End Try
 
 
-
-
-
         rtbventa.Text = ""
         txbtotalventa.Text = ""
         txbceduladeclientedeventas.Clear()
+
+        btnvolverventa.PerformClick()
+
     End Sub
 
     Private Sub Button8_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnvolverventa.Click
@@ -3916,7 +3931,7 @@ Public Class Programa
     End Sub
 
     Private Sub CBXModificarCBX_SelectedIndexChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles CBXModificarCBX.SelectedIndexChanged
-        txtModificarRazaCBX.Text = CBXModificarCBX.Text
+        TXTModificarRazaCBX.Text = CBXModificarCBX.Text
     End Sub
 
     Private Sub BOTONagregarRazaCBX_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles BOTONagregarRazaCBX.Click
@@ -4016,17 +4031,38 @@ Public Class Programa
     End Sub
 
     Private Sub BOTONmodificarRazaCBX_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles BOTONmodificarRazaCBX.Click
-        'If CBXModificarCBX.Text <> "" And txtModificarRazaCBX.Text <> "" Then
-        '    Consulta = "UPDATE razas set razitas= '" + txtModificarRazaCBX.Text + "'"
-        '    consultar()
 
-        'End If
+        comando.CommandType = CommandType.Text
+        comando.Connection = connection
 
-       
+        If CBXModificarCBX.Text <> "" Then
+
+            comando.CommandText = ("update razas set razitas='" + TXTModificarRazaCBX.Text + "' where razitas='" + CBXModificarCBX.SelectedItem.ToString + "'")
+
+            Try
+
+                connection.Open()
+
+                comando.ExecuteNonQuery()
+
+                connection.Close()
+
+            Catch ex As Exception
+                MsgBox(ex.Message)
+                If connection.State = ConnectionState.Open Then
+                    connection.Close()
+                End If
+
+            End Try
+        Else
+
+            MsgBox("Debe seleccionar la raza a modificar")
+
+        End If
 
     End Sub
 
-    Private Sub txtModificarRazaCBX_TextChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles txtModificarRazaCBX.TextChanged
+    Private Sub txtModificarRazaCBX_TextChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles TXTModificarRazaCBX.TextChanged
 
     End Sub
 End Class
