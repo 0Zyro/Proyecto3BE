@@ -3982,6 +3982,17 @@ Public Class Programa
 
             comando.CommandText = ("update razas set razitas='" + TXTModificarRazaCBX.Text + "' where razitas='" + CBXModificarCBX.SelectedItem.ToString + "'")
 
+            TXTModificarRazaCBX.Clear()
+            CBXModificarCBX.Text = ""
+
+            CBXModificarCBX.Items.Clear()
+            CBXRazaGanado.Items.Clear()
+            CBXseleccionarRaza.Items.Clear()
+            CBXrazaCompradoVendido.Items.Clear()
+            CBXRazacompra.Items.Clear()
+
+
+
             Try
 
                 connection.Open()
@@ -3997,6 +4008,44 @@ Public Class Programa
                 End If
 
             End Try
+
+            comando.CommandType = CommandType.Text
+
+            comando.Connection = connection
+
+            comando.CommandText = ("select razitas from razas")
+
+            Try
+
+                connection.Open()
+
+                reader = comando.ExecuteReader()
+
+                If reader.HasRows() Then
+
+                    While reader.Read()
+
+                        CBXRazaGanado.Items.Add(reader.GetString(0))
+                        CBXseleccionarRaza.Items.Add(reader.GetString(0))
+                        CBXrazaCompradoVendido.Items.Add(reader.GetString(0))
+                        CBXRazacompra.Items.Add(reader.GetString(0))
+                        CBXModificarCBX.Items.Add(reader.GetString(0))
+
+
+                    End While
+
+                End If
+
+                connection.Close()
+
+            Catch ex As Exception
+                MsgBox(ex.Message)
+                If connection.State = ConnectionState.Open Then
+                    connection.Close()
+                End If
+
+            End Try
+
         Else
 
             MsgBox("Debe seleccionar la raza a modificar")
