@@ -34,43 +34,28 @@ Public Class Boleta
         TXTTotalGeneral.Text = total.ToString
     End Sub
 
-    'Private Sub Boleta_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
-    '   
-
-    '    For i As Integer = 0 To DGVBOLETA.Rows.Count - 1
-
-
-    '        DGVBOLETA.Rows.Add()
-
-
-
-    '    Next
-
-
-
-
-
-    'End Sub
-
-
     Private Sub imprimir()
-      
+
         Try
-            Cursor.Current = Cursors.WaitCursor 'flechi coso redondo
+            Cursor.Current = Cursors.WaitCursor 'flecha  redonda
             With Me.PrintForm1
-                .PrintAction = Printing.PrintAction.PrintToPreview
+                .PrintAction = Printing.PrintAction.PrintToPreview ' evento q hace que imprima el form
                 .PrinterSettings.DefaultPageSettings.Landscape = True 'vista preeliminar
                 .Print(Me, PowerPacks.Printing.PrintForm.PrintOption.ClientAreaOnly)
             End With
-            Cursor.Current = Cursors.Default
+            Cursor.Current = Cursors.Default ' cambia el cursor al normal
         Catch ex As Exception
             Cursor.Current = Cursors.Default
             MsgBox(ex.ToString, MsgBoxStyle.Critical, "error al tratar de imprimir")
         End Try
+
     End Sub
 
     Private Sub BTNimprimir_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles BTNimprimir.Click
+        BTNimprimir.Hide()
         imprimir()
+        BTNimprimir.Show()
+
     End Sub
 
  

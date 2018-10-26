@@ -50,7 +50,7 @@ Partial Class Boleta
         Me.DGVBOLETA.AllowUserToResizeRows = False
         Me.DGVBOLETA.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         Me.DGVBOLETA.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.Column4, Me.Column1, Me.Column2, Me.Column3})
-        Me.DGVBOLETA.Location = New System.Drawing.Point(56, 63)
+        Me.DGVBOLETA.Location = New System.Drawing.Point(7, 55)
         Me.DGVBOLETA.Name = "DGVBOLETA"
         Me.DGVBOLETA.ReadOnly = True
         Me.DGVBOLETA.RowHeadersVisible = False
@@ -87,9 +87,9 @@ Partial Class Boleta
         '
         'BTNimprimir
         '
-        Me.BTNimprimir.Location = New System.Drawing.Point(573, 350)
+        Me.BTNimprimir.Location = New System.Drawing.Point(7, 301)
         Me.BTNimprimir.Name = "BTNimprimir"
-        Me.BTNimprimir.Size = New System.Drawing.Size(97, 76)
+        Me.BTNimprimir.Size = New System.Drawing.Size(94, 71)
         Me.BTNimprimir.TabIndex = 3
         Me.BTNimprimir.Text = "IMPRIMIR"
         Me.BTNimprimir.UseVisualStyleBackColor = True
@@ -105,7 +105,7 @@ Partial Class Boleta
         'lblfechaboleta
         '
         Me.lblfechaboleta.AutoSize = True
-        Me.lblfechaboleta.Location = New System.Drawing.Point(53, 23)
+        Me.lblfechaboleta.Location = New System.Drawing.Point(4, 15)
         Me.lblfechaboleta.Name = "lblfechaboleta"
         Me.lblfechaboleta.Size = New System.Drawing.Size(45, 13)
         Me.lblfechaboleta.TabIndex = 4
@@ -113,21 +113,21 @@ Partial Class Boleta
         '
         'txbfechaboleta
         '
-        Me.txbfechaboleta.Location = New System.Drawing.Point(104, 20)
+        Me.txbfechaboleta.Location = New System.Drawing.Point(55, 12)
         Me.txbfechaboleta.Name = "txbfechaboleta"
         Me.txbfechaboleta.Size = New System.Drawing.Size(111, 20)
         Me.txbfechaboleta.TabIndex = 0
         '
         'TXTIVA
         '
-        Me.TXTIVA.Location = New System.Drawing.Point(348, 334)
+        Me.TXTIVA.Location = New System.Drawing.Point(299, 326)
         Me.TXTIVA.Name = "TXTIVA"
         Me.TXTIVA.Size = New System.Drawing.Size(111, 20)
         Me.TXTIVA.TabIndex = 7
         '
         'TXTTotalGeneral
         '
-        Me.TXTTotalGeneral.Location = New System.Drawing.Point(348, 360)
+        Me.TXTTotalGeneral.Location = New System.Drawing.Point(299, 352)
         Me.TXTTotalGeneral.Name = "TXTTotalGeneral"
         Me.TXTTotalGeneral.Size = New System.Drawing.Size(111, 20)
         Me.TXTTotalGeneral.TabIndex = 8
@@ -135,7 +135,7 @@ Partial Class Boleta
         'Label2
         '
         Me.Label2.AutoSize = True
-        Me.Label2.Location = New System.Drawing.Point(283, 337)
+        Me.Label2.Location = New System.Drawing.Point(234, 329)
         Me.Label2.Name = "Label2"
         Me.Label2.Size = New System.Drawing.Size(59, 13)
         Me.Label2.TabIndex = 9
@@ -144,7 +144,7 @@ Partial Class Boleta
         'Label3
         '
         Me.Label3.AutoSize = True
-        Me.Label3.Location = New System.Drawing.Point(272, 363)
+        Me.Label3.Location = New System.Drawing.Point(223, 355)
         Me.Label3.Name = "Label3"
         Me.Label3.Size = New System.Drawing.Size(71, 13)
         Me.Label3.TabIndex = 10
@@ -152,7 +152,7 @@ Partial Class Boleta
         '
         'TXTSubtotal
         '
-        Me.TXTSubtotal.Location = New System.Drawing.Point(348, 307)
+        Me.TXTSubtotal.Location = New System.Drawing.Point(299, 299)
         Me.TXTSubtotal.Name = "TXTSubtotal"
         Me.TXTSubtotal.Size = New System.Drawing.Size(111, 20)
         Me.TXTSubtotal.TabIndex = 5
@@ -160,7 +160,7 @@ Partial Class Boleta
         'Label1
         '
         Me.Label1.AutoSize = True
-        Me.Label1.Location = New System.Drawing.Point(297, 310)
+        Me.Label1.Location = New System.Drawing.Point(248, 302)
         Me.Label1.Name = "Label1"
         Me.Label1.Size = New System.Drawing.Size(46, 13)
         Me.Label1.TabIndex = 6
@@ -170,7 +170,7 @@ Partial Class Boleta
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(736, 458)
+        Me.ClientSize = New System.Drawing.Size(420, 387)
         Me.Controls.Add(Me.Label3)
         Me.Controls.Add(Me.Label2)
         Me.Controls.Add(Me.TXTTotalGeneral)
