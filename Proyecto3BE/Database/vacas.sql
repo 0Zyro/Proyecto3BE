@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1:3306
--- Tiempo de generación: 16-10-2018 a las 15:12:09
+-- Tiempo de generación: 26-10-2018 a las 01:42:46
 -- Versión del servidor: 5.7.19
 -- Versión de PHP: 5.6.31
 
@@ -44,7 +44,7 @@ CREATE TABLE IF NOT EXISTS `cliente` (
 --
 
 INSERT INTO `cliente` (`id`, `nombre`, `apellido`, `direccion`, `telefono`, `estado`) VALUES
-(46658364, 'Diego', 'Ferreira', 'nicanor amaro 1498', '47322841', 1);
+(46658364, 'Diego', 'Ferreira', 'Nicanor Amaro 1498', '47322841', 1);
 
 -- --------------------------------------------------------
 
@@ -59,14 +59,7 @@ CREATE TABLE IF NOT EXISTS `compra` (
   `comentarioc` varchar(300) DEFAULT NULL,
   `totalc` double DEFAULT NULL,
   PRIMARY KEY (`idc`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
-
---
--- Volcado de datos para la tabla `compra`
---
-
-INSERT INTO `compra` (`idc`, `fechacompra`, `comentarioc`, `totalc`) VALUES
-(1, '2018-10-16', 'El parentini es re pucto', 2);
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
@@ -88,14 +81,44 @@ CREATE TABLE IF NOT EXISTS `ganado` (
   PRIMARY KEY (`idg`),
   KEY `idc` (`idc`),
   KEY `idv` (`idv`)
-) ENGINE=InnoDB AUTO_INCREMENT=1002 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=1008 DEFAULT CHARSET=latin1;
 
 --
 -- Volcado de datos para la tabla `ganado`
 --
 
 INSERT INTO `ganado` (`idg`, `sexo`, `raza`, `nacimiento`, `estado`, `preciov`, `precioc`, `idc`, `idv`) VALUES
-(1001, 'Hembra', 'Aberdeen', '2018-10-16', 'vendido', 46, NULL, NULL, 1);
+(1001, 'Macho', 'Aberdeen', '2010-02-25', 'activo', NULL, NULL, NULL, NULL),
+(1002, 'Hembra', 'Aberdeen', '2018-10-25', 'activo', NULL, NULL, NULL, NULL),
+(1003, 'Macho', 'Angus', '2017-10-01', 'activo', NULL, NULL, NULL, NULL),
+(1004, 'Macho', 'Braford', '2018-10-25', 'activo', NULL, NULL, NULL, NULL),
+(1005, 'Macho', 'Hereford', '2018-10-25', 'activo', NULL, NULL, NULL, NULL),
+(1006, 'Hembra', 'Hereford', '2018-10-25', 'activo', NULL, NULL, NULL, NULL),
+(1007, 'Hembra', 'Angus', '2018-10-25', 'activo', NULL, NULL, NULL, NULL);
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `razas`
+--
+
+DROP TABLE IF EXISTS `razas`;
+CREATE TABLE IF NOT EXISTS `razas` (
+  `idr` int(11) NOT NULL AUTO_INCREMENT,
+  `razitas` varchar(15) NOT NULL,
+  PRIMARY KEY (`idr`)
+) ENGINE=InnoDB AUTO_INCREMENT=19 DEFAULT CHARSET=latin1;
+
+--
+-- Volcado de datos para la tabla `razas`
+--
+
+INSERT INTO `razas` (`idr`, `razitas`) VALUES
+(14, 'Aberdeen'),
+(15, 'Angus'),
+(16, 'Braford'),
+(17, 'Hereford'),
+(18, 'Angus Prime');
 
 -- --------------------------------------------------------
 
@@ -119,7 +142,7 @@ CREATE TABLE IF NOT EXISTS `usuario` (
 --
 
 INSERT INTO `usuario` (`ci`, `nombre`, `contrasena`, `rango`, `estado`, `perfil`) VALUES
-('46658364', 'Diego Ferreira', '46658364', 'User', 'activo', 'E:/Documents/Proyecto/Proyecto3BE/Resources/profile/img2.bmp');
+('46658364', 'Diego Ferreira', '681522551939924028114198235144871542159421013446879595209133661783214231181175252143', 'User', 'activo', 'E:/Documents/Proyecto/Proyecto3BE/Resources/profile/img2.bmp');
 
 -- --------------------------------------------------------
 
@@ -136,14 +159,7 @@ CREATE TABLE IF NOT EXISTS `venta` (
   `id` int(11) DEFAULT NULL,
   PRIMARY KEY (`idv`),
   KEY `id` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
-
---
--- Volcado de datos para la tabla `venta`
---
-
-INSERT INTO `venta` (`idv`, `fechaventa`, `comentariov`, `totalv`, `id`) VALUES
-(1, '2018-10-16', 'weoeifhrgfbrgnbry', 50, 46658364);
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Restricciones para tablas volcadas
