@@ -2735,17 +2735,25 @@ Public Class Programa
 
         If DGVGanadocompra.Rows.Count > 0 Then
             acumulador = (acumulador - (Convert.ToDouble(DGVGanadocompra.CurrentRow.Cells(3).Value).ToString.Replace(".", ",")))
-            TextBox4.Text = acumulador
             DGVGanadocompra.Rows.Remove(DGVGanadocompra.CurrentRow)
-        ElseIf DGVGanadocompra.Rows.Count < 1 Then
-            TextBox4.Text = ""
-            acumulador = 0
+            TextBox4.Text = acumulador
+            If DGVGanadocompra.Rows.Count < 1 Then
+                acumulador = 0
+                TextBox4.Text = acumulador
+            End If
+        Else
+            MsgBox("No hay ganado para eliminar")
         End If
 
     End Sub
     Private Sub BTNavanzarcompra_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles BTNavanzarcompra.Click
+        If DGVGanadocompra.Rows.Count < 1 Then
+            MsgBox("Por favor, ingrese ganado para continuar")
+        Else
+
             PNLGanadocompra.Visible = False
             TXTTotalapagarcompraganado.Text = acumulador
+        End If
     End Sub
     Private Sub CheckBox1_CheckedChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles CheckBox1.CheckedChanged
         If CheckBox1.Checked Then
@@ -2911,6 +2919,10 @@ Public Class Programa
             MsgBox(ex)
         End Try
     End Sub
+    Private Sub BTNRetrocederGanadocompra_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles BTNRetrocederGanadocompra.Click
+        PNLGanadocompra.BringToFront()
+        PNLGanadocompra.Visible = True
+    End Sub
     Private Sub BTNAgregarcomraganado_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles BTNAgregarcomraganado.Click
         If DataGridViewganado.Rows.Count = 0 Then
             Consulta = " alter table ganado auto_increment = 1001 "
@@ -2977,6 +2989,7 @@ Public Class Programa
                     TXTTotalapagarcompraganado.Clear()
                     CBXAgregarcompra.Text = ""
                     acumulador = 0
+                    DataGridView2.Rows.Remove(DataGridView2.CurrentRow)
                 Else
                     'Muestra mensaje diciendo que no se ingresaron valores numericos o que solo acepta valores numericos
                     MsgBox("Ingrese solo valor numerico en total")
@@ -2987,7 +3000,6 @@ Public Class Programa
             MsgBox("Complete todos los campos vacios")
 
         End If
-        DataGridView2.Rows.Clear()
     End Sub
     Private Sub BTNLimpiarcompraganado_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles BTNLimpiarcompraganado.Click
         RTXComentariocompraganado.Clear()
