@@ -3465,37 +3465,6 @@ Public Class Programa
 
 
     End Sub
-
-
-    'Private Sub Button4_Click_2(ByVal sender As System.Object, ByVal e As System.EventArgs)
-
-    '    paneldetextosenventas.Visible = False
-
-
-
-
-
-
-
-    '    Try
-
-    '        'consulta
-    '        Consulta = "update ganado  set idv='" + DataGridViewVENTAS.Item(0, DataGridViewVENTAS.CurrentRow.Index).Value + "', preciov='" + txbtotalventa.Text + "' where idg='" + txbcodigodeganadoenventa.Text + "' "
-    '        consultar()
-    '        'select hacia ganado
-    '        Consulta = "select idg,sexo,raza,nacimiento,estado,preciov,idv from ganado"
-    '        consultar()
-    '        'actualiza la dgvw
-    '        'DataGridViewganadoenventa.DataSource = Tabla
-    '        MsgBox("se agregó con éxito")
-    '    Catch ex As Exception
-    '        MsgBox(ex)
-
-
-    '    End Try
-
-    'End Sub
-
     Private Sub paneldetextosenventas_Paint(ByVal sender As System.Object, ByVal e As System.Windows.Forms.PaintEventArgs) Handles paneldetextosenventas.Paint
         Consulta = "select idg,sexo,raza,nacimiento,estado,preciov,idv from ganado"
         consultar()
@@ -3573,10 +3542,7 @@ Public Class Programa
             DGVCalculoK.Rows.Add()
 
             DGVCalculoK.Item(0, i).Value = LSTVentas.Items(i).ToString
-            'Module1.idganado = LSTVentas.Items(i).ToString
-            'Module1.list = LSTVentas.Items.Count
         Next
-
         PNLCalculoK.Visible = True
 
     End Sub
@@ -3587,35 +3553,20 @@ Public Class Programa
 
         For i As Integer = 0 To DGVCalculoK.Rows.Count - 1
             If IsNumeric(DGVCalculoK.Item(1, i).Value) And IsNumeric(DGVCalculoK.Item(2, i).Value) Then
-
                 DGVCalculoK.Item(1, i).Value = DGVCalculoK.Item(1, i).Value.ToString.Replace(".", ",")
                 DGVCalculoK.Item(2, i).Value = DGVCalculoK.Item(2, i).Value.ToString.Replace(".", ",")
-
                 DGVCalculoK.Item(3, i).Value = (Convert.ToDouble(DGVCalculoK.Item(1, i).Value)) * (Convert.ToDouble(DGVCalculoK.Item(2, i).Value))
-
                 total = (total + (Convert.ToDouble(DGVCalculoK.Item(3, i).Value)))
-                'Module1.peso = DGVCalculoK.Item(1, i).Value
-                'Module1.precio = DGVCalculoK.Item(2, i).Value
-                'Module1.subtotal = DGVCalculoK.Item(3, i).Value
-
-            Else
+             Else
                 MsgBox("Ingrese caracteres numericos solamente")
                 Exit Sub
             End If
-
         Next
-
         txbtotalventa.Text = (((total * 22) / 100) + total).ToString
-
         PNLCalculoK.Visible = False
-
-
-
     End Sub
 
     Private Sub btnclearventaxd_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnclearventaxd.Click
-
-
         rtbventa.Text = ""
         txbtotalventa.Text = ""
         txbceduladeclientedeventas.Clear()
@@ -3624,30 +3575,20 @@ Public Class Programa
 
 
     Private Sub cbxventa_SelectedIndexChanged(ByVal sender As Object, ByVal e As System.EventArgs) Handles cbxventa.SelectedIndexChanged
-
         LSTVentas.Items.Add(cbxventa.SelectedItem.ToString)
-
         cbxventa.Items.RemoveAt(cbxventa.SelectedIndex)
-
     End Sub
 
 
     Private Sub BTNQuitarLista_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles BTNQuitarLista.Click
-
         Try
-
             cbxventa.Items.Add(LSTVentas.Items.Item(LSTVentas.SelectedIndex))
-
             LSTVentas.Items.RemoveAt(LSTVentas.SelectedIndex)
-
         Catch ex As Exception
-
         End Try
-
     End Sub
     'AGREGAR EN VENTA
     Private Sub btnagregarventa_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnagregarventa.Click
-
         Dim fecha As String = DTPVentas.Value.ToString("yyyy-MM-dd")
         Dim comentario As String = rtbventa.Text
         Dim totalv As String = txbtotalventa.Text
@@ -3656,22 +3597,14 @@ Public Class Programa
         If txbceduladeclientedeventas.Text = "" Then
             MsgBox("Complete el campo Cédula")
         Else
-
             Try
-
                 'consulta
                 comando.CommandType = CommandType.Text
                 comando.Connection = connection
                 comando.CommandText = "insert into venta (fechaventa,comentariov,totalv,id) values('" & fecha & "','" & comentario & "','" & Round(Convert.ToDouble(totalv), 2).ToString.Replace(",", ".") & "','" & id & "')"
-
-                'MsgBox(Consulta)
-
                 connection.Open()
-
                 comando.ExecuteNonQuery()
-
                 connection.Close()
-
                 'select hacia venta
                 Consulta = "select * from venta"
                 consultar()
@@ -3682,38 +3615,25 @@ Public Class Programa
                 DataGridViewVENTAS.Columns(2).HeaderText = "Comentario"
                 DataGridViewVENTAS.Columns(3).HeaderText = "Total"
                 DataGridViewVENTAS.Columns(4).HeaderText = "Cédula de cliente"
-
             Catch ex As Exception
                 MsgBox(ex.Message)
             End Try
         End If
-
-        'Dim consultaconmayor As String = "select max(idv) from venta"
         comando.CommandType = CommandType.Text
         comando.Connection = connection
         comando.CommandText = ("select max(idv) from venta")
-
         Try
             connection.Open()
-
             reader = comando.ExecuteReader()
-
             reader.Read()
-
             Dim aux As String = reader.GetString(0)
-
             connection.Close()
-
             connection.Open()
 
             For i As Integer = 0 To LSTVentas.Items.Count - 1
-
                 comando.CommandText = ("update ganado set estado='vendido', idv='" + aux + "', preciov='" + DGVCalculoK.Item(3, i).Value.ToString.Replace(",", ".") + "' where idg='" + LSTVentas.Items(i) + "'")
-
                 comando.ExecuteNonQuery()
-
             Next
-
             connection.Close()
             MsgBox("Se agregó la venta con exito")
         Catch ex As Exception
@@ -3722,8 +3642,6 @@ Public Class Programa
                 connection.Close()
             End If
         End Try
-
-
         rtbventa.Text = ""
         txbtotalventa.Text = ""
         txbceduladeclientedeventas.Clear()
@@ -3742,68 +3660,43 @@ Public Class Programa
         txbceduladeclientedeventas.Clear()
         paneldetextosenventas.BringToFront()
         cbxventa.Items.Clear()
-
         LSTVentas.Items.Clear()
-
         'El comando va por texto
         comando.CommandType = CommandType.Text
         'el comando se conecta a traves del objeto connection
         comando.Connection = connection
-
         comando.CommandText = ("select idg from ganado where estado='activo'")
-
         Try
-
             connection.Open()
-
             reader = comando.ExecuteReader()
-
             If reader.HasRows() Then
-
                 While reader.Read()
-
                     cbxventa.Items.Add(reader.GetString(0))
-
                 End While
-
             End If
-
             connection.Close()
-
         Catch ex As Exception
             MsgBox(ex.Message)
             If connection.State = ConnectionState.Open Then
                 connection.Close()
             End If
-
         End Try
-
         paneldetextosenventas.Visible = True
     End Sub
 
     'MODIFICAR VENTAS 
     Private Sub Button6_Click_1(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnmodificarventa.Click
-
         paneldemodificarventa.BringToFront()
-
-
         paneldemodificarventa.Visible = True
-
         Consulta = "select * from venta"
         consultar()
         DataGridViewmodificarventa.DataSource = Tabla
-
         DataGridViewmodificarventa.Columns(0).HeaderText = "Id"
         DataGridViewmodificarventa.Columns(1).HeaderText = "Fecha de venta"
         DataGridViewmodificarventa.Columns(2).HeaderText = "Comentario"
         DataGridViewmodificarventa.Columns(3).HeaderText = "Total Pagado"
         DataGridViewmodificarventa.Columns(4).HeaderText = "Cédula de cliente"
-
-
     End Sub
-
-
-
     Private Sub btnbuscarventa_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnbuscarventa.Click
         If CBXbuscarenventa.Text = "Venta con mayor costo" Then
             Consulta = "SELECT * FROM `venta` WHERE totalv >= ALL (SELECT totalv FROM venta)"
@@ -3830,15 +3723,9 @@ Public Class Programa
             consultar()
             DataGridViewVENTAS.DataSource = Tabla
         End If
-
-
-
     End Sub
-
     Dim separador As Boolean = False
-
     Private Sub TMRHoraFecha_Tick(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles TMRHoraFecha.Tick
-
         If separador = False Then
             LBLHora.Text = (Date.Now.Hour.ToString("00") + " " + Date.Now.Minute.ToString("00"))
             separador = True
@@ -3846,31 +3733,19 @@ Public Class Programa
             LBLHora.Text = (Date.Now.Hour.ToString("00") + ":" + Date.Now.Minute.ToString("00"))
             separador = False
         End If
-
     End Sub
-
-   
     Dim index As Integer = 99999
 
     Private Sub BTNBoleta_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles BTNBoleta.Click
-
         Boleta.clear()
-
         For i As Integer = 0 To DGVCalculoK.Rows.Count - 1
-
             Boleta.cargardatos(DGVCalculoK.Item(1, i).Value, DGVCalculoK.Item(2, i).Value, DGVCalculoK.Item(3, i).Value, DGVCalculoK.Item(0, i).Value, DTPVentas.Value.ToString("yy/MM/dd"), Convert.ToDouble(txbtotalventa.Text))
-
-
-
         Next
-
         Boleta.Show()
-
     End Sub
 
     Private Sub BOTONAgregarModificarRaza_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles BOTONAgregarModificarRaza.Click
         PanelAgregarModificarRaza.Visible = True
-
     End Sub
 
     Private Sub CBXModificarCBX_SelectedIndexChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles CBXModificarCBX.SelectedIndexChanged
@@ -3879,50 +3754,32 @@ Public Class Programa
 
     Private Sub BOTONagregarRazaCBX_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles BOTONagregarRazaCBX.Click
         If MessageBox.Show("¿Seguro desea guardar datos ?", "Confirmacion", MessageBoxButtons.YesNo, MessageBoxIcon.Question) = Windows.Forms.DialogResult.Yes Then
-
             If txtAgregarRazaCBX.Text <> "" Then
-
                 Consulta = "INSERT INTO razas(razitas) VALUES('" + txtAgregarRazaCBX.Text + "')"
                 consultar()
-
                 txtAgregarRazaCBX.Clear()
                 MsgBox("Se agrego raza con exito", MsgBoxStyle.Information, Title:="Agregado")
-
                 comando.CommandType = CommandType.Text
-
                 comando.Connection = connection
-
                 comando.CommandText = ("select razitas from razas")
-
                 Try
-
                     connection.Open()
-
                     reader = comando.ExecuteReader()
-
                     If reader.HasRows() Then
-
                         While reader.Read()
-
                             CBXRazaGanado.Items.Remove(reader.GetString(0))
                             CBXseleccionarRaza.Items.Remove(reader.GetString(0))
                             CBXrazaCompradoVendido.Items.Remove(reader.GetString(0))
                             CBXRazacompra.Items.Remove(reader.GetString(0))
                             CBXModificarCBX.Items.Remove(reader.GetString(0))
-
-
                         End While
-
                     End If
-
                     connection.Close()
-
                 Catch ex As Exception
                     MsgBox(ex.Message)
                     If connection.State = ConnectionState.Open Then
                         connection.Close()
                     End If
-
                 End Try
 
                 comando.CommandType = CommandType.Text
