@@ -2733,7 +2733,14 @@ Public Class Programa
     'End Sub
     Private Sub BTNEliminarganadocompra_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles BTNEliminarganadocompra.Click
 
-        
+        If DGVGanadocompra.Rows.Count > 0 Then
+            acumulador = (acumulador - (Convert.ToDouble(DGVGanadocompra.CurrentRow.Cells(3).Value).ToString.Replace(".", ",")))
+            TextBox4.Text = acumulador
+            DGVGanadocompra.Rows.Remove(DGVGanadocompra.CurrentRow)
+        ElseIf DGVGanadocompra.Rows.Count < 1 Then
+            TextBox4.Text = ""
+            acumulador = 0
+        End If
 
     End Sub
     Private Sub BTNavanzarcompra_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles BTNavanzarcompra.Click
