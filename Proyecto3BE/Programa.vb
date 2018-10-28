@@ -1255,6 +1255,13 @@ Public Class Programa
 
                     DTPAgregarGanado.Value = Today
                     CBXagregarEstadoGanado.Text = ""
+
+                    CBXsexoGanado.Enabled = True
+                    CBXRazaGanado.Enabled = True
+
+                    DTPAgregarGanado.Enabled = True
+
+
                     MsgBox("Datos guardados", MsgBoxStyle.Information)
 
 
@@ -1934,7 +1941,7 @@ Public Class Programa
 
     '//////////////////BOTON PARA ACTIVAR BOTONES MODIFICAR CLIENT//////////////////////////////////////////////////////////////////
     Private Sub BTNPanelmodificarcliente_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles BOTONmodificarCliente.Click
-
+        DataGridViewMostraDatosClientes.Visible = False
 
         'BOTONguardarAgregarCliente.Visible = True
         'BOTONcancelarGuardarCliente.Visible = True
@@ -2022,21 +2029,23 @@ Public Class Programa
 
     '//////////////////////////////////////////// BOTON PARA VOLVER A CARGAR LOS DATOS DE CLIENTE/////////////////////////////////////////////////
     Private Sub BOTONcargarDatosclientes_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles BOTONcargarDatosclientes.Click
+        GroupBoxcliente.Enabled = True
         actualizarCliente()
-
+        DataGridViewMostraDatosClientes.Visible = False
+        DataGridViewClientes.Visible = True
 
         txtBUSCARcedula.Clear()
 
     End Sub
 
     Private Sub Button1_Click_1(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles BOTONclienteInactivo.Click
-        
+        DataGridViewMostraDatosClientes.Visible = False
         GroupBoxcliente.Enabled = False
         DataGridViewClientes.Visible = False
         DataGridclienteInactivos.Visible = True
         BOTONcancelarHabilitado.Visible = True
         BOTONaceptarHabilitado.Visible = True
-        BOTONcargarDatosclientes.Enabled = False
+
         BOTONclienteInactivo.Enabled = False
         Try
             Consulta = " select * from cliente where estado = 0 "
@@ -2375,6 +2384,8 @@ Public Class Programa
                         txtcedulaCliente.Text = ""
                         txtdireccionCliente.Text = ""
                         txttelefonoCliente.Text = ""
+                        DataGridViewMostraDatosClientes.Visible = False
+                        DataGridViewClientes.Visible = True
 
                         MsgBox("Registro exitoso")
 
@@ -3977,6 +3988,115 @@ Public Class Programa
             MsgBox("Debe seleccionar la raza a modificar")
 
         End If
+
+    End Sub
+
+
+ 
+    Private Sub CBXMostrarDatosClientes_SelectedIndexChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles CBXMostrarDatosClientes.SelectedIndexChanged
+
+        If CBXMostrarDatosClientes.SelectedItem = "Importe total por cada cliente activo" Then
+
+
+            Consulta = "SELECT cliente.id AS 'Cedula', nombre AS 'Nombre', apellido As 'Apellido', direccion As 'Direccion', telefono AS 'Telefono', sum(totalv) As 'Importe total' FROM cliente,venta where venta.id = cliente.id and cliente.id in(SELECT venta.id FROM venta) and estado = 1 GROUP BY 1 "
+            consultar()
+            DataGridViewMostraDatosClientes.DataSource = Tabla
+
+            GroupBoxcliente.Enabled = False
+            DataGridclienteInactivos.Visible = False
+            DataGridViewClientes.Visible = False
+            DataGridViewMostraDatosClientes.Visible = True
+
+            If DataGridViewMostraDatosClientes.Rows.Count = 0 Then
+
+                MsgBox("No exiten datos solicitados", MsgBoxStyle.Information, Title:="Busqueda")
+
+            End If
+
+        End If
+
+        If CBXMostrarDatosClientes.SelectedItem = "Importe total por cada cliente inactivo" Then
+
+
+            Consulta = "SELECT cliente.id AS 'Cedula', nombre AS 'Nombre', apellido As 'Apellido', direccion As 'Direccion', telefono AS 'Telefono', sum(totalv) As 'Importe total' FROM cliente,venta where venta.id = cliente.id and cliente.id in(SELECT venta.id FROM venta) and estado = 0 GROUP BY 1 "
+            consultar()
+            DataGridViewMostraDatosClientes.DataSource = Tabla
+
+            GroupBoxcliente.Enabled = False
+            DataGridclienteInactivos.Visible = False
+            DataGridViewClientes.Visible = False
+            DataGridViewMostraDatosClientes.Visible = True
+
+            If DataGridViewMostraDatosClientes.Rows.Count = 0 Then
+
+                MsgBox("No exiten datos solicitados", MsgBoxStyle.Information, Title:="Busqueda")
+
+            End If
+
+        End If
+
+        If CBXMostrarDatosClientes.SelectedItem = "Cliente activo con mayor importe total" Then
+
+
+            Consulta = "SELECT cliente.id AS 'Cedula', nombre AS 'Nombre', apellido As 'Apellido', direccion As 'Direccion', telefono AS 'Telefono', sum(totalv) As 'Importe total' FROM cliente,venta where venta.id = cliente.id and cliente.id in(SELECT venta.id FROM venta HAVING max(totalv)) and estado = 1 "
+            consultar()
+            DataGridViewMostraDatosClientes.DataSource = Tabla
+
+            GroupBoxcliente.Enabled = False
+            DataGridclienteInactivos.Visible = False
+            DataGridViewClientes.Visible = False
+            DataGridViewMostraDatosClientes.Visible = True
+
+            If DataGridViewMostraDatosClientes.Rows.Count = 0 Then
+
+                MsgBox("No se exiten datos solicitados", MsgBoxStyle.Information, Title:="Busqueda")
+
+            End If
+
+        End If
+
+        If CBXMostrarDatosClientes.SelectedItem = "Cliente inactivo con mayor importe total" Then
+
+
+            Consulta = "SELECT cliente.id AS 'Cédula', nombre AS 'Nombre', apellido As 'Apellido', direccion As 'Direccion', telefono AS 'Teléfono', sum(totalv) As 'Importe total' FROM cliente,venta where venta.id = cliente.id and cliente.id in(SELECT venta.id FROM venta HAVING max(totalv)) and estado = 0 "
+            consultar()
+            DataGridViewMostraDatosClientes.DataSource = Tabla
+
+            GroupBoxcliente.Enabled = False
+            DataGridclienteInactivos.Visible = False
+            DataGridViewClientes.Visible = False
+            DataGridViewMostraDatosClientes.Visible = True
+
+            If DataGridViewMostraDatosClientes.Rows.Count = 0 Then
+
+                MsgBox("No se exiten datos solicitados", MsgBoxStyle.Information, Title:="Busqueda")
+
+            End If
+        End If
+
+        If CBXMostrarDatosClientes.SelectedItem = "Cliente activo con mayor compra realizada" Then
+
+
+            Consulta = "SELECT cliente.id AS 'Cédula', nombre AS 'Nombre', apellido As 'Apellido', direccion As 'Direccion', telefono AS 'Telefono', max(totalv) As 'Mayor Venta(U$$)' FROM cliente,venta where venta.id = cliente.id and estado = 1 "
+            consultar()
+            DataGridViewMostraDatosClientes.DataSource = Tabla
+
+            GroupBoxcliente.Enabled = False
+            DataGridclienteInactivos.Visible = False
+            DataGridViewClientes.Visible = False
+            DataGridViewMostraDatosClientes.Visible = True
+
+            If DataGridViewMostraDatosClientes.Rows.Count = 0 Then
+
+                MsgBox("No se exiten datos solicitados", MsgBoxStyle.Information, Title:="Busqueda")
+
+            End If
+
+
+
+        End If
+
+
 
     End Sub
 End Class
