@@ -42,4 +42,6 @@ Public Class Boleta
         imprimir()
         BTNimprimir.Show()
     End Sub
+
+  
 End Class

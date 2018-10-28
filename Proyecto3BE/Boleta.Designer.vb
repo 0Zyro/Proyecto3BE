@@ -39,9 +39,13 @@ Partial Class Boleta
         Me.Label3 = New System.Windows.Forms.Label()
         Me.TXTSubtotal = New System.Windows.Forms.TextBox()
         Me.Label1 = New System.Windows.Forms.Label()
-        Me.PBboleta = New System.Windows.Forms.PictureBox()
+        Me.Label4 = New System.Windows.Forms.Label()
+        Me.Label5 = New System.Windows.Forms.Label()
+        Me.Label6 = New System.Windows.Forms.Label()
+        Me.Label7 = New System.Windows.Forms.Label()
+        Me.Label8 = New System.Windows.Forms.Label()
+        Me.Label9 = New System.Windows.Forms.Label()
         CType(Me.DGVBOLETA, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.PBboleta, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'DGVBOLETA
@@ -53,11 +57,11 @@ Partial Class Boleta
         Me.DGVBOLETA.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         Me.DGVBOLETA.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.Column4, Me.Column1, Me.Column2, Me.Column3})
         Me.DGVBOLETA.GridColor = System.Drawing.SystemColors.GradientActiveCaption
-        Me.DGVBOLETA.Location = New System.Drawing.Point(8, 106)
+        Me.DGVBOLETA.Location = New System.Drawing.Point(8, 104)
         Me.DGVBOLETA.Name = "DGVBOLETA"
         Me.DGVBOLETA.ReadOnly = True
         Me.DGVBOLETA.RowHeadersVisible = False
-        Me.DGVBOLETA.Size = New System.Drawing.Size(403, 240)
+        Me.DGVBOLETA.Size = New System.Drawing.Size(619, 240)
         Me.DGVBOLETA.TabIndex = 2
         '
         'Column4
@@ -108,16 +112,17 @@ Partial Class Boleta
         'lblfechaboleta
         '
         Me.lblfechaboleta.AutoSize = True
-        Me.lblfechaboleta.Location = New System.Drawing.Point(5, 15)
+        Me.lblfechaboleta.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblfechaboleta.Location = New System.Drawing.Point(316, 55)
         Me.lblfechaboleta.Name = "lblfechaboleta"
-        Me.lblfechaboleta.Size = New System.Drawing.Size(45, 13)
+        Me.lblfechaboleta.Size = New System.Drawing.Size(51, 13)
         Me.lblfechaboleta.TabIndex = 4
         Me.lblfechaboleta.Text = "FECHA "
         '
         'txbfechaboleta
         '
         Me.txbfechaboleta.BackColor = System.Drawing.SystemColors.GradientActiveCaption
-        Me.txbfechaboleta.Location = New System.Drawing.Point(56, 12)
+        Me.txbfechaboleta.Location = New System.Drawing.Point(367, 52)
         Me.txbfechaboleta.Name = "txbfechaboleta"
         Me.txbfechaboleta.Size = New System.Drawing.Size(111, 20)
         Me.txbfechaboleta.TabIndex = 0
@@ -125,7 +130,7 @@ Partial Class Boleta
         'TXTIVA
         '
         Me.TXTIVA.BackColor = System.Drawing.SystemColors.GradientActiveCaption
-        Me.TXTIVA.Location = New System.Drawing.Point(300, 377)
+        Me.TXTIVA.Location = New System.Drawing.Point(516, 378)
         Me.TXTIVA.Name = "TXTIVA"
         Me.TXTIVA.Size = New System.Drawing.Size(111, 20)
         Me.TXTIVA.TabIndex = 7
@@ -133,7 +138,7 @@ Partial Class Boleta
         'TXTTotalGeneral
         '
         Me.TXTTotalGeneral.BackColor = System.Drawing.SystemColors.GradientActiveCaption
-        Me.TXTTotalGeneral.Location = New System.Drawing.Point(300, 403)
+        Me.TXTTotalGeneral.Location = New System.Drawing.Point(516, 404)
         Me.TXTTotalGeneral.Name = "TXTTotalGeneral"
         Me.TXTTotalGeneral.Size = New System.Drawing.Size(111, 20)
         Me.TXTTotalGeneral.TabIndex = 8
@@ -141,7 +146,7 @@ Partial Class Boleta
         'Label2
         '
         Me.Label2.AutoSize = True
-        Me.Label2.Location = New System.Drawing.Point(235, 380)
+        Me.Label2.Location = New System.Drawing.Point(451, 381)
         Me.Label2.Name = "Label2"
         Me.Label2.Size = New System.Drawing.Size(59, 13)
         Me.Label2.TabIndex = 9
@@ -150,7 +155,7 @@ Partial Class Boleta
         'Label3
         '
         Me.Label3.AutoSize = True
-        Me.Label3.Location = New System.Drawing.Point(224, 406)
+        Me.Label3.Location = New System.Drawing.Point(440, 407)
         Me.Label3.Name = "Label3"
         Me.Label3.Size = New System.Drawing.Size(71, 13)
         Me.Label3.TabIndex = 10
@@ -159,7 +164,7 @@ Partial Class Boleta
         'TXTSubtotal
         '
         Me.TXTSubtotal.BackColor = System.Drawing.SystemColors.GradientActiveCaption
-        Me.TXTSubtotal.Location = New System.Drawing.Point(300, 350)
+        Me.TXTSubtotal.Location = New System.Drawing.Point(516, 351)
         Me.TXTSubtotal.Name = "TXTSubtotal"
         Me.TXTSubtotal.Size = New System.Drawing.Size(111, 20)
         Me.TXTSubtotal.TabIndex = 5
@@ -167,29 +172,84 @@ Partial Class Boleta
         'Label1
         '
         Me.Label1.AutoSize = True
-        Me.Label1.Location = New System.Drawing.Point(249, 353)
+        Me.Label1.Location = New System.Drawing.Point(465, 354)
         Me.Label1.Name = "Label1"
         Me.Label1.Size = New System.Drawing.Size(46, 13)
         Me.Label1.TabIndex = 6
         Me.Label1.Text = "Subtotal"
         '
-        'PBboleta
+        'Label4
         '
-        Me.PBboleta.Image = CType(resources.GetObject("PBboleta.Image"), System.Drawing.Image)
-        Me.PBboleta.Location = New System.Drawing.Point(199, 12)
-        Me.PBboleta.Name = "PBboleta"
-        Me.PBboleta.Size = New System.Drawing.Size(183, 88)
-        Me.PBboleta.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom
-        Me.PBboleta.TabIndex = 11
-        Me.PBboleta.TabStop = False
+        Me.Label4.AutoSize = True
+        Me.Label4.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label4.Location = New System.Drawing.Point(12, 13)
+        Me.Label4.Name = "Label4"
+        Me.Label4.Size = New System.Drawing.Size(105, 13)
+        Me.Label4.TabIndex = 12
+        Me.Label4.Text = "SNOWCOMPANY"
+        '
+        'Label5
+        '
+        Me.Label5.AutoSize = True
+        Me.Label5.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label5.Location = New System.Drawing.Point(319, 13)
+        Me.Label5.Name = "Label5"
+        Me.Label5.Size = New System.Drawing.Size(102, 13)
+        Me.Label5.TabIndex = 13
+        Me.Label5.Text = "E-ticket Contado"
+        '
+        'Label6
+        '
+        Me.Label6.AutoSize = True
+        Me.Label6.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label6.Location = New System.Drawing.Point(513, 9)
+        Me.Label6.Name = "Label6"
+        Me.Label6.Size = New System.Drawing.Size(125, 13)
+        Me.Label6.TabIndex = 14
+        Me.Label6.Text = "RUT: 210000480010"
+        '
+        'Label7
+        '
+        Me.Label7.AutoSize = True
+        Me.Label7.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label7.Location = New System.Drawing.Point(16, 59)
+        Me.Label7.Name = "Label7"
+        Me.Label7.Size = New System.Drawing.Size(168, 13)
+        Me.Label7.TabIndex = 15
+        Me.Label7.Text = "aca va el nombre del cliente"
+        '
+        'Label8
+        '
+        Me.Label8.AutoSize = True
+        Me.Label8.Location = New System.Drawing.Point(43, 203)
+        Me.Label8.Name = "Label8"
+        Me.Label8.Size = New System.Drawing.Size(482, 13)
+        Me.Label8.TabIndex = 16
+        Me.Label8.Text = "en el datagrid va codigo de ganado,raza, sexo,  Paso(KG), Precio($), Subtotal   """ & _
+            "Todo en ese orden"""
+        '
+        'Label9
+        '
+        Me.Label9.AutoSize = True
+        Me.Label9.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label9.Location = New System.Drawing.Point(515, 57)
+        Me.Label9.Name = "Label9"
+        Me.Label9.Size = New System.Drawing.Size(133, 13)
+        Me.Label9.TabIndex = 17
+        Me.Label9.Text = "N°: ""codigo de venta"""
         '
         'Boleta
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.SystemColors.GradientActiveCaption
-        Me.ClientSize = New System.Drawing.Size(415, 427)
-        Me.Controls.Add(Me.PBboleta)
+        Me.ClientSize = New System.Drawing.Size(672, 427)
+        Me.Controls.Add(Me.Label9)
+        Me.Controls.Add(Me.Label8)
+        Me.Controls.Add(Me.Label7)
+        Me.Controls.Add(Me.Label6)
+        Me.Controls.Add(Me.Label5)
+        Me.Controls.Add(Me.Label4)
         Me.Controls.Add(Me.Label3)
         Me.Controls.Add(Me.Label2)
         Me.Controls.Add(Me.TXTTotalGeneral)
@@ -203,7 +263,6 @@ Partial Class Boleta
         Me.Name = "Boleta"
         Me.Text = "Factura"
         CType(Me.DGVBOLETA, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.PBboleta, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -223,5 +282,10 @@ Partial Class Boleta
     Friend WithEvents Label1 As System.Windows.Forms.Label
     Friend WithEvents TXTSubtotal As System.Windows.Forms.TextBox
     Friend WithEvents txbfechaboleta As System.Windows.Forms.TextBox
-    Friend WithEvents PBboleta As System.Windows.Forms.PictureBox
+    Friend WithEvents Label6 As System.Windows.Forms.Label
+    Friend WithEvents Label5 As System.Windows.Forms.Label
+    Friend WithEvents Label4 As System.Windows.Forms.Label
+    Friend WithEvents Label8 As System.Windows.Forms.Label
+    Friend WithEvents Label7 As System.Windows.Forms.Label
+    Friend WithEvents Label9 As System.Windows.Forms.Label
 End Class
