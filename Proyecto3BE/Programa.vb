@@ -1232,17 +1232,19 @@ Public Class Programa
         If MessageBox.Show("¿Seguro desea guardar datos ?", "Confirmacion", MessageBoxButtons.YesNo, MessageBoxIcon.Question) = Windows.Forms.DialogResult.Yes Then
             'Dim CodG As Integer = Val(Texcodigoganado.Text)
 
-            Dim sexo As String = CBXsexoGanado.SelectedItem.ToString
-            Dim raza As String = CBXRazaGanado.SelectedItem.ToString
+            Dim estado As String = CBXagregarEstadoGanado.SelectedItem
+            Dim sexo As String = CBXsexoGanado.SelectedItem
+            Dim raza As String = CBXRazaGanado.SelectedItem
             Dim fechaN As String = DTPAgregarGanado.Value.ToString("yyyy-MM-dd")
-            Dim estadoG As String = CBXagregarEstadoGanado.SelectedItem.ToString
 
 
-            If CBXsexoGanado.Text <> "" And CBXRazaGanado.Text <> "" And CBXagregarEstadoGanado.Text <> "" Then
+
+            If estado <> "" And sexo <> "" And raza <> "" Then
+
 
                 Try
 
-                    Consulta = "insert into ganado (sexo,raza,estado,nacimiento) values('" & sexo & "','" & raza & "','" & estadoG & "','" & fechaN & "' )"
+                    Consulta = "insert into ganado (sexo, raza, estado, nacimiento) values('" & sexo & "','" & raza & "','" & estado & "','" & fechaN & "' )"
                     consultar()
 
                     actualizarGanado()
@@ -1263,7 +1265,11 @@ Public Class Programa
 
             Else
 
-                MsgBox("Debes completar todos los campos", MsgBoxStyle.Exclamation, Title:="No se guardaron datos")
+                MsgBox("No puede dejar campos vacios al modificar ganado, intentelo nuevamente", MsgBoxStyle.Exclamation, Title:="No se editaron datos")
+
+
+
+                'MsgBox("Debes completar todos los campos", MsgBoxStyle.Exclamation, Title:="No se guardaron datos")
 
             End If
         End If
@@ -1283,9 +1289,9 @@ Public Class Programa
         If MessageBox.Show("¿Seguro que desea modificar ?", "Confirmacion", MessageBoxButtons.YesNo, MessageBoxIcon.Question) = Windows.Forms.DialogResult.Yes Then
 
             Dim codigo As String = DataGridViewganado.Item(0, DataGridViewganado.CurrentRow.Index).Value
-            Dim sexo As String = CBXsexoGanado.SelectedItem.ToString
-            Dim raza As String = CBXRazaGanado.SelectedItem.ToString
-            Dim estado As String = CBXmodificarEstadoGanado.SelectedItem.ToString
+            Dim sexo As String = CBXsexoGanado.SelectedItem
+            Dim raza As String = CBXRazaGanado.SelectedItem
+            Dim estado As String = CBXmodificarEstadoGanado.SelectedItem
             Dim fechaN As String = DTPAgregarGanado.Value.ToString("yyyy-MM-dd")
 
 
