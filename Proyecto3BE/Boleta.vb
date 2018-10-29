@@ -12,13 +12,16 @@ Public Class Boleta
     Public Sub clear()
         DGVBOLETA.Rows.Clear()
     End Sub
+
+
+
     Public Sub cargardatos(ByVal peso As Double, ByVal precio As Double, ByVal subtotal As Double, ByVal idganado As Integer, ByVal fechaventa As String, ByVal total As Double)
         txbfechaboleta.Text = fechaventa
         DGVBOLETA.Rows.Add()
         DGVBOLETA.Item(0, DGVBOLETA.Rows.Count - 1).Value = idganado
-        DGVBOLETA.Item(1, DGVBOLETA.Rows.Count - 1).Value = peso
-        DGVBOLETA.Item(2, DGVBOLETA.Rows.Count - 1).Value = precio
-        DGVBOLETA.Item(3, DGVBOLETA.Rows.Count - 1).Value = subtotal
+        DGVBOLETA.Item(3, DGVBOLETA.Rows.Count - 1).Value = peso
+        DGVBOLETA.Item(4, DGVBOLETA.Rows.Count - 1).Value = precio
+        DGVBOLETA.Item(5, DGVBOLETA.Rows.Count - 1).Value = subtotal
         TXTSubtotal.Text = (total * 100) / 122
         TXTIVA.Text = ((total * 22) / 122).ToString
         TXTTotalGeneral.Text = total.ToString
@@ -43,5 +46,9 @@ Public Class Boleta
         BTNimprimir.Show()
     End Sub
 
-  
+
+
+    Private Sub Boleta_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
+
+    End Sub
 End Class

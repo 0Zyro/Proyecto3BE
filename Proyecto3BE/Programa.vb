@@ -3338,51 +3338,7 @@ Public Class Programa
     '//////////////////////////////////////////////////////////////////////////////////////////////////////////
     '//////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-
-
-    '////////////////////agregar en  ventas///////////////////
-
-    Private Sub agregarventa_Click(ByVal sender As System.Object, ByVal e As System.EventArgs)
-
-
-    End Sub
-    'BORRAR EN VENTA//////////////////////////////////////////
-
-    'Private Sub Button10_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Button10.Click
-
-
-
-
-    '    If MessageBox.Show("¿Seguro que desea eliminar ésta venta?", "Confirmación", MessageBoxButtons.YesNo, MessageBoxIcon.Question) = Windows.Forms.DialogResult.Yes Then
-
-
-
-
-    '        Try
-    '            Consulta = "delete from venta where idv= '" & DataGridViewVENTAS.Item(0, DataGridViewVENTAS.CurrentRow.Index).Value & "'"
-    '            consultar()
-
-    '            Consulta = "select * from venta"
-    '            consultar()
-
-    '            DataGridViewVENTAS.DataSource = Tabla
-    '            'lblmostrarqueseborro.Show()
-
-    '        Catch ex As Exception
-    '            MsgBox(ex)
-    '        End Try
-    '    End If
-
-
-    'End Sub
-    '////////////////////////////////////////////////////////////////////////////////////////////////
-
-
-
-
-
-
-
+   
     Private Sub btnclearventa_Click(ByVal sender As System.Object, ByVal e As System.EventArgs)
 
 
@@ -3815,7 +3771,7 @@ Public Class Programa
         End If
     End Sub
     Dim index As Integer = 99999
-
+    '//////boleta//////////////////////////////////
     Private Sub BTNBoleta_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles BTNBoleta.Click
         Boleta.clear()
         For i As Integer = 0 To DGVCalculoK.Rows.Count - 1
@@ -3823,6 +3779,7 @@ Public Class Programa
         Next
         Boleta.Show()
     End Sub
+    ' ////////////////////////////////////////////////////
 
     Private Sub BOTONAgregarModificarRaza_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles BOTONAgregarModificarRaza.Click
         PanelAgregarModificarRaza.Visible = True
