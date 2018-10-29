@@ -190,4 +190,8 @@ Public Class Login
     Private Sub BotonVolver_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles BotonVolver.Click
         volver()
     End Sub
+
+    Private Sub Login_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
+
+    End Sub
 End Class
