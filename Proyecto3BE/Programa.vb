@@ -4081,4 +4081,32 @@ Public Class Programa
 
         End If
     End Sub
+
+    Private Sub CBXmodificarEstadoGanado_KeyPress(ByVal sender As System.Object, ByVal e As System.Windows.Forms.KeyPressEventArgs) Handles CBXmodificarEstadoGanado.KeyPress
+        e.Handled = True
+    End Sub
+
+    Private Sub CBXagregarEstadoGanado_KeyPress(ByVal sender As System.Object, ByVal e As System.Windows.Forms.KeyPressEventArgs) Handles CBXagregarEstadoGanado.KeyPress
+        e.Handled = True
+    End Sub
+
+    Private Sub CBXsexoGanado_KeyPress(ByVal sender As System.Object, ByVal e As System.Windows.Forms.KeyPressEventArgs) Handles CBXsexoGanado.KeyPress
+        e.Handled = True
+    End Sub
+
+    Private Sub CBXRazaGanado_KeyPress(ByVal sender As System.Object, ByVal e As System.Windows.Forms.KeyPressEventArgs) Handles CBXRazaGanado.KeyPress
+        e.Handled = True
+    End Sub
+
+    Private Sub DTPAgregarGanado_KeyPress(ByVal sender As System.Object, ByVal e As System.Windows.Forms.KeyPressEventArgs) Handles DTPAgregarGanado.KeyPress
+        e.Handled = True
+    End Sub
+
+    Private Sub CBXModificarCBX_KeyPress(ByVal sender As System.Object, ByVal e As System.Windows.Forms.KeyPressEventArgs) Handles CBXModificarCBX.KeyPress
+        e.Handled = True
+    End Sub
+
+    Private Sub CBXMostrarDatosClientes_KeyPress(ByVal sender As System.Object, ByVal e As System.Windows.Forms.KeyPressEventArgs) Handles CBXMostrarDatosClientes.KeyPress
+        e.Handled = True
+    End Sub
 End Class
