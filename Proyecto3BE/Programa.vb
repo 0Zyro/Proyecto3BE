@@ -847,6 +847,7 @@ Public Class Programa
 
                 While reader.Read()
 
+                    CBXeliminarRazaCBX.Items.Add(reader.GetString(0))
                     CBXRazaGanado.Items.Add(reader.GetString(0))
                     CBXseleccionarRaza.Items.Add(reader.GetString(0))
                     CBXrazaCompradoVendido.Items.Add(reader.GetString(0))
@@ -3795,6 +3796,9 @@ Public Class Programa
 
     Private Sub BOTONAgregarModificarRaza_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles BOTONAgregarModificarRaza.Click
         PanelAgregarModificarRaza.Visible = True
+
+        BOTONAgregarModificarRaza.Visible = False
+        BOTONcerrarAgregarModificarRaza.Visible = True
     End Sub
 
     Private Sub CBXModificarCBX_SelectedIndexChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles CBXModificarCBX.SelectedIndexChanged
@@ -3811,7 +3815,7 @@ Public Class Programa
             'If Not IsNumeric(txtnombreCliente.Text) And Not IsNumeric(txtapellidoCliente.Text) Then
 
 
-            verificar = txtcedulaCliente.ToString
+            verificar = txtAgregarRazaCBX.ToString
 
             Consulta = "select * from razas where razitas='" + txtAgregarRazaCBX.Text + "'"
             consultar()
@@ -3837,6 +3841,7 @@ Public Class Programa
                         reader = comando.ExecuteReader()
                         If reader.HasRows() Then
                             While reader.Read()
+                                CBXeliminarRazaCBX.Items.Remove(reader.GetString(0))
                                 CBXRazaGanado.Items.Remove(reader.GetString(0))
                                 CBXseleccionarRaza.Items.Remove(reader.GetString(0))
                                 CBXrazaCompradoVendido.Items.Remove(reader.GetString(0))
@@ -3867,7 +3872,7 @@ Public Class Programa
                         If reader.HasRows() Then
 
                             While reader.Read()
-
+                                CBXeliminarRazaCBX.Items.Add(reader.GetString(0))
                                 CBXRazaGanado.Items.Add(reader.GetString(0))
                                 CBXseleccionarRaza.Items.Add(reader.GetString(0))
                                 CBXrazaCompradoVendido.Items.Add(reader.GetString(0))
@@ -3899,9 +3904,7 @@ Public Class Programa
     End Sub
 
 
-    Private Sub BOTONcerrarPanelAMraza_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles BOTONcerrarPanelAMraza.Click
-        PanelAgregarModificarRaza.Visible = False
-    End Sub
+
 
     Private Sub BOTONmodificarRazaCBX_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles BOTONmodificarRazaCBX.Click
 
@@ -3915,6 +3918,7 @@ Public Class Programa
             TXTModificarRazaCBX.Clear()
             CBXModificarCBX.Text = ""
 
+            CBXeliminarRazaCBX.Items.Clear()
             CBXModificarCBX.Items.Clear()
             CBXRazaGanado.Items.Clear()
             CBXseleccionarRaza.Items.Clear()
@@ -3955,6 +3959,7 @@ Public Class Programa
 
                     While reader.Read()
 
+                        CBXeliminarRazaCBX.Items.Add(reader.GetString(0))
                         CBXRazaGanado.Items.Add(reader.GetString(0))
                         CBXseleccionarRaza.Items.Add(reader.GetString(0))
                         CBXrazaCompradoVendido.Items.Add(reader.GetString(0))
@@ -4093,6 +4098,7 @@ Public Class Programa
 
     End Sub
 
+    'Envento keypress para combobox para ganado//////////////
     Private Sub txtAgregarRazaCBX_KeyPress(ByVal sender As System.Object, ByVal e As System.Windows.Forms.KeyPressEventArgs) Handles txtAgregarRazaCBX.KeyPress
         If Char.IsLetter(e.KeyChar) Then
             e.Handled = False
@@ -4126,6 +4132,7 @@ Public Class Programa
 
         End If
     End Sub
+    '/////////////// fin keypress//////////////////////////////////
 
     Private Sub CBXmodificarEstadoGanado_KeyPress(ByVal sender As System.Object, ByVal e As System.Windows.Forms.KeyPressEventArgs) Handles CBXmodificarEstadoGanado.KeyPress
         e.Handled = True
@@ -4153,5 +4160,116 @@ Public Class Programa
 
     Private Sub CBXMostrarDatosClientes_KeyPress(ByVal sender As System.Object, ByVal e As System.Windows.Forms.KeyPressEventArgs) Handles CBXMostrarDatosClientes.KeyPress
         e.Handled = True
+    End Sub
+
+
+
+    Private Sub CBXcompradoVendido_KeyPress(ByVal sender As System.Object, ByVal e As System.Windows.Forms.KeyPressEventArgs) Handles CBXcompradoVendido.KeyPress
+        e.Handled = True
+    End Sub
+
+    Private Sub CBXrazaCompradoVendido_KeyPress(ByVal sender As System.Object, ByVal e As System.Windows.Forms.KeyPressEventArgs) Handles CBXrazaCompradoVendido.KeyPress
+        e.Handled = True
+    End Sub
+
+    Private Sub CBXbuscarEstadoGanado_KeyPress(ByVal sender As System.Object, ByVal e As System.Windows.Forms.KeyPressEventArgs) Handles CBXbuscarEstadoGanado.KeyPress
+        e.Handled = True
+    End Sub
+
+    Private Sub CBXseleccionarRaza_KeyPress(ByVal sender As System.Object, ByVal e As System.Windows.Forms.KeyPressEventArgs) Handles CBXseleccionarRaza.KeyPress
+        e.Handled = True
+    End Sub
+
+    Private Sub CBXseleccionarSexo_KeyPress(ByVal sender As System.Object, ByVal e As System.Windows.Forms.KeyPressEventArgs) Handles CBXseleccionarSexo.KeyPress
+        e.Handled = True
+    End Sub
+
+    Private Sub DateTimeBuscarFechaGanado_KeyPress(ByVal sender As System.Object, ByVal e As System.Windows.Forms.KeyPressEventArgs) Handles DateTimeBuscarFechaGanado.KeyPress
+        e.Handled = True
+    End Sub
+
+    Private Sub BOTONcerrarAgregarModificarRaza_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles BOTONcerrarAgregarModificarRaza.Click
+
+        PanelAgregarModificarRaza.Visible = False
+
+        BOTONcerrarAgregarModificarRaza.Visible = False
+        BOTONAgregarModificarRaza.Visible = True
+
+    End Sub
+
+  
+    Private Sub BOTONeliminarRaza_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles BOTONeliminarRaza.Click
+
+
+        Dim razas As String
+        razas = txtEliminarRaza.ToString
+
+        Consulta = "select raza from ganado where raza='" + txtEliminarRaza.Text + "' group by 1 "
+        consultar()
+
+        If Tabla.Rows.Count > 0 Then
+            For Each row As DataRow In Tabla.Rows
+                razas = row("raza").ToString
+                txtAgregarRazaCBX.Clear()
+                MsgBox("LA raza existe")
+            Next
+
+        Else
+
+            Consulta = " DELETE FROM razas WHERE razitas ='" + txtEliminarRaza.Text + "'"
+            consultar()
+            MsgBox("Se elimino raza")
+            CBXeliminarRazaCBX.Text = ""
+
+            CBXeliminarRazaCBX.Items.Clear()
+            CBXModificarCBX.Items.Clear()
+            CBXRazaGanado.Items.Clear()
+            CBXseleccionarRaza.Items.Clear()
+            CBXrazaCompradoVendido.Items.Clear()
+            CBXRazacompra.Items.Clear()
+
+            comando.CommandType = CommandType.Text
+
+            comando.Connection = connection
+
+            comando.CommandText = ("select razitas from razas")
+
+            Try
+
+                connection.Open()
+
+                reader = comando.ExecuteReader()
+
+                If reader.HasRows() Then
+
+                    While reader.Read()
+                        CBXeliminarRazaCBX.Items.Add(reader.GetString(0))
+                        CBXRazaGanado.Items.Add(reader.GetString(0))
+                        CBXseleccionarRaza.Items.Add(reader.GetString(0))
+                        CBXrazaCompradoVendido.Items.Add(reader.GetString(0))
+                        CBXRazacompra.Items.Add(reader.GetString(0))
+                        CBXModificarCBX.Items.Add(reader.GetString(0))
+
+
+                    End While
+
+                End If
+
+                connection.Close()
+
+            Catch ex As Exception
+                MsgBox(ex.Message)
+                If connection.State = ConnectionState.Open Then
+                    connection.Close()
+                End If
+
+            End Try
+
+        End If
+
+    End Sub
+
+    Private Sub CBXeliminarRazaCBX_SelectedIndexChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles CBXeliminarRazaCBX.SelectedIndexChanged
+        txtEliminarRaza.Text = CBXeliminarRazaCBX.Text
     End Sub
 End Class
