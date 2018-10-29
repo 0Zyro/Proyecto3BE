@@ -2406,7 +2406,7 @@ Public Class Programa
                 End If
 
 
-              
+
 
                 'Else
                 '    MsgBox("Nombre y Apellido no pueden contener datos numericos")
