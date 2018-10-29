@@ -4047,4 +4047,38 @@ Public Class Programa
 
 
     End Sub
+
+    Private Sub txtAgregarRazaCBX_KeyPress(ByVal sender As System.Object, ByVal e As System.Windows.Forms.KeyPressEventArgs) Handles txtAgregarRazaCBX.KeyPress
+        If Char.IsLetter(e.KeyChar) Then
+            e.Handled = False
+        ElseIf Char.IsControl(e.KeyChar) Then
+            e.Handled = False
+        ElseIf Char.IsSeparator(e.KeyChar) Then
+
+
+            'If IsNumeric(txtBuscarCodGanado.Text) Then
+
+
+        Else
+            e.Handled = True
+
+        End If
+    End Sub
+
+    Private Sub TXTModificarRazaCBX_KeyPress(ByVal sender As System.Object, ByVal e As System.Windows.Forms.KeyPressEventArgs) Handles TXTModificarRazaCBX.KeyPress
+        If Char.IsLetter(e.KeyChar) Then
+            e.Handled = False
+        ElseIf Char.IsControl(e.KeyChar) Then
+            e.Handled = False
+        ElseIf Char.IsSeparator(e.KeyChar) Then
+
+
+            'If IsNumeric(txtBuscarCodGanado.Text) Then
+
+
+        Else
+            e.Handled = True
+
+        End If
+    End Sub
 End Class
