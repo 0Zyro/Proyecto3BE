@@ -2147,23 +2147,14 @@ Public Class Programa
         BOTONagregarcliente.Enabled = True
         BOTONmodificarCliente.Enabled = True
 
-        'If IsNumeric(txtBUSCARcedula.Text) Then
 
+            Consulta = " SELECT * from cliente where id like '" & txtBUSCARcedula.Text & "%'"
+            consultar()
 
-        Consulta = " SELECT * from cliente where id like '" & txtBUSCARcedula.Text & "%'"
-        consultar()
+            DataGridViewClientes.DataSource = Tabla
 
-        DataGridViewClientes.DataSource = Tabla
-
-        'Else
-
-        '    txtBUSCARcedula.Clear()
-        '    Consulta = " SELECT * from cliente where id like '" & txtBUSCARcedula.Text & "%'"
-        '    consultar()
-
-        '    DataGridViewClientes.DataSource = Tabla
-
-        'End If
+            '    Consulta = " SELECT * from cliente where id like '" & txtBUSCARcedula.Text & "%'"
+       
     End Sub
 
 
@@ -3968,11 +3959,11 @@ Public Class Programa
 
                 MsgBox("No exiten datos solicitados", MsgBoxStyle.Information, Title:="Busqueda")
 
+
+
             End If
 
-        End If
-
-        If CBXMostrarDatosClientes.SelectedItem = "Importe total por cada cliente inactivo" Then
+        ElseIf CBXMostrarDatosClientes.SelectedItem = "Importe total por cada cliente inactivo" Then
 
 
             Consulta = "SELECT cliente.id AS 'Cedula', nombre AS 'Nombre', apellido As 'Apellido', direccion As 'Direccion', telefono AS 'Telefono', sum(totalv) As 'Importe total' FROM cliente,venta where venta.id = cliente.id and cliente.id in(SELECT venta.id FROM venta) and estado = 0 GROUP BY 1 "
@@ -3990,9 +3981,9 @@ Public Class Programa
 
             End If
 
-        End If
 
-        If CBXMostrarDatosClientes.SelectedItem = "Cliente activo con mayor importe total" Then
+
+        ElseIf CBXMostrarDatosClientes.SelectedItem = "Cliente activo con mayor importe total" Then
 
 
             Consulta = "SELECT cliente.id AS 'Cedula', nombre AS 'Nombre', apellido As 'Apellido', direccion As 'Direccion', telefono AS 'Telefono', sum(totalv) As 'Importe total' FROM cliente,venta where venta.id = cliente.id and cliente.id in(SELECT venta.id FROM venta HAVING max(totalv)) and estado = 1 "
@@ -4010,12 +4001,12 @@ Public Class Programa
 
             End If
 
-        End If
-
-        If CBXMostrarDatosClientes.SelectedItem = "Cliente inactivo con mayor importe total" Then
 
 
-            Consulta = "SELECT cliente.id AS 'Cédula', nombre AS 'Nombre', apellido As 'Apellido', direccion As 'Direccion', telefono AS 'Teléfono', sum(totalv) As 'Importe total' FROM cliente,venta where venta.id = cliente.id and cliente.id in(SELECT venta.id FROM venta HAVING max(totalv)) and estado = 0 "
+        ElseIf CBXMostrarDatosClientes.SelectedItem = "Cliente inactivo con mayor importe total" Then
+
+
+            Consulta = "SELECT cliente.id AS 'Cedula', nombre AS 'Nombre', apellido As 'Apellido', direccion As 'Direccion', telefono AS 'Telefono', sum(totalv) As 'Importe total' FROM cliente,venta where venta.id = cliente.id and cliente.id in(SELECT venta.id FROM venta HAVING max(totalv)) and estado = 0 "
             consultar()
             DataGridViewMostraDatosClientes.DataSource = Tabla
 
@@ -4028,13 +4019,13 @@ Public Class Programa
 
                 MsgBox("No se exiten datos solicitados", MsgBoxStyle.Information, Title:="Busqueda")
 
-            End If
+
         End If
 
-        If CBXMostrarDatosClientes.SelectedItem = "Cliente activo con mayor compra realizada" Then
+        ElseIf CBXMostrarDatosClientes.SelectedItem = "Cliente activo con mayor compra realizada" Then
 
 
-            Consulta = "SELECT cliente.id AS 'Cédula', nombre AS 'Nombre', apellido As 'Apellido', direccion As 'Direccion', telefono AS 'Telefono', max(totalv) As 'Mayor Venta(U$$)' FROM cliente,venta where venta.id = cliente.id and estado = 1 "
+            Consulta = "SELECT cliente.id AS 'Cedula', nombre AS 'Nombre', apellido As 'Apellido', direccion As 'Direccion', telefono AS 'Telefono', max(totalv) As 'Mayor Venta(U$$)' FROM cliente,venta where venta.id = cliente.id and estado = 1 "
             consultar()
             DataGridViewMostraDatosClientes.DataSource = Tabla
 
