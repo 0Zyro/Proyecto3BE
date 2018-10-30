@@ -28,6 +28,7 @@ Public Class Login
     'Cuando el usuario presiona "Aceptar" se evaluaran los datos y se hara login en caso de ser correctos
     'en caso de no serlo, se informara el error
     Private Sub BotonAceptar_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles BotonAceptar.Click
+
         If estado = 1 Then
             estado1()
         Else
