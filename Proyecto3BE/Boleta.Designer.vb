@@ -45,7 +45,6 @@ Partial Class Boleta
         Me.Label5 = New System.Windows.Forms.Label()
         Me.Label6 = New System.Windows.Forms.Label()
         Me.LBLNombreclientev = New System.Windows.Forms.Label()
-        Me.Label8 = New System.Windows.Forms.Label()
         Me.lblidventabo = New System.Windows.Forms.Label()
         Me.lblapellidoenboleta = New System.Windows.Forms.Label()
         CType(Me.DGVBOLETA, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -238,16 +237,6 @@ Partial Class Boleta
         Me.LBLNombreclientev.TabIndex = 15
         Me.LBLNombreclientev.Text = "asdsa"
         '
-        'Label8
-        '
-        Me.Label8.AutoSize = True
-        Me.Label8.Location = New System.Drawing.Point(43, 203)
-        Me.Label8.Name = "Label8"
-        Me.Label8.Size = New System.Drawing.Size(482, 13)
-        Me.Label8.TabIndex = 16
-        Me.Label8.Text = "en el datagrid va codigo de ganado,raza, sexo,  Paso(KG), Precio($), Subtotal   """ & _
-            "Todo en ese orden"""
-        '
         'lblidventabo
         '
         Me.lblidventabo.AutoSize = True
@@ -276,7 +265,6 @@ Partial Class Boleta
         Me.ClientSize = New System.Drawing.Size(672, 427)
         Me.Controls.Add(Me.lblapellidoenboleta)
         Me.Controls.Add(Me.lblidventabo)
-        Me.Controls.Add(Me.Label8)
         Me.Controls.Add(Me.LBLNombreclientev)
         Me.Controls.Add(Me.Label6)
         Me.Controls.Add(Me.Label5)
@@ -312,7 +300,6 @@ Partial Class Boleta
     Friend WithEvents Label6 As System.Windows.Forms.Label
     Friend WithEvents Label5 As System.Windows.Forms.Label
     Friend WithEvents Label4 As System.Windows.Forms.Label
-    Friend WithEvents Label8 As System.Windows.Forms.Label
     Friend WithEvents LBLNombreclientev As System.Windows.Forms.Label
     Friend WithEvents lblidventabo As System.Windows.Forms.Label
     Friend WithEvents Column4 As System.Windows.Forms.DataGridViewTextBoxColumn
