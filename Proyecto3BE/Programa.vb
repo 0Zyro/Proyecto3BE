@@ -1173,10 +1173,10 @@ Public Class Programa
 
         'CBXagregarEstadoGanado.Enabled = True
 
-        CBXsexoGanado.Text = ""
-        CBXRazaGanado.Text = ""
+        'CBXsexoGanado.Text = ""
+        'CBXRazaGanado.Text = ""
 
-        DTPAgregarGanado.Text = ""
+        'DTPAgregarGanado.Text = ""
 
 
         CBXagregarEstadoGanado.Text = ""
@@ -1240,7 +1240,10 @@ Public Class Programa
 
 
 
-            If estado <> "" And sexo <> "" And raza <> "" Then
+
+
+            If estado <> "" Then
+
 
 
                 Try
@@ -1271,16 +1274,12 @@ Public Class Programa
 
                 End Try
 
+
             Else
-
-                MsgBox("No puede dejar campos vacios al modificar ganado, intentelo nuevamente", MsgBoxStyle.Exclamation, Title:="No se editaron datos")
-
-
-
-                'MsgBox("Debes completar todos los campos", MsgBoxStyle.Exclamation, Title:="No se guardaron datos")
-
+                MsgBox("El campo estado no puede ser vacio", MsgBoxStyle.Exclamation, Title:="No se guardaron datos")
             End If
         End If
+
 
     End Sub
 
@@ -1793,7 +1792,7 @@ Public Class Programa
 
                 DesactivarBotonesGanado()
                 DataGridGanadoEconomico.Visible = True
-                Consulta = " SELECT idg AS 'Cod Ganado', sexo AS 'Sexo', raza AS 'Raza', estado AS 'Estado', nacimiento, venta.idv AS 'Num Compra', fechaventa As 'Fecha de venta', totalv AS 'Total US$' from ganado,venta where ganado.idv = venta.idv  and estado <> 'Muerto/a' and raza='" + CBXrazaCompradoVendido.SelectedItem + "'"
+                Consulta = " SELECT idg AS 'Cod Ganado', sexo AS 'Sexo', raza AS 'Raza', estado AS 'Estado', nacimiento, venta.idv AS 'Num Compra', fechaventa As 'Fecha de venta', totalv AS 'Total US$' from ganado,venta where ganado.idv = venta.idv   estado <> 'Muerto/a' and raza='" + CBXrazaCompradoVendido.SelectedItem + "'"
                 consultar()
                 DataGridGanadoEconomico.DataSource = Tabla
 
