@@ -9,16 +9,23 @@ Public Class Boleta
     Dim connection As New MySqlConnection(data)
     Dim comando As New MySqlCommand
     Dim reader As MySqlDataReader
+
+
     Public Sub clear()
         DGVBOLETA.Rows.Clear()
     End Sub
 
 
 
-    Public Sub cargardatos(ByVal peso As Double, ByVal precio As Double, ByVal subtotal As Double, ByVal idganado As Integer, ByVal fechaventa As String, ByVal total As Double)
+    Public Sub cargardatos(ByVal peso As Double, ByVal precio As Double, ByVal subtotal As Double, ByVal idganado As Integer, ByVal fechaventa As String, ByVal total As Double, ByVal nombreclientev As String, ByVal apellidoclientev As String, ByVal idventaboleta As Integer, ByVal raza As String, ByVal sexo As String)
+        LBLNombreclientev.Text = nombreclientev
+        lblapellidoenboleta.Text = apellidoclientev
         txbfechaboleta.Text = fechaventa
+        lblidventabo.Text = idventaboleta
         DGVBOLETA.Rows.Add()
         DGVBOLETA.Item(0, DGVBOLETA.Rows.Count - 1).Value = idganado
+        DGVBOLETA.Item(1, DGVBOLETA.Rows.Count - 1).Value = raza
+        DGVBOLETA.Item(2, DGVBOLETA.Rows.Count - 1).Value = sexo
         DGVBOLETA.Item(3, DGVBOLETA.Rows.Count - 1).Value = peso
         DGVBOLETA.Item(4, DGVBOLETA.Rows.Count - 1).Value = precio
         DGVBOLETA.Item(5, DGVBOLETA.Rows.Count - 1).Value = subtotal

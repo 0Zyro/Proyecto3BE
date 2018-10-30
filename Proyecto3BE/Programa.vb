@@ -3691,12 +3691,12 @@ Public Class Programa
                 connection.Close()
             End If
         End Try
-        rtbventa.Text = ""
-        txbtotalventa.Text = ""
-        txbceduladeclientedeventas.Clear()
+        'rtbventa.Text = ""
+        'txbtotalventa.Text = ""
+        'txbceduladeclientedeventas.Clear()
 
-        btnvolverventa.PerformClick()
-
+        'btnvolverventa.PerformClick()
+        BTNBoleta.Visible = True
     End Sub
 
     Private Sub Button8_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnvolverventa.Click
@@ -3785,12 +3785,60 @@ Public Class Programa
     End Sub
     Dim index As Integer = 99999
     '//////boleta//////////////////////////////////
+
+
+
+
+
+
     Private Sub BTNBoleta_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles BTNBoleta.Click
+        
+
+        Dim idventaenboleta As Integer
+        Dim nombreclienteve As String
+        Dim apellidoclienteve As String
+        comando.CommandType = CommandType.Text
+
+        comando.Connection = connection
+        comando.CommandText = ("SELECT nombre,apellido from cliente WHERE id ='" + txbceduladeclientedeventas.Text + "'")
+
+        connection.Open()
+        reader = comando.ExecuteReader()
+        reader.Read()
+        nombreclienteve = reader.GetString(0)
+        connection.Close()
+
+
+        comando.Connection = connection
+        comando.CommandText = ("SELECT apellido from cliente WHERE id ='" + txbceduladeclientedeventas.Text + "'")
+
+        connection.Open()
+        reader = comando.ExecuteReader()
+        reader.Read()
+        apellidoclienteve = reader.GetString(0)
+        connection.Close()
+
+
+
+        comando.Connection = connection
+        comando.CommandText = ("select max(idv) from venta")
+        connection.Open()
+        reader = comando.ExecuteReader()
+        reader.Read()
+
+        idventaenboleta = reader.GetString(0)
+        connection.Close()
+
+
+
+
         Boleta.clear()
-        For i As Integer = 0 To DGVCalculoK.Rows.Count - 1
-            Boleta.cargardatos(DGVCalculoK.Item(1, i).Value, DGVCalculoK.Item(2, i).Value, DGVCalculoK.Item(3, i).Value, DGVCalculoK.Item(0, i).Value, DTPVentas.Value.ToString("yy/MM/dd"), Convert.ToDouble(txbtotalventa.Text))
+       
+        For i As Integer = 0 To DGVCalculoK.Rows.Count - 1 And DataGridViewganado.Rows.Count - 1
+            Boleta.cargardatos(DGVCalculoK.Item(1, i).Value, DGVCalculoK.Item(2, i).Value, DGVCalculoK.Item(3, i).Value, DGVCalculoK.Item(0, i).Value, DTPVentas.Value.ToString("yy/MM/dd"), Convert.ToDouble(txbtotalventa.Text), nombreclientev:=nombreclienteve.ToString, apellidoclientev:=apellidoclienteve.ToString, idventaboleta:=idventaenboleta.ToString, raza:=DataGridViewganado.Item(2, i).Value, sexo:=DataGridViewganado.Item(1, i).Value)
         Next
         Boleta.Show()
+        BTNBoleta.Visible = False
     End Sub
     ' ////////////////////////////////////////////////////
 

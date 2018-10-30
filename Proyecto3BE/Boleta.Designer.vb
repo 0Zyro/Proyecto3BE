@@ -44,9 +44,10 @@ Partial Class Boleta
         Me.Label4 = New System.Windows.Forms.Label()
         Me.Label5 = New System.Windows.Forms.Label()
         Me.Label6 = New System.Windows.Forms.Label()
-        Me.Label7 = New System.Windows.Forms.Label()
+        Me.LBLNombreclientev = New System.Windows.Forms.Label()
         Me.Label8 = New System.Windows.Forms.Label()
-        Me.Label9 = New System.Windows.Forms.Label()
+        Me.lblidventabo = New System.Windows.Forms.Label()
+        Me.lblapellidoenboleta = New System.Windows.Forms.Label()
         CType(Me.DGVBOLETA, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
@@ -139,6 +140,7 @@ Partial Class Boleta
         Me.txbfechaboleta.BackColor = System.Drawing.SystemColors.GradientActiveCaption
         Me.txbfechaboleta.Location = New System.Drawing.Point(367, 52)
         Me.txbfechaboleta.Name = "txbfechaboleta"
+        Me.txbfechaboleta.ReadOnly = True
         Me.txbfechaboleta.Size = New System.Drawing.Size(111, 20)
         Me.txbfechaboleta.TabIndex = 0
         '
@@ -147,6 +149,7 @@ Partial Class Boleta
         Me.TXTIVA.BackColor = System.Drawing.SystemColors.GradientActiveCaption
         Me.TXTIVA.Location = New System.Drawing.Point(516, 378)
         Me.TXTIVA.Name = "TXTIVA"
+        Me.TXTIVA.ReadOnly = True
         Me.TXTIVA.Size = New System.Drawing.Size(111, 20)
         Me.TXTIVA.TabIndex = 7
         '
@@ -155,6 +158,7 @@ Partial Class Boleta
         Me.TXTTotalGeneral.BackColor = System.Drawing.SystemColors.GradientActiveCaption
         Me.TXTTotalGeneral.Location = New System.Drawing.Point(516, 404)
         Me.TXTTotalGeneral.Name = "TXTTotalGeneral"
+        Me.TXTTotalGeneral.ReadOnly = True
         Me.TXTTotalGeneral.Size = New System.Drawing.Size(111, 20)
         Me.TXTTotalGeneral.TabIndex = 8
         '
@@ -181,6 +185,7 @@ Partial Class Boleta
         Me.TXTSubtotal.BackColor = System.Drawing.SystemColors.GradientActiveCaption
         Me.TXTSubtotal.Location = New System.Drawing.Point(516, 351)
         Me.TXTSubtotal.Name = "TXTSubtotal"
+        Me.TXTSubtotal.ReadOnly = True
         Me.TXTSubtotal.Size = New System.Drawing.Size(111, 20)
         Me.TXTSubtotal.TabIndex = 5
         '
@@ -223,15 +228,15 @@ Partial Class Boleta
         Me.Label6.TabIndex = 14
         Me.Label6.Text = "RUT: 210000480010"
         '
-        'Label7
+        'LBLNombreclientev
         '
-        Me.Label7.AutoSize = True
-        Me.Label7.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label7.Location = New System.Drawing.Point(16, 59)
-        Me.Label7.Name = "Label7"
-        Me.Label7.Size = New System.Drawing.Size(168, 13)
-        Me.Label7.TabIndex = 15
-        Me.Label7.Text = "aca va el nombre del cliente"
+        Me.LBLNombreclientev.AutoSize = True
+        Me.LBLNombreclientev.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.LBLNombreclientev.Location = New System.Drawing.Point(12, 59)
+        Me.LBLNombreclientev.Name = "LBLNombreclientev"
+        Me.LBLNombreclientev.Size = New System.Drawing.Size(40, 13)
+        Me.LBLNombreclientev.TabIndex = 15
+        Me.LBLNombreclientev.Text = "asdsa"
         '
         'Label8
         '
@@ -243,15 +248,25 @@ Partial Class Boleta
         Me.Label8.Text = "en el datagrid va codigo de ganado,raza, sexo,  Paso(KG), Precio($), Subtotal   """ & _
             "Todo en ese orden"""
         '
-        'Label9
+        'lblidventabo
         '
-        Me.Label9.AutoSize = True
-        Me.Label9.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label9.Location = New System.Drawing.Point(515, 57)
-        Me.Label9.Name = "Label9"
-        Me.Label9.Size = New System.Drawing.Size(133, 13)
-        Me.Label9.TabIndex = 17
-        Me.Label9.Text = "N°: ""codigo de venta"""
+        Me.lblidventabo.AutoSize = True
+        Me.lblidventabo.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblidventabo.Location = New System.Drawing.Point(515, 57)
+        Me.lblidventabo.Name = "lblidventabo"
+        Me.lblidventabo.Size = New System.Drawing.Size(133, 13)
+        Me.lblidventabo.TabIndex = 17
+        Me.lblidventabo.Text = "N°: ""codigo de venta"""
+        '
+        'lblapellidoenboleta
+        '
+        Me.lblapellidoenboleta.AutoSize = True
+        Me.lblapellidoenboleta.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblapellidoenboleta.Location = New System.Drawing.Point(107, 59)
+        Me.lblapellidoenboleta.Name = "lblapellidoenboleta"
+        Me.lblapellidoenboleta.Size = New System.Drawing.Size(40, 13)
+        Me.lblapellidoenboleta.TabIndex = 18
+        Me.lblapellidoenboleta.Text = "asdsa"
         '
         'Boleta
         '
@@ -259,9 +274,10 @@ Partial Class Boleta
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.SystemColors.GradientActiveCaption
         Me.ClientSize = New System.Drawing.Size(672, 427)
-        Me.Controls.Add(Me.Label9)
+        Me.Controls.Add(Me.lblapellidoenboleta)
+        Me.Controls.Add(Me.lblidventabo)
         Me.Controls.Add(Me.Label8)
-        Me.Controls.Add(Me.Label7)
+        Me.Controls.Add(Me.LBLNombreclientev)
         Me.Controls.Add(Me.Label6)
         Me.Controls.Add(Me.Label5)
         Me.Controls.Add(Me.Label4)
@@ -297,12 +313,13 @@ Partial Class Boleta
     Friend WithEvents Label5 As System.Windows.Forms.Label
     Friend WithEvents Label4 As System.Windows.Forms.Label
     Friend WithEvents Label8 As System.Windows.Forms.Label
-    Friend WithEvents Label7 As System.Windows.Forms.Label
-    Friend WithEvents Label9 As System.Windows.Forms.Label
+    Friend WithEvents LBLNombreclientev As System.Windows.Forms.Label
+    Friend WithEvents lblidventabo As System.Windows.Forms.Label
     Friend WithEvents Column4 As System.Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents Column5 As System.Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents Column6 As System.Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents Column1 As System.Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents Column2 As System.Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents Column3 As System.Windows.Forms.DataGridViewTextBoxColumn
+    Friend WithEvents lblapellidoenboleta As System.Windows.Forms.Label
 End Class
