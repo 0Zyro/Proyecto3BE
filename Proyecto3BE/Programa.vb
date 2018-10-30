@@ -1746,7 +1746,7 @@ Public Class Programa
 
                 DesactivarBotonesGanado()
                 DataGridGanadoEconomico.Visible = True
-                Consulta = " SELECT idg AS 'Cod Ganado', sexo AS 'Sexo', raza AS 'Raza', estado AS 'Estado', nacimiento As'Fecha Nacimiento', venta.idv AS 'Num Venta', fechaventa As 'Fecha de Venta', totalv AS 'Total US$' from ganado inner join venta on ganado.idv = venta.idv"
+                Consulta = " SELECT idg AS 'Cod Ganado', sexo AS 'Sexo', raza AS 'Raza', estado AS 'Estado', nacimiento As'Fecha Nacimiento', venta.idv AS 'Num Venta', fechaventa As 'Fecha de Venta', preciov AS 'Total US$' from ganado inner join venta on ganado.idv = venta.idv"
                 consultar()
                 DataGridGanadoEconomico.DataSource = Tabla
 
@@ -1792,7 +1792,7 @@ Public Class Programa
 
                 DesactivarBotonesGanado()
                 DataGridGanadoEconomico.Visible = True
-                Consulta = " SELECT idg AS 'Cod Ganado', sexo AS 'Sexo', raza AS 'Raza', estado AS 'Estado' nacimiento As'Fecha Nacimiento', venta.idv AS 'Num Compra', fechaventa As 'Fecha de venta', totalv AS 'Total US$' from ganado,venta where ganado.idv = venta.idv   estado <> 'Muerto/a' and raza='" + CBXrazaCompradoVendido.SelectedItem + "'"
+                Consulta = " SELECT idg AS 'Cod Ganado', sexo AS 'Sexo', raza AS 'Raza', estado AS 'Estado' nacimiento As'Fecha Nacimiento', venta.idv AS 'Num Compra', fechaventa As 'Fecha de venta', preciov AS 'Total US$' from ganado,venta where ganado.idv = venta.idv   estado <> 'Muerto/a' and raza='" + CBXrazaCompradoVendido.SelectedItem + "'"
                 consultar()
                 DataGridGanadoEconomico.DataSource = Tabla
 
