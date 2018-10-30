@@ -1738,6 +1738,8 @@ Public Class Programa
     End Sub
 
     Private Sub BOTONbuscarCompradoVenedido_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles BOTONbuscarCompradoVenedido.Click
+        Dim raza As String = CBXrazaCompradoVendido.SelectedItem.ToString
+
         If CBXcompradoVendido.Text <> "" And CBXrazaCompradoVendido.Text <> "" Then
 
             If CBXcompradoVendido.Text = "Vendido" And CBXrazaCompradoVendido.Text = "Todas las razas" Then
@@ -1791,11 +1793,11 @@ Public Class Programa
 
                 DesactivarBotonesGanado()
                 DataGridGanadoEconomico.Visible = True
-                Consulta = " SELECT idg AS 'Cod Ganado', sexo AS 'Sexo', raza AS 'Raza', estado AS 'Estado', nacimiento, venta.idv AS 'Num Venta', fechaventa As 'Fecha de Venta', totalv AS 'Total US$' from ganado  where estado <> 'Muerto/a' left join venta on ganado.idv = venta.idv where ganado.idv is not null and raza ='" + CBXrazaCompradoVendido.SelectedItem + "'"
+                Consulta = " SELECT idg AS 'Cod Ganado', sexo AS 'Sexo', raza AS 'Raza', estado AS 'Estado', nacimiento, venta.idv AS 'Num Compra', fechaventa As 'Fecha de venta', totalv AS 'Total US$' from ganado,venta where ganado.idv = venta.idv  and estado <> 'Muerto/a' and raza='" + CBXrazaCompradoVendido.SelectedItem + "'"
                 consultar()
                 DataGridGanadoEconomico.DataSource = Tabla
 
-                DataGridGanadoEconomico.Columns(4).Visible = False
+                'DataGridGanadoEconomico.Columns(4).Visible = False
                 DataGridGanadoEconomico.Focus()
 
 
@@ -1814,10 +1816,10 @@ Public Class Programa
 
                 DesactivarBotonesGanado()
                 DataGridGanadoEconomico.Visible = True
-                Consulta = " SELECT idg AS 'Cod Ganado', sexo AS 'Sexo', raza AS 'Raza', estado AS 'Estado', nacimiento, compra.idc AS 'Num Compra', fechacompra As 'Fecha de compra', totalc AS 'Total US$' from ganado  where estado <> 'Muerto/a' left join compra on ganado.idc = compra.idc where ganado.idc is not null and raza ='" + CBXrazaCompradoVendido.SelectedItem + "'"
+                Consulta = " SELECT idg AS 'Cod Ganado', sexo AS 'Sexo', raza AS 'Raza', estado AS 'Estado', nacimiento, compra.idc AS 'Num Compra', fechacompra As 'Fecha de compra', totalc AS 'Total US$' from ganado inner join compra on ganado.idc= compra.idc  where estado <> 'Muerto/a' and raza='" + CBXrazaCompradoVendido.SelectedItem + "'"
                 consultar()
                 DataGridGanadoEconomico.DataSource = Tabla
-                DataGridGanadoEconomico.Columns(4).Visible = False
+                'DataGridGanadoEconomico.Columns(4).Visible = False
                 DataGridGanadoEconomico.Focus()
 
 

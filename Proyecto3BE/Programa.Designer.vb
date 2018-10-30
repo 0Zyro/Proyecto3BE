@@ -504,7 +504,7 @@ Partial Class Programa
         Me.PanelAgregarModificarRaza.Controls.Add(Me.Label21)
         Me.PanelAgregarModificarRaza.Location = New System.Drawing.Point(438, 49)
         Me.PanelAgregarModificarRaza.Name = "PanelAgregarModificarRaza"
-        Me.PanelAgregarModificarRaza.Size = New System.Drawing.Size(288, 309)
+        Me.PanelAgregarModificarRaza.Size = New System.Drawing.Size(288, 274)
         Me.PanelAgregarModificarRaza.TabIndex = 138
         Me.PanelAgregarModificarRaza.Visible = False
         '
@@ -960,13 +960,13 @@ Partial Class Programa
         '
         Me.Panel1.BackColor = System.Drawing.Color.Transparent
         Me.Panel1.Controls.Add(Me.BOTONabriPanelDatosGanado)
-        Me.Panel1.Controls.Add(Me.PanelBuscarCodGanado)
         Me.Panel1.Controls.Add(Me.PanelCompradoVenedido)
         Me.Panel1.Controls.Add(Me.PanelBuscarEstadoGanado)
         Me.Panel1.Controls.Add(Me.PanelBuscarSexoRaza)
         Me.Panel1.Controls.Add(Me.PanelBuscarFechaNacimiento)
         Me.Panel1.Controls.Add(Me.BOTONAgregarModificarRaza)
         Me.Panel1.Controls.Add(Me.BOTONcerrarAgregarModificarRaza)
+        Me.Panel1.Controls.Add(Me.PanelBuscarCodGanado)
         Me.Panel1.Location = New System.Drawing.Point(15, 0)
         Me.Panel1.Name = "Panel1"
         Me.Panel1.Size = New System.Drawing.Size(779, 50)
