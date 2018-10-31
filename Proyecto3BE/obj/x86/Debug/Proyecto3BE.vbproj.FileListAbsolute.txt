@@ -164,20 +164,3 @@ C:\Users\juanp\Documents\GitHub\Proyecto3BE\Proyecto3BE\obj\x86\Debug\WindowsApp
 E:\Documents\Proyecto\Proyecto3BE\obj\x86\Debug\WindowsApplication1.Boleta.resources
 C:\Users\Usuario\Documents\GitHub\Proyecto3BE\Proyecto3BE\obj\x86\Debug\WindowsApplication1.Boleta.resources
 C:\Users\Matias\Documents\GitHub\Proyecto3BE\Proyecto3BE\obj\x86\Debug\WindowsApplication1.Boleta.resources
-C:\Users\Alumno-09\Downloads\Proyecto3BE-master (1)\Proyecto3BE-master\Proyecto3BE\obj\x86\Debug\Proyecto3BE.exe
-C:\Users\Alumno-09\Downloads\Proyecto3BE-master (1)\Proyecto3BE-master\Proyecto3BE\obj\x86\Debug\Proyecto3BE.xml
-C:\Users\Alumno-09\Downloads\Proyecto3BE-master (1)\Proyecto3BE-master\Proyecto3BE\obj\x86\Debug\Proyecto3BE.pdb
-C:\Users\Alumno-09\Downloads\Proyecto3BE-master (1)\Proyecto3BE-master\Proyecto3BE\bin\Debug\Proyecto3BE.exe.manifest
-C:\Users\Alumno-09\Downloads\Proyecto3BE-master (1)\Proyecto3BE-master\Proyecto3BE\bin\Debug\Proyecto3BE.application
-C:\Users\Alumno-09\Downloads\Proyecto3BE-master (1)\Proyecto3BE-master\Proyecto3BE\bin\Debug\Proyecto3BE.exe
-C:\Users\Alumno-09\Downloads\Proyecto3BE-master (1)\Proyecto3BE-master\Proyecto3BE\bin\Debug\Proyecto3BE.pdb
-C:\Users\Alumno-09\Downloads\Proyecto3BE-master (1)\Proyecto3BE-master\Proyecto3BE\bin\Debug\Proyecto3BE.xml
-C:\Users\Alumno-09\Downloads\Proyecto3BE-master (1)\Proyecto3BE-master\Proyecto3BE\bin\Debug\MySql.Data.dll
-C:\Users\Alumno-09\Downloads\Proyecto3BE-master (1)\Proyecto3BE-master\Proyecto3BE\obj\x86\Debug\Proyecto3BE.vbprojResolveAssemblyReference.cache
-C:\Users\Alumno-09\Downloads\Proyecto3BE-master (1)\Proyecto3BE-master\Proyecto3BE\obj\x86\Debug\WindowsApplication1.Boleta.resources
-C:\Users\Alumno-09\Downloads\Proyecto3BE-master (1)\Proyecto3BE-master\Proyecto3BE\obj\x86\Debug\WindowsApplication1.Login.resources
-C:\Users\Alumno-09\Downloads\Proyecto3BE-master (1)\Proyecto3BE-master\Proyecto3BE\obj\x86\Debug\WindowsApplication1.Programa.resources
-C:\Users\Alumno-09\Downloads\Proyecto3BE-master (1)\Proyecto3BE-master\Proyecto3BE\obj\x86\Debug\WindowsApplication1.Resources.resources
-C:\Users\Alumno-09\Downloads\Proyecto3BE-master (1)\Proyecto3BE-master\Proyecto3BE\obj\x86\Debug\Proyecto3BE.vbproj.GenerateResource.Cache
-C:\Users\Alumno-09\Downloads\Proyecto3BE-master (1)\Proyecto3BE-master\Proyecto3BE\obj\x86\Debug\Proyecto3BE.exe.manifest
-C:\Users\Alumno-09\Downloads\Proyecto3BE-master (1)\Proyecto3BE-master\Proyecto3BE\obj\x86\Debug\Proyecto3BE.application
