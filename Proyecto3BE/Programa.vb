@@ -2614,13 +2614,13 @@ Public Class Programa
         CBXAgregarcompra.Enabled = True
         BTNVolverdeagregarcompra.Enabled = True
         DGVGanadocompra.Rows.Clear()
-        DataGridView2.Rows.Clear()
+        DGVAuxiliarcompraganado.Rows.Clear()
         PNLGanadocompra.Visible = True
         PNLGanadocompra.BringToFront()
-        TextBox1.Clear()
-        TextBox2.Clear()
-        TextBox4.Clear()
-        TextBox3.Clear()
+        TXTKGCompraganado.Clear()
+        TXTdolarcompraganado.Clear()
+        TXTTotacompraganado.Clear()
+        TXTPreciocompraganado.Clear()
         TXTTotalapagarcompraganado.Clear()
         CBXAgregarcompra.Text = ""
         acumulador = 0
@@ -2702,26 +2702,26 @@ Public Class Programa
         Dim raza As String = CBXRazacompra.SelectedItem
         Dim fecha As String = DTPFechanacimientocompra.Value.ToString("yyyy-MM-dd")
 
-        
 
-            If fecha <> "" And sexo <> "" And raza <> "" Then
-            If IsNumeric(TextBox1.Text) And IsNumeric(TextBox2.Text) And TextBox1.Text <> "" And TextBox2.Text <> "" Then
 
-                TextBox3.Text = Convert.ToDouble(TextBox1.Text.ToString.Replace(".", ",")) * Convert.ToDouble(TextBox2.Text.ToString.Replace(".", ","))
-                acumulador = (acumulador + (Convert.ToDouble(TextBox1.Text.ToString.Replace(".", ",")) * Convert.ToDouble(TextBox2.Text.ToString.Replace(".", ","))))
-                TextBox4.Text = acumulador
+        If fecha <> "" And sexo <> "" And raza <> "" Then
+            If IsNumeric(TXTKGCompraganado.Text) And IsNumeric(TXTdolarcompraganado.Text) And TXTKGCompraganado.Text <> "" And TXTdolarcompraganado.Text <> "" Then
+
+                TXTPreciocompraganado.Text = Convert.ToDouble(TXTKGCompraganado.Text.ToString.Replace(".", ",")) * Convert.ToDouble(TXTdolarcompraganado.Text.ToString.Replace(".", ","))
+                acumulador = (acumulador + (Convert.ToDouble(TXTKGCompraganado.Text.ToString.Replace(".", ",")) * Convert.ToDouble(TXTdolarcompraganado.Text.ToString.Replace(".", ","))))
+                TXTTotacompraganado.Text = acumulador
                 If DTPFechanacimientocompra.Value > Today Then
                     MsgBox("La fecha de nacimiento no puede ser mayor a la fecha actual")
                 Else
 
 
-                    DGVGanadocompra.Rows.Add(raza, sexo, fecha, TextBox3.Text)
+                    DGVGanadocompra.Rows.Add(raza, sexo, fecha, TXTPreciocompraganado.Text)
 
                     DTPFechanacimientocompra.Value = Today
                     CBXRazacompra.Text = ""
                     CBXSexocompra.Text = ""
-                    TextBox1.Clear()
-                    TextBox3.Clear()
+                    TXTKGCompraganado.Clear()
+                    TXTPreciocompraganado.Clear()
                     CBXAgregarcompra.Enabled = False
                     BTNVolverdeagregarcompra.Enabled = False
                     BTNavanzarcompra.Enabled = True
@@ -2767,10 +2767,10 @@ Public Class Programa
         If DGVGanadocompra.Rows.Count > 0 Then
             acumulador = (acumulador - (Convert.ToDouble(DGVGanadocompra.CurrentRow.Cells(3).Value).ToString.Replace(".", ",")))
             DGVGanadocompra.Rows.Remove(DGVGanadocompra.CurrentRow)
-            TextBox4.Text = acumulador
+            TXTTotacompraganado.Text = acumulador
             If DGVGanadocompra.Rows.Count < 1 Then
                 acumulador = 0
-                TextBox4.Text = acumulador
+                TXTTotacompraganado.Text = acumulador
             End If
         Else
             MsgBox("No hay ganado para eliminar")
@@ -2984,14 +2984,14 @@ Public Class Programa
 
                     Consulta = "select idc from compra where idc = (select max(idc) from compra)"
                     consultar()
-                    DataGridView2.DataSource = Tabla
+                    DGVAuxiliarcompraganado.DataSource = Tabla
 
                     'Pone la primera letra de comentario en mayuscula
                     Consulta = ("update compra set comentarioc = concat(upper(left(comentarioc,1)), right(comentarioc,length(comentarioc)-1))")
                     consultar()
 
                     For row As Integer = 0 To DGVGanadocompra.Rows.Count - 1
-                        Consulta = "insert into ganado(sexo, raza, nacimiento, estado, precioc, idc) values ('" & DGVGanadocompra.Rows(row).Cells(1).Value & "','" & DGVGanadocompra.Rows(row).Cells(0).Value & "','" & DGVGanadocompra.Rows(row).Cells(2).Value & "','Activo','" & Round(Convert.ToDouble(DGVGanadocompra.Rows(row).Cells(3).Value), 2).ToString.Replace(",", ".") & "','" & (DataGridView2.CurrentRow.Cells(0).Value) & "')"
+                        Consulta = "insert into ganado(sexo, raza, nacimiento, estado, precioc, idc) values ('" & DGVGanadocompra.Rows(row).Cells(1).Value & "','" & DGVGanadocompra.Rows(row).Cells(0).Value & "','" & DGVGanadocompra.Rows(row).Cells(2).Value & "','Activo','" & Round(Convert.ToDouble(DGVGanadocompra.Rows(row).Cells(3).Value), 2).ToString.Replace(",", ".") & "','" & (DGVAuxiliarcompraganado.CurrentRow.Cells(0).Value) & "')"
                         consultar()
                     Next
 
@@ -3013,14 +3013,14 @@ Public Class Programa
                     DGVGanadocompra.Rows.Clear()
                     PNLGanadocompra.Visible = True
                     PNLGanadocompra.BringToFront()
-                    TextBox1.Clear()
-                    TextBox2.Clear()
-                    TextBox4.Clear()
-                    TextBox3.Clear()
+                    TXTKGCompraganado.Clear()
+                    TXTdolarcompraganado.Clear()
+                    TXTTotacompraganado.Clear()
+                    TXTPreciocompraganado.Clear()
                     TXTTotalapagarcompraganado.Clear()
                     CBXAgregarcompra.Text = ""
                     acumulador = 0
-                    DataGridView2.Rows.Remove(DataGridView2.CurrentRow)
+                    DGVAuxiliarcompraganado.Rows.Remove(DGVAuxiliarcompraganado.CurrentRow)
                 Else
                     'Muestra mensaje diciendo que no se ingresaron valores numericos o que solo acepta valores numericos
                     MsgBox("Ingrese solo valor numerico en total")
