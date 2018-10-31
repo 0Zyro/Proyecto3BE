@@ -1273,7 +1273,7 @@ Public Class Programa
             BOTONcancelarAgregar.Visible = False
 
         End If
-       
+
     End Sub
 
     '''/////////////////////////////////////BOTON PARA INGRESAR NUEVO GANADO//////////////////////////////////////
@@ -1332,7 +1332,7 @@ Public Class Programa
 
     End Sub
 
-   
+
 
     '///////////////////////////////BOTON PARA MODIFICAR DATOS EN LOS CAMPOS////////////////////////////////////////
     ' //////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -1379,10 +1379,10 @@ Public Class Programa
                 Catch ex As Exception
                     MsgBox(ex.ToString)
                 End Try
-           
-        Else
-            MsgBox("Los campos no pueden estar vacios", MsgBoxStyle.Exclamation, Title:="No se realizaron cambios")
-        End If
+
+            Else
+                MsgBox("Los campos no pueden estar vacios", MsgBoxStyle.Exclamation, Title:="No se realizaron cambios")
+            End If
 
             If CBXmodificarEstadoGanado.Text = "Muerto/a" Then
                 MsgBox("fdjvj")
@@ -1428,21 +1428,21 @@ Public Class Programa
         CBXagregarEstadoGanado.Text = DataGridViewganado.Item(3, DataGridViewganado.CurrentRow.Index).Value
         CBXmodificarEstadoGanado.Text = DataGridViewganado.Item(3, DataGridViewganado.CurrentRow.Index).Value
 
-  
-            If CBXmodificarEstadoGanado.SelectedItem = "vendido" Then
-                CBXmodificarEstadoGanado.Enabled = False
-                CBXRazaGanado.Enabled = False
-                CBXsexoGanado.Enabled = False
+
+        If CBXmodificarEstadoGanado.SelectedItem = "vendido" Then
+            CBXmodificarEstadoGanado.Enabled = False
+            CBXRazaGanado.Enabled = False
+            CBXsexoGanado.Enabled = False
             DTPAgregarGanado.Enabled = False
             BOTONguardarModificar.Enabled = False
 
-            Else
-                CBXmodificarEstadoGanado.Enabled = True
-                CBXRazaGanado.Enabled = True
-                CBXsexoGanado.Enabled = True
+        Else
+            CBXmodificarEstadoGanado.Enabled = True
+            CBXRazaGanado.Enabled = True
+            CBXsexoGanado.Enabled = True
             DTPAgregarGanado.Enabled = True
             BOTONguardarModificar.Enabled = True
-            End If
+        End If
 
 
         BOTONabrirModificar.Enabled = False
@@ -1758,7 +1758,7 @@ Public Class Programa
 
     Private Sub BOTONpanelActividadEconomica_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles BOTONpanelActividadEconomica.Click
 
-       
+
 
         GroupBox3.Enabled = True
         BOTONguardarAgregar.Enabled = True
@@ -2199,13 +2199,13 @@ Public Class Programa
         BOTONmodificarCliente.Enabled = True
 
 
-            Consulta = " SELECT * from cliente where id like '" & txtBUSCARcedula.Text & "%'"
-            consultar()
+        Consulta = " SELECT * from cliente where id like '" & txtBUSCARcedula.Text & "%'"
+        consultar()
 
-            DataGridViewClientes.DataSource = Tabla
+        DataGridViewClientes.DataSource = Tabla
 
-            '    Consulta = " SELECT * from cliente where id like '" & txtBUSCARcedula.Text & "%'"
-       
+        '    Consulta = " SELECT * from cliente where id like '" & txtBUSCARcedula.Text & "%'"
+
     End Sub
 
 
@@ -2751,9 +2751,9 @@ Public Class Programa
         Dim raza As String = CBXRazacompra.SelectedItem
         Dim fecha As String = DTPFechanacimientocompra.Value.ToString("yyyy-MM-dd")
 
-        
 
-            If fecha <> "" And sexo <> "" And raza <> "" Then
+
+        If fecha <> "" And sexo <> "" And raza <> "" Then
             If IsNumeric(TextBox1.Text) And IsNumeric(TextBox2.Text) And TextBox1.Text <> "" And TextBox2.Text <> "" Then
 
                 TextBox3.Text = Convert.ToDouble(TextBox1.Text.ToString.Replace(".", ",")) * Convert.ToDouble(TextBox2.Text.ToString.Replace(".", ","))
@@ -3401,7 +3401,7 @@ Public Class Programa
     '//////////////////////////////////////////////////////////////////////////////////////////////////////////
     '//////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-   
+
     Private Sub btnclearventa_Click(ByVal sender As System.Object, ByVal e As System.EventArgs)
 
 
@@ -3656,7 +3656,7 @@ Public Class Programa
                 DGVCalculoK.Item(2, i).Value = DGVCalculoK.Item(2, i).Value.ToString.Replace(".", ",")
                 DGVCalculoK.Item(3, i).Value = (Convert.ToDouble(DGVCalculoK.Item(1, i).Value)) * (Convert.ToDouble(DGVCalculoK.Item(2, i).Value))
                 total = (total + (Convert.ToDouble(DGVCalculoK.Item(3, i).Value)))
-             Else
+            Else
                 MsgBox("Ingrese caracteres numericos solamente")
                 Exit Sub
             End If
@@ -3842,7 +3842,7 @@ Public Class Programa
 
 
     Private Sub BTNBoleta_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles BTNBoleta.Click
-        
+
 
         Dim idventaenboleta As Integer
         Dim nombreclienteve As String
@@ -4088,7 +4088,7 @@ Public Class Programa
     End Sub
 
 
- 
+
     Private Sub CBXMostrarDatosClientes_SelectedIndexChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles CBXMostrarDatosClientes.SelectedIndexChanged
 
         If CBXMostrarDatosClientes.SelectedItem = "Importe total por cada cliente activo" Then
@@ -4168,7 +4168,7 @@ Public Class Programa
                 MsgBox("No se exiten datos solicitados", MsgBoxStyle.Information, Title:="Busqueda")
 
 
-        End If
+            End If
 
         ElseIf CBXMostrarDatosClientes.SelectedItem = "Cliente activo con mayor compra realizada" Then
 
@@ -4295,7 +4295,7 @@ Public Class Programa
 
     End Sub
 
-  
+
     Private Sub BOTONeliminarRaza_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles BOTONeliminarRaza.Click
 
 
@@ -4372,7 +4372,7 @@ Public Class Programa
     End Sub
 
     Private Sub permisosdeuser()
-      
+
 
         comando.CommandType = CommandType.Text
         comando.Connection = connection
@@ -4408,12 +4408,11 @@ Public Class Programa
         Dim x1 As String = reader.GetString(0)
         connection.Close()
         If LBLCiUsuario.Text = x1 Then
-            
+
             GBususariosc.Enabled = False
 
         End If
     End Sub
-
 
 
 
