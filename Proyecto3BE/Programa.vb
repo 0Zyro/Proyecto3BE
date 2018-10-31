@@ -30,6 +30,8 @@ Public Class Programa
 
 
 
+
+
     Public Sub consultar()
         Try
             Conexion = New MySqlDataAdapter(Consulta, data)
@@ -130,6 +132,50 @@ Public Class Programa
         End Try
     End Sub
     '///SECCION USUARIOS
+
+
+    ' dar permisos usuarios/////////////
+
+
+
+
+
+
+    Private Sub darpermisos()
+
+        If CBXRangoUsuarios.SelectedItem = "Admin" Then
+
+            Consulta = "GRANT ALL PRIVILEGES ON vacas TO '" + TXTCiUsuarios.Text + "';"
+            consultar()
+
+
+        End If
+        If CBXRangoUsuarios.SelectedItem = "User" Then
+            Consulta = "GRANT select,insert ON vacas TO '" + TXTCiUsuarios.Text + "';"
+            consultar()
+
+
+        End If
+        If CBXRangoUsuarios.SelectedItem = "Viewer" Then
+            Consulta = "GRANT select ON vacas TO '" + TXTCiUsuarios.Text + "';"
+            consultar()
+
+
+        End If
+    End Sub
+
+    ' /////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
+
+
+
+
+
+
+
+
+
 
     Private Sub BTNModificarContraseña_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles BTNModificarContraseña.Click
 
@@ -527,6 +573,8 @@ Public Class Programa
                     LBLInfoUsuarios.Text = "Cedula erronea"
                 End If
         End Select
+        darpermisos()
+
     End Sub
 
     Private Function getAbsoluteRoute()
@@ -830,6 +878,7 @@ Public Class Programa
 
 
     Private Sub Form2_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
+        permisosdeuser()
 
         comando.CommandType = CommandType.Text
 
@@ -3833,8 +3882,8 @@ Public Class Programa
 
 
 
+
         Boleta.clear()
-       
         For i As Integer = 0 To DGVCalculoK.Rows.Count - 1 And DataGridViewganado.Rows.Count - 1
             Boleta.cargardatos(DGVCalculoK.Item(1, i).Value, DGVCalculoK.Item(2, i).Value, DGVCalculoK.Item(3, i).Value, DGVCalculoK.Item(0, i).Value, DTPVentas.Value.ToString("yy/MM/dd"), Convert.ToDouble(txbtotalventa.Text), nombreclientev:=nombreclienteve.ToString, apellidoclientev:=apellidoclienteve.ToString, idventaboleta:=idventaenboleta.ToString, raza:=DataGridViewganado.Item(2, i).Value, sexo:=DataGridViewganado.Item(1, i).Value)
         Next
@@ -4321,4 +4370,51 @@ Public Class Programa
     Private Sub CBXeliminarRazaCBX_SelectedIndexChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles CBXeliminarRazaCBX.SelectedIndexChanged
         txtEliminarRaza.Text = CBXeliminarRazaCBX.Text
     End Sub
+
+    Private Sub permisosdeuser()
+      
+
+        comando.CommandType = CommandType.Text
+        comando.Connection = connection
+        comando.CommandText = ("select ci from usuario where rango= 'viewer'")
+
+        connection.Open()
+        reader = comando.ExecuteReader()
+        reader.Read()
+        Dim x As String = reader.GetString(0)
+        connection.Close()
+
+
+        If LBLCiUsuario.Text = x Then
+            GroupBox3.Enabled = False
+            BOTONAgregarModificarRaza.Enabled = False
+            BTNPanelagregarcompra.Enabled = False
+            BTNPanelmodicompra.Enabled = False
+            BTNAGREGARVENTAP.Enabled = False
+            btnmodificarventa.Enabled = False
+            GroupBoxcliente.Enabled = False
+            GPClientesh.Enabled = False
+            TabUsuarios.Dispose()
+
+        End If
+
+        comando.CommandType = CommandType.Text
+        comando.Connection = connection
+        comando.CommandText = ("select ci from usuario where rango= 'User'")
+
+        connection.Open()
+        reader = comando.ExecuteReader()
+        reader.Read()
+        Dim x1 As String = reader.GetString(0)
+        connection.Close()
+        If LBLCiUsuario.Text = x1 Then
+            
+            GBususariosc.Enabled = False
+
+        End If
+    End Sub
+
+
+
+
 End Class

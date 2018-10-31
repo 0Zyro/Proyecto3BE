@@ -113,7 +113,7 @@ Public Class Login
             conexion.Open()
             reader = consulta.ExecuteReader()
 
-            'Se pasa la contraseña obtenida al la variable "passwd"
+            'Se pasa la contraseña obtenida a la variable "passwd"
             If reader.Read() Then
 
                 ci = reader.GetString(0)
