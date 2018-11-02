@@ -897,12 +897,11 @@ Public Class Programa
 
         '////////////CLIENTES
 
-        PanelPrincipalclientes.Enabled = True
-        PanelPrincipalclientes.Visible = True
-        PanelPrincipalclientes.BringToFront()
+        'PanelPrincipalclientes.Enabled = True
+        'PanelPrincipalclientes.Visible = True
+        'PanelPrincipalclientes.BringToFront()
 
-        PanelAgregarcliente.Enabled = False
-        PanelAgregarcliente.Visible = False
+        
 
         '////////////FIN CLIENTES
 
@@ -2009,24 +2008,7 @@ Public Class Programa
     End Sub
 
 
-    '///////////////////BOTON PARA SALIR DEL PANEL MODIFICAR Y REGRESAR AL PANEL PRINCIPAL////////////////////////////////////////
-    Private Sub BOTONregrasarPrincipalCliente_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles BOTONregrasarPrincipalCliente.Click
-        PanelPrincipalclientes.BringToFront()
-        PanelPrincipalclientes.Visible = True
-        PanelPrincipalclientes.Enabled = True
-
-        Consulta = "select * from cliente"
-        consultar()
-        DataGridViewClientes.DataSource = Tabla
-        'DataGridViewClientes.Columns(0).HeaderText = "Cédula"
-        'DataGridViewClientes.Columns(1).HeaderText = "Nombre y apellido"
-        'DataGridViewClientes.Columns(2).HeaderText = "Dirección"
-        'DataGridViewClientes.Columns(3).HeaderText = "Teléfono"
-
-        PanelModificarclientes.SendToBack()
-        PanelModificarclientes.Visible = False
-        PanelModificarclientes.Enabled = False
-    End Sub
+ 
 
 
     '//////////////////////////////////////////// BOTON PARA VOLVER A CARGAR LOS DATOS DE CLIENTE/////////////////////////////////////////////////
@@ -2213,24 +2195,9 @@ Public Class Programa
     'End Sub
 
 
-    Private Sub Button12_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Button12.Click
-        PanelAgregarcliente.BringToFront()
-        PanelAgregarcliente.Visible = True
-        PanelAgregarcliente.Enabled = True
+  
 
-        PanelPrincipalclientes.SendToBack()
-        PanelPrincipalclientes.Visible = False
-        PanelPrincipalclientes.Enabled = False
-    End Sub
 
-    Private Sub Button13_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Button13.Click
-        PanelModificarclientes.BringToFront()
-        PanelModificarclientes.Visible = True
-        PanelModificarclientes.Enabled = True
-        PanelPrincipalclientes.SendToBack()
-        PanelPrincipalclientes.Visible = False
-        PanelPrincipalclientes.Enabled = False
-    End Sub
 
     Private Sub BOTONcancelarGuardarCliente_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles BOTONcancelarGuardarCliente.Click
         DataGridViewClientes.Enabled = True
@@ -2429,21 +2396,7 @@ Public Class Programa
     End Sub
 
 
-    '///////////////////////////BOTON QUE VUELVE AL PANEL PRINCIPAL///////////////////////////////////
-    Private Sub BTNVolveragregarcliente_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles BTNVolveragregarcliente.Click
-        PanelPrincipalclientes.BringToFront()
-        PanelPrincipalclientes.Visible = True
-        PanelPrincipalclientes.Enabled = True
-
-        Consulta = "select * from cliente"
-        consultar()
-        DataGridViewClientes.DataSource = Tabla
-
-
-        PanelAgregarcliente.Enabled = False
-        PanelAgregarcliente.Visible = False
-        PanelAgregarcliente.SendToBack()
-    End Sub
+  
 
     Private Sub BOTONcancelarModificarCliente_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles BOTONcancelarModificarCliente.Click
 
@@ -4321,4 +4274,6 @@ Public Class Programa
     Private Sub CBXeliminarRazaCBX_SelectedIndexChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles CBXeliminarRazaCBX.SelectedIndexChanged
         txtEliminarRaza.Text = CBXeliminarRazaCBX.Text
     End Sub
+
+
 End Class
