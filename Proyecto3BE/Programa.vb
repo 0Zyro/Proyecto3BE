@@ -2585,7 +2585,7 @@ Public Class Programa
         PNLAgregarcompras.BringToFront()
         PNLAgregarcompras.Visible = True
         PNLAgregarcompras.Enabled = True
-        CBXAgregarcompra.Text = "Elige una opción"
+        CBXAgregarcompra.Text = ""
         'Oculta el panel principal de compras
         PNLPrincipalcompra.SendToBack()
         PNLPrincipalcompra.Enabled = False
@@ -2756,10 +2756,10 @@ Public Class Programa
     End Sub
 
     Private Sub BTNAgregarcompra_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles BTNAgregarcompraproducto.Click
-
+        Dim total As Double
         Dim fechacompra As String = DTPFechacompraproducto.Value.ToString("yyyy-MM-dd")
-        Dim totalcompra As String = TXTTotalpagadocomprasproducto.Text
         If fechacompra <> "" And RTXComentariocompraproducto.Text <> "" Then
+
 
             If CheckBox1.Checked Then
                 If DTPFechacompraproducto.Value > Today Then
@@ -2767,13 +2767,13 @@ Public Class Programa
                     'Sino, guarda los datos mientras se cumplan los demas requisitos
                 Else
                     If TextBox5.Text <> "" And TextBox6.Text <> "" Then
-                        TXTTotalpagadocomprasproducto.Text = Convert.ToDouble(TextBox6.Text.ToString.Replace(".", ",")) * Convert.ToDouble(TextBox5.Text.ToString.Replace(".", ","))
-                        Consulta = "insert into compra values (0,'" & fechacompra & "','" & RTXComentariocompraproducto.Text & "','" & Round(Convert.ToDouble(totalcompra), 2).ToString.Replace(",", ".") & "')"
+                        total = Convert.ToDouble(TextBox6.Text.ToString.Replace(",", ".")) * Convert.ToDouble(TextBox5.Text.ToString.Replace(",", "."))
+                        TXTTotalpagadocomprasproducto.Text = total
+                        Consulta = "insert into compra values (0,'" & fechacompra & "','" & RTXComentariocompraproducto.Text & "','" & Round(Convert.ToDouble(TXTTotalpagadocomprasproducto.Text), 2).ToString.Replace(",", ".") & "')"
                         consultar()
 
                         Consulta = ("update compra set comentarioc = concat(upper(left(comentarioc,1)), right(comentarioc,length(comentarioc)-1))")
                         consultar()
-
                         Consulta = "select * from compra"
                         consultar()
 
@@ -2802,7 +2802,7 @@ Public Class Programa
 
                     If IsNumeric(TXTTotalpagadocomprasproducto.Text) Then
                         'Agrega los valores de los campos a cada tabla correspondiente
-                        Consulta = "insert into compra values (0,'" & fechacompra & "','" & RTXComentariocompraproducto.Text & "','" & Round(Convert.ToDouble(totalcompra), 2).ToString.Replace(",", ".") & "')"
+                        Consulta = "insert into compra values (0,'" & fechacompra & "','" & RTXComentariocompraproducto.Text & "','" & TXTTotalpagadocomprasproducto.Text.ToString.Replace(",", ".") & "')"
                         consultar()
 
                         Consulta = ("update compra set comentarioc = concat(upper(left(comentarioc,1)), right(comentarioc,length(comentarioc)-1))")

@@ -1,0 +1,17 @@
+C:\Users\Matias\Documents\GitHub\Proyecto3BE\Proyecto3BE\bin\Release\Proyecto3BE.exe.manifest
+C:\Users\Matias\Documents\GitHub\Proyecto3BE\Proyecto3BE\bin\Release\Proyecto3BE.application
+C:\Users\Matias\Documents\GitHub\Proyecto3BE\Proyecto3BE\bin\Release\Proyecto3BE.exe
+C:\Users\Matias\Documents\GitHub\Proyecto3BE\Proyecto3BE\bin\Release\Proyecto3BE.pdb
+C:\Users\Matias\Documents\GitHub\Proyecto3BE\Proyecto3BE\bin\Release\Proyecto3BE.xml
+C:\Users\Matias\Documents\GitHub\Proyecto3BE\Proyecto3BE\bin\Release\MySql.Data.dll
+C:\Users\Matias\Documents\GitHub\Proyecto3BE\Proyecto3BE\obj\x86\Release\Proyecto3BE.vbprojResolveAssemblyReference.cache
+C:\Users\Matias\Documents\GitHub\Proyecto3BE\Proyecto3BE\obj\x86\Release\WindowsApplication1.Boleta.resources
+C:\Users\Matias\Documents\GitHub\Proyecto3BE\Proyecto3BE\obj\x86\Release\WindowsApplication1.Login.resources
+C:\Users\Matias\Documents\GitHub\Proyecto3BE\Proyecto3BE\obj\x86\Release\WindowsApplication1.Programa.resources
+C:\Users\Matias\Documents\GitHub\Proyecto3BE\Proyecto3BE\obj\x86\Release\WindowsApplication1.Resources.resources
+C:\Users\Matias\Documents\GitHub\Proyecto3BE\Proyecto3BE\obj\x86\Release\Proyecto3BE.vbproj.GenerateResource.Cache
+C:\Users\Matias\Documents\GitHub\Proyecto3BE\Proyecto3BE\obj\x86\Release\Proyecto3BE.exe.manifest
+C:\Users\Matias\Documents\GitHub\Proyecto3BE\Proyecto3BE\obj\x86\Release\Proyecto3BE.application
+C:\Users\Matias\Documents\GitHub\Proyecto3BE\Proyecto3BE\obj\x86\Release\Proyecto3BE.exe
+C:\Users\Matias\Documents\GitHub\Proyecto3BE\Proyecto3BE\obj\x86\Release\Proyecto3BE.xml
+C:\Users\Matias\Documents\GitHub\Proyecto3BE\Proyecto3BE\obj\x86\Release\Proyecto3BE.pdb
