@@ -197,6 +197,7 @@ Public Class Programa
     End Function
 
     Private Sub BTNCerrarSesion_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles BTNCerrarSesion.Click
+        Login.Show()
         Me.Close()
     End Sub
 
@@ -3681,6 +3682,7 @@ Public Class Programa
     End Sub
 
     Private Sub Button8_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnvolverventa.Click
+        DGVCalculoK.Rows.Clear()
         paneldetextosenventas.Visible = False
     End Sub
     'AGREGAR VENTA
