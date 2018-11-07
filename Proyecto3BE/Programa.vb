@@ -17,7 +17,7 @@ Public Class Programa
     Public MysqlConexion As MySqlConnection = New MySqlConnection(data)
 
     Private PasswdUsuario As String
-    Private ImagenUsuario As String
+    Private RangoUsuario As String
 
 
     Structure vacas
@@ -129,6 +129,7 @@ Public Class Programa
             MsgBox(ex.ToString)
         End Try
     End Sub
+
     '///SECCION USUARIOS
 
     Private Sub BTNModificarContraseña_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles BTNModificarContraseña.Click
@@ -243,8 +244,9 @@ Public Class Programa
         LBLCiUsuario.Text = ci
         LBLNombreUsuario.Text = nombre
         LBLRangoUsuario.Text = rango
-        'ImagenUsuario = imagen
+
         PasswdUsuario = passwd
+        RangoUsuario = rango
 
         PICUsuarioLogueado.ImageLocation = imagen
     End Sub
@@ -832,43 +834,29 @@ Public Class Programa
     Private Sub Form2_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
 
         comando.CommandType = CommandType.Text
-
         comando.Connection = connection
-
         comando.CommandText = ("select razitas from razas")
 
         Try
-
             connection.Open()
-
             reader = comando.ExecuteReader()
-
             If reader.HasRows() Then
-
                 While reader.Read()
-
                     CBXeliminarRazaCBX.Items.Add(reader.GetString(0))
                     CBXRazaGanado.Items.Add(reader.GetString(0))
                     CBXseleccionarRaza.Items.Add(reader.GetString(0))
                     CBXrazaCompradoVendido.Items.Add(reader.GetString(0))
                     CBXRazacompra.Items.Add(reader.GetString(0))
                     CBXModificarCBX.Items.Add(reader.GetString(0))
-
-
                 End While
-
             End If
-
             connection.Close()
-
         Catch ex As Exception
             MsgBox(ex.Message)
             If connection.State = ConnectionState.Open Then
                 connection.Close()
             End If
-
         End Try
-
 
         actualizarGanado()
         TMRHoraFecha.Start()
@@ -928,6 +916,34 @@ Public Class Programa
         PNLAgregarcompras.Visible = False
 
         '////////////FIN COMPRAS
+
+        '------------------------------------------------------------------------------------------------------------------
+
+        Select Case RangoUsuario
+            Case "Viewer"
+                TabUsuarios.Parent = Nothing
+
+                GroupBoxcliente.Visible = False
+                BOTONcancelarHabilitado.Visible = False
+                BOTONaceptarHabilitado.Visible = False
+                BOTONclienteInactivo.Visible = False
+
+                BTNAGREGARVENTAP.Visible = False
+                btnmodificarventa.Visible = False
+
+                BTNPanelagregarcompra.Visible = False
+                BTNPanelmodicompra.Visible = False
+
+                BOTONcerrarAgregarModificarRaza.Visible = False
+                BOTONAgregarModificarRaza.Visible = False
+                GroupBox1.Visible = False
+                GroupBox3.Visible = False
+
+                Exit Select
+            Case "User"
+                TabUsuarios.Parent = Nothing
+                Exit Select
+        End Select
     End Sub
 
     '////////////////////////////////////////INICIO DE GANADO///////////////////////////////////////////////////////////////////
@@ -4292,4 +4308,9 @@ Public Class Programa
     End Sub
 
 
+    Private Sub Button5_Click(ByVal sender As System.Object, ByVal e As System.EventArgs)
+
+        TabUsuarios.Parent = Nothing
+
+    End Sub
 End Class
