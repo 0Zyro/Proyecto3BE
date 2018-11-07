@@ -2345,82 +2345,72 @@ Public Class Programa
 
     Private Sub BOTONguardarAgregarCliente_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles BOTONguardarAgregarCliente.Click
         Dim strid As String
-        'Select Case error1
-        '    Case 0
-
-        'Consulta = " Sslect * from 
-        If txtnombreCliente.Text <> "" And txtapellidoCliente.Text <> "" And txtcedulaCliente.Text <> "" And txtdireccionCliente.Text <> "" And txttelefonoCliente.Text <> "" Then
-            If IsNumeric(txtcedulaCliente.Text) And IsNumeric(txttelefonoCliente.Text) Then
-                'If Not IsNumeric(txtnombreCliente.Text) And Not IsNumeric(txtapellidoCliente.Text) Then
+        
+        If MessageBox.Show("¿Seguro desea agregar cliente?", "Confirmacion", MessageBoxButtons.YesNo, MessageBoxIcon.Question) = Windows.Forms.DialogResult.Yes Then
+            If txtnombreCliente.Text <> "" And txtapellidoCliente.Text <> "" And txtcedulaCliente.Text <> "" And txtdireccionCliente.Text <> "" And txttelefonoCliente.Text <> "" Then
+                If IsNumeric(txtcedulaCliente.Text) And IsNumeric(txttelefonoCliente.Text) Then
+                    'If Not IsNumeric(txtnombreCliente.Text) And Not IsNumeric(txtapellidoCliente.Text) Then
 
 
-                strid = txtcedulaCliente.ToString
+                    strid = txtcedulaCliente.ToString
 
-                Consulta = "select * from cliente where id='" + txtcedulaCliente.Text + "'"
-                consultar()
+                    Consulta = "select * from cliente where id='" + txtcedulaCliente.Text + "'"
+                    consultar()
 
-                If Tabla.Rows.Count > 0 Then
-                    For Each row As DataRow In Tabla.Rows
-                        strid = row("id").ToString
-                        MsgBox("LA cedula existe")
-                    Next
+                    If Tabla.Rows.Count > 0 Then
+                        For Each row As DataRow In Tabla.Rows
+                            strid = row("id").ToString
+                            MsgBox("La cedula existe en la base de datos.Es posible que el cliente este desabilidato, por favor verifique los clientes desabilitados", MsgBoxStyle.Exclamation, Title:="No se pudo registrar al cliente2")
+                        Next
+
+                    Else
+
+                        If verificarCedula(txtcedulaCliente.Text) Then
+                            Try
+
+                                Consulta = "INSERT INTO cliente(id,nombre,apellido,direccion,telefono) values('" & txtcedulaCliente.Text & "','" & txtnombreCliente.Text & "','" & txtapellidoCliente.Text & "','" & txtdireccionCliente.Text & "','" & txttelefonoCliente.Text & "')"
+                                consultar()
+
+
+
+
+                                Consulta = "select * from cliente"
+                                consultar()
+                                DataGridViewClientes.DataSource = Tabla
+
+
+
+
+                                txtnombreCliente.Text = ""
+                                txtapellidoCliente.Text = ""
+                                txtcedulaCliente.Text = ""
+                                txtdireccionCliente.Text = ""
+                                txttelefonoCliente.Text = ""
+                                DataGridViewMostraDatosClientes.Visible = False
+                                DataGridViewClientes.Visible = True
+
+                                MsgBox("Registro exitoso")
+
+                            Catch ex As Exception
+                                MsgBox(ex.Message)
+                            End Try
+                        Else
+                            MsgBox("Cedula erronea")
+                        End If
+
+                    End If
+
+
 
                 Else
 
-                    If verificarCedula(txtcedulaCliente.Text) Then
-                        Try
-
-                            Consulta = "INSERT INTO cliente(id,nombre,apellido,direccion,telefono) values('" & txtcedulaCliente.Text & "','" & txtnombreCliente.Text & "','" & txtapellidoCliente.Text & "','" & txtdireccionCliente.Text & "','" & txttelefonoCliente.Text & "')"
-                            consultar()
-
-
-
-
-                            Consulta = "select * from cliente"
-                            consultar()
-                            DataGridViewClientes.DataSource = Tabla
-
-
-
-
-                            txtnombreCliente.Text = ""
-                            txtapellidoCliente.Text = ""
-                            txtcedulaCliente.Text = ""
-                            txtdireccionCliente.Text = ""
-                            txttelefonoCliente.Text = ""
-                            DataGridViewMostraDatosClientes.Visible = False
-                            DataGridViewClientes.Visible = True
-
-                            MsgBox("Registro exitoso")
-
-                        Catch ex As Exception
-                            MsgBox(ex.Message)
-                        End Try
-                    Else
-                        MsgBox("Cedula erronea")
-                    End If
+                    MsgBox("Cedula y telefono son numericos")
 
                 End If
-
-
-
-
-                'Else
-                '    MsgBox("Nombre y Apellido no pueden contener datos numericos")
-
-                'End If
             Else
-
-                MsgBox("Cedula y telefono son numericos")
-
+                MsgBox("Complete todos los campos vacios")
             End If
-        Else
-            MsgBox("Complete todos los campos vacios")
         End If
-
-        '    Case 1
-        'MsgBox("esa cedula,ya existe")
-        'End Select
     End Sub
 
 
@@ -2465,39 +2455,28 @@ Public Class Programa
     Private Sub BOTONguardarModificarCliente_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles BOTONguardarModificarCliente.Click
 
         Dim cedula As String = DataGridViewClientes.Item(0, DataGridViewClientes.CurrentRow.Index).Value
-        If txtnombreCliente.Text <> "" And txtapellidoCliente.Text <> "" And txtdireccionCliente.Text <> "" And txttelefonoCliente.Text <> "" Then
+
+        If MessageBox.Show("¿Seguro desea modificar datos del cliente ?", "Confirmacion", MessageBoxButtons.YesNo, MessageBoxIcon.Question) = Windows.Forms.DialogResult.Yes Then
+            If txtnombreCliente.Text <> "" And txtapellidoCliente.Text <> "" And txtdireccionCliente.Text <> "" And txttelefonoCliente.Text <> "" Then
 
 
-            'If IsNumeric(txttelefonoCliente.Text) Then
-            '    If Not IsNumeric(txtnombreCliente.Text) Then
-            '        If Not IsNumeric(txtapellidoCliente.Text) Then
 
 
-            Consulta = "update cliente set nombre='" + txtnombreCliente.Text +
-                "', apellido='" + txtapellidoCliente.Text +
-                "', direccion='" + txtdireccionCliente.Text +
-                "', telefono = '" + txttelefonoCliente.Text +
-                "' where id='" + cedula + "'"
-            consultar()
-            actualizarCliente()
-            MsgBox(" Se editaron datos")
+                Consulta = "update cliente set nombre='" + txtnombreCliente.Text +
+                    "', apellido='" + txtapellidoCliente.Text +
+                    "', direccion='" + txtdireccionCliente.Text +
+                    "', telefono = '" + txttelefonoCliente.Text +
+                    "' where id='" + cedula + "'"
+                consultar()
+                actualizarCliente()
+                MsgBox(" Se editaron los datos del cliente", MsgBoxStyle.Information, Title:="Datos guardados")
 
-        Else
-            '    MsgBox("El apellido no puede contener datos numericos")
-            'End If
-            '        Else
+            Else
+               
 
-            'MsgBox("El nombre no puede conter datos numericos")
+                MsgBox("Todos los campos deben tener un contenido")
 
-            '        End If
-
-            'MsgBox("Telefono es un datos de tipo numerico")
-            '    End If
-
-            'Else
-
-            MsgBox("Todos los campos deben tener un contenido")
-
+            End If
         End If
     End Sub
 
