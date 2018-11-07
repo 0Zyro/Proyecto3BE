@@ -15,3 +15,6 @@ C:\Users\Matias\Documents\GitHub\Proyecto3BE\Proyecto3BE\obj\x86\Release\Proyect
 C:\Users\Matias\Documents\GitHub\Proyecto3BE\Proyecto3BE\obj\x86\Release\Proyecto3BE.exe
 C:\Users\Matias\Documents\GitHub\Proyecto3BE\Proyecto3BE\obj\x86\Release\Proyecto3BE.xml
 C:\Users\Matias\Documents\GitHub\Proyecto3BE\Proyecto3BE\obj\x86\Release\Proyecto3BE.pdb
+E:\Documents\Proyecto\Proyecto3BE\obj\x86\Release\Proyecto3BE.exe
+E:\Documents\Proyecto\Proyecto3BE\obj\x86\Release\Proyecto3BE.xml
+E:\Documents\Proyecto\Proyecto3BE\obj\x86\Release\Proyecto3BE.pdb

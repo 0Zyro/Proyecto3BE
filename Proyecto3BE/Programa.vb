@@ -1140,7 +1140,8 @@ Public Class Programa
     ''' ////////////////////////////////////////////////////////////////////////////////////////////////////////////
     ''' 
     Private Sub BOTONabrirAgregar_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles BOTONabrirAgregar.Click
-
+        LabelAoM.Visible = True
+        LabelAoM.Text = "Agregar"
 
         GroupBox1.Enabled = True
         If DataGridViewganado.Rows.Count = 0 Then
@@ -1188,6 +1189,9 @@ Public Class Programa
     '''/////////////////////////////////////////BOTON PARA CANCELAR EL GUARDADO DEL AGREGADO DE GANADO////////////////////////////////
     ''' ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     Private Sub BOTONcancelarAgregar_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles BOTONcancelarAgregar.Click
+
+        LabelAoM.Visible = False
+        LabelAoM.Text = ""
 
         GroupBox1.Enabled = False
 
@@ -1237,42 +1241,40 @@ Public Class Programa
             Dim raza As String = CBXRazaGanado.SelectedItem
             Dim fechaN As String = DTPAgregarGanado.Value.ToString("yyyy-MM-dd")
 
-
-
-
-
             If estado <> "" Then
+                If DTPAgregarGanado.Value > Today Then
+                    MsgBox("Fecha de naciemiento incorrecta.Es posible que ingresara un fecha mayor a la actual.", MsgBoxStyle.Exclamation, Title:="No se guardaron datos")
+                Else
 
 
+                    Try
 
-                Try
+                        Consulta = "insert into ganado (sexo, raza, estado, nacimiento) values('" & sexo & "','" & raza & "','" & estado & "','" & fechaN & "' )"
+                        consultar()
 
-                    Consulta = "insert into ganado (sexo, raza, estado, nacimiento) values('" & sexo & "','" & raza & "','" & estado & "','" & fechaN & "' )"
-                    consultar()
-
-                    actualizarGanado()
-
-
-                    CBXsexoGanado.Text = ""
-                    CBXRazaGanado.Text = ""
-
-                    DTPAgregarGanado.Value = Today
-                    CBXagregarEstadoGanado.Text = ""
-
-                    CBXsexoGanado.Enabled = True
-                    CBXRazaGanado.Enabled = True
-
-                    DTPAgregarGanado.Enabled = True
+                        actualizarGanado()
 
 
-                    MsgBox("Datos guardados", MsgBoxStyle.Information)
+                        CBXsexoGanado.Text = ""
+                        CBXRazaGanado.Text = ""
+
+                        DTPAgregarGanado.Value = Today
+                        CBXagregarEstadoGanado.Text = ""
+
+                        CBXsexoGanado.Enabled = True
+                        CBXRazaGanado.Enabled = True
+
+                        DTPAgregarGanado.Enabled = True
 
 
-                Catch ex As Exception
-                    MsgBox(ex.Message)
+                        MsgBox("Datos guardados", MsgBoxStyle.Information)
 
-                End Try
 
+                    Catch ex As Exception
+                        MsgBox(ex.Message)
+
+                    End Try
+                End If
 
             Else
                 MsgBox("El campo estado no puede ser vacio", MsgBoxStyle.Exclamation, Title:="No se guardaron datos")
@@ -1302,45 +1304,50 @@ Public Class Programa
 
 
             If CBXsexoGanado.Text <> "" And CBXRazaGanado.Text <> "" And CBXmodificarEstadoGanado.Text <> "" Then
+                If DTPAgregarGanado.Value > Today Then
+                    MsgBox("Fecha de naciemiento incorrecta.Es posible que ingresara un fecha mayor a la actual.", MsgBoxStyle.Exclamation, Title:="No se guardaron datos")
+                Else
 
 
 
+                    Try
 
-                Try
-
-                    Consulta = "update ganado set sexo= '" + sexo +
-                                              "',raza= '" + raza +
-                                              "',estado = '" + estado +
-                                              "',nacimiento= '" + fechaN +
-                                              "' where idg= '" + codigo + "'"
-                    consultar()
-                    actualizarGanado()
-
-
-                    CBXRazaGanado.Text = ""
-                    CBXsexoGanado.Text = ""
-
-                    DTPAgregarGanado.Value = Today
-                    CBXagregarEstadoGanado.Text = ""
-                    MsgBox("Datos editados", MsgBoxStyle.Information)
+                        Consulta = "update ganado set sexo= '" + sexo +
+                                                  "',raza= '" + raza +
+                                                  "',estado = '" + estado +
+                                                  "',nacimiento= '" + fechaN +
+                                                  "' where idg= '" + codigo + "'"
+                        consultar()
+                        actualizarGanado()
 
 
+                        CBXRazaGanado.Text = ""
+                        CBXsexoGanado.Text = ""
 
-                Catch ex As Exception
-                    MsgBox(ex.ToString)
-                End Try
-           
-        Else
-            MsgBox("Los campos no pueden estar vacios", MsgBoxStyle.Exclamation, Title:="No se realizaron cambios")
-        End If
+                        DTPAgregarGanado.Value = Today
+                        CBXagregarEstadoGanado.Text = ""
+                        MsgBox("Datos editados", MsgBoxStyle.Information)
 
-            If CBXmodificarEstadoGanado.Text = "Muerto/a" Then
-                MsgBox("fdjvj")
+
+
+                    Catch ex As Exception
+                        MsgBox(ex.ToString)
+                    End Try
+                End If
+            Else
+                MsgBox("Los campos no pueden estar vacios", MsgBoxStyle.Exclamation, Title:="No se realizaron cambios")
             End If
-        End If
+
+                If CBXmodificarEstadoGanado.Text = "Muerto/a" Then
+                    MsgBox("fdjvj")
+                End If
+            End If
     End Sub
 
     Private Sub BOTONabrirModificar_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles BOTONabrirModificar.Click
+
+        LabelAoM.Visible = True
+        LabelAoM.Text = "Modificar"
 
         GroupBox1.Enabled = True
 
@@ -1402,6 +1409,10 @@ Public Class Programa
     '''(((((((/////////////////////CANCELA Y CIERRA EL BOTON MODIFICAR//////////////////////////////
     ''' //////////////////////////////////////////////////////////////////////////////////////
     Private Sub BOTONcancelarModificar_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles BOTONcancelarModificar.Click
+
+        LabelAoM.Visible = False
+        LabelAoM.Text = ""
+
         GroupBox1.Enabled = False
 
         CBXmodificarEstadoGanado.Visible = False
@@ -3913,82 +3924,83 @@ Public Class Programa
         comando.CommandType = CommandType.Text
         comando.Connection = connection
 
-        If CBXModificarCBX.Text <> "" Then
+        If MessageBox.Show("¿Seguro desea guardar los datos modificados ?", "Confirmacion", MessageBoxButtons.YesNo, MessageBoxIcon.Question) = Windows.Forms.DialogResult.Yes Then
+            If CBXModificarCBX.Text <> "" Then
 
-            comando.CommandText = ("update razas set razitas='" + TXTModificarRazaCBX.Text + "' where razitas='" + CBXModificarCBX.SelectedItem.ToString + "'")
+                comando.CommandText = ("update razas set razitas='" + TXTModificarRazaCBX.Text + "' where razitas='" + CBXModificarCBX.SelectedItem.ToString + "'")
 
-            TXTModificarRazaCBX.Clear()
-            CBXModificarCBX.Text = ""
+                TXTModificarRazaCBX.Clear()
+                CBXModificarCBX.Text = ""
 
-            CBXeliminarRazaCBX.Items.Clear()
-            CBXModificarCBX.Items.Clear()
-            CBXRazaGanado.Items.Clear()
-            CBXseleccionarRaza.Items.Clear()
-            CBXrazaCompradoVendido.Items.Clear()
-            CBXRazacompra.Items.Clear()
+                CBXeliminarRazaCBX.Items.Clear()
+                CBXModificarCBX.Items.Clear()
+                CBXRazaGanado.Items.Clear()
+                CBXseleccionarRaza.Items.Clear()
+                CBXrazaCompradoVendido.Items.Clear()
+                CBXRazacompra.Items.Clear()
 
 
 
-            Try
+                Try
 
-                connection.Open()
+                    connection.Open()
 
-                comando.ExecuteNonQuery()
+                    comando.ExecuteNonQuery()
 
-                connection.Close()
-
-            Catch ex As Exception
-                MsgBox(ex.Message)
-                If connection.State = ConnectionState.Open Then
                     connection.Close()
-                End If
 
-            End Try
+                Catch ex As Exception
+                    MsgBox(ex.Message)
+                    If connection.State = ConnectionState.Open Then
+                        connection.Close()
+                    End If
 
-            comando.CommandType = CommandType.Text
+                End Try
 
-            comando.Connection = connection
+                comando.CommandType = CommandType.Text
 
-            comando.CommandText = ("select razitas from razas")
+                comando.Connection = connection
 
-            Try
+                comando.CommandText = ("select razitas from razas")
 
-                connection.Open()
+                Try
 
-                reader = comando.ExecuteReader()
+                    connection.Open()
 
-                If reader.HasRows() Then
+                    reader = comando.ExecuteReader()
 
-                    While reader.Read()
+                    If reader.HasRows() Then
 
-                        CBXeliminarRazaCBX.Items.Add(reader.GetString(0))
-                        CBXRazaGanado.Items.Add(reader.GetString(0))
-                        CBXseleccionarRaza.Items.Add(reader.GetString(0))
-                        CBXrazaCompradoVendido.Items.Add(reader.GetString(0))
-                        CBXRazacompra.Items.Add(reader.GetString(0))
-                        CBXModificarCBX.Items.Add(reader.GetString(0))
+                        While reader.Read()
+
+                            CBXeliminarRazaCBX.Items.Add(reader.GetString(0))
+                            CBXRazaGanado.Items.Add(reader.GetString(0))
+                            CBXseleccionarRaza.Items.Add(reader.GetString(0))
+                            CBXrazaCompradoVendido.Items.Add(reader.GetString(0))
+                            CBXRazacompra.Items.Add(reader.GetString(0))
+                            CBXModificarCBX.Items.Add(reader.GetString(0))
 
 
-                    End While
+                        End While
 
-                End If
+                    End If
 
-                connection.Close()
-
-            Catch ex As Exception
-                MsgBox(ex.Message)
-                If connection.State = ConnectionState.Open Then
                     connection.Close()
-                End If
 
-            End Try
+                Catch ex As Exception
+                    MsgBox(ex.Message)
+                    If connection.State = ConnectionState.Open Then
+                        connection.Close()
+                    End If
 
-        Else
+                End Try
 
-            MsgBox("Debe seleccionar la raza a modificar")
+            Else
 
+                MsgBox("Debe seleccionar la raza a modificar")
+
+            End If
         End If
-
     End Sub
 
 
@@ -4191,6 +4203,10 @@ Public Class Programa
     End Sub
 
     Private Sub BOTONcerrarAgregarModificarRaza_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles BOTONcerrarAgregarModificarRaza.Click
+        txtAgregarRazaCBX.Clear()
+        CBXModificarCBX.Text = ""
+        TXTModificarRazaCBX.Text = ""
+        CBXeliminarRazaCBX.Text = ""
 
         PanelAgregarModificarRaza.Visible = False
 
