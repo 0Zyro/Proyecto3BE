@@ -1120,7 +1120,7 @@ Public Class Programa
         ACtivarBotonesGanado()
         Dim FechaN As String = DateTimeBuscarFechaGanado.Value.ToString("yyyy-MM-dd")
 
-        Consulta = "SELECT idg,sexo,raza,estado,nacimiento, TIMESTAMPDIFF(YEAR,ganado.nacimiento,CURDATE()) AS'Anios', TIMESTAMPDIFF(month, ganado.nacimiento,NOW())%12 AS 'Meses' from ganado  where estado <> 'Muerto/a' and nacimiento ='" & FechaN & "'"
+        Consulta = "SELECT idg,sexo,raza,estado,nacimiento, TIMESTAMPDIFF(YEAR,ganado.nacimiento,CURDATE()) AS'Anios', TIMESTAMPDIFF(month, ganado.nacimiento,NOW())%12 AS 'Meses' from ganado  where nacimiento ='" & FechaN & "'"
         ActualizarGanadoSinConsulta()
         If DataGridViewganado.Rows.Count = 0 Then
             MessageBox.Show("No se encontraron datos de la fecha que usted ingreso", "No hay datos", MessageBoxButtons.OK, MessageBoxIcon.Information)
@@ -1193,7 +1193,7 @@ Public Class Programa
         'CBXsexoGanado.Text = ""
         'CBXRazaGanado.Text = ""
 
-        'DTPAgregarGanado.Text = ""
+        DTPAgregarGanado.Text = Today
 
 
         CBXagregarEstadoGanado.Text = ""
@@ -1593,7 +1593,7 @@ Public Class Programa
     Private Sub txtBuscarCodGanado_TextChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles txtBuscarCodGanado.TextChanged
         DataGridGanadoEconomico.Visible = False
         DataGridViewganado.Visible = True
-        Consulta = "SELECT idg,sexo,raza,estado,nacimiento, TIMESTAMPDIFF(YEAR,ganado.nacimiento,CURDATE()) AS'Anios', TIMESTAMPDIFF(month, ganado.nacimiento,NOW())%12 AS 'Meses' from ganado  where estado <> 'Muerto/a' and idg like '" & txtBuscarCodGanado.Text & "%'"
+        Consulta = "SELECT idg,sexo,raza,estado,nacimiento, TIMESTAMPDIFF(YEAR,ganado.nacimiento,CURDATE()) AS'Anios', TIMESTAMPDIFF(month, ganado.nacimiento,NOW())%12 AS 'Meses' from ganado  where idg like '" & txtBuscarCodGanado.Text & "%'"
 
         consultar()
         DataGridViewganado.DataSource = Tabla
@@ -1933,6 +1933,9 @@ Public Class Programa
 
     '////////////////////BOTON QUE ABRE PANEL DE AGREGAR CLIENTE  OCULTA PANEL PRINCIPAL/////////////////////////
     Private Sub BOTONagregarcliente_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles BOTONagregarcliente.Click
+
+        LabelAoMC.Visible = True
+        LabelAoMC.Text = "Agregar"
         DataGridViewClientes.Enabled = False
 
         BOTONguardarAgregarCliente.Visible = True
@@ -1970,6 +1973,10 @@ Public Class Programa
 
     '//////////////////BOTON PARA ACTIVAR BOTONES MODIFICAR CLIENT//////////////////////////////////////////////////////////////////
     Private Sub BTNPanelmodificarcliente_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles BOTONmodificarCliente.Click
+
+        LabelAoMC.Visible = True
+        LabelAoMC.Text = "Modificar"
+
         DataGridViewMostraDatosClientes.Visible = False
 
         'BOTONguardarAgregarCliente.Visible = True
@@ -2041,6 +2048,8 @@ Public Class Programa
 
     '//////////////////////////////////////////// BOTON PARA VOLVER A CARGAR LOS DATOS DE CLIENTE/////////////////////////////////////////////////
     Private Sub BOTONcargarDatosclientes_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles BOTONcargarDatosclientes.Click
+
+        CBXMostrarDatosClientes.Text = ""
         GroupBoxcliente.Enabled = True
         actualizarCliente()
         DataGridViewMostraDatosClientes.Visible = False
@@ -2051,6 +2060,9 @@ Public Class Programa
     End Sub
 
     Private Sub Button1_Click_1(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles BOTONclienteInactivo.Click
+
+        CBXMostrarDatosClientes.Text = ""
+
         DataGridViewMostraDatosClientes.Visible = False
         GroupBoxcliente.Enabled = False
         DataGridViewClientes.Visible = False
@@ -2228,6 +2240,10 @@ Public Class Programa
 
 
     Private Sub BOTONcancelarGuardarCliente_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles BOTONcancelarGuardarCliente.Click
+
+        LabelAoMC.Visible = False
+        LabelAoMC.Text = ""
+
         DataGridViewClientes.Enabled = True
 
 
@@ -2417,7 +2433,8 @@ Public Class Programa
   
 
     Private Sub BOTONcancelarModificarCliente_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles BOTONcancelarModificarCliente.Click
-
+        LabelAoMC.Visible = False
+        LabelAoMC.Text = ""
 
         'BOTONguardarAgregarCliente.Visible = True
         'BOTONcancelarGuardarCliente.Visible = True
@@ -3994,7 +4011,7 @@ Public Class Programa
 
             Else
 
-                MsgBox("Debe seleccionar la raza a modificar")
+                MsgBox("Debe seleccionar la raza a modificar", MsgBoxStyle.Exclamation, Title:="Seleccione la raza")
 
             End If
         End If
@@ -4004,10 +4021,14 @@ Public Class Programa
  
     Private Sub CBXMostrarDatosClientes_SelectedIndexChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles CBXMostrarDatosClientes.SelectedIndexChanged
 
+        BOTONcancelarHabilitado.Visible = False
+        BOTONaceptarHabilitado.Visible = False
+        BOTONclienteInactivo.Enabled = True
+
         If CBXMostrarDatosClientes.SelectedItem = "Importe total por cada cliente activo" Then
 
 
-            Consulta = "SELECT cliente.id AS 'Cedula', nombre AS 'Nombre', apellido As 'Apellido', direccion As 'Direccion', telefono AS 'Telefono', sum(totalv) As 'Importe total' FROM cliente,venta where venta.id = cliente.id and cliente.id in(SELECT venta.id FROM venta) and estado = 1 GROUP BY 1 "
+            Consulta = "SELECT cliente.id AS 'Cedula', nombre AS 'Nombre', apellido As 'Apellido', direccion As 'Direccion', telefono AS 'Telefono', sum(totalv) As 'Importe total(U$S)' FROM cliente,venta where venta.id = cliente.id and cliente.id in(SELECT venta.id FROM venta) and estado = 1 GROUP BY 1 "
             consultar()
             DataGridViewMostraDatosClientes.DataSource = Tabla
 
@@ -4027,7 +4048,7 @@ Public Class Programa
         ElseIf CBXMostrarDatosClientes.SelectedItem = "Importe total por cada cliente inactivo" Then
 
 
-            Consulta = "SELECT cliente.id AS 'Cedula', nombre AS 'Nombre', apellido As 'Apellido', direccion As 'Direccion', telefono AS 'Telefono', sum(totalv) As 'Importe total' FROM cliente,venta where venta.id = cliente.id and cliente.id in(SELECT venta.id FROM venta) and estado = 0 GROUP BY 1 "
+            Consulta = "SELECT cliente.id AS 'Cedula', nombre AS 'Nombre', apellido As 'Apellido', direccion As 'Direccion', telefono AS 'Telefono', sum(totalv) As 'Importe total(U$S)' FROM cliente,venta where venta.id = cliente.id and cliente.id in(SELECT venta.id FROM venta) and estado = 0 GROUP BY 1 "
             consultar()
             DataGridViewMostraDatosClientes.DataSource = Tabla
 
@@ -4047,7 +4068,7 @@ Public Class Programa
         ElseIf CBXMostrarDatosClientes.SelectedItem = "Cliente activo con mayor importe total" Then
 
 
-            Consulta = "SELECT cliente.id AS 'Cedula', nombre AS 'Nombre', apellido As 'Apellido', direccion As 'Direccion', telefono AS 'Telefono', sum(totalv) As 'Importe total' FROM cliente,venta where venta.id = cliente.id and cliente.id in(SELECT venta.id FROM venta HAVING max(totalv)) and estado = 1 "
+            Consulta = "SELECT cliente.id AS 'Cedula', nombre AS 'Nombre', apellido As 'Apellido', direccion As 'Direccion', telefono AS 'Telefono', sum(totalv) As 'Importe total(U$S)' FROM cliente,venta where venta.id = cliente.id and cliente.id in(SELECT venta.id FROM venta HAVING max(totalv)) and estado = 1 "
             consultar()
             DataGridViewMostraDatosClientes.DataSource = Tabla
 
@@ -4067,7 +4088,7 @@ Public Class Programa
         ElseIf CBXMostrarDatosClientes.SelectedItem = "Cliente inactivo con mayor importe total" Then
 
 
-            Consulta = "SELECT cliente.id AS 'Cedula', nombre AS 'Nombre', apellido As 'Apellido', direccion As 'Direccion', telefono AS 'Telefono', sum(totalv) As 'Importe total' FROM cliente,venta where venta.id = cliente.id and cliente.id in(SELECT venta.id FROM venta HAVING max(totalv)) and estado = 0 "
+            Consulta = "SELECT cliente.id AS 'Cedula', nombre AS 'Nombre', apellido As 'Apellido', direccion As 'Direccion', telefono AS 'Telefono', sum(totalv) As 'Importe total(U$S)' FROM cliente,venta where venta.id = cliente.id and cliente.id in(SELECT venta.id FROM venta HAVING max(totalv)) and estado = 0 "
             consultar()
             DataGridViewMostraDatosClientes.DataSource = Tabla
 
@@ -4226,61 +4247,64 @@ Public Class Programa
             For Each row As DataRow In Tabla.Rows
                 razas = row("raza").ToString
                 txtAgregarRazaCBX.Clear()
-                MsgBox("LA raza existe")
+                MsgBox("No puede eliminar una raza que esta registrada en un vacuno/s", MsgBoxStyle.Exclamation, Title:="No se elimina raza")
             Next
 
         Else
 
-            Consulta = " DELETE FROM razas WHERE razitas ='" + txtEliminarRaza.Text + "'"
-            consultar()
-            MsgBox("Se elimino raza")
-            CBXeliminarRazaCBX.Text = ""
+            If MessageBox.Show("¿Seguro desea eliminar la raza seleccionada ?", "Confirmacion", MessageBoxButtons.YesNo, MessageBoxIcon.Question) = Windows.Forms.DialogResult.Yes Then
 
-            CBXeliminarRazaCBX.Items.Clear()
-            CBXModificarCBX.Items.Clear()
-            CBXRazaGanado.Items.Clear()
-            CBXseleccionarRaza.Items.Clear()
-            CBXrazaCompradoVendido.Items.Clear()
-            CBXRazacompra.Items.Clear()
+                Consulta = " DELETE FROM razas WHERE razitas ='" + txtEliminarRaza.Text + "'"
+                consultar()
+                MsgBox("Se elimino raza correctamente", MsgBoxStyle.Information, Title:="Raza eliminada")
+                CBXeliminarRazaCBX.Text = ""
 
-            comando.CommandType = CommandType.Text
+                CBXeliminarRazaCBX.Items.Clear()
+                CBXModificarCBX.Items.Clear()
+                CBXRazaGanado.Items.Clear()
+                CBXseleccionarRaza.Items.Clear()
+                CBXrazaCompradoVendido.Items.Clear()
+                CBXRazacompra.Items.Clear()
 
-            comando.Connection = connection
+                comando.CommandType = CommandType.Text
 
-            comando.CommandText = ("select razitas from razas")
+                comando.Connection = connection
 
-            Try
+                comando.CommandText = ("select razitas from razas")
 
-                connection.Open()
+                Try
 
-                reader = comando.ExecuteReader()
+                    connection.Open()
 
-                If reader.HasRows() Then
+                    reader = comando.ExecuteReader()
 
-                    While reader.Read()
-                        CBXeliminarRazaCBX.Items.Add(reader.GetString(0))
-                        CBXRazaGanado.Items.Add(reader.GetString(0))
-                        CBXseleccionarRaza.Items.Add(reader.GetString(0))
-                        CBXrazaCompradoVendido.Items.Add(reader.GetString(0))
-                        CBXRazacompra.Items.Add(reader.GetString(0))
-                        CBXModificarCBX.Items.Add(reader.GetString(0))
+                    If reader.HasRows() Then
+
+                        While reader.Read()
+                            CBXeliminarRazaCBX.Items.Add(reader.GetString(0))
+                            CBXRazaGanado.Items.Add(reader.GetString(0))
+                            CBXseleccionarRaza.Items.Add(reader.GetString(0))
+                            CBXrazaCompradoVendido.Items.Add(reader.GetString(0))
+                            CBXRazacompra.Items.Add(reader.GetString(0))
+                            CBXModificarCBX.Items.Add(reader.GetString(0))
 
 
-                    End While
+                        End While
 
-                End If
+                    End If
 
-                connection.Close()
-
-            Catch ex As Exception
-                MsgBox(ex.Message)
-                If connection.State = ConnectionState.Open Then
                     connection.Close()
-                End If
 
-            End Try
+                Catch ex As Exception
+                    MsgBox(ex.Message)
+                    If connection.State = ConnectionState.Open Then
+                        connection.Close()
+                    End If
 
-        End If
+                End Try
+            End If
+
+            End If
 
     End Sub
 
