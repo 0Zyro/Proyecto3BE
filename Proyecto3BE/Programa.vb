@@ -1158,8 +1158,8 @@ Public Class Programa
     ''' 
     Private Sub BOTONabrirAgregar_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles BOTONabrirAgregar.Click
 
-        'CBXagregarEstadoGanado.Text = ""
-        CBXagregarEstadoGanado.SelectedItem = "activo"
+        CBXagregarEstadoGanado.Text = ""
+        CBXagregarEstadoGanado.Text = "activo"
         LabelAoM.Visible = True
         LabelAoM.Text = "Agregar"
 
@@ -1277,7 +1277,8 @@ Public Class Programa
 
                         actualizarGanado()
 
-                        CBXagregarEstadoGanado.SelectedItem = "activo"
+                        CBXagregarEstadoGanado.Text = ""
+                        CBXagregarEstadoGanado.Text = "activo"
                         'CBXsexoGanado.Text = ""
                         'CBXRazaGanado.Text = ""
 
@@ -1544,10 +1545,15 @@ Public Class Programa
     '''////////////////////////////PARA VOLVER A MOSTRAR DATOS COMPLETOS DE GANADO EN EL DATAGRID///////////////////
     ''' ///////////////////////////////////////////////////////////////////////////////////////////////////////////
     Private Sub Button2_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Button2.Click
+
+
         DataGridGanadoEconomico.Visible = False
         ACtivarBotonesGanado()
 
         actualizarGanado()
+
+        CBXagregarEstadoGanado.Text = ""
+        CBXagregarEstadoGanado.Text = "activo"
     End Sub
 
     Private Sub txtBuscarCodGanado_KeyPress(ByVal sender As Object, ByVal e As System.Windows.Forms.KeyPressEventArgs) Handles txtBuscarCodGanado.KeyPress
