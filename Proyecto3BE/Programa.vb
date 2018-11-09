@@ -1157,7 +1157,7 @@ Public Class Programa
     ''' ////////////////////////////////////////////////////////////////////////////////////////////////////////////
     ''' 
     Private Sub BOTONabrirAgregar_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles BOTONabrirAgregar.Click
-
+        BOTONactualizarGanado.Enabled = False
         CBXagregarEstadoGanado.Text = ""
         CBXagregarEstadoGanado.Text = "activo"
         LabelAoM.Visible = True
@@ -1209,7 +1209,7 @@ Public Class Programa
     '''/////////////////////////////////////////BOTON PARA CANCELAR EL GUARDADO DEL AGREGADO DE GANADO////////////////////////////////
     ''' ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     Private Sub BOTONcancelarAgregar_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles BOTONcancelarAgregar.Click
-
+        BOTONactualizarGanado.Enabled = True
         LabelAoM.Visible = False
         LabelAoM.Text = ""
 
@@ -1253,7 +1253,8 @@ Public Class Programa
     '''/////////////////////////////////////BOTON PARA INGRESAR NUEVO GANADO//////////////////////////////////////
     ''' //////////////////////////////////////////////////////////////////////////////////////////////////////////
     Private Sub BOTONguardarAgregar_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles BOTONguardarAgregar.Click
-
+        DataGridGanadoEconomico.Visible = False
+        DataGridViewganado.Visible = True
 
         If MessageBox.Show("¿Seguro desea guardar datos ?", "Confirmacion", MessageBoxButtons.YesNo, MessageBoxIcon.Question) = Windows.Forms.DialogResult.Yes Then
             'Dim CodG As Integer = Val(Texcodigoganado.Text)
@@ -1369,7 +1370,8 @@ Public Class Programa
     End Sub
 
     Private Sub BOTONabrirModificar_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles BOTONabrirModificar.Click
-
+        DataGridGanadoEconomico.Visible = False
+        DataGridViewganado.Visible = True
         LabelAoM.Visible = True
         LabelAoM.Text = "Modificar"
 
@@ -1433,7 +1435,7 @@ Public Class Programa
     '''(((((((/////////////////////CANCELA Y CIERRA EL BOTON MODIFICAR//////////////////////////////
     ''' //////////////////////////////////////////////////////////////////////////////////////
     Private Sub BOTONcancelarModificar_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles BOTONcancelarModificar.Click
-
+        BOTONactualizarGanado.Enabled = True
         LabelAoM.Visible = False
         LabelAoM.Text = ""
 
@@ -1544,7 +1546,7 @@ Public Class Programa
     'End Sub
     '''////////////////////////////PARA VOLVER A MOSTRAR DATOS COMPLETOS DE GANADO EN EL DATAGRID///////////////////
     ''' ///////////////////////////////////////////////////////////////////////////////////////////////////////////
-    Private Sub Button2_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Button2.Click
+    Private Sub BOTONactualizarGanado_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles BOTONactualizarGanado.Click
 
 
         DataGridGanadoEconomico.Visible = False
@@ -1552,8 +1554,9 @@ Public Class Programa
 
         actualizarGanado()
 
-        CBXagregarEstadoGanado.Text = ""
-        CBXagregarEstadoGanado.Text = "activo"
+
+
+
     End Sub
 
     Private Sub txtBuscarCodGanado_KeyPress(ByVal sender As Object, ByVal e As System.Windows.Forms.KeyPressEventArgs) Handles txtBuscarCodGanado.KeyPress
@@ -1779,7 +1782,7 @@ Public Class Programa
         Dim raza As String = CBXrazaCompradoVendido.SelectedItem.ToString
 
         If CBXcompradoVendido.Text <> "" And CBXrazaCompradoVendido.Text <> "" Then
-
+            BOTONactualizarGanado.Enabled = True
             If CBXcompradoVendido.Text = "Vendido" And CBXrazaCompradoVendido.Text = "Todas las razas" Then
 
 
