@@ -1157,6 +1157,9 @@ Public Class Programa
     ''' ////////////////////////////////////////////////////////////////////////////////////////////////////////////
     ''' 
     Private Sub BOTONabrirAgregar_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles BOTONabrirAgregar.Click
+
+        'CBXagregarEstadoGanado.Text = ""
+        CBXagregarEstadoGanado.SelectedItem = "activo"
         LabelAoM.Visible = True
         LabelAoM.Text = "Agregar"
 
@@ -1196,7 +1199,7 @@ Public Class Programa
         DTPAgregarGanado.Text = Today
 
 
-        CBXagregarEstadoGanado.Text = ""
+
 
         BOTONabrirAgregar.Enabled = False
         BOTONabrirModificar.Enabled = False
@@ -1250,6 +1253,8 @@ Public Class Programa
     '''/////////////////////////////////////BOTON PARA INGRESAR NUEVO GANADO//////////////////////////////////////
     ''' //////////////////////////////////////////////////////////////////////////////////////////////////////////
     Private Sub BOTONguardarAgregar_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles BOTONguardarAgregar.Click
+
+
         If MessageBox.Show("¿Seguro desea guardar datos ?", "Confirmacion", MessageBoxButtons.YesNo, MessageBoxIcon.Question) = Windows.Forms.DialogResult.Yes Then
             'Dim CodG As Integer = Val(Texcodigoganado.Text)
 
@@ -1257,6 +1262,7 @@ Public Class Programa
             Dim sexo As String = CBXsexoGanado.SelectedItem
             Dim raza As String = CBXRazaGanado.SelectedItem
             Dim fechaN As String = DTPAgregarGanado.Value.ToString("yyyy-MM-dd")
+
 
             If estado <> "" Then
                 If DTPAgregarGanado.Value > Today Then
@@ -1271,12 +1277,12 @@ Public Class Programa
 
                         actualizarGanado()
 
-
-                        CBXsexoGanado.Text = ""
-                        CBXRazaGanado.Text = ""
+                        CBXagregarEstadoGanado.SelectedItem = "activo"
+                        'CBXsexoGanado.Text = ""
+                        'CBXRazaGanado.Text = ""
 
                         DTPAgregarGanado.Value = Today
-                        CBXagregarEstadoGanado.Text = ""
+                        'CBXagregarEstadoGanado.Text = ""
 
                         CBXsexoGanado.Enabled = True
                         CBXRazaGanado.Enabled = True
@@ -1284,7 +1290,7 @@ Public Class Programa
                         DTPAgregarGanado.Enabled = True
 
 
-                        MsgBox("Datos guardados", MsgBoxStyle.Information)
+                        MsgBox("Datos del vacuno guardados", MsgBoxStyle.Information, Title:="Agregado")
 
 
                     Catch ex As Exception
@@ -1338,8 +1344,8 @@ Public Class Programa
                         actualizarGanado()
 
 
-                        CBXRazaGanado.Text = ""
-                        CBXsexoGanado.Text = ""
+                        'CBXRazaGanado.Text = ""
+                        'CBXsexoGanado.Text = ""
 
                         DTPAgregarGanado.Value = Today
                         CBXagregarEstadoGanado.Text = ""
@@ -1355,9 +1361,9 @@ Public Class Programa
                 MsgBox("Los campos no pueden estar vacios", MsgBoxStyle.Exclamation, Title:="No se realizaron cambios")
             End If
 
-                If CBXmodificarEstadoGanado.Text = "Muerto/a" Then
-                    MsgBox("fdjvj")
-                End If
+            'If CBXmodificarEstadoGanado.Text = "Muerto/a" Then
+            '    MsgBox("fdjvj")
+            'End If
             End If
     End Sub
 
@@ -2363,68 +2369,61 @@ Public Class Programa
         Dim strid As String
         
         If MessageBox.Show("¿Seguro desea agregar cliente?", "Confirmacion", MessageBoxButtons.YesNo, MessageBoxIcon.Question) = Windows.Forms.DialogResult.Yes Then
+
             If txtnombreCliente.Text <> "" And txtapellidoCliente.Text <> "" And txtcedulaCliente.Text <> "" And txtdireccionCliente.Text <> "" And txttelefonoCliente.Text <> "" Then
-                If IsNumeric(txtcedulaCliente.Text) And IsNumeric(txttelefonoCliente.Text) Then
-                    'If Not IsNumeric(txtnombreCliente.Text) And Not IsNumeric(txtapellidoCliente.Text) Then
-
-
-                    strid = txtcedulaCliente.ToString
-
-                    Consulta = "select * from cliente where id='" + txtcedulaCliente.Text + "'"
-                    consultar()
-
-                    If Tabla.Rows.Count > 0 Then
-                        For Each row As DataRow In Tabla.Rows
-                            strid = row("id").ToString
-                            MsgBox("La cedula existe en la base de datos.Es posible que el cliente este desabilidato, por favor verifique los clientes desabilitados", MsgBoxStyle.Exclamation, Title:="No se pudo registrar al cliente2")
-                        Next
-
-                    Else
-
-                        If verificarCedula(txtcedulaCliente.Text) Then
-                            Try
-
-                                Consulta = "INSERT INTO cliente(id,nombre,apellido,direccion,telefono) values('" & txtcedulaCliente.Text & "','" & txtnombreCliente.Text & "','" & txtapellidoCliente.Text & "','" & txtdireccionCliente.Text & "','" & txttelefonoCliente.Text & "')"
-                                consultar()
 
 
 
+                strid = txtcedulaCliente.ToString
 
-                                Consulta = "select * from cliente"
-                                consultar()
-                                DataGridViewClientes.DataSource = Tabla
+                Consulta = "select * from cliente where id='" + txtcedulaCliente.Text + "'"
+                consultar()
 
-
-
-
-                                txtnombreCliente.Text = ""
-                                txtapellidoCliente.Text = ""
-                                txtcedulaCliente.Text = ""
-                                txtdireccionCliente.Text = ""
-                                txttelefonoCliente.Text = ""
-                                DataGridViewMostraDatosClientes.Visible = False
-                                DataGridViewClientes.Visible = True
-
-                                MsgBox("Registro exitoso")
-
-                            Catch ex As Exception
-                                MsgBox(ex.Message)
-                            End Try
-                        Else
-                            MsgBox("Cedula erronea")
-                        End If
-
-                    End If
-
-
+                If Tabla.Rows.Count > 0 Then
+                    For Each row As DataRow In Tabla.Rows
+                        strid = row("id").ToString
+                        MsgBox("La cedula existe en la base de datos.Es posible que el cliente este desabilidato, por favor verifique los clientes desabilitados", MsgBoxStyle.Exclamation, Title:="No se pudo registrar al cliente2")
+                    Next
 
                 Else
 
-                    MsgBox("Cedula y telefono son numericos")
+                    If verificarCedula(txtcedulaCliente.Text) Then
+                        Try
+
+                            Consulta = "INSERT INTO cliente(id,nombre,apellido,direccion,telefono) values('" & txtcedulaCliente.Text & "','" & txtnombreCliente.Text & "','" & txtapellidoCliente.Text & "','" & txtdireccionCliente.Text & "','" & txttelefonoCliente.Text & "')"
+                            consultar()
+
+
+
+
+                            Consulta = "select * from cliente"
+                            consultar()
+                            DataGridViewClientes.DataSource = Tabla
+
+
+
+
+                            txtnombreCliente.Text = ""
+                            txtapellidoCliente.Text = ""
+                            txtcedulaCliente.Text = ""
+                            txtdireccionCliente.Text = ""
+                            txttelefonoCliente.Text = ""
+                            DataGridViewMostraDatosClientes.Visible = False
+                            DataGridViewClientes.Visible = True
+
+                            MsgBox("Se registro exitosamente al cliente", MsgBoxStyle.Information, Title:="Registrado")
+
+                        Catch ex As Exception
+                            MsgBox(ex.Message)
+                        End Try
+                    Else
+                        MsgBox("La cedula ingresada es incorrecta", MsgBoxStyle.Critical, Title:="No se guardo el registro")
+                    End If
 
                 End If
+
             Else
-                MsgBox("Complete todos los campos vacios")
+                MsgBox("Complete todos los campos para que se realice el registro del cliente", MsgBoxStyle.Exclamation, Title:="Registro incorrecto")
             End If
         End If
     End Sub
@@ -2491,7 +2490,7 @@ Public Class Programa
             Else
                
 
-                MsgBox("Todos los campos deben tener un contenido")
+                MsgBox("Todos los campos deben tener un contenido", MsgBoxStyle.Exclamation, Title:="No se guardo la modificacion")
 
             End If
         End If
@@ -2695,6 +2694,7 @@ Public Class Programa
                     DGVGanadocompra.Rows.Add(raza, sexo, fecha, TXTPreciocompraganado.Text)
 
                     DTPFechanacimientocompra.Value = Today
+                    TXTdolarcompraganado.Text = ""
                     CBXRazacompra.Text = ""
                     CBXSexocompra.Text = ""
                     TXTKGCompraganado.Clear()
@@ -2706,7 +2706,7 @@ Public Class Programa
 
                 End If
             Else
-                MsgBox("Ingrese solo valor numérico en Kg y en U$S")
+                MsgBox("Ingrese solo valor numérico en Kg y en U$S", MsgBoxStyle.Exclamation, Title:="Datos incorrecto")
 
             End If
 
@@ -3622,7 +3622,7 @@ Public Class Programa
         Dim id As String = txbceduladeclientedeventas.Text
 
         If txbceduladeclientedeventas.Text = "" Then
-            MsgBox("Complete el campo Cédula")
+            MsgBox("Complete el campo Cédula", MsgBoxStyle.Critical, Title:="Ingrese cedula")
         Else
             Try
                 'consulta
@@ -3662,7 +3662,7 @@ Public Class Programa
                 comando.ExecuteNonQuery()
             Next
             connection.Close()
-            MsgBox("Se agregó la venta con exito")
+            MsgBox("Se agregó la venta con exito", MsgBoxStyle.Information, Title:="Datos guardados")
         Catch ex As Exception
             MsgBox(ex.Message)
             If connection.State = ConnectionState.Open Then
@@ -3678,7 +3678,9 @@ Public Class Programa
     End Sub
 
     Private Sub Button8_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnvolverventa.Click
+
         DGVCalculoK.Rows.Clear()
+        PNLCalculoK.Visible = False
         paneldetextosenventas.Visible = False
     End Sub
     'AGREGAR VENTA
@@ -4316,6 +4318,94 @@ Public Class Programa
     Private Sub Button5_Click(ByVal sender As System.Object, ByVal e As System.EventArgs)
 
         TabUsuarios.Parent = Nothing
+
+    End Sub
+
+    Private Sub TXTKGCompraganado_KeyPress(ByVal sender As System.Object, ByVal e As System.Windows.Forms.KeyPressEventArgs) Handles TXTKGCompraganado.KeyPress
+
+        If Char.IsNumber(e.KeyChar) Then
+            e.Handled = False
+        ElseIf Char.IsControl(e.KeyChar) Then
+            e.Handled = False
+        ElseIf e.KeyChar.ToString.Equals(".") Then
+            e.Handled = False
+
+        Else
+            e.Handled = True
+        End If
+    End Sub
+
+    Private Sub TXTdolarcompraganado_KeyPress(ByVal sender As System.Object, ByVal e As System.Windows.Forms.KeyPressEventArgs) Handles TXTdolarcompraganado.KeyPress
+        If Char.IsNumber(e.KeyChar) Then
+            e.Handled = False
+        ElseIf Char.IsControl(e.KeyChar) Then
+            e.Handled = False
+        ElseIf e.KeyChar.ToString.Equals(".") Then
+            e.Handled = False
+
+        Else
+            e.Handled = True
+        End If
+    End Sub
+
+    Private Sub TXTModitotalapagarcompra_KeyPress(ByVal sender As System.Object, ByVal e As System.Windows.Forms.KeyPressEventArgs) Handles TXTModitotalapagarcompra.KeyPress
+        If Char.IsNumber(e.KeyChar) Then
+            e.Handled = False
+        ElseIf Char.IsControl(e.KeyChar) Then
+            e.Handled = False
+        ElseIf e.KeyChar.ToString.Equals(".") Then
+            e.Handled = False
+
+        Else
+            e.Handled = True
+        End If
+    End Sub
+
+    Private Sub CBXModificarcompra_KeyPress(ByVal sender As System.Object, ByVal e As System.Windows.Forms.KeyPressEventArgs) Handles CBXModificarcompra.KeyPress
+     
+            e.Handled = True
+
+    End Sub
+
+    Private Sub CBXBuscarcompra_KeyPress(ByVal sender As System.Object, ByVal e As System.Windows.Forms.KeyPressEventArgs) Handles CBXBuscarcompra.KeyPress
+
+        e.Handled = True
+
+    End Sub
+
+    Private Sub cbxventa_KeyPress(ByVal sender As System.Object, ByVal e As System.Windows.Forms.KeyPressEventArgs) Handles cbxventa.KeyPress
+        e.Handled = True
+    End Sub
+
+    Private Sub txbceduladeclientedeventas_KeyPress(ByVal sender As System.Object, ByVal e As System.Windows.Forms.KeyPressEventArgs) Handles txbceduladeclientedeventas.KeyPress
+
+        If Char.IsNumber(e.KeyChar) Then
+            e.Handled = False
+
+        Else
+
+            e.Handled = True
+
+        End If
+    End Sub
+
+    Private Sub CBXbuscarenventa_KeyPress(ByVal sender As System.Object, ByVal e As System.Windows.Forms.KeyPressEventArgs) Handles CBXbuscarenventa.KeyPress
+
+        e.Handled = False
+    End Sub
+
+    Private Sub txbmodificarventa_KeyPress(ByVal sender As System.Object, ByVal e As System.Windows.Forms.KeyPressEventArgs) Handles txbmodificarventa.KeyPress
+
+        If Char.IsNumber(e.KeyChar) Then
+            e.Handled = False
+        ElseIf Char.IsControl(e.KeyChar) Then
+            e.Handled = False
+        ElseIf e.KeyChar.ToString.Equals(".") Then
+            e.Handled = False
+
+        Else
+            e.Handled = True
+        End If
 
     End Sub
 End Class
