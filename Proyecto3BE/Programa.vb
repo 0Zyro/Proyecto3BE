@@ -1377,7 +1377,19 @@ Public Class Programa
 
         GroupBox1.Enabled = True
 
-        If CBXmodificarEstadoGanado.SelectedItem = "vendido" Then
+        If CBXagregarEstadoGanado.Text = "vendido" Then
+            CBXmodificarEstadoGanado.Enabled = False
+            CBXRazaGanado.Enabled = False
+            CBXsexoGanado.Enabled = False
+            DTPAgregarGanado.Enabled = False
+        Else
+            CBXmodificarEstadoGanado.Enabled = True
+            CBXRazaGanado.Enabled = True
+            CBXsexoGanado.Enabled = True
+            DTPAgregarGanado.Enabled = True
+        End If
+
+        If CBXmodificarEstadoGanado.Text = "vendido" Then
             CBXmodificarEstadoGanado.Enabled = False
             CBXRazaGanado.Enabled = False
             CBXsexoGanado.Enabled = False
@@ -1495,7 +1507,7 @@ Public Class Programa
                 DTPAgregarGanado.Enabled = False
                 CBXagregarEstadoGanado.Enabled = False
             Else
-                If CBXmodificarEstadoGanado.SelectedItem = "vendido" Then
+                If CBXmodificarEstadoGanado.Text = "vendido" Then
                     CBXmodificarEstadoGanado.Enabled = False
                     CBXRazaGanado.Enabled = False
                     CBXsexoGanado.Enabled = False
@@ -4417,4 +4429,6 @@ Public Class Programa
         End If
 
     End Sub
+
+
 End Class
