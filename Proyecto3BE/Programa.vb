@@ -3859,8 +3859,7 @@ Public Class Programa
 
         Dim verificar As String
 
-        If MessageBox.Show("¿Seguro desea guardar datos ?", "Confirmacion", MessageBoxButtons.YesNo, MessageBoxIcon.Question) = Windows.Forms.DialogResult.Yes Then
-
+       
 
             'If Not IsNumeric(txtnombreCliente.Text) And Not IsNumeric(txtapellidoCliente.Text) Then
 
@@ -3874,11 +3873,13 @@ Public Class Programa
                 For Each row As DataRow In Tabla.Rows
                     verificar = row("razitas").ToString
                     txtAgregarRazaCBX.Clear()
-                    MsgBox("LA raza existe")
+                MsgBox("La raza existe en los registros", MsgBoxStyle.Exclamation, Title:=" No se puede agregar la raza")
                 Next
 
             Else
-                If txtAgregarRazaCBX.Text <> "" Then
+            If txtAgregarRazaCBX.Text <> "" Then
+                If MessageBox.Show("¿Seguro desea guardar datos ?", "Confirmacion", MessageBoxButtons.YesNo, MessageBoxIcon.Question) = Windows.Forms.DialogResult.Yes Then
+
                     Consulta = "INSERT INTO razas(razitas) VALUES('" + txtAgregarRazaCBX.Text + "')"
                     consultar()
                     txtAgregarRazaCBX.Clear()
@@ -3943,9 +3944,12 @@ Public Class Programa
                         End If
 
                     End Try
-                Else
-                    MsgBox("No puede agregar una raza con datos vacios", MsgBoxStyle.Critical, Title:=" No se pudo agregar raza")
+                
                 End If
+
+            Else
+                MsgBox("No puede agregar una raza con datos vacios", MsgBoxStyle.Critical, Title:=" No se pudo agregar raza")
+
             End If
 
 
