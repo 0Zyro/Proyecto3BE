@@ -4425,6 +4425,8 @@ Public Class Programa
         If Char.IsNumber(e.KeyChar) Then
             e.Handled = False
 
+        ElseIf Char.IsControl(e.KeyChar) Then
+            e.Handled = False
         Else
 
             e.Handled = True
