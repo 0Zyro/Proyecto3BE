@@ -1377,30 +1377,7 @@ Public Class Programa
 
         GroupBox1.Enabled = True
 
-        If CBXagregarEstadoGanado.Text = "vendido" Then
-            CBXmodificarEstadoGanado.Enabled = False
-            CBXRazaGanado.Enabled = False
-            CBXsexoGanado.Enabled = False
-            DTPAgregarGanado.Enabled = False
-        Else
-            CBXmodificarEstadoGanado.Enabled = True
-            CBXRazaGanado.Enabled = True
-            CBXsexoGanado.Enabled = True
-            DTPAgregarGanado.Enabled = True
-        End If
-
-        If CBXmodificarEstadoGanado.Text = "vendido" Then
-            CBXmodificarEstadoGanado.Enabled = False
-            CBXRazaGanado.Enabled = False
-            CBXsexoGanado.Enabled = False
-            DTPAgregarGanado.Enabled = False
-
-        Else
-            CBXmodificarEstadoGanado.Enabled = True
-            CBXRazaGanado.Enabled = True
-            CBXsexoGanado.Enabled = True
-            DTPAgregarGanado.Enabled = True
-        End If
+       
 
 
         BOTONguardarModificar.Visible = True
@@ -1521,6 +1498,21 @@ Public Class Programa
                     DTPAgregarGanado.Enabled = True
                     BOTONguardarModificar.Enabled = True
                 End If
+            End If
+            If CBXagregarEstadoGanado.Text = "vendido" Then
+                CBXmodificarEstadoGanado.Enabled = False
+                CBXRazaGanado.Enabled = False
+                CBXsexoGanado.Enabled = False
+                DTPAgregarGanado.Enabled = False
+                BOTONguardarModificar.Enabled = False
+                BOTONabrirModificar.Enabled = False
+            Else
+                CBXmodificarEstadoGanado.Enabled = True
+                CBXRazaGanado.Enabled = True
+                CBXsexoGanado.Enabled = True
+                DTPAgregarGanado.Enabled = True
+                BOTONguardarModificar.Enabled = True
+                BOTONabrirModificar.Enabled = True
             End If
         Catch ex As Exception
             'MsgBox(" NO SELECCIONO DATO HA MODIFICAR" & vbCrLf & vbCrLf & ex.Message, MsgBoxStyle.Critical, Title:=" ERROR ")
@@ -3970,15 +3962,7 @@ Public Class Programa
 
                 comando.CommandText = ("update razas set razitas='" + TXTModificarRazaCBX.Text + "' where razitas='" + CBXModificarCBX.SelectedItem.ToString + "'")
 
-                TXTModificarRazaCBX.Clear()
-                CBXModificarCBX.Text = ""
-
-                CBXeliminarRazaCBX.Items.Clear()
-                CBXModificarCBX.Items.Clear()
-                CBXRazaGanado.Items.Clear()
-                CBXseleccionarRaza.Items.Clear()
-                CBXrazaCompradoVendido.Items.Clear()
-                CBXRazacompra.Items.Clear()
+                
 
 
 
@@ -3998,11 +3982,45 @@ Public Class Programa
 
                 End Try
 
+                comando.CommandText = ("update ganado set raza='" + TXTModificarRazaCBX.Text + "' where raza='" + CBXModificarCBX.SelectedItem.ToString + "'")
+
+
+                TXTModificarRazaCBX.Clear()
+                CBXModificarCBX.Text = ""
+
+                CBXeliminarRazaCBX.Items.Clear()
+                CBXModificarCBX.Items.Clear()
+                CBXRazaGanado.Items.Clear()
+                CBXseleccionarRaza.Items.Clear()
+                CBXrazaCompradoVendido.Items.Clear()
+                CBXRazacompra.Items.Clear()
+                CBXrazaCompradoVendido.Items.Add("Todas las razas")
+                MsgBox("Se modifico la raza correctamente", MsgBoxStyle.Information, Title:="Raza modificada")
+
+                Try
+
+                    connection.Open()
+
+                    comando.ExecuteNonQuery()
+
+                    connection.Close()
+
+                Catch ex As Exception
+                    MsgBox(ex.Message)
+                    If connection.State = ConnectionState.Open Then
+                        connection.Close()
+                    End If
+
+                End Try
+
+             
+
                 comando.CommandType = CommandType.Text
 
                 comando.Connection = connection
 
                 comando.CommandText = ("select razitas from razas")
+
 
                 Try
 
