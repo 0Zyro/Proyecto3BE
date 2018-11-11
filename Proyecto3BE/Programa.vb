@@ -3774,6 +3774,16 @@ Public Class Programa
     End Sub
     'AGREGAR VENTA
     Private Sub Button9_Click_1(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles BTNAGREGARVENTAP.Click
+
+        If DataGridViewVENTAS.Rows.Count = 0 Then
+            Consulta = " alter table venta auto_increment = 3001 "
+            consultar()
+
+
+        End If
+
+
+
         rtbventa.Text = ""
         txbtotalventa.Text = ""
         CBXCedulaVenta.Text = ""
