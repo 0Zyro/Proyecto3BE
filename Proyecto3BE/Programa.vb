@@ -3679,9 +3679,8 @@ Public Class Programa
         Dim totalv As String = txbtotalventa.Text
         Dim id As String = txbceduladeclientedeventas.Text
 
-        If txbceduladeclientedeventas.Text = "" Then
-            MsgBox("Complete el campo Cédula", MsgBoxStyle.Critical, Title:="Ingrese cedula")
-        Else
+        If txbceduladeclientedeventas.Text <> "" And rtbventa.Text <> "" And txbtotalventa.Text <> "" Then
+
             Try
                 'consulta
                 comando.CommandType = CommandType.Text
@@ -3703,40 +3702,51 @@ Public Class Programa
             Catch ex As Exception
                 MsgBox(ex.Message)
             End Try
-        End If
-        comando.CommandType = CommandType.Text
-        comando.Connection = connection
-        comando.CommandText = ("select max(idv) from venta")
-        Try
-            connection.Open()
-            reader = comando.ExecuteReader()
-            reader.Read()
-            Dim aux As String = reader.GetString(0)
-            connection.Close()
-            connection.Open()
 
-            For i As Integer = 0 To LSTVentas.Items.Count - 1
-                comando.CommandText = ("update ganado set estado='vendido', idv='" + aux + "', preciov='" + DGVCalculoK.Item(3, i).Value.ToString.Replace(",", ".") + "' where idg='" + LSTVentas.Items(i) + "'")
-                comando.ExecuteNonQuery()
-            Next
-            connection.Close()
-            MsgBox("Se agregó la venta con exito", MsgBoxStyle.Information, Title:="Datos guardados")
-        Catch ex As Exception
-            MsgBox(ex.Message)
-            If connection.State = ConnectionState.Open Then
+            comando.CommandType = CommandType.Text
+            comando.Connection = connection
+            comando.CommandText = ("select max(idv) from venta")
+            Try
+                connection.Open()
+                reader = comando.ExecuteReader()
+                reader.Read()
+                Dim aux As String = reader.GetString(0)
                 connection.Close()
-            End If
-        End Try
-        'rtbventa.Text = ""
-        'txbtotalventa.Text = ""
-        'txbceduladeclientedeventas.Clear()
+                connection.Open()
 
-        'btnvolverventa.PerformClick()
-        BTNBoleta.Visible = True
+                For i As Integer = 0 To LSTVentas.Items.Count - 1
+                    comando.CommandText = ("update ganado set estado='vendido', idv='" + aux + "', preciov='" + DGVCalculoK.Item(3, i).Value.ToString.Replace(",", ".") + "' where idg='" + LSTVentas.Items(i) + "'")
+                    comando.ExecuteNonQuery()
+                Next
+                connection.Close()
+
+                btnagregarventa.Enabled = False
+                MsgBox("Se agregó la venta con exito", MsgBoxStyle.Information, Title:="Datos guardados")
+            Catch ex As Exception
+                MsgBox(ex.Message)
+                If connection.State = ConnectionState.Open Then
+                    connection.Close()
+
+                End If
+            End Try
+            'rtbventa.Text = ""
+            'txbtotalventa.Text = ""
+            'txbceduladeclientedeventas.Clear()
+
+            'btnvolverventa.PerformClick()
+            BTNBoleta.Visible = True
+
+        Else
+
+            MsgBox("Complete los campos necesario para finalizar la venta.(Cedula,comentario, total de venta)", MsgBoxStyle.Critical, Title:="No se puedo registrar la venta")
+
+        End If
     End Sub
 
     Private Sub Button8_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnvolverventa.Click
 
+        btnagregarventa.Enabled = True
+        BOTONnuevaVenta.Visible = False
         DGVCalculoK.Rows.Clear()
         PNLCalculoK.Visible = False
         paneldetextosenventas.Visible = False
@@ -3745,6 +3755,7 @@ Public Class Programa
     Private Sub Button9_Click_1(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles BTNAGREGARVENTAP.Click
         rtbventa.Text = ""
         txbtotalventa.Text = ""
+        CBXCedulaVenta.Text = ""
         txbceduladeclientedeventas.Clear()
         paneldetextosenventas.BringToFront()
         cbxventa.Items.Clear()
@@ -3836,6 +3847,9 @@ Public Class Programa
         Dim idventaenboleta As Integer
         Dim nombreclienteve As String
         Dim apellidoclienteve As String
+
+        BOTONnuevaVenta.Visible = True
+
         comando.CommandType = CommandType.Text
 
         comando.Connection = connection
@@ -4506,5 +4520,39 @@ Public Class Programa
 
     Private Sub CBXCedulaVenta_KeyPress(ByVal sender As System.Object, ByVal e As System.Windows.Forms.KeyPressEventArgs) Handles CBXCedulaVenta.KeyPress
         e.Handled = True
+    End Sub
+
+    Private Sub BOTONnuevaVenta_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles BOTONnuevaVenta.Click
+        rtbventa.Text = ""
+        txbtotalventa.Text = ""
+        CBXCedulaVenta.Text = ""
+        DGVCalculoK.Rows.Clear()
+        txbceduladeclientedeventas.Clear()
+        LSTVentas.Items.Clear()
+        PNLCalculoK.Visible = False
+        btnagregarventa.Enabled = True
+        cbxventa.Items.Clear()
+        comando.CommandType = CommandType.Text
+        'el comando se conecta a traves del objeto connection
+        comando.Connection = connection
+        comando.CommandText = ("select idg from ganado where estado='activo'")
+        Try
+            connection.Open()
+            reader = comando.ExecuteReader()
+            If reader.HasRows() Then
+                While reader.Read()
+                    cbxventa.Items.Add(reader.GetString(0))
+                End While
+            End If
+            connection.Close()
+        Catch ex As Exception
+            MsgBox(ex.Message)
+            If connection.State = ConnectionState.Open Then
+                connection.Close()
+            End If
+        End Try
+
+        BOTONnuevaVenta.Visible = False
+
     End Sub
 End Class
