@@ -4500,4 +4500,11 @@ Public Class Programa
     End Sub
 
 
+    Private Sub CBXCedulaVenta_SelectedIndexChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles CBXCedulaVenta.SelectedIndexChanged
+        txbceduladeclientedeventas.Text = CBXCedulaVenta.Text
+    End Sub
+
+    Private Sub CBXCedulaVenta_KeyPress(ByVal sender As System.Object, ByVal e As System.Windows.Forms.KeyPressEventArgs) Handles CBXCedulaVenta.KeyPress
+        e.Handled = True
+    End Sub
 End Class
