@@ -859,6 +859,28 @@ Public Class Programa
             End If
         End Try
 
+
+        comando.CommandType = CommandType.Text
+        comando.Connection = connection
+        comando.CommandText = ("select id from cliente where estado = 1")
+
+        Try
+            connection.Open()
+            reader = comando.ExecuteReader()
+            If reader.HasRows() Then
+                While reader.Read()
+                    CBXCedulaVenta.Items.Add(reader.GetString(0))
+                    
+                End While
+            End If
+            connection.Close()
+        Catch ex As Exception
+            MsgBox(ex.Message)
+            If connection.State = ConnectionState.Open Then
+                connection.Close()
+            End If
+        End Try
+
         actualizarGanado()
         TMRHoraFecha.Start()
 
@@ -2031,28 +2053,28 @@ Public Class Programa
                 consultar()
                 actualizarCliente()
 
+                CBXCedulaVenta.Items.Clear()
 
+                comando.CommandType = CommandType.Text
+                comando.Connection = connection
+                comando.CommandText = ("select id from cliente where estado = 1")
 
+                Try
+                    connection.Open()
+                    reader = comando.ExecuteReader()
+                    If reader.HasRows() Then
+                        While reader.Read()
+                            CBXCedulaVenta.Items.Add(reader.GetString(0))
 
-                'Elimina el id de una compra juntos con todos los datos de ese id
-                'Consulta = "delete from cliente where id='" & DataGridViewClientes.Item(0, DataGridViewClientes.CurrentRow.Index).Value & "'"
-                'consultar()
-
-                'Select Case error1
-
-                '    Case 1
-                '        MsgBox("no se pudo borrar", MsgStyle, Title:="Error")
-                '    Case 0
-                '        Consulta = "select * from cliente"
-                '        consultar()
-                '        'Actualiza la BD
-
-                '        DataGridViewClientes.DataSource = Tabla
-
-                '        MsgBox(" cliente eliminado", MsgStyle1, Title:="Eliminado")
-
-                'End Select
-
+                        End While
+                    End If
+                    connection.Close()
+                Catch ex As Exception
+                    MsgBox(ex.Message)
+                    If connection.State = ConnectionState.Open Then
+                        connection.Close()
+                    End If
+                End Try
 
 
             Catch ex As Exception
@@ -2139,6 +2161,29 @@ Public Class Programa
                 DataGridclienteInactivos.Columns(5).Visible = False
 
                 actualizarCliente()
+
+                CBXCedulaVenta.Items.Clear()
+
+                comando.CommandType = CommandType.Text
+                comando.Connection = connection
+                comando.CommandText = ("select id from cliente where estado = 1")
+
+                Try
+                    connection.Open()
+                    reader = comando.ExecuteReader()
+                    If reader.HasRows() Then
+                        While reader.Read()
+                            CBXCedulaVenta.Items.Add(reader.GetString(0))
+
+                        End While
+                    End If
+                    connection.Close()
+                Catch ex As Exception
+                    MsgBox(ex.Message)
+                    If connection.State = ConnectionState.Open Then
+                        connection.Close()
+                    End If
+                End Try
 
                 If DataGridclienteInactivos.Rows.Count = 0 Then
                     BOTONaceptarHabilitado.Enabled = False
