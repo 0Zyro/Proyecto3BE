@@ -2458,7 +2458,28 @@ Public Class Programa
                             consultar()
                             DataGridViewClientes.DataSource = Tabla
 
+                            CBXCedulaVenta.Items.Clear()
 
+                            comando.CommandType = CommandType.Text
+                            comando.Connection = connection
+                            comando.CommandText = ("select id from cliente where estado = 1")
+
+                            Try
+                                connection.Open()
+                                reader = comando.ExecuteReader()
+                                If reader.HasRows() Then
+                                    While reader.Read()
+                                        CBXCedulaVenta.Items.Add(reader.GetString(0))
+
+                                    End While
+                                End If
+                                connection.Close()
+                            Catch ex As Exception
+                                MsgBox(ex.Message)
+                                If connection.State = ConnectionState.Open Then
+                                    connection.Close()
+                                End If
+                            End Try
 
 
                             txtnombreCliente.Text = ""
