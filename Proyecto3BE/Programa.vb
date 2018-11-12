@@ -2747,17 +2747,17 @@ Public Class Programa
         PNLEstadisticascompras.Visible = False
 
     End Sub
-    Private Sub Button4_Click_1(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Button4.Click
-        Consulta = "select * from compra where idc not in (select idc from ganado)"
-        consultar()
-        DGVCompras.DataSource = Tabla
-        DGVCompras.Columns(0).HeaderText = "Id"
-        DGVCompras.Columns(1).HeaderText = "Fecha de Compra"
-        DGVCompras.Columns(2).HeaderText = "Comentario"
-        DGVCompras.Columns(3).HeaderText = "Total U$S"
-        PNLEstadisticascompras.Visible = False
+    'Private Sub Button4_Click_1(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Button4.Click
+    '    Consulta = "select * from compra where idc not in (select idc from ganado)"
+    '    consultar()
+    '    DGVCompras.DataSource = Tabla
+    '    DGVCompras.Columns(0).HeaderText = "Id"
+    '    DGVCompras.Columns(1).HeaderText = "Fecha de Compra"
+    '    DGVCompras.Columns(2).HeaderText = "Comentario"
+    '    DGVCompras.Columns(3).HeaderText = "Total U$S"
+    '    PNLEstadisticascompras.Visible = False
 
-    End Sub
+    'End Sub
 
     Private Sub BTNActualizarcompras_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles BTNActualizarcompras.Click
         Consulta = ("select * from compra")
@@ -3885,8 +3885,8 @@ Public Class Programa
             consultar()
             DataGridViewVENTAS.DataSource = Tabla
         End If
-        If CBXbuscarenventa.Text = "Primera venta realizada en el año actual" Then
-            Consulta = "SELECT * FROM `venta` WHERE MONTH(fechaventa) >= ALL (SELECT MONTH(fechaventa) FROM venta)"
+        If CBXbuscarenventa.Text = "Total de ventas del año" Then
+            Consulta = "select format(sum(totalv), 2) as 'Total U$S' from venta where year(fechaventa)='" + DateTime.Today.Date.Year.ToString + "'"
             consultar()
             DataGridViewVENTAS.DataSource = Tabla
         End If
@@ -4623,4 +4623,5 @@ Public Class Programa
         BOTONnuevaVenta.Visible = False
 
     End Sub
+
 End Class
