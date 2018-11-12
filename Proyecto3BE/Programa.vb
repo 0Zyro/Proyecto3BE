@@ -2884,7 +2884,7 @@ Public Class Programa
 
             If CheckBox1.Checked Then
                 If DTPFechacompraproducto.Value > Today Then
-                    MsgBox("La fecha de compra no puede ser mayor a la fecha actual")
+                    MsgBox("La fecha de compra no puede ser mayor a la fecha actual", MsgBoxStyle.Exclamation, Title:="Fecha incorrecta")
                     'Sino, guarda los datos mientras se cumplan los demas requisitos
                 Else
                     If TextBox5.Text <> "" And TextBox6.Text <> "" Then
@@ -2907,9 +2907,9 @@ Public Class Programa
                         TextBox5.Text = ""
                         TextBox6.Text = ""
 
-                        MsgBox("Se han agregado los datos correctamente")
+                        MsgBox("Se han agregado los datos correctamente", MsgBoxStyle.Exclamation, Title:="Datos guardados")
                     Else
-                        MsgBox("Ingrese valores numericos en Pesos Uruguayos y en Dólar")
+                        MsgBox("Ingrese valores numericos en Pesos Uruguayos y en Dólar", MsgBoxStyle.Exclamation, Title:="Datos incorrectos")
                     End If
                 End If
 
@@ -2917,7 +2917,7 @@ Public Class Programa
 
                 'Si la fecha de compra es mayor que la fecha actual salta el msgbox
                 If DTPFechacompraproducto.Value > Today Then
-                    MsgBox("La fecha de compra no puede ser mayor a la fecha actual")
+                    MsgBox("La fecha de compra no puede ser mayor a la fecha actual", MsgBoxStyle.Exclamation, Title:="Fecha incorrecta")
                     'Sino, guarda los datos mientras se cumplan los demas requisitos
                 Else
 
@@ -2940,7 +2940,7 @@ Public Class Programa
                         TextBox5.Text = ""
                         TextBox6.Text = ""
 
-                        MsgBox("Se han agregado los datos correctamente")
+                        MsgBox("Se han agregado los datos correctamente", MsgBoxStyle.Information, Title:="Datos guardados")
                     Else
                         'Muestra mensaje diciendo que no se ingresaron valores numericos o que solo acepta valores numericos
                         MsgBox("Igrese solo valor numerico en total")
@@ -2948,7 +2948,7 @@ Public Class Programa
                 End If
             End If
         Else
-            MsgBox("Complete los campos vacios")
+            MsgBox("Complete los campos vacios", MsgBoxStyle.Critical, Title:="Falta completar datos")
         End If
 
     End Sub
@@ -3137,7 +3137,7 @@ Public Class Programa
                 DTGModificarcompra.Columns(1).HeaderText = "Fecha de Compra"
                 DTGModificarcompra.Columns(2).HeaderText = "Comentario"
                 DTGModificarcompra.Columns(3).HeaderText = "Total"
-                MsgBox("La compra se modificó con exito")
+                MsgBox("La compra se modificó con exito", MsgBoxStyle.Information, Title:="Datos modificados")
 
             Else
                 MsgBox("Ingrese solo valor numerico en total", MsgBoxStyle.Exclamation, Title:="Campo numerico")
@@ -3869,21 +3869,41 @@ Public Class Programa
             Consulta = "SELECT * FROM `venta` WHERE totalv >= ALL (SELECT totalv FROM venta)"
             consultar()
             DataGridViewVENTAS.DataSource = Tabla
+            DataGridViewVENTAS.Columns(0).HeaderText = "Id"
+            DataGridViewVENTAS.Columns(1).HeaderText = "Fecha de venta"
+            DataGridViewVENTAS.Columns(2).HeaderText = "Comentario"
+            DataGridViewVENTAS.Columns(3).HeaderText = "Total U$S"
+            DataGridViewVENTAS.Columns(4).HeaderText = "Cédula de cliente"
         End If
         If CBXbuscarenventa.Text = "Venta con menor costo" Then
             Consulta = "SELECT * FROM `venta` WHERE totalv <= ALL (SELECT totalv FROM venta)"
             consultar()
             DataGridViewVENTAS.DataSource = Tabla
+            DataGridViewVENTAS.Columns(0).HeaderText = "Id"
+            DataGridViewVENTAS.Columns(1).HeaderText = "Fecha de venta"
+            DataGridViewVENTAS.Columns(2).HeaderText = "Comentario"
+            DataGridViewVENTAS.Columns(3).HeaderText = "Total U$S"
+            DataGridViewVENTAS.Columns(4).HeaderText = "Cédula de cliente"
         End If
         If CBXbuscarenventa.Text = "Todas las ventas" Then
             Consulta = "SELECT * FROM `venta`"
             consultar()
             DataGridViewVENTAS.DataSource = Tabla
+            DataGridViewVENTAS.Columns(0).HeaderText = "Id"
+            DataGridViewVENTAS.Columns(1).HeaderText = "Fecha de venta"
+            DataGridViewVENTAS.Columns(2).HeaderText = "Comentario"
+            DataGridViewVENTAS.Columns(3).HeaderText = "Total U$S"
+            DataGridViewVENTAS.Columns(4).HeaderText = "Cédula de cliente"
         End If
         If CBXbuscarenventa.Text = "Ventas de este año" Then
             Consulta = "SELECT * FROM `venta` WHERE YEAR(fechaventa) = '" + DateTime.Today.Date.Year.ToString + "'"
             consultar()
             DataGridViewVENTAS.DataSource = Tabla
+            DataGridViewVENTAS.Columns(0).HeaderText = "Id"
+            DataGridViewVENTAS.Columns(1).HeaderText = "Fecha de venta"
+            DataGridViewVENTAS.Columns(2).HeaderText = "Comentario"
+            DataGridViewVENTAS.Columns(3).HeaderText = "Total U$S"
+            DataGridViewVENTAS.Columns(4).HeaderText = "Cédula de cliente"
         End If
         If CBXbuscarenventa.Text = "Total de ventas del año" Then
             Consulta = "select format(sum(totalv), 2) as 'Total U$S' from venta where year(fechaventa)='" + DateTime.Today.Date.Year.ToString + "'"

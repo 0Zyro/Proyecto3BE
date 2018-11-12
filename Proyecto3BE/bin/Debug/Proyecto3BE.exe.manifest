@@ -59,14 +59,14 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="Proyecto3BE.exe" size="425984">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="Proyecto3BE.exe" size="426496">
       <assemblyIdentity name="Proyecto3BE" version="1.0.0.0" language="neutral" processorArchitecture="x86" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
-        <dsig:DigestValue>8E+24s9+9g/pkbWXthy9c4/ZZvo=</dsig:DigestValue>
+        <dsig:DigestValue>e2tlupmn73BcCjUwy4uZCtzooUs=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
