@@ -3632,7 +3632,7 @@ Public Class Programa
         Dim dedo As String = DataGridViewmodificarventa.Item(0, DataGridViewmodificarventa.CurrentRow.Index).Value
 
         If comentario <> "" And totalv <> "" Then
-            If DateTimePickermodificarventa.Value < Today Then
+            If DateTimePickermodificarventa.Value <= Today Then
                 If MessageBox.Show("¿Seguro desea modificar datos ?", "Confirmacion", MessageBoxButtons.YesNo, MessageBoxIcon.Question) = Windows.Forms.DialogResult.Yes Then
 
                     Try
@@ -3730,7 +3730,7 @@ Public Class Programa
         Dim id As String = txbceduladeclientedeventas.Text
 
         If txbceduladeclientedeventas.Text <> "" And rtbventa.Text <> "" And txbtotalventa.Text <> "" Then
-            If DTPVentas.Value < Today Then
+            If DTPVentas.Value <= Today Then
                 If MessageBox.Show("¿Seguro desea guardar datos ?", "Confirmacion", MessageBoxButtons.YesNo, MessageBoxIcon.Question) = Windows.Forms.DialogResult.Yes Then
                     Try
                         'consulta
