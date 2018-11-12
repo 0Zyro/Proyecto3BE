@@ -18,6 +18,7 @@ Public Class Programa
 
     Private PasswdUsuario As String
     Private RangoUsuario As String
+    Private CiUsuario As String
 
 
     Structure vacas
@@ -209,7 +210,7 @@ Public Class Programa
 
             comando.CommandType = CommandType.Text
             comando.Connection = connection
-            comando.CommandText = ("update usuario set contrasena='" + encriptar(asd) + "' where ci='" + PasswdUsuario + "'")
+            comando.CommandText = ("update usuario set contrasena='" + encriptar(asd) + "' where ci='" + CiUsuario + "'")
 
             Try
 
@@ -246,6 +247,7 @@ Public Class Programa
         LBLNombreUsuario.Text = nombre
         LBLRangoUsuario.Text = rango
 
+        CiUsuario = ci
         PasswdUsuario = passwd
         RangoUsuario = rango
 
