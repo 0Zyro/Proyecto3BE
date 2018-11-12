@@ -3880,8 +3880,8 @@ Public Class Programa
             consultar()
             DataGridViewVENTAS.DataSource = Tabla
         End If
-        If CBXbuscarenventa.Text = "Última venta realizada en el año actual" Then
-            Consulta = "SELECT * FROM `venta` WHERE MONTH(fechaventa) <= ALL (SELECT MONTH(fechaventa) FROM venta)"
+        If CBXbuscarenventa.Text = "Ventas de este año" Then
+            Consulta = "SELECT * FROM `venta` WHERE YEAR(fechaventa) = '" + DateTime.Today.Date.Year.ToString + "'"
             consultar()
             DataGridViewVENTAS.DataSource = Tabla
         End If
