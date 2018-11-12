@@ -2722,23 +2722,39 @@ Public Class Programa
         DGVCompras.Columns(1).HeaderText = "Fecha de Compra"
         DGVCompras.Columns(2).HeaderText = "Comentario"
         DGVCompras.Columns(3).HeaderText = "Total"
+        PNLEstadisticascompras.Visible = False
+
     End Sub
     Private Sub Button1_Click_3(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Button1.Click
         Consulta = ("select sum(totalc) from compra where year(fechacompra) = year(now())")
         consultar()
         DGVCompras.DataSource = Tabla
         DGVCompras.Columns(0).HeaderText = "Total que se gastó en el año"
+        PNLEstadisticascompras.Visible = False
+
 
     End Sub
     Private Sub Button3_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Button3.Click
         Consulta = "select * from compra where idc = any (select idc from ganado)"
         consultar()
         DGVCompras.DataSource = Tabla
+        DGVCompras.Columns(0).HeaderText = "Id"
+        DGVCompras.Columns(1).HeaderText = "Fecha de Compra"
+        DGVCompras.Columns(2).HeaderText = "Comentario"
+        DGVCompras.Columns(3).HeaderText = "Total U$S"
+        PNLEstadisticascompras.Visible = False
+
     End Sub
     Private Sub Button4_Click_1(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Button4.Click
         Consulta = "select * from compra where idc not in (select idc from ganado)"
         consultar()
         DGVCompras.DataSource = Tabla
+        DGVCompras.Columns(0).HeaderText = "Id"
+        DGVCompras.Columns(1).HeaderText = "Fecha de Compra"
+        DGVCompras.Columns(2).HeaderText = "Comentario"
+        DGVCompras.Columns(3).HeaderText = "Total U$S"
+        PNLEstadisticascompras.Visible = False
+
     End Sub
 
     Private Sub BTNActualizarcompras_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles BTNActualizarcompras.Click
@@ -2748,7 +2764,7 @@ Public Class Programa
         DGVCompras.Columns(0).HeaderText = "Id"
         DGVCompras.Columns(1).HeaderText = "Fecha de Compra"
         DGVCompras.Columns(2).HeaderText = "Comentario"
-        DGVCompras.Columns(3).HeaderText = "Total"
+        DGVCompras.Columns(3).HeaderText = "Total U$S"
     End Sub
 
     Dim acumulador As Double
@@ -2766,7 +2782,7 @@ Public Class Programa
                 acumulador = (acumulador + (Convert.ToDouble(TXTKGCompraganado.Text.ToString.Replace(".", ",")) * Convert.ToDouble(TXTdolarcompraganado.Text.ToString.Replace(".", ","))))
                 TXTTotacompraganado.Text = acumulador
                 If DTPFechanacimientocompra.Value > Today Then
-                    MsgBox("La fecha de nacimiento no puede ser mayor a la fecha actual")
+                    MsgBox("La fecha de nacimiento no puede ser mayor a la fecha actual", MsgBoxStyle.Exclamation, Title:="Fecha incorrecta")
                 Else
 
 
@@ -2791,7 +2807,7 @@ Public Class Programa
 
 
         Else
-            MsgBox("Complete todos los campos vacios")
+            MsgBox("Complete todos los campos vacios", MsgBoxStyle.Critical, Title:="Hay datos sin completar")
         End If
 
     End Sub
@@ -3030,7 +3046,7 @@ Public Class Programa
 
             'Si la fecha de compra es mayor a la actual salta el msgbox
             If DTPFechacompraganado.Value > Today Then
-                MsgBox("La fecha de compra no puede ser mayor a la fecha actual")
+                MsgBox("La fecha de compra no puede ser mayor a la fecha actual", MsgBoxStyle.Exclamation, Title:="Fecha incorrecta")
             Else
 
                 If IsNumeric(TXTTotalapagarcompraganado.Text) Then
@@ -3063,7 +3079,7 @@ Public Class Programa
 
 
                     DTPFechanacimientocompra.Value = Today
-                    MsgBox("Los datos se ingresaron correctamente")
+                    MsgBox("Los datos se ingresaron correctamente", MsgBoxStyle.Information, Title:="Se registro la compra")
                     CBXAgregarcompra.Enabled = True
                     BTNVolverdeagregarcompra.Enabled = True
                     DGVGanadocompra.Rows.Clear()
@@ -3079,12 +3095,12 @@ Public Class Programa
                     DGVAuxiliarcompraganado.Rows.Remove(DGVAuxiliarcompraganado.CurrentRow)
                 Else
                     'Muestra mensaje diciendo que no se ingresaron valores numericos o que solo acepta valores numericos
-                    MsgBox("Ingrese solo valor numerico en total")
+                    MsgBox("Ingrese solo valor numerico en total", MsgBoxStyle.Exclamation, Title:="Dato tipo numerico")
                 End If
             End If
         Else
             'Muestra mensaje que todos los campos no estan completos
-            MsgBox("Complete todos los campos vacios")
+            MsgBox("Complete todos los campos vacios", MsgBoxStyle.Critical, Title:="Campos sin completar")
 
         End If
     End Sub
@@ -3122,7 +3138,7 @@ Public Class Programa
                 MsgBox("La compra se modificó con exito")
 
             Else
-                MsgBox("Ingrese solo valor numerico en total")
+                MsgBox("Ingrese solo valor numerico en total", MsgBoxStyle.Exclamation, Title:="Campo numerico")
             End If
 
         End If
@@ -3615,18 +3631,31 @@ Public Class Programa
         Dim totalv As String = txbmodificarventa.Text
         Dim dedo As String = DataGridViewmodificarventa.Item(0, DataGridViewmodificarventa.CurrentRow.Index).Value
 
-        Try
-            Consulta = ("update venta set fechaventa='" + fecha + "', comentariov='" + comentario + "', totalv='" + totalv + "' where idv='" & dedo & "'")
+        If comentario <> "" And totalv <> "" Then
+            If DateTimePickermodificarventa.Value < Today Then
+                If MessageBox.Show("¿Seguro desea modificar datos ?", "Confirmacion", MessageBoxButtons.YesNo, MessageBoxIcon.Question) = Windows.Forms.DialogResult.Yes Then
 
-            consultar()
-            Consulta = "select * from venta"
-            consultar()
-            DataGridViewmodificarventa.DataSource = Tabla
+                    Try
+                        Consulta = ("update venta set fechaventa='" + fecha + "', comentariov='" + comentario + "', totalv='" + totalv + "' where idv='" & dedo & "'")
 
+                        consultar()
+                        Consulta = "select * from venta"
+                        consultar()
+                        DataGridViewmodificarventa.DataSource = Tabla
 
-        Catch ex As Exception
-            MsgBox(ex)
-        End Try
+                        MsgBox("Se modificaron datos de la venta", MsgBoxStyle.Information, Title:="Datos guardados")
+
+                    Catch ex As Exception
+                        MsgBox(ex)
+                    End Try
+                End If
+            Else
+                MsgBox("La fecha a modificar no puede ser mayor a la fecha actual", MsgBoxStyle.Exclamation, Title:="Fecha incorrecta")
+
+            End If
+        Else
+            MsgBox("Para que se guarden los datos, todos los campos deben estan completos", MsgBoxStyle.Exclamation, Title:="Complete campos vacios")
+        End If
     End Sub
 
     Private Sub btnvolvervm_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnvolvervm.Click
@@ -3664,7 +3693,7 @@ Public Class Programa
                 DGVCalculoK.Item(3, i).Value = (Convert.ToDouble(DGVCalculoK.Item(1, i).Value)) * (Convert.ToDouble(DGVCalculoK.Item(2, i).Value))
                 total = (total + (Convert.ToDouble(DGVCalculoK.Item(3, i).Value)))
              Else
-                MsgBox("Ingrese caracteres numericos solamente")
+                MsgBox("Ingrese caracteres numericos solamente", MsgBoxStyle.Exclamation, Title:="Datos incorrecto")
                 Exit Sub
             End If
         Next
@@ -3701,62 +3730,66 @@ Public Class Programa
         Dim id As String = txbceduladeclientedeventas.Text
 
         If txbceduladeclientedeventas.Text <> "" And rtbventa.Text <> "" And txbtotalventa.Text <> "" Then
+            If DTPVentas.Value < Today Then
+                If MessageBox.Show("¿Seguro desea guardar datos ?", "Confirmacion", MessageBoxButtons.YesNo, MessageBoxIcon.Question) = Windows.Forms.DialogResult.Yes Then
+                    Try
+                        'consulta
+                        comando.CommandType = CommandType.Text
+                        comando.Connection = connection
+                        comando.CommandText = "insert into venta (fechaventa,comentariov,totalv,id) values('" & fecha & "','" & comentario & "','" & Round(Convert.ToDouble(totalv), 2).ToString.Replace(",", ".") & "','" & id & "')"
+                        connection.Open()
+                        comando.ExecuteNonQuery()
+                        connection.Close()
+                        'select hacia venta
+                        Consulta = "select * from venta"
+                        consultar()
+                        'actualiza la dgvw
+                        DataGridViewVENTAS.DataSource = Tabla
+                        DataGridViewVENTAS.Columns(0).HeaderText = "Id venta"
+                        DataGridViewVENTAS.Columns(1).HeaderText = "Fecha de venta"
+                        DataGridViewVENTAS.Columns(2).HeaderText = "Comentario"
+                        DataGridViewVENTAS.Columns(3).HeaderText = "Total"
+                        DataGridViewVENTAS.Columns(4).HeaderText = "Cédula de cliente"
+                    Catch ex As Exception
+                        MsgBox(ex.Message)
+                    End Try
 
-            Try
-                'consulta
-                comando.CommandType = CommandType.Text
-                comando.Connection = connection
-                comando.CommandText = "insert into venta (fechaventa,comentariov,totalv,id) values('" & fecha & "','" & comentario & "','" & Round(Convert.ToDouble(totalv), 2).ToString.Replace(",", ".") & "','" & id & "')"
-                connection.Open()
-                comando.ExecuteNonQuery()
-                connection.Close()
-                'select hacia venta
-                Consulta = "select * from venta"
-                consultar()
-                'actualiza la dgvw
-                DataGridViewVENTAS.DataSource = Tabla
-                DataGridViewVENTAS.Columns(0).HeaderText = "Id venta"
-                DataGridViewVENTAS.Columns(1).HeaderText = "Fecha de venta"
-                DataGridViewVENTAS.Columns(2).HeaderText = "Comentario"
-                DataGridViewVENTAS.Columns(3).HeaderText = "Total"
-                DataGridViewVENTAS.Columns(4).HeaderText = "Cédula de cliente"
-            Catch ex As Exception
-                MsgBox(ex.Message)
-            End Try
+                    comando.CommandType = CommandType.Text
+                    comando.Connection = connection
+                    comando.CommandText = ("select max(idv) from venta")
+                    Try
+                        connection.Open()
+                        reader = comando.ExecuteReader()
+                        reader.Read()
+                        Dim aux As String = reader.GetString(0)
+                        connection.Close()
+                        connection.Open()
 
-            comando.CommandType = CommandType.Text
-            comando.Connection = connection
-            comando.CommandText = ("select max(idv) from venta")
-            Try
-                connection.Open()
-                reader = comando.ExecuteReader()
-                reader.Read()
-                Dim aux As String = reader.GetString(0)
-                connection.Close()
-                connection.Open()
+                        For i As Integer = 0 To LSTVentas.Items.Count - 1
+                            comando.CommandText = ("update ganado set estado='vendido', idv='" + aux + "', preciov='" + DGVCalculoK.Item(3, i).Value.ToString.Replace(",", ".") + "' where idg='" + LSTVentas.Items(i) + "'")
+                            comando.ExecuteNonQuery()
+                        Next
+                        connection.Close()
 
-                For i As Integer = 0 To LSTVentas.Items.Count - 1
-                    comando.CommandText = ("update ganado set estado='vendido', idv='" + aux + "', preciov='" + DGVCalculoK.Item(3, i).Value.ToString.Replace(",", ".") + "' where idg='" + LSTVentas.Items(i) + "'")
-                    comando.ExecuteNonQuery()
-                Next
-                connection.Close()
+                        btnagregarventa.Enabled = False
+                        MsgBox("Se agregó la venta con exito", MsgBoxStyle.Information, Title:="Datos guardados")
+                    Catch ex As Exception
+                        MsgBox(ex.Message)
+                        If connection.State = ConnectionState.Open Then
+                            connection.Close()
 
-                btnagregarventa.Enabled = False
-                MsgBox("Se agregó la venta con exito", MsgBoxStyle.Information, Title:="Datos guardados")
-            Catch ex As Exception
-                MsgBox(ex.Message)
-                If connection.State = ConnectionState.Open Then
-                    connection.Close()
+                        End If
+                    End Try
+                    'rtbventa.Text = ""
+                    'txbtotalventa.Text = ""
+                    'txbceduladeclientedeventas.Clear()
 
+                    'btnvolverventa.PerformClick()
+                    BTNBoleta.Visible = True
                 End If
-            End Try
-            'rtbventa.Text = ""
-            'txbtotalventa.Text = ""
-            'txbceduladeclientedeventas.Clear()
-
-            'btnvolverventa.PerformClick()
-            BTNBoleta.Visible = True
-
+            Else
+                MsgBox("La fecha de venta a registrar no puede ser mayor a la fecha actual", MsgBoxStyle.Exclamation, Title:="Fecha incorrecta")
+            End If
         Else
 
             MsgBox("Complete los campos necesario para finalizar la venta.(Cedula,comentario, total de venta)", MsgBoxStyle.Critical, Title:="No se puedo registrar la venta")
