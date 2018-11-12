@@ -3732,7 +3732,10 @@ Public Class Programa
         Dim id As String = txbceduladeclientedeventas.Text
 
         If txbceduladeclientedeventas.Text <> "" And rtbventa.Text <> "" And txbtotalventa.Text <> "" Then
-            If DTPVentas.Value <= Today Then
+            If DTPVentas.Value.Date > DateTime.Today Then
+                MsgBox("La fecha de venta a registrar no puede ser mayor a la fecha actual", MsgBoxStyle.Exclamation, Title:="Fecha incorrecta")
+            Else
+
                 If MessageBox.Show("¿Seguro desea guardar datos ?", "Confirmacion", MessageBoxButtons.YesNo, MessageBoxIcon.Question) = Windows.Forms.DialogResult.Yes Then
                     Try
                         'consulta
@@ -3789,8 +3792,7 @@ Public Class Programa
                     'btnvolverventa.PerformClick()
                     BTNBoleta.Visible = True
                 End If
-            Else
-                MsgBox("La fecha de venta a registrar no puede ser mayor a la fecha actual", MsgBoxStyle.Exclamation, Title:="Fecha incorrecta")
+
             End If
         Else
 
