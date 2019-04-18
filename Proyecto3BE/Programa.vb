@@ -8,7 +8,7 @@ Imports System.Math
 
 Public Class Programa
     Dim error1 As Integer
-    Dim data As String = ("Server=localhost;Database=vacas;User id=root;Password=;Port=3306;")
+    Dim data As String = ("Server=localhost;Database=vacas2;User id=root;Password=;Port=3306;")
     'Dim data As String = ("Server=www.db4free.net;Database=database_vacas;User id=zero22394;Password=zero22394;Port=3306;")
 
     Public Conexion As MySqlDataAdapter
