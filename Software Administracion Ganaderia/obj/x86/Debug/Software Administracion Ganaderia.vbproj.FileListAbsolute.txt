@@ -1,0 +1,11 @@
+C:\Users\Zyro\Documents\Visual Studio 2010\Projects\Software Administracion Ganaderia\Software Administracion Ganaderia\bin\Debug\Software Administracion Ganaderia.exe
+C:\Users\Zyro\Documents\Visual Studio 2010\Projects\Software Administracion Ganaderia\Software Administracion Ganaderia\bin\Debug\Software Administracion Ganaderia.pdb
+C:\Users\Zyro\Documents\Visual Studio 2010\Projects\Software Administracion Ganaderia\Software Administracion Ganaderia\bin\Debug\Software Administracion Ganaderia.xml
+C:\Users\Zyro\Documents\Visual Studio 2010\Projects\Software Administracion Ganaderia\Software Administracion Ganaderia\bin\Debug\MySql.Data.dll
+C:\Users\Zyro\Documents\Visual Studio 2010\Projects\Software Administracion Ganaderia\Software Administracion Ganaderia\obj\x86\Debug\Software Administracion Ganaderia.vbprojResolveAssemblyReference.cache
+C:\Users\Zyro\Documents\Visual Studio 2010\Projects\Software Administracion Ganaderia\Software Administracion Ganaderia\obj\x86\Debug\WindowsApplication1.mainForm.resources
+C:\Users\Zyro\Documents\Visual Studio 2010\Projects\Software Administracion Ganaderia\Software Administracion Ganaderia\obj\x86\Debug\WindowsApplication1.Resources.resources
+C:\Users\Zyro\Documents\Visual Studio 2010\Projects\Software Administracion Ganaderia\Software Administracion Ganaderia\obj\x86\Debug\Software Administracion Ganaderia.vbproj.GenerateResource.Cache
+C:\Users\Zyro\Documents\Visual Studio 2010\Projects\Software Administracion Ganaderia\Software Administracion Ganaderia\obj\x86\Debug\Software Administracion Ganaderia.exe
+C:\Users\Zyro\Documents\Visual Studio 2010\Projects\Software Administracion Ganaderia\Software Administracion Ganaderia\obj\x86\Debug\Software Administracion Ganaderia.xml
+C:\Users\Zyro\Documents\Visual Studio 2010\Projects\Software Administracion Ganaderia\Software Administracion Ganaderia\obj\x86\Debug\Software Administracion Ganaderia.pdb
