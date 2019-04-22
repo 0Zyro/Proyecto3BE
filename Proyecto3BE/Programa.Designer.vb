@@ -270,10 +270,10 @@ Partial Class Programa
         Me.txtnombreCliente = New System.Windows.Forms.TextBox()
         Me.Labeldireccioncliente = New System.Windows.Forms.Label()
         Me.Labeltelcliente = New System.Windows.Forms.Label()
+        Me.BOTONcancelarGuardarCliente = New System.Windows.Forms.Button()
+        Me.BOTONguardarAgregarCliente = New System.Windows.Forms.Button()
         Me.BOTONcancelarModificarCliente = New System.Windows.Forms.Button()
         Me.BOTONguardarModificarCliente = New System.Windows.Forms.Button()
-        Me.BOTONguardarAgregarCliente = New System.Windows.Forms.Button()
-        Me.BOTONcancelarGuardarCliente = New System.Windows.Forms.Button()
         Me.BOTONcargarDatosclientes = New System.Windows.Forms.Button()
         Me.txtBUSCARcedula = New System.Windows.Forms.TextBox()
         Me.Label6 = New System.Windows.Forms.Label()
@@ -370,7 +370,7 @@ Partial Class Programa
         Me.PanelUsuario.Location = New System.Drawing.Point(0, 0)
         Me.PanelUsuario.Margin = New System.Windows.Forms.Padding(4, 3, 4, 3)
         Me.PanelUsuario.Name = "PanelUsuario"
-        Me.PanelUsuario.Size = New System.Drawing.Size(110, 472)
+        Me.PanelUsuario.Size = New System.Drawing.Size(110, 471)
         Me.PanelUsuario.TabIndex = 0
         '
         'LBLHora
@@ -2452,7 +2452,7 @@ Partial Class Programa
         Me.LBLModitotalpagadocompra.Location = New System.Drawing.Point(617, 299)
         Me.LBLModitotalpagadocompra.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.LBLModitotalpagadocompra.Name = "LBLModitotalpagadocompra"
-        Me.LBLModitotalpagadocompra.Size = New System.Drawing.Size(81, 13)
+        Me.LBLModitotalpagadocompra.Size = New System.Drawing.Size(80, 13)
         Me.LBLModitotalpagadocompra.TabIndex = 4
         Me.LBLModitotalpagadocompra.Text = "Total Pagado"
         '
@@ -3282,6 +3282,40 @@ Partial Class Programa
         Me.Labeltelcliente.Text = "Teléfono"
         Me.Labeltelcliente.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
         '
+        'BOTONcancelarGuardarCliente
+        '
+        Me.BOTONcancelarGuardarCliente.FlatAppearance.BorderSize = 0
+        Me.BOTONcancelarGuardarCliente.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.BOTONcancelarGuardarCliente.Image = Global.WindowsApplication1.My.Resources.Resources._020_x_button
+        Me.BOTONcancelarGuardarCliente.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
+        Me.BOTONcancelarGuardarCliente.Location = New System.Drawing.Point(478, 72)
+        Me.BOTONcancelarGuardarCliente.Margin = New System.Windows.Forms.Padding(4, 3, 4, 3)
+        Me.BOTONcancelarGuardarCliente.Name = "BOTONcancelarGuardarCliente"
+        Me.BOTONcancelarGuardarCliente.Size = New System.Drawing.Size(98, 40)
+        Me.BOTONcancelarGuardarCliente.TabIndex = 32
+        Me.BOTONcancelarGuardarCliente.Text = "Cancelar"
+        Me.BOTONcancelarGuardarCliente.TextAlign = System.Drawing.ContentAlignment.MiddleRight
+        Me.ToolTip1.SetToolTip(Me.BOTONcancelarGuardarCliente, "Editar cliente")
+        Me.BOTONcancelarGuardarCliente.UseVisualStyleBackColor = True
+        Me.BOTONcancelarGuardarCliente.Visible = False
+        '
+        'BOTONguardarAgregarCliente
+        '
+        Me.BOTONguardarAgregarCliente.FlatAppearance.BorderSize = 0
+        Me.BOTONguardarAgregarCliente.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.BOTONguardarAgregarCliente.Image = Global.WindowsApplication1.My.Resources.Resources._019_confirm_1
+        Me.BOTONguardarAgregarCliente.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
+        Me.BOTONguardarAgregarCliente.Location = New System.Drawing.Point(362, 72)
+        Me.BOTONguardarAgregarCliente.Margin = New System.Windows.Forms.Padding(4, 3, 4, 3)
+        Me.BOTONguardarAgregarCliente.Name = "BOTONguardarAgregarCliente"
+        Me.BOTONguardarAgregarCliente.Size = New System.Drawing.Size(90, 40)
+        Me.BOTONguardarAgregarCliente.TabIndex = 30
+        Me.BOTONguardarAgregarCliente.Text = "Aceptar"
+        Me.BOTONguardarAgregarCliente.TextAlign = System.Drawing.ContentAlignment.MiddleRight
+        Me.ToolTip1.SetToolTip(Me.BOTONguardarAgregarCliente, "Añadir cliente")
+        Me.BOTONguardarAgregarCliente.UseVisualStyleBackColor = True
+        Me.BOTONguardarAgregarCliente.Visible = False
+        '
         'BOTONcancelarModificarCliente
         '
         Me.BOTONcancelarModificarCliente.FlatAppearance.BorderSize = 0
@@ -3315,40 +3349,6 @@ Partial Class Programa
         Me.ToolTip1.SetToolTip(Me.BOTONguardarModificarCliente, "Añadir cliente")
         Me.BOTONguardarModificarCliente.UseVisualStyleBackColor = True
         Me.BOTONguardarModificarCliente.Visible = False
-        '
-        'BOTONguardarAgregarCliente
-        '
-        Me.BOTONguardarAgregarCliente.FlatAppearance.BorderSize = 0
-        Me.BOTONguardarAgregarCliente.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.BOTONguardarAgregarCliente.Image = Global.WindowsApplication1.My.Resources.Resources._019_confirm_1
-        Me.BOTONguardarAgregarCliente.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.BOTONguardarAgregarCliente.Location = New System.Drawing.Point(362, 72)
-        Me.BOTONguardarAgregarCliente.Margin = New System.Windows.Forms.Padding(4, 3, 4, 3)
-        Me.BOTONguardarAgregarCliente.Name = "BOTONguardarAgregarCliente"
-        Me.BOTONguardarAgregarCliente.Size = New System.Drawing.Size(90, 40)
-        Me.BOTONguardarAgregarCliente.TabIndex = 30
-        Me.BOTONguardarAgregarCliente.Text = "Aceptar"
-        Me.BOTONguardarAgregarCliente.TextAlign = System.Drawing.ContentAlignment.MiddleRight
-        Me.ToolTip1.SetToolTip(Me.BOTONguardarAgregarCliente, "Añadir cliente")
-        Me.BOTONguardarAgregarCliente.UseVisualStyleBackColor = True
-        Me.BOTONguardarAgregarCliente.Visible = False
-        '
-        'BOTONcancelarGuardarCliente
-        '
-        Me.BOTONcancelarGuardarCliente.FlatAppearance.BorderSize = 0
-        Me.BOTONcancelarGuardarCliente.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.BOTONcancelarGuardarCliente.Image = Global.WindowsApplication1.My.Resources.Resources._020_x_button
-        Me.BOTONcancelarGuardarCliente.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.BOTONcancelarGuardarCliente.Location = New System.Drawing.Point(478, 72)
-        Me.BOTONcancelarGuardarCliente.Margin = New System.Windows.Forms.Padding(4, 3, 4, 3)
-        Me.BOTONcancelarGuardarCliente.Name = "BOTONcancelarGuardarCliente"
-        Me.BOTONcancelarGuardarCliente.Size = New System.Drawing.Size(98, 40)
-        Me.BOTONcancelarGuardarCliente.TabIndex = 32
-        Me.BOTONcancelarGuardarCliente.Text = "Cancelar"
-        Me.BOTONcancelarGuardarCliente.TextAlign = System.Drawing.ContentAlignment.MiddleRight
-        Me.ToolTip1.SetToolTip(Me.BOTONcancelarGuardarCliente, "Editar cliente")
-        Me.BOTONcancelarGuardarCliente.UseVisualStyleBackColor = True
-        Me.BOTONcancelarGuardarCliente.Visible = False
         '
         'BOTONcargarDatosclientes
         '
@@ -3782,7 +3782,7 @@ Partial Class Programa
         Me.AutoScaleDimensions = New System.Drawing.SizeF(7.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.SystemColors.Control
-        Me.ClientSize = New System.Drawing.Size(912, 472)
+        Me.ClientSize = New System.Drawing.Size(912, 471)
         Me.Controls.Add(Me.TabbedPane)
         Me.Controls.Add(Me.PanelUsuario)
         Me.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
