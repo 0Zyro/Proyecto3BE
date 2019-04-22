@@ -1,0 +1,11 @@
+C:\Users\Zyro\Documents\GitHub\Proyecto3BE\Software Administracion Ganadera\Software Administracion Ganadera\bin\Debug\Software Administracion Ganadera.exe
+C:\Users\Zyro\Documents\GitHub\Proyecto3BE\Software Administracion Ganadera\Software Administracion Ganadera\bin\Debug\Software Administracion Ganadera.pdb
+C:\Users\Zyro\Documents\GitHub\Proyecto3BE\Software Administracion Ganadera\Software Administracion Ganadera\bin\Debug\Software Administracion Ganadera.xml
+C:\Users\Zyro\Documents\GitHub\Proyecto3BE\Software Administracion Ganadera\Software Administracion Ganadera\bin\Debug\MySql.Data.dll
+C:\Users\Zyro\Documents\GitHub\Proyecto3BE\Software Administracion Ganadera\Software Administracion Ganadera\obj\x86\Debug\Software Administracion Ganadera.vbprojResolveAssemblyReference.cache
+C:\Users\Zyro\Documents\GitHub\Proyecto3BE\Software Administracion Ganadera\Software Administracion Ganadera\obj\x86\Debug\Software_Administracion_Ganadera.mainForm.resources
+C:\Users\Zyro\Documents\GitHub\Proyecto3BE\Software Administracion Ganadera\Software Administracion Ganadera\obj\x86\Debug\Software_Administracion_Ganadera.Resources.resources
+C:\Users\Zyro\Documents\GitHub\Proyecto3BE\Software Administracion Ganadera\Software Administracion Ganadera\obj\x86\Debug\Software Administracion Ganadera.vbproj.GenerateResource.Cache
+C:\Users\Zyro\Documents\GitHub\Proyecto3BE\Software Administracion Ganadera\Software Administracion Ganadera\obj\x86\Debug\Software Administracion Ganadera.exe
+C:\Users\Zyro\Documents\GitHub\Proyecto3BE\Software Administracion Ganadera\Software Administracion Ganadera\obj\x86\Debug\Software Administracion Ganadera.xml
+C:\Users\Zyro\Documents\GitHub\Proyecto3BE\Software Administracion Ganadera\Software Administracion Ganadera\obj\x86\Debug\Software Administracion Ganadera.pdb
