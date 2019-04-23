@@ -22,6 +22,9 @@ Partial Class mainForm
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
+        Dim ChartArea1 As System.Windows.Forms.DataVisualization.Charting.ChartArea = New System.Windows.Forms.DataVisualization.Charting.ChartArea()
+        Dim Legend1 As System.Windows.Forms.DataVisualization.Charting.Legend = New System.Windows.Forms.DataVisualization.Charting.Legend()
+        Dim Series1 As System.Windows.Forms.DataVisualization.Charting.Series = New System.Windows.Forms.DataVisualization.Charting.Series()
         Me.BTNBusqueda = New System.Windows.Forms.Button()
         Me.CBXBusqueda = New System.Windows.Forms.ComboBox()
         Me.TXBBusqueda = New System.Windows.Forms.TextBox()
@@ -33,9 +36,13 @@ Partial Class mainForm
         Me.Estado = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.Compra = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.Venta = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.BTNAgregarGanado = New System.Windows.Forms.Button()
-        Me.BTNModificarGanado = New System.Windows.Forms.Button()
+        Me.Chart1 = New System.Windows.Forms.DataVisualization.Charting.Chart()
+        Me.BTNLimpiar = New System.Windows.Forms.Button()
+        Me.BTNVolver = New System.Windows.Forms.Button()
+        Me.CBXFiltros = New System.Windows.Forms.ComboBox()
+        Me.LBLGanadoActivo = New System.Windows.Forms.Label()
         CType(Me.DGVGanado, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.Chart1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'BTNBusqueda
@@ -51,16 +58,16 @@ Partial Class mainForm
         '
         Me.CBXBusqueda.FormattingEnabled = True
         Me.CBXBusqueda.Items.AddRange(New Object() {"Sexo", "Raza", "Estado"})
-        Me.CBXBusqueda.Location = New System.Drawing.Point(283, 12)
+        Me.CBXBusqueda.Location = New System.Drawing.Point(306, 11)
         Me.CBXBusqueda.Name = "CBXBusqueda"
         Me.CBXBusqueda.Size = New System.Drawing.Size(88, 21)
         Me.CBXBusqueda.TabIndex = 1
         '
         'TXBBusqueda
         '
-        Me.TXBBusqueda.Location = New System.Drawing.Point(377, 12)
+        Me.TXBBusqueda.Location = New System.Drawing.Point(400, 12)
         Me.TXBBusqueda.Name = "TXBBusqueda"
-        Me.TXBBusqueda.Size = New System.Drawing.Size(145, 20)
+        Me.TXBBusqueda.Size = New System.Drawing.Size(122, 20)
         Me.TXBBusqueda.TabIndex = 2
         '
         'DGVGanado
@@ -69,11 +76,11 @@ Partial Class mainForm
         Me.DGVGanado.AllowUserToDeleteRows = False
         Me.DGVGanado.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         Me.DGVGanado.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.Id, Me.Sexo, Me.Raza, Me.Nacimiento, Me.Estado, Me.Compra, Me.Venta})
-        Me.DGVGanado.Location = New System.Drawing.Point(283, 38)
+        Me.DGVGanado.Location = New System.Drawing.Point(306, 38)
         Me.DGVGanado.Name = "DGVGanado"
         Me.DGVGanado.ReadOnly = True
         Me.DGVGanado.RowHeadersVisible = False
-        Me.DGVGanado.Size = New System.Drawing.Size(294, 325)
+        Me.DGVGanado.Size = New System.Drawing.Size(271, 276)
         Me.DGVGanado.TabIndex = 3
         '
         'Id
@@ -118,31 +125,70 @@ Partial Class mainForm
         Me.Venta.Name = "Venta"
         Me.Venta.ReadOnly = True
         '
-        'BTNAgregarGanado
+        'Chart1
         '
-        Me.BTNAgregarGanado.Location = New System.Drawing.Point(202, 9)
-        Me.BTNAgregarGanado.Name = "BTNAgregarGanado"
-        Me.BTNAgregarGanado.Size = New System.Drawing.Size(75, 58)
-        Me.BTNAgregarGanado.TabIndex = 4
-        Me.BTNAgregarGanado.Text = "Agregar"
-        Me.BTNAgregarGanado.UseVisualStyleBackColor = True
+        ChartArea1.Name = "ChartArea1"
+        Me.Chart1.ChartAreas.Add(ChartArea1)
+        Legend1.Name = "Legend1"
+        Me.Chart1.Legends.Add(Legend1)
+        Me.Chart1.Location = New System.Drawing.Point(12, 39)
+        Me.Chart1.Name = "Chart1"
+        Series1.ChartArea = "ChartArea1"
+        Series1.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Pie
+        Series1.Legend = "Legend1"
+        Series1.Name = "serie"
+        Me.Chart1.Series.Add(Series1)
+        Me.Chart1.Size = New System.Drawing.Size(288, 275)
+        Me.Chart1.TabIndex = 4
+        Me.Chart1.Text = "Chart1"
         '
-        'BTNModificarGanado
+        'BTNLimpiar
         '
-        Me.BTNModificarGanado.Location = New System.Drawing.Point(202, 73)
-        Me.BTNModificarGanado.Name = "BTNModificarGanado"
-        Me.BTNModificarGanado.Size = New System.Drawing.Size(75, 58)
-        Me.BTNModificarGanado.TabIndex = 5
-        Me.BTNModificarGanado.Text = "Modificar"
-        Me.BTNModificarGanado.UseVisualStyleBackColor = True
+        Me.BTNLimpiar.Location = New System.Drawing.Point(13, 340)
+        Me.BTNLimpiar.Name = "BTNLimpiar"
+        Me.BTNLimpiar.Size = New System.Drawing.Size(57, 23)
+        Me.BTNLimpiar.TabIndex = 5
+        Me.BTNLimpiar.Text = "Limpiar"
+        Me.BTNLimpiar.UseVisualStyleBackColor = True
+        '
+        'BTNVolver
+        '
+        Me.BTNVolver.Location = New System.Drawing.Point(76, 340)
+        Me.BTNVolver.Name = "BTNVolver"
+        Me.BTNVolver.Size = New System.Drawing.Size(55, 23)
+        Me.BTNVolver.TabIndex = 6
+        Me.BTNVolver.Text = "Volver"
+        Me.BTNVolver.UseVisualStyleBackColor = True
+        '
+        'CBXFiltros
+        '
+        Me.CBXFiltros.DisplayMember = "0"
+        Me.CBXFiltros.Items.AddRange(New Object() {"Estado", "Raza", "Sexo"})
+        Me.CBXFiltros.SelectedIndex = 1
+        Me.CBXFiltros.Location = New System.Drawing.Point(138, 341)
+        Me.CBXFiltros.Name = "CBXFiltros"
+        Me.CBXFiltros.Size = New System.Drawing.Size(121, 21)
+        Me.CBXFiltros.TabIndex = 7
+        '
+        'LBLGanadoActivo
+        '
+        Me.LBLGanadoActivo.AutoSize = True
+        Me.LBLGanadoActivo.Location = New System.Drawing.Point(12, 9)
+        Me.LBLGanadoActivo.Name = "LBLGanadoActivo"
+        Me.LBLGanadoActivo.Size = New System.Drawing.Size(98, 13)
+        Me.LBLGanadoActivo.TabIndex = 8
+        Me.LBLGanadoActivo.Text = "Ganado Activo: XX"
         '
         'mainForm
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(589, 375)
-        Me.Controls.Add(Me.BTNModificarGanado)
-        Me.Controls.Add(Me.BTNAgregarGanado)
+        Me.ClientSize = New System.Drawing.Size(589, 397)
+        Me.Controls.Add(Me.LBLGanadoActivo)
+        Me.Controls.Add(Me.CBXFiltros)
+        Me.Controls.Add(Me.BTNVolver)
+        Me.Controls.Add(Me.BTNLimpiar)
+        Me.Controls.Add(Me.Chart1)
         Me.Controls.Add(Me.DGVGanado)
         Me.Controls.Add(Me.TXBBusqueda)
         Me.Controls.Add(Me.CBXBusqueda)
@@ -150,6 +196,7 @@ Partial Class mainForm
         Me.Name = "mainForm"
         Me.Text = "Form1"
         CType(Me.DGVGanado, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.Chart1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -165,7 +212,10 @@ Partial Class mainForm
     Friend WithEvents Estado As System.Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents Compra As System.Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents Venta As System.Windows.Forms.DataGridViewTextBoxColumn
-    Friend WithEvents BTNAgregarGanado As System.Windows.Forms.Button
-    Friend WithEvents BTNModificarGanado As System.Windows.Forms.Button
+    Friend WithEvents Chart1 As System.Windows.Forms.DataVisualization.Charting.Chart
+    Friend WithEvents BTNLimpiar As System.Windows.Forms.Button
+    Friend WithEvents BTNVolver As System.Windows.Forms.Button
+    Friend WithEvents CBXFiltros As System.Windows.Forms.ComboBox
+    Friend WithEvents LBLGanadoActivo As System.Windows.Forms.Label
 
 End Class

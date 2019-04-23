@@ -17,7 +17,7 @@ Public Class mainForm
     'Metodo de reportaje de errores
     Private Function report(ByRef err As Exception)
 
-        MsgBox(err.Message)
+        MsgBox(err.ToString)
 
         Return Nothing
     End Function
@@ -84,12 +84,70 @@ Public Class mainForm
 
     End Function
 
+    Private Function actualizarGrafico()
+
+        Chart1.Series(0).Points.Clear()
+
+        Select Case CBXFiltros.SelectedItem
+            Case "Raza"
+                command.CommandText = "select raza.nombre, count(raza.nombre) as cantidad from raza, vaca where vaca.raza=raza.id group by raza.nombre"
+
+                Try
+                    connection.Open()
+                    reader = command.ExecuteReader()
+
+                    While reader.Read()
+                        Chart1.Series(0).Points.Add(reader.GetInt32(1))
+                        Chart1.Series(0).Points.Last.Label = reader.GetString(0)
+                    End While
+
+                    connection.Close()
+                Catch ex As Exception
+                    If connection.State = ConnectionState.Open Then
+                        connection.Close()
+                    End If
+                    report(ex)
+                End Try
+
+            Case "Estado"
+                command.CommandText = "select estado, count(estado) as cantidad from vaca group by estado"
+
+                Try
+                    connection.Open()
+                    reader = command.ExecuteReader()
+
+                    While reader.Read()
+                        Chart1.Series(0).Points.Add(reader.GetInt32(1))
+                        Chart1.Series(0).Points.Last.Label = reader.GetString(0)
+                    End While
+                    connection.Close()
+                Catch ex As Exception
+                    If connection.State = ConnectionState.Open Then
+                        connection.Close()
+                    End If
+                    report(ex)
+                End Try
+            Case "Sexo"
+
+        End Select
+
+        Return Nothing
+    End Function
+
     Private Sub mainForm_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
 
         command.CommandType = CommandType.Text
         command.Connection = connection
 
         actualizarRazas()
+
+        'actualizarGrafico()
+
+    End Sub
+
+    Private Sub CBXFiltros_SelectedIndexChanged(ByVal sender As Object, ByVal e As System.EventArgs) Handles CBXFiltros.SelectedIndexChanged
+
+        actualizarGrafico()
 
     End Sub
 End Class
