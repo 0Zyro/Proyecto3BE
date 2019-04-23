@@ -40,7 +40,7 @@ Partial Class mainForm
         '
         'BTNBusqueda
         '
-        Me.BTNBusqueda.Location = New System.Drawing.Point(257, 9)
+        Me.BTNBusqueda.Location = New System.Drawing.Point(528, 9)
         Me.BTNBusqueda.Name = "BTNBusqueda"
         Me.BTNBusqueda.Size = New System.Drawing.Size(49, 23)
         Me.BTNBusqueda.TabIndex = 0
@@ -51,14 +51,14 @@ Partial Class mainForm
         '
         Me.CBXBusqueda.FormattingEnabled = True
         Me.CBXBusqueda.Items.AddRange(New Object() {"Sexo", "Raza", "Estado"})
-        Me.CBXBusqueda.Location = New System.Drawing.Point(12, 12)
+        Me.CBXBusqueda.Location = New System.Drawing.Point(283, 12)
         Me.CBXBusqueda.Name = "CBXBusqueda"
         Me.CBXBusqueda.Size = New System.Drawing.Size(88, 21)
         Me.CBXBusqueda.TabIndex = 1
         '
         'TXBBusqueda
         '
-        Me.TXBBusqueda.Location = New System.Drawing.Point(106, 12)
+        Me.TXBBusqueda.Location = New System.Drawing.Point(377, 12)
         Me.TXBBusqueda.Name = "TXBBusqueda"
         Me.TXBBusqueda.Size = New System.Drawing.Size(145, 20)
         Me.TXBBusqueda.TabIndex = 2
@@ -69,7 +69,7 @@ Partial Class mainForm
         Me.DGVGanado.AllowUserToDeleteRows = False
         Me.DGVGanado.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         Me.DGVGanado.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.Id, Me.Sexo, Me.Raza, Me.Nacimiento, Me.Estado, Me.Compra, Me.Venta})
-        Me.DGVGanado.Location = New System.Drawing.Point(12, 38)
+        Me.DGVGanado.Location = New System.Drawing.Point(283, 38)
         Me.DGVGanado.Name = "DGVGanado"
         Me.DGVGanado.ReadOnly = True
         Me.DGVGanado.RowHeadersVisible = False
@@ -120,7 +120,7 @@ Partial Class mainForm
         '
         'BTNAgregarGanado
         '
-        Me.BTNAgregarGanado.Location = New System.Drawing.Point(312, 38)
+        Me.BTNAgregarGanado.Location = New System.Drawing.Point(202, 9)
         Me.BTNAgregarGanado.Name = "BTNAgregarGanado"
         Me.BTNAgregarGanado.Size = New System.Drawing.Size(75, 58)
         Me.BTNAgregarGanado.TabIndex = 4
@@ -129,7 +129,7 @@ Partial Class mainForm
         '
         'BTNModificarGanado
         '
-        Me.BTNModificarGanado.Location = New System.Drawing.Point(312, 102)
+        Me.BTNModificarGanado.Location = New System.Drawing.Point(202, 73)
         Me.BTNModificarGanado.Name = "BTNModificarGanado"
         Me.BTNModificarGanado.Size = New System.Drawing.Size(75, 58)
         Me.BTNModificarGanado.TabIndex = 5
