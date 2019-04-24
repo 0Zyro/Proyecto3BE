@@ -22,9 +22,9 @@ Partial Class mainForm
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
-        Dim ChartArea1 As System.Windows.Forms.DataVisualization.Charting.ChartArea = New System.Windows.Forms.DataVisualization.Charting.ChartArea()
-        Dim Legend1 As System.Windows.Forms.DataVisualization.Charting.Legend = New System.Windows.Forms.DataVisualization.Charting.Legend()
-        Dim Series1 As System.Windows.Forms.DataVisualization.Charting.Series = New System.Windows.Forms.DataVisualization.Charting.Series()
+        Dim ChartArea9 As System.Windows.Forms.DataVisualization.Charting.ChartArea = New System.Windows.Forms.DataVisualization.Charting.ChartArea()
+        Dim Legend9 As System.Windows.Forms.DataVisualization.Charting.Legend = New System.Windows.Forms.DataVisualization.Charting.Legend()
+        Dim Series9 As System.Windows.Forms.DataVisualization.Charting.Series = New System.Windows.Forms.DataVisualization.Charting.Series()
         Me.BTNBusqueda = New System.Windows.Forms.Button()
         Me.CBXBusqueda = New System.Windows.Forms.ComboBox()
         Me.TXBBusqueda = New System.Windows.Forms.TextBox()
@@ -57,7 +57,7 @@ Partial Class mainForm
         'CBXBusqueda
         '
         Me.CBXBusqueda.FormattingEnabled = True
-        Me.CBXBusqueda.Items.AddRange(New Object() {"Sexo", "Raza", "Estado"})
+        Me.CBXBusqueda.Items.AddRange(New Object() {"Raza", "Estado", "Sexo"})
         Me.CBXBusqueda.Location = New System.Drawing.Point(306, 11)
         Me.CBXBusqueda.Name = "CBXBusqueda"
         Me.CBXBusqueda.Size = New System.Drawing.Size(88, 21)
@@ -74,6 +74,9 @@ Partial Class mainForm
         '
         Me.DGVGanado.AllowUserToAddRows = False
         Me.DGVGanado.AllowUserToDeleteRows = False
+        Me.DGVGanado.AllowUserToResizeColumns = False
+        Me.DGVGanado.AllowUserToResizeRows = False
+        Me.DGVGanado.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.DisplayedCells
         Me.DGVGanado.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         Me.DGVGanado.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.Id, Me.Sexo, Me.Raza, Me.Nacimiento, Me.Estado, Me.Compra, Me.Venta})
         Me.DGVGanado.Location = New System.Drawing.Point(306, 38)
@@ -88,56 +91,63 @@ Partial Class mainForm
         Me.Id.HeaderText = "Id"
         Me.Id.Name = "Id"
         Me.Id.ReadOnly = True
+        Me.Id.Width = 41
         '
         'Sexo
         '
         Me.Sexo.HeaderText = "Sexo"
         Me.Sexo.Name = "Sexo"
         Me.Sexo.ReadOnly = True
+        Me.Sexo.Width = 56
         '
         'Raza
         '
         Me.Raza.HeaderText = "Raza"
         Me.Raza.Name = "Raza"
         Me.Raza.ReadOnly = True
+        Me.Raza.Width = 57
         '
         'Nacimiento
         '
         Me.Nacimiento.HeaderText = "Nacimiento"
         Me.Nacimiento.Name = "Nacimiento"
         Me.Nacimiento.ReadOnly = True
+        Me.Nacimiento.Width = 85
         '
         'Estado
         '
         Me.Estado.HeaderText = "Estado"
         Me.Estado.Name = "Estado"
         Me.Estado.ReadOnly = True
+        Me.Estado.Width = 65
         '
         'Compra
         '
         Me.Compra.HeaderText = "Compra"
         Me.Compra.Name = "Compra"
         Me.Compra.ReadOnly = True
+        Me.Compra.Width = 68
         '
         'Venta
         '
         Me.Venta.HeaderText = "Venta"
         Me.Venta.Name = "Venta"
         Me.Venta.ReadOnly = True
+        Me.Venta.Width = 60
         '
         'Chart1
         '
-        ChartArea1.Name = "ChartArea1"
-        Me.Chart1.ChartAreas.Add(ChartArea1)
-        Legend1.Name = "Legend1"
-        Me.Chart1.Legends.Add(Legend1)
+        ChartArea9.Name = "ChartArea1"
+        Me.Chart1.ChartAreas.Add(ChartArea9)
+        Legend9.Name = "Legend1"
+        Me.Chart1.Legends.Add(Legend9)
         Me.Chart1.Location = New System.Drawing.Point(12, 39)
         Me.Chart1.Name = "Chart1"
-        Series1.ChartArea = "ChartArea1"
-        Series1.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Pie
-        Series1.Legend = "Legend1"
-        Series1.Name = "serie"
-        Me.Chart1.Series.Add(Series1)
+        Series9.ChartArea = "ChartArea1"
+        Series9.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Pie
+        Series9.Legend = "Legend1"
+        Series9.Name = "serie"
+        Me.Chart1.Series.Add(Series9)
         Me.Chart1.Size = New System.Drawing.Size(288, 275)
         Me.Chart1.TabIndex = 4
         Me.Chart1.Text = "Chart1"
@@ -163,8 +173,7 @@ Partial Class mainForm
         'CBXFiltros
         '
         Me.CBXFiltros.DisplayMember = "0"
-        Me.CBXFiltros.Items.AddRange(New Object() {"Estado", "Raza", "Sexo"})
-        Me.CBXFiltros.SelectedIndex = 1
+        Me.CBXFiltros.Items.AddRange(New Object() {"Raza", "Estado", "Sexo"})
         Me.CBXFiltros.Location = New System.Drawing.Point(138, 341)
         Me.CBXFiltros.Name = "CBXFiltros"
         Me.CBXFiltros.Size = New System.Drawing.Size(121, 21)
