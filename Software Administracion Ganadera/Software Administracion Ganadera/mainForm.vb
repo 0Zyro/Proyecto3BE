@@ -27,16 +27,11 @@ Public Class mainForm
 
     Private Sub BTNBusqueda_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles BTNBusqueda.Click
 
-        Select Case CBXBusqueda.SelectedItem
-            Case "Raza"
-                command.CommandText = ("select * from vaca where raza in (select id from raza where nombre='" + TXBBusqueda.Text + "')")
-            Case "Estado"
-                command.CommandText = ("select * from vaca where estado in (select id from estado where nombre='" + TXBBusqueda.Text + "')")
-            Case "Sexo"
-                command.CommandText = ("select * from vaca where sexo='" + TXBBusqueda.Text + "'")
-        End Select
+        command.CommandText = ("select * from vaca where " + CBXBusqueda.SelectedItem + " in (select id from " + CBXBusqueda.SelectedItem + " where nombre='" + TXBBusqueda.Text + "')")
 
-        'command.CommandText = ("select * from vaca where " + CBXBusqueda.SelectedItem + "='" + TXBBusqueda.Text + "'")
+        If CBXBusqueda.SelectedItem = "Sexo" Then
+            command.CommandText = ("select * from vaca where sexo='" + TXBBusqueda.Text + "'")
+        End If
 
         DGVGanado.Rows.Clear()
 
@@ -227,6 +222,26 @@ Public Class mainForm
 
         Return Nothing
     End Function
+
+    Private Sub Chart1_MouseDoubleClick(ByVal sender As Object, ByVal e As System.Windows.Forms.MouseEventArgs) Handles Chart1.MouseDoubleClick
+
+        Dim hittest As HitTestResult
+
+        Dim point As DataPoint
+
+        point = Nothing
+
+        hittest = Chart1.HitTest(e.X, e.Y)
+
+        If (hittest.ChartElementType = ChartElementType.DataPoint) Then
+
+            point = hittest.Object
+
+            MsgBox("doble click")
+
+        End If
+
+    End Sub
 
     'Cuando se hace click en algun valor de la grafica, se muestran en el datagrid dichos valores en detalle
     Private Sub Chart1_MouseDown(ByVal sender As Object, ByVal e As System.Windows.Forms.MouseEventArgs) Handles Chart1.MouseDown
