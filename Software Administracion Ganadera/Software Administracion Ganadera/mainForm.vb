@@ -1,7 +1,6 @@
 ﻿Imports MySql.Data.MySqlClient
 Imports System.Windows.Forms.DataVisualization.Charting
 
-
 Public Class mainForm
 
     'Objetos necesarios para realizar la conexion con la base de datos
