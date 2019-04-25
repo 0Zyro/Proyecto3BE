@@ -31,9 +31,9 @@ Public Class mainForm
             Case "Raza"
                 command.CommandText = ("select * from vaca where raza in (select id from raza where nombre='" + TXBBusqueda.Text + "')")
             Case "Estado"
-                'command.CommandText = ()
+                command.CommandText = ("select * from vaca where estado in (select id from estado where nombre='" + TXBBusqueda.Text + "')")
             Case "Sexo"
-                'command.CommandText = ()
+                command.CommandText = ("select * from vaca where sexo='" + TXBBusqueda.Text + "'")
         End Select
 
         'command.CommandText = ("select * from vaca where " + CBXBusqueda.SelectedItem + "='" + TXBBusqueda.Text + "'")
@@ -69,6 +69,7 @@ Public Class mainForm
 
     End Sub
 
+    'Estos dos metodos cargan una lista con todos los posible estados y razas de una vaca
     Private Function actualizarEstados()
         command.CommandText = "select * from estado"
 
@@ -120,6 +121,7 @@ Public Class mainForm
 
     End Function
 
+    'Esto descarga informacion de la base de datos segun lo que se haya seleccionado en el combobox 'CBXFiltros'
     Private Function actualizarGrafico()
 
         Chart1.Series(0).Points.Clear()
@@ -186,17 +188,19 @@ Public Class mainForm
         Return Nothing
     End Function
 
+    'Esto establece los valores iniciales de los objetos tales como el objeto seleccionado de los combobox
     Private Function valoresDefault()
+
+        command.CommandType = CommandType.Text
+        command.Connection = connection
 
         CBXFiltros.SelectedIndex = 1
 
         Return Nothing
     End Function
 
+    'Inicio del programa
     Private Sub mainForm_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
-
-        command.CommandType = CommandType.Text
-        command.Connection = connection
 
         valoresDefault()
 
@@ -205,12 +209,14 @@ Public Class mainForm
 
     End Sub
 
+    'Cada que se cambia el objeto seleccionado el combobox 'CBXFiltros', se actualiza el grafico
     Private Sub CBXFiltros_SelectedIndexChanged(ByVal sender As Object, ByVal e As System.EventArgs) Handles CBXFiltros.SelectedIndexChanged
 
         actualizarGrafico()
 
     End Sub
 
+    'Esto establece los valores de busqueda y realiza dicha busqueda
     Private Function actualizarGrilla(ByVal condicion As String)
 
         CBXBusqueda.SelectedIndex = CBXFiltros.SelectedIndex
@@ -222,6 +228,7 @@ Public Class mainForm
         Return Nothing
     End Function
 
+    'Cuando se hace click en algun valor de la grafica, se muestran en el datagrid dichos valores en detalle
     Private Sub Chart1_MouseDown(ByVal sender As Object, ByVal e As System.Windows.Forms.MouseEventArgs) Handles Chart1.MouseDown
 
         Dim hittest As HitTestResult
@@ -242,6 +249,8 @@ Public Class mainForm
 
     End Sub
 
+    'Cuando se mueve el mouse sobre el grafico, se resaltan los valores sobre los que se pasa, es una ayuda para
+    'poder apreciar de manera mas grafica lo que se esta haciendo
     Private Sub Chart1_MouseMove(ByVal sender As Object, ByVal e As System.Windows.Forms.MouseEventArgs) Handles Chart1.MouseMove
 
         Dim hittest As HitTestResult
