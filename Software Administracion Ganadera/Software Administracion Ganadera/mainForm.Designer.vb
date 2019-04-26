@@ -22,9 +22,9 @@ Partial Class mainForm
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
-        Dim ChartArea9 As System.Windows.Forms.DataVisualization.Charting.ChartArea = New System.Windows.Forms.DataVisualization.Charting.ChartArea()
-        Dim Legend9 As System.Windows.Forms.DataVisualization.Charting.Legend = New System.Windows.Forms.DataVisualization.Charting.Legend()
-        Dim Series9 As System.Windows.Forms.DataVisualization.Charting.Series = New System.Windows.Forms.DataVisualization.Charting.Series()
+        Dim ChartArea1 As System.Windows.Forms.DataVisualization.Charting.ChartArea = New System.Windows.Forms.DataVisualization.Charting.ChartArea()
+        Dim Legend1 As System.Windows.Forms.DataVisualization.Charting.Legend = New System.Windows.Forms.DataVisualization.Charting.Legend()
+        Dim Series1 As System.Windows.Forms.DataVisualization.Charting.Series = New System.Windows.Forms.DataVisualization.Charting.Series()
         Me.BTNBusqueda = New System.Windows.Forms.Button()
         Me.CBXBusqueda = New System.Windows.Forms.ComboBox()
         Me.TXBBusqueda = New System.Windows.Forms.TextBox()
@@ -41,6 +41,7 @@ Partial Class mainForm
         Me.BTNVolver = New System.Windows.Forms.Button()
         Me.CBXFiltros = New System.Windows.Forms.ComboBox()
         Me.LBLGanadoActivo = New System.Windows.Forms.Label()
+        Me.LBLFiltros = New System.Windows.Forms.Label()
         CType(Me.DGVGanado, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.Chart1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
@@ -137,17 +138,17 @@ Partial Class mainForm
         '
         'Chart1
         '
-        ChartArea9.Name = "ChartArea1"
-        Me.Chart1.ChartAreas.Add(ChartArea9)
-        Legend9.Name = "Legend1"
-        Me.Chart1.Legends.Add(Legend9)
+        ChartArea1.Name = "ChartArea1"
+        Me.Chart1.ChartAreas.Add(ChartArea1)
+        Legend1.Name = "Legend1"
+        Me.Chart1.Legends.Add(Legend1)
         Me.Chart1.Location = New System.Drawing.Point(12, 39)
         Me.Chart1.Name = "Chart1"
-        Series9.ChartArea = "ChartArea1"
-        Series9.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Pie
-        Series9.Legend = "Legend1"
-        Series9.Name = "serie"
-        Me.Chart1.Series.Add(Series9)
+        Series1.ChartArea = "ChartArea1"
+        Series1.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Pie
+        Series1.Legend = "Legend1"
+        Series1.Name = "serie"
+        Me.Chart1.Series.Add(Series1)
         Me.Chart1.Size = New System.Drawing.Size(288, 275)
         Me.Chart1.TabIndex = 4
         Me.Chart1.Text = "Chart1"
@@ -188,11 +189,21 @@ Partial Class mainForm
         Me.LBLGanadoActivo.TabIndex = 8
         Me.LBLGanadoActivo.Text = "Ganado Activo: XX"
         '
+        'LBLFiltros
+        '
+        Me.LBLFiltros.AutoSize = True
+        Me.LBLFiltros.Location = New System.Drawing.Point(15, 370)
+        Me.LBLFiltros.Name = "LBLFiltros"
+        Me.LBLFiltros.Size = New System.Drawing.Size(112, 13)
+        Me.LBLFiltros.TabIndex = 9
+        Me.LBLFiltros.Text = "filtros filtros filtros filtros"
+        '
         'mainForm
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(589, 397)
+        Me.Controls.Add(Me.LBLFiltros)
         Me.Controls.Add(Me.LBLGanadoActivo)
         Me.Controls.Add(Me.CBXFiltros)
         Me.Controls.Add(Me.BTNVolver)
@@ -226,5 +237,6 @@ Partial Class mainForm
     Friend WithEvents BTNVolver As System.Windows.Forms.Button
     Friend WithEvents CBXFiltros As System.Windows.Forms.ComboBox
     Friend WithEvents LBLGanadoActivo As System.Windows.Forms.Label
+    Friend WithEvents LBLFiltros As System.Windows.Forms.Label
 
 End Class

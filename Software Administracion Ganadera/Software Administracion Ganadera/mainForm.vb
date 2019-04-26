@@ -11,10 +11,8 @@ Public Class mainForm
     Dim command As New MySqlCommand
     Dim reader As MySqlDataReader
 
-    'Array asociativo donde se almacenan todas las razas, estados y sexos, y sus correspondientes id
-    Dim razas As New Dictionary(Of Integer, String)
-    Dim estados As New Dictionary(Of Integer, String)
-    Dim sexos As New Dictionary(Of Integer, String) From {{1, "macho"}, {2, "hembra"}}
+    'String en el que se guardaran los filtros de busqueda con los que se este trabajando
+    Dim filtros As String = ""
 
     'Metodo de reportaje de errores
     Private Function report(ByVal origen As String, ByRef err As Exception)
@@ -24,12 +22,14 @@ Public Class mainForm
         Return Nothing
     End Function
 
+    'Se consulta a la base de datos informacion segun los paramentros establecidos en el combobox de busqueda y el
+    'textbox de busqueda, tambien se tienen en cuenta los filtros asignados como permanentes
     Private Sub BTNBusqueda_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles BTNBusqueda.Click
 
-        command.CommandText = ("select * from vaca where " + CBXBusqueda.SelectedItem + " in (select id from " + CBXBusqueda.SelectedItem + " where nombre='" + TXBBusqueda.Text + "')")
+        command.CommandText = ("select vaca.id, vaca.sexo, raza.nombre as raza, estado.nombre as estado, vaca.nacimiento from vaca, raza, estado where vaca.raza=raza.id and vaca.estado=estado.id and " + CBXBusqueda.SelectedItem + " in (select id from " + CBXBusqueda.SelectedItem + " where nombre='" + TXBBusqueda.Text + "') " + filtros)
 
         If CBXBusqueda.SelectedItem = "Sexo" Then
-            command.CommandText = ("select * from vaca where sexo='" + TXBBusqueda.Text + "'")
+            command.CommandText = ("select * from vaca where sexo='" + TXBBusqueda.Text + "' " + filtros)
         End If
 
         DGVGanado.Rows.Clear()
@@ -44,11 +44,9 @@ Public Class mainForm
 
                 DGVGanado.Rows(DGVGanado.Rows.GetLastRow(False)).Cells(0).Value = reader.GetInt32(0)
                 DGVGanado.Rows(DGVGanado.Rows.GetLastRow(False)).Cells(1).Value = reader.GetString(1)
-                DGVGanado.Rows(DGVGanado.Rows.GetLastRow(False)).Cells(2).Value = razas.Item(reader.GetInt32(2))
-                DGVGanado.Rows(DGVGanado.Rows.GetLastRow(False)).Cells(3).Value = reader.GetMySqlDateTime(3)
-                DGVGanado.Rows(DGVGanado.Rows.GetLastRow(False)).Cells(4).Value = reader.GetValue(4)
-                DGVGanado.Rows(DGVGanado.Rows.GetLastRow(False)).Cells(5).Value = reader.GetValue(5)
-                DGVGanado.Rows(DGVGanado.Rows.GetLastRow(False)).Cells(6).Value = estados.Item(reader.GetInt32(6))
+                DGVGanado.Rows(DGVGanado.Rows.GetLastRow(False)).Cells(2).Value = reader.GetValue(2)
+                DGVGanado.Rows(DGVGanado.Rows.GetLastRow(False)).Cells(3).Value = reader.GetValue(3)
+                DGVGanado.Rows(DGVGanado.Rows.GetLastRow(False)).Cells(4).Value = reader.GetMySqlDateTime(4)
 
             End While
 
@@ -62,58 +60,6 @@ Public Class mainForm
         End Try
 
     End Sub
-
-    'Estos dos metodos cargan una lista con todos los posible estados y razas de una vaca
-    Private Function actualizarEstados()
-        command.CommandText = "select * from estado"
-
-        Try
-            connection.Open()
-
-            reader = command.ExecuteReader()
-
-            While reader.Read()
-                estados.Add(reader.GetInt32(0), reader.GetString(1))
-            End While
-
-            connection.Close()
-        Catch ex As Exception
-
-            If connection.State = ConnectionState.Open Then
-                connection.Close()
-            End If
-
-            report("actualizarEstados", ex)
-        End Try
-
-        Return Nothing
-    End Function
-    Private Function actualizarRazas()
-
-        command.CommandText = "select * from raza"
-
-        Try
-            connection.Open()
-
-            reader = command.ExecuteReader()
-
-            While reader.Read()
-                razas.Add(reader.GetInt32(0), reader.GetString(1))
-            End While
-
-            connection.Close()
-        Catch ex As Exception
-
-            If connection.State = ConnectionState.Open Then
-                connection.Close()
-            End If
-
-            report("actualizarRazas", ex)
-        End Try
-
-        Return Nothing
-
-    End Function
 
     'Esto descarga informacion de la base de datos segun lo que se haya seleccionado en el combobox 'CBXFiltros'
     Private Function actualizarGrafico()
@@ -190,6 +136,8 @@ Public Class mainForm
 
         CBXFiltros.SelectedIndex = 1
 
+        LBLFiltros.Text = ""
+
         Return Nothing
     End Function
 
@@ -197,9 +145,6 @@ Public Class mainForm
     Private Sub mainForm_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
 
         valoresDefault()
-
-        actualizarRazas()
-        actualizarEstados()
 
     End Sub
 
@@ -222,6 +167,8 @@ Public Class mainForm
         Return Nothing
     End Function
 
+    'Cuando se hace doble click en algun valor de la grafica se agrega este parametro de busqueda como permantente
+    'para poder realizar busquedas mas elaboradas
     Private Sub Chart1_MouseDoubleClick(ByVal sender As Object, ByVal e As System.Windows.Forms.MouseEventArgs) Handles Chart1.MouseDoubleClick
 
         Dim hittest As HitTestResult
@@ -236,7 +183,9 @@ Public Class mainForm
 
             point = hittest.Object
 
-            MsgBox("doble click")
+            filtros = filtros + ("and " + CBXFiltros.SelectedItem + " in (select id from " + CBXFiltros.SelectedItem + " where nombre='" + TXBBusqueda.Text + "')")
+
+            LBLFiltros.Text = LBLFiltros.Text + (CBXFiltros.SelectedItem + "=" + TXBBusqueda.Text + " | ")
 
         End If
 
