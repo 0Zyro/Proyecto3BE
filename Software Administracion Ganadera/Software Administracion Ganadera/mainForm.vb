@@ -29,7 +29,7 @@ Public Class mainForm
         command.CommandText = ("select vaca.id, vaca.sexo, raza.nombre as raza, estado.nombre as estado, vaca.nacimiento from vaca, raza, estado where vaca.raza=raza.id and vaca.estado=estado.id and " + CBXBusqueda.SelectedItem + " in (select id from " + CBXBusqueda.SelectedItem + " where nombre='" + TXBBusqueda.Text + "') " + filtros)
 
         If CBXBusqueda.SelectedItem = "Sexo" Then
-            command.CommandText = ("select * from vaca where sexo='" + TXBBusqueda.Text + "' " + filtros)
+            command.CommandText = ("select vaca.id, vaca.sexo, raza.nombre as raza, estado.nombre as estado, vaca.nacimiento from vaca, raza, estado where vaca.raza=raza.id and vaca.estado=estado.id and sexo='" + TXBBusqueda.Text + "' " + filtros)
         End If
 
         DGVGanado.Rows.Clear()
@@ -183,7 +183,11 @@ Public Class mainForm
 
             point = hittest.Object
 
-            filtros = filtros + ("and " + CBXFiltros.SelectedItem + " in (select id from " + CBXFiltros.SelectedItem + " where nombre='" + TXBBusqueda.Text + "')")
+            If (CBXFiltros.SelectedItem = "Sexo") Then
+                filtros = filtros + ("and sexo='" + TXBBusqueda.Text + "'")
+            Else
+                filtros = filtros + ("and " + CBXFiltros.SelectedItem + " in (select id from " + CBXFiltros.SelectedItem + " where nombre='" + TXBBusqueda.Text + "')")
+            End If
 
             LBLFiltros.Text = LBLFiltros.Text + (CBXFiltros.SelectedItem + "=" + TXBBusqueda.Text + " | ")
 
@@ -237,6 +241,17 @@ Public Class mainForm
             point.BorderWidth = 3
 
         End If
+
+    End Sub
+
+    'Boton que quita todas las etiquetas de busqueda
+    Private Sub BTNLimpiar_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles BTNLimpiar.Click
+
+        filtros = ""
+        LBLFiltros.Text = filtros
+
+        actualizarGrafico()
+        actualizarGrilla("")
 
     End Sub
 End Class
