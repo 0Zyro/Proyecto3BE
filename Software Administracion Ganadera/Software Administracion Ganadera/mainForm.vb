@@ -99,7 +99,7 @@ Public Class mainForm
 
             reader.Read()
 
-            LBLGanadoActivo.Text = reader.GetInt32(0)
+            LBLGanadoActivo.Text = ("Ganado activo: " + reader.GetInt32(0).ToString)
 
             connection.Close()
         Catch ex As Exception
