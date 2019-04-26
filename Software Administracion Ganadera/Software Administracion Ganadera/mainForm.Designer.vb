@@ -22,9 +22,9 @@ Partial Class mainForm
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
-        Dim ChartArea2 As System.Windows.Forms.DataVisualization.Charting.ChartArea = New System.Windows.Forms.DataVisualization.Charting.ChartArea()
-        Dim Legend2 As System.Windows.Forms.DataVisualization.Charting.Legend = New System.Windows.Forms.DataVisualization.Charting.Legend()
-        Dim Series2 As System.Windows.Forms.DataVisualization.Charting.Series = New System.Windows.Forms.DataVisualization.Charting.Series()
+        Dim ChartArea3 As System.Windows.Forms.DataVisualization.Charting.ChartArea = New System.Windows.Forms.DataVisualization.Charting.ChartArea()
+        Dim Legend3 As System.Windows.Forms.DataVisualization.Charting.Legend = New System.Windows.Forms.DataVisualization.Charting.Legend()
+        Dim Series3 As System.Windows.Forms.DataVisualization.Charting.Series = New System.Windows.Forms.DataVisualization.Charting.Series()
         Me.BTNBusqueda = New System.Windows.Forms.Button()
         Me.CBXBusqueda = New System.Windows.Forms.ComboBox()
         Me.TXBBusqueda = New System.Windows.Forms.TextBox()
@@ -38,7 +38,6 @@ Partial Class mainForm
         Me.Venta = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.Chart1 = New System.Windows.Forms.DataVisualization.Charting.Chart()
         Me.BTNLimpiar = New System.Windows.Forms.Button()
-        Me.BTNVolver = New System.Windows.Forms.Button()
         Me.CBXFiltros = New System.Windows.Forms.ComboBox()
         Me.LBLGanadoActivo = New System.Windows.Forms.Label()
         Me.LBLFiltros = New System.Windows.Forms.Label()
@@ -138,17 +137,17 @@ Partial Class mainForm
         '
         'Chart1
         '
-        ChartArea2.Name = "ChartArea1"
-        Me.Chart1.ChartAreas.Add(ChartArea2)
-        Legend2.Name = "Legend1"
-        Me.Chart1.Legends.Add(Legend2)
+        ChartArea3.Name = "ChartArea1"
+        Me.Chart1.ChartAreas.Add(ChartArea3)
+        Legend3.Name = "Legend1"
+        Me.Chart1.Legends.Add(Legend3)
         Me.Chart1.Location = New System.Drawing.Point(12, 39)
         Me.Chart1.Name = "Chart1"
-        Series2.ChartArea = "ChartArea1"
-        Series2.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Pie
-        Series2.Legend = "Legend1"
-        Series2.Name = "serie"
-        Me.Chart1.Series.Add(Series2)
+        Series3.ChartArea = "ChartArea1"
+        Series3.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Pie
+        Series3.Legend = "Legend1"
+        Series3.Name = "serie"
+        Me.Chart1.Series.Add(Series3)
         Me.Chart1.Size = New System.Drawing.Size(288, 275)
         Me.Chart1.TabIndex = 4
         Me.Chart1.Text = "Chart1"
@@ -157,25 +156,16 @@ Partial Class mainForm
         '
         Me.BTNLimpiar.Location = New System.Drawing.Point(13, 340)
         Me.BTNLimpiar.Name = "BTNLimpiar"
-        Me.BTNLimpiar.Size = New System.Drawing.Size(57, 23)
+        Me.BTNLimpiar.Size = New System.Drawing.Size(69, 23)
         Me.BTNLimpiar.TabIndex = 5
         Me.BTNLimpiar.Text = "Limpiar"
         Me.BTNLimpiar.UseVisualStyleBackColor = True
-        '
-        'BTNVolver
-        '
-        Me.BTNVolver.Location = New System.Drawing.Point(76, 340)
-        Me.BTNVolver.Name = "BTNVolver"
-        Me.BTNVolver.Size = New System.Drawing.Size(55, 23)
-        Me.BTNVolver.TabIndex = 6
-        Me.BTNVolver.Text = "Volver"
-        Me.BTNVolver.UseVisualStyleBackColor = True
         '
         'CBXFiltros
         '
         Me.CBXFiltros.DisplayMember = "0"
         Me.CBXFiltros.Items.AddRange(New Object() {"Raza", "Estado", "Sexo"})
-        Me.CBXFiltros.Location = New System.Drawing.Point(138, 341)
+        Me.CBXFiltros.Location = New System.Drawing.Point(88, 340)
         Me.CBXFiltros.Name = "CBXFiltros"
         Me.CBXFiltros.Size = New System.Drawing.Size(121, 21)
         Me.CBXFiltros.TabIndex = 7
@@ -206,7 +196,6 @@ Partial Class mainForm
         Me.Controls.Add(Me.LBLFiltros)
         Me.Controls.Add(Me.LBLGanadoActivo)
         Me.Controls.Add(Me.CBXFiltros)
-        Me.Controls.Add(Me.BTNVolver)
         Me.Controls.Add(Me.BTNLimpiar)
         Me.Controls.Add(Me.Chart1)
         Me.Controls.Add(Me.DGVGanado)
@@ -234,7 +223,6 @@ Partial Class mainForm
     Friend WithEvents Venta As System.Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents Chart1 As System.Windows.Forms.DataVisualization.Charting.Chart
     Friend WithEvents BTNLimpiar As System.Windows.Forms.Button
-    Friend WithEvents BTNVolver As System.Windows.Forms.Button
     Friend WithEvents CBXFiltros As System.Windows.Forms.ComboBox
     Friend WithEvents LBLGanadoActivo As System.Windows.Forms.Label
     Friend WithEvents LBLFiltros As System.Windows.Forms.Label

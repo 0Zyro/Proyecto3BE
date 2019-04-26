@@ -22,6 +22,30 @@ Public Class mainForm
         Return Nothing
     End Function
 
+    'Esto establece los valores iniciales de los objetos tales como el objeto seleccionado de los combobox
+    Private Function valoresDefault()
+
+        command.CommandType = CommandType.Text
+        command.Connection = connection
+
+        CBXFiltros.SelectedIndex = 1
+
+        LBLFiltros.Text = ""
+
+        Return Nothing
+    End Function
+
+    'Inicio del programa
+    Private Sub mainForm_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
+
+        valoresDefault()
+
+    End Sub
+
+    '''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
+    '                  TAB GANADO
+    '''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
+
     'Se consulta a la base de datos informacion segun los paramentros establecidos en el combobox de busqueda y el
     'textbox de busqueda, tambien se tienen en cuenta los filtros asignados como permanentes
     Private Sub BTNBusqueda_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles BTNBusqueda.Click
@@ -128,33 +152,6 @@ Public Class mainForm
         Return Nothing
     End Function
 
-    'Esto establece los valores iniciales de los objetos tales como el objeto seleccionado de los combobox
-    Private Function valoresDefault()
-
-        command.CommandType = CommandType.Text
-        command.Connection = connection
-
-        CBXFiltros.SelectedIndex = 1
-
-        LBLFiltros.Text = ""
-
-        Return Nothing
-    End Function
-
-    'Inicio del programa
-    Private Sub mainForm_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
-
-        valoresDefault()
-
-    End Sub
-
-    'Cada que se cambia el objeto seleccionado el combobox 'CBXFiltros', se actualiza el grafico
-    Private Sub CBXFiltros_SelectedIndexChanged(ByVal sender As Object, ByVal e As System.EventArgs) Handles CBXFiltros.SelectedIndexChanged
-
-        actualizarGrafico()
-
-    End Sub
-
     'Esto establece los valores de busqueda y realiza dicha busqueda
     Private Function actualizarGrilla(ByVal condicion As String)
 
@@ -166,6 +163,13 @@ Public Class mainForm
 
         Return Nothing
     End Function
+
+    'Cada que se cambia el objeto seleccionado el combobox 'CBXFiltros', se actualiza el grafico
+    Private Sub CBXFiltros_SelectedIndexChanged(ByVal sender As Object, ByVal e As System.EventArgs) Handles CBXFiltros.SelectedIndexChanged
+
+        actualizarGrafico()
+
+    End Sub
 
     'Cuando se hace doble click en algun valor de la grafica se agrega este parametro de busqueda como permantente
     'para poder realizar busquedas mas elaboradas
@@ -254,4 +258,9 @@ Public Class mainForm
         actualizarGrilla("")
 
     End Sub
+
+    '''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
+    '                  FIN TAB GANADO
+    '''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
+
 End Class
