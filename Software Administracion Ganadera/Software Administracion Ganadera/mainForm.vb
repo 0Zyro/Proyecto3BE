@@ -32,6 +32,8 @@ Public Class mainForm
 
         LBLFiltros.Text = ""
 
+        actualizarGanadoActivo()
+
         Return Nothing
     End Function
 
@@ -84,6 +86,32 @@ Public Class mainForm
         End Try
 
     End Sub
+
+    'Consulta la cantidad de ganado vivo y lo carga a un label
+    Private Function actualizarGanadoActivo()
+
+        command.CommandText = "select count(id) from vaca where estado in (select id from estado where nombre='Vivo')"
+
+        Try
+            connection.Open()
+
+            reader = command.ExecuteReader()
+
+            reader.Read()
+
+            LBLGanadoActivo.Text = reader.GetInt32(0)
+
+            connection.Close()
+        Catch ex As Exception
+            If connection.State = ConnectionState.Open Then
+                connection.Close()
+            End If
+
+            report("actualizarGanadoActivo", ex)
+        End Try
+
+        Return Nothing
+    End Function
 
     'Esto descarga informacion de la base de datos segun lo que se haya seleccionado en el combobox 'CBXFiltros'
     Private Function actualizarGrafico()
