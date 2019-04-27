@@ -11,9 +11,6 @@ Public Class mainForm
     Dim command As New MySqlCommand
     Dim reader As MySqlDataReader
 
-    'String en el que se guardaran los filtros de busqueda con los que se este trabajando
-    Dim filtros As String = ""
-
     'Metodo de reportaje de errores
     Private Function report(ByVal origen As String, ByRef err As Exception)
 
@@ -47,6 +44,9 @@ Public Class mainForm
     '''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
     '                  TAB GANADO
     '''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
+
+    'String en el que se guardaran los filtros de busqueda con los que se este trabajando
+    Dim filtros As String = ""
 
     'Se consulta a la base de datos informacion segun los paramentros establecidos en el combobox de busqueda y el
     'textbox de busqueda, tambien se tienen en cuenta los filtros asignados como permanentes
@@ -287,6 +287,7 @@ Public Class mainForm
 
     End Sub
 
+    'Elimina la vaca segun la id de la fila seleccionada en el data grid
     Private Sub BTNEliminarGanado_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles BTNEliminarGanado.Click
         If DGVGanado.SelectedCells.Count <> 0 Then
 
@@ -311,6 +312,36 @@ Public Class mainForm
             End Try
 
         End If
+    End Sub
+
+    Private Sub BTNAgregarGanado_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles BTNAgregarGanado.Click
+
+        command.CommandText = ("select nombre from raza")
+
+        CBXAgregarGanadoRaza.Items.Clear()
+
+        Try
+            connection.Open()
+
+            reader = command.ExecuteReader()
+
+            While reader.Read()
+                CBXAgregarGanadoRaza.Items.Add(reader.GetString(0))
+            End While
+
+            connection.Close()
+
+            DGVGanado.Visible = False
+            PNLAgregarGanado.Visible = True
+
+        Catch ex As Exception
+            If connection.State = ConnectionState.Open Then
+                connection.Close()
+            End If
+
+            report("BTNAgregarGanado_Click", ex)
+        End Try
+
     End Sub
 
     '''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''

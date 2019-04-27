@@ -22,9 +22,9 @@ Partial Class mainForm
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
-        Dim ChartArea3 As System.Windows.Forms.DataVisualization.Charting.ChartArea = New System.Windows.Forms.DataVisualization.Charting.ChartArea()
-        Dim Legend3 As System.Windows.Forms.DataVisualization.Charting.Legend = New System.Windows.Forms.DataVisualization.Charting.Legend()
-        Dim Series3 As System.Windows.Forms.DataVisualization.Charting.Series = New System.Windows.Forms.DataVisualization.Charting.Series()
+        Dim ChartArea1 As System.Windows.Forms.DataVisualization.Charting.ChartArea = New System.Windows.Forms.DataVisualization.Charting.ChartArea()
+        Dim Legend1 As System.Windows.Forms.DataVisualization.Charting.Legend = New System.Windows.Forms.DataVisualization.Charting.Legend()
+        Dim Series1 As System.Windows.Forms.DataVisualization.Charting.Series = New System.Windows.Forms.DataVisualization.Charting.Series()
         Me.BTNBusqueda = New System.Windows.Forms.Button()
         Me.CBXBusqueda = New System.Windows.Forms.ComboBox()
         Me.TXBBusqueda = New System.Windows.Forms.TextBox()
@@ -43,8 +43,17 @@ Partial Class mainForm
         Me.LBLFiltros = New System.Windows.Forms.Label()
         Me.BTNAgregarGanado = New System.Windows.Forms.Button()
         Me.BTNEliminarGanado = New System.Windows.Forms.Button()
+        Me.LBLAgregarGanadoSexo = New System.Windows.Forms.Label()
+        Me.LBLAgregarGanadoNacimiento = New System.Windows.Forms.Label()
+        Me.LBLAgregarGanadoRaza = New System.Windows.Forms.Label()
+        Me.CBXAgregarGanadoSexo = New System.Windows.Forms.ComboBox()
+        Me.CBXAgregarGanadoRaza = New System.Windows.Forms.ComboBox()
+        Me.DTPAgregarGanadoNacimiento = New System.Windows.Forms.DateTimePicker()
+        Me.BTNAgregarGanadoOtro = New System.Windows.Forms.Button()
+        Me.PNLAgregarGanado = New System.Windows.Forms.Panel()
         CType(Me.DGVGanado, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.Chart1, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.PNLAgregarGanado.SuspendLayout()
         Me.SuspendLayout()
         '
         'BTNBusqueda
@@ -81,13 +90,13 @@ Partial Class mainForm
         Me.DGVGanado.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.DisplayedCells
         Me.DGVGanado.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         Me.DGVGanado.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.Id, Me.Sexo, Me.Raza, Me.Nacimiento, Me.Estado, Me.Compra, Me.Venta})
-        Me.DGVGanado.Location = New System.Drawing.Point(306, 38)
+        Me.DGVGanado.Location = New System.Drawing.Point(318, 322)
         Me.DGVGanado.MultiSelect = False
         Me.DGVGanado.Name = "DGVGanado"
         Me.DGVGanado.ReadOnly = True
         Me.DGVGanado.RowHeadersVisible = False
         Me.DGVGanado.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
-        Me.DGVGanado.Size = New System.Drawing.Size(271, 276)
+        Me.DGVGanado.Size = New System.Drawing.Size(88, 61)
         Me.DGVGanado.TabIndex = 3
         '
         'Id
@@ -141,17 +150,17 @@ Partial Class mainForm
         '
         'Chart1
         '
-        ChartArea3.Name = "ChartArea1"
-        Me.Chart1.ChartAreas.Add(ChartArea3)
-        Legend3.Name = "Legend1"
-        Me.Chart1.Legends.Add(Legend3)
+        ChartArea1.Name = "ChartArea1"
+        Me.Chart1.ChartAreas.Add(ChartArea1)
+        Legend1.Name = "Legend1"
+        Me.Chart1.Legends.Add(Legend1)
         Me.Chart1.Location = New System.Drawing.Point(12, 39)
         Me.Chart1.Name = "Chart1"
-        Series3.ChartArea = "ChartArea1"
-        Series3.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Pie
-        Series3.Legend = "Legend1"
-        Series3.Name = "serie"
-        Me.Chart1.Series.Add(Series3)
+        Series1.ChartArea = "ChartArea1"
+        Series1.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Pie
+        Series1.Legend = "Legend1"
+        Series1.Name = "serie"
+        Me.Chart1.Series.Add(Series1)
         Me.Chart1.Size = New System.Drawing.Size(288, 275)
         Me.Chart1.TabIndex = 4
         Me.Chart1.Text = "Chart1"
@@ -194,7 +203,7 @@ Partial Class mainForm
         '
         'BTNAgregarGanado
         '
-        Me.BTNAgregarGanado.Location = New System.Drawing.Point(421, 320)
+        Me.BTNAgregarGanado.Location = New System.Drawing.Point(421, 322)
         Me.BTNAgregarGanado.Name = "BTNAgregarGanado"
         Me.BTNAgregarGanado.Size = New System.Drawing.Size(75, 63)
         Me.BTNAgregarGanado.TabIndex = 10
@@ -210,11 +219,87 @@ Partial Class mainForm
         Me.BTNEliminarGanado.Text = "Eliminar"
         Me.BTNEliminarGanado.UseVisualStyleBackColor = True
         '
+        'LBLAgregarGanadoSexo
+        '
+        Me.LBLAgregarGanadoSexo.AutoSize = True
+        Me.LBLAgregarGanadoSexo.Location = New System.Drawing.Point(27, 66)
+        Me.LBLAgregarGanadoSexo.Name = "LBLAgregarGanadoSexo"
+        Me.LBLAgregarGanadoSexo.Size = New System.Drawing.Size(31, 13)
+        Me.LBLAgregarGanadoSexo.TabIndex = 12
+        Me.LBLAgregarGanadoSexo.Text = "Sexo"
+        '
+        'LBLAgregarGanadoNacimiento
+        '
+        Me.LBLAgregarGanadoNacimiento.AutoSize = True
+        Me.LBLAgregarGanadoNacimiento.Location = New System.Drawing.Point(27, 116)
+        Me.LBLAgregarGanadoNacimiento.Name = "LBLAgregarGanadoNacimiento"
+        Me.LBLAgregarGanadoNacimiento.Size = New System.Drawing.Size(60, 13)
+        Me.LBLAgregarGanadoNacimiento.TabIndex = 13
+        Me.LBLAgregarGanadoNacimiento.Text = "Nacimiento"
+        '
+        'LBLAgregarGanadoRaza
+        '
+        Me.LBLAgregarGanadoRaza.AutoSize = True
+        Me.LBLAgregarGanadoRaza.Location = New System.Drawing.Point(27, 171)
+        Me.LBLAgregarGanadoRaza.Name = "LBLAgregarGanadoRaza"
+        Me.LBLAgregarGanadoRaza.Size = New System.Drawing.Size(32, 13)
+        Me.LBLAgregarGanadoRaza.TabIndex = 14
+        Me.LBLAgregarGanadoRaza.Text = "Raza"
+        '
+        'CBXAgregarGanadoSexo
+        '
+        Me.CBXAgregarGanadoSexo.FormattingEnabled = True
+        Me.CBXAgregarGanadoSexo.Items.AddRange(New Object() {"Hembra", "Macho"})
+        Me.CBXAgregarGanadoSexo.Location = New System.Drawing.Point(30, 83)
+        Me.CBXAgregarGanadoSexo.Name = "CBXAgregarGanadoSexo"
+        Me.CBXAgregarGanadoSexo.Size = New System.Drawing.Size(113, 21)
+        Me.CBXAgregarGanadoSexo.TabIndex = 15
+        '
+        'CBXAgregarGanadoRaza
+        '
+        Me.CBXAgregarGanadoRaza.FormattingEnabled = True
+        Me.CBXAgregarGanadoRaza.Location = New System.Drawing.Point(30, 187)
+        Me.CBXAgregarGanadoRaza.Name = "CBXAgregarGanadoRaza"
+        Me.CBXAgregarGanadoRaza.Size = New System.Drawing.Size(131, 21)
+        Me.CBXAgregarGanadoRaza.TabIndex = 16
+        '
+        'DTPAgregarGanadoNacimiento
+        '
+        Me.DTPAgregarGanadoNacimiento.Location = New System.Drawing.Point(30, 133)
+        Me.DTPAgregarGanadoNacimiento.Name = "DTPAgregarGanadoNacimiento"
+        Me.DTPAgregarGanadoNacimiento.Size = New System.Drawing.Size(184, 20)
+        Me.DTPAgregarGanadoNacimiento.TabIndex = 17
+        '
+        'BTNAgregarGanadoOtro
+        '
+        Me.BTNAgregarGanadoOtro.Location = New System.Drawing.Point(167, 187)
+        Me.BTNAgregarGanadoOtro.Name = "BTNAgregarGanadoOtro"
+        Me.BTNAgregarGanadoOtro.Size = New System.Drawing.Size(47, 23)
+        Me.BTNAgregarGanadoOtro.TabIndex = 20
+        Me.BTNAgregarGanadoOtro.Text = "Otro"
+        Me.BTNAgregarGanadoOtro.UseVisualStyleBackColor = True
+        '
+        'PNLAgregarGanado
+        '
+        Me.PNLAgregarGanado.Controls.Add(Me.CBXAgregarGanadoSexo)
+        Me.PNLAgregarGanado.Controls.Add(Me.BTNAgregarGanadoOtro)
+        Me.PNLAgregarGanado.Controls.Add(Me.LBLAgregarGanadoSexo)
+        Me.PNLAgregarGanado.Controls.Add(Me.LBLAgregarGanadoNacimiento)
+        Me.PNLAgregarGanado.Controls.Add(Me.LBLAgregarGanadoRaza)
+        Me.PNLAgregarGanado.Controls.Add(Me.DTPAgregarGanadoNacimiento)
+        Me.PNLAgregarGanado.Controls.Add(Me.CBXAgregarGanadoRaza)
+        Me.PNLAgregarGanado.Location = New System.Drawing.Point(318, 39)
+        Me.PNLAgregarGanado.Name = "PNLAgregarGanado"
+        Me.PNLAgregarGanado.Size = New System.Drawing.Size(259, 275)
+        Me.PNLAgregarGanado.TabIndex = 21
+        Me.PNLAgregarGanado.Visible = False
+        '
         'mainForm
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(589, 397)
+        Me.Controls.Add(Me.PNLAgregarGanado)
         Me.Controls.Add(Me.BTNEliminarGanado)
         Me.Controls.Add(Me.BTNAgregarGanado)
         Me.Controls.Add(Me.LBLFiltros)
@@ -230,6 +315,8 @@ Partial Class mainForm
         Me.Text = "Form1"
         CType(Me.DGVGanado, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.Chart1, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.PNLAgregarGanado.ResumeLayout(False)
+        Me.PNLAgregarGanado.PerformLayout()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -252,5 +339,13 @@ Partial Class mainForm
     Friend WithEvents LBLFiltros As System.Windows.Forms.Label
     Friend WithEvents BTNAgregarGanado As System.Windows.Forms.Button
     Friend WithEvents BTNEliminarGanado As System.Windows.Forms.Button
+    Friend WithEvents LBLAgregarGanadoSexo As System.Windows.Forms.Label
+    Friend WithEvents LBLAgregarGanadoNacimiento As System.Windows.Forms.Label
+    Friend WithEvents LBLAgregarGanadoRaza As System.Windows.Forms.Label
+    Friend WithEvents CBXAgregarGanadoSexo As System.Windows.Forms.ComboBox
+    Friend WithEvents CBXAgregarGanadoRaza As System.Windows.Forms.ComboBox
+    Friend WithEvents DTPAgregarGanadoNacimiento As System.Windows.Forms.DateTimePicker
+    Friend WithEvents BTNAgregarGanadoOtro As System.Windows.Forms.Button
+    Friend WithEvents PNLAgregarGanado As System.Windows.Forms.Panel
 
 End Class
