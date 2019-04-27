@@ -41,6 +41,8 @@ Partial Class mainForm
         Me.CBXFiltros = New System.Windows.Forms.ComboBox()
         Me.LBLGanadoActivo = New System.Windows.Forms.Label()
         Me.LBLFiltros = New System.Windows.Forms.Label()
+        Me.BTNAgregarGanado = New System.Windows.Forms.Button()
+        Me.BTNEliminarGanado = New System.Windows.Forms.Button()
         CType(Me.DGVGanado, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.Chart1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
@@ -80,9 +82,11 @@ Partial Class mainForm
         Me.DGVGanado.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         Me.DGVGanado.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.Id, Me.Sexo, Me.Raza, Me.Nacimiento, Me.Estado, Me.Compra, Me.Venta})
         Me.DGVGanado.Location = New System.Drawing.Point(306, 38)
+        Me.DGVGanado.MultiSelect = False
         Me.DGVGanado.Name = "DGVGanado"
         Me.DGVGanado.ReadOnly = True
         Me.DGVGanado.RowHeadersVisible = False
+        Me.DGVGanado.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
         Me.DGVGanado.Size = New System.Drawing.Size(271, 276)
         Me.DGVGanado.TabIndex = 3
         '
@@ -188,11 +192,31 @@ Partial Class mainForm
         Me.LBLFiltros.TabIndex = 9
         Me.LBLFiltros.Text = "filtros filtros filtros filtros"
         '
+        'BTNAgregarGanado
+        '
+        Me.BTNAgregarGanado.Location = New System.Drawing.Point(421, 320)
+        Me.BTNAgregarGanado.Name = "BTNAgregarGanado"
+        Me.BTNAgregarGanado.Size = New System.Drawing.Size(75, 63)
+        Me.BTNAgregarGanado.TabIndex = 10
+        Me.BTNAgregarGanado.Text = "Agregar"
+        Me.BTNAgregarGanado.UseVisualStyleBackColor = True
+        '
+        'BTNEliminarGanado
+        '
+        Me.BTNEliminarGanado.Location = New System.Drawing.Point(502, 320)
+        Me.BTNEliminarGanado.Name = "BTNEliminarGanado"
+        Me.BTNEliminarGanado.Size = New System.Drawing.Size(75, 65)
+        Me.BTNEliminarGanado.TabIndex = 11
+        Me.BTNEliminarGanado.Text = "Eliminar"
+        Me.BTNEliminarGanado.UseVisualStyleBackColor = True
+        '
         'mainForm
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(589, 397)
+        Me.Controls.Add(Me.BTNEliminarGanado)
+        Me.Controls.Add(Me.BTNAgregarGanado)
         Me.Controls.Add(Me.LBLFiltros)
         Me.Controls.Add(Me.LBLGanadoActivo)
         Me.Controls.Add(Me.CBXFiltros)
@@ -226,5 +250,7 @@ Partial Class mainForm
     Friend WithEvents CBXFiltros As System.Windows.Forms.ComboBox
     Friend WithEvents LBLGanadoActivo As System.Windows.Forms.Label
     Friend WithEvents LBLFiltros As System.Windows.Forms.Label
+    Friend WithEvents BTNAgregarGanado As System.Windows.Forms.Button
+    Friend WithEvents BTNEliminarGanado As System.Windows.Forms.Button
 
 End Class

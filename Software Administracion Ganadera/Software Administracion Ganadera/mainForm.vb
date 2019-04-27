@@ -287,6 +287,32 @@ Public Class mainForm
 
     End Sub
 
+    Private Sub BTNEliminarGanado_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles BTNEliminarGanado.Click
+        If DGVGanado.SelectedCells.Count <> 0 Then
+
+            command.CommandText = ("delete from vaca where id='" + DGVGanado.SelectedCells(0).Value.ToString + "'")
+
+            Try
+                connection.Open()
+
+                command.ExecuteNonQuery()
+
+                connection.Close()
+
+                actualizarGrafico()
+
+                actualizarGrilla("")
+
+            Catch ex As Exception
+                If connection.State = ConnectionState.Open Then
+                    connection.Close()
+                End If
+                report("BTNEliminarGanado_Click", ex)
+            End Try
+
+        End If
+    End Sub
+
     '''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
     '                  FIN TAB GANADO
     '''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
