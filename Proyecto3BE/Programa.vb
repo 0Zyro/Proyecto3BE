@@ -16,6 +16,10 @@ Public Class Programa
     Public Consulta As String
     Public MysqlConexion As MySqlConnection = New MySqlConnection(data)
 
+    Dim variable As Integer
+
+
+
     Private PasswdUsuario As String
     Private RangoUsuario As String
     Private CiUsuario As String
@@ -4512,7 +4516,6 @@ Public Class Programa
     End Sub
 
     Private Sub TXTKGCompraganado_KeyPress(ByVal sender As System.Object, ByVal e As System.Windows.Forms.KeyPressEventArgs) Handles TXTKGCompraganado.KeyPress
-
         If Char.IsNumber(e.KeyChar) Then
             e.Handled = False
         ElseIf Char.IsControl(e.KeyChar) Then

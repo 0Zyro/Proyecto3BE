@@ -32,3 +32,6 @@ E:\Documents\Proyecto\Proyecto3BE\obj\x86\Release\WindowsApplication1.Resources.
 E:\Documents\Proyecto\Proyecto3BE\obj\x86\Release\Proyecto3BE.vbproj.GenerateResource.Cache
 E:\Documents\Proyecto\Proyecto3BE\obj\x86\Release\Proyecto3BE.exe.manifest
 E:\Documents\Proyecto\Proyecto3BE\obj\x86\Release\Proyecto3BE.application
+C:\Users\Timo\Documents\GitHub\Proyecto3BE\Proyecto3BE\obj\x86\Release\Proyecto3BE.exe
+C:\Users\Timo\Documents\GitHub\Proyecto3BE\Proyecto3BE\obj\x86\Release\Proyecto3BE.xml
+C:\Users\Timo\Documents\GitHub\Proyecto3BE\Proyecto3BE\obj\x86\Release\Proyecto3BE.pdb
